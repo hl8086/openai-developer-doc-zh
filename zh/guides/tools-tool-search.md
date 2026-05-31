@@ -66,7 +66,8 @@ Tool search 允许模型根据需要动态搜索并将工具加载到模型的�
 
 **配置托管 tool search**
 
-```
+::: code-group
+```python
 from openai import OpenAI
 
 client = OpenAI()
@@ -123,7 +124,7 @@ response = client.responses.create(
 print(response.output)
 ```
 
-```
+```javascript
 import OpenAI from "openai";
 
 const client = new OpenAI();
@@ -176,6 +177,8 @@ const response = await client.responses.create({
 
 console.log(response.output);
 ```
+
+:::
 
 
 如果模型决定需要一个延迟加载的工具，响应会在最终的函数调用之前包含两个额外的输出项：
@@ -247,7 +250,8 @@ console.log(response.output);
 
 **配置客户端执行的 tool search**
 
-```
+::: code-group
+```python
 from openai import OpenAI
 
 client = OpenAI()
@@ -317,7 +321,7 @@ second_response = client.responses.create(
 print(second_response.output)
 ```
 
-```
+```javascript
 import OpenAI from "openai";
 
 const client = new OpenAI();
@@ -386,6 +390,8 @@ const secondResponse = await client.responses.create({
 
 console.log(secondResponse.output);
 ```
+
+:::
 
 
 在第一轮中，模型发出一个 `tool_search_call` 并在此停止：

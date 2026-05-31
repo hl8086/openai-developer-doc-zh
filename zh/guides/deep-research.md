@@ -114,6 +114,7 @@ curl https://api.openai.com/v1/responses   -H "Authorization: Bearer $OPENAI_API
 
 
 
+
 深度研究请求可能需要很长时间，因此我们建议在[后台模式](/guides/background)下运行。您可以配置一个 [webhook](/guides/webhooks)，在后台请求完成时接收通知。后台模式会保留响应数据大约 10 分钟以确保轮询可靠工作，这使其与零数据保留（ZDR）要求不兼容。出于历史原因，我们仍然在 ZDR 凭证上接受 `background=true`，但如果您需要 ZDR，则应将其关闭。修改后的滥用监控（MAM）项目可以安全使用后台模式。
 
 ### 输出结构
@@ -186,7 +187,8 @@ curl https://api.openai.com/v1/responses   -H "Authorization: Bearer $OPENAI_API
 
 **使用更快、更小的模型提出澄清问题**
 
-```
+::: code-group
+```python
 from openai import OpenAI
 client = OpenAI()
 
@@ -213,7 +215,7 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
-```
+```javascript
 import OpenAI from "openai";
 const openai = new OpenAI();
 
@@ -250,6 +252,8 @@ curl https://api.openai.com/v1/responses \
   "instructions": "You are talking to a user who is asking for a research task to be conducted. Your job is to gather more information from the user to successfully complete the task. GUIDELINES: - Be concise while gathering all necessary information** - Make sure to gather all the information needed to carry out the research task in a concise, well-structured manner. - Use bullet points or numbered lists if appropriate for clarity. - Don't ask for unnecessary information, or information that the user has already provided. IMPORTANT: Do NOT conduct any research yourself, just gather information that will be given to a researcher to conduct the research task."
 }'
 ```
+
+:::
 
 
 
@@ -435,6 +439,7 @@ curl https://api.openai.com/v1/responses \
 
 
 
+
 ## 使用您自己的数据进行研究
 
 深度研究模型旨在访问公共和私有数据源，但私有或内部数据需要特定的设置。默认情况下，这些模型可以通过[网络搜索工具](/guides/tools-web-search)访问公共互联网上的信息。要让模型访问您自己的数据，您有以下几种选择：
@@ -546,6 +551,7 @@ print(resp.output_text)
 ```
 
 :::
+
 
 
 

@@ -111,7 +111,8 @@ PY
 
 **从 Google 元数据服务器身份令牌进行身份验证**
 
-```
+::: code-group
+```javascript
 import OpenAI from "openai";
 import type { SubjectTokenProvider } from "openai/auth";
 
@@ -172,7 +173,7 @@ const response = await client.responses.create({
 console.log(response.output_text);
 ```
 
-```
+```python
 import os
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
@@ -220,7 +221,7 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
-```
+```go
 package main
 
 import (
@@ -331,7 +332,7 @@ func main() {
 }
 ```
 
-```
+```java
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.openai.auth.SubjectTokenProvider;
 import com.openai.auth.SubjectTokenType;
@@ -442,7 +443,7 @@ public final class GoogleWorkloadIdentityExample {
 }
 ```
 
-```
+```ruby
 require "net/http"
 require "openai"
 require "uri"
@@ -518,6 +519,8 @@ response = client.responses.create(
 
 puts(response.output_text)
 ```
+
+:::
 
 
 ## Google Kubernetes Engine
@@ -747,6 +750,7 @@ print(response.output_text)
 
 
 
+
 ::: code-group
 ```go
 package main
@@ -959,6 +963,7 @@ puts(response.output_text)
 ```
 
 :::
+
 
 
 

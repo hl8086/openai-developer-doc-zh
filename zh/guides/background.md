@@ -51,6 +51,7 @@ print(resp.status)
 
 
 
+
 ## 轮询后台响应
 
 要检查后台请求的状态，请使用 Responses 的 GET 端点。在请求处于 queued 或 in\_progress 状态时持续轮询。当它离开这些状态时，表示已达到最终（终端）状态。
@@ -108,6 +109,7 @@ print(f"Final status: {resp.status}\nOutput:\n{resp.output_text}")
 
 
 
+
 ## 取消后台响应
 
 你也可以像这样取消正在进行的响应：
@@ -140,6 +142,7 @@ print(resp.status)
 ```
 
 :::
+
 
 
 
@@ -219,6 +222,7 @@ for event in stream:
 ```
 
 :::
+
 
 
 

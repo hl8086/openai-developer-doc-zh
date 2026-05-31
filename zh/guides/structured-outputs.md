@@ -66,6 +66,7 @@ event = completion.choices[0].message.parsed
 
 
 
+
 **获取结构化响应**
 
 ::: code-group
@@ -126,6 +127,7 @@ event = response.output_parsed
 ```
 
 :::
+
 
 
 
@@ -321,6 +323,7 @@ curl https://api.openai.com/v1/chat/completions \
 
 
 
+
 **用于思维链数学辅导的 Structured Outputs**
 
 ::: code-group
@@ -440,6 +443,7 @@ curl https://api.openai.com/v1/responses \
 
 
 
+
 #### 示例响应
 
 ```
@@ -478,7 +482,8 @@ curl https://api.openai.com/v1/responses \
 
 **使用 Structured Outputs 从研究论文中提取数据**
 
-```
+::: code-group
+```javascript
 import OpenAI from "openai";
 import { z } from "zod";
 import { zodResponseFormat } from "openai/helpers/zod";
@@ -504,7 +509,7 @@ const completion = await openai.chat.completions.parse({
 const research_paper = completion.choices[0].message.parsed;
 ```
 
-```
+```python
 from pydantic import BaseModel
 from openai import OpenAI
 
@@ -570,6 +575,8 @@ curl https://api.openai.com/v1/chat/completions \
     }
   }'
 ```
+
+:::
 
 
 
@@ -684,6 +691,7 @@ curl https://api.openai.com/v1/responses \
 
 
 
+
 #### 示例响应
 
 ```
@@ -710,7 +718,8 @@ UI 生成
 
 **使用 Structured Outputs 生成 HTML**
 
-```
+::: code-group
+```javascript
 import OpenAI from "openai";
 import { z } from "zod";
 import { zodResponseFormat } from "openai/helpers/zod";
@@ -746,7 +755,7 @@ const completion = await openai.chat.completions.parse({
 const ui = completion.choices[0].message.parsed;
 ```
 
-```
+```python
 from enum import Enum
 from typing import List
 from pydantic import BaseModel
@@ -856,6 +865,8 @@ curl https://api.openai.com/v1/chat/completions \
     }
   }'
 ```
+
+:::
 
 
 
@@ -1023,6 +1034,7 @@ curl https://api.openai.com/v1/responses \
 
 
 
+
 #### 示例响应
 
 ```
@@ -1108,7 +1120,8 @@ curl https://api.openai.com/v1/responses \
 
 **使用 Structured Outputs 进行内容审核**
 
-```
+::: code-group
+```javascript
 import OpenAI from "openai";
 import { z } from "zod";
 import { zodResponseFormat } from "openai/helpers/zod";
@@ -1133,7 +1146,7 @@ const completion = await openai.chat.completions.parse({
 const compliance = completion.choices[0].message.parsed;
 ```
 
-```
+```python
 from enum import Enum
 from typing import Optional
 from pydantic import BaseModel
@@ -1209,6 +1222,8 @@ curl https://api.openai.com/v1/chat/completions \
     }
   }'
 ```
+
+:::
 
 
 
@@ -1335,6 +1350,7 @@ curl https://api.openai.com/v1/responses \
 
 
 
+
 #### 示例响应
 
 ```
@@ -1395,6 +1411,7 @@ final_answer: z.string(),
 
 
 
+
 #### 数据结构的建议
 
 为了最大化模型生成的质量，我们建议以下做法：
@@ -1433,6 +1450,7 @@ response_format: zodResponseFormat(MathResponse, "math_response"),
 ```
 
 :::
+
 
 
 
@@ -1560,6 +1578,7 @@ except Exception as e:
 ```
 
 :::
+
 
 
 
@@ -1850,6 +1869,7 @@ curl https://api.openai.com/v1/responses \
 
 
 
+
 **注意：** 您使用任何 schema 发出的第一个请求将有额外的延迟，因为我们的 API 会处理该 schema，但使用相同 schema 的后续请求不会有额外延迟。
 
 步骤 3：处理边缘情况
@@ -2096,6 +2116,7 @@ except Exception as e:
 
 
 
+
 步骤 4：以类型安全的方式使用生成的结构化数据
 
 通常，在使用 Structured Outputs 时，您会在编程语言的类型系统中有一个类型或类来表示 JSON Schema 对象。
@@ -2148,6 +2169,7 @@ const solution = JSON.parse(response.choices[0].message.content)) as Solution
 ```
 
 :::
+
 
 
 
@@ -2437,6 +2459,7 @@ curl https://api.openai.com/v1/responses \
 
 
 
+
 **注意：** 您使用任何 schema 发出的第一个请求将有额外的延迟，因为我们的 API 会处理该 schema，但使用相同 schema 的后续请求不会有额外延迟。
 
 步骤 3：处理边缘情况
@@ -2683,6 +2706,7 @@ except Exception as e:
 
 
 
+
 步骤 4：以类型安全的方式使用生成的结构化数据
 
 通常，在使用 Structured Outputs 时，您会在编程语言的类型系统中有一个类型或类来表示 JSON Schema 对象。
@@ -2735,6 +2759,7 @@ const solution = JSON.parse(response.choices[0].message.content)) as Solution
 ```
 
 :::
+
 
 
 
@@ -2806,6 +2831,7 @@ console.log(math_reasoning.parsed);
 ```
 
 :::
+
 
 
 
@@ -2883,6 +2909,7 @@ console.log(math_reasoning.parsed);
 ```
 
 :::
+
 
 
 
@@ -3000,6 +3027,7 @@ console.log(finalCompletion);
 ```
 
 :::
+
 
 
 
@@ -3155,6 +3183,7 @@ console.log(result);
 ```
 
 :::
+
 
 
 
@@ -3842,6 +3871,7 @@ except Exception as e:
 ```
 
 :::
+
 
 
 

@@ -67,7 +67,8 @@
 
 **创建 DPO 微调任务**
 
-```
+::: code-group
+```javascript
 import OpenAI from "openai";
 
 const openai = new OpenAI();
@@ -84,7 +85,7 @@ const job = await openai.fineTuning.jobs.create({
 });
 ```
 
-```
+```python
 from openai import OpenAI
 
 client = OpenAI()
@@ -100,6 +101,8 @@ job = client.fine_tuning.jobs.create(
     },
 )
 ```
+
+:::
 
 
 ## 结合使用 SFT 和 DPO

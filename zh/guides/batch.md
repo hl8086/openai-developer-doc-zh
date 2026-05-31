@@ -100,7 +100,8 @@ Batch API 提供了一组简单的端点，允许您将一组请求收集到单�
 
 **为 Batch API 上传文件**
 
-```
+::: code-group
+```javascript
 import fs from "fs";
 import OpenAI from "openai";
 const openai = new OpenAI();
@@ -113,7 +114,7 @@ const file = await openai.files.create({
 console.log(file);
 ```
 
-```
+```python
 from openai import OpenAI
 client = OpenAI()
 
@@ -125,7 +126,6 @@ batch_input_file = client.files.create(
 print(batch_input_file)
 ```
 
-::: code-group
 ```curl
 curl https://api.openai.com/v1/files \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -140,6 +140,7 @@ openai files create \
 ```
 
 :::
+
 
 
 ### 3\. 创建批次
@@ -199,6 +200,7 @@ openai batches create \
 
 
 
+
 此请求将返回一个包含批次元数据的 [Batch 对象]( https://developers.openai.com/api/reference/batch/object)：
 
 ```
@@ -233,7 +235,8 @@ openai batches create \
 
 **检查批次状态**
 
-```
+::: code-group
+```javascript
 import OpenAI from "openai";
 const openai = new OpenAI();
 
@@ -241,7 +244,7 @@ const batch = await openai.batches.retrieve("batch_abc123");
 console.log(batch);
 ```
 
-```
+```python
 from openai import OpenAI
 client = OpenAI()
 
@@ -249,7 +252,6 @@ batch = client.batches.retrieve("batch_abc123")
 print(batch)
 ```
 
-::: code-group
 ```curl
 curl https://api.openai.com/v1/batches/batch_abc123 \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -262,6 +264,7 @@ openai batches retrieve \
 ```
 
 :::
+
 
 
 给定 Batch 对象的状态可以是以下任何一种：
@@ -317,6 +320,7 @@ openai files content \
 
 
 
+
 输出的 `.jsonl` 文件将为输入文件中每个成功的请求行包含一个响应行。批次中任何失败的请求都会将其错误信息写入错误文件，该文件可通过批次的 `error_file_id` 找到。
 
 对于 `/v1/videos`，已完成的批次结果包含已达到终态（如 `completed`、`failed` 或 `expired`）的视频对象。您可以在批次完成后立即使用返回的视频 ID 下载最终资源。
@@ -336,7 +340,8 @@ openai files content \
 
 **取消批次**
 
-```
+::: code-group
+```javascript
 import OpenAI from "openai";
 const openai = new OpenAI();
 
@@ -344,14 +349,13 @@ const batch = await openai.batches.cancel("batch_abc123");
 console.log(batch);
 ```
 
-```
+```python
 from openai import OpenAI
 client = OpenAI()
 
 client.batches.cancel("batch_abc123")
 ```
 
-::: code-group
 ```curl
 curl https://api.openai.com/v1/batches/batch_abc123/cancel \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -365,6 +369,7 @@ openai batches cancel \
 ```
 
 :::
+
 
 
 ### 7\. 获取所有批次列表
@@ -404,6 +409,7 @@ openai batches list \
 ```
 
 :::
+
 
 
 

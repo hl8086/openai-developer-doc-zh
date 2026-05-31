@@ -82,6 +82,7 @@ curl --request POST \
 
 
 
+
 默认情况下，响应类型为 json，其中包含原始文本。
 
 ```
@@ -95,7 +96,8 @@ Audio API 还允许您在请求中设置其他参数。例如，如果您想将 
 
 **其他选项**
 
-```
+::: code-group
+```javascript
 import fs from "fs";
 import OpenAI from "openai";
 
@@ -110,7 +112,7 @@ const transcription = await openai.audio.transcriptions.create({
 console.log(transcription.text);
 ```
 
-```
+```python
 from openai import OpenAI
 
 client = OpenAI()
@@ -134,6 +136,8 @@ curl --request POST \
   --form model=gpt-4o-transcribe \
   --form response_format=text
 ```
+
+:::
 
 
 
@@ -218,6 +222,7 @@ curl --request POST \
 
 
 
+
 当 `stream=true` 时，说话人分离响应会在片段完成时发出 `transcript.text.segment` 事件。`transcript.text.delta` 事件包含 `segment_id` 字段，但说话人分离的增量不会在每个片段最终确定之前流式传输部分说话人分配。
 
 `gpt-4o-transcribe-diarize` 目前仅通过 `/v1/audio/transcriptions` 可用，尚不支持 Realtime API。
@@ -272,6 +277,7 @@ curl --request POST \
 
 
 
+
 在这个例子中，输入的音频是德语，输出的文本如下：
 
 ```
@@ -296,7 +302,8 @@ Hello, my name is Wolfgang and I come from Germany. Where are you heading today?
 
 **时间戳选项**
 
-```
+::: code-group
+```javascript
 import fs from "fs";
 import OpenAI from "openai";
 
@@ -312,7 +319,7 @@ const transcription = await openai.audio.transcriptions.create({
 console.log(transcription.words);
 ```
 
-```
+```python
 from openai import OpenAI
 
 client = OpenAI()
@@ -338,6 +345,8 @@ curl https://api.openai.com/v1/audio/transcriptions \
   -F response_format="verbose_json"
 ```
 
+:::
+
 
 
 
@@ -349,7 +358,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
 处理此问题的一种方法是使用 [PyDub 开源 Python 包](https://github.com/jiaaro/pydub)来分割音频：
 
-```
+```python
 from pydub import AudioSegment
 
 song = AudioSegment.from_mp3("good_morning.mp3")
@@ -370,7 +379,8 @@ _OpenAI 不对 PyDub 等第三方软件的可用性或安全性做任何保证�
 
 **提示词**
 
-```
+::: code-group
+```javascript
 import fs from "fs";
 import OpenAI from "openai";
 
@@ -386,7 +396,7 @@ const transcription = await openai.audio.transcriptions.create({
 console.log(transcription.text);
 ```
 
-```
+```python
 from openai import OpenAI
 
 client = OpenAI()
@@ -411,6 +421,8 @@ curl --request POST \
   --form model=gpt-4o-transcribe \
   --form prompt="The following conversation is a lecture about the recent developments around OpenAI, GPT-4.5 and the future of AI."
 ```
+
+:::
 
 
 
@@ -500,6 +512,7 @@ curl --request POST \
 
 
 
+
 一旦模型完成该部分音频的转录，您将收到 `transcript.text.delta` 事件流，随后在转录完成时收到包含完整转录的 `transcript.text.done` 事件。使用 `response_format="diarized_json"` 时，流还会在每个片段最终确定时发出带有说话人标签的 `transcript.text.segment` 事件。
 
 此外，您可以使用 `include[]` 参数在响应中包含 `logprobs`，以获取转录中 token 的对数概率。这些可以帮助确定模型对转录特定部分的置信度。
@@ -566,6 +579,7 @@ curl --request POST \
 ```
 
 :::
+
 
 
 
@@ -645,6 +659,7 @@ corrected_text = generate_corrected_transcript(
 ```
 
 :::
+
 
 
 

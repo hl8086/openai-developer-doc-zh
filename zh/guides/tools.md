@@ -79,6 +79,7 @@ Console.WriteLine(response.GetOutputText());
 :::
 
 
+
 文件搜索
 
 **在响应中搜索你的文件**
@@ -135,6 +136,7 @@ Console.WriteLine(response.GetOutputText());
 ```
 
 :::
+
 
 
 工具搜索
@@ -254,6 +256,7 @@ console.log(response.output);
 ```
 
 :::
+
 
 
 
@@ -406,6 +409,7 @@ curl -X POST https://api.openai.com/v1/responses \
 
 
 
+
 远程 MCP
 
 **调用远程 MCP 服务器**
@@ -498,6 +502,7 @@ Console.WriteLine(response.GetOutputText());
 :::
 
 
+
 ## 可用工具
 
 以下是 OpenAI 平台中可用工具的概览——选择其中一个以获取更多使用指南。
@@ -569,6 +574,7 @@ def get_weather(city: str) -> str:
 
 
 
+
 **将专家智能体作为工具暴露**
 
 ::: code-group
@@ -611,6 +617,7 @@ main_agent = Agent(
 ```
 
 :::
+
 
 
 

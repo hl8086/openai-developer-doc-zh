@@ -69,6 +69,7 @@ openai responses:input-tokens count \
 :::
 
 
+
 ## 计算对话中的 token
 
 **多轮对话**
@@ -139,6 +140,7 @@ YAML
 :::
 
 
+
 ## 计算带指令的 token
 
 **带系统指令的输入**
@@ -194,6 +196,7 @@ YAML
 ```
 
 :::
+
 
 
 ## 计算带图片的 token
@@ -280,6 +283,7 @@ YAML
 ```
 
 :::
+
 
 
 你可以使用 `file_id`（来自 [Files API]( https://developers.openai.com/api/reference/files)）或 `image_url`（URL 或 base64 data URL）。详见[图片与视觉](/guides/images-vision)。
@@ -381,6 +385,7 @@ YAML
 ```
 
 :::
+
 
 
 

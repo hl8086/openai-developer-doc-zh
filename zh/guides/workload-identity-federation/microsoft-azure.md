@@ -549,6 +549,7 @@ puts(response.output_text)
 
 
 
+
 ## Azure Kubernetes Service (AKS)
 
 通过将 AKS 颁发的投射服务账户令牌交换为短期 OpenAI 访问令牌，使用 AKS 作为工作负载身份提供者。
@@ -781,6 +782,7 @@ print(response.output_text)
 
 
 
+
 ::: code-group
 ```go
 package main
@@ -993,6 +995,7 @@ puts(response.output_text)
 ```
 
 :::
+
 
 
 

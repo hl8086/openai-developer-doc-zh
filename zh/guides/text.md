@@ -139,6 +139,7 @@ curl "https://api.openai.com/v1/responses" \
 
 
 
+
 模型生成的内容数组位于响应的 `output` 属性中。在这个简单示例中，我们只有一个输出，如下所示：
 
 ```
@@ -191,7 +192,8 @@ OpenAI 有许多不同的[模型](/models)和多个 API 可供选择。[推理�
 
 **使用指令生成文本**
 
-```
+::: code-group
+```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
 
@@ -205,7 +207,7 @@ const response = await client.responses.create({
 console.log(response.output_text);
 ```
 
-```
+```python
 from openai import OpenAI
 client = OpenAI()
 
@@ -230,6 +232,8 @@ curl "https://api.openai.com/v1/responses" \
         "input": "Are semicolons optional in JavaScript?"
     }'
 ```
+
+:::
 
 
 
@@ -303,6 +307,7 @@ curl "https://api.openai.com/v1/responses" \
 ```
 
 :::
+
 
 
 
@@ -401,6 +406,7 @@ curl https://api.openai.com/v1/responses \
 
 
 
+
 带文件输入的变量
 
 **带文件输入变量的提示词模板**
@@ -480,6 +486,7 @@ curl https://api.openai.com/v1/responses   -H "Authorization: Bearer $OPENAI_API
 ```
 
 :::
+
 
 
 

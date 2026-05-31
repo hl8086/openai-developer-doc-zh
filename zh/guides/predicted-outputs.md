@@ -139,6 +139,7 @@ curl https://api.openai.com/v1/chat/completions \
 
 
 
+
 除了重构后的代码之外，模型响应还将包含类似如下的数据：
 
 ```
@@ -174,7 +175,8 @@ curl https://api.openai.com/v1/chat/completions \
 
 **Predicted Outputs 与流式传输**
 
-```
+::: code-group
+```javascript
 import OpenAI from "openai";
 
 const code = `
@@ -220,7 +222,7 @@ for await (const chunk of stream) {
 }
 ```
 
-```
+```python
 from openai import OpenAI
 
 code = """
@@ -264,12 +266,14 @@ for chunk in stream:
         print(chunk.choices[0].delta.content, end="")
 ```
 
+:::
+
 
 ## 预测文本在响应中的位置
 
 在提供预测文本时，你的预测可以出现在生成响应中的任何位置，仍然能为响应提供延迟降低效果。假设你的预测文本是下面所示的简单 [Hono](https://hono.dev/) 服务器：
 
-```
+```javascript
 import { serveStatic } from "@hono/node-server/serve-static";
 import { serve } from "@hono/node-server";
 import { Hono } from "hono";
@@ -308,7 +312,7 @@ markdown formatting.
 
 对该提示词的响应可能如下所示：
 
-```
+```javascript
 import { serveStatic } from "@hono/node-server/serve-static";
 import { serve } from "@hono/node-server";
 import { Hono } from "hono";

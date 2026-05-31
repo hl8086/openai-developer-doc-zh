@@ -78,6 +78,7 @@ print(response.output_text)
 
 
 
+
 ## Set up `text.verbosity`
 
 `text.verbosity` 是平衡简洁性与完整性的主要控制项。当产品需要快速、紧凑的回答时使用较低的 verbosity，当响应需要更丰富的解释、更清晰的结构或完整的上下文时使用较高的 verbosity。较低的 verbosity 意味着更少的输出 token，因此模型生成更少的内容并更快返回输出。
@@ -133,6 +134,7 @@ print(response.output_text)
 
 
 
+
 ## Set up the assistant `phase` parameter
 
 `phase` 是对话历史中 assistant 消息上的标签。它向模型指示先前的 assistant 消息是中间工作评论还是最终答案。对进度更新、工具调用前的备注和其他中间消息使用 `phase: "commentary"`。对已完成的响应使用 `phase: "final_answer"`。
@@ -182,7 +184,8 @@ Assistant 最终答案消息
 
 **使用托管 tool search 与延迟加载工具**
 
-```
+::: code-group
+```javascript
 import OpenAI from "openai";
 
 const openai = new OpenAI();
@@ -234,7 +237,7 @@ const response = await openai.responses.create({
 console.log(response.output_text);
 ```
 
-```
+```python
 from openai import OpenAI
 
 client = OpenAI()
@@ -287,6 +290,8 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
+:::
+
 
 ## Leverage built-in tools
 
@@ -321,7 +326,8 @@ OpenAI 持续添加更多原生工具，因此当内置工具适合你的工作�
 
 **从压缩的响应状态继续**
 
-```
+::: code-group
+```javascript
 import OpenAI from "openai";
 
 const openai = new OpenAI();
@@ -353,7 +359,7 @@ const nextResponse = await openai.responses.create({
 console.log(nextResponse.output_text);
 ```
 
-```
+```python
 from openai import OpenAI
 
 client = OpenAI()
@@ -386,6 +392,8 @@ next_response = client.responses.create(
 print(next_response.output_text)
 ```
 
+:::
+
 
 ## Use `prompt_cache_key`
 
@@ -395,7 +403,8 @@ print(next_response.output_text)
 
 **将相关请求路由到相同的 prompt 缓存**
 
-```
+::: code-group
+```javascript
 import OpenAI from "openai";
 
 const openai = new OpenAI();
@@ -416,7 +425,7 @@ const response = await openai.responses.create({
 console.log(response.output_text);
 ```
 
-```
+```python
 from openai import OpenAI
 
 client = OpenAI()
@@ -437,6 +446,8 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
+:::
+
 
 ## Use `reasoning.encrypted_content`
 
@@ -446,7 +457,8 @@ print(response.output_text)
 
 **在无状态轮次之间传递加密推理**
 
-```
+::: code-group
+```javascript
 import OpenAI from "openai";
 
 const openai = new OpenAI();
@@ -476,7 +488,7 @@ const second = await openai.responses.create({
 console.log(second.output_text);
 ```
 
-```
+```python
 from openai import OpenAI
 
 client = OpenAI()
@@ -506,6 +518,8 @@ second = client.responses.create(
 print(second.output_text)
 ```
 
+:::
+
 
 ## Use `background=True`
 
@@ -515,7 +529,8 @@ print(second.output_text)
 
 **运行并轮询后台响应**
 
-```
+::: code-group
+```javascript
 import OpenAI from "openai";
 
 const openai = new OpenAI();
@@ -544,7 +559,7 @@ while (["queued", "in_progress"].includes(job.status)) {
 console.log(job.output_text);
 ```
 
-```
+```python
 from openai import OpenAI
 import time
 
@@ -573,6 +588,8 @@ while job.status in {"queued", "in_progress"}:
 print(job.output_text)
 ```
 
+:::
+
 
 你可以将它与 `stream=True` 结合使用以获取进度事件，但第一个事件可能比正常请求花费更长时间。
 
@@ -596,7 +613,8 @@ print(job.output_text)
 
 **启动 Responses API WebSocket 会话**
 
-```
+::: code-group
+```javascript
 import OpenAI from "openai";
 import WebSocket from "ws";
 
@@ -639,7 +657,7 @@ ws.on("message", (data) => {
 });
 ```
 
-```
+```python
 from openai import OpenAI
 from websocket import create_connection
 import json
@@ -682,6 +700,8 @@ ws.send(
 first_event = json.loads(ws.recv())
 print(first_event["type"])
 ```
+
+:::
 
 
 ## Final takeaway

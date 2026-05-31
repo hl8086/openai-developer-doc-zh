@@ -92,6 +92,7 @@ print(response.output_text)
 
 
 
+
 **分类 IT 支持工单**
 
 ::: code-group
@@ -160,6 +161,7 @@ print(completion.choices[0].message.content)
 ```
 
 :::
+
 
 
 
@@ -267,6 +269,7 @@ print(eval_obj)
 ```
 
 :::
+
 
 
 
@@ -401,6 +404,7 @@ print(file)
 
 
 
+
 上传文件时，请记下响应负载中的唯一 `id` 属性（如果通过浏览器上传，也可以在 UI 中找到）——我们稍后需要引用该值：
 
 ```
@@ -499,6 +503,7 @@ print(run)
 
 
 
+
 **创建评估运行**
 
 ::: code-group
@@ -571,6 +576,7 @@ print(run)
 ```
 
 :::
+
 
 
 
@@ -711,6 +717,7 @@ print(run)
 ```
 
 :::
+
 
 
 

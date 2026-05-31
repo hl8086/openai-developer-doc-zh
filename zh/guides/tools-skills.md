@@ -131,6 +131,7 @@ print(response.output_text)
 :::
 
 
+
 ### 提示行为
 
 一旦 skill 被挂载，模型可以自行决定何时使用它。如果你想要更确定性的行为，请在适当时明确指示模型"使用 `&lt;skill name>` skill"。
@@ -229,6 +230,7 @@ print(response.output_text)
 ```
 
 :::
+
 
 
 ## 用户提示中的 Skills

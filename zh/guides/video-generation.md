@@ -101,6 +101,7 @@ curl -X POST "https://api.openai.com/v1/videos" \
 
 
 
+
 响应是一个包含唯一 id 和初始状态（如 `queued` 或 `in_progress`）的 JSON 对象。这意味着渲染任务已经开始。
 
 ```
@@ -161,7 +162,8 @@ API 强制执行以下内容限制：
 
 **轮询状态端点**
 
-```
+::: code-group
+```javascript
 import OpenAI from 'openai';
 
 const openai = new OpenAI();
@@ -182,7 +184,7 @@ async function main() {
 main();
 ```
 
-```
+```python
 import asyncio
 
 from openai import AsyncOpenAI
@@ -204,6 +206,8 @@ async def main() -> None:
 
 asyncio.run(main())
 ```
+
+:::
 
 
 响应示例：
@@ -249,7 +253,8 @@ Webhook 负载示例：
 
 **下载 MP4**
 
-```
+::: code-group
+```javascript
 import OpenAI from 'openai';
 
 const openai = new OpenAI();
@@ -300,7 +305,6 @@ require('fs').writeFileSync('video.mp4', buffer);
 console.log('Wrote video.mp4');
 ```
 
-::: code-group
 ```curl
 curl -L "https://api.openai.com/v1/videos/video_abc123/content" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -360,6 +364,7 @@ print("Wrote video.mp4")
 ```
 
 :::
+
 
 
 

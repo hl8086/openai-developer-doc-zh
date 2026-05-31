@@ -46,6 +46,7 @@ curl https://api.openai.com/v1/files \
 
 
 
+
 然后，创建启用了 `code_interpreter` 工具的 Assistant，并将文件作为资源提供给该工具。
 
 ::: code-group
@@ -96,6 +97,7 @@ curl https://api.openai.com/v1/assistants \
 ```
 
 :::
+
 
 
 
@@ -167,6 +169,7 @@ curl https://api.openai.com/v1/threads \
 ```
 
 :::
+
 
 
 
@@ -278,6 +281,7 @@ curl https://api.openai.com/v1/threads \
 
 
 
+
 #### 低保真度或高保真度图像理解
 
 通过控制 `detail` 参数（有三个选项：`low`、`high` 或 `auto`），您可以控制模型如何处理图像并生成其文本理解。
@@ -360,6 +364,7 @@ curl https://api.openai.com/v1/threads \
 ```
 
 :::
+
 
 
 
@@ -459,6 +464,7 @@ curl https://api.openai.com/v1/threads/THREAD_ID/runs \
 
 
 
+
 默认情况下，Run 将使用 Assistant 对象中指定的 `model` 和 `tools` 配置，但您可以在创建 Run 时覆盖其中大部分配置以增加灵活性：
 
 ::: code-group
@@ -498,6 +504,7 @@ curl https://api.openai.com/v1/threads/THREAD_ID/runs \
 ```
 
 :::
+
 
 
 

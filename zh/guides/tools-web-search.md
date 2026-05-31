@@ -94,6 +94,7 @@ Console.WriteLine(response.GetOutputText());
 
 
 
+
 ## 输出和引用
 
 使用网页搜索工具的模型响应将包含两部分：
@@ -155,7 +156,8 @@ Console.WriteLine(response.GetOutputText());
 
 网页搜索参数示例
 
-```
+::: code-group
+```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
 
@@ -171,7 +173,7 @@ const completion = await client.chat.completions.create({
 console.log(completion.choices[0].message.content);
 ```
 
-```
+```python
 from openai import OpenAI
 client = OpenAI()
 
@@ -202,6 +204,8 @@ curl -X POST "https://api.openai.com/v1/chat/completions" \
         }]
     }'
 ```
+
+:::
 
 
 
@@ -255,7 +259,8 @@ curl -X POST "https://api.openai.com/v1/chat/completions" \
 
 **设置搜索上下文大小**
 
-```
+::: code-group
+```python
 from openai import OpenAI
 client = OpenAI()
 
@@ -271,7 +276,7 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
-```
+```csharp
 using OpenAI.Responses;
 
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
@@ -293,7 +298,7 @@ OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
 Console.WriteLine(response.GetOutputText());
 ```
 
-```
+```javascript
 import OpenAI from "openai";
 const openai = new OpenAI();
 
@@ -321,6 +326,8 @@ curl "https://api.openai.com/v1/responses" \
         "input": "What movie won best picture in 2025?"
     }'
 ```
+
+:::
 
 
 
@@ -412,6 +419,7 @@ print(response.output_text)
 ```
 
 :::
+
 
 
 
@@ -532,6 +540,7 @@ print(response.output_text)
 
 
 
+
 ## 用户位置
 
 要根据地理位置优化搜索结果，你可以使用国家、城市、地区和/或时区指定大致的用户位置。
@@ -635,6 +644,7 @@ curl "https://api.openai.com/v1/responses" \
 
 
 
+
 **自定义用户位置**
 
 ::: code-group
@@ -716,6 +726,7 @@ curl -X POST "https://api.openai.com/v1/chat/completions" \
 
 
 
+
 ## 实时互联网访问
 
 在 Responses API 中控制网页搜索工具是获取实时内容还是仅使用缓存/索引结果。
@@ -768,6 +779,7 @@ print(resp.output_text)
 ```
 
 :::
+
 
 
 

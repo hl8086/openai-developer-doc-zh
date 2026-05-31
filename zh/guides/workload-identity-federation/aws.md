@@ -152,7 +152,8 @@ PY
 
 **从 AWS 签发的 OIDC 令牌进行身份验证**
 
-```
+::: code-group
+```javascript
 import { GetWebIdentityTokenCommand, STSClient } from "@aws-sdk/client-sts";
 import OpenAI from "openai";
 import type { SubjectTokenProvider } from "openai/auth";
@@ -207,7 +208,7 @@ const response = await client.responses.create({
 console.log(response.output_text);
 ```
 
-```
+```python
 import os
 
 import boto3
@@ -250,7 +251,7 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
-```
+```go
 package main
 
 import (
@@ -339,7 +340,7 @@ func main() {
 }
 ```
 
-```
+```java
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.openai.auth.SubjectTokenProvider;
 import com.openai.auth.SubjectTokenType;
@@ -436,7 +437,7 @@ public final class AwsOutboundWorkloadIdentityExample {
 }
 ```
 
-```
+```ruby
 require "aws-sdk-sts"
 require "openai"
 
@@ -495,6 +496,8 @@ response = client.responses.create(
 
 puts(response.output_text)
 ```
+
+:::
 
 
 ## Amazon EKS 投射服务账户令牌
@@ -637,7 +640,8 @@ PY
 
 **从 EKS 投射服务账户令牌进行身份验证**
 
-```
+::: code-group
+```javascript
 import { readFile } from "node:fs/promises";
 import OpenAI from "openai";
 import type { SubjectTokenProvider } from "openai/auth";
@@ -679,7 +683,7 @@ const response = await client.responses.create({
 console.log(response.output_text);
 ```
 
-```
+```python
 import os
 from pathlib import Path
 
@@ -715,7 +719,7 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
-```
+```go
 package main
 
 import (
@@ -787,7 +791,7 @@ func main() {
 }
 ```
 
-```
+```java
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.openai.auth.SubjectTokenProvider;
 import com.openai.auth.SubjectTokenType;
@@ -873,7 +877,7 @@ public final class AwsEksWorkloadIdentityExample {
 }
 ```
 
-```
+```ruby
 require "openai"
 
 TOKEN_PATH = "/var/run/secrets/tokens/token"
@@ -924,6 +928,8 @@ response = client.responses.create(
 
 puts(response.output_text)
 ```
+
+:::
 
 
 ## AWS 最佳实践

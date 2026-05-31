@@ -71,6 +71,7 @@ await foreach (var response in responses)
 :::
 
 
+
 Responses API 使用语义事件进行流式传输。每个事件都有预定义的类型和模式，因此你可以监听你关心的事件。
 
 有关事件类型的完整列表，请参阅[流式传输 API 参考]( https://developers.openai.com/api/reference/responses-streaming)。以下是一些示例：
@@ -111,7 +112,8 @@ type StreamingEvent =
 
 响应以事件流的形式分块增量发送。你可以使用 `for` 循环遍历事件流，如下所示：
 
-```
+::: code-group
+```javascript
 import OpenAI from "openai";
 const openai = new OpenAI();
 
@@ -133,7 +135,7 @@ for await (const chunk of stream) {
 }
 ```
 
-```
+```python
 from openai import OpenAI
 client = OpenAI()
 
@@ -153,6 +155,8 @@ for chunk in stream:
     print(chunk.choices[0].delta)
     print("****************")
 ```
+
+:::
 
 
 ## 读取响应
@@ -205,7 +209,8 @@ for chunk in stream:
 
 如果只想流式传输 chat completion 的文本响应，代码如下：
 
-```
+::: code-group
+```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
 
@@ -225,7 +230,7 @@ for await (const chunk of stream) {
 }
 ```
 
-```
+```python
 from openai import OpenAI
 client = OpenAI()
 
@@ -244,6 +249,8 @@ for chunk in stream:
     if chunk.choices[0].delta.content is not None:
         print(chunk.choices[0].delta.content, end="")
 ```
+
+:::
 
 
 ## 高级用例

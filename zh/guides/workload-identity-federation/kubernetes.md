@@ -135,7 +135,8 @@ PY
 
 **从 Kubernetes 投射的服务账户令牌进行身份验证**
 
-```
+::: code-group
+```javascript
 import { readFile } from "node:fs/promises";
 import OpenAI from "openai";
 import type { SubjectTokenProvider } from "openai/auth";
@@ -177,7 +178,7 @@ const response = await client.responses.create({
 console.log(response.output_text);
 ```
 
-```
+```python
 import os
 from pathlib import Path
 
@@ -213,7 +214,7 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
-```
+```go
 package main
 
 import (
@@ -285,7 +286,7 @@ func main() {
 }
 ```
 
-```
+```java
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.openai.auth.SubjectTokenProvider;
 import com.openai.auth.SubjectTokenType;
@@ -371,7 +372,7 @@ public final class KubernetesWorkloadIdentityExample {
 }
 ```
 
-```
+```ruby
 require "openai"
 
 TOKEN_PATH = "/var/run/secrets/tokens/token"
@@ -422,6 +423,8 @@ response = client.responses.create(
 
 puts(response.output_text)
 ```
+
+:::
 
 
 ## Kubernetes 最佳实践

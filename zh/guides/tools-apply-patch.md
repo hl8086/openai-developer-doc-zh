@@ -116,7 +116,7 @@ apply\_patch\_call 对象示例
 
 应用补丁并返回结果
 
-```
+```python
 from apply_patch_harness import apply_operation  # your implementation
 
 results = []
@@ -191,7 +191,8 @@ followup = client.responses.create(
 
 **在 Agents SDK 中使用 apply patch 工具**
 
-```
+::: code-group
+```javascript
 import { applyDiff, Agent, run, applyPatchTool, Editor } from "@openai/agents";
 
 class WorkspaceEditor implements Editor {
@@ -300,6 +301,8 @@ if __name__ == "__main__":
 
     asyncio.run(main())
 ```
+
+:::
 
 
 

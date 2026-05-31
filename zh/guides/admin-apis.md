@@ -77,6 +77,7 @@ OpenAIClient client = OpenAIOkHttpClient.builder()
 
 
 
+
 ## 限制项目的模型访问
 
 使用项目模型权限为项目设置允许列表或拒绝列表。将 `mode` 设置为 `allow_list` 以仅允许列出的模型，或将 `mode` 设置为 `deny_list` 以阻止列出的模型同时允许其他可用模型。模型 ID 必须对组织可见，包括可见的微调模型快照。
@@ -153,6 +154,7 @@ System.out.println(modelPermissions.mode());
 ```
 
 :::
+
 
 
 
@@ -265,6 +267,7 @@ System.out.println(spendAlert.id());
 
 
 
+
 ## 管理数据保留
 
 使用项目数据保留控制来覆盖或继承组织的项目保留策略。将 `retention_type` 设置为 `organization_default` 以继承组织设置。
@@ -338,6 +341,7 @@ System.out.println(dataRetention.type());
 
 
 
+
 ## 通过邮箱邀请用户
 
 使用 Invites 端点向邮箱地址发送组织邀请。
@@ -404,6 +408,7 @@ System.out.println(invite.id());
 
 
 
+
 ## 检索审计日志
 
 使用 Audit Logs 端点列出组织的近期用户操作和配置变更。
@@ -462,6 +467,7 @@ page.data().forEach(auditLog -> System.out.println(auditLog.id()));
 ```
 
 :::
+
 
 
 

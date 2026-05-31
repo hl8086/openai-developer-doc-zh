@@ -57,6 +57,7 @@ curl https://api.openai.com/v1/responses \
 
 
 
+
 Chat Completions API
 
 **通过 Chat Completions API 提供安全标识符**
@@ -89,6 +90,7 @@ curl https://api.openai.com/v1/chat/completions \
 ```
 
 :::
+
 
 
 

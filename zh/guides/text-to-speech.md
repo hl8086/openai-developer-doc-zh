@@ -82,6 +82,7 @@ openai audio:speech create \
 :::
 
 
+
 默认情况下，端点输出语音音频的 MP3 格式，但您可以将其配置为输出任何[支持的格式](#supported-output-formats)。
 
 ### 文本转语音模型
@@ -182,6 +183,7 @@ curl https://api.openai.com/v1/audio/speech \
 ```
 
 :::
+
 
 
 

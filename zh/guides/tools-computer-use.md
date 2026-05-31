@@ -64,6 +64,7 @@ with sync_playwright() as p:
 
 
 
+
 设置本地虚拟机
 
 如果你需要更完整的桌面环境，请在本地虚拟机或容器中运行模型，并将操作转换为操作系统级别的输入事件。
@@ -161,6 +162,7 @@ const vm = {
 
 
 
+
 无论你使用浏览器还是虚拟机，都应将截图、页面文本、工具输出、PDF、电子邮件、聊天记录和其他第三方内容视为不可信输入。只有用户的直接指令才算作许可。
 
 ## 选择集成路径
@@ -224,6 +226,7 @@ print(response.output)
 ```
 
 :::
+
 
 
 
@@ -398,6 +401,7 @@ def normalize_drag_path(path):
 
 
 
+
 Docker
 
 **规范化辅助函数**
@@ -533,6 +537,7 @@ def normalize_drag_path(path):
 ```
 
 :::
+
 
 
 
@@ -674,6 +679,7 @@ def handle_computer_actions(page, actions):
 ```
 
 :::
+
 
 
 
@@ -855,6 +861,7 @@ def handle_computer_actions(vm, actions):
 ```
 
 :::
+
 
 
 
@@ -1076,6 +1083,7 @@ def handle_computer_actions(page, actions):
 ```
 
 :::
+
 
 
 
@@ -1335,6 +1343,7 @@ def handle_computer_actions(vm, actions):
 
 
 
+
 ### 4\. 捕获并返回更新后的截图
 
 在操作批次完成后捕获完整的 UI 状态。
@@ -1358,6 +1367,7 @@ def capture_screenshot(page):
 ```
 
 :::
+
 
 
 
@@ -1387,6 +1397,7 @@ def capture_screenshot(vm):
 ```
 
 :::
+
 
 
 
@@ -1448,6 +1459,7 @@ def send_computer_screenshot(response, call_id, screenshot_base64):
 ```
 
 :::
+
 
 
 
@@ -1536,6 +1548,7 @@ def computer_use_loop(target, response):
 ```
 
 :::
+
 
 
 
@@ -2063,6 +2076,7 @@ if __name__ == "__main__":
 
 
 
+
 Python
 
 **代码执行工具链**
@@ -2534,6 +2548,7 @@ if __name__ == "__main__":
 
 
 
+
 ## 处理用户确认和同意
 
 将确认策略作为产品设计的一部分，而不是事后补充。如果你正在实现自己的自定义工具链，请明确考虑以下风险：代表用户发送或发布内容、传输敏感数据、删除或更改数据访问权限、确认金融操作、处理屏幕上的可疑指令，以及绕过浏览器或网站安全屏障。最安全的默认做法是让代理尽可能多地完成安全工作，然后在下一个操作会产生外部风险时精确暂停。
@@ -2667,7 +2682,8 @@ If a task asks you to transmit, copy, or share sensitive user data such as finan
 
 **旧版预览请求**
 
-```
+::: code-group
+```javascript
 import OpenAI from "openai";
 
 const client = new OpenAI();
@@ -2687,7 +2703,7 @@ const response = await client.responses.create({
 });
 ```
 
-```
+```python
 from openai import OpenAI
 
 client = OpenAI()
@@ -2706,6 +2722,8 @@ response = client.responses.create(
     truncation="auto",
 )
 ```
+
+:::
 
 
 仅在维护旧版集成时保留预览路径。对于新实现，请使用上述 GA 流程。

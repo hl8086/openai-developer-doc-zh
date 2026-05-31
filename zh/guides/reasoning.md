@@ -82,6 +82,7 @@ curl https://api.openai.com/v1/responses \
 
 
 
+
 ## 推理力度
 
 `reasoning.effort` 参数指导模型在执行任务时应该思考多少。
@@ -146,7 +147,8 @@ curl https://api.openai.com/v1/responses \
 
 **处理不完整的响应**
 
-```
+::: code-group
+```javascript
 import OpenAI from "openai";
 
 const openai = new OpenAI();
@@ -181,7 +183,7 @@ if (
 }
 ```
 
-```
+```python
 from openai import OpenAI
 
 client = OpenAI()
@@ -210,6 +212,8 @@ if response.status == "incomplete" and response.incomplete_details.reason == "ma
     else: 
         print("Ran out of tokens during reasoning")
 ```
+
+:::
 
 
 ### 在上下文中保留推理项
@@ -306,6 +310,7 @@ curl https://api.openai.com/v1/responses \
 
 
 
+
 此 API 请求将返回一个输出数组，其中包含助手消息和模型在生成该响应时的推理摘要。
 
 ```
@@ -347,7 +352,8 @@ curl https://api.openai.com/v1/responses \
 
 **往返传递助手 phase 值**
 
-```
+::: code-group
+```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
 
@@ -375,7 +381,7 @@ const response = await client.responses.create({
 console.log(response.output_text);
 ```
 
-```
+```python
 from openai import OpenAI
 
 client = OpenAI()
@@ -402,6 +408,8 @@ response = client.responses.create(
 
 print(response.output_text)
 ```
+
+:::
 
 
 ## 提示建议

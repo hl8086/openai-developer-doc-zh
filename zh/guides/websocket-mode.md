@@ -13,7 +13,7 @@ WebSocket 模式在工作流涉及多次模型-工具往返时最为有用（例
 
 在 WebSocket 模式下，通过从客户端发送 `response.create` 事件来开始每一轮。负载与正常的 [Responses create body](https://developers.openai.com/api/reference/resources/responses/methods/create) 相同，但不使用传输相关的字段如 `stream` 和 `background`。
 
-```
+```python
 from websocket import create_connection
 import json
 import os

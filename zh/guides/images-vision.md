@@ -91,6 +91,7 @@ YAML
 :::
 
 
+
 您可以在我们的[图像生成](/guides/image-generation)指南中了解更多关于图像生成的信息。
 
 ### 利用世界知识进行图像生成
@@ -194,6 +195,7 @@ curl https://api.openai.com/v1/chat/completions \
 
 
 
+
 传递 Base64 编码图像
 
 **分析图像内容**
@@ -293,6 +295,7 @@ EOF
 ```
 
 :::
+
 
 
 
@@ -414,6 +417,7 @@ YAML
 
 
 
+
 传递 Base64 编码图像
 
 **分析图像内容**
@@ -522,6 +526,7 @@ Console.WriteLine($"From byte array: {response2.GetOutputText()}");
 :::
 
 
+
 传递文件 ID
 
 **分析图像内容**
@@ -627,6 +632,7 @@ Console.WriteLine(response.GetOutputText());
 ```
 
 :::
+
 
 
 ### 图像输入要求

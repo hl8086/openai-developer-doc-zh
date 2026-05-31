@@ -162,7 +162,8 @@ jobs:
 
 **从 GitHub Actions OIDC 令牌进行身份验证**
 
-```
+::: code-group
+```javascript
 import OpenAI from "openai";
 import type { SubjectTokenProvider } from "openai/auth";
 
@@ -231,7 +232,7 @@ const response = await client.responses.create({
 console.log(response.output_text);
 ```
 
-```
+```python
 import json
 import os
 import urllib.parse
@@ -286,7 +287,7 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
-```
+```go
 package main
 
 import (
@@ -405,7 +406,7 @@ func main() {
 }
 ```
 
-```
+```java
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.openai.auth.SubjectTokenProvider;
@@ -524,7 +525,7 @@ public final class GitHubActionsWorkloadIdentityExample {
 }
 ```
 
-```
+```ruby
 require "json"
 require "net/http"
 require "openai"
@@ -603,6 +604,8 @@ response = client.responses.create(
 
 puts(response.output_text)
 ```
+
+:::
 
 
 ## GitHub Actions 最佳实践

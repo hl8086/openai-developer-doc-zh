@@ -106,6 +106,7 @@ if image_data:
 
 
 
+
 Image API
 
 **生成图像**
@@ -176,6 +177,7 @@ openai images generate \
 :::
 
 
+
 ### 多轮图像生成
 
 使用 Responses API，你可以通过在上下文中提供图像生成调用输出（也可以只使用图像 ID），或使用 [`previous_response_id` 参数](/guides/conversation-state?api-mode=responses#openai-apis-for-conversation-state)来构建涉及图像生成的多轮对话。这让你可以跨多个轮次迭代图像——优化提示、应用新指令，并随着对话进展演变视觉输出。
@@ -233,6 +235,7 @@ if image_data:
 ```
 
 :::
+
 
 
 
@@ -336,6 +339,7 @@ if image_data_fwup:
 ```
 
 :::
+
 
 
 
@@ -455,6 +459,7 @@ if image_data_fwup:
 :::
 
 
+
 #### 结果
 
 <table style="width:100%"><tbody><tr><td style="vertical-align:top;padding:0 16px 16px 0">"Generate an image of gray tabby cat hugging an otter with an orange scarf"</td><td style="text-align:right;vertical-align:top;padding-bottom:16px"><img src="https://cdn.openai.com/API/docs/images/cat_and_otter.png" alt="一只猫和一只水獭" style="width:200px;border-radius:8px"></td></tr><tr><td style="vertical-align:top;padding:0 16px 0 0">"Now make it look realistic"</td><td style="text-align:right;vertical-align:top"><img src="https://cdn.openai.com/API/docs/images/cat_and_otter_realistic.png" alt="一只猫和一只水獭" style="width:200px;border-radius:8px"></td></tr></tbody></table>
@@ -525,6 +530,7 @@ for event in stream:
 
 
 
+
 Image API
 
 **流式传输图像**
@@ -578,6 +584,7 @@ for event in stream:
 ```
 
 :::
+
 
 
 
@@ -674,6 +681,7 @@ async function createFile(filePath) {
 
 
 
+
 #### 创建 base64 编码图像
 
 **创建 base64 编码图像**
@@ -694,6 +702,7 @@ function encodeImage(filePath) {
 ```
 
 :::
+
 
 
 
@@ -822,6 +831,7 @@ if (imageData.length > 0) {
 
 
 
+
 Image API
 
 **编辑图像**
@@ -922,6 +932,7 @@ openai images edit \
 ```
 
 :::
+
 
 
 ### 使用蒙版编辑图像
@@ -1038,6 +1049,7 @@ if (imageData.length > 0) {
 
 
 
+
 Image API
 
 **使用蒙版编辑图像**
@@ -1107,6 +1119,7 @@ openai images edit \
 ```
 
 :::
+
 
 
 

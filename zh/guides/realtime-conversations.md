@@ -120,6 +120,7 @@ ws.send(json.dumps(event))
 
 
 
+
 当会话更新完成后，服务器将发出 [`session.updated`]( https://developers.openai.com/api/reference/realtime-server-events/session/updated) 事件，包含会话的新状态。
 
 | 相关客户端事件 | 相关服务器事件 |
@@ -175,6 +176,7 @@ ws.send(json.dumps(event))
 
 
 
+
 将用户消息添加到对话后，发送 [`response.create`]( https://developers.openai.com/api/reference/realtime-client-events/response/create) 事件以发起模型响应。如果当前会话同时启用了音频和文本，模型将同时以音频和文本内容进行响应。如果你只想生成文本，可以在发送 `response.create` 客户端事件时指定，如下所示。
 
 **生成纯文本响应**
@@ -207,6 +209,7 @@ ws.send(json.dumps(event))
 
 
 
+
 当响应完全完成时，服务器将发出 [`response.done`]( https://developers.openai.com/api/reference/realtime-server-events/response/done) 事件。此事件将包含模型生成的完整文本，如下所示。
 
 **监听 response.done 以查看最终结果**
@@ -235,6 +238,7 @@ def on_message(ws, message):
 ```
 
 :::
+
 
 
 
@@ -414,6 +418,7 @@ for filename in files:
 
 
 
+
 ### 发送完整音频消息
 
 也可以创建包含完整音频录音的对话消息。使用 [`conversation.item.create`]( https://developers.openai.com/api/reference/realtime-client-events/conversation/item/create) 客户端事件创建包含 `input_audio` 内容的消息。
@@ -467,6 +472,7 @@ ws.send(json.dumps(event))
 
 
 
+
 ### 处理 WebSocket 的音频输出
 
 **要在客户端设备（如 Web 浏览器）上播放输出音频，我们建议使用 WebRTC 而非 WebSocket**。在不确定的网络条件下，WebRTC 向客户端设备发送媒体会更加稳健。
@@ -505,6 +511,7 @@ def on_message(ws, message):
 ```
 
 :::
+
 
 
 
@@ -624,6 +631,7 @@ ws.send(json.dumps(event))
 
 
 
+
 现在，当你监听 [`response.done`]( https://developers.openai.com/api/reference/realtime-server-events/response/done) 服务器事件时，可以识别带外响应的结果。
 
 **识别带外模型响应**
@@ -665,6 +673,7 @@ def on_message(ws, message):
 ```
 
 :::
+
 
 
 
@@ -748,6 +757,7 @@ ws.send(json.dumps(event))
 
 
 
+
 ### 创建无上下文的响应
 
 你还可以将响应插入默认对话中，忽略所有其他指令和上下文。通过将 `input` 设置为空数组来实现。
@@ -795,6 +805,7 @@ ws.send(json.dumps(event))
 ```
 
 :::
+
 
 
 
@@ -966,7 +977,7 @@ Realtime 模型还支持**函数调用**，使你能够执行自定义代码来�
 
 与 HTTP 请求和响应不同（响应隐式地与客户端的请求关联），我们需要在客户端事件上使用 `event_id` 属性来了解其中一个事件何时在服务器上触发了错误条件。下面的代码展示了这种技术，其中客户端尝试发出不支持的事件类型。
 
-```
+```javascript
 const event = {
   event_id: "my_awesome_event",
   type: "scooby.dooby.doo",

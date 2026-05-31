@@ -57,6 +57,7 @@ print(response.choices[0].message.content)
 
 
 
+
 **手动构建过去的对话**
 
 ::: code-group
@@ -95,6 +96,7 @@ print(response.output_text)
 ```
 
 :::
+
 
 
 
@@ -171,6 +173,7 @@ print(second_response.choices[0].message.content)
 ```
 
 :::
+
 
 
 
@@ -259,6 +262,7 @@ print(second_response.output_text)
 
 
 
+
 ## 用于对话状态的 OpenAI API
 
 我们的 API 使自动管理对话状态变得更加容易，因此您不必在每轮对话中手动传递输入。
@@ -343,6 +347,7 @@ print(second_response.output_text)
 
 
 
+
 在以下示例中，我们要求模型讲一个笑话。然后单独要求模型解释为什么这个笑话好笑，模型拥有所有必要的上下文来提供一个好的回答。
 
 **使用 Responses API 手动管理对话状态**
@@ -390,6 +395,7 @@ print(second_response.output_text)
 ```
 
 :::
+
 
 
 

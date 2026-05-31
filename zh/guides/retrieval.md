@@ -44,6 +44,7 @@ await client.vector_stores.files.upload_and_poll({         // Upload file
 :::
 
 
+
 *   **发送搜索查询**以获取相关结果。
     
 
@@ -69,6 +70,7 @@ const results = await client.vectorStores.search({
 ```
 
 :::
+
 
 
 
@@ -114,6 +116,7 @@ const results = await client.vectorStores.search({
 ```
 
 :::
+
 
 
 
@@ -361,6 +364,7 @@ await client.vector_stores.create({
 
 
 
+
 检索
 
 **检索向量存储**
@@ -379,6 +383,7 @@ await client.vector_stores.retrieve({
 ```
 
 :::
+
 
 
 
@@ -405,6 +410,7 @@ await client.vector_stores.update({
 
 
 
+
 删除
 
 **删除向量存储**
@@ -426,6 +432,7 @@ await client.vector_stores.delete({
 
 
 
+
 列表
 
 **列出向量存储**
@@ -440,6 +447,7 @@ await client.vector_stores.list();
 ```
 
 :::
+
 
 
 
@@ -474,6 +482,7 @@ await client.vector_stores.files.create_and_poll({
 
 
 
+
 上传
 
 **上传向量存储文件**
@@ -497,6 +506,7 @@ await client.vector_stores.files.upload_and_poll({
 
 
 
+
 检索
 
 **检索向量存储文件**
@@ -517,6 +527,7 @@ await client.vector_stores.files.retrieve({
 ```
 
 :::
+
 
 
 
@@ -545,6 +556,7 @@ await client.vector_stores.files.update({
 
 
 
+
 删除
 
 **删除向量存储文件**
@@ -568,6 +580,7 @@ await client.vector_stores.files.delete({
 
 
 
+
 列表
 
 **列出向量存储文件**
@@ -586,6 +599,7 @@ await client.vector_stores.files.list({
 ```
 
 :::
+
 
 
 
@@ -642,6 +656,7 @@ await client.vector_stores.file_batches.create_and_poll({
 
 
 
+
 检索
 
 **批量检索操作**
@@ -662,6 +677,7 @@ await client.vector_stores.file_batches.retrieve({
 ```
 
 :::
+
 
 
 
@@ -688,6 +704,7 @@ await client.vector_stores.file_batches.cancel({
 
 
 
+
 列表
 
 **批量列表操作**
@@ -706,6 +723,7 @@ await client.vector_stores.file_batches.list({
 ```
 
 :::
+
 
 
 
@@ -747,6 +765,7 @@ await client.vector_stores.files.create(&lt;vector_store_id>, {
 
 
 
+
 ### 过期策略
 
 你可以使用 `expires_after` 在 `vector_store` 对象上设置过期策略。一旦向量存储过期，所有关联的 `vector_store.file` 对象将被删除，你将不再为它们付费。
@@ -775,6 +794,7 @@ await client.vector_stores.update({
 ```
 
 :::
+
 
 
 
@@ -856,6 +876,7 @@ const results = await client.vectorStores.search({
 
 
 
+
 **根据结果生成回答**
 
 ::: code-group
@@ -907,6 +928,7 @@ console.log(completion.choices[0].message.content);
 
 
 
+
 ```
 "Our return policy allows returns within 30 days of purchase."
 ```
@@ -942,6 +964,7 @@ function formatResults(results) {
 ```
 
 :::
+
 
 
 

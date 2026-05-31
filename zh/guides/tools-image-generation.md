@@ -63,6 +63,7 @@ if image_data:
 
 
 
+
 你可以使用文件 ID 或 base64 数据[提供输入图像](/guides/image-generation?image-generation-model=gpt-image#edit-images)。
 
 要强制触发图像生成工具调用，你可以将参数 `tool_choice` 设置为 `{"type": "image_generation"}`。
@@ -118,7 +119,8 @@ if image_data:
 
 **多轮图像生成**
 
-```
+::: code-group
+```javascript
 import OpenAI from "openai";
 const openai = new OpenAI();
 
@@ -162,7 +164,7 @@ if (imageData_fwup.length > 0) {
 }
 ```
 
-```
+```python
 from openai import OpenAI
 import base64
 
@@ -208,12 +210,15 @@ if image_data_fwup:
         f.write(base64.b64decode(image_base64))
 ```
 
+:::
+
 
 使用图像 ID
 
 **多轮图像生成**
 
-```
+::: code-group
+```javascript
 import OpenAI from "openai";
 const openai = new OpenAI();
 
@@ -267,7 +272,7 @@ if (imageData_fwup.length > 0) {
 }
 ```
 
-```
+```python
 import openai
 import base64
 
@@ -321,6 +326,8 @@ if image_data_fwup:
         f.write(base64.b64decode(image_base64))
 ```
 
+:::
+
 
 ## 流式传输
 
@@ -330,7 +337,8 @@ if image_data_fwup:
 
 **流式传输图像**
 
-```
+::: code-group
+```javascript
 import fs from "fs";
 import OpenAI from "openai";
 
@@ -355,7 +363,7 @@ for await (const event of stream) {
 }
 ```
 
-```
+```python
 from openai import OpenAI
 import base64
 
@@ -376,6 +384,8 @@ for event in stream:
         with open(f"river{idx}.png", "wb") as f:
             f.write(image_bytes)
 ```
+
+:::
 
 
 ## 支持的模型

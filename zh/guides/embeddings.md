@@ -66,6 +66,7 @@ curl https://api.openai.com/v1/embeddings \
 
 
 
+
 响应包含嵌入向量（浮点数列表）以及一些额外的元数据。你可以提取嵌入向量，将其保存在向量数据库中，并用于许多不同的用例。
 
 ```
@@ -120,7 +121,7 @@ OpenAI 提供两个强大的第三代嵌入模型（模型 ID 中以 `-3` 表示
 
 Get\_embeddings\_from\_dataset.ipynb
 
-```
+```python
 from openai import OpenAI
 client = OpenAI()
 
@@ -149,7 +150,7 @@ df['ada_embedding'] = df.ada_embedding.apply(eval).apply(np.array)
 
 通常，在创建嵌入时使用 `dimensions` 参数是建议的方法。在某些情况下，你可能需要在生成嵌入后更改嵌入维度。当你手动更改维度时，需要确保对嵌入的维度进行归一化，如下所示。
 
-```
+```python
 from openai import OpenAI
 import numpy as np
 

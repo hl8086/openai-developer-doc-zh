@@ -98,6 +98,7 @@ print(response.output_text)
 
 
 
+
 ## 托管运行时详情
 
 *   运行时当前基于 `Debian 12`，可能会随时间变化。
@@ -165,6 +166,7 @@ print(container.id)
 ```
 
 :::
+
 
 
 
@@ -242,6 +244,7 @@ print(response.output_text)
 
 
 
+
 ## 附加技能
 
 技能是可复用的、版本化的包，你可以将其挂载到托管 shell 环境中。这定义了可用的技能，在 shell 执行时模型决定是否调用它们。
@@ -297,6 +300,7 @@ print(container.id)
 ```
 
 :::
+
 
 
 
@@ -405,6 +409,7 @@ print(response.output_text)
 ```
 
 :::
+
 
 
 
@@ -616,6 +621,7 @@ print(response.output_text)
 
 
 
+
 对于后续请求，使用 `container_reference` 传递相同的 `container_id`。挂载的技能和现有容器文件在容器活跃期间保持可用。
 
 ### 主动删除容器
@@ -651,6 +657,7 @@ print(deleted)
 ```
 
 :::
+
 
 
 ## 域名密钥
@@ -791,6 +798,7 @@ print(response.output_text)
 
 
 
+
 ## 多轮工作流
 
 要在同一托管环境中继续工作，复用容器并传递 `previous_response_id`。
@@ -865,6 +873,7 @@ print(response.output_text)
 ```
 
 :::
+
 
 
 
@@ -947,6 +956,7 @@ console.log(response);
 
 
 
+
 当你收到 `shell_call` 输出项时：
 
 *   在你的运行时中执行请求的命令。
@@ -1019,6 +1029,7 @@ class ShellExecutor {
 
 
 
+
 shell\_call\_output 载荷示例
 
 ```
@@ -1054,7 +1065,8 @@ shell\_call\_output 载荷示例
 
 **在 Agents SDK 中使用本地 shell**
 
-```
+::: code-group
+```javascript
 import {
   Agent,
   run,
@@ -1159,6 +1171,8 @@ if __name__ == "__main__":
 
     asyncio.run(main())
 ```
+
+:::
 
 
 

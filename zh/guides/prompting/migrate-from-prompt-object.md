@@ -61,6 +61,7 @@ curl https://api.openai.com/v1/responses \
 
 
 
+
 ## 之后：在代码中内联提示
 
 **在代码中内联提示**
@@ -146,6 +147,7 @@ curl https://api.openai.com/v1/responses \
 
 
 
+
 ## 使用 Codex 进行迁移
 
 使用 [OpenAI Developers 插件](https://developers.openai.com/learn/developers-codex-plugin) 和 [OpenAI Docs skill](https://github.com/openai/skills/tree/main/skills/.curated/openai-docs) 来自动化你的迁移并加速使用 OpenAI API 进行构建。
@@ -168,7 +170,8 @@ $openai-docs update this project to store prompts in code instead of using a pro
 
 **使用辅助函数构建提示**
 
-```
+::: code-group
+```javascript
 import OpenAI from "openai";
 
 const client = new OpenAI();
@@ -204,7 +207,7 @@ const response = await client.responses.create({
 });
 ```
 
-```
+```python
 from openai import OpenAI
 
 client = OpenAI()
@@ -238,6 +241,8 @@ response = client.responses.create(
     ),
 )
 ```
+
+:::
 
 
 ## 你将获得的好处
