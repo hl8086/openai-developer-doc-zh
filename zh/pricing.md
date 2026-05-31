@@ -1,5 +1,4 @@
 
-## 
 
 旗舰模型
 
@@ -74,13 +73,10 @@ Priority
 
 所有模型
 
-## 
 
 多模态模型
 
-### 
-
-实时和音频生成模型
+### 实时和音频生成模型
 
 除特别注明外，价格按每 1M token 计算。
 
@@ -99,9 +95,7 @@ Priority
 
 所有模型
 
-### 
-
-图像生成模型
+### 图像生成模型
 
 每 1M token 的价格。
 
@@ -137,9 +131,7 @@ Priority
 
 所有模型
 
-### 
-
-视频生成模型
+### 视频生成模型
 
 每秒价格。
 
@@ -163,9 +155,7 @@ Priority
 | 1024p | 1024x1792 | 1792x1024 | $0.25 |
 | 1080p | 1080x1920 | 1920x1080 | $0.35 |
 
-### 
-
-转录模型
+### 转录模型
 
 除特别注明外，价格按每 1M token 计算。
 
@@ -176,7 +166,6 @@ Priority
 
 所有模型
 
-## 
 
 工具
 
@@ -195,7 +184,6 @@ Priority
 
 内置工具使用的 token 按所选模型的每 token 费率计费。GB 指二进制千兆字节（也称为 gibibyte），其中 1 GB 为 2^30 字节。网络搜索内容 token 是从搜索索引中检索并与您的提示一起输入模型以生成回答的 token。对于使用非预览版网络搜索工具的 `gpt-4o-mini` 和 `gpt-4.1-mini`，搜索内容 token 按每次调用固定 8,000 个输入 token 计费。文件搜索工具调用定价仅适用于 Responses API。容器定价包括[托管 Shell](/guides/tools-shell#hosted-shell-quickstart) 和[代码解释器](/guides/tools-code-interpreter)。符合条件的容器会话按完整的 20 分钟会话费率计费。Responses API、Chat Completions API、Realtime API、Batch API 和 Assistants API 不单独收费。Token 按所选模型的输入和输出费率计费。
 
-## 
 
 专用模型
 
@@ -229,7 +217,6 @@ Priority
 
 所有模型
 
-## 
 
 微调
 

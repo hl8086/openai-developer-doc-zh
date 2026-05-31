@@ -1231,7 +1231,6 @@ GPT Image 模型（`gpt-image-2`、`gpt-image-1.5`、`gpt-image-1` 和 `gpt-imag
 
 Quality
 
-LowMediumHigh
 
 WidthHeight
 

@@ -135,13 +135,9 @@ event = response.output_parsed
 
 Structured Outputs 在我们[最新的大语言模型](/models)中可用，从 GPT-4o 开始。较旧的模型如 `gpt-4-turbo` 及更早版本可以使用 [JSON mode](#json-mode) 代替。
 
-## 
+## 何时通过函数调用使用 Structured Outputs vs 通过 response\_format 使用
 
-何时通过函数调用使用 Structured Outputs vs 通过 response\_format 使用
-
-## 
-
-何时通过函数调用使用 Structured Outputs vs 通过 text.format 使用
+## 何时通过函数调用使用 Structured Outputs vs 通过 text.format 使用
 
 Structured Outputs 在 OpenAI API 中有两种形式：
 
@@ -2763,9 +2759,7 @@ const solution = JSON.parse(response.choices[0].message.content)) as Solution
 
 
 
-### 
-
-Structured Outputs 的拒绝
+### Structured Outputs 的拒绝
 
 当使用 Structured Outputs 处理用户生成的输入时，OpenAI 模型可能偶尔会出于安全原因拒绝满足请求。由于拒绝不一定遵循您在 `response_format` 中提供的 schema，API 响应将包含一个名为 `refusal` 的新字段，以指示模型拒绝了该请求。
 
@@ -2913,9 +2907,7 @@ console.log(math_reasoning.parsed);
 
 
 
-### 
-
-提示和最佳实践
+### 提示和最佳实践
 
 #### 处理用户生成的输入
 
