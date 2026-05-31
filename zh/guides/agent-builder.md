@@ -1,4 +1,3 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/agent-builder -->
 
 **Agent Builder** 是一个用于构建多步骤智能体工作流的可视化画布。
 
@@ -21,7 +20,7 @@
 
 1.  在 [Agent Builder](https://platform.openai.com/agent-builder) 中设计工作流。这定义了你的智能体及其工作方式。
 2.  发布你的工作流。它是一个具有 ID 和版本控制的对象。
-3.  部署你的工作流。将 ID 传入你的 [ChatKit](/api/docs/guides/chatkit) 集成中，或者下载 Agents SDK 代码自行部署工作流。
+3.  部署你的工作流。将 ID 传入你的 [ChatKit](/guides/chatkit) 集成中，或者下载 Agents SDK 代码自行部署工作流。
 
 ## 使用节点进行组合
 
@@ -37,7 +36,7 @@ Agent Builder 提供了常见工作流模式的模板。从模板开始了解节
 
 ### 可用节点
 
-节点是智能体的构建模块。要查看所有可用节点及其配置选项，请参阅[节点参考文档](/api/docs/guides/node-reference)。
+节点是智能体的构建模块。要查看所有可用节点及其配置选项，请参阅[节点参考文档](/guides/node-reference)。
 
 ### 预览和调试
 
@@ -45,15 +44,15 @@ Agent Builder 提供了常见工作流模式的模板。从模板开始了解节
 
 ### 安全和风险
 
-构建智能体工作流存在风险，例如提示注入和数据泄露。请参阅[构建智能体的安全性](/api/docs/guides/agent-builder-safety)来了解并帮助缓解智能体工作流的风险。
+构建智能体工作流存在风险，例如提示注入和数据泄露。请参阅[构建智能体的安全性](/guides/agent-builder-safety)来了解并帮助缓解智能体工作流的风险。
 
 ### 评估你的工作流
 
-在 Agent Builder 中运行[轨迹评分器](/api/docs/guides/trace-grading)。在顶部导航栏中，点击**评估**。在这里，你可以选择一条轨迹（或一组轨迹）并运行自定义评分器来评估整体工作流性能。
+在 Agent Builder 中运行[轨迹评分器](/guides/trace-grading)。在顶部导航栏中，点击**评估**。在这里，你可以选择一条轨迹（或一组轨迹）并运行自定义评分器来评估整体工作流性能。
 
 ## 发布你的工作流
 
-Agent Builder 会在你工作时自动保存。当你对工作流满意时，发布它以创建一个新的主版本作为快照。然后你可以在 [ChatKit](/api/docs/guides/chatkit) 中使用你的工作流，ChatKit 是 OpenAI 用于嵌入聊天体验的框架。
+Agent Builder 会在你工作时自动保存。当你对工作流满意时，发布它以创建一个新的主版本作为快照。然后你可以在 [ChatKit](/guides/chatkit) 中使用你的工作流，ChatKit 是 OpenAI 用于嵌入聊天体验的框架。
 
 你可以创建新版本或在 API 调用中指定旧版本。
 
@@ -61,7 +60,7 @@ Agent Builder 会在你工作时自动保存。当你对工作流满意时，发
 
 当你准备好实现所创建的智能体工作流时，点击顶部导航栏中的**代码**。你有两种在生产环境中实现工作流的选项：
 
-**ChatKit**：按照 [ChatKit 快速入门](/api/docs/guides/chatkit)指南操作，传入你的工作流 ID 即可将此工作流嵌入到你的应用程序中。如果你不确定选哪个，我们推荐此选项。
+**ChatKit**：按照 [ChatKit 快速入门](/guides/chatkit)指南操作，传入你的工作流 ID 即可将此工作流嵌入到你的应用程序中。如果你不确定选哪个，我们推荐此选项。
 
 **高级集成**：复制工作流代码并在任何地方使用。你可以在自己的基础设施上运行 ChatKit，并使用 Agents SDK 来构建和自定义智能体聊天体验。
 
@@ -69,5 +68,5 @@ Agent Builder 会在你工作时自动保存。当你对工作流满意时，发
 
 现在你已经创建了一个智能体工作流，使用 ChatKit 将其集成到你的产品中。
 
-*   [ChatKit 快速入门](/api/docs/guides/chatkit) →
-*   [高级集成](/api/docs/guides/custom-chatkit) →
+*   [ChatKit 快速入门](/guides/chatkit) →
+*   [高级集成](/guides/custom-chatkit) →

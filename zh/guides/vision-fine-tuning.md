@@ -1,12 +1,11 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/vision-fine-tuning -->
 
-视觉微调使用图像输入进行[监督微调](/api/docs/guides/supervised-fine-tuning)，以提升模型对图像输入的理解能力。本指南将带您了解 SFT 的这一子集，并概述使用图像输入进行微调时的一些重要注意事项。
+视觉微调使用图像输入进行[监督微调](/guides/supervised-fine-tuning)，以提升模型对图像输入的理解能力。本指南将带您了解 SFT 的这一子集，并概述使用图像输入进行微调时的一些重要注意事项。
 
 OpenAI 正在逐步关闭微调平台。新用户已无法访问该平台，但现有微调平台用户在未来几个月内仍可创建训练任务。
 
   
 
-所有微调模型在其基础模型被[弃用](/api/docs/deprecations)之前将继续可用于推理。完整时间线请参见[此处](/api/docs/deprecations)。
+所有微调模型在其基础模型被[弃用](/deprecations)之前将继续可用于推理。完整时间线请参见[此处](/deprecations)。
 
   
 
@@ -20,7 +19,7 @@ OpenAI 正在逐步关闭微调平台。新用户已无法访问该平台，但�
 
 ## 数据格式
 
-正如您可以[发送一张或多张图像输入并基于它们创建模型响应](/api/docs/guides/vision)一样，您可以在 JSONL 训练数据文件中包含相同的消息类型。图像可以通过 HTTP URL 或包含 Base64 编码图像的 data URL 提供。
+正如您可以[发送一张或多张图像输入并基于它们创建模型响应](/guides/vision)一样，您可以在 JSONL 训练数据文件中包含相同的消息类型。图像可以通过 HTTP URL 或包含 Base64 编码图像的 data URL 提供。
 
 以下是 JSONL 文件中一行图像消息的示例。下面的 JSON 对象为了可读性进行了展开，但通常此 JSON 会在数据文件中显示为单行：
 
@@ -54,7 +53,7 @@ OpenAI 正在逐步关闭微调平台。新用户已无法访问该平台，但�
 }
 ```
 
-上传视觉微调的训练数据遵循[此处描述的相同流程](/api/docs/guides/supervised-fine-tuning)。
+上传视觉微调的训练数据遵循[此处描述的相同流程](/guides/supervised-fine-tuning)。
 
 ## 图像数据要求
 
@@ -98,7 +97,7 @@ OpenAI 正在逐步关闭微调平台。新用户已无法访问该平台，但�
 
 #### 降低训练成本
 
-如果您将图像的 `detail` 参数设置为 `low`，图像将被调整为 512 x 512 像素，并且无论其大小如何，仅由 85 个 token 表示。这将降低训练成本。[更多信息请参见此处。](/api/docs/guides/vision#low-or-high-fidelity-image-understanding)
+如果您将图像的 `detail` 参数设置为 `low`，图像将被调整为 512 x 512 像素，并且无论其大小如何，仅由 85 个 token 表示。这将降低训练成本。[更多信息请参见此处。](/guides/vision#low-or-high-fidelity-image-understanding)
 
 ```
 {
@@ -112,7 +111,7 @@ OpenAI 正在逐步关闭微调平台。新用户已无法访问该平台，但�
 
 #### 控制图像质量
 
-要控制图像理解的保真度，请为每张图像将 `image_url` 的 `detail` 参数设置为 `low`、`high` 或 `auto`。这也会影响模型在训练期间看到的每张图像的 token 数量，并影响训练成本。[更多信息请参见此处](/api/docs/guides/vision#low-or-high-fidelity-image-understanding)。
+要控制图像理解的保真度，请为每张图像将 `image_url` 的 `detail` 参数设置为 `low`、`high` 或 `auto`。这也会影响模型在训练期间看到的每张图像的 token 数量，并影响训练成本。[更多信息请参见此处](/guides/vision#low-or-high-fidelity-image-understanding)。
 
 ## 安全检查
 
@@ -150,8 +149,8 @@ OpenAI 正在逐步关闭微调平台。新用户已无法访问该平台，但�
 
 现在您已了解视觉微调的基础知识，也请探索以下其他方法。
 
-[监督微调 - 通过为样本输入提供正确输出来微调模型。](/api/docs/guides/supervised-fine-tuning)
+[监督微调 - 通过为样本输入提供正确输出来微调模型。](/guides/supervised-fine-tuning)
 
-[直接偏好优化 - 使用直接偏好优化（DPO）微调模型。](/api/docs/guides/direct-preference-optimization)
+[直接偏好优化 - 使用直接偏好优化（DPO）微调模型。](/guides/direct-preference-optimization)
 
-[强化微调 - 通过对推理模型的输出进行评分来微调模型。](/api/docs/guides/reinforcement-fine-tuning)
+[强化微调 - 通过对推理模型的输出进行评分来微调模型。](/guides/reinforcement-fine-tuning)

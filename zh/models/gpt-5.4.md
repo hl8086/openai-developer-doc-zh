@@ -1,8 +1,7 @@
-<!-- Source: https://developers.openai.com/api/docs/models/gpt-5.4 -->
 
-[模型](/api/docs/models)
+[模型](/models)
 
-![gpt-5.4](/images/api/models/icons/gpt-5.4.png)
+![gpt-5.4]( https://cdn.openai.com/API/docs/images/api/models/icons/gpt-5.4.png)
 
 GPT-5.4
 
@@ -36,7 +35,7 @@ $2.5•$15
 
 文本
 
-GPT-5.4 是我们用于复杂专业工作的前沿模型。在我们的[最新模型指南](/api/docs/guides/latest-model)中了解更多。Reasoning.effort 支持：none（默认）、low、medium、high 和 xhigh。
+GPT-5.4 是我们用于复杂专业工作的前沿模型。在我们的[最新模型指南](/guides/latest-model)中了解更多。Reasoning.effort 支持：none（默认）、low、medium、high 和 xhigh。
 
 1,050,000 上下文窗口
 
@@ -48,7 +47,7 @@ GPT-5.4 是我们用于复杂专业工作的前沿模型。在我们的[最新�
 
 定价
 
-定价基于使用的 token 数量，或根据模型类型的其他指标。对于工具专用模型（如搜索和计算机使用），每次工具调用会收取费用。详情请参阅[定价页面](/api/docs/pricing)。
+定价基于使用的 token 数量，或根据模型类型的其他指标。对于工具专用模型（如搜索和计算机使用），每次工具调用会收取费用。详情请参阅[定价页面](/pricing)。
 
 文本 token
 
@@ -248,7 +247,7 @@ Tool search
 
 快照允许您锁定模型的特定版本，以便性能和行为保持一致。以下是 GPT-5.4 所有可用快照和别名的列表。
 
-![gpt-5.4](/images/api/models/icons/gpt-5.4.png)
+![gpt-5.4]( https://cdn.openai.com/API/docs/images/api/models/icons/gpt-5.4.png)
 
 gpt-5.4
 

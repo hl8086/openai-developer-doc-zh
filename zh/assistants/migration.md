@@ -1,12 +1,11 @@
-<!-- Source: https://developers.openai.com/api/docs/assistants/migration -->
 
 在 Responses API 实现功能对等之后，我们已弃用 Assistants API。该 API 将于 2026 年 8 月 26 日关闭。请按照[迁移指南](/platform/assistants/migration)更新您的集成。[了解更多](https://platform.openai.com/docs/guides/migrate-to-responses)。
 
   
 
-我们正在从 Assistants API 迁移到新的 [Responses API](/api/docs/guides/responses-vs-chat-completions)，以提供更简单、更灵活的心智模型。
+我们正在从 Assistants API 迁移到新的 [Responses API](/guides/responses-vs-chat-completions)，以提供更简单、更灵活的心智模型。
 
-Responses 更简单——发送输入项并获取输出项。使用 Responses API，您还可以获得更好的性能和新功能，如[深度研究](/api/docs/guides/deep-research)、[MCP](/api/docs/guides/tools-remote-mcp) 和[计算机使用](/api/docs/guides/tools-computer-use)。此更改还允许您管理对话，而不是传回 `previous_response_id`。
+Responses 更简单——发送输入项并获取输出项。使用 Responses API，您还可以获得更好的性能和新功能，如[深度研究](/guides/deep-research)、[MCP](/guides/tools-remote-mcp) 和[计算机使用](/guides/tools-computer-use)。此更改还允许您管理对话，而不是传回 `previous_response_id`。
 
 ### 有什么变化？
 

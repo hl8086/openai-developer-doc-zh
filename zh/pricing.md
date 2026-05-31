@@ -1,4 +1,3 @@
-<!-- Source: https://developers.openai.com/api/docs/pricing -->
 
 ## 
 
@@ -23,7 +22,7 @@
 | gpt-5.4-nano | $0.20 | $0.02 | $1.25 | \- | \- | \- |
 | gpt-5.4-pro | $30.00 | \- | $180.00 | $60.00 | \- | $270.00 |
 
-区域处理（数据驻留）端点对 2026 年 3 月 5 日及之后发布的、符合数据驻留条件的模型收取 10% 的附加费。请参阅我们的[您的数据](/api/docs/guides/your-data)指南了解支持的区域和处理详情。
+区域处理（数据驻留）端点对 2026 年 3 月 5 日及之后发布的、符合数据驻留条件的模型收取 10% 的附加费。请参阅我们的[您的数据](/guides/your-data)指南了解支持的区域和处理详情。
 
 所有模型
 
@@ -40,7 +39,7 @@
 | gpt-5.4-nano | $0.10 | $0.01 | $0.625 | \- | \- | \- |
 | gpt-5.4-pro | $15.00 | \- | $90.00 | $30.00 | \- | $135.00 |
 
-区域处理（数据驻留）端点对 2026 年 3 月 5 日及之后发布的、符合数据驻留条件的模型收取 10% 的附加费。请参阅我们的[您的数据](/api/docs/guides/your-data)指南了解支持的区域和处理详情。
+区域处理（数据驻留）端点对 2026 年 3 月 5 日及之后发布的、符合数据驻留条件的模型收取 10% 的附加费。请参阅我们的[您的数据](/guides/your-data)指南了解支持的区域和处理详情。
 
 所有模型
 
@@ -57,7 +56,7 @@ Flex
 | gpt-5.4-nano | $0.10 | $0.01 | $0.625 | \- | \- | \- |
 | gpt-5.4-pro | $15.00 | \- | $90.00 | $30.00 | \- | $135.00 |
 
-区域处理（数据驻留）端点对 2026 年 3 月 5 日及之后发布的、符合数据驻留条件的模型收取 10% 的附加费。请参阅我们的[您的数据](/api/docs/guides/your-data)指南了解支持的区域和处理详情。
+区域处理（数据驻留）端点对 2026 年 3 月 5 日及之后发布的、符合数据驻留条件的模型收取 10% 的附加费。请参阅我们的[您的数据](/guides/your-data)指南了解支持的区域和处理详情。
 
 所有模型
 
@@ -71,7 +70,7 @@ Priority
 | gpt-5.4 | $5.00 | $0.50 | $30.00 | \- | \- | \- |
 | gpt-5.4-mini | $1.50 | $0.15 | $9.00 | \- | \- | \- |
 
-区域处理（数据驻留）端点对 2026 年 3 月 5 日及之后发布的、符合数据驻留条件的模型收取 10% 的附加费。请参阅我们的[您的数据](/api/docs/guides/your-data)指南了解支持的区域和处理详情。
+区域处理（数据驻留）端点对 2026 年 3 月 5 日及之后发布的、符合数据驻留条件的模型收取 10% 的附加费。请参阅我们的[您的数据](/guides/your-data)指南了解支持的区域和处理详情。
 
 所有模型
 
@@ -110,7 +109,7 @@ Priority
 
 标准
 
-有关图像生成费用估算，请使用图像生成指南中的[计算器](/api/docs/guides/image-generation#calculating-costs)。
+有关图像生成费用估算，请使用图像生成指南中的[计算器](/guides/image-generation#calculating-costs)。
 
 | 模型 | 模态 | 输入 | 缓存输入 | 输出 |
 | --- | --- | --- | --- | --- |
@@ -125,7 +124,7 @@ Priority
 
 批量
 
-有关图像生成费用估算，请使用图像生成指南中的[计算器](/api/docs/guides/image-generation#calculating-costs)。
+有关图像生成费用估算，请使用图像生成指南中的[计算器](/guides/image-generation#calculating-costs)。
 
 | 模型 | 模态 | 输入 | 缓存输入 | 输出 |
 | --- | --- | --- | --- | --- |
@@ -194,7 +193,7 @@ Priority
 | 工具调用 | $2.50 / 1k 次调用 |
 | Agent Kit | ChatKit 文件和图像上传存储 | $0.10 / GB-天，每个账户每月 1 GB 免费额度后计费 |
 
-内置工具使用的 token 按所选模型的每 token 费率计费。GB 指二进制千兆字节（也称为 gibibyte），其中 1 GB 为 2^30 字节。网络搜索内容 token 是从搜索索引中检索并与您的提示一起输入模型以生成回答的 token。对于使用非预览版网络搜索工具的 `gpt-4o-mini` 和 `gpt-4.1-mini`，搜索内容 token 按每次调用固定 8,000 个输入 token 计费。文件搜索工具调用定价仅适用于 Responses API。容器定价包括[托管 Shell](/api/docs/guides/tools-shell#hosted-shell-quickstart) 和[代码解释器](/api/docs/guides/tools-code-interpreter)。符合条件的容器会话按完整的 20 分钟会话费率计费。Responses API、Chat Completions API、Realtime API、Batch API 和 Assistants API 不单独收费。Token 按所选模型的输入和输出费率计费。
+内置工具使用的 token 按所选模型的每 token 费率计费。GB 指二进制千兆字节（也称为 gibibyte），其中 1 GB 为 2^30 字节。网络搜索内容 token 是从搜索索引中检索并与您的提示一起输入模型以生成回答的 token。对于使用非预览版网络搜索工具的 `gpt-4o-mini` 和 `gpt-4.1-mini`，搜索内容 token 按每次调用固定 8,000 个输入 token 计费。文件搜索工具调用定价仅适用于 Responses API。容器定价包括[托管 Shell](/guides/tools-shell#hosted-shell-quickstart) 和[代码解释器](/guides/tools-code-interpreter)。符合条件的容器会话按完整的 20 分钟会话费率计费。Responses API、Chat Completions API、Realtime API、Batch API 和 Assistants API 不单独收费。Token 按所选模型的输入和输出费率计费。
 
 ## 
 
@@ -240,7 +239,7 @@ OpenAI 正在逐步关闭微调平台。新用户已无法访问该平台，但�
 
   
 
-所有微调模型在其基础模型被弃用之前仍可用于推理。完整时间表请参见[此处](/api/docs/deprecations#update-to-openais-self-serve-fine-tuning)。
+所有微调模型在其基础模型被弃用之前仍可用于推理。完整时间表请参见[此处](/deprecations#update-to-openais-self-serve-fine-tuning)。
 
 标准批量
 

@@ -1,8 +1,7 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/evaluation-getting-started -->
 
 评估（通常称为 **evals**）用于测试模型输出，以确保它们满足您指定的风格和内容标准。编写评估是构建可靠应用程序的重要组成部分。[Datasets](https://platform.openai.com/evaluation/datasets) 是 OpenAI 平台的一项功能，提供了一种快速入门评估和测试提示词的方式。
 
-如果您需要高级功能，例如针对外部模型进行评估、希望通过 API 与评估运行交互，或者希望大规模运行评估，请考虑使用 [Evals](/api/docs/guides/evals)。
+如果您需要高级功能，例如针对外部模型进行评估、希望通过 API 与评估运行交互，或者希望大规模运行评估，请考虑使用 [Evals](/guides/evals)。
 
 ## 创建数据集
 
@@ -37,19 +36,19 @@ CSV 中的列可供您的提示词和评分器访问。例如，我们的 CSV �
 
 1.  要添加新的提示词，请点击 **Add prompt**。
     
-    数据集设计为与您的 OpenAI [prompts](/api/docs/guides/prompt-engineering#reusable-prompts) 配合使用。如果您已在 OpenAI 平台上保存了提示词，您可以从下拉菜单中选择它并在此界面中进行更改。要保存提示词更改，请点击 **Save**。
+    数据集设计为与您的 OpenAI [prompts](/guides/prompt-engineering#reusable-prompts) 配合使用。如果您已在 OpenAI 平台上保存了提示词，您可以从下拉菜单中选择它并在此界面中进行更改。要保存提示词更改，请点击 **Save**。
     
     我们的提示词使用版本控制系统，因此您可以安全地进行更新。点击 **Save** 会创建提示词的新版本，您可以在 OpenAI 平台的任何地方引用或使用它。
     
 2.  在提示词面板中，使用提供的字段和设置来控制推理调用：
     
 
-*   点击右上角的滑块图标来控制模型的 [`temperature`](/api/docs/api-reference/responses/create#responses-create-temperature) 和 [`top_p`](/api/docs/api-reference/responses/create#responses-create-top_p)。
+*   点击右上角的滑块图标来控制模型的 [`temperature`]( https://developers.openai.com/api/reference/responses/create#responses-create-temperature) 和 [`top_p`]( https://developers.openai.com/api/reference/responses/create#responses-create-top_p)。
 *   添加工具，使您的推理调用能够访问网络、使用 MCP 或完成其他工具调用操作。
 *   添加变量。提示词和您的[评分器](#adding-graders)都可以引用这些变量。
 *   直接输入系统消息，或点击铅笔图标让模型根据您提供的基本说明帮助生成提示词。
 
-在我们的示例中，我们将添加 [web search](/api/docs/guides/tools-web-search) 工具，以便模型调用可以从互联网获取财务数据。在变量列表中，我们将添加 `company`，以便提示词可以引用数据集中的公司列。对于提示词，我们将通过告诉模型"generate a financial report"来生成一个。
+在我们的示例中，我们将添加 [web search](/guides/tools-web-search) 工具，以便模型调用可以从互联网获取财务数据。在变量列表中，我们将添加 `company`，以便提示词可以引用数据集中的公司列。对于提示词，我们将通过告诉模型"generate a financial report"来生成一个。
 
 ## 生成和标注输出
 
@@ -75,7 +74,7 @@ Your browser does not support the video tag.
 *   能够诊断提示词的不足之处，特别是在细微或不常见的情况下
 *   帮助确保评分器与您的意图一致
 
-您可以选择标注多少就标注多少。数据集设计为适用于任何程度和类型的标注，但您提供的信息质量越高，结果就越好。此外，如果您不是数据集内容方面的专家，我们建议由领域专家执行标注——这是将他们的专业知识纳入优化过程的最有价值的方式。探索[我们的 cookbook](/cookbook/examples/evaluation/building_resilient_prompts_using_an_evaluation_flywheel) 了解更多关于我们发现的使用评估来提高提示词韧性的最有效方法。
+您可以选择标注多少就标注多少。数据集设计为适用于任何程度和类型的标注，但您提供的信息质量越高，结果就越好。此外，如果您不是数据集内容方面的专家，我们建议由领域专家执行标注——这是将他们的专业知识纳入优化过程的最有价值的方式。探索[我们的 cookbook]( https://cdn.openai.com/API/docs/cookbook/examples/evaluation/building_resilient_prompts_using_an_evaluation_flywheel) 了解更多关于我们发现的使用评估来提高提示词韧性的最有效方法。
 
 ### 标注起点
 
@@ -87,7 +86,7 @@ Your browser does not support the video tag.
 
 ### 纳入专家标注
 
-如果您不是数据集内容方面的专家，请让领域专家执行标注。这是将专业知识纳入优化过程的最佳方式。探索[我们的 cookbook](/cookbook/examples/evaluation/building_resilient_prompts_using_an_evaluation_flywheel) 了解更多。
+如果您不是数据集内容方面的专家，请让领域专家执行标注。这是将专业知识纳入优化过程的最佳方式。探索[我们的 cookbook]( https://cdn.openai.com/API/docs/cookbook/examples/evaluation/building_resilient_prompts_using_an_evaluation_flywheel) 了解更多。
 
 ## 添加评分器
 
@@ -111,18 +110,18 @@ Your browser does not support the video tag.
 
 保存数据集后，评分器会在您更改数据集和提示词时持续存在，使其成为快速评估提示词或模型参数更改是否带来改进，或者添加边缘案例是否揭示提示词不足的好方法。数据集仪表板支持多个选项卡，用于同时跟踪多个提示词变体的自动评分器结果。
 
-了解更多关于我们的[评分器](/api/docs/guides/graders)。
+了解更多关于我们的[评分器](/guides/graders)。
 
 ## 后续步骤
 
-数据集非常适合快速迭代。当您准备好跟踪长期性能或大规模运行时，将数据集导出到 [Eval](/api/docs/guides/evals)。Evals 异步运行，支持更大的数据量，并让您跨版本监控性能。
+数据集非常适合快速迭代。当您准备好跟踪长期性能或大规模运行时，将数据集导出到 [Eval](/guides/evals)。Evals 异步运行，支持更大的数据量，并让您跨版本监控性能。
 
-如需更多灵感，请访问 [OpenAI Cookbook](/cookbook/topic/evals)，其中包含示例代码和第三方资源链接，或了解更多关于我们的评估工具：
+如需更多灵感，请访问 [OpenAI Cookbook]( https://cdn.openai.com/API/docs/cookbook/topic/evals)，其中包含示例代码和第三方资源链接，或了解更多关于我们的评估工具：
 
 [Cookbook: Building resilient prompts with evals - 使用评估操作持续改进的飞轮。](https://cookbook.openai.com/examples/evaluation/building_resilient_prompts_using_an_evaluation_flywheel)
 
-[Working with evals - 针对外部模型进行评估、通过 API 与评估交互等。](/api/docs/guides/evals)
+[Working with evals - 针对外部模型进行评估、通过 API 与评估交互等。](/guides/evals)
 
-[Prompt optimizer - 使用您的数据集自动改进提示词。](/api/docs/guides/prompt-optimizer)
+[Prompt optimizer - 使用您的数据集自动改进提示词。](/guides/prompt-optimizer)
 
-[Graders - 构建复杂的评分器以提高评估的有效性。](/api/docs/guides/graders)
+[Graders - 构建复杂的评分器以提高评估的有效性。](/guides/graders)

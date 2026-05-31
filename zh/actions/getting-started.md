@@ -1,4 +1,3 @@
-<!-- Source: https://developers.openai.com/api/docs/actions/getting-started -->
 
 ## Weather.gov 示例
 
@@ -124,6 +123,6 @@ _问题：_ 自定义 GPT 出现认证错误
 
 _问题：_ 自定义 GPT 无法处理更困难/模糊的问题
 
-*   _解决方案：_ 尝试在自定义 GPT 中对指令进行提示工程优化。请参阅我们的[提示工程指南](/api/docs/guides/prompt-engineering)中的示例
+*   _解决方案：_ 尝试在自定义 GPT 中对指令进行提示工程优化。请参阅我们的[提示工程指南](/guides/prompt-engineering)中的示例
 
 以上就是构建自定义 GPT 的指南。祝你构建顺利，如有其他问题，请利用 [OpenAI 开发者论坛](https://community.openai.com/)。

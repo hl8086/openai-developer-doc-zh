@@ -1,4 +1,3 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/tools-apply-patch -->
 
 `apply_patch` 工具让 GPT-5.1 能够使用结构化差异（diff）在你的代码库中创建、更新和删除文件。模型不再只是建议编辑，而是发出补丁操作，由你的应用程序应用并反馈结果，从而实现迭代式、多步骤的代码编辑工作流。
 
@@ -42,7 +41,7 @@
 
 要求模型规划并发出补丁
 
-```
+```text
 from openai import OpenAI
 
 client = OpenAI()
@@ -52,7 +51,7 @@ client = OpenAI()
 # for exploring file system state.
 RESPONSE_INPUT = """
 The user has the following files:
-<BEGIN_FILES>
+&lt;BEGIN_FILES>
 ===== lib/fib.py
 def fib(n):
     if n <= 1:
@@ -64,7 +63,7 @@ from lib.fib import fib
 
 def main():
   print(fib(42))
-<END_FILES>
+&lt;END_FILES>
 
 You are a helpful coding assistant that should assist the user with whatever they
 ask.
@@ -92,7 +91,7 @@ patch_calls = [
 
 apply\_patch\_call 对象示例
 
-```
+```text
 {
     "id": "apc_08f3d96c87a585390069118b594f7481a088b16cda7d9415fe",
     "type": "apply_patch_call",
@@ -188,7 +187,7 @@ followup = client.responses.create(
 
 ## 在 Agents SDK 中使用 apply patch 工具
 
-或者，你可以使用 [Agents SDK](/api/docs/guides/tools#usage-in-the-agents-sdk) 来使用 apply patch 工具。你仍然需要实现处理实际文件操作的处理程序，但可以使用 `applyDiff` 函数来处理差异处理。
+或者，你可以使用 [Agents SDK](/guides/tools#usage-in-the-agents-sdk) 来使用 apply patch 工具。你仍然需要实现处理实际文件操作的处理程序，但可以使用 `applyDiff` 函数来处理差异处理。
 
 **在 Agents SDK 中使用 apply patch 工具**
 
@@ -356,7 +355,7 @@ if __name__ == "__main__":
 
 | API 可用性 | 支持的模型 |
 | --- | --- |
-| [Responses](/api/docs/api-reference/responses)[Chat Completions](/api/docs/api-reference/chat)[Assistants](/api/docs/api-reference/assistants) | [GPT-5.5](/api/docs/models/gpt-5.5)  
-[GPT-5.4](/api/docs/models/gpt-5.4)  
-[GPT-5.2](/api/docs/models/gpt-5.2)  
-[GPT-5.1](/api/docs/models/gpt-5.1) |
+| [Responses]( https://developers.openai.com/api/reference/responses)[Chat Completions]( https://developers.openai.com/api/reference/chat)[Assistants]( https://developers.openai.com/api/reference/assistants) | [GPT-5.5](/models/gpt-5.5)  
+[GPT-5.4](/models/gpt-5.4)  
+[GPT-5.2](/models/gpt-5.2)  
+[GPT-5.1](/models/gpt-5.1) |

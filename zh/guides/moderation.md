@@ -1,6 +1,5 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/moderation -->
 
-使用 [moderations](/api/docs/api-reference/moderations) 端点来检查文本或图像是否可能包含有害内容。如果识别到有害内容，您可以采取纠正措施，例如过滤内容或对创建违规内容的用户账户进行干预。审核端点免费使用。图像文件大小限制为 20 MB。
+使用 [moderations]( https://developers.openai.com/api/reference/moderations) 端点来检查文本或图像是否可能包含有害内容。如果识别到有害内容，您可以采取纠正措施，例如过滤内容或对创建违规内容的用户账户进行干预。审核端点免费使用。图像文件大小限制为 20 MB。
 
 您可以为此端点使用两个模型：
 
@@ -9,7 +8,7 @@
 
 ## 快速开始
 
-使用下方的标签页查看如何审核文本输入或图像输入，使用我们的[官方 SDK](/api/docs/libraries) 和 [omni-moderation-latest 模型](/api/docs/models#moderation)：
+使用下方的标签页查看如何审核文本输入或图像输入，使用我们的[官方 SDK](/libraries) 和 [omni-moderation-latest 模型](/models#moderation)：
 
 审核文本输入审核图像和文本
 

@@ -1,4 +1,3 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/retrieval -->
 
 **Retrieval API** 允许你对数据执行[**语义搜索**](#semantic-search)，这是一种能够返回语义相似结果的技术——即使结果与查询几乎没有或完全没有共同关键词。检索本身就很有用，但与我们的模型结合使用来生成回答时尤其强大。
 
@@ -65,7 +64,7 @@ const results = await client.vectorStores.search({
 
 ## 语义搜索
 
-**语义搜索**是一种利用[向量嵌入](/api/docs/guides/embeddings)来返回语义相关结果的技术。重要的是，这包括与查询几乎没有或完全没有共同关键词的结果，而传统搜索技术可能会遗漏这些结果。
+**语义搜索**是一种利用[向量嵌入](/guides/embeddings)来返回语义相关结果的技术。重要的是，这包括与查询几乎没有或完全没有共同关键词的结果，而传统搜索技术可能会遗漏这些结果。
 
 例如，让我们看看 `"When did we go to the moon?"` 的潜在结果：
 
@@ -296,13 +295,13 @@ const results = await client.vectorStores.search({
 
 ## 向量存储
 
-向量存储是为 Retrieval API 和[文件搜索](/api/docs/guides/tools-file-search)工具提供语义搜索能力的容器。当你将文件添加到向量存储时，它会自动被分块、嵌入和索引。
+向量存储是为 Retrieval API 和[文件搜索](/guides/tools-file-search)工具提供语义搜索能力的容器。当你将文件添加到向量存储时，它会自动被分块、嵌入和索引。
 
 向量存储包含 `vector_store_file` 对象，这些对象由 `file` 对象支持。
 
 | 对象类型 | 描述 |
 | --- | --- |
-| `file` | 表示通过 [Files API](/api/docs/api-reference/files) 上传的内容。通常与向量存储一起使用，但也用于微调和其他用例。 |
+| `file` | 表示通过 [Files API]( https://developers.openai.com/api/reference/files) 上传的内容。通常与向量存储一起使用，但也用于微调和其他用例。 |
 | `vector_store` | 可搜索文件的容器。 |
 | `vector_store.file` | 包装类型，专门表示已被分块和嵌入并与 `vector_store` 关联的 `file`。包含用于过滤的 `attributes` 映射。 |
 
@@ -400,7 +399,7 @@ await client.vector_stores.list();
 
 某些操作（如 `vector_store.file` 的 `create`）是异步的，可能需要一些时间才能完成——使用我们的辅助函数（如 `create_and_poll`）来阻塞等待完成。否则，你可以检查状态。从向量存储中移除文件是最终一致的，搜索结果可能在短时间内仍包含已移除文件的内容。
 
-添加文件按向量存储 ID 进行速率限制。对 [`/vector_stores/{vector_store_id}/files`](/api/docs/api-reference/vector-stores/createFile) 和 [`/vector_stores/{vector_store_id}/file_batches`](/api/docs/api-reference/vector-stores/createBatch) 的请求共享每个向量存储每分钟 300 次请求的限制。
+添加文件按向量存储 ID 进行速率限制。对 [`/vector_stores/{vector_store_id}/files`]( https://developers.openai.com/api/reference/vector-stores/createFile) 和 [`/vector_stores/{vector_store_id}/file_batches`]( https://developers.openai.com/api/reference/vector-stores/createBatch) 的请求共享每个向量存储每分钟 300 次请求的限制。
 
 创建上传检索更新删除列表
 
@@ -614,7 +613,7 @@ await client.vector_stores.file_batches.list({
 
 ```python
 client.vector_stores.files.create(
-    vector_store_id="<vector_store_id>",
+    vector_store_id="&lt;vector_store_id>",
     file_id="file_123",
     attributes={
         "region": "US",
@@ -624,7 +623,7 @@ client.vector_stores.files.create(
 )
 ```
 ```node
-await client.vector_stores.files.create(<vector_store_id>, {
+await client.vector_stores.files.create(&lt;vector_store_id>, {
     file_id: "file_123",
     attributes: {
         region: "US",
@@ -667,7 +666,7 @@ await client.vector_stores.update({
 
 默认情况下，`max_chunk_size_tokens` 设置为 `800`，`chunk_overlap_tokens` 设置为 `400`，这意味着每个文件通过拆分为 800 token 的块进行索引，连续块之间有 400 token 的重叠。
 
-你可以在将文件添加到向量存储时通过设置 [`chunking_strategy`](/api/docs/api-reference/vector-stores-files/createFile#vector-stores-files-createfile-chunking_strategy) 来调整此设置。`chunking_strategy` 有一些限制：
+你可以在将文件添加到向量存储时通过设置 [`chunking_strategy`]( https://developers.openai.com/api/reference/vector-stores-files/createFile#vector-stores-files-createfile-chunking_strategy) 来调整此设置。`chunking_strategy` 有一些限制：
 
 *   `max_chunk_size_tokens` 必须在 100 到 4096 之间（含）。
 *   `chunk_overlap_tokens` 必须为非负数，且不应超过 `max_chunk_size_tokens / 2`。
@@ -788,22 +787,22 @@ console.log(completion.choices[0].message.content);
 def format_results(results):
     formatted_results = ''
     for result in results.data:
-        formatted_result = f"<result file_id='{result.file_id}' file_name='{result.file_name}'>"
+        formatted_result = f"&lt;result file_id='{result.file_id}' file_name='{result.file_name}'>"
         for part in result.content:
-            formatted_result += f"<content>{part.text}</content>"
-        formatted_results += formatted_result + "</result>"
-    return f"<sources>{formatted_results}</sources>"
+            formatted_result += f"&lt;content>{part.text}&lt;/content>"
+        formatted_results += formatted_result + "&lt;/result>"
+    return f"&lt;sources>{formatted_results}&lt;/sources>"
 ```
 ```node
 function formatResults(results) {
     let formattedResults = '';
     for (const result of results.data) {
-        let formattedResult = `<result file_id='${result.file_id}' file_name='${result.file_name}'>`;
+        let formattedResult = `&lt;result file_id='${result.file_id}' file_name='${result.file_name}'>`;
         for (const part of result.content) {
-            formattedResult += `<content>${part.text}</content>`;
+            formattedResult += `&lt;content>${part.text}&lt;/content>`;
         }
-        formattedResults += formattedResult + "</result>";
+        formattedResults += formattedResult + "&lt;/result>";
     }
-    return `<sources>${formattedResults}</sources>`;
+    return `&lt;sources>${formattedResults}&lt;/sources>`;
 }
 ```

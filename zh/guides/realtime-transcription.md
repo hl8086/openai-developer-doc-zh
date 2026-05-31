@@ -1,23 +1,22 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/realtime-transcription -->
 
 当您的应用程序需要实时语音转文字但不需要语音助手响应时，请使用实时转录。实时转录会话在音频到达时流式传输转录增量，因此用户可以在完整话语完成之前看到文本。
 
-要获得最低延迟的流式转录路径，请使用 [`gpt-realtime-whisper`](/api/docs/models/gpt-realtime-whisper)。对于离线文件或不需要流式增量的工作流，请使用 Audio API 中的标准语音转文字模型。
+要获得最低延迟的流式转录路径，请使用 [`gpt-realtime-whisper`](/models/gpt-realtime-whisper)。对于离线文件或不需要流式增量的工作流，请使用 Audio API 中的标准语音转文字模型。
 
 ## 选择转录模型
 
 | 模型 | 最适合 | 备注 |
 | --- | --- | --- |
-| [gpt-realtime-whisper](/api/docs/models/gpt-realtime-whisper) | 实时音频、转录增量、可调延迟。 | 原生流式传输，专为实时会话设计。 |
-| [gpt-4o-transcribe](/api/docs/models/gpt-4o-transcribe) | 不需要流式传输的高精度语音转文字。 | 用于文件和请求-响应转录工作流。 |
-| [gpt-4o-mini-transcribe](/api/docs/models/gpt-4o-mini-transcribe) | 低成本转录。 | 当成本比最高精度更重要时使用。 |
-| [whisper-1](/api/docs/models/whisper-1) | 现有 Whisper 集成。 | 不像 `gpt-realtime-whisper` 那样原生流式传输。 |
+| [gpt-realtime-whisper](/models/gpt-realtime-whisper) | 实时音频、转录增量、可调延迟。 | 原生流式传输，专为实时会话设计。 |
+| [gpt-4o-transcribe](/models/gpt-4o-transcribe) | 不需要流式传输的高精度语音转文字。 | 用于文件和请求-响应转录工作流。 |
+| [gpt-4o-mini-transcribe](/models/gpt-4o-mini-transcribe) | 低成本转录。 | 当成本比最高精度更重要时使用。 |
+| [whisper-1](/models/whisper-1) | 现有 Whisper 集成。 | 不像 `gpt-realtime-whisper` 那样原生流式传输。 |
 
 `gpt-realtime-whisper` 是实时转录的替代方案，而非所有转录模型的全面替代品。在切换生产流量之前，请针对您的音频、语言、词汇和延迟要求进行测试。
 
 ## 创建转录会话
 
-实时转录使用 `type: "transcription"` 的会话。您可以使用 [WebSocket](/api/docs/guides/realtime-websocket) 连接服务器端音频管道，或使用 [WebRTC](/api/docs/guides/realtime-webrtc) 连接浏览器音频。
+实时转录使用 `type: "transcription"` 的会话。您可以使用 [WebSocket](/guides/realtime-websocket) 连接服务器端音频管道，或使用 [WebRTC](/guides/realtime-webrtc) 连接浏览器音频。
 
 ```
 {
@@ -182,10 +181,10 @@ Keywords: metoprolol, atorvastatin, A1C, systolic, diastolic
 
 ## 相关指南
 
-[实时和音频概述 - 比较语音代理、翻译和转录会话。](/api/docs/guides/realtime)
+[实时和音频概述 - 比较语音代理、翻译和转录会话。](/guides/realtime)
 
-[实时翻译 - 使用专用翻译会话翻译实时语音。](/api/docs/guides/realtime-translation)
+[实时翻译 - 使用专用翻译会话翻译实时语音。](/guides/realtime-translation)
 
-[WebSocket 连接 - 通过服务器端媒体管道流式传输原始音频。](/api/docs/guides/realtime-websocket)
+[WebSocket 连接 - 通过服务器端媒体管道流式传输原始音频。](/guides/realtime-websocket)
 
-[语音活动检测 - 为实时音频流配置轮次检测。](/api/docs/guides/realtime-vad)
+[语音活动检测 - 为实时音频流配置轮次检测。](/guides/realtime-vad)

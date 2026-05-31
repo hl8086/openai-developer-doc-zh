@@ -1,4 +1,3 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/workload-identity-federation/aws -->
 
 在以下任一场景中使用 AWS 作为工作负载身份提供者：
 
@@ -65,7 +64,7 @@ TOKEN=$(aws sts get-web-identity-token \
 
 在配置工作负载身份联合之前，在本地解码一个示例 AWS 签发的令牌并检查其声明：
 
-```
+```text
 TOKEN="$TOKEN" python3 - <<'PY'
 import base64
 import json
@@ -398,7 +397,7 @@ public final class AwsOutboundWorkloadIdentityExample {
         }
 
         @Override
-        public CompletableFuture<String> getTokenAsync(
+        public CompletableFuture&lt;String> getTokenAsync(
                 HttpClient httpClient, JsonMapper jsonMapper) {
             return CompletableFuture.supplyAsync(() -> getToken(httpClient, jsonMapper));
         }
@@ -503,16 +502,16 @@ puts(response.output_text)
 
 ```
 kubectl create serviceaccount openai-wif --namespace default
-```
+```text
 
-EKS 投射服务账户令牌使用格式为 `system:serviceaccount:<namespace>:<service-account-name>` 的 `sub` 声明。对于上述服务账户，`sub` 声明为 `system:serviceaccount:default:openai-wif`。
+EKS 投射服务账户令牌使用格式为 `system:serviceaccount:`&lt;namespace>`:`&lt;service-account-name>`` 的 `sub` 声明。对于上述服务账户，`sub` 声明为 `system:serviceaccount:default:openai-wif`。
 
 获取与 EKS 集群关联的 OIDC 颁发者 URL：
 
 ```
 aws eks describe-cluster \
-  --name <cluster-name> \
-  --region <region> \
+  --name &lt;cluster-name> \
+  --region &lt;region> \
   --query "cluster.identity.oidc.issuer" \
   --output text
 ```
@@ -835,7 +834,7 @@ public final class AwsEksWorkloadIdentityExample {
         }
 
         @Override
-        public CompletableFuture<String> getTokenAsync(
+        public CompletableFuture&lt;String> getTokenAsync(
                 HttpClient httpClient, JsonMapper jsonMapper) {
             return CompletableFuture.supplyAsync(() -> getToken(httpClient, jsonMapper));
         }

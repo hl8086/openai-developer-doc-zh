@@ -1,8 +1,7 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/function-calling -->
 
 **函数调用**（也称为**工具调用**）为 OpenAI 模型提供了一种强大而灵活的方式来与外部系统交互，并访问其训练数据之外的数据。本指南展示了如何将模型连接到应用程序提供的数据和操作。我们将展示如何使用函数工具（由 JSON schema 定义）以及使用自由文本输入和输出的自定义工具。
 
-如果你的应用程序有很多函数或大型 schema，你可以将函数调用与 [tool search](/api/docs/guides/tools-tool-search) 配合使用，以延迟加载不常用的工具，仅在模型需要时才加载它们。只有 `gpt-5.4` 及更高版本的模型支持 `tool_search`。
+如果你的应用程序有很多函数或大型 schema，你可以将函数调用与 [tool search](/guides/tools-tool-search) 配合使用，以延迟加载不常用的工具，仅在模型需要时才加载它们。只有 `gpt-5.4` 及更高版本的模型支持 `tool_search`。
 
 ## 工作原理
 
@@ -34,7 +33,7 @@
 
 *   模型可以访问一个以 `location` 为参数的 `get_weather` **工具**。
 *   对于类似"巴黎的天气怎么样？"的提示，模型返回一个包含值为 `Paris` 的 `location` 参数的**工具调用**
-*   **工具调用输出**可能返回一个 JSON 对象（例如 `{"temperature": "25", "unit": "C"}`，表示当前温度为 25 度）、[图像内容](/api/docs/guides/images)或[文件内容](/api/docs/guides/file-inputs)。
+*   **工具调用输出**可能返回一个 JSON 对象（例如 `{"temperature": "25", "unit": "C"}`，表示当前温度为 25 度）、[图像内容](/guides/images)或[文件内容](/guides/file-inputs)。
 
 然后我们将工具定义、原始提示、模型的工具调用和工具调用输出全部发送回模型，最终收到如下文本响应：
 
@@ -46,7 +45,7 @@ The weather in Paris today is 25C.
 
 *   函数是一种特定类型的工具，由 JSON schema 定义。函数定义允许模型将数据传递给你的应用程序，你的代码可以在其中访问数据或执行模型建议的操作。
 *   除了函数工具之外，还有自定义工具（在本指南中描述），它们使用自由文本输入和输出。
-*   还有[内置工具](/api/docs/guides/tools)，它们是 OpenAI 平台的一部分。这些工具使模型能够[搜索网络](/api/docs/guides/tools-web-search)、[执行代码](/api/docs/guides/tools-code-interpreter)、访问 [MCP 服务器](/api/docs/guides/tools-remote-mcp)的功能等。
+*   还有[内置工具](/guides/tools)，它们是 OpenAI 平台的一部分。这些工具使模型能够[搜索网络](/guides/tools-web-search)、[执行代码](/guides/tools-code-interpreter)、访问 [MCP 服务器](/guides/tools-remote-mcp)的功能等。
 
 ### 工具调用流程
 
@@ -360,7 +359,7 @@ console.log(response.output_text);
 
 ## 定义函数
 
-函数通常在每个 API 请求的 `tools` 参数中声明。通过 [tool search](/api/docs/guides/tools-tool-search)，你的应用程序也可以在交互过程中稍后加载延迟的函数。无论哪种方式，每个可调用函数都使用相同的 schema 结构。函数定义具有以下属性：
+函数通常在每个 API 请求的 `tools` 参数中声明。通过 [tool search](/guides/tools-tool-search)，你的应用程序也可以在交互过程中稍后加载延迟的函数。无论哪种方式，每个可调用函数都使用相同的 schema 结构。函数定义具有以下属性：
 
 | 字段 | 描述 |
 | --- | --- |
@@ -442,7 +441,7 @@ console.log(response.output_text);
 
 ## 工具搜索
 
-如果你需要让模型访问大量工具生态系统，可以使用 `tool_search` 延迟加载部分或全部工具。`tool_search` 工具让模型搜索相关工具，将它们添加到模型上下文中，然后使用它们。只有 `gpt-5.4` 及更高版本的模型支持它。阅读 [tool search 指南](/api/docs/guides/tools-tool-search)了解更多信息。
+如果你需要让模型访问大量工具生态系统，可以使用 `tool_search` 延迟加载部分或全部工具。`tool_search` 工具让模型搜索相关工具，将它们添加到模型上下文中，然后使用它们。只有 `gpt-5.4` 及更高版本的模型支持它。阅读 [tool search 指南](/guides/tools-tool-search)了解更多信息。
 
 （可选）使用 pydantic 和 zod 进行函数调用
 
@@ -507,7 +506,7 @@ console.log(response.choices[0].message.tool_calls);
     
     *   **明确描述函数和每个参数的用途**（及其格式），以及输出代表什么。
     *   **使用系统提示来描述何时（以及何时不）使用每个函数。** 通常，告诉模型_确切_该做什么。
-    *   **包含示例和边界情况**，特别是为了纠正任何反复出现的失败。（**注意：**添加示例可能会降低[推理模型](/api/docs/guides/reasoning)的性能。）
+    *   **包含示例和边界情况**，特别是为了纠正任何反复出现的失败。（**注意：**添加示例可能会降低[推理模型](/guides/reasoning)的性能。）
     *   **对于延迟加载的工具，将详细指导放在函数描述中，保持命名空间描述简洁。** 命名空间帮助模型选择要加载什么；函数描述帮助它正确使用已加载的工具。
 2.  **应用软件工程最佳实践。**
     
@@ -526,13 +525,13 @@ console.log(response.choices[0].message.tool_calls);
 5.  **利用 OpenAI 资源。**
     
     *   **在 [Playground](https://platform.openai.com/playground) 中生成和迭代函数 schema**。
-    *   **考虑[微调](/api/docs/guides/fine-tuning)以提高大量函数或困难任务的函数调用准确性**。（[cookbook](/cookbook/examples/fine_tuning_for_function_calling)）
+    *   **考虑[微调](/guides/fine-tuning)以提高大量函数或困难任务的函数调用准确性**。（[cookbook]( https://cdn.openai.com/API/docs/cookbook/examples/fine_tuning_for_function_calling)）
 
 ### Token 使用
 
-在底层，函数以模型训练过的语法注入到系统消息中。这意味着可调用的函数定义会计入模型的上下文限制，并作为输入 token 计费。如果你遇到 token 限制，我们建议限制预先加载的函数数量，尽可能缩短描述，或使用 [tool search](/api/docs/guides/tools-tool-search) 以便延迟工具仅在需要时加载。
+在底层，函数以模型训练过的语法注入到系统消息中。这意味着可调用的函数定义会计入模型的上下文限制，并作为输入 token 计费。如果你遇到 token 限制，我们建议限制预先加载的函数数量，尽可能缩短描述，或使用 [tool search](/guides/tools-tool-search) 以便延迟工具仅在需要时加载。
 
-也可以使用[微调](/api/docs/guides/fine-tuning#fine-tuning-examples)来减少工具规范中定义了许多函数时使用的 token 数量。
+也可以使用[微调](/guides/fine-tuning#fine-tuning-examples)来减少工具规范中定义了许多函数时使用的 token 数量。
 
 ## 处理函数调用
 
@@ -629,7 +628,7 @@ for (const toolCall of completion.choices[0].message.tool_calls) {
 ]
 ```
 
-如果你使用 [tool search](/api/docs/guides/tools-tool-search)，你可能还会在 `function_call` 之前看到 `tool_search_call` 和 `tool_search_output` 项。一旦函数被加载，按照此处所示的相同方式处理函数调用。
+如果你使用 [tool search](/guides/tools-tool-search)，你可能还会在 `function_call` 之前看到 `tool_search_call` 和 `tool_search_output` 项。一旦函数被加载，按照此处所示的相同方式处理函数调用。
 
 **执行函数调用并追加结果**
 
@@ -692,7 +691,7 @@ const callFunction = async (name, args) => {
 
 你在 `function_call_output` 消息中传递的结果通常应该是字符串，格式由你决定（JSON、错误代码、纯文本等）。模型将根据需要解释该字符串。
 
-对于返回图像或文件的函数，你可以传递[图像或文件对象数组](/api/docs/api-reference/responses/create#responses_create-input-input_item_list-item-function_tool_call_output-output)而不是字符串。
+对于返回图像或文件的函数，你可以传递[图像或文件对象数组]( https://developers.openai.com/api/reference/responses/create#responses_create-input-input_item_list-item-function_tool_call_output-output)而不是字符串。
 
 如果你的函数没有返回值（例如 `send_email`），只需返回一个表示成功或失败的字符串。（例如 `"success"`）
 
@@ -756,7 +755,7 @@ const response = await openai.responses.create({
 
 **何时使用 allowed\_tools**
 
-如果你想仅使工具的子集在模型请求中可用，但不修改传入的工具列表，以便最大化 [prompt caching](/api/docs/guides/prompt-caching) 的节省，你可能需要配置 `allowed_tools` 列表。
+如果你想仅使工具的子集在模型请求中可用，但不修改传入的工具列表，以便最大化 [prompt caching](/guides/prompt-caching) 的节省，你可能需要配置 `allowed_tools` 列表。
 
 ```
 "tool_choice": {
@@ -776,7 +775,7 @@ const response = await openai.responses.create({
 
 ### 并行函数调用
 
-使用[内置工具](/api/docs/guides/tools)时无法进行并行函数调用。
+使用[内置工具](/guides/tools)时无法进行并行函数调用。
 
 模型可能选择在单个回合中调用多个函数。你可以通过将 `parallel_tool_calls` 设置为 `false` 来防止这种情况，这确保恰好调用零个或一个工具。
 
@@ -788,7 +787,7 @@ const response = await openai.responses.create({
 
 将 `strict` 设置为 `true` 将确保函数调用可靠地遵循函数 schema，而不是尽力而为。我们建议始终启用严格模式。
 
-在底层，严格模式通过利用我们的[结构化输出](/api/docs/guides/structured-outputs)功能来工作，因此引入了一些要求：
+在底层，严格模式通过利用我们的[结构化输出](/guides/structured-outputs)功能来工作，因此引入了一些要求：
 
 1.  `parameters` 中的每个对象必须将 `additionalProperties` 设置为 `false`。
 2.  `properties` 中的所有字段必须标记为 `required`。
@@ -913,12 +912,12 @@ const response = await openai.responses.create({
 
 虽然我们建议你启用严格模式，但它有一些限制：
 
-1.  JSON schema 的某些功能不受支持。（参见[支持的 schema](/api/docs/guides/structured-outputs?context=with_parse#supported-schemas)。）
+1.  JSON schema 的某些功能不受支持。（参见[支持的 schema](/guides/structured-outputs?context=with_parse#supported-schemas)。）
 
 特别是对于微调模型：
 
 1.  Schema 在第一次请求时会进行额外处理（然后被缓存）。如果你的 schema 在请求之间变化，这可能导致更高的延迟。
-2.  Schema 被缓存以提高性能，不符合[零数据保留](/api/docs/models#how-we-use-your-data)条件。
+2.  Schema 被缓存以提高性能，不符合[零数据保留](/models#how-we-use-your-data)条件。
 
 ## 流式传输
 
@@ -1500,7 +1499,7 @@ from openai import OpenAI
 
 client = OpenAI()
 
-grammar = r"^(?P<month>January|February|March|April|May|June|July|August|September|October|November|December)\s+(?P<day>\d{1,2})(?:st|nd|rd|th)?\s+(?P<year>\d{4})\s+at\s+(?P<hour>0?[1-9]|1[0-2])(?P<ampm>AM|PM)$"
+grammar = r"^(?P&lt;month>January|February|March|April|May|June|July|August|September|October|November|December)\s+(?P&lt;day>\d{1,2})(?:st|nd|rd|th)?\s+(?P&lt;year>\d{4})\s+at\s+(?P&lt;hour>0?[1-9]|1[0-2])(?P&lt;ampm>AM|PM)$"
 
 response = client.responses.create(
     model="gpt-5",
@@ -1524,7 +1523,7 @@ print(response.output)
 import OpenAI from "openai";
 const client = new OpenAI();
 
-const grammar = "^(?P<month>January|February|March|April|May|June|July|August|September|October|November|December)\s+(?P<day>\d{1,2})(?:st|nd|rd|th)?\s+(?P<year>\d{4})\s+at\s+(?P<hour>0?[1-9]|1[0-2])(?P<ampm>AM|PM)$";
+const grammar = "^(?P&lt;month>January|February|March|April|May|June|July|August|September|October|November|December)\s+(?P&lt;day>\d{1,2})(?:st|nd|rd|th)?\s+(?P&lt;year>\d{4})\s+at\s+(?P&lt;hour>0?[1-9]|1[0-2])(?P&lt;ampm>AM|PM)$";
 
 const response = await client.responses.create({
   model: "gpt-5",

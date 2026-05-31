@@ -1,4 +1,3 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/realtime-sip -->
 
 [SIP](https://en.wikipedia.org/wiki/Session_Initiation_Protocol) 是一种用于通过互联网进行电话通话的协议。通过 SIP 和 Realtime API，你可以将来电转接到 API。
 
@@ -6,9 +5,9 @@
 
 如果你想将电话号码连接到 Realtime API，请使用 SIP 中继提供商（例如 Twilio）。这是一种将电话通话转换为 IP 流量的服务。从 SIP 中继提供商购买电话号码后，请按照以下说明操作。
 
-首先通过 **platform.openai.com** [设置](https://platform.openai.com/settings) > 项目 > **Webhooks** 创建一个用于来电的 [webhook](/api/docs/guides/webhooks)。然后，将你的 SIP 中继指向 OpenAI SIP 端点，使用你配置了 webhook 的项目 ID，例如 `sip:$PROJECT_ID@sip.api.openai.com;transport=tls`。要找到你的 `$PROJECT_ID`，请访问[设置](https://platform.openai.com/settings) > 项目 > **常规**。该页面将显示项目 ID，它会有一个 `proj_` 前缀。
+首先通过 **platform.openai.com** [设置](https://platform.openai.com/settings) > 项目 > **Webhooks** 创建一个用于来电的 [webhook](/guides/webhooks)。然后，将你的 SIP 中继指向 OpenAI SIP 端点，使用你配置了 webhook 的项目 ID，例如 `sip:$PROJECT_ID@sip.api.openai.com;transport=tls`。要找到你的 `$PROJECT_ID`，请访问[设置](https://platform.openai.com/settings) > 项目 > **常规**。该页面将显示项目 ID，它会有一个 `proj_` 前缀。
 
-当 OpenAI 收到与你的项目关联的 SIP 流量时，你的 webhook 将被触发。触发的事件将是一个 [`realtime.call.incoming`](/api/docs/api-reference/webhook-events/realtime/call/incoming) 事件，如下面的示例所示：
+当 OpenAI 收到与你的项目关联的 SIP 流量时，你的 webhook 将被触发。触发的事件将是一个 [`realtime.call.incoming`]( https://developers.openai.com/api/reference/webhook-events/realtime/call/incoming) 事件，如下面的示例所示：
 
 ```
 POST https://my_website.com/webhook_endpoint
@@ -38,7 +37,7 @@ webhook-signature: v1,K5oZfzN95Z9UVu1EsfQmfVNQhnkZ2pj9o9NDN/H/pI4= # signature t
 
 ## 接受通话
 
-使用[接受通话端点](/api/docs/api-reference/realtime-calls/accept-call)来批准来电并配置将应答该通话的实时会话。发送与[`create client secret`](/api/docs/api-reference/realtime-sessions/create-realtime-client-secret)请求相同的参数，即确保在将通话桥接到模型之前设置好实时模型、语音、工具或指令。
+使用[接受通话端点]( https://developers.openai.com/api/reference/realtime-calls/accept-call)来批准来电并配置将应答该通话的实时会话。发送与[`create client secret`]( https://developers.openai.com/api/reference/realtime-sessions/create-realtime-client-secret)请求相同的参数，即确保在将通话桥接到模型之前设置好实时模型、语音、工具或指令。
 
 ```
 curl -X POST "https://api.openai.com/v1/realtime/calls/$CALL_ID/accept" \
@@ -51,11 +50,11 @@ curl -X POST "https://api.openai.com/v1/realtime/calls/$CALL_ID/accept" \
       }'
 ```
 
-请求路径必须包含来自 [`realtime.call.incoming`](/api/docs/api-reference/webhook-events/realtime/call/incoming) webhook 的 `call_id`，每个请求都需要上面显示的 `Authorization` 头。端点在 SIP 线路振铃且实时会话正在建立时返回 `200 OK`。
+请求路径必须包含来自 [`realtime.call.incoming`]( https://developers.openai.com/api/reference/webhook-events/realtime/call/incoming) webhook 的 `call_id`，每个请求都需要上面显示的 `Authorization` 头。端点在 SIP 线路振铃且实时会话正在建立时返回 `200 OK`。
 
 ## 拒绝通话
 
-当你不想处理来电时（例如，来自不支持的国家代码），使用[拒绝通话端点](/api/docs/api-reference/realtime-calls/reject-call)来拒绝邀请。提供 `call_id` 路径参数和 JSON 正文中可选的 SIP `status_code`（例如，`486` 表示"忙碌"）来控制发送回运营商的响应。
+当你不想处理来电时（例如，来自不支持的国家代码），使用[拒绝通话端点]( https://developers.openai.com/api/reference/realtime-calls/reject-call)来拒绝邀请。提供 `call_id` 路径参数和 JSON 正文中可选的 SIP `status_code`（例如，`486` 表示"忙碌"）来控制发送回运营商的响应。
 
 ```
 curl -X POST "https://api.openai.com/v1/realtime/calls/$CALL_ID/reject" \
@@ -84,7 +83,7 @@ curl -X POST "https://api.openai.com/v1/realtime/calls/$CALL_ID/reject" \
 
 *   `Authorization: Bearer YOUR_API_KEY`
 
-WebSocket 的行为与任何其他 Realtime API 连接完全相同。发送 [`response.create`](/api/docs/api-reference/realtime_client_events/response/create) 和其他客户端事件来控制通话，并监听服务器事件来跟踪进度。更多信息请参阅 [Webhooks 和服务端控制](/api/docs/guides/realtime-server-controls)。
+WebSocket 的行为与任何其他 Realtime API 连接完全相同。发送 [`response.create`]( https://developers.openai.com/api/reference/realtime_client_events/response/create) 和其他客户端事件来控制通话，并监听服务器事件来跟踪进度。更多信息请参阅 [Webhooks 和服务端控制](/guides/realtime-server-controls)。
 
 ```
 import WebSocket from "ws";
@@ -107,7 +106,7 @@ ws.on("open", () => {
 
 ## 转接通话
 
-使用[转接通话端点](/api/docs/api-reference/realtime-calls/refer-call)转移活跃通话。提供 `call_id` 以及应放置在 SIP `Refer-To` 头中的 `target_uri`（例如 `tel:+14155550123` 或 `sip:agent@example.com`）。
+使用[转接通话端点]( https://developers.openai.com/api/reference/realtime-calls/refer-call)转移活跃通话。提供 `call_id` 以及应放置在 SIP `Refer-To` 头中的 `target_uri`（例如 `tel:+14155550123` 或 `sip:agent@example.com`）。
 
 ```
 curl -X POST "https://api.openai.com/v1/realtime/calls/$CALL_ID/refer" \
@@ -120,7 +119,7 @@ OpenAI 在 REFER 被转发到你的 SIP 提供商后返回 `200 OK`。下游系�
 
 ## 挂断通话
 
-当你的应用程序需要断开呼叫者连接时，使用[挂断端点](/api/docs/api-reference/realtime-calls/hangup-call)结束会话。此端点可用于终止 SIP 和 WebRTC 实时会话。
+当你的应用程序需要断开呼叫者连接时，使用[挂断端点]( https://developers.openai.com/api/reference/realtime-calls/hangup-call)结束会话。此端点可用于终止 SIP 和 WebRTC 实时会话。
 
 ```
 curl -X POST "https://api.openai.com/v1/realtime/calls/$CALL_ID/hangup" \
@@ -232,11 +231,11 @@ if __name__ == "__main__":
 
 现在你已经通过 SIP 连接成功，使用左侧导航或点击以下页面开始构建你的实时应用程序。
 
-*   [实时模型提示指南](/api/docs/guides/realtime-models-prompting)
-*   [管理对话](/api/docs/guides/realtime-conversations)
-*   [Webhooks 和服务端控制](/api/docs/guides/realtime-server-controls)
-*   [管理成本](/api/docs/guides/realtime-costs)
-*   [实时转录](/api/docs/guides/realtime-transcription)
+*   [实时模型提示指南](/guides/realtime-models-prompting)
+*   [管理对话](/guides/realtime-conversations)
+*   [Webhooks 和服务端控制](/guides/realtime-server-controls)
+*   [管理成本](/guides/realtime-costs)
+*   [实时转录](/guides/realtime-transcription)
 
 ### 其他资源
 

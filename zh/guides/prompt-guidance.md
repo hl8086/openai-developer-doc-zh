@@ -1,4 +1,3 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/prompt-guidance -->
 
 GPT-5.5GPT-5.4GPT-5.3 CodexGPT-5.2GPT-5.1GPT-5GPT-4.1
 
@@ -17,7 +16,7 @@ GPT-5.5 在提示词定义目标结果并留出空间让模型选择高效解决
 
 避免从旧提示词堆叠中照搬每条指令。遗留提示词通常过度指定流程，因为早期模型需要更多帮助来保持正轨。对于 GPT-5.5，这可能会增加噪音、缩小模型的搜索空间，或导致过于机械的回答。
 
-有关 GPT-5.5 行为变化的更多详情，请从 [使用 GPT-5.5 指南](/api/docs/guides/latest-model) 开始。本指南重点介绍由这些行为变化引发的提示词变更。
+有关 GPT-5.5 行为变化的更多详情，请从 [使用 GPT-5.5 指南](/guides/latest-model) 开始。本指南重点介绍由这些行为变化引发的提示词变更。
 
 这里的模式是起点。请根据你的产品界面、工具、评估和用户体验目标进行调整。
 
@@ -158,7 +157,7 @@ Preserve the requested artifact, length, structure, and genre first. Quietly imp
 
 ## 基础事实、引用和检索预算
 
-对于有据可查的回答，引用行为应该是提示词的一部分。定义什么需要支持、什么算作足够的证据，以及当证据缺失时模型应如何表现。缺乏证据不应自动变成事实性的"否"。更多详情和示例，请参阅 [引用格式指南](/api/docs/guides/citation-formatting)。
+对于有据可查的回答，引用行为应该是提示词的一部分。定义什么需要支持、什么算作足够的证据，以及当证据缺失时模型应如何表现。缺乏证据不应自动变成事实性的"否"。更多详情和示例，请参阅 [引用格式指南](/guides/citation-formatting)。
 
 ### 添加明确的检索预算
 
@@ -191,7 +190,7 @@ For creative or generative requests such as slides, leadership blurbs, outbound 
 
 ## 前端工程和视觉品味
 
-对于前端工作，请参阅 [示例指令](/api/docs/guides/frontend-prompt) 了解引导 UI 质量的实用方法。它们涵盖产品和用户上下文、设计系统对齐、首屏可用性、熟悉的控件、预期状态、响应式行为，以及要避免的常见生成 UI 默认值，如通用 hero 区域、嵌套卡片、装饰性渐变、可见的说明文本和破碎的布局。
+对于前端工作，请参阅 [示例指令](/guides/frontend-prompt) 了解引导 UI 质量的实用方法。它们涵盖产品和用户上下文、设计系统对齐、首屏可用性、熟悉的控件、预期状态、响应式行为，以及要避免的常见生成 UI 默认值，如通用 hero 区域、嵌套卡片、装饰性渐变、可见的说明文本和破碎的布局。
 
 ## 提示模型检查其工作
 
@@ -281,7 +280,7 @@ GPT-5.4 相比 GPT-5.2 的新特性
 
 GPT-5.4 旨在平衡长时间运行任务性能、更强的风格和行为控制，以及跨复杂工作流的更有纪律的执行。在 GPT-5 到 GPT-5.3-Codex 的进步基础上，GPT-5.4 改善了 token 效率，更可靠地维持多步骤工作流，并在长期任务上表现良好。
 
-GPT-5.4 专为需要强大多步骤推理、证据丰富的综合和长上下文可靠性能的生产级助手和智能体设计。当提示词明确指定输出契约、工具使用期望和完成标准时，它特别有效。在实践中，最大的收益来自为任务选择正确的推理力度、使用明确的基础事实和引用规则，以及给模型一个精确的"完成"定义。本指南重点介绍保持这些效率优势的提示词模式和迁移实践。有关模型能力、API 参数和更广泛的迁移指导，请参阅 [我们的最新模型指南](/api/docs/guides/latest-model)。
+GPT-5.4 专为需要强大多步骤推理、证据丰富的综合和长上下文可靠性能的生产级助手和智能体设计。当提示词明确指定输出契约、工具使用期望和完成标准时，它特别有效。在实践中，最大的收益来自为任务选择正确的推理力度、使用明确的基础事实和引用规则，以及给模型一个精确的"完成"定义。本指南重点介绍保持这些效率优势的提示词模式和迁移实践。有关模型能力、API 参数和更广泛的迁移指导，请参阅 [我们的最新模型指南](/guides/latest-model)。
 
 当排查 GPT-5.4 将中间更新视为最终答案的情况时，请验证你的集成是否正确保留了 assistant 消息的 `phase` 字段。详见 [Phase 参数](#phase-parameter)。
 
@@ -318,20 +317,20 @@ GPT-5.4 在以下领域表现特别好：
 
 为了提高 GPT-5.4 的 token 效率，通过清晰的输出契约约束冗长度并强制结构化输出。在实践中，这作为 Responses API 中 `verbosity` 参数之外的额外控制层，允许你引导模型写多少内容以及如何组织输出。
 
-```
-<output_contract>
+```text
+&lt;output_contract>
 - Return exactly the sections requested, in the requested order.
 - If the prompt defines a preamble, analysis block, or working section, do not treat it as extra output.
 - Apply length limits only to the section they are intended for.
 - If a format is required (JSON, Markdown, SQL, XML), output only that format.
-</output_contract>
+&lt;/output_contract>
 
-<verbosity_controls>
+&lt;verbosity_controls>
 - Prefer concise, information-dense writing.
 - Avoid repeating the user's request.
 - Keep progress updates brief.
 - Do not shorten the answer so aggressively that required evidence, reasoning, or completion checks are omitted.
-</verbosity_controls>
+&lt;/verbosity_controls>
 ```
 
 ### 设置清晰的跟进默认值
@@ -340,26 +339,26 @@ GPT-5.4 在以下领域表现特别好：
 
 使用如下默认跟进策略：
 
-```
-<default_follow_through_policy>
+```text
+&lt;default_follow_through_policy>
 - If the user's intent is clear and the next step is reversible and low-risk, proceed without asking.
 - Ask permission only if the next step is:
   (a) irreversible,
   (b) has external side effects (for example sending, purchasing, deleting, or writing to production), or
   (c) requires missing sensitive information or a choice that would materially change the outcome.
 - If proceeding, briefly state what you did and what remains optional.
-</default_follow_through_policy>
+&lt;/default_follow_through_policy>
 ```
 
 使指令优先级明确：
 
-```
-<instruction_priority>
+```text
+&lt;instruction_priority>
 - User instructions override default style, tone, formatting, and initiative preferences.
 - Safety, honesty, privacy, and permission constraints do not yield.
 - If a newer user instruction conflicts with an earlier one, follow the newer instruction.
 - Preserve earlier instructions that do not conflict.
-</instruction_priority>
+&lt;/instruction_priority>
 ```
 
 更高优先级的开发者或系统指令保持约束力。
@@ -374,21 +373,21 @@ GPT-5.4 在以下领域表现特别好：
 2.  覆盖
 3.  延续
 
-```
-<task_update>
+```text
+&lt;task_update>
 For the next response only:
 - Do not complete the task.
 - Only produce a plan.
 - Keep it to 5 bullets.
 
 All earlier instructions still apply unless they conflict with this update.
-</task_update>
+&lt;/task_update>
 ```
 
 如果任务本身改变了，直接说明：
 
-```
-<task_update>
+```text
+&lt;task_update>
 The task has changed.
 Previous task: complete the workflow.
 Current task: review the workflow and identify risks only.
@@ -400,7 +399,7 @@ Rules for this turn:
   1. Main risks
   2. Missing information
   3. Recommended next step
-</task_update>
+&lt;/task_update>
 ```
 
 ### 当正确性依赖于工具使用时使其持久
@@ -409,36 +408,36 @@ Rules for this turn:
 
 GPT-5.4 在会话早期上下文仍然较少时，工具路由可能不太可靠。提示前置条件、依赖检查和精确的工具意图。
 
-```
-<tool_persistence_rules>
+```text
+&lt;tool_persistence_rules>
 - Use tools whenever they materially improve correctness, completeness, or grounding.
 - Do not stop early when another tool call is likely to materially improve correctness or completeness.
 - Keep calling tools until:
   (1) the task is complete, and
-  (2) verification passes (see <verification_loop>).
+  (2) verification passes (see &lt;verification_loop>).
 - If a tool returns empty or partial results, retry with a different strategy.
-</tool_persistence_rules>
+&lt;/tool_persistence_rules>
 ```
 
 这对于最终操作依赖于早期查找或检索步骤的工作流尤为重要。最常见的失败模式之一是因为预期的最终操作看起来很明显而跳过前置条件。
 
-```
-<dependency_checks>
+```text
+&lt;dependency_checks>
 - Before taking an action, check whether prerequisite discovery, lookup, or memory retrieval steps are required.
 - Do not skip prerequisite steps just because the intended final action seems obvious.
 - If the task depends on the output of a prior step, resolve that dependency first.
-</dependency_checks>
+&lt;/dependency_checks>
 ```
 
 当工作独立且时钟时间重要时提示并行。当依赖关系、歧义或不可逆操作比速度更重要时提示顺序执行。
 
-```
-<parallel_tool_calling>
+```text
+&lt;parallel_tool_calling>
 - When multiple retrieval or lookup steps are independent, prefer parallel tool calls to reduce wall-clock time.
 - Do not parallelize steps that have prerequisite dependencies or where one result determines the next action.
 - After parallel retrieval, pause to synthesize the results before making more calls.
 - Prefer selective parallelism: parallelize independent evidence gathering, not speculative or redundant tool use.
-</parallel_tool_calling>
+&lt;/parallel_tool_calling>
 ```
 
 ### 在长期任务上强制完整性
@@ -447,8 +446,8 @@ GPT-5.4 在会话早期上下文仍然较少时，工具路由可能不太可靠
 
 覆盖可以通过顺序或并行检索实现，但完成规则应始终保持明确。
 
-```
-<completeness_contract>
+```text
+&lt;completeness_contract>
 - Treat the task as incomplete until all requested items are covered or explicitly marked [blocked].
 - Keep an internal checklist of required deliverables.
 - For lists, batches, or paginated results:
@@ -456,13 +455,13 @@ GPT-5.4 在会话早期上下文仍然较少时，工具路由可能不太可靠
   - track processed items or pages,
   - confirm coverage before finalizing.
 - If any item is blocked by missing data, mark it [blocked] and state exactly what is missing.
-</completeness_contract>
+&lt;/completeness_contract>
 ```
 
 对于空结果、部分结果或噪声检索常见的工作流：
 
-```
-<empty_result_recovery>
+```text
+&lt;empty_result_recovery>
 If a lookup returns empty, partial, or suspiciously narrow results:
 - do not immediately conclude that no results exist,
 - try at least one or two fallback strategies,
@@ -472,67 +471,67 @@ If a lookup returns empty, partial, or suspiciously narrow results:
   - a prerequisite lookup,
   - or an alternate source or tool,
 - Only then report that no results were found, along with what you tried.
-</empty_result_recovery>
+&lt;/empty_result_recovery>
 ```
 
 ### 在高影响操作前添加验证循环
 
 一旦工作流看起来完成，在返回答案或执行不可逆操作之前添加轻量级验证步骤。这有助于在提交前捕获需求遗漏、基础事实问题和格式漂移。
 
-```
-<verification_loop>
+```text
+&lt;verification_loop>
 Before finalizing:
 - Check correctness: does the output satisfy every requirement?
 - Check grounding: are factual claims backed by the provided context or tool outputs?
 - Check formatting: does the output match the requested schema or style?
 - Check safety and irreversibility: if the next step has external side effects, ask permission first.
-</verification_loop>
+&lt;/verification_loop>
 ```
 
-```
-<missing_context_gating>
+```text
+&lt;missing_context_gating>
 - If required context is missing, do NOT guess.
 - Prefer the appropriate lookup tool when the missing context is retrievable; ask a minimal clarifying question only when it is not.
 - If you must proceed, label assumptions explicitly and choose a reversible action.
-</missing_context_gating>
+&lt;/missing_context_gating>
 ```
 
 对于主动执行操作的智能体，添加简短的执行框架：
 
-```
-<action_safety>
+```text
+&lt;action_safety>
 - Pre-flight: summarize the intended action and parameters in 1-2 lines.
 - Execute via tool.
 - Post-flight: confirm the outcome and any validation that was performed.
-</action_safety>
+&lt;/action_safety>
 ```
 
 ## 处理专业工作流
 
 ### 为视觉和计算机使用明确选择图像细节
 
-如果你的工作流依赖于视觉精度，请在提示词或集成中指定图像 `detail` 级别，而不是依赖 `auto`。对标准高保真图像理解使用 `high`。对大型、密集或空间敏感的图像使用 `original`，特别是在 `gpt-5.4` 和未来模型上的 [计算机使用、定位、OCR 和点击精度任务](/api/docs/guides/tools-computer-use)。仅当速度和成本比精细细节更重要时使用 `low`。有关图像细节级别的更多详情，请参阅 [图像和视觉指南](/api/docs/guides/images-vision)。
+如果你的工作流依赖于视觉精度，请在提示词或集成中指定图像 `detail` 级别，而不是依赖 `auto`。对标准高保真图像理解使用 `high`。对大型、密集或空间敏感的图像使用 `original`，特别是在 `gpt-5.4` 和未来模型上的 [计算机使用、定位、OCR 和点击精度任务](/guides/tools-computer-use)。仅当速度和成本比精细细节更重要时使用 `low`。有关图像细节级别的更多详情，请参阅 [图像和视觉指南](/guides/images-vision)。
 
 ### 将研究和引用锁定到检索的证据
 
 当引用质量重要时，使来源边界和格式要求都明确。这有助于减少虚构引用、无支持的声明和引用格式漂移。
 
-```
-<citation_rules>
+```text
+&lt;citation_rules>
 - Only cite sources retrieved in the current workflow.
 - Never fabricate citations, URLs, IDs, or quote spans.
 - Use exactly the citation format required by the host application.
 - Attach citations to the specific claims they support, not only at the end.
-</citation_rules>
+&lt;/citation_rules>
 ```
 
-```
-<grounding_rules>
+```text
+&lt;grounding_rules>
 - Base claims only on provided context or tool outputs.
 - If sources conflict, state the conflict explicitly and attribute each side.
 - If the context is insufficient or irrelevant, narrow the answer or say you cannot support the claim.
 - If a statement is an inference rather than a directly supported fact, label it as an inference.
-</grounding_rules>
+&lt;/grounding_rules>
 ```
 
 如果你的应用需要内联引用，要求内联引用。如果需要脚注，要求脚注。关键是锁定格式并防止模型即兴创造无支持的引用。
@@ -541,14 +540,14 @@ Before finalizing:
 
 将 GPT-5.4 推入有纪律的研究模式。对研究、审查和综合任务使用此模式。不要将其强加于短执行任务或简单的确定性转换。
 
-```
-<research_mode>
+```text
+&lt;research_mode>
 - Do research in 3 passes:
   1) Plan: list 3-6 sub-questions to answer.
   2) Retrieve: search each sub-question and follow 1-2 second-order leads.
   3) Synthesize: resolve contradictions and write the final answer with citations.
 - Stop only when more searching is unlikely to change the conclusion.
-</research_mode>
+&lt;/research_mode>
 ```
 
 如果你的宿主环境使用特定的研究工具或需要提交步骤，将此与宿主的最终化契约结合。
@@ -557,30 +556,30 @@ Before finalizing:
 
 对于 SQL、JSON 或其他解析敏感的输出，告诉 GPT-5.4 仅发出目标格式并在完成前检查它。
 
-```
-<structured_output_contract>
+```text
+&lt;structured_output_contract>
 - Output only the requested format.
 - Do not add prose or markdown fences unless they were requested.
 - Validate that parentheses and brackets are balanced.
 - Do not invent tables or fields.
 - If required schema information is missing, ask for it or return an explicit error object.
-</structured_output_contract>
+&lt;/structured_output_contract>
 ```
 
 如果你正在提取文档区域或 OCR 框，定义坐标系统并添加漂移检查：
 
-```
-<bbox_extraction_spec>
+```text
+&lt;bbox_extraction_spec>
 - Use the specified coordinate format exactly, such as [x1,y1,x2,y2] normalized to 0..1.
 - For each box, include page, label, text snippet, and confidence.
 - Add a vertical-drift sanity check so boxes stay aligned with the correct line of text.
 - If the layout is dense, process page by page and do a second pass for missed items.
-</bbox_extraction_spec>
+&lt;/bbox_extraction_spec>
 ```
 
 ### 在编码和终端智能体中保持工具边界明确
 
-在编码智能体中，当 shell 访问和文件编辑的规则明确时，GPT-5.4 表现更好。当你暴露 [Shell](/api/docs/guides/tools-shell) 或 [Apply patch](/api/docs/guides/tools-apply-patch) 等工具时，这一点尤为重要。
+在编码智能体中，当 shell 访问和文件编辑的规则明确时，GPT-5.4 表现更好。当你暴露 [Shell](/guides/tools-shell) 或 [Apply patch](/guides/tools-apply-patch) 等工具时，这一点尤为重要。
 
 ### 用户更新
 
@@ -588,13 +587,13 @@ GPT-5.4 在简短的、基于结果的更新方面表现良好。重用 5.2 指�
 
 推荐的更新规范：
 
-```
-<user_updates_spec>
+```text
+&lt;user_updates_spec>
 - Only update the user when starting a new major phase or when something changes the plan.
 - Each update: 1 sentence on outcome + 1 sentence on next step.
 - Do not narrate routine tool calls.
 - Keep the user-facing status short; keep the work exhaustive.
-</user_updates_spec>
+&lt;/user_updates_spec>
 ```
 
 对于编码智能体，请参阅下面的编码任务提示模式部分获取更具体的指导。
@@ -605,20 +604,20 @@ GPT-5.4 在简短的、基于结果的更新方面表现良好。重用 5.2 指�
 
 GPT-5.4 在编码和工具使用任务上通常比早期主线模型更彻底地端到端完成，因此你通常需要更少的明确"验证一切"提示。但是，对于高风险变更如生产、迁移或安全工作，保留轻量级验证条款。
 
-```
-<autonomy_and_persistence>
+```text
+&lt;autonomy_and_persistence>
 Persist until the task is fully handled end-to-end within the current turn whenever feasible: do not stop at analysis or partial fixes; carry changes through implementation, verification, and a clear explanation of outcomes unless the user explicitly pauses or redirects you.
 
 Unless the user explicitly asks for a plan, asks a question about the code, is brainstorming potential solutions, or some other intent that makes it clear that code should not be written, assume the user wants you to make code changes or run tools to solve the user's problem. In these cases, it's bad to output your proposed solution in a message, you should go ahead and actually implement the change. If you encounter challenges or blockers, you should attempt to resolve them yourself.
-</autonomy_and_persistence>
+&lt;/autonomy_and_persistence>
 ```
 
 **中间更新**
 
 保持更新稀疏且高信号。在编码任务中，优先在关键点更新。
 
-```
-<user_updates_spec>
+```text
+&lt;user_updates_spec>
 - Intermediary updates go to the `commentary` channel.
 - User updates are short updates while you are working. They are not final answers.
 - Use 1-2 sentence updates to communicate progress and new information while you work.
@@ -631,7 +630,7 @@ Unless the user explicitly asks for a plan, asks a question about the code, is b
 - Before file edits, explain what you are about to change.
 - While thinking, keep the user informed of progress without narrating every tool call. Even if you are not taking actions, send frequent progress updates rather than going silent, especially if you are thinking for more than a short stretch.
 - Keep the tone of progress updates consistent with the assistant's overall personality.
-</user_updates_spec>
+&lt;/user_updates_spec>
 ```
 
 **格式化**
@@ -646,8 +645,8 @@ Never use nested bullets. Keep lists flat (single level). If you need hierarchy,
 
 仅在需要额外前端指导时使用。
 
-```
-<frontend_tasks>
+```text
+&lt;frontend_tasks>
 When doing frontend design tasks, avoid generic, overbuilt layouts.
 
 Use these hard rules:
@@ -664,30 +663,30 @@ Use these hard rules:
 - Use motion to create presence and hierarchy, not noise. Ship 2-3 intentional motions for visually led work, and prefer Framer Motion when it is available.
 
 Exception: If working within an existing website or design system, preserve the established patterns, structure, and visual language.
-</frontend_tasks>
+&lt;/frontend_tasks>
 ```
 
-```
-<terminal_tool_hygiene>
+```text
+&lt;terminal_tool_hygiene>
 - Only run shell commands via the terminal tool.
 - Never "run" tool names as shell commands.
 - If a patch or edit tool exists, use it directly; do not attempt it in bash.
 - After changes, run a lightweight verification step such as ls, tests, or a build before declaring the task done.
-</terminal_tool_hygiene>
+&lt;/terminal_tool_hygiene>
 ```
 
 ### 文档本地化和 OCR 框
 
 对于 bbox 任务，明确坐标约定并添加漂移测试。
 
-```
-<bbox_extraction_spec>
+```text
+&lt;bbox_extraction_spec>
 - Use the specified coordinate format exactly (for example [x1,y1,x2,y2] normalized 0..1).
 - For each bbox, include: page, label, text snippet, confidence.
 - Add a vertical-drift sanity check:
   - ensure bboxes align with the line of text (not shifted up or down).
 - If dense layout, process page by page and do a second pass for missed items.
-</bbox_extraction_spec>
+&lt;/bbox_extraction_spec>
 ```
 
 ### 使用运行时和 API 集成说明
@@ -710,9 +709,9 @@ Exception: If working within an existing website or design system, preserve the 
 
 压缩解锁了显著更长的有效上下文窗口，用户对话可以持续多轮而不会达到上下文限制或长上下文性能下降，智能体可以执行超过典型上下文窗口的非常长的轨迹，用于长时间运行的复杂任务。
 
-如果你在 Responses API 中使用 [压缩](/api/docs/guides/compaction)，在主要里程碑后压缩，将压缩项视为不透明状态，并在压缩后保持提示词功能相同。该端点兼容 ZDR 并返回一个 `encrypted_content` 项，你可以将其传入未来的请求。GPT-5.4 倾向于在更长的多轮对话中保持更连贯和可靠，随着会话增长故障更少。
+如果你在 Responses API 中使用 [压缩](/guides/compaction)，在主要里程碑后压缩，将压缩项视为不透明状态，并在压缩后保持提示词功能相同。该端点兼容 ZDR 并返回一个 `encrypted_content` 项，你可以将其传入未来的请求。GPT-5.4 倾向于在更长的多轮对话中保持更连贯和可靠，随着会话增长故障更少。
 
-更多指导，请参阅 [`/responses/compact` API 参考](/api/docs/api-reference/responses/compact)。
+更多指导，请参阅 [`/responses/compact` API 参考]( https://developers.openai.com/api/reference/responses/compact)。
 
 ### 为面向客户的工作流控制个性
 
@@ -729,32 +728,32 @@ Exception: If working within an existing website or design system, preserve the 
 *   当你想要散文时明确禁止格式化。
 *   使用硬性长度限制。
 
-```
-<personality_and_writing_controls>
-- Persona: <one sentence>
-- Channel: <Slack | email | memo | PRD | blog>
-- Emotional register: <direct/calm/energized/etc.> + "not <overdo this>"
-- Formatting: <ban bullets/headers/markdown if you want prose>
-- Length: <hard limit, e.g. <=150 words or 3-5 sentences>
+```text
+&lt;personality_and_writing_controls>
+- Persona: &lt;one sentence>
+- Channel: &lt;Slack | email | memo | PRD | blog>
+- Emotional register: &lt;direct/calm/energized/etc.> + "not &lt;overdo this>"
+- Formatting: &lt;ban bullets/headers/markdown if you want prose>
+- Length: &lt;hard limit, e.g. &lt;=150 words or 3-5 sentences>
 - Default follow-through: if the request is clear and low-risk, proceed without asking permission.
-</personality_and_writing_controls>
+&lt;/personality_and_writing_controls>
 ```
 
-更多可直接使用的个性模式，请参阅 [Prompt Personalities cookbook](/cookbook/examples/gpt-5/prompt_personalities)。
+更多可直接使用的个性模式，请参阅 [Prompt Personalities cookbook]( https://cdn.openai.com/API/docs/cookbook/examples/gpt-5/prompt_personalities)。
 
 **专业备忘录模式**
 
 对于备忘录、审查和其他专业写作任务，通用写作指令通常不够。这些工作流受益于关于具体性、领域惯例、综合和校准确定性的明确指导。
 
-```
-<memo_mode>
+```text
+&lt;memo_mode>
 - Write in a polished, professional memo style.
 - Use exact names, dates, entities, and authorities when supported by the record.
 - Follow domain-specific structure if one is requested.
 - Prefer precise conclusions over generic hedging.
 - When uncertainty is real, tie it to the exact missing fact or conflicting source.
 - Synthesize across documents rather than summarizing each one independently.
-</memo_mode>
+&lt;/memo_mode>
 ```
 
 此模式对法律、政策、研究和面向高管的写作特别有用，其目标不仅是流畅性，还有有纪律的综合和清晰的结论。
@@ -782,18 +781,18 @@ Exception: If working within an existing website or design system, preserve the 
 
 在增加推理力度之前，首先添加：
 
-*   `<completeness_contract>`
-*   `<verification_loop>`
-*   `<tool_persistence_rules>`
+*   ``&lt;completeness_contract>``
+*   ``&lt;verification_loop>``
+*   ``&lt;tool_persistence_rules>``
 
 如果模型仍然感觉太字面或在第一个合理答案处停止，在提高推理力度之前添加主动性提示：
 
-```
-<dig_deeper_nudge>
+```text
+&lt;dig_deeper_nudge>
 - Don't stop at the first plausible answer.
 - Look for second-order issues, edge cases, and missing constraints.
 - If the task is safety or accuracy critical, perform at least one verification step.
-</dig_deeper_nudge>
+&lt;/dig_deeper_nudge>
 ```
 
 ### 一次一个变更地迁移提示词到 GPT-5.4
@@ -858,9 +857,9 @@ Exception: If working within an existing website or design system, preserve the 
 
 如果你特别是在迁移研究智能体，在增加推理力度之前进行这些提示词更新：
 
-*   添加 `<research_mode>`
-*   添加 `<citation_rules>`
-*   添加 `<empty_result_recovery>`
+*   添加 ``&lt;research_mode>``
+*   添加 ``&lt;citation_rules>``
+*   添加 ``&lt;empty_result_recovery>``
 *   仅在提示词修复后将 `reasoning_effort` 增加一档。
 
 你可以从 5.2 研究块开始，然后根据需要叠加引用门控和最终化契约。
@@ -869,9 +868,9 @@ GPT-5.4 在任务需要多步骤证据收集、长上下文综合和明确提示
 
 ## 后续步骤
 
-*   阅读 [我们的最新模型指南](/api/docs/guides/latest-model) 了解模型能力、参数和 API 兼容性详情。
-*   阅读 [Prompt engineering](/api/docs/guides/prompt-engineering) 了解适用于所有模型系列的更广泛提示策略。
-*   如果你正在 Responses API 中构建长时间运行的 GPT-5.4 会话，请阅读 [压缩](/api/docs/guides/compaction)。
+*   阅读 [我们的最新模型指南](/guides/latest-model) 了解模型能力、参数和 API 兼容性详情。
+*   阅读 [Prompt engineering](/guides/prompt-engineering) 了解适用于所有模型系列的更广泛提示策略。
+*   如果你正在 Responses API 中构建长时间运行的 GPT-5.4 会话，请阅读 [压缩](/guides/compaction)。
 
 GPT-5.3 Codex
 
@@ -886,7 +885,7 @@ GPT-5.3 Codex 相比 GPT-5 系列模型的新特性
 
 Codex 模型推进了智能和效率的前沿，是我们推荐的智能体编码模型。请仔细遵循本指南以确保你从该模型获得最佳性能。本指南适用于通过 API 直接使用模型以获得最大可定制性的任何人；我们还有 [Codex SDK](https://developers.openai.com/codex/sdk/) 用于更简单的集成。
 
-在 API 中，Codex 调优模型为 `gpt-5.3-codex`（参见 [模型页面](/api/docs/models/gpt-5.3-codex)）。
+在 API 中，Codex 调优模型为 `gpt-5.3-codex`（参见 [模型页面](/models/gpt-5.3-codex)）。
 
 Codex 模型的最新改进
 
@@ -1059,16 +1058,16 @@ Codex-cli 自动枚举这些文件并将它们注入对话；模型已被训练�
 2\. 它们按顺序合并，后面的目录覆盖前面的。
 3\. 每个合并的块以其自己的 user-role 消息形式呈现给模型，如下所示：
 
-```
-# AGENTS.md instructions for <directory>
-<INSTRUCTIONS>
+```text
+# AGENTS.md instructions for &lt;directory>
+&lt;INSTRUCTIONS>
 ...file contents...
-</INSTRUCTIONS>
+&lt;/INSTRUCTIONS>
 ```
 
 附加详情
 
-*   每个发现的文件成为其自己的 user-role 消息，以 # AGENTS.md instructions for <directory> 开头，其中 <directory> 是提供该文件的文件夹的路径（相对于仓库根目录）。
+*   每个发现的文件成为其自己的 user-role 消息，以 # AGENTS.md instructions for `&lt;directory>` 开头，其中 `&lt;directory>` 是提供该文件的文件夹的路径（相对于仓库根目录）。
 *   消息在对话历史的顶部附近注入，在用户提示之前，按从根到叶的顺序：全局指令优先，然后是仓库根目录，然后是每个更深的目录。如果使用了 AGENTS.override.md，其目录名仍然出现在标题中（例如，# AGENTS.md instructions for backend/api），因此上下文在记录中是明显的。
 
 ## 压缩
@@ -1083,7 +1082,7 @@ Codex-cli 自动枚举这些文件并将它们注入对话；模型已被训练�
     2.  该端点兼容 ZDR，将返回一个 "encrypted\_content" 项，你可以将其传入未来的请求。
 3.  对于后续对 /responses 端点的调用，你可以传递更新的、压缩的对话项列表（包括添加的压缩项）。模型以更少的对话 token 保留关键的先前状态。
 
-端点详情请参阅我们的 `/responses/compact` [文档](/api/docs/api-reference/responses/compact)。
+端点详情请参阅我们的 `/responses/compact` [文档]( https://developers.openai.com/api/reference/responses/compact)。
 
 ## 工具
 
@@ -1093,9 +1092,9 @@ Codex-cli 自动枚举这些文件并将它们注入对话；模型已被训练�
 
 ### Apply\_patch
 
-实现 apply\_patch 最简单的方式是使用我们在 Responses API 中的一流实现，但你也可以使用我们的自由格式工具实现配合 [上下文无关文法](/cookbook/examples/gpt-5/gpt-5_new_params_and_tools?utm_source=chatgpt.com#3-contextfree-grammar-cfg)。两者都在下面演示。
+实现 apply\_patch 最简单的方式是使用我们在 Responses API 中的一流实现，但你也可以使用我们的自由格式工具实现配合 [上下文无关文法]( https://cdn.openai.com/API/docs/cookbook/examples/gpt-5/gpt-5_new_params_and_tools?utm_source=chatgpt.com#3-contextfree-grammar-cfg)。两者都在下面演示。
 
-```
+```text
 # Sample script to demonstrate the server-defined apply_patch tool
 
 import json
@@ -1112,10 +1111,10 @@ user_request = """Add a cancel button that logs when clicked"""
 file_excerpt = """\
 export default function Page() {
 return (
-<div>
-    <p>Page component not implemented</p>
-    <button onClick={() => console.log("clicked")}>Click me</button>
-</div>
+&lt;div>
+    &lt;p>Page component not implemented&lt;/p>
+    &lt;button onClick={() => console.log("clicked")}>Click me&lt;/button>
+&lt;/div>
 );
 }
 """
@@ -1169,11 +1168,11 @@ for item in response.output:
         # output:
         # {'diff': '@@\n'
         #          '   return (\n'
-        #          '     <div>\n'
-        #          '       <p>Page component not implemented</p>\n'
-        #          '       <button onClick={() => console.log("clicked")}>Click me</button>\n'
-        #          '+      <button onClick={() => console.log("cancel clicked")}>Cancel</button>\n'
-        #          '     </div>\n'
+        #          '     &lt;div>\n'
+        #          '       &lt;p>Page component not implemented&lt;/p>\n'
+        #          '       &lt;button onClick={() => console.log("clicked")}>Click me&lt;/button>\n'
+        #          '+      &lt;button onClick={() => console.log("cancel clicked")}>Cancel&lt;/button>\n'
+        #          '     &lt;/div>\n'
         #          '   );\n'
         #          ' }\n',
         #  'path': '/app/page.tsx',
@@ -1234,11 +1233,11 @@ for item in response_cfg.output:
         # *** Begin Patch
         # *** Update File: /app/page.tsx
         # @@
-        #      <div>
-        #        <p>Page component not implemented</p>
-        #        <button onClick={() => console.log("clicked")}>Click me</button>
-        # +      <button onClick={() => console.log("cancel clicked")}>Cancel</button>
-        #      </div>
+        #      &lt;div>
+        #        &lt;p>Page component not implemented&lt;/p>
+        #        &lt;button onClick={() => console.log("clicked")}>Click me&lt;/button>
+        # +      &lt;button onClick={() => console.log("cancel clicked")}>Cancel&lt;/button>
+        #      &lt;/div>
         #    );
         #  }
         # *** End Patch
@@ -1290,8 +1289,8 @@ Responses API 工具的 Patch 对象可以按照此 [示例](https://github.com/
 
 如果你使用 Windows PowerShell，更新为此工具描述。
 
-```
-Runs a shell command and returns its output. The arguments you pass will be invoked via PowerShell (e.g., ["pwsh", "-NoLogo", "-NoProfile", "-Command", "<cmd>"]). Always fill in workdir; avoid using cd in the command string.
+```text
+Runs a shell command and returns its output. The arguments you pass will be invoked via PowerShell (e.g., ["pwsh", "-NoLogo", "-NoProfile", "-Command", "&lt;cmd>"]). Always fill in workdir; avoid using cd in the command string.
 ```
 
 你可以查看 codex-cli 中 `exec_command` 的实现，它在你需要流式输出、REPL 或交互式会话时启动一个长期运行的 PTY；以及 `write_stdin`，用于为现有的 exec\_command 会话提供额外的按键输入（或仅轮询输出）。
@@ -1604,8 +1603,8 @@ GPT-5.2 特别适合优先考虑可靠性、可评估性和一致行为的生产
 
 根据期望冗长度调整的示例限制：
 
-```
-<output_verbosity_spec>
+```text
+&lt;output_verbosity_spec>
 - Default: 3–6 sentences or ≤5 bullets for typical answers.
 - For simple "yes/no + short explanation" questions: ≤2 sentences.
 - For complex multi-step or multi-file tasks:
@@ -1614,38 +1613,38 @@ GPT-5.2 特别适合优先考虑可靠性、可评估性和一致行为的生产
 - Provide clear and structured responses that balance informativeness with conciseness. Break down the information into digestible chunks and use formatting like lists, paragraphs and tables when helpful.
 - Avoid long narrative paragraphs; prefer compact bullets and short sections.
 - Do not rephrase the user's request unless it changes semantics.
-</output_verbosity_spec>
+&lt;/output_verbosity_spec>
 ```
 
 ### 3.2 防止范围漂移（例如前端任务中的 UX / 设计）
 
 GPT-5.2 在结构化代码方面更强，但可能产生超出最小 UX 规范和设计系统的更多代码。为保持在范围内，明确禁止额外功能和不受控的样式。
 
-```
-<design_and_scope_constraints>
+```text
+&lt;design_and_scope_constraints>
 - Explore any existing design systems and understand it deeply.
 - Implement EXACTLY and ONLY what the user requests.
 - No extra features, no added components, no UX embellishments.
 - Style aligned to the design system at hand.
 - Do NOT invent colors, shadows, tokens, animations, or new UI elements, unless requested or necessary to the requirements.
 - If any instruction is ambiguous, choose the simplest valid interpretation.
-</design_and_scope_constraints>
+&lt;/design_and_scope_constraints>
 ```
 
-对于设计系统强制执行，重用你的 5.1 `<design_system_enforcement>` 块，但添加 "no extra features" 和 "tokens-only colors" 以额外强调。
+对于设计系统强制执行，重用你的 5.1 ``&lt;design_system_enforcement>`` 块，但添加 "no extra features" 和 "tokens-only colors" 以额外强调。
 
 ### 3.3 长上下文和召回
 
 对于长上下文任务，提示词可能受益于**强制摘要和重新基础**。此模式减少"在滚动中迷失"的错误并改善对密集上下文的召回。
 
-```
-<long_context_handling>
+```text
+&lt;long_context_handling>
 - For inputs longer than ~10k tokens (multi-chapter docs, long threads, multiple PDFs):
   - First, produce a short internal outline of the key sections relevant to the user's request.
   - Re-state the user's constraints explicitly (e.g., jurisdiction, date range, product, team) before answering.
   - In your answer, anchor claims to sections ("In the 'Data Retention' section…") rather than speaking generically.
 - If the answer depends on fine details (dates, thresholds, clauses), quote or paraphrase them.
-</long_context_handling>
+&lt;/long_context_handling>
 ```
 
 ### 3.4 处理歧义和幻觉风险
@@ -1654,8 +1653,8 @@ GPT-5.2 在结构化代码方面更强，但可能产生超出最小 UX 规范�
 
 缓解提示词：
 
-```
-<uncertainty_and_ambiguity>
+```text
+&lt;uncertainty_and_ambiguity>
 - If the question is ambiguous or underspecified, explicitly call this out and:
   - Ask up to 1–3 precise clarifying questions, OR
   - Present 2–3 plausible interpretations with clearly labeled assumptions.
@@ -1663,20 +1662,20 @@ GPT-5.2 在结构化代码方面更强，但可能产生超出最小 UX 规范�
   - Answer in general terms and state that details may have changed.
 - Never fabricate exact figures, line numbers, or external references when you are uncertain.
 - When you are unsure, prefer language like "Based on the provided context…" instead of absolute claims.
-</uncertainty_and_ambiguity>
+&lt;/uncertainty_and_ambiguity>
 ```
 
 你还可以为高风险输出添加简短的自检步骤：
 
-```
-<high_risk_self_check>
+```text
+&lt;high_risk_self_check>
 Before finalizing an answer in legal, financial, compliance, or safety-sensitive contexts:
 - Briefly re-scan your own answer for:
   - Unstated assumptions,
   - Specific numbers or claims not grounded in context,
   - Overly strong language ("always," "guaranteed," etc.).
 - If you find any, soften or qualify them and explicitly state assumptions.
-</high_risk_self_check>
+&lt;/high_risk_self_check>
 ```
 
 ## 4\. 压缩（扩展有效上下文）
@@ -1715,7 +1714,7 @@ POST https://api.openai.com/v1/responses/compact
 *   恢复时保持提示词功能相同以避免行为漂移
 *   将压缩项视为不透明；不要解析或依赖内部结构
 
-有关何时以及如何在生产中压缩的指导，请参阅 [对话状态](/api/docs/guides/conversation-state?api-mode=responses) 指南和 [压缩响应](/api/docs/api-reference/responses/compact) 页面。
+有关何时以及如何在生产中压缩的指导，请参阅 [对话状态](/guides/conversation-state?api-mode=responses) 指南和 [压缩响应]( https://developers.openai.com/api/reference/responses/compact) 页面。
 
 这是一个示例：
 
@@ -1759,7 +1758,7 @@ print(json.dumps(compacted_response.model_dump(), indent=2))
 
 ## 5\. 智能体可控性和用户更新
 
-GPT-5.2 在良好提示时在智能体脚手架和多步骤执行方面很强。你可以重用你的 GPT-5.1 `<user_updates_spec>` 和 `<solution_persistence>` 块。
+GPT-5.2 在良好提示时在智能体脚手架和多步骤执行方面很强。你可以重用你的 GPT-5.1 ``&lt;user_updates_spec>`` 和 ``&lt;solution_persistence>`` 块。
 
 可以添加两个关键调整以进一步推动 GPT-5.2 的性能：
 
@@ -1768,15 +1767,15 @@ GPT-5.2 在良好提示时在智能体脚手架和多步骤执行方面很强。
 
 更新规范示例：
 
-```
-<user_updates_spec>
+```text
+&lt;user_updates_spec>
 - Send brief updates (1–2 sentences) only when:
   - You start a new major phase of work, or
   - You discover something that changes the plan.
 - Avoid narrating routine tool calls ("reading file…", "running tests…").
 - Each update must include at least one concrete outcome ("Found X", "Confirmed Y", "Updated Z").
 - Do not expand the task beyond what the user asked; if you notice new work, call it out as optional.
-</user_updates_spec>
+&lt;/user_updates_spec>
 ```
 
 ## 6\. 工具调用和并行性
@@ -1789,8 +1788,8 @@ GPT-5.2 在工具可靠性和脚手架方面改进了 5.1，特别是在 MCP/Atl
 
 工具使用部分示例：
 
-```
-<tool_usage_rules>
+```text
+&lt;tool_usage_rules>
 - Prefer tools over internal knowledge whenever:
   - You need fresh or user-specific data (tickets, orders, configs, logs).
   - You reference specific IDs, URLs, or document titles.
@@ -1799,7 +1798,7 @@ GPT-5.2 在工具可靠性和脚手架方面改进了 5.1，特别是在 MCP/Atl
   - What changed,
   - Where (ID or path),
   - Any follow-up validation performed.
-</tool_usage_rules>
+&lt;/tool_usage_rules>
 ```
 
 ## 7\. 结构化提取、PDF 和 Office 工作流
@@ -1812,8 +1811,8 @@ GPT-5.2 在工具可靠性和脚手架方面改进了 5.1，特别是在 MCP/Atl
 
 示例：
 
-```
-<extraction_spec>
+```text
+&lt;extraction_spec>
 You will extract structured data from tables/PDFs/emails into JSON.
 
 - Always follow this schema exactly (no extra fields):
@@ -1825,7 +1824,7 @@ You will extract structured data from tables/PDFs/emails into JSON.
   }
 - If a field is not present in the source, set it to null rather than guessing.
 - Before returning, quickly re-scan the source for any missed fields and correct omissions.
-</extraction_spec>
+&lt;/extraction_spec>
 ```
 
 对于多表/多文件提取，添加指导以：
@@ -1869,14 +1868,14 @@ GPT-5.2 在跨多个来源综合信息方面更可控和更有能力。
 *   规定输出形状和语气：设置对结构（Markdown、标题、比较表格）、清晰度（定义缩写、具体示例）和语气（对话式、人设自适应、非谄媚）的期望。
     
 
-```
-<web_search_rules>
+```text
+&lt;web_search_rules>
 - Act as an expert research assistant; default to comprehensive, well-structured answers.
 - Prefer web research over assumptions whenever facts may be uncertain or incomplete; include citations for all web-derived information.
 - Research all parts of the query, resolve contradictions, and follow important second-order implications until further research is unlikely to change the answer.
 - Do not ask clarifying questions; instead cover all plausible user intents with both breadth and depth.
 - Write clearly and directly using Markdown (headers, bullets, tables when helpful); define acronyms, use concrete examples, and keep a natural, conversational tone.
-</web_search_rules>
+&lt;/web_search_rules>
 ```
 
 ## 10\. 结论
@@ -2014,7 +2013,7 @@ GPT-5.1 旨在为各种智能体和编码任务平衡智能和速度，同时引
 3.  **编码智能体：** 如果你正在开发编码智能体，将你的 apply\_patch 迁移到我们新的命名工具实现。
 4.  **指令遵循：** 对于其他行为问题，GPT-5.1 在指令遵循方面表现出色，你应该能够通过检查冲突指令和保持清晰来显著塑造行为。
 
-我们还发布了 GPT-5.1-codex。该模型的行为与 GPT-5.1 有些不同，我们建议你查看 [Codex 提示指南](/cookbook/examples/gpt-5/codex_prompting_guide) 了解更多信息。API 中当前的 Codex 模型是 `gpt-5.2-codex`（参见 [模型页面](/api/docs/models/gpt-5.2-codex)）。
+我们还发布了 GPT-5.1-codex。该模型的行为与 GPT-5.1 有些不同，我们建议你查看 [Codex 提示指南]( https://cdn.openai.com/API/docs/cookbook/examples/gpt-5/codex_prompting_guide) 了解更多信息。API 中当前的 Codex 模型是 `gpt-5.2-codex`（参见 [模型页面](/models/gpt-5.2-codex)）。
 
 ## 智能体可控性
 
@@ -2028,8 +2027,8 @@ GPT-5.1 的个性和响应风格可以适应你的用例。虽然冗长度可通
 
 下面的示例提示词展示了我们如何为客户支持智能体塑造个性，重点是在解决问题时平衡适当的直接性和温暖度。
 
-```
-<final_answer_formatting>
+```text
+&lt;final_answer_formatting>
 You value clarity, momentum, and respect measured by usefulness rather than pleasantries. Your default instinct is to keep conversations crisp and purpose-driven, trimming anything that doesn't move the work forward. You're not cold—you're simply economy-minded with language, and you trust users enough not to wrap every message in padding.
 
 - Adaptive politeness:
@@ -2050,13 +2049,13 @@ You value clarity, momentum, and respect measured by usefulness rather than plea
 
 - Underlying principle:
   - Your communication philosophy is "respect through momentum." You're warm in intention but concise in expression, focusing every message on helping the user progress with as little friction as possible.
-</final_answer_formatting>
+&lt;/final_answer_formatting>
 ```
 
 在下面的提示词中，我们包含了约束编码智能体响应的部分——对小更改简短，对更详细的查询更长。我们还指定了最终响应中允许的代码量以避免大块代码。
 
-```
-<final_answer_formatting>
+```text
+&lt;final_answer_formatting>
 - Final answer compactness rules (enforced):
   - Tiny/small single-file change (≤ ~10 lines): 2–5 sentences or ≤3 bullets. No headings. 0–1 short snippet (≤3 lines) only if essential.
   - Medium change (single area or a few files): ≤6 bullets or 6–10 sentences. At most 1–2 short snippets total (≤8 lines each).
@@ -2072,17 +2071,17 @@ You value clarity, momentum, and respect measured by usefulness rather than plea
 - Citing code when it illustrates better than words — Prefer natural-language references (file/symbol/function) over code fences in the final answer. Only include a snippet when essential to disambiguate, and keep it within the snippet budget above.
 - Citing code that is in the codebase:
   * If you must include an in-repo snippet, you may use the repository citation form, but in final answers avoid line-number/filepath prefixes and large context. Do not include more than 1–2 short snippets total.
-</final_answer_formatting>
+&lt;/final_answer_formatting>
 ```
 
 过多的输出长度可以通过调整 verbosity 参数来缓解，并通过提示进一步减少，因为 GPT-5.1 很好地遵循具体的长度指导：
 
-```
-<output_verbosity_spec>
+```text
+&lt;output_verbosity_spec>
 - Respond in plain text styled in Markdown, using at most 2 concise sentences.
 - Lead with what you did (or found) and context only if needed.
 - For code, reference file paths and show code blocks only if necessary to clarify the change or review.
-</output_verbosity_spec>
+&lt;/output_verbosity_spec>
 ```
 
 ### 引出用户更新
@@ -2091,18 +2090,18 @@ You value clarity, momentum, and respect measured by usefulness rather than plea
 
 当时机正确时，模型将能够分享映射到执行当前状态的即时理解。在下面的提示词添加中，我们定义了什么类型的前导语有用和无用。
 
-```
-<user_updates_spec>
+```text
+&lt;user_updates_spec>
 You'll work for stretches with tool calls — it's critical to keep the user updated as you work.
 
-<frequency_and_length>
+&lt;frequency_and_length>
 - Send short updates (1–2 sentences) every few tool calls when there are meaningful changes.
 - Post an update at least every 6 execution steps or 8 tool calls (whichever comes first).
 - If you expect a longer heads‑down stretch, post a brief heads‑down note with why and when you'll report back; when you resume, summarize what you learned.
 - Only the initial plan, plan updates, and final recap can be longer, with multiple bullets and paragraphs
-</frequency_and_length>
+&lt;/frequency_and_length>
 
-<content>
+&lt;content>
 - Before the first tool call, give a quick plan with goal, constraints, next steps.
 - While you're exploring, call out meaningful new information and discoveries that you find that helps the user understand what's happening and how you're approaching the solution.
 - Provide additional brief lower-level context about more granular updates
@@ -2112,16 +2111,16 @@ You'll work for stretches with tool calls — it's critical to keep the user upd
 - Do not commit to optional checks (type/build/tests/UI verification/repo-wide audits) unless you will do them in-session. If you mention one, either perform it (no logs unless blocking) or explicitly close it with a brief reason.
 - If you change the plan (e.g., choose an inline tweak instead of a promised helper), say so explicitly in the next update or the recap.
 - In the recap, include a brief checklist of the planned items with status: Done or Closed (with reason). Do not leave any stated item unaddressed.
-</content>
-</user_updates_spec>
+&lt;/content>
+&lt;/user_updates_spec>
 ```
 
 在较长运行的模型执行中，提供快速的初始 assistant 消息可以改善感知延迟和用户体验。我们可以通过清晰的提示在 GPT-5.1 中实现此行为。
 
-```
-<user_update_immediacy>
+```text
+&lt;user_update_immediacy>
 Always explain what you're doing in a commentary message FIRST, BEFORE sampling an analysis thinking message. This is critical in order to communicate immediately to the user.
-</user_update_immediacy>
+&lt;/user_update_immediacy>
 ```
 
 ## 优化智能和指令遵循
@@ -2132,12 +2131,12 @@ GPT-5.1 会非常关注你提供的指令，包括工具使用、并行性和解
 
 在长智能体任务中，我们注意到 GPT-5.1 可能在没有达到完整解决方案的情况下过早结束，但我们发现此行为是可提示的。在以下指令中，我们告诉模型避免过早终止和不必要的后续问题。
 
-```
-<solution_persistence>
+```text
+&lt;solution_persistence>
 - Treat yourself as an autonomous senior pair-programmer: once the user gives a direction, proactively gather context, plan, implement, test, and refine without waiting for additional prompts at each step.
 - Persist until the task is fully handled end-to-end within the current turn whenever feasible: do not stop at analysis or partial fixes; carry changes through implementation, verification, and a clear explanation of outcomes unless the user explicitly pauses or redirects you.
 - Be extremely biased for action. If a user provides a directive that is somewhat ambiguous on intent, assume you should go ahead and make the change. If the user asks a question like "should we do x?" and your answer is "yes", you should also go ahead and perform the action. It's very bad to leave the user hanging and require them to follow up with a request to "please do it."
-</solution_persistence>
+&lt;/solution_persistence>
 ```
 
 ### 工具调用格式
@@ -2167,16 +2166,16 @@ GPT-5.1 会非常关注你提供的指令，包括工具使用、并行性和解
 
 在提示词中，你可能有一个引用该工具的部分如下：
 
-```
-<reservation_tool_usage_rules>
+```text
+&lt;reservation_tool_usage_rules>
 - When the user asks to book, reserve, or schedule a table, you MUST call `create_reservation`.
 - Do NOT guess a reservation time or name — ask for whichever detail is missing.
 - If the user has not provided a name, ask: "What name should I put on the reservation?"
 - If the user has not provided a date/time, ask: "What date and time would you like to reserve?"
 - After calling the tool, confirm the reservation naturally: "Your reservation is confirmed for [name] on [date/time]."
-</tool_usage_rules>
+&lt;/tool_usage_rules>
 
-<reservation_tool_example>
+&lt;reservation_tool_example>
 *Example 1:*
 User: "Book a table for Sarah tomorrow at 7pm."
 Assistant → (calls tool) →
@@ -2194,7 +2193,7 @@ Assistant → (calls tool) →
 `{"name": "create_reservation", "arguments": { "name": "Daniel", "datetime": "2025-10-31T18:00" } }`
 Tool returns: `{ "confirmation_number": "R67890" }`
 Assistant: "Done! Your reservation for Daniel at 6:00pm tonight is confirmed. The confirmation number is R67890."
-</reservation_tool_example>
+&lt;/reservation_tool_example>
 ```
 
 GPT-5.1 还更高效地执行并行工具调用。当扫描代码库或从向量存储检索时，启用并行工具调用并在工具描述中鼓励模型使用并行性是一个好的起点。在系统提示词中，你可以通过提供一些允许的并行性示例来强化并行工具使用。示例指令可能如下：
@@ -2205,7 +2204,7 @@ Parallelize tool calls whenever possible. Batch reads (read_file) and edits (app
 
 ### 使用 "none" 推理模式提高效率
 
-GPT-5.1 引入了新的推理模式：`none`。与 GPT-5 之前的 `minimal` 设置不同，`none` 强制模型永远不使用推理 token，使其在使用上更类似于 GPT-4.1、GPT-4o 和其他之前的非推理模型。重要的是，开发者现在可以使用 `none` 配合托管工具如 [web search](/api/docs/guides/tools-web-search?api-mode=responses) 和 [file search](/api/docs/guides/tools?tool-type=file-search)，自定义函数调用性能也大幅改善。考虑到这一点，[之前关于提示非推理模型的指导](/cookbook/examples/gpt4-1_prompting_guide) 如 GPT-4.1 也适用于此，包括使用 few-shot 提示和高质量工具描述。
+GPT-5.1 引入了新的推理模式：`none`。与 GPT-5 之前的 `minimal` 设置不同，`none` 强制模型永远不使用推理 token，使其在使用上更类似于 GPT-4.1、GPT-4o 和其他之前的非推理模型。重要的是，开发者现在可以使用 `none` 配合托管工具如 [web search](/guides/tools-web-search?api-mode=responses) 和 [file search](/guides/tools?tool-type=file-search)，自定义函数调用性能也大幅改善。考虑到这一点，[之前关于提示非推理模型的指导]( https://cdn.openai.com/API/docs/cookbook/examples/gpt4-1_prompting_guide) 如 GPT-4.1 也适用于此，包括使用 few-shot 提示和高质量工具描述。
 
 虽然 GPT-5.1 在 `none` 模式下不使用推理 token，但我们发现提示模型仔细思考它计划调用哪些函数可以提高准确性。
 
@@ -2229,8 +2228,8 @@ Remember, you are an agent - please keep going until the user's query is complet
 
 我们为长时间运行任务推荐实现的一个工具是规划工具。你可能注意到推理模型在其推理摘要中进行规划。虽然这在当下很有帮助，但可能难以跟踪模型相对于查询执行的位置。
 
-```
-<plan_tool_usage>
+```text
+&lt;plan_tool_usage>
 - For medium or larger tasks (e.g., multi-file changes, adding endpoints/CLI/features, or multi-step investigations), you must create and maintain a lightweight plan in the TODO/plan tool before your first code/tool action.
 - Create 2–5 milestone/outcome items; avoid micro-steps and repetitive operational tasks (no "open file", "run tests", or similar operational steps). Never use a single catch-all item like "implement the entire feature".
 - Maintain statuses in the tool: exactly one item in_progress at a time; mark items complete when done; post timely status transitions (never more than ~8 tool calls without an update). Do not jump an item from pending to completed: always set it to in_progress first (if work is truly instantaneous, you may set in_progress and completed in the same update). Do not batch-complete multiple items after the fact.
@@ -2241,7 +2240,7 @@ Remember, you are an agent - please keep going until the user's query is complet
 - Pre-flight check: before any non-trivial code change (e.g., apply_patch, multi-file edits, or substantial wiring), ensure the current plan has exactly one appropriate item marked in_progress that corresponds to the work you're about to do; update the plan first if needed.
 - Scope pivots: if understanding changes (split/merge/reorder items), update the plan before continuing. Do not let the plan go stale while coding.
 - Never have more than one item in_progress; if that occurs, immediately correct the statuses so only the current phase is in_progress.
-<plan_tool_usage>
+&lt;plan_tool_usage>
 ```
 
 规划工具可以用最小的脚手架使用。在我们的规划工具实现中，我们传递一个 merge 参数以及一个待办事项列表。列表包含简短描述、任务的当前状态和分配给它的 ID。下面是 GPT-5.1 可能进行的记录其状态的函数调用示例。
@@ -2271,15 +2270,15 @@ Remember, you are an agent - please keep going until the user's query is complet
 
 在构建前端界面时，GPT-5.1 可以被引导产生匹配你视觉设计系统的网站。我们建议使用 Tailwind 来渲染 CSS，你可以进一步定制以满足你的设计指南。在下面的示例中，我们定义了一个设计系统来约束 GPT-5.1 生成的颜色。
 
-```
-<design_system_enforcement>
+```text
+&lt;design_system_enforcement>
 - Tokens-first: Do not hard-code colors (hex/hsl/oklch/rgb) in JSX/CSS. All colors must come from globals.css variables (e.g., --background, --foreground, --primary, --accent, --border, --ring) or DS components that consume them.
 - Introducing a brand or accent? Before styling, add/extend tokens in globals.css under :root and .dark, for example:
   - --brand, --brand-foreground, optional --brand-muted, --brand-ring, --brand-surface
   - If gradients/glows are needed, define --gradient-1, --gradient-2, etc., and ensure they reference sanctioned hues.
 - Consumption: Use Tailwind/CSS utilities wired to tokens (e.g., bg-[hsl(var(--primary))], text-[hsl(var(--foreground))], ring-[hsl(var(--ring))]). Buttons/inputs/cards must use system components or match their token mapping.
 - Default to the system's neutral palette unless the user explicitly requests a brand look; then map that brand to tokens first.
-</design_system_enforcement>
+&lt;/design_system_enforcement>
 ```
 
 ## GPT-5.1 中的新工具类型
@@ -2288,7 +2287,7 @@ GPT-5.1 已在编码用例中常用的特定工具上进行了后训练。要与
 
 ### 使用 apply\_patch
 
-apply\_patch 工具让 GPT-5.1 使用结构化 diff 在你的代码库中创建、更新和删除文件。模型不仅仅是建议编辑，而是发出你的应用程序应用然后报告的 patch 操作，实现迭代的、多步骤的代码编辑工作流。你可以在 [GPT-4.1 提示指南](/cookbook/examples/gpt4-1_prompting_guide#:~:text=PYTHON_TOOL_DESCRIPTION%20%3D%20%22%22%22This,an%20exclamation%20mark.) 中找到额外的使用详情和上下文。
+apply\_patch 工具让 GPT-5.1 使用结构化 diff 在你的代码库中创建、更新和删除文件。模型不仅仅是建议编辑，而是发出你的应用程序应用然后报告的 patch 操作，实现迭代的、多步骤的代码编辑工作流。你可以在 [GPT-4.1 提示指南]( https://cdn.openai.com/API/docs/cookbook/examples/gpt4-1_prompting_guide#:~:text=PYTHON_TOOL_DESCRIPTION%20%3D%20%22%22%22This,an%20exclamation%20mark.) 中找到额外的使用详情和上下文。
 
 使用 GPT-5.1，你可以将 apply\_patch 作为新的工具类型使用，无需为工具编写自定义描述。描述和处理通过 Responses API 管理。在底层，此实现使用自由格式函数调用而不是 JSON 格式。在测试中，命名函数将 apply\_patch 失败率降低了 35%。
 
@@ -2302,7 +2301,7 @@ tools=[{"type": "apply_patch"}]
 
 当模型决定执行 apply\_patch 工具时，你将在响应流中收到 apply\_patch\_call 函数类型。在 operation 对象中，你将收到一个 type 字段（`create_file`、`update_file` 或 `delete_file` 之一）和要实现的 diff。
 
-```
+```text
 {
     "id": "apc_08f3d96c87a585390069118b594f7481a088b16cda7d9415fe",
     "type": "apply_patch_call",
@@ -2314,7 +2313,7 @@ tools=[{"type": "apply_patch"}]
         @@
         -def fib(n):
         +def fibonacci(n):
-        if n <= 1:
+        if n &lt;= 1:
             return n
         -    return fib(n-1) + fib(n-2)
         +    return fibonacci(n-1) + fibonacci(n-2)",
@@ -2466,15 +2465,15 @@ End every response with a subtle next step the user could take, phrased as a sug
 
 注意在此提示词中，我们还没有要求解决方案，只是根本原因分析。
 
-```
+```text
 You are a prompt engineer tasked with debugging a system prompt for an event-planning agent that uses tools to recommend venues, logistics, and sustainable options.
 
 You are given:
 
 1) The current system prompt:
-<system_prompt>
+&lt;system_prompt>
 [DUMP_SYSTEM_PROMPT]
-</system_prompt>
+&lt;/system_prompt>
 
 2) A small set of logged failures. Each log has:
 - query
@@ -2482,9 +2481,9 @@ You are given:
 - final_answer (shortened if needed)
 - eval_signal (e.g., thumbs_down, low rating, human grader, or user comment)
 
-<failure_tracess>
+&lt;failure_tracess>
 [DUMP_FAILURE_TRACES]
-</failure_traces>
+&lt;/failure_traces>
 
 Your tasks:
 
@@ -2508,14 +2507,14 @@ failure_modes:
 
 一旦你有了该分析，你可以运行第二个单独的调用，专注于实现：收紧提示词而不完全重写它。
 
-```
+```text
 You previously analyzed this system prompt and its failure modes.
 
 System prompt:
 
-<system_prompt>
+&lt;system_prompt>
 [DUMP_SYSTEM_PROMPT]
-</system_prompt>
+&lt;/system_prompt>
 
 Failure-mode analysis:
 [DUMP_FAILURE_MODE_ANALYSIS]
@@ -2560,7 +2559,7 @@ revised_system_prompt:
 
 总结一下，GPT-5.1 在 GPT-5 的基础上增加了对简单问题更快的思考、模型输出的可控性、编码用例的新工具，以及当你的任务不需要大量思考时将推理设置为 `none` 的选项。
 
-在 [文档](/api/docs/guides/latest-model) 中开始使用 GPT-5.1，或阅读 [博客文章](https://openai.com/index/gpt-5-1-for-developers/) 了解更多。
+在 [文档](/guides/latest-model) 中开始使用 GPT-5.1，或阅读 [博客文章](https://openai.com/index/gpt-5-1-for-developers/) 了解更多。
 
 GPT-5
 
@@ -2581,7 +2580,7 @@ GPT-5 代表了智能体任务性能、编码、原始智能和可控性方面�
 
 ## 智能体工作流可预测性
 
-我们在训练 GPT-5 时以开发者为中心：我们专注于改善工具调用、指令遵循和长上下文理解，以作为智能体应用的最佳基础模型。如果采用 GPT-5 用于智能体和工具调用流程，我们建议升级到 [Responses API](/api/docs/api-reference/responses)，其中推理在工具调用之间持久化，导致更高效和更智能的输出。
+我们在训练 GPT-5 时以开发者为中心：我们专注于改善工具调用、指令遵循和长上下文理解，以作为智能体应用的最佳基础模型。如果采用 GPT-5 用于智能体和工具调用流程，我们建议升级到 [Responses API]( https://developers.openai.com/api/reference/responses)，其中推理在工具调用之间持久化，导致更高效和更智能的输出。
 
 ### 控制智能体积极性
 
@@ -2594,8 +2593,8 @@ GPT-5 默认在智能体环境中尝试收集上下文时是彻底和全面的�
 *   切换到较低的 `reasoning_effort`。这减少了探索深度但提高了效率和延迟。许多工作流可以在 medium 甚至 low `reasoning_effort` 下以一致的结果完成。
 *   在你的提示词中定义你希望模型如何探索问题空间的清晰标准。这减少了模型探索和推理太多想法的需要：
 
-```
-<context_gathering>
+```text
+&lt;context_gathering>
 Goal: Get enough context fast. Parallelize discovery and stop as soon as you can act.
 
 Method:
@@ -2616,18 +2615,18 @@ Depth:
 Loop:
 - Batch search → minimal plan → complete task.
 - Search again only if validation fails or new unknowns appear. Prefer acting over more searching.
-</context_gathering>
+&lt;/context_gathering>
 ```
 
 如果你愿意最大限度地规定，你甚至可以设置固定的工具调用预算，如下所示。预算自然可以根据你期望的搜索深度而变化。
 
-```
-<context_gathering>
+```text
+&lt;context_gathering>
 - Search depth: very low
 - Bias strongly towards providing a correct answer as quickly as possible, even if it might not be fully correct.
 - Usually, this means an absolute maximum of 2 tool calls.
 - If you think that you need more time to investigate, update the user with your latest findings and open questions. You can proceed if the user confirms.
-</context_gathering>
+&lt;/context_gathering>
 ```
 
 当限制核心上下文收集行为时，明确为模型提供一个逃生舱口是有帮助的，使其更容易满足较短的上下文收集步骤。通常这以允许模型在不确定性下继续的条款形式出现，如上面示例中的 `"even if it might not be fully correct"`。
@@ -2636,13 +2635,13 @@ Loop:
 
 另一方面，如果你想鼓励模型自主性、增加工具调用持久性并减少澄清问题或以其他方式交还给用户的情况，我们建议增加 `reasoning_effort`，并使用如下提示词鼓励持久性和彻底的任务完成：
 
-```
-<persistence>
+```text
+&lt;persistence>
 - You are an agent - please keep going until the user's query is completely resolved, before ending your turn and yielding back to the user.
 - Only terminate your turn when you are sure that the problem is solved.
 - Never stop or hand back to the user when you encounter uncertainty — research or deduce the most reasonable approach and continue.
 - Do not ask the human to confirm or clarify assumptions, as you can always adjust later — decide what the most reasonable assumption is, proceed with it, and document it for the user's reference after you finish acting
-</persistence>
+&lt;/persistence>
 ```
 
 通常，清楚地说明智能体任务的停止条件、概述安全与不安全的操作，以及定义何时（如果有的话）模型可以交还给用户是有帮助的。例如，在购物工具集中，结账和支付工具应明确具有较低的不确定性阈值来要求用户澄清，而搜索工具应具有极高的阈值；同样，在编码设置中，删除文件工具应比 grep 搜索工具具有低得多的阈值。
@@ -2653,12 +2652,12 @@ Loop:
 
 你可以在提示词中引导工具前导语的频率、风格和内容——从每个工具调用的详细解释到简短的前期计划以及介于两者之间的一切。这是一个高质量前导语提示词的示例：
 
-```
-<tool_preambles>
+```text
+&lt;tool_preambles>
 - Always begin by rephrasing the user's goal in a friendly, clear, and concise manner, before calling any tools.
 - Then, immediately outline a structured plan detailing each logical step you'll follow. - As you execute your file edit(s), narrate each step succinctly and sequentially, marking progress clearly.
 - Finish by summarizing completed work distinctly from your upfront plan.
-</tool_preambles>
+&lt;/tool_preambles>
 ```
 
 这是一个可能响应此类提示词发出的工具前导语示例——这样的前导语可以大幅改善用户跟随你的智能体工作的能力，随着工作变得更复杂：

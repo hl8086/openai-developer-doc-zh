@@ -1,4 +1,3 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/tools-computer-use -->
 
 Computer use 让模型能够通过用户界面操作软件。它可以检查截图、返回界面操作供你的代码执行，或通过自定义工具链混合视觉和编程方式与 UI 交互。
 
@@ -1321,7 +1320,7 @@ def capture_screenshot(vm):
 
 将该截图作为 `computer_call_output` 项发送回去：
 
-对于 Computer use，建议在截图输入上使用 `detail: "original"`。这会保留完整的截图分辨率（最高 10.24M 像素），并提高点击精度。如果 `detail: "original"` 使用了太多 token，你可以在发送到 API 之前缩小图像，并确保将模型生成的坐标从缩小后的坐标空间重新映射到原始图像的坐标空间。避免对 computer use 任务使用 `high` 或 `low` 图像细节级别。缩小时，我们观察到 1440x900 和 1600x900 桌面分辨率表现良好。有关图像输入细节级别的更多信息，请参阅[图像和视觉指南](/api/docs/guides/images-vision)。
+对于 Computer use，建议在截图输入上使用 `detail: "original"`。这会保留完整的截图分辨率（最高 10.24M 像素），并提高点击精度。如果 `detail: "original"` 使用了太多 token，你可以在发送到 API 之前缩小图像，并确保将模型生成的坐标从缩小后的坐标空间重新映射到原始图像的坐标空间。避免对 computer use 任务使用 `high` 或 `low` 图像细节级别。缩小时，我们观察到 1440x900 和 1600x900 桌面分辨率表现良好。有关图像输入细节级别的更多信息，请参阅[图像和视觉指南](/guides/images-vision)。
 
 **发送更新后的截图**
 
@@ -1551,7 +1550,7 @@ async function main(
 
   const conversation: any[] = [];
   const js_output: any[] = [];
-  const sandbox: Record<string, any> = {
+  const sandbox: Record&lt;string, any> = {
     console: {
       log: (...xs: any[]) => {
         js_output.push({
@@ -2015,7 +2014,7 @@ async function main(
 
   const conversation: any[] = [];
   const js_output: any[] = [];
-  const sandbox: Record<string, any> = {
+  const sandbox: Record&lt;string, any> = {
     console: {
       log: (...xs: any[]) => {
         js_output.push({

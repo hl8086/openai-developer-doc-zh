@@ -1,4 +1,3 @@
-<!-- Source: https://developers.openai.com/api/docs/actions/production -->
 
 ## 速率限制
 
@@ -24,7 +23,7 @@ ChatGPT 将从 [chatgpt-connectors.json](https://openai.com/chatgpt-connectors.j
 
 在定义 action 时，你可以将单一认证类型（OAuth 或 API key）与不需要认证的端点混合使用。
 
-你可以在我们的 [actions 认证页面](/api/docs/actions/authentication) 了解更多关于 action 认证的信息。
+你可以在我们的 [actions 认证页面](/actions/authentication) 了解更多关于 action 认证的信息。
 
 ## Open API 规范限制
 

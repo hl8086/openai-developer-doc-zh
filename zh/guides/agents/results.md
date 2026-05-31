@@ -1,4 +1,3 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/agents/results -->
 
 当你运行一个 agent 时，结果不仅仅是最终答案。它还是交接边界、下一轮对话的延续接口，以及运行暂停等待审核时的可恢复快照。
 
@@ -45,8 +44,8 @@ SDK 还为需要超越上述高级接口的应用暴露了更丰富的运行项�
 
 一旦你知道哪些结果接口重要，继续阅读解释这些接口如何产生或检查的指南。
 
-[运行 agents - 将结果处理连接回运行时循环和延续策略。](/api/docs/guides/agents/running-agents)
+[运行 agents - 将结果处理连接回运行时循环和延续策略。](/guides/agents/running-agents)
 
-[护栏和人工审核 - 了解暂停的运行如何返回中断和可恢复状态。](/api/docs/guides/agents/guardrails-approvals)
+[护栏和人工审核 - 了解暂停的运行如何返回中断和可恢复状态。](/guides/agents/guardrails-approvals)
 
-[集成和可观测性 - 当你需要检查更丰富的工作流记录时使用追踪。](/api/docs/guides/agents/integrations-observability)
+[集成和可观测性 - 当你需要检查更丰富的工作流记录时使用追踪。](/guides/agents/integrations-observability)

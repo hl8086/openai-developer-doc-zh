@@ -1,6 +1,5 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/tools-connectors-mcp -->
 
-除了通过[函数调用](/api/docs/guides/function-calling)向模型提供的工具外，你还可以使用**连接器（connectors）**和**远程 MCP 服务器**为模型赋予新的能力。这些工具使模型能够在需要响应用户提示时连接并控制外部服务。这些工具调用可以自动允许，也可以限制为需要你作为开发者的明确批准。
+除了通过[函数调用](/guides/function-calling)向模型提供的工具外，你还可以使用**连接器（connectors）**和**远程 MCP 服务器**为模型赋予新的能力。这些工具使模型能够在需要响应用户提示时连接并控制外部服务。这些工具调用可以自动允许，也可以限制为需要你作为开发者的明确批准。
 
 *   **连接器**是 OpenAI 维护的 MCP 封装，用于连接 Google Workspace 或 Dropbox 等热门服务，类似于 [ChatGPT](https://chatgpt.com) 中可用的连接器。
 *   **远程 MCP 服务器**可以是公共互联网上任何实现了远程 [Model Context Protocol](https://modelcontextprotocol.io/introduction)（MCP）协议的服务器。
@@ -9,11 +8,11 @@
 
 ## Secure MCP Tunnel
 
-如果你的 MCP 服务器是私有的、本地部署的或位于防火墙之后，请使用 [Secure MCP Tunnel](/api/docs/guides/secure-mcp-tunnels) 将其连接到支持的 OpenAI 产品，而无需将服务器暴露在公共互联网上。从 [openai/tunnel-client](https://github.com/openai/tunnel-client/releases/latest) 下载最新的公开版本。
+如果你的 MCP 服务器是私有的、本地部署的或位于防火墙之后，请使用 [Secure MCP Tunnel](/guides/secure-mcp-tunnels) 将其连接到支持的 OpenAI 产品，而无需将服务器暴露在公共互联网上。从 [openai/tunnel-client](https://github.com/openai/tunnel-client/releases/latest) 下载最新的公开版本。
 
 ## 快速开始
 
-查看以下示例，了解远程 MCP 服务器和连接器如何通过 [Responses API](/api/docs/api-reference/responses/create) 工作。连接器和远程 MCP 服务器都可以使用 `mcp` 内置工具类型。
+查看以下示例，了解远程 MCP 服务器和连接器如何通过 [Responses API]( https://developers.openai.com/api/reference/responses/create) 工作。连接器和远程 MCP 服务器都可以使用 `mcp` 内置工具类型。
 
 Using remote MCP serversUsing connectors
 
@@ -123,7 +122,7 @@ curl https://api.openai.com/v1/responses \
         "type": "mcp",
         "server_label": "Dropbox",
         "connector_id": "connector_dropbox",
-        "authorization": "<oauth access token>",
+        "authorization": "&lt;oauth access token>",
         "require_approval": "never"
       }
     ],
@@ -141,7 +140,7 @@ const resp = await client.responses.create({
       type: "mcp",
       server_label: "Dropbox",
       connector_id: "connector_dropbox",
-      authorization: "<oauth access token>",
+      authorization: "&lt;oauth access token>",
       require_approval: "never",
     },
   ],
@@ -162,7 +161,7 @@ resp = client.responses.create(
             "type": "mcp",
             "server_label": "Dropbox",
             "connector_id": "connector_dropbox",
-            "authorization": "<oauth access token>",
+            "authorization": "&lt;oauth access token>",
             "require_approval": "never",
         },
     ],
@@ -242,7 +241,7 @@ API 将在模型响应的 `output` 数组中返回新的项目。如果模型决
 
 ## 工作原理
 
-MCP 工具（适用于远程 MCP 服务器和连接器）在 [Responses API](/api/docs/api-reference/responses/create) 中可用于大多数最新模型。在[此处](/api/docs/models)检查你的模型的 MCP 工具兼容性。使用 MCP 工具时，你只需为导入工具定义或进行工具调用时使用的[令牌](/api/docs/pricing)付费。每次工具调用不涉及额外费用。
+MCP 工具（适用于远程 MCP 服务器和连接器）在 [Responses API]( https://developers.openai.com/api/reference/responses/create) 中可用于大多数最新模型。在[此处](/models)检查你的模型的 MCP 工具兼容性。使用 MCP 工具时，你只需为导入工具定义或进行工具调用时使用的[令牌](/pricing)付费。每次工具调用不涉及额外费用。
 
 下面，我们将逐步介绍 API 调用 MCP 工具时的流程。
 
@@ -278,7 +277,7 @@ MCP 工具（适用于远程 MCP 服务器和连接器）在 [Responses API](/ap
 }
 ```
 
-只要 `mcp_list_tools` 项存在于 API 请求的上下文中，API 就不会在[对话](/api/docs/guides/conversation-state)的每个轮次中再次从 MCP 服务器获取工具列表。我们建议你在每次对话或工作流执行中将此项保留在模型的上下文中，以优化延迟。
+只要 `mcp_list_tools` 项存在于 API 请求的上下文中，API 就不会在[对话](/guides/conversation-state)的每个轮次中再次从 MCP 服务器获取工具列表。我们建议你在每次对话或工作流执行中将此项保留在模型的上下文中，以优化延迟。
 
 #### 过滤工具
 
@@ -507,7 +506,7 @@ OpenAIResponse response2 = (OpenAIResponse)client.CreateResponse([
 Console.WriteLine(response2.GetOutputText());
 ```
 
-这里我们使用 `previous_response_id` 参数将这个新的 Response 与生成审批请求的前一个 Response 链接起来。但你也可以将[一个响应的输出作为另一个响应的输入](/api/docs/guides/conversation-state#manually-manage-conversation-state)传递，以最大程度地控制进入模型上下文的内容。
+这里我们使用 `previous_response_id` 参数将这个新的 Response 与生成审批请求的前一个 Response 链接起来。但你也可以将[一个响应的输出作为另一个响应的输入](/guides/conversation-state#manually-manage-conversation-state)传递，以最大程度地控制进入模型上下文的内容。
 
 如果你觉得可以信任某个远程 MCP 服务器，可以选择跳过审批以降低延迟。为此，你可以将 MCP 工具的 `require_approval` 参数设置为一个对象，列出你想跳过审批的工具，如下所示，或将其设置为 `'never'` 以跳过该远程 MCP 服务器中所有工具的审批。
 
@@ -914,7 +913,7 @@ Sharepoint
 
 ## 延迟加载 MCP 服务器中的工具
 
-如果你正在使用[工具搜索](/api/docs/guides/tools-tool-search)，可以延迟加载 MCP 服务器暴露的函数，直到模型决定需要它们时再加载。为此，在 MCP 服务器工具定义上设置 `defer_loading: true`。
+如果你正在使用[工具搜索](/guides/tools-tool-search)，可以延迟加载 MCP 服务器暴露的函数，直到模型决定需要它们时再加载。为此，在 MCP 服务器工具定义上设置 `defer_loading: true`。
 
 当你延迟加载 MCP 服务器时，模型仍然可以使用 MCP 服务器的标签和描述来决定何时搜索它，但各个函数定义仅在需要时才加载。这有助于减少整体令牌使用量，对于暴露大量函数的 MCP 服务器最为有用。
 
@@ -971,14 +970,14 @@ MCP 服务器可能会意外更新工具行为，可能导致意外或恶意行�
 
 MCP 工具与零数据保留和数据驻留兼容，但需要注意的是，MCP 服务器是第三方服务，发送到 MCP 服务器的数据受其数据保留和数据驻留政策约束。
 
-换句话说，如果你是一个数据驻留在欧洲的组织，OpenAI 将限制客户内容的推理和存储在欧洲进行，直到通信或数据发送到 MCP 服务器为止。你有责任确保 MCP 服务器也遵守你可能有的任何零数据保留或数据驻留要求。在[此处](/api/docs/guides/your-data)了解更多关于零数据保留和数据驻留的信息。
+换句话说，如果你是一个数据驻留在欧洲的组织，OpenAI 将限制客户内容的推理和存储在欧洲进行，直到通信或数据发送到 MCP 服务器为止。你有责任确保 MCP 服务器也遵守你可能有的任何零数据保留或数据驻留要求。在[此处](/guides/your-data)了解更多关于零数据保留和数据驻留的信息。
 
 ## 使用说明
 
 | API 可用性 | 速率限制 | 备注 |
 | --- | --- | --- |
-| [Responses](/api/docs/api-reference/responses)[Chat Completions](/api/docs/api-reference/chat)[Assistants](/api/docs/api-reference/assistants) | **Tier 1**  
+| [Responses]( https://developers.openai.com/api/reference/responses)[Chat Completions]( https://developers.openai.com/api/reference/chat)[Assistants]( https://developers.openai.com/api/reference/assistants) | **Tier 1**  
 200 RPM**Tier 2 and 3**  
 1000 RPM**Tier 4 and 5**  
-2000 RPM | [定价](/api/docs/pricing#built-in-tools)  
-[ZDR 和数据驻留](/api/docs/guides/your-data) |
+2000 RPM | [定价](/pricing#built-in-tools)  
+[ZDR 和数据驻留](/guides/your-data) |

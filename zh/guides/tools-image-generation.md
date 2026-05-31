@@ -1,8 +1,7 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/tools-image-generation -->
 
 图像生成工具允许你使用文本提示词生成图像，并可选择性地提供图像输入。它使用 GPT Image 模型，包括 `gpt-image-2`、`gpt-image-1.5`、`gpt-image-1` 和 `gpt-image-1-mini`，并自动优化文本输入以提升性能。
 
-要了解更多关于图像生成的信息，请参阅我们专门的[图像生成指南](/api/docs/guides/image-generation?api=responses)。
+要了解更多关于图像生成的信息，请参阅我们专门的[图像生成指南](/guides/image-generation?api=responses)。
 
 ## 用法
 
@@ -58,13 +57,13 @@ if image_data:
         f.write(base64.b64decode(image_base64))
 ```
 
-你可以使用文件 ID 或 base64 数据[提供输入图像](/api/docs/guides/image-generation?image-generation-model=gpt-image#edit-images)。
+你可以使用文件 ID 或 base64 数据[提供输入图像](/guides/image-generation?image-generation-model=gpt-image#edit-images)。
 
 要强制触发图像生成工具调用，你可以将参数 `tool_choice` 设置为 `{"type": "image_generation"}`。
 
 ### 工具选项
 
-你可以为[图像生成工具](/api/docs/api-reference/responses/create#responses-create-tools)配置以下输出选项作为参数：
+你可以为[图像生成工具]( https://developers.openai.com/api/reference/responses/create#responses-create-tools)配置以下输出选项作为参数：
 
 *   Size：图像尺寸，例如 1024 × 1024 或 1024 × 1536
 *   Quality：渲染质量，例如 low、medium 或 high
@@ -75,9 +74,9 @@ if image_data:
 
 `size`、`quality` 和 `background` 支持 `auto` 选项，模型将根据提示词自动选择最佳选项。
 
-`gpt-image-2` 支持满足其[分辨率约束](/api/docs/guides/image-generation#size-and-quality-options)的灵活 `size` 值。它目前不支持透明背景，因此带有 `background: "transparent"` 的请求会失败。
+`gpt-image-2` 支持满足其[分辨率约束](/guides/image-generation#size-and-quality-options)的灵活 `size` 值。它目前不支持透明背景，因此带有 `background: "transparent"` 的请求会失败。
 
-有关可用选项的更多详细信息，请参阅[图像生成指南](/api/docs/guides/image-generation#customize-image-output)。
+有关可用选项的更多详细信息，请参阅[图像生成指南](/guides/image-generation#customize-image-output)。
 
 当使用 Responses API 图像生成工具时，支持的 GPT Image 模型可以选择是生成新图像还是编辑对话中已有的图像。可选的 `action` 参数控制此行为：将 `action` 保持为 `auto` 以让模型选择是生成还是编辑，或将其设置为 `generate` 或 `edit` 来强制该行为。如果未指定，默认值为 `auto`。
 

@@ -1,4 +1,3 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/speech-to-text -->
 
 Audio API 提供两个语音转文字端点：
 
@@ -18,7 +17,7 @@ Audio API 提供两个语音转文字端点：
 
 文件上传目前限制为 25 MB，支持以下输入文件类型：`mp3`、`mp4`、`mpeg`、`mpga`、`m4a`、`wav` 和 `webm`。用于说话人分离的已知说话人参考片段在以数据 URL 形式提供时接受相同的格式。
 
-本指南适用于文件上传和有界音频请求。如果您的应用程序需要从麦克风、通话或媒体流中获取实时转录增量，请改用[实时转录](/api/docs/guides/realtime-transcription)。
+本指南适用于文件上传和有界音频请求。如果您的应用程序需要从麦克风、通话或媒体流中获取实时转录增量，请改用[实时转录](/guides/realtime-transcription)。
 
 ## 快速开始
 
@@ -125,7 +124,7 @@ curl --request POST \
   --form response_format=text
 ```
 
-[API 参考](/api/docs/api-reference/audio)包含可用参数的完整列表。
+[API 参考]( https://developers.openai.com/api/reference/audio)包含可用参数的完整列表。
 
 `gpt-4o-transcribe` 和 `gpt-4o-mini-transcribe` 支持 `json` 或 `text` 响应，并允许使用提示词和 logprobs。`gpt-4o-transcribe-diarize` 添加了说话人标签，但当音频超过 30 秒时需要 `chunking_strategy`（建议使用 `"auto"`），且不支持提示词、logprobs 或 `timestamp_granularities[]`。
 
@@ -263,7 +262,7 @@ Hello, my name is Wolfgang and I come from Germany. Where are you heading today?
 
 ## 时间戳
 
-默认情况下，转录 API 将以文本形式输出所提供音频的转录。[`timestamp_granularities[]` 参数](/api/docs/api-reference/audio/createTranscription#audio-createtranscription-timestamp_granularities)启用更结构化和带时间戳的 json 输出格式，时间戳可以在片段级别、单词级别或两者兼有。这为转录和视频编辑提供了单词级精度，允许删除与单个单词相关联的特定帧。
+默认情况下，转录 API 将以文本形式输出所提供音频的转录。[`timestamp_granularities[]` 参数]( https://developers.openai.com/api/reference/audio/createTranscription#audio-createtranscription-timestamp_granularities)启用更结构化和带时间戳的 json 输出格式，时间戳可以在片段级别、单词级别或两者兼有。这为转录和视频编辑提供了单词级精度，允许删除与单个单词相关联的特定帧。
 
 **时间戳选项**
 
@@ -332,7 +331,7 @@ _OpenAI 不对 PyDub 等第三方软件的可用性或安全性做任何保证�
 
 ## 提示词
 
-您可以使用[提示词](/api/docs/api-reference/audio/createTranscription#audio/createTranscription-prompt)来提高转录 API 生成的转录质量。
+您可以使用[提示词]( https://developers.openai.com/api/reference/audio/createTranscription#audio/createTranscription-prompt)来提高转录 API 生成的转录质量。
 
 **提示词**
 
@@ -398,7 +397,7 @@ curl --request POST \
 
 ### 流式转录已完成的音频录制
 
-如果您有一个已完成的音频录制，无论是因为它是一个音频文件还是您正在使用自己的轮次检测（如按键说话），您可以使用我们的转录 API 配合 `stream=True` 来接收[转录事件](/api/docs/api-reference/audio/transcript-text-delta-event)流，一旦模型完成该部分音频的转录就会立即发送。
+如果您有一个已完成的音频录制，无论是因为它是一个音频文件还是您正在使用自己的轮次检测（如按键说话），您可以使用我们的转录 API 配合 `stream=True` 来接收[转录事件]( https://developers.openai.com/api/reference/audio/transcript-text-delta-event)流，一旦模型完成该部分音频的转录就会立即发送。
 
 **流式转录**
 
@@ -462,7 +461,7 @@ curl --request POST \
 
 ### 流式转录正在进行的音频录制
 
-对于来自麦克风、通话或媒体流的实时音频，请使用[实时转录](/api/docs/guides/realtime-transcription)指南，而不是上面面向文件的流式路径。它涵盖了当前的转录会话流程和推荐的实时路径 [`gpt-realtime-whisper`](/api/docs/models/gpt-realtime-whisper)。
+对于来自麦克风、通话或媒体流的实时音频，请使用[实时转录](/guides/realtime-transcription)指南，而不是上面面向文件的流式路径。它涵盖了当前的转录会话流程和推荐的实时路径 [`gpt-realtime-whisper`](/models/gpt-realtime-whisper)。
 
 ## 提高可靠性
 

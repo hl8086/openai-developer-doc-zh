@@ -1,10 +1,9 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/batch -->
 
-了解如何使用 OpenAI 的 Batch API 发送异步请求组，享受 50% 的成本折扣、独立的显著更高速率限制池，以及明确的 24 小时完成时间。该服务非常适合处理不需要即时响应的任务。您也可以[在此处直接查看 API 参考](/api/docs/api-reference/batch)。
+了解如何使用 OpenAI 的 Batch API 发送异步请求组，享受 50% 的成本折扣、独立的显著更高速率限制池，以及明确的 24 小时完成时间。该服务非常适合处理不需要即时响应的任务。您也可以[在此处直接查看 API 参考]( https://developers.openai.com/api/reference/batch)。
 
 ## 概述
 
-虽然 OpenAI 平台的某些用途需要您发送同步请求，但在许多情况下，请求不需要即时响应，或者[速率限制](/api/docs/guides/rate-limits)阻止您快速执行大量查询。批处理任务通常在以下用例中很有帮助：
+虽然 OpenAI 平台的某些用途需要您发送同步请求，但在许多情况下，请求不需要即时响应，或者[速率限制](/guides/rate-limits)阻止您快速执行大量查询。批处理任务通常在以下用例中很有帮助：
 
 1.  运行评估
 2.  对大型数据集进行分类
@@ -25,14 +24,14 @@ Batch API 提供了一组简单的端点，允许您将一组请求收集到单�
 
 批处理从一个 `.jsonl` 文件开始，其中每一行包含对 API 的单个请求的详细信息。目前，可用的端点有：
 
-*   `/v1/responses`（[Responses API](/api/docs/api-reference/responses)）
-*   `/v1/chat/completions`（[Chat Completions API](/api/docs/api-reference/chat)）
-*   `/v1/embeddings`（[Embeddings API](/api/docs/api-reference/embeddings)）
-*   `/v1/completions`（[Completions API](/api/docs/api-reference/completions)）
-*   `/v1/moderations`（[Moderations 指南](/api/docs/guides/moderation)）
-*   `/v1/images/generations`（[Images API](/api/docs/api-reference/images)）
-*   `/v1/images/edits`（[Images API](/api/docs/api-reference/images)）
-*   `/v1/videos`（[视频生成指南](/api/docs/guides/video-generation)）
+*   `/v1/responses`（[Responses API]( https://developers.openai.com/api/reference/responses)）
+*   `/v1/chat/completions`（[Chat Completions API]( https://developers.openai.com/api/reference/chat)）
+*   `/v1/embeddings`（[Embeddings API]( https://developers.openai.com/api/reference/embeddings)）
+*   `/v1/completions`（[Completions API]( https://developers.openai.com/api/reference/completions)）
+*   `/v1/moderations`（[Moderations 指南](/guides/moderation)）
+*   `/v1/images/generations`（[Images API]( https://developers.openai.com/api/reference/images)）
+*   `/v1/images/edits`（[Images API]( https://developers.openai.com/api/reference/images)）
+*   `/v1/videos`（[视频生成指南](/guides/video-generation)）
 
 对于给定的输入文件，每行 `body` 字段中的参数与底层端点的参数相同。每个请求必须包含一个唯一的 `custom_id` 值，您可以在完成后使用它来引用结果。以下是一个包含 2 个请求的输入文件示例。请注意，每个输入文件只能包含对单个模型的请求。
 
@@ -97,7 +96,7 @@ Batch API 提供了一组简单的端点，允许您将一组请求收集到单�
 
 ### 2\. 上传批处理输入文件
 
-与我们的[微调 API](/api/docs/guides/model-optimization) 类似，您必须先上传输入文件，以便在启动批处理时正确引用它。使用 [Files API](/api/docs/api-reference/files) 上传您的 `.jsonl` 文件。
+与我们的[微调 API](/guides/model-optimization) 类似，您必须先上传输入文件，以便在启动批处理时正确引用它。使用 [Files API]( https://developers.openai.com/api/reference/files) 上传您的 `.jsonl` 文件。
 
 **为 Batch API 上传文件**
 
@@ -185,7 +184,7 @@ openai batches create \
   --completion-window 24h
 ```
 
-此请求将返回一个包含批次元数据的 [Batch 对象](/api/docs/api-reference/batch/object)：
+此请求将返回一个包含批次元数据的 [Batch 对象]( https://developers.openai.com/api/reference/batch/object)：
 
 ```
 {
@@ -258,7 +257,7 @@ openai batches retrieve \
 
 ### 5\. 检索结果
 
-批次完成后，您可以通过 Batch 对象的 `output_file_id` 字段向 [Files API](/api/docs/api-reference/files) 发出请求来下载输出，并将其写入您机器上的文件，在本例中为 `batch_output.jsonl`
+批次完成后，您可以通过 Batch 对象的 `output_file_id` 字段向 [Files API]( https://developers.openai.com/api/reference/files) 发出请求来下载输出，并将其写入您机器上的文件，在本例中为 `batch_output.jsonl`
 
 **检索批次结果**
 
@@ -365,7 +364,7 @@ openai batches list \
 
 ## 模型可用性
 
-Batch API 广泛适用于我们的大多数模型，但并非全部。请参阅[模型参考文档](/api/docs/models)以确保您使用的模型支持 Batch API。
+Batch API 广泛适用于我们的大多数模型，但并非全部。请参阅[模型参考文档](/models)以确保您使用的模型支持 Batch API。
 
 ## 速率限制
 

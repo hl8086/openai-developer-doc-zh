@@ -1,4 +1,3 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/tools-tool-search -->
 
 Tool search 允许模型根据需要动态搜索并将工具加载到模型的上下文中。这使你可以避免预先将所有工具定义加载到模型的上下文中，并且**可能有助于降低整体 token 使用量和成本**。为了实现最优的成本和延迟，tool search 的设计旨在**保留模型的缓存**。当模型发现新工具时，它们会被注入到上下文窗口的末尾。
 
@@ -7,11 +6,11 @@ Tool search 允许模型根据需要动态搜索并将工具加载到模型的�
 要激活 tool search，你必须做两件事：
 
 1.  在你的 `tools` 数组中添加 `tool_search` 作为工具。
-2.  如果你使用的是 [functions](/api/docs/guides/function-calling#defining-functions)，将你想要延迟加载的函数标记为 `defer_loading: true`。如果你使用的是 [MCP servers](/api/docs/guides/tools-connectors-mcp)，在 MCP server 工具定义上设置 `defer_loading: true`。
+2.  如果你使用的是 [functions](/guides/function-calling#defining-functions)，将你想要延迟加载的函数标记为 `defer_loading: true`。如果你使用的是 [MCP servers](/guides/tools-connectors-mcp)，在 MCP server 工具定义上设置 `defer_loading: true`。
 
 ### 尽可能使用命名空间
 
-你可以将 tool search 与延迟加载的 [functions](/api/docs/guides/function-calling#defining-functions)、[namespaces](/api/docs/guides/function-calling#defining-namespaces) 或 [MCP servers](/api/docs/guides/tools-connectors-mcp) 一起使用，但我们建议尽可能使用命名空间或 MCP servers。我们的模型主要是针对这些表面进行训练的，而且在这些场景下 token 节省通常更为显著。
+你可以将 tool search 与延迟加载的 [functions](/guides/function-calling#defining-functions)、[namespaces](/guides/function-calling#defining-namespaces) 或 [MCP servers](/guides/tools-connectors-mcp) 一起使用，但我们建议尽可能使用命名空间或 MCP servers。我们的模型主要是针对这些表面进行训练的，而且在这些场景下 token 节省通常更为显著。
 
 对于命名空间，`defer_loading` 适用于命名空间内的函数，而不是命名空间对象本身。
 
@@ -63,7 +62,7 @@ Tool search 允许模型根据需要动态搜索并将工具加载到模型的�
 
 ## 托管 tool search
 
-当你已经知道要让模型搜索的 [functions](/api/docs/guides/function-calling#defining-functions)、[namespaces](/api/docs/guides/function-calling#defining-namespaces) 或 [MCP servers](/api/docs/guides/tools-connectors-mcp) 的完整清单时，托管 tool search 是最简单的路径。你预先声明它们，添加 `{"type": "tool_search"}`，然后让 API 决定加载什么。
+当你已经知道要让模型搜索的 [functions](/guides/function-calling#defining-functions)、[namespaces](/guides/function-calling#defining-namespaces) 或 [MCP servers](/guides/tools-connectors-mcp) 的完整清单时，托管 tool search 是最简单的路径。你预先声明它们，添加 `{"type": "tool_search"}`，然后让 API 决定加载什么。
 
 **配置托管 tool search**
 
@@ -472,5 +471,5 @@ console.log(secondResponse.output);
 
 ## 相关指南
 
-*   使用 [function calling](/api/docs/guides/function-calling) 定义可调用的函数和自定义工具。
-*   使用 [Using tools](/api/docs/guides/tools) 了解 Responses 中更广泛的工具生态。
+*   使用 [function calling](/guides/function-calling) 定义可调用的函数和自定义工具。
+*   使用 [Using tools](/guides/tools) 了解 Responses 中更广泛的工具生态。

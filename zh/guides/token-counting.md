@@ -1,4 +1,3 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/token-counting -->
 
 Token 计数允许你在将请求发送给模型之前，确定该请求将使用多少输入 token。用途包括：
 
@@ -7,7 +6,7 @@ Token 计数允许你在将请求发送给模型之前，确定该请求将使�
 *   根据大小**路由请求**（例如，将较小的提示词发送给更快的模型）
 *   **避免意外**——不再需要基于字符数的估算来处理图片和文件
 
-[输入 token 计数端点](https://developers.openai.com/api/reference/python/resources/responses/subresources/input_tokens/methods/count)接受与 [Responses API](/api/docs/api-reference/responses/create) 相同的输入格式。传入文本、消息、图片、文件、工具或对话——API 将返回模型实际接收到的精确计数。
+[输入 token 计数端点](https://developers.openai.com/api/reference/python/resources/responses/subresources/input_tokens/methods/count)接受与 [Responses API]( https://developers.openai.com/api/reference/responses/create) 相同的输入格式。传入文本、消息、图片、文件、工具或对话——API 将返回模型实际接收到的精确计数。
 
 ## 为什么使用 token 计数 API？
 
@@ -255,7 +254,7 @@ input:
 YAML
 ```
 
-你可以使用 `file_id`（来自 [Files API](/api/docs/api-reference/files)）或 `image_url`（URL 或 base64 data URL）。详见[图片与视觉](/api/docs/guides/images-vision)。
+你可以使用 `file_id`（来自 [Files API]( https://developers.openai.com/api/reference/files)）或 `image_url`（URL 或 base64 data URL）。详见[图片与视觉](/guides/images-vision)。
 
 ## 计算带工具的 token
 
@@ -351,7 +350,7 @@ YAML
 
 ## 计算带文件的 token
 
-支持[文件输入](/api/docs/guides/pdf-files)——目前为 PDF。像使用 `responses.create` 一样传入 `file_id`、`file_url` 或 `file_data`。Token 计数反映模型完整处理后的输入。
+支持[文件输入](/guides/pdf-files)——目前为 PDF。像使用 `responses.create` 一样传入 `file_id`、`file_url` 或 `file_data`。Token 计数反映模型完整处理后的输入。
 
 ## API 参考
 

@@ -1,4 +1,3 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/realtime-server-controls -->
 
 Realtime API 允许客户端通过 WebRTC 或 SIP 直接连接到 API 服务器。然而，你很可能希望将工具使用和其他业务逻辑放在应用服务器上，以保持这些逻辑的私密性和客户端无关性。
 
@@ -8,7 +7,7 @@ Realtime API 允许客户端通过 WebRTC 或 SIP 直接连接到 API 服务器�
 
 ## 使用 WebRTC
 
-1.  在[建立对等连接](/api/docs/guides/realtime-webrtc)时，你需要从 Realtime API 获取并接收 SDP 响应来配置连接。如果你使用了 WebRTC 指南中的示例代码，大致如下：
+1.  在[建立对等连接](/guides/realtime-webrtc)时，你需要从 Realtime API 获取并接收 SDP 响应来配置连接。如果你使用了 WebRTC 指南中的示例代码，大致如下：
 
 ```
 const baseUrl = "https://api.openai.com/v1/realtime/calls";
@@ -31,7 +30,7 @@ const callId = location?.split("/").pop();
 console.log(callId);
 ```
 
-3.  在服务器上，你可以使用该通话 ID 通过 URL `wss://api.openai.com/v1/realtime?call_id=rtc_xxxxx` 来[监听事件和配置会话](/api/docs/guides/realtime-conversations)，就像从典型的 Realtime API WebSocket 连接一样，如下所示：
+3.  在服务器上，你可以使用该通话 ID 通过 URL `wss://api.openai.com/v1/realtime?call_id=rtc_xxxxx` 来[监听事件和配置会话](/guides/realtime-conversations)，就像从典型的 Realtime API WebSocket 连接一样，如下所示：
 
 ```
 import WebSocket from "ws";

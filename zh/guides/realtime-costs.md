@@ -1,6 +1,5 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/realtime-costs -->
 
-本文档描述了 Realtime API 的计费方式，并提供了优化成本的策略。语音代理会话在文本、音频和图像模态上累积输入和输出 token。流式翻译和流式转录会话按音频时长计费。价格因模型而异，具体价格列在模型页面上（例如 [`gpt-realtime-2`](/api/docs/models/gpt-realtime-2)、[`gpt-realtime-translate`](/api/docs/models/gpt-realtime-translate)、[`gpt-realtime-whisper`](/api/docs/models/gpt-realtime-whisper) 和 [`gpt-realtime`](/api/docs/models/gpt-realtime)）。
+本文档描述了 Realtime API 的计费方式，并提供了优化成本的策略。语音代理会话在文本、音频和图像模态上累积输入和输出 token。流式翻译和流式转录会话按音频时长计费。价格因模型而异，具体价格列在模型页面上（例如 [`gpt-realtime-2`](/models/gpt-realtime-2)、[`gpt-realtime-translate`](/models/gpt-realtime-translate)、[`gpt-realtime-whisper`](/models/gpt-realtime-whisper) 和 [`gpt-realtime`](/models/gpt-realtime)）。
 
 对话式 Realtime API 会话由一系列 _轮次_ 组成，用户添加输入触发 _Response_ 来生成模型输出。服务器维护一个 _Conversation_，即构成下一轮输入的 _Items_ 列表。当 Response 返回时，输出会自动添加到 Conversation 中。
 
@@ -59,7 +58,7 @@ Response 使用的 token 可以从 `response.done` 事件中读取，格式如�
 
 ## 输入转录成本
 
-除了对话式 Response 之外，Realtime API 还会对输入转录（如果启用）进行计费。输入转录使用与 speech2speech 模型不同的模型，例如 [`whisper-1`](/api/docs/models/whisper-1) 或 [`gpt-4o-transcribe`](/api/docs/models/gpt-4o-transcribe)，因此按不同的费率计费。当音频写入输入音频缓冲区并提交时（手动或通过 VAD），会执行转录。
+除了对话式 Response 之外，Realtime API 还会对输入转录（如果启用）进行计费。输入转录使用与 speech2speech 模型不同的模型，例如 [`whisper-1`](/models/whisper-1) 或 [`gpt-4o-transcribe`](/models/gpt-4o-transcribe)，因此按不同的费率计费。当音频写入输入音频缓冲区并提交时（手动或通过 VAD），会执行转录。
 
 输入转录的 token 计数可以从 `conversation.item.input_audio_transcription.completed` 事件中读取，如以下示例所示。
 
@@ -83,7 +82,7 @@ Response 使用的 token 可以从 `response.done` 事件中读取，格式如�
 
 ## 缓存
 
-Realtime API 支持[提示缓存](/api/docs/guides/prompt-caching)，该功能自动应用，可以显著降低多轮会话中输入 token 的成本。当一个 Response 的输入 token 与之前 Response 的 token 匹配时，缓存就会生效，但这是尽力而为的，不保证一定生效。
+Realtime API 支持[提示缓存](/guides/prompt-caching)，该功能自动应用，可以显著降低多轮会话中输入 token 的成本。当一个 Response 的输入 token 与之前 Response 的 token 匹配时，缓存就会生效，但这是尽力而为的，不保证一定生效。
 
 最大化缓存命中率的最佳策略是保持会话历史不变。删除或更改对话中的内容会"破坏"缓存直到更改点——输入不再像之前那样匹配。请注意，指令和工具定义位于对话的开头，因此在会话中途更改这些内容会降低后续轮次的缓存命中率。
 

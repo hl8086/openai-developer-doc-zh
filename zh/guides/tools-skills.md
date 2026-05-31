@@ -1,8 +1,7 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/tools-skills -->
 
 Agent Skills 允许你上传和复用版本化的文件包，适用于托管和本地 shell 环境。
 
-我们支持两种形式的 Skills：本地执行和托管的基于容器的执行。要在你自己的机器上运行代码，请使用 [shell 工具](/api/docs/guides/tools-shell) 的本地执行模式。
+我们支持两种形式的 Skills：本地执行和托管的基于容器的执行。要在你自己的机器上运行代码，请使用 [shell 工具](/guides/tools-shell) 的本地执行模式。
 
 ## 什么是 skill
 
@@ -68,8 +67,8 @@ curl -L 'https://api.openai.com/v1/responses' \
         "environment": {
           "type": "container_auto",
           "skills": [
-            { "type": "skill_reference", "skill_id": "<skill_id>" },
-            { "type": "skill_reference", "skill_id": "<skill_id>", "version": 2 }
+            { "type": "skill_reference", "skill_id": "&lt;skill_id>" },
+            { "type": "skill_reference", "skill_id": "&lt;skill_id>", "version": 2 }
           ]
         }
       }
@@ -90,8 +89,8 @@ const response = await client.responses.create({
       environment: {
         type: "container_auto",
         skills: [
-          { type: "skill_reference", skill_id: "<skill_id>" },
-          { type: "skill_reference", skill_id: "<skill_id>", version: 2 },
+          { type: "skill_reference", skill_id: "&lt;skill_id>" },
+          { type: "skill_reference", skill_id: "&lt;skill_id>", version: 2 },
         ],
       },
     },
@@ -114,8 +113,8 @@ response = client.responses.create(
             "environment": {
                 "type": "container_auto",
                 "skills": [
-                    {"type": "skill_reference", "skill_id": "<skill_id>"},
-                    {"type": "skill_reference", "skill_id": "<skill_id>", "version": 2},
+                    {"type": "skill_reference", "skill_id": "&lt;skill_id>"},
+                    {"type": "skill_reference", "skill_id": "&lt;skill_id>", "version": 2},
                 ],
             },
         }
@@ -124,11 +123,11 @@ response = client.responses.create(
 )
 
 print(response.output_text)
-```
+```text
 
 ### 提示行为
 
-一旦 skill 被挂载，模型可以自行决定何时使用它。如果你想要更确定性的行为，请在适当时明确指示模型"使用 `<skill name>` skill"。
+一旦 skill 被挂载，模型可以自行决定何时使用它。如果你想要更确定性的行为，请在适当时明确指示模型"使用 `&lt;skill name>` skill"。
 
 ## 在本地 shell 模式中使用 skills
 
@@ -137,7 +136,7 @@ Skills 也适用于本地 shell 模式，但本地 shell 和托管 shell 不接�
 *   托管 shell 支持上传的 `skill_reference` 附件，包括精选 skills 和显式版本。
 *   本地 shell 不支持 `skill_reference` 附件。相反，在你控制的运行时中从本地文件路径提供 skill 文件。
 
-有关本地 shell 执行的详细信息，请参阅 [Shell 指南](/api/docs/guides/tools-shell)。
+有关本地 shell 执行的详细信息，请参阅 [Shell 指南](/guides/tools-shell)。
 
 **在本地 shell 模式中使用 skills**
 
@@ -156,7 +155,7 @@ curl -L 'https://api.openai.com/v1/responses' \
             {
               "name": "csv-insights",
               "description": "Summarize CSV files and produce a markdown report.",
-              "path": "<path-to-skill-folder>"
+              "path": "&lt;path-to-skill-folder>"
             }
           ]
         }
@@ -181,7 +180,7 @@ const response = await client.responses.create({
           {
             name: "csv-insights",
             description: "Summarize CSV files and produce a markdown report.",
-            path: "<path-to-skill-folder>",
+            path: "&lt;path-to-skill-folder>",
           },
         ],
       },
@@ -208,7 +207,7 @@ response = client.responses.create(
                     {
                         "name": "csv-insights",
                         "description": "Summarize CSV files and produce a markdown report.",
-                        "path": "<path-to-skill-folder>",
+                        "path": "&lt;path-to-skill-folder>",
                     }
                 ],
             },
@@ -218,7 +217,7 @@ response = client.responses.create(
 )
 
 print(response.output_text)
-```
+```text
 
 ## 用户提示中的 Skills
 
@@ -226,7 +225,7 @@ print(response.output_text)
 
 模型根据此元数据决定是否调用 skill。如果模型调用了 skill，它会使用 `path` 从 `SKILL.md` 读取完整的 Markdown 指令。
 
-Skill 指令是用户提示输入（不是系统提示输入），因此它们与其他用户提供的指令具有相同的优先级。如需显式控制，你仍然可以指示模型"使用 `<skill name>` skill"。
+Skill 指令是用户提示输入（不是系统提示输入），因此它们与其他用户提供的指令具有相同的优先级。如需显式控制，你仍然可以指示模型"使用 `&lt;skill name>` skill"。
 
 ## 限制和验证
 
@@ -254,7 +253,7 @@ Skill 指令是用户提示输入（不是系统提示输入），因此它们�
 创建新的 skill 版本
 
 ```
-curl -X POST 'https://api.openai.com/v1/skills/<skill_id>/versions' \
+curl -X POST 'https://api.openai.com/v1/skills/&lt;skill_id>/versions' \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -F 'files=@./geometry.zip;type=application/zip'
 ```
@@ -264,7 +263,7 @@ curl -X POST 'https://api.openai.com/v1/skills/<skill_id>/versions' \
 设置 skill 的默认版本
 
 ```
-curl -X POST 'https://api.openai.com/v1/skills/<skill_id>' \
+curl -X POST 'https://api.openai.com/v1/skills/&lt;skill_id>' \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{"default_version": 2}'
@@ -319,7 +318,7 @@ curl -L 'https://api.openai.com/v1/containers' \
 
 检查与 Responses API 一起使用的任何 Skill 非常重要。Skills 会引入安全风险，例如提示注入驱动的数据泄露。
 
-对于与网络访问结合使用的 Skills，请仔细阅读[网络的风险和安全部分](/api/docs/guides/tools-shell#risks-and-safety)。
+对于与网络访问结合使用的 Skills，请仔细阅读[网络的风险和安全部分](/guides/tools-shell#risks-and-safety)。
 
 #### 将 Skills 视为特权代码和指令
 
@@ -346,4 +345,4 @@ Skills 应由开发者检查和集成，然后仅通过有限的产品体验暴�
 
 #### 验证数据驻留和保留要求
 
-我们支持两种形式的 Skills：本地执行和托管的基于容器的执行。托管 skills 遵循与托管 shell 相同的容器生命周期：挂载的 skills 和容器文件在容器活跃期间保持可用，在容器过期或被删除时丢弃。如果你希望执行完全在你管理的基础设施上进行，请使用本地 shell 模式。阅读更多关于我们的[数据控制](/api/docs/guides/your-data)。
+我们支持两种形式的 Skills：本地执行和托管的基于容器的执行。托管 skills 遵循与托管 shell 相同的容器生命周期：挂载的 skills 和容器文件在容器活跃期间保持可用，在容器过期或被删除时丢弃。如果你希望执行完全在你管理的基础设施上进行，请使用本地 shell 模式。阅读更多关于我们的[数据控制](/guides/your-data)。

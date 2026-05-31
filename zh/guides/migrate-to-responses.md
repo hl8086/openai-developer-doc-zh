@@ -1,6 +1,5 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/migrate-to-responses -->
 
-[Responses API](/api/docs/api-reference/responses) 是我们新的 API 基础原语，是 [Chat Completions](/api/docs/api-reference/chat) 的演进版本，为你的集成带来了更简洁的体验和强大的智能体原语。
+[Responses API]( https://developers.openai.com/api/reference/responses) 是我们新的 API 基础原语，是 [Chat Completions]( https://developers.openai.com/api/reference/chat) 的演进版本，为你的集成带来了更简洁的体验和强大的智能体原语。
 
 **虽然 Chat Completions 仍然受支持，但我们建议所有新项目使用 Responses。**
 
@@ -8,7 +7,7 @@
 
 Responses API 是一个统一的接口，用于构建强大的类智能体应用程序。它包含：
 
-*   内置工具，如 [web search](/api/docs/guides/tools-web-search)、[file search](/api/docs/guides/tools-file-search)、[computer use](/api/docs/guides/tools-computer-use)、[code interpreter](/api/docs/guides/tools-code-interpreter) 和 [remote MCPs](/api/docs/guides/tools-remote-mcp)。
+*   内置工具，如 [web search](/guides/tools-web-search)、[file search](/guides/tools-file-search)、[computer use](/guides/tools-computer-use)、[code interpreter](/guides/tools-code-interpreter) 和 [remote MCPs](/guides/tools-remote-mcp)。
 *   无缝的多轮交互，允许你传递之前的响应以获得更高准确度的推理结果。
 *   原生多模态支持，包括文本和图像。
 
@@ -147,11 +146,11 @@ Responses API
 ### 其他差异
 
 *   Responses 默认会被存储。Chat completions 对新账户默认存储。要在任一 API 中禁用存储，请设置 `store: false`。
-*   [推理](/api/docs/guides/reasoning)模型在 Responses API 中有更丰富的体验，具有[改进的工具使用](/api/docs/guides/reasoning#keeping-reasoning-items-in-context)。从 GPT-5.4 开始，Chat Completions 中使用 `reasoning: none` 时不支持工具调用。
-*   结构化输出的 API 形状不同。在 Responses 中使用 `text.format` 代替 `response_format`。在[结构化输出](/api/docs/guides/structured-outputs)指南中了解更多。
-*   函数调用的 API 形状不同，包括请求中的函数配置和响应中返回的函数调用。在[函数调用指南](/api/docs/guides/function-calling)中查看完整差异。
+*   [推理](/guides/reasoning)模型在 Responses API 中有更丰富的体验，具有[改进的工具使用](/guides/reasoning#keeping-reasoning-items-in-context)。从 GPT-5.4 开始，Chat Completions 中使用 `reasoning: none` 时不支持工具调用。
+*   结构化输出的 API 形状不同。在 Responses 中使用 `text.format` 代替 `response_format`。在[结构化输出](/guides/structured-outputs)指南中了解更多。
+*   函数调用的 API 形状不同，包括请求中的函数配置和响应中返回的函数调用。在[函数调用指南](/guides/function-calling)中查看完整差异。
 *   Responses SDK 有一个 `output_text` 辅助方法，而 Chat Completions SDK 没有。
-*   在 Chat Completions 中，对话状态必须手动管理。Responses API 兼容 [Conversations API](/api/docs/guides/conversation-state?api-mode=responses#using-the-conversations-api) 用于持久化对话，或者可以传递 `previous_response_id` 来轻松地将 Responses 链接在一起。
+*   在 Chat Completions 中，对话状态必须手动管理。Responses API 兼容 [Conversations API](/guides/conversation-state?api-mode=responses#using-the-conversations-api) 用于持久化对话，或者可以传递 `previous_response_id` 来轻松地将 Responses 链接在一起。
 
 ## 从 Chat Completions 迁移
 
@@ -526,8 +525,8 @@ res2 = client.responses.create(
 
 要禁用有状态功能，但仍然利用推理：
 
-*   在 [store 字段](/api/docs/api-reference/responses/create#responses_create-store)中设置 `store: false`
-*   在 [include 字段](/api/docs/api-reference/responses/create#responses_create-include)中添加 `["reasoning.encrypted_content"]`
+*   在 [store 字段]( https://developers.openai.com/api/reference/responses/create#responses_create-store)中设置 `store: false`
+*   在 [include 字段]( https://developers.openai.com/api/reference/responses/create#responses_create-include)中添加 `["reasoning.encrypted_content"]`
 
 API 将返回推理 token 的加密版本，你可以像普通推理项一样在未来的请求中传回。对于 ZDR 组织，OpenAI 会自动强制 store=false。当请求包含 encrypted\_content 时，它会在内存中解密（永远不会写入磁盘），用于生成下一个响应，然后安全丢弃。任何新的推理 token 会立即加密并返回给你，确保不会持久化任何中间状态。
 
@@ -591,7 +590,7 @@ Responses API
 
 #### 遵循函数调用最佳实践
 
-在 Responses 中，工具调用及其输出是两种不同类型的 Items，通过 `call_id` 关联。有关函数调用在 Responses 中如何工作的更多详情，请参阅[工具调用文档](/api/docs/guides/function-calling#function-tool-example)。
+在 Responses 中，工具调用及其输出是两种不同类型的 Items，通过 `call_id` 关联。有关函数调用在 Responses 中如何工作的更多详情，请参阅[工具调用文档](/guides/function-calling#function-tool-example)。
 
 ### 6\. 更新结构化输出定义
 
@@ -833,7 +832,7 @@ const response = await openai.responses.create({
 
 ### 7\. 升级到原生工具
 
-如果你的应用程序有可以从 OpenAI 原生[工具](/api/docs/guides/tools)中受益的用例，你可以更新你的工具调用以开箱即用地使用 OpenAI 的工具。
+如果你的应用程序有可以从 OpenAI 原生[工具](/guides/tools)中受益的用例，你可以更新你的工具调用以开箱即用地使用 OpenAI 的工具。
 
 Chat CompletionsResponses
 
@@ -946,6 +945,6 @@ Responses API 是 Chat Completions API 的超集。Chat Completions API 也将�
 
 ## Assistants API
 
-基于 [Assistants API](/api/docs/api-reference/assistants) 测试版的开发者反馈，我们将关键改进整合到了 Responses API 中，使其更灵活、更快速、更易于使用。Responses API 代表了在 OpenAI 上构建智能体的未来方向。
+基于 [Assistants API]( https://developers.openai.com/api/reference/assistants) 测试版的开发者反馈，我们将关键改进整合到了 Responses API 中，使其更灵活、更快速、更易于使用。Responses API 代表了在 OpenAI 上构建智能体的未来方向。
 
-我们现在在 Responses API 中有类似 Assistant 和 Thread 的对象。在[迁移指南](/api/docs/guides/assistants/migration)中了解更多。自 2025 年 8 月 26 日起，我们将弃用 Assistants API，日落日期为 2026 年 8 月 26 日。
+我们现在在 Responses API 中有类似 Assistant 和 Thread 的对象。在[迁移指南](/guides/assistants/migration)中了解更多。自 2025 年 8 月 26 日起，我们将弃用 Assistants API，日落日期为 2026 年 8 月 26 日。

@@ -1,8 +1,7 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/tools-file-search -->
 
-文件搜索是 [Responses API](/api/docs/api-reference/responses) 中可用的一个工具。它使模型能够通过语义搜索和关键词搜索从先前上传的文件知识库中检索信息。通过创建向量存储并将文件上传到其中，您可以通过让模型访问这些知识库或 `vector_stores` 来增强模型的固有知识。
+文件搜索是 [Responses API]( https://developers.openai.com/api/reference/responses) 中可用的一个工具。它使模型能够通过语义搜索和关键词搜索从先前上传的文件知识库中检索信息。通过创建向量存储并将文件上传到其中，您可以通过让模型访问这些知识库或 `vector_stores` 来增强模型的固有知识。
 
-要了解更多关于向量存储和语义搜索的工作原理，请参阅我们的[检索指南](/api/docs/guides/retrieval)。
+要了解更多关于向量存储和语义搜索的工作原理，请参阅我们的[检索指南](/guides/retrieval)。
 
 这是一个由 OpenAI 管理的托管工具，这意味着您无需在自己的端实现代码来处理其执行。当模型决定使用它时，它会自动调用该工具，从您的文件中检索信息，并返回输出。
 
@@ -155,7 +154,7 @@ response = client.responses.create(
     input="What is deep research by OpenAI?",
     tools=[{
         "type": "file_search",
-        "vector_store_ids": ["<vector_store_id>"]
+        "vector_store_ids": ["&lt;vector_store_id>"]
     }]
 )
 print(response)
@@ -170,7 +169,7 @@ const response = await openai.responses.create({
     tools: [
         {
             type: "file_search",
-            vector_store_ids: ["<vector_store_id>"],
+            vector_store_ids: ["&lt;vector_store_id>"],
         },
     ],
 });
@@ -183,7 +182,7 @@ string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
 OpenAIResponseClient client = new(model: "gpt-5.5", apiKey: key);
 
 ResponseCreationOptions options = new();
-options.Tools.Add(ResponseTool.CreateFileSearchTool(["<vector_store_id>"]));
+options.Tools.Add(ResponseTool.CreateFileSearchTool(["&lt;vector_store_id>"]));
 
 OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
     ResponseItem.CreateUserMessageItem([
@@ -266,7 +265,7 @@ response = client.responses.create(
     input="What is deep research by OpenAI?",
     tools=[{
         "type": "file_search",
-        "vector_store_ids": ["<vector_store_id>"],
+        "vector_store_ids": ["&lt;vector_store_id>"],
         // highlight-start
         "max_num_results": 2
         // highlight-end
@@ -280,7 +279,7 @@ const response = await openai.responses.create({
     input: "What is deep research by OpenAI?",
     tools: [{
         type: "file_search",
-        vector_store_ids: ["<vector_store_id>"],
+        vector_store_ids: ["&lt;vector_store_id>"],
         // highlight-start
         max_num_results: 2,
         // highlight-end
@@ -303,7 +302,7 @@ response = client.responses.create(
     input="What is deep research by OpenAI?",
     tools=[{
         "type": "file_search",
-        "vector_store_ids": ["<vector_store_id>"]
+        "vector_store_ids": ["&lt;vector_store_id>"]
     }],
     // highlight-start
     include=["file_search_call.results"]
@@ -317,7 +316,7 @@ const response = await openai.responses.create({
     input: "What is deep research by OpenAI?",
     tools: [{
         type: "file_search",
-        vector_store_ids: ["<vector_store_id>"],
+        vector_store_ids: ["&lt;vector_store_id>"],
     }],
     // highlight-start
     include: ["file_search_call.results"],
@@ -328,10 +327,10 @@ console.log(response);
 
 ### 元数据过滤
 
-您可以根据文件的元数据过滤搜索结果。有关更多详细信息，请参阅我们的[检索指南](/api/docs/guides/retrieval)，其中涵盖：
+您可以根据文件的元数据过滤搜索结果。有关更多详细信息，请参阅我们的[检索指南](/guides/retrieval)，其中涵盖：
 
-*   如何[在向量存储文件上设置属性](/api/docs/guides/retrieval#attributes)
-*   如何[定义过滤器](/api/docs/guides/retrieval#attribute-filtering)
+*   如何[在向量存储文件上设置属性](/guides/retrieval#attributes)
+*   如何[定义过滤器](/guides/retrieval#attribute-filtering)
 
 **元数据过滤**
 
@@ -341,7 +340,7 @@ response = client.responses.create(
     input="What is deep research by OpenAI?",
     tools=[{
         "type": "file_search",
-        "vector_store_ids": ["<vector_store_id>"],
+        "vector_store_ids": ["&lt;vector_store_id>"],
         // highlight-start
         "filters": {
             "type": "in",
@@ -359,7 +358,7 @@ const response = await openai.responses.create({
     input: "What is deep research by OpenAI?",
     tools: [{
         type: "file_search",
-        vector_store_ids: ["<vector_store_id>"],
+        vector_store_ids: ["&lt;vector_store_id>"],
         // highlight-start
         filters: {
             type: "in",
@@ -405,8 +404,8 @@ _对于 `text/` MIME 类型，编码必须是 `utf-8`、`utf-16` 或 `ascii` 之
 
 | API 可用性 | 速率限制 | 备注 |
 | --- | --- | --- |
-| [Responses](/api/docs/api-reference/responses)[Chat Completions](/api/docs/api-reference/chat)[Assistants](/api/docs/api-reference/assistants) | **Tier 1**  
+| [Responses]( https://developers.openai.com/api/reference/responses)[Chat Completions]( https://developers.openai.com/api/reference/chat)[Assistants]( https://developers.openai.com/api/reference/assistants) | **Tier 1**  
 100 RPM**Tier 2 和 3**  
 500 RPM**Tier 4 和 5**  
-1000 RPM | [定价](/api/docs/pricing#built-in-tools)  
-[ZDR 和数据驻留](/api/docs/guides/your-data) |
+1000 RPM | [定价](/pricing#built-in-tools)  
+[ZDR 和数据驻留](/guides/your-data) |

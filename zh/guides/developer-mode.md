@@ -1,4 +1,3 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/developer-mode -->
 
 [
 
@@ -8,7 +7,7 @@
 
 ## 什么是 ChatGPT 开发者模式
 
-ChatGPT 开发者模式为所有工具（包括读取和写入）提供完整的 Model Context Protocol (MCP) 客户端支持。它功能强大但存在风险，适用于了解如何安全配置和测试应用的开发者。使用开发者模式时，请注意[提示注入和其他风险](/api/docs/mcp)、写入操作中可能导致数据损坏的模型错误，以及试图窃取信息的恶意 MCP。
+ChatGPT 开发者模式为所有工具（包括读取和写入）提供完整的 Model Context Protocol (MCP) 客户端支持。它功能强大但存在风险，适用于了解如何安全配置和测试应用的开发者。使用开发者模式时，请注意[提示注入和其他风险](/mcp)、写入操作中可能导致数据损坏的模型错误，以及试图窃取信息的恶意 MCP。
 
 ## 使用方法
 
@@ -35,7 +34,7 @@ ChatGPT 开发者模式为所有工具（包括读取和写入）提供完整的
     *   指定输入格式和顺序："首先使用 `{ path: "…" }` 调用 `Repo.read_file`。然后使用修改后的内容调用 `Repo.write_file`。不要调用其他工具。"
     *   如果多个应用功能重叠，请提前声明偏好（例如，"使用 `CompanyDB` 获取权威数据；仅在 `CompanyDB` 没有返回结果时使用其他来源"）。
     *   开发者模式不需要 `search`/`fetch` 工具。你的连接器暴露的任何工具（包括写入操作）都可用，但受确认设置约束。
-    *   更多指导请参阅[使用工具](/api/docs/guides/tools)和[提示](/api/docs/guides/prompting)。
+    *   更多指导请参阅[使用工具](/guides/tools)和[提示](/guides/prompting)。
     *   通过更好的工具描述改善工具选择：在你的 MCP 服务器中，编写面向操作的工具名称和描述，包含"在以下情况使用……"的指导，注明不允许的/边缘情况，并添加参数描述（和枚举），以帮助模型在相似工具中选择正确的工具，并在不适当时避免使用内置工具。
     *   添加服务器指令以提供跨工具指导：使用 MCP [`instructions` 字段](https://modelcontextprotocol.io/specification/2025-06-18/basic/lifecycle#initialization)提供服务器级别的指导，如必需的工具调用顺序、共享速率限制或工具之间的关系。保持前 512 个字符内容自包含。
     

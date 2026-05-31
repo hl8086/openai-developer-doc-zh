@@ -1,8 +1,7 @@
-<!-- Source: https://developers.openai.com/api/docs/models/gpt-5.4-mini -->
 
-[模型](/api/docs/models)
+[模型](/models)
 
-![gpt-5.4-mini](/images/api/models/icons/gpt-5.4-mini.png)
+![gpt-5.4-mini]( https://cdn.openai.com/API/docs/images/api/models/icons/gpt-5.4-mini.png)
 
 GPT-5.4 mini
 
@@ -36,7 +35,7 @@ $0.75•$4.5
 
 文本
 
-GPT-5.4 mini 将 GPT-5.4 的优势带入更快、更高效的模型，专为高吞吐量工作负载设计。了解更多请参阅我们的[最新模型指南](/api/docs/guides/latest-model)。
+GPT-5.4 mini 将 GPT-5.4 的优势带入更快、更高效的模型，专为高吞吐量工作负载设计。了解更多请参阅我们的[最新模型指南](/guides/latest-model)。
 
 400,000 上下文窗口
 
@@ -48,7 +47,7 @@ GPT-5.4 mini 将 GPT-5.4 的优势带入更快、更高效的模型，专为高�
 
 定价
 
-定价基于使用的 token 数量，或根据模型类型的其他指标。对于特定工具模型（如搜索和计算机使用），每次工具调用会收取费用。详情请参阅[定价页面](/api/docs/pricing)。
+定价基于使用的 token 数量，或根据模型类型的其他指标。对于特定工具模型（如搜索和计算机使用），每次工具调用会收取费用。详情请参阅[定价页面](/pricing)。
 
 文本 token
 
@@ -246,7 +245,7 @@ Tool search
 
 快照允许您锁定模型的特定版本，以便性能和行为保持一致。以下是 GPT-5.4 mini 所有可用快照和别名的列表。
 
-![gpt-5.4-mini](/images/api/models/icons/gpt-5.4-mini.png)
+![gpt-5.4-mini]( https://cdn.openai.com/API/docs/images/api/models/icons/gpt-5.4-mini.png)
 
 gpt-5.4-mini
 

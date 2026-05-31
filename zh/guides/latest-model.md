@@ -1,4 +1,3 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/latest-model -->
 
 ## 简介
 
@@ -6,9 +5,9 @@ GPT-5.5 提升了复杂生产工作流的基准水平。它非常适合编码用
 
 要充分发挥 GPT-5.5 的能力，请将其视为一个需要专门调优的新模型系列，而非 `gpt-5.2` 或 `gpt-5.4` 的直接替代品。迁移时应从全新基线开始，而不是沿用旧提示栈中的所有指令。从保留产品契约的最小提示开始，然后针对代表性示例调优推理力度、详细程度、工具描述和输出格式。
 
-GPT-5.5 支持 GPT-5.4 已有的所有 API 功能，包括[提示缓存](/api/docs/guides/prompt-caching)、[托管工具](/api/docs/guides/tools#available-tools)、[工具搜索](/api/docs/guides/tools-tool-search)、[压缩](/api/docs/guides/compaction)以及用于手动重放助手项的 `phase` 处理。
+GPT-5.5 支持 GPT-5.4 已有的所有 API 功能，包括[提示缓存](/guides/prompt-caching)、[托管工具](/guides/tools#available-tools)、[工具搜索](/guides/tools-tool-search)、[压缩](/guides/compaction)以及用于手动重放助手项的 `phase` 处理。
 
-请参阅 [GPT-5.5 提示指南](/api/docs/guides/prompt-guidance?model=gpt-5.5)了解成功的提示模式示例。
+请参阅 [GPT-5.5 提示指南](/guides/prompt-guidance?model=gpt-5.5)了解成功的提示模式示例。
 
 ## 新特性
 
@@ -19,15 +18,15 @@ GPT-5.5 支持 GPT-5.4 已有的所有 API 功能，包括[提示缓存](/api/do
 
 ## 行为变化
 
-1.  **推理力度现在默认为 `medium`：** GPT-5.5 默认使用 `medium` 推理力度。将 `medium` 视为质量、可靠性、延迟和成本之间的推荐平衡起点。对于延迟敏感的工作流，当工具使用、规划、搜索或多步决策仍然重要时，先评估 `low` 再考虑 `none`。将 `none` 保留给不需要推理或多链工具调用的延迟关键任务，如轻量级语音轮次、快速信息检索和分类。仅当评估显示可衡量的质量提升且值得额外延迟和成本时，才提升到 `high` 或 `xhigh`。详见[推理模型文档](/api/docs/guides/reasoning)。
+1.  **推理力度现在默认为 `medium`：** GPT-5.5 默认使用 `medium` 推理力度。将 `medium` 视为质量、可靠性、延迟和成本之间的推荐平衡起点。对于延迟敏感的工作流，当工具使用、规划、搜索或多步决策仍然重要时，先评估 `low` 再考虑 `none`。将 `none` 保留给不需要推理或多链工具调用的延迟关键任务，如轻量级语音轮次、快速信息检索和分类。仅当评估显示可衡量的质量提升且值得额外延迟和成本时，才提升到 `high` 或 `xhigh`。详见[推理模型文档](/guides/reasoning)。
     
     更高的推理力度并不自动意味着更好。如果任务存在冲突指令、薄弱的停止标准或开放式工具访问，更高的力度可能导致过度思考、不必要的搜索或输出质量下降。仅当评估显示可衡量的质量提升时才增加力度。
     
-2.  **图像输入默认保留更多视觉细节：** GPT-5.5 更新了图像输入的默认处理方式，以保留更多视觉细节并提升计算机使用性能。当 `image_detail` 未设置或设为 `auto` 时，模型现在使用 `original` 行为，在不超过 10,240,000 像素或 6,000 像素尺寸限制的情况下保留图像而不缩放。对于 `high`，直接指定该值；它在不超过 2,500,000 像素或 2,048 像素尺寸限制的情况下保留图像而不缩放。`low` 现在侧重于上下文效率，对超过 512 像素尺寸限制的图像比之前的模型更积极地缩放。详见[图像和视觉文档](/api/docs/guides/images-vision)。
+2.  **图像输入默认保留更多视觉细节：** GPT-5.5 更新了图像输入的默认处理方式，以保留更多视觉细节并提升计算机使用性能。当 `image_detail` 未设置或设为 `auto` 时，模型现在使用 `original` 行为，在不超过 10,240,000 像素或 6,000 像素尺寸限制的情况下保留图像而不缩放。对于 `high`，直接指定该值；它在不超过 2,500,000 像素或 2,048 像素尺寸限制的情况下保留图像而不缩放。`low` 现在侧重于上下文效率，对超过 512 像素尺寸限制的图像比之前的模型更积极地缩放。详见[图像和视觉文档](/guides/images-vision)。
     
-3.  **改进的指令遵循能力：** GPT-5.5 以字面且全面的方式解释提示，当产品需要时可以使用具体、描述性的指令。定义成功标准和停止规则，尤其是对于长时间运行的、工具密集型或证据收集工作流。参见[编写结果导向提示](/api/docs/guides/prompt-guidance?model=gpt-5.5#outcome-first-prompts-and-stopping-conditions)和[保持适当的具体性](/api/docs/guides/prompt-guidance?model=gpt-5.5#formatting)。
+3.  **改进的指令遵循能力：** GPT-5.5 以字面且全面的方式解释提示，当产品需要时可以使用具体、描述性的指令。定义成功标准和停止规则，尤其是对于长时间运行的、工具密集型或证据收集工作流。参见[编写结果导向提示](/guides/prompt-guidance?model=gpt-5.5#outcome-first-prompts-and-stopping-conditions)和[保持适当的具体性](/guides/prompt-guidance?model=gpt-5.5#formatting)。
     
-4.  **默认风格更简洁直接：** GPT-5.5 默认倾向于高效、直接和任务导向。这对许多生产工作流很有用，但面向客户或对话式体验可能需要明确的个性、温暖感、理由说明和格式指导。有意识地使用 `text.verbosity`：`medium` 是默认值，`low` 通常是简洁响应的更好起点。参见 [GPT-5.5 提示指南](/api/docs/guides/prompt-guidance?model=gpt-5.5)。
+4.  **默认风格更简洁直接：** GPT-5.5 默认倾向于高效、直接和任务导向。这对许多生产工作流很有用，但面向客户或对话式体验可能需要明确的个性、温暖感、理由说明和格式指导。有意识地使用 `text.verbosity`：`medium` 是默认值，`low` 通常是简洁响应的更好起点。参见 [GPT-5.5 提示指南](/guides/prompt-guidance?model=gpt-5.5)。
     
 5.  **编码工作流需要更强的编排：** GPT-5.5 更适合需要规划、工具使用、代码库导航、验证和多步执行的复杂编码任务。对于编码智能体，明确说明复用、子智能体委派、测试期望、验收标准以及何时继续与何时寻求帮助。
     
@@ -48,7 +47,7 @@ $openai-docs migrate this project to gpt-5.5
 
 *   将模型标识更新为 `gpt-5.5`。
 *   对任何推理、工具调用或多轮用例使用 Responses API。
-*   调优 `reasoning.effort`。使用 `low` 进行高效推理，`medium` 作为延迟/性能曲线上的平衡点，`high` 用于需要困难推理且延迟不太重要的复杂智能体任务，`xhigh` 用于最困难的异步智能体任务或测试模型智能极限的评估。详见[推理模型文档](/api/docs/guides/reasoning)。
+*   调优 `reasoning.effort`。使用 `low` 进行高效推理，`medium` 作为延迟/性能曲线上的平衡点，`high` 用于需要困难推理且延迟不太重要的复杂智能体任务，`xhigh` 用于最困难的异步智能体任务或测试模型智能极限的评估。详见[推理模型文档](/guides/reasoning)。
 *   要配置更简洁的响应，将 `text.verbosity` 设为 `low`。在 GPT-5.5 上，这将比 GPT-5.4 的 `low` 详细度产生比例上更简洁的响应。
 *   对于工具密集型或长时间运行的工作流，验证您的应用程序正确处理 `phase`、前言和助手项重放。
 *   在准确性、token 消耗和端到端延迟方面与其他模型进行基准测试。
@@ -57,10 +56,10 @@ $openai-docs migrate this project to gpt-5.5
 
 *   陈述预期结果和成功标准。
 *   减少或移除详细的逐步过程指导。让 GPT-5.5 选择路径，除非产品要求特定路径。
-*   尽可能从提示中移除输出模式定义。改用[结构化输出](/api/docs/guides/structured-outputs)。
-*   为缓存优化提示：[静态部分在前，动态部分在后](/api/docs/guides/prompt-caching)。
+*   尽可能从提示中移除输出模式定义。改用[结构化输出](/guides/structured-outputs)。
+*   为缓存优化提示：[静态部分在前，动态部分在后](/guides/prompt-caching)。
 *   去掉当前日期。模型已经知道当前的 UTC 日期。
-*   根据 [GPT-5.5 提示指南](/api/docs/guides/prompt-guidance?model=gpt-5.5)中的指导审查和优化您的提示。
+*   根据 [GPT-5.5 提示指南](/guides/prompt-guidance?model=gpt-5.5)中的指导审查和优化您的提示。
 
 ## 使用推理模型
 
@@ -68,15 +67,15 @@ $openai-docs migrate this project to gpt-5.5
 
 团队可能会忽略这些功能，因为它们部分存在于 API 配置和编排中，而非提示本身。综合使用 Responses API、推理控制、详细度、结构化输出、提示缓存、工具设计、托管工具和状态管理，可以帮助推理模型发挥最佳的智能、可靠性、延迟和成本表现。
 
-*   **Responses API：** GPT-5.5 在 [Responses API](/api/docs/guides/migrate-to-responses) 中表现最佳。使用 `previous_response_id` 进行多轮状态处理。对于无状态或零数据保留流程，每轮传回相关的返回输出项。详见[从上一个响应传递上下文](/api/docs/guides/conversation-state#passing-context-from-the-previous-response)。
-*   **推理力度：** 使用 `reasoning.effort` 在 `low`、`medium`、`high` 或 `xhigh` 之间选择。默认为 `medium`，但许多工作负载使用 `low` 也能表现良好。将 `none` 保留给低延迟比智能更重要的用例。详见[推理模型](/api/docs/guides/reasoning)了解详细建议。
+*   **Responses API：** GPT-5.5 在 [Responses API](/guides/migrate-to-responses) 中表现最佳。使用 `previous_response_id` 进行多轮状态处理。对于无状态或零数据保留流程，每轮传回相关的返回输出项。详见[从上一个响应传递上下文](/guides/conversation-state#passing-context-from-the-previous-response)。
+*   **推理力度：** 使用 `reasoning.effort` 在 `low`、`medium`、`high` 或 `xhigh` 之间选择。默认为 `medium`，但许多工作负载使用 `low` 也能表现良好。将 `none` 保留给低延迟比智能更重要的用例。详见[推理模型](/guides/reasoning)了解详细建议。
 *   **详细度：** 使用 `text.verbosity` 控制输出长度。将最终答案长度与推理质量分开对待；在需要时指定字数预算、章节数量、表格宽度或仅 JSON 输出。
-*   **结构化输出：** 避免在提示中描述预期输出模式。使用[结构化输出](/api/docs/guides/structured-outputs)进行自动验证并提高准确性。
-*   **提示缓存：** [提示缓存](/api/docs/guides/prompt-caching)对符合条件的长提示自动生效，可以降低延迟和输入 token 成本。为最大化缓存命中率，将稳定内容放在请求开头，将动态的用户特定上下文放在末尾。对于具有公共前缀的重复流量，一致使用 `prompt_cache_key` 并跟踪 `usage.prompt_tokens_details.cached_tokens`。
+*   **结构化输出：** 避免在提示中描述预期输出模式。使用[结构化输出](/guides/structured-outputs)进行自动验证并提高准确性。
+*   **提示缓存：** [提示缓存](/guides/prompt-caching)对符合条件的长提示自动生效，可以降低延迟和输入 token 成本。为最大化缓存命中率，将稳定内容放在请求开头，将动态的用户特定上下文放在末尾。对于具有公共前缀的重复流量，一致使用 `prompt_cache_key` 并跟踪 `usage.prompt_tokens_details.cached_tokens`。
 *   **工具调用：** GPT-5.5 支持与 GPT-5.4 相同的工具调用模式，包括函数工具和工具密集型智能体工作流。将大部分工具特定指导放在工具描述本身中：工具做什么、何时使用、必需输入、副作用、重试安全性和常见错误模式。仅当指导跨工具适用或实质性改变智能体运行策略时，才将工具特定上下文添加到系统指令中。
-*   **托管工具和工具搜索：** 在适合工作流的地方优先使用 [OpenAI 托管工具](/api/docs/guides/tools)，如网络搜索、文件搜索、代码解释器、图像生成和计算机使用。托管工具减少了自定义编排负担，并使常见工具模式与 Responses API 和 Agents SDK 保持一致。当需要调用自己的系统、执行领域特定副作用或暴露内部业务工作流时，使用自定义函数工具。对于大型工具目录，考虑使用[工具搜索](/api/docs/guides/tools-tool-search)延迟工具定义并仅加载相关子集。
+*   **托管工具和工具搜索：** 在适合工作流的地方优先使用 [OpenAI 托管工具](/guides/tools)，如网络搜索、文件搜索、代码解释器、图像生成和计算机使用。托管工具减少了自定义编排负担，并使常见工具模式与 Responses API 和 Agents SDK 保持一致。当需要调用自己的系统、执行领域特定副作用或暴露内部业务工作流时，使用自定义函数工具。对于大型工具目录，考虑使用[工具搜索](/guides/tools-tool-search)延迟工具定义并仅加载相关子集。
 *   **工具前言：** 前言可以改善聊天用户体验，因为用户在模型生成最终响应之前就能看到初始的有用状态更新。它们还使工具使用更容易跟踪：模型可以说明即将检查或执行的操作，然后在工具结果到达后从同一助手状态继续。
-*   **`phase` 处理：** 如果您的应用程序通过每轮传回输出项而非使用 `previous_response_id` 来手动管理 Responses 状态，请保留返回的助手输出项上的 `phase` 参数并原样传回。这在使用推理力度、前言或重复工具调用时尤为重要。详见 [Phase 参数](/api/docs/guides/reasoning#phase-parameter)。
-*   **压缩：** 对于长时间运行的智能体，有意识地使用[对话/状态压缩](/api/docs/guides/compaction)。保留已完成的操作、活跃假设、ID、工具结果、未解决的阻碍因素和下一个具体目标。
-*   **Agents SDK：** 对于新的智能体系统，使用最新的 [Agents SDK](/api/docs/guides/agents) 模式进行工具编排、追踪、交接和状态管理，而不是从头重建编排。
+*   **`phase` 处理：** 如果您的应用程序通过每轮传回输出项而非使用 `previous_response_id` 来手动管理 Responses 状态，请保留返回的助手输出项上的 `phase` 参数并原样传回。这在使用推理力度、前言或重复工具调用时尤为重要。详见 [Phase 参数](/guides/reasoning#phase-parameter)。
+*   **压缩：** 对于长时间运行的智能体，有意识地使用[对话/状态压缩](/guides/compaction)。保留已完成的操作、活跃假设、ID、工具结果、未解决的阻碍因素和下一个具体目标。
+*   **Agents SDK：** 对于新的智能体系统，使用最新的 [Agents SDK](/guides/agents) 模式进行工具编排、追踪、交接和状态管理，而不是从头重建编排。
 *   **当前日期：** GPT-5.5 知道当前的 UTC 日期。您不需要在系统指令中添加当前日期。仅当应用程序需要特定业务时区、政策生效日期、用户本地日期或其他非 UTC 参考点时，才添加明确的日期或时区上下文。

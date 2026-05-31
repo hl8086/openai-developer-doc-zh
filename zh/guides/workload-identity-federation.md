@@ -1,8 +1,7 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/workload-identity-federation -->
 
 工作负载身份联合允许受信任的工作负载将外部签发的身份令牌交换为短期有效的 OpenAI 访问令牌。使用这些指南来配置您的外部身份提供商、创建 OpenAI 服务账户映射，并在无需存储长期有效 API 密钥的情况下对工作负载进行身份验证。
 
-有关令牌交换请求和响应的详细信息、授权行为和当前限制，请参阅[工作负载身份令牌交换参考](/api/reference/workload-identity-federation)。
+有关令牌交换请求和响应的详细信息、授权行为和当前限制，请参阅[工作负载身份令牌交换参考]( https://developers.openai.com/api/reference/workload-identity-federation)。
 
 ## 工作原理
 
@@ -19,15 +18,15 @@
 
 从与您的工作负载运行环境匹配的指南开始：
 
-[Kubernetes在自管理集群中使用投射的服务账户令牌。](/api/docs/guides/workload-identity-federation/kubernetes)
+[Kubernetes在自管理集群中使用投射的服务账户令牌。](/guides/workload-identity-federation/kubernetes)
 
-[AWS使用出站身份联合或 Amazon EKS 投射令牌。](/api/docs/guides/workload-identity-federation/aws)
+[AWS使用出站身份联合或 Amazon EKS 投射令牌。](/guides/workload-identity-federation/aws)
 
-[Microsoft Azure使用托管身份令牌或 AKS 投射的服务账户令牌。](/api/docs/guides/workload-identity-federation/microsoft-azure)
+[Microsoft Azure使用托管身份令牌或 AKS 投射的服务账户令牌。](/guides/workload-identity-federation/microsoft-azure)
 
-[Google Cloud使用元数据服务器身份令牌或 GKE 投射的服务账户令牌。](/api/docs/guides/workload-identity-federation/google-cloud)
+[Google Cloud使用元数据服务器身份令牌或 GKE 投射的服务账户令牌。](/guides/workload-identity-federation/google-cloud)
 
-[GitHub Actions在持续集成工作流中使用 OIDC 令牌。](/api/docs/guides/workload-identity-federation/github-actions)
+[GitHub Actions在持续集成工作流中使用 OIDC 令牌。](/guides/workload-identity-federation/github-actions)
 
 OpenAI 在文档记录的配置中支持兼容 OIDC 的 JWT 主体令牌。如果您需要未列出的 OIDC 提供商，请联系我们。
 

@@ -1,8 +1,7 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/realtime-webrtc -->
 
 [WebRTC](https://webrtc.org/) 是一组用于构建实时应用的强大标准接口。OpenAI Realtime API 支持通过 WebRTC 对等连接来连接实时模型。
 
-对于基于浏览器的语音到语音应用，我们建议从 [Voice agents](/api/docs/guides/voice-agents) 开始，该文档涵盖了 Agents SDK 用于管理 Realtime 会话的高级辅助工具和 API。WebRTC 接口功能强大且灵活，但比 Agents SDK 更底层。
+对于基于浏览器的语音到语音应用，我们建议从 [Voice agents](/guides/voice-agents) 开始，该文档涵盖了 Agents SDK 用于管理 Realtime 会话的高级辅助工具和 API。WebRTC 接口功能强大且灵活，但比 Agents SDK 更底层。
 
 从客户端（如 Web 浏览器或移动设备）连接到 Realtime 模型时，我们建议使用 WebRTC 而非 WebSocket，以获得更一致的性能。
 
@@ -10,7 +9,7 @@
 
 ## 概述
 
-Realtime API 支持两种从浏览器连接到 Realtime API 的机制：使用临时 API 密钥（[通过 OpenAI REST API 生成](/api/docs/api-reference/realtime-sessions)），或通过新的统一接口。通常，使用统一接口更简单，但会将你的应用服务器置于会话初始化的关键路径中。
+Realtime API 支持两种从浏览器连接到 Realtime API 的机制：使用临时 API 密钥（[通过 OpenAI REST API 生成]( https://developers.openai.com/api/reference/realtime-sessions)），或通过新的统一接口。通常，使用统一接口更简单，但会将你的应用服务器置于会话初始化的关键路径中。
 
 ### 使用统一接口连接
 
@@ -66,7 +65,7 @@ app.post("/session", async (req, res) => {
 app.listen(3000);
 ```
 
-如果你的应用为每个终端用户分配了[安全标识符](/api/docs/guides/safety-best-practices#implement-safety-identifiers)，请在此服务端请求中将其作为 `OpenAI-Safety-Identifier` 头部包含。使用稳定的、保护隐私的值，例如经过哈希处理的内部用户 ID。该头部应由你的可信后端设置，而非由浏览器设置。
+如果你的应用为每个终端用户分配了[安全标识符](/guides/safety-best-practices#implement-safety-identifiers)，请在此服务端请求中将其作为 `OpenAI-Safety-Identifier` 头部包含。使用稳定的、保护隐私的值，例如经过哈希处理的内部用户 ID。该头部应由你的可信后端设置，而非由浏览器设置。
 
 #### 连接到服务器
 
@@ -114,14 +113,14 @@ await pc.setRemoteDescription(answer);
 使用临时 API 密钥初始化 WebRTC 连接的流程如下（假设客户端为 Web 浏览器）：
 
 1.  浏览器向开发者控制的服务器发起请求以生成临时 API 密钥。
-2.  开发者的服务器使用[标准 API 密钥](https://platform.openai.com/settings/organization/api-keys)从 [OpenAI REST API](/api/docs/api-reference/realtime-sessions) 请求临时密钥，并将新密钥返回给浏览器。
+2.  开发者的服务器使用[标准 API 密钥](https://platform.openai.com/settings/organization/api-keys)从 [OpenAI REST API]( https://developers.openai.com/api/reference/realtime-sessions) 请求临时密钥，并将新密钥返回给浏览器。
 3.  浏览器使用临时密钥作为 [WebRTC 对等连接](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection)直接与 OpenAI Realtime API 进行身份验证会话。
 
 ![通过 WebRTC 连接到 Realtime](https://openaidevs.retool.com/api/file/55b47800-9aaf-48b9-90d5-793ab227ddd3)
 
 #### 创建临时令牌
 
-要创建在客户端使用的临时令牌，你需要构建一个小型服务端应用（或集成到现有应用中），向 [OpenAI REST API](/api/docs/api-reference/realtime-sessions) 发起请求以获取临时密钥。你将在后端服务器上使用[标准 API 密钥](https://platform.openai.com/settings/organization/api-keys)来验证此请求。
+要创建在客户端使用的临时令牌，你需要构建一个小型服务端应用（或集成到现有应用中），向 [OpenAI REST API]( https://developers.openai.com/api/reference/realtime-sessions) 发起请求以获取临时密钥。你将在后端服务器上使用[标准 API 密钥](https://platform.openai.com/settings/organization/api-keys)来验证此请求。
 
 以下是一个简单的 Node.js [express](https://expressjs.com/) 服务器示例，使用 REST API 生成临时 API 密钥：
 
@@ -223,9 +222,9 @@ await pc.setRemoteDescription(answer);
 
 ## 发送和接收事件
 
-Realtime API 会话通过[客户端发送的事件](/api/docs/api-reference/realtime_client_events/session)（由你作为开发者发出）和[服务端发送的事件](/api/docs/api-reference/realtime_server_events/error)（由 Realtime API 创建以指示会话生命周期事件）的组合来管理。
+Realtime API 会话通过[客户端发送的事件]( https://developers.openai.com/api/reference/realtime_client_events/session)（由你作为开发者发出）和[服务端发送的事件]( https://developers.openai.com/api/reference/realtime_server_events/error)（由 Realtime API 创建以指示会话生命周期事件）的组合来管理。
 
-通过 WebRTC 连接到 Realtime 模型时，你不需要像使用 [WebSocket](/api/docs/guides/realtime-websocket) 那样以细粒度的方式处理来自模型的音频事件。如果按照上述方式配置，WebRTC 对等连接对象会为你完成所有这些工作。
+通过 WebRTC 连接到 Realtime 模型时，你不需要像使用 [WebSocket](/guides/realtime-websocket) 那样以细粒度的方式处理来自模型的音频事件。如果按照上述方式配置，WebRTC 对等连接对象会为你完成所有这些工作。
 
 要发送和接收其他客户端和服务端事件，你可以使用 WebRTC 对等连接的[数据通道](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API/Using_data_channels)。
 
@@ -256,6 +255,6 @@ const event = {
 dc.send(JSON.stringify(event));
 ```
 
-要了解更多关于管理 Realtime 对话的信息，请参阅 [Realtime 对话指南](/api/docs/guides/realtime-conversations)。
+要了解更多关于管理 Realtime 对话的信息，请参阅 [Realtime 对话指南](/guides/realtime-conversations)。
 
 [Realtime Console - 在这个轻量级示例应用中体验 WebRTC Realtime API。](https://github.com/openai/openai-realtime-console/)

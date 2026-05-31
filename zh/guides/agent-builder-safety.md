@@ -1,6 +1,5 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/agent-builder-safety -->
 
-当你使用 [Agent Builder](/api/docs/guides/agent-builder) 构建和部署智能体时，了解相关风险非常重要。了解风险类型以及在构建多智能体工作流时如何缓解这些风险。
+当你使用 [Agent Builder](/guides/agent-builder) 构建和部署智能体时，了解相关风险非常重要。了解风险类型以及在构建多智能体工作流时如何缓解这些风险。
 
 ## 风险类型
 
@@ -34,15 +33,15 @@
 
 ## 保持工具审批开启
 
-使用 MCP 工具时，始终启用工具审批，以便最终用户可以审查和确认每个操作，包括读取和写入。在 Agent Builder 中，使用 [human approval](/api/docs/guides/node-reference#human-approval) 节点。
+使用 MCP 工具时，始终启用工具审批，以便最终用户可以审查和确认每个操作，包括读取和写入。在 Agent Builder 中，使用 [human approval](/guides/node-reference#human-approval) 节点。
 
 ## 对用户输入使用护栏
 
-使用内置的[护栏](/api/docs/guides/node-reference#guardrails)来清理传入的输入，以编辑个人身份信息（PII）并检测越狱尝试。虽然 Agent Builder 中的护栏节点本身并非万无一失，但它们是有效的第一道防线。
+使用内置的[护栏](/guides/node-reference#guardrails)来清理传入的输入，以编辑个人身份信息（PII）并检测越狱尝试。虽然 Agent Builder 中的护栏节点本身并非万无一失，但它们是有效的第一道防线。
 
 ## 运行追踪评分器和评估
 
-如果你了解模型在做什么，就能更好地发现和防止错误。使用[评估](/api/docs/guides/evaluation-getting-started)来评估和改进性能。追踪评分为智能体追踪的特定部分提供分数和注释——例如决策、工具调用或推理步骤——以评估智能体在哪些方面表现良好或犯了错误。
+如果你了解模型在做什么，就能更好地发现和防止错误。使用[评估](/guides/evaluation-getting-started)来评估和改进性能。追踪评分为智能体追踪的特定部分提供分数和注释——例如决策、工具调用或推理步骤——以评估智能体在哪些方面表现良好或犯了错误。
 
 ## 组合使用多种技术
 

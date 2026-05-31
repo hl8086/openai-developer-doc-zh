@@ -1,6 +1,5 @@
-<!-- Source: https://developers.openai.com/api/docs/quickstart -->
 
-OpenAI API 提供了一个简洁的接口，可访问最先进的 AI [模型](/api/docs/models)，用于文本生成、自然语言处理、计算机视觉等。首先创建一个 API Key 并运行你的第一个 API 调用。了解如何生成文本、分析图像、构建智能体等。
+OpenAI API 提供了一个简洁的接口，可访问最先进的 AI [模型](/models)，用于文本生成、自然语言处理、计算机视觉等。首先创建一个 API Key 并运行你的第一个 API 调用。了解如何生成文本、分析图像、构建智能体等。
 
 在 Codex 中使用 OpenAI API 进行构建
 
@@ -16,7 +15,7 @@ OpenAI Developers 插件使 Codex 能够连接到 OpenAI 平台，遵循 OpenAI 
 
 ](https://platform.openai.com/api-keys)
 
-在开始之前，请在控制面板中创建一个 API 密钥，你将使用它来安全地[访问 API](/api/docs/api-reference/authentication)。将密钥存储在安全的位置，例如 [`.zshrc` 文件](https://www.freecodecamp.org/news/how-do-zsh-configuration-files-work/)或计算机上的其他文本文件中。生成 API 密钥后，在终端中将其导出为[环境变量](https://en.wikipedia.org/wiki/Environment_variable)。
+在开始之前，请在控制面板中创建一个 API 密钥，你将使用它来安全地[访问 API]( https://developers.openai.com/api/reference/authentication)。将密钥存储在安全的位置，例如 [`.zshrc` 文件](https://www.freecodecamp.org/news/how-do-zsh-configuration-files-work/)或计算机上的其他文本文件中。生成 API 密钥后，在终端中将其导出为[环境变量](https://en.wikipedia.org/wiki/Environment_variable)。
 
 macOS / LinuxWindows
 
@@ -110,7 +109,7 @@ OpenAI 与 Microsoft 合作，提供了官方支持的 C# API 客户端。你可
 dotnet add package OpenAI
 ```
 
-一个简单的 [Responses API](/api/docs/api-reference/responses) 请求示例如下：
+一个简单的 [Responses API]( https://developers.openai.com/api/reference/responses) 请求示例如下：
 
 测试基本 API 请求
 
@@ -142,15 +141,15 @@ Java
 
 OpenAI 为 Java 编程语言提供了 API 辅助库，目前处于 beta 阶段。你可以使用以下配置引入 Maven 依赖：
 
-```
-<dependency>
-  <groupId>com.openai</groupId>
-  <artifactId>openai-java</artifactId>
-  <version>4.0.0</version>
-</dependency>
+```text
+&lt;dependency>
+  &lt;groupId>com.openai&lt;/groupId>
+  &lt;artifactId>openai-java&lt;/artifactId>
+  &lt;version>4.0.0&lt;/version>
+&lt;/dependency>
 ```
 
-一个简单的 [Responses API](/api/docs/api-reference/responses) 请求示例如下：
+一个简单的 [Responses API]( https://developers.openai.com/api/reference/responses) 请求示例如下：
 
 测试基本 API 请求
 
@@ -189,7 +188,7 @@ import (
 )
 ```
 
-一个简单的 [Responses API](/api/docs/api-reference/responses) 请求示例如下：
+一个简单的 [Responses API]( https://developers.openai.com/api/reference/responses) 请求示例如下：
 
 测试基本 API 请求
 
@@ -228,7 +227,7 @@ func main() {
 
 [Responses 入门应用 - 开始使用 Responses API 进行构建。](https://github.com/openai/openai-responses-starter-app)
 
-[文本生成和提示 - 了解更多关于提示、消息角色和构建对话应用的信息。](/api/docs/guides/text)
+[文本生成和提示 - 了解更多关于提示、消息角色和构建对话应用的信息。](/guides/text)
 
 ## 充值额度以继续构建
 
@@ -238,7 +237,7 @@ func main() {
 
 ](https://platform.openai.com/account/billing/overview)
 
-恭喜你运行了一次免费的测试 API 请求！开始使用更高的限额构建真实应用，并使用[我们的模型](/api/docs/models)生成文本、音频、图像、视频等。
+恭喜你运行了一次免费的测试 API 请求！开始使用更高的限额构建真实应用，并使用[我们的模型](/models)生成文本、音频、图像、视频等。
 
 访问旨在帮助你更快交付的控制面板功能：
 
@@ -308,7 +307,7 @@ curl "https://api.openai.com/v1/responses" \
 }'
 ```
 
-```
+```text
 openai responses create \
   --model gpt-5.5 \
   --raw-output \
@@ -577,13 +576,13 @@ OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
 Console.WriteLine(response.GetOutputText());
 ```
 
-[图像输入指南 - 了解如何使用图像输入模型并从图像中提取含义。](/api/docs/guides/images)
+[图像输入指南 - 了解如何使用图像输入模型并从图像中提取含义。](/guides/images)
 
-[文件输入指南 - 了解如何使用文件输入模型并从文档中提取含义。](/api/docs/guides/file-inputs)
+[文件输入指南 - 了解如何使用文件输入模型并从文档中提取含义。](/guides/file-inputs)
 
 ## 使用工具扩展模型
 
-通过附加[工具](/api/docs/guides/tools)，让模型访问外部数据和函数。使用内置工具如网络搜索或文件搜索，或定义你自己的工具来调用 API、运行代码或与第三方系统集成。
+通过附加[工具](/guides/tools)，让模型访问外部数据和函数。使用内置工具如网络搜索或文件搜索，或定义你自己的工具来调用 API、运行代码或与第三方系统集成。
 
 Web searchFile searchFunction callingRemote MCP
 
@@ -674,7 +673,7 @@ response = client.responses.create(
     input="What is deep research by OpenAI?",
     tools=[{
         "type": "file_search",
-        "vector_store_ids": ["<vector_store_id>"]
+        "vector_store_ids": ["&lt;vector_store_id>"]
     }]
 )
 print(response)
@@ -689,7 +688,7 @@ const response = await openai.responses.create({
     tools: [
         {
             type: "file_search",
-            vector_store_ids: ["<vector_store_id>"],
+            vector_store_ids: ["&lt;vector_store_id>"],
         },
     ],
 });
@@ -702,7 +701,7 @@ string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
 OpenAIResponseClient client = new(model: "gpt-5.5", apiKey: key);
 
 ResponseCreationOptions options = new();
-options.Tools.Add(ResponseTool.CreateFileSearchTool(["<vector_store_id>"]));
+options.Tools.Add(ResponseTool.CreateFileSearchTool(["&lt;vector_store_id>"]));
 
 OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
     ResponseItem.CreateUserMessageItem([
@@ -944,13 +943,13 @@ OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
 Console.WriteLine(response.GetOutputText());
 ```
 
-[使用内置工具 - 了解强大的内置工具，如网络搜索和文件搜索。](/api/docs/guides/tools)
+[使用内置工具 - 了解强大的内置工具，如网络搜索和文件搜索。](/guides/tools)
 
-[函数调用指南 - 了解如何让模型调用你自己的自定义代码。](/api/docs/guides/function-calling)
+[函数调用指南 - 了解如何让模型调用你自己的自定义代码。](/guides/function-calling)
 
 ## 流式响应和构建实时应用
 
-使用服务器发送的[流式事件](/api/docs/guides/streaming-responses)在结果生成时即时展示，或使用 [Realtime API](/api/docs/guides/realtime) 构建交互式语音和多模态应用。
+使用服务器发送的[流式事件](/guides/streaming-responses)在结果生成时即时展示，或使用 [Realtime API](/guides/realtime) 构建交互式语音和多模态应用。
 
 **从 API 流式传输服务器发送事件**
 
@@ -1012,13 +1011,13 @@ await foreach (var response in responses)
 }
 ```
 
-[使用流式事件 - 使用服务器发送事件将模型响应快速流式传输给用户。](/api/docs/guides/streaming-responses)
+[使用流式事件 - 使用服务器发送事件将模型响应快速流式传输给用户。](/guides/streaming-responses)
 
-[开始使用 Realtime API - 使用 WebRTC 或 WebSockets 构建超快的语音对语音 AI 应用。](/api/docs/guides/realtime)
+[开始使用 Realtime API - 使用 WebRTC 或 WebSockets 构建超快的语音对语音 AI 应用。](/guides/realtime)
 
 ## 构建智能体
 
-使用 OpenAI 平台构建能够代表用户执行操作的[智能体](/api/docs/guides/agents)——例如[控制计算机](/api/docs/guides/tools-computer-use)。使用 [Agents SDK](/api/docs/guides/agents) 在后端创建编排逻辑。
+使用 OpenAI 平台构建能够代表用户执行操作的[智能体](/guides/agents)——例如[控制计算机](/guides/tools-computer-use)。使用 [Agents SDK](/guides/agents) 在后端创建编排逻辑。
 
 构建语言分流智能体
 
@@ -1078,4 +1077,4 @@ if __name__ == "__main__":
     asyncio.run(main())
 ```
 
-[构建能够执行操作的智能体 - 了解如何使用 OpenAI 平台构建强大、高效的 AI 智能体。](/api/docs/guides/agents)
+[构建能够执行操作的智能体 - 了解如何使用 OpenAI 平台构建强大、高效的 AI 智能体。](/guides/agents)

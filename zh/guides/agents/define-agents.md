@@ -1,4 +1,3 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/agents/define-agents -->
 
 Agent 是基于 SDK 工作流的核心单元。它封装了模型、指令以及可选的运行时行为，如工具、护栏、MCP 服务器、交接和结构化输出。
 
@@ -10,14 +9,14 @@ Agent 是基于 SDK 工作流的核心单元。它封装了模型、指令以及
 | --- | --- | --- |
 | `name` | 在追踪和工具/交接界面中的人类可读标识 | 本页 |
 | `instructions` | 该 agent 的任务、约束和风格 | 本页 |
-| `prompt` | 用于基于 Responses 运行的存储提示配置 | [模型和提供者](/api/docs/guides/agents/models) |
-| `model` 和模型设置 | 选择模型和调整行为 | [模型和提供者](/api/docs/guides/agents/models) |
-| `tools` | agent 可以直接调用的能力 | [使用工具](/api/docs/guides/tools#usage-in-the-agents-sdk) |
-| `handoffDescription` | 提示其他 agent 何时应委派到此处 | [编排和交接](/api/docs/guides/agents/orchestration) |
-| `handoffs` | 委派给另一个 agent | [编排和交接](/api/docs/guides/agents/orchestration) |
+| `prompt` | 用于基于 Responses 运行的存储提示配置 | [模型和提供者](/guides/agents/models) |
+| `model` 和模型设置 | 选择模型和调整行为 | [模型和提供者](/guides/agents/models) |
+| `tools` | agent 可以直接调用的能力 | [使用工具](/guides/tools#usage-in-the-agents-sdk) |
+| `handoffDescription` | 提示其他 agent 何时应委派到此处 | [编排和交接](/guides/agents/orchestration) |
+| `handoffs` | 委派给另一个 agent | [编排和交接](/guides/agents/orchestration) |
 | `outputType` | 返回结构化输出而非纯文本 | 本页 |
-| 护栏和审批 | 验证、阻止和审核流程 | [护栏和人工审核](/api/docs/guides/agents/guardrails-approvals) |
-| MCP 服务器和托管 MCP 工具 | 附加基于 MCP 的能力 | [集成和可观测性](/api/docs/guides/agents/integrations-observability#mcp) |
+| 护栏和审批 | 验证、阻止和审核流程 | [护栏和人工审核](/guides/agents/guardrails-approvals) |
+| MCP 服务器和托管 MCP 工具 | 附加基于 MCP 的能力 | [集成和可观测性](/guides/agents/integrations-observability#mcp) |
 
 ## 从一个专注的 agent 开始
 
@@ -150,12 +149,12 @@ const fetchUserAge = tool({
   name: "fetch_user_age",
   description: "Return the age of the current user.",
   parameters: z.object({}),
-  async execute(_args, runContext?: RunContext<UserInfo>) {
+  async execute(_args, runContext?: RunContext&lt;UserInfo>) {
     return `User ${runContext?.context.name} is 47 years old`;
   },
 });
 
-const agent = new Agent<UserInfo>({
+const agent = new Agent&lt;UserInfo>({
   name: "Assistant",
   tools: [fetchUserAge],
 });
@@ -224,10 +223,10 @@ if __name__ == "__main__":
 
 一旦一个专家被清晰定义，请转到与下一个设计问题匹配的指南。
 
-[模型和提供者 - 为此 agent 选择模型、默认值和传输策略。](/api/docs/guides/agents/models)
+[模型和提供者 - 为此 agent 选择模型、默认值和传输策略。](/guides/agents/models)
 
-[使用工具 - 添加 agent 可以直接调用的能力。](/api/docs/guides/tools#usage-in-the-agents-sdk)
+[使用工具 - 添加 agent 可以直接调用的能力。](/guides/tools#usage-in-the-agents-sdk)
 
-[编排和交接 - 当一个 agent 不再足够时，选择专家之间如何协作。](/api/docs/guides/agents/orchestration)
+[编排和交接 - 当一个 agent 不再足够时，选择专家之间如何协作。](/guides/agents/orchestration)
 
-[运行 agent - 了解运行时循环、状态和流式行为。](/api/docs/guides/agents/running-agents)
+[运行 agent - 了解运行时循环、状态和流式行为。](/guides/agents/running-agents)

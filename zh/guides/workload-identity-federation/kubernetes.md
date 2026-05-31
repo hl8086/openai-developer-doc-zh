@@ -1,4 +1,3 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/workload-identity-federation/kubernetes -->
 
 通过将 Kubernetes 投射的服务账户令牌交换为短期 OpenAI 访问令牌，将 Kubernetes 用作工作负载身份提供者。
 
@@ -57,7 +56,7 @@ spec:
 
 在配置工作负载身份联合之前，在本地解码一个示例投射服务账户令牌并检查其声明。从挂载了投射令牌的运行中 Pod 执行：
 
-```
+```text
 TOKEN=$(kubectl exec -n default openai-wif-app -- cat /var/run/secrets/tokens/token)
 
 TOKEN="$TOKEN" python3 - <<'PY'
@@ -119,7 +118,7 @@ PY
 
 1.  **创建服务账户映射。** 将 **Name** 设置为工作负载身份提供者内的唯一值，例如 `openai-mapping-kubernetes`。使用 **Description**，例如 `Workload Identity Provider Mapping for Kubernetes Workloads`，说明哪个工作负载可以使用该映射。
     
-2.  **匹配 Kubernetes 服务账户主体。** 将 **Key** 设置为 `sub`，将 **Value** 设置为 `system:serviceaccount:default:openai-wif`。对于 Kubernetes 服务账户，主体格式为 `system:serviceaccount:<namespace>:<service-account-name>`。
+2.  **匹配 Kubernetes 服务账户主体。** 将 **Key** 设置为 `sub`，将 **Value** 设置为 `system:serviceaccount:default:openai-wif`。对于 Kubernetes 服务账户，主体格式为 `system:serviceaccount:`&lt;namespace>`:`&lt;service-account-name>``。
     
 3.  **选择 OpenAI 目标。** 将 **Project** 设置为拥有目标服务账户的 OpenAI 项目。将 **Service account** 设置为 Kubernetes 工作负载可以使用的 OpenAI 服务账户，例如 `kubernetes-prod-openai-wif`。如果希望为此映射创建新的服务账户而非复用现有的，请勾选 `Create a new service account in this project`。
     
@@ -338,7 +337,7 @@ public final class KubernetesWorkloadIdentityExample {
         }
 
         @Override
-        public CompletableFuture<String> getTokenAsync(
+        public CompletableFuture&lt;String> getTokenAsync(
                 HttpClient httpClient, JsonMapper jsonMapper) {
             return CompletableFuture.supplyAsync(() -> getToken(httpClient, jsonMapper));
         }

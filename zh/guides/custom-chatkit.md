@@ -1,8 +1,7 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/custom-chatkit -->
 
 当你需要完全控制——自定义认证、数据驻留、本地部署或定制化的 Agent 编排——你可以在自己的基础设施上运行 ChatKit。使用 OpenAI 的高级自托管选项来使用你自己的服务器和定制化的 ChatKit。
 
-我们推荐的 ChatKit 集成可以帮助你快速上手：嵌入聊天组件、自定义外观和风格，让 OpenAI 托管和扩展后端。[使用更简单的集成 →](/api/docs/guides/chatkit)
+我们推荐的 ChatKit 集成可以帮助你快速上手：嵌入聊天组件、自定义外观和风格，让 OpenAI 托管和扩展后端。[使用更简单的集成 →](/guides/chatkit)
 
 ## 在你自己的基础设施上运行 ChatKit
 
@@ -169,13 +168,13 @@ ChatKit 附带了丰富的组件节点集合（卡片、列表、表单、文本
 
 ChatKit 从 Web Component 发出 `CustomEvent` 实例。负载结构如下：
 
-```
+```text
 type Events = {
   "chatkit.error": CustomEvent<{ error: Error }>;
-  "chatkit.response.start": CustomEvent<void>;
-  "chatkit.response.end": CustomEvent<void>;
+  "chatkit.response.start": CustomEvent&lt;void>;
+  "chatkit.response.end": CustomEvent&lt;void>;
   "chatkit.thread.change": CustomEvent<{ threadId: string | null }>;
-  "chatkit.log": CustomEvent<{ name: string; data?: Record<string, unknown> }>;
+  "chatkit.log": CustomEvent<{ name: string; data?: Record&lt;string, unknown> }>;
 };
 ```
 

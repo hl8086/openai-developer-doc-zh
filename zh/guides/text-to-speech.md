@@ -1,6 +1,5 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/text-to-speech -->
 
-Audio API 提供了一个基于我们 [GPT-4o mini TTS（文本转语音）模型](/api/docs/models/gpt-4o-mini-tts) 的 [`speech`](/api/docs/api-reference/audio/createSpeech) 端点。它内置了 11 种语音，可用于：
+Audio API 提供了一个基于我们 [GPT-4o mini TTS（文本转语音）模型](/models/gpt-4o-mini-tts) 的 [`speech`]( https://developers.openai.com/api/reference/audio/createSpeech) 端点。它内置了 11 种语音，可用于：
 
 *   朗读书面博客文章
 *   生成多种语言的语音音频
@@ -14,9 +13,9 @@ Audio API 提供了一个基于我们 [GPT-4o mini TTS（文本转语音）模�
 
 `speech` 端点接受三个关键输入：
 
-1.  您使用的[模型](/api/docs/api-reference/audio/createSpeech#audio-createspeech-model)
-2.  要转换为音频的[文本](/api/docs/api-reference/audio/createSpeech#audio-createspeech-input)
-3.  用于朗读输出的[语音](/api/docs/api-reference/audio/createSpeech#audio-createspeech-voice)
+1.  您使用的[模型]( https://developers.openai.com/api/reference/audio/createSpeech#audio-createspeech-model)
+2.  要转换为音频的[文本]( https://developers.openai.com/api/reference/audio/createSpeech#audio-createspeech-input)
+3.  用于朗读输出的[语音]( https://developers.openai.com/api/reference/audio/createSpeech#audio-createspeech-voice)
 
 以下是一个简单的请求示例：
 
@@ -114,7 +113,7 @@ TTS 端点提供 13 种内置语音来控制文本转语音的呈现方式。**�
 
 语音可用性取决于模型。`tts-1` 和 `tts-1-hd` 模型支持较少的语音集：`alloy`、`ash`、`coral`、`echo`、`fable`、`onyx`、`nova`、`sage` 和 `shimmer`。
 
-如果您使用的是 [Realtime API](/api/docs/guides/realtime)，请注意可用语音集略有不同——请参阅[实时对话指南](/api/docs/guides/realtime-conversations#voice-options)了解当前的实时语音。
+如果您使用的是 [Realtime API](/guides/realtime)，请注意可用语音集略有不同——请参阅[实时对话指南](/guides/realtime-conversations#voice-options)了解当前的实时语音。
 
 ### 流式实时音频
 
@@ -195,7 +194,7 @@ TTS 模型在语言支持方面通常遵循 Whisper 模型。Whisper [支持以�
 
 ## 自定义语音
 
-自定义语音使您能够为代理或应用程序创建独特的语音。这些语音可用于 [Text to Speech API](/api/docs/api-reference/audio/createSpeech)、[Realtime API](/api/docs/api-reference/realtime) 或[带音频输出的 Chat Completions API](/api/docs/guides/audio) 的音频输出。
+自定义语音使您能够为代理或应用程序创建独特的语音。这些语音可用于 [Text to Speech API]( https://developers.openai.com/api/reference/audio/createSpeech)、[Realtime API]( https://developers.openai.com/api/reference/realtime) 或[带音频输出的 Chat Completions API](/guides/audio) 的音频输出。
 
 要创建自定义语音，您需要提供一段简短的音频参考样本，模型将尝试复制该样本。
 
@@ -279,7 +278,7 @@ curl https://api.openai.com/v1/audio/voices \
 
 #### 在语音生成中使用语音
 
-语音生成将照常工作。只需在[创建语音](/api/docs/api-reference/audio/createSpeech)时或在启动[实时会话](/api/docs/api-reference/realtime/create-call#realtime_create_call-session-audio-output-voice)时，在 `voice` 参数中指定语音的 ID。
+语音生成将照常工作。只需在[创建语音]( https://developers.openai.com/api/reference/audio/createSpeech)时或在启动[实时会话]( https://developers.openai.com/api/reference/realtime/create-call#realtime_create_call-session-audio-output-voice)时，在 `voice` 参数中指定语音的 ID。
 
 **文本转语音示例**
 
@@ -318,6 +317,6 @@ const sessionConfig = JSON.stringify({
 
 ## 相关指南
 
-[实时和音频概述 - 为语音代理、翻译、转录和语音生成选择正确的路径。](/api/docs/guides/realtime)
+[实时和音频概述 - 为语音代理、翻译、转录和语音生成选择正确的路径。](/guides/realtime)
 
-[音频和语音概念 - 了解音频模态、语音任务、流式传输和基于请求的 API。](/api/docs/guides/audio)
+[音频和语音概念 - 了解音频模态、语音任务、流式传输和基于请求的 API。](/guides/audio)

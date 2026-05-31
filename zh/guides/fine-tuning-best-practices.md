@@ -1,4 +1,3 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/fine-tuning-best-practices -->
 
 如果微调模型没有产生理想的结果，请考虑对流程进行以下迭代改进。
 
@@ -6,7 +5,7 @@ OpenAI 正在逐步关闭微调平台。该平台不再对新用户开放，但�
 
   
 
-所有微调模型在其基础模型被[弃用](/api/docs/deprecations)之前将继续可用于推理。完整时间线请参见[此处](/api/docs/deprecations)。
+所有微调模型在其基础模型被[弃用](/deprecations)之前将继续可用于推理。完整时间线请参见[此处](/deprecations)。
 
 ### 迭代改进数据质量
 
@@ -88,9 +87,9 @@ client.fine_tuning.jobs.create(
 
 ### 训练集与测试集
 
-收集示例后，将数据集分为训练部分和测试部分。训练集用于微调任务，测试集用于[评估](/api/docs/guides/evals)。
+收集示例后，将数据集分为训练部分和测试部分。训练集用于微调任务，测试集用于[评估](/guides/evals)。
 
-当您同时提交包含训练文件和测试文件的微调任务时，我们会在训练过程中提供两者的统计数据。这些统计数据为您提供模型改进程度的信号。尽早构建测试集有助于您通过与测试集基准进行比较来[评估训练后的模型](/api/docs/guides/evals)。
+当您同时提交包含训练文件和测试文件的微调任务时，我们会在训练过程中提供两者的统计数据。这些统计数据为您提供模型改进程度的信号。尽早构建测试集有助于您通过与测试集基准进行比较来[评估训练后的模型](/guides/evals)。
 
 ### 为训练数据编写提示词
 
@@ -100,7 +99,7 @@ client.fine_tuning.jobs.create(
 
 ### 训练数据中的多轮对话
 
-要在[多轮对话](/api/docs/guides/conversation-state)上训练模型，请在训练数据每一行的 `messages` 数组中包含多个 `user` 和 `assistant` 消息。
+要在[多轮对话](/guides/conversation-state)上训练模型，请在训练数据每一行的 `messages` 数组中包含多个 `user` 和 `assistant` 消息。
 
 使用可选的 `weight` 键（值设置为 0 或 1）来禁用对特定助手消息的微调。以下是在聊天格式中控制 `weight` 的一些示例：
 
@@ -124,7 +123,7 @@ Token 限制取决于模型。以下是允许的最大上下文长度概览：
 
 超过默认长度的示例将被截断到最大上下文长度，从训练示例末尾移除 token。为确保整个训练示例适合上下文，请将消息内容中的总 token 数保持在限制以下。
 
-使用 [tokenizer 工具](https://platform.openai.com/tokenizer)或通过代码计算 token 数量，如这个 [cookbook 示例](/cookbook/examples/how_to_count_tokens_with_tiktoken)所示。
+使用 [tokenizer 工具](https://platform.openai.com/tokenizer)或通过代码计算 token 数量，如这个 [cookbook 示例]( https://cdn.openai.com/API/docs/cookbook/examples/how_to_count_tokens_with_tiktoken)所示。
 
 在上传数据之前，您可能需要检查格式和潜在的 token 成本——如何执行此操作的示例可以在 cookbook 中找到。
 

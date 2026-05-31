@@ -1,12 +1,11 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/evaluation-best-practices -->
 
 生成式 AI 具有可变性。模型有时会对相同的输入产生不同的输出，这使得传统的软件测试方法不足以应对 AI 架构。评估（**evals**）是一种在这种可变性下测试 AI 系统的方法。
 
-本指南提供了设计评估的高层指导。要开始使用 [Evals API](/api/docs/api-reference/evals)，请参阅[评估模型性能](/api/docs/guides/evals)。
+本指南提供了设计评估的高层指导。要开始使用 [Evals API]( https://developers.openai.com/api/reference/evals)，请参阅[评估模型性能](/guides/evals)。
 
 ## 什么是评估？
 
-评估是用于衡量模型性能的结构化测试。它们有助于确保准确性、性能和可靠性，尽管 AI 系统具有非确定性特征。它们也是_提升_基于 LLM 的应用性能的少数方法之一（通过[微调](/api/docs/guides/model-optimization)）。
+评估是用于衡量模型性能的结构化测试。它们有助于确保准确性、性能和可靠性，尽管 AI 系统具有非确定性特征。它们也是_提升_基于 LLM 的应用性能的少数方法之一（通过[微调](/guides/model-optimization)）。
 
 ### 评估的类型
 
@@ -65,7 +64,7 @@
 3.  **定义评估指标**  
     在 1000 个保留的参考转录→摘要集上，实现至少 0.40 的 ROUGE-L 分数和使用 G-Eval 至少 80% 的连贯性分数。
 4.  **运行和比较评估**  
-    使用 [Evals API](/api/docs/guides/evals) 在 OpenAI 仪表板中创建和运行评估。
+    使用 [Evals API](/guides/evals) 在 OpenAI 仪表板中创建和运行评估。
 5.  **持续评估**  
     设置持续评估（CE）以在每次变更时运行评估，监控你的应用以识别新的非确定性案例，并随时间增长评估集。
 
@@ -82,7 +81,7 @@ LLM 更擅长在选项之间进行区分。因此，评估应该关注成对比�
 3.  **定义评估指标**  
     上下文召回率至少 0.85，上下文精确率超过 0.7，以及 70% 以上的正面评价答案。
 4.  **运行和比较评估**  
-    使用 [Evals API](/api/docs/guides/evals) 在 OpenAI 仪表板中创建和运行评估。
+    使用 [Evals API](/guides/evals) 在 OpenAI 仪表板中创建和运行评估。
 5.  **持续评估**  
     设置持续评估（CE）以在每次变更时运行评估，监控你的应用以识别新的非确定性案例，并随时间增长评估集。
 
@@ -306,14 +305,14 @@ LLM 更擅长在选项之间进行区分。因此，评估应该关注成对比�
 
 当你的评估达到能够持续衡量性能的成熟度时，转向使用你的评估数据来提升应用的性能。
 
-了解更多关于[强化微调](/api/docs/guides/reinforcement-fine-tuning)以创建数据飞轮。
+了解更多关于[强化微调](/guides/reinforcement-fine-tuning)以创建数据飞轮。
 
 ## 其他资源
 
 获取更多灵感，请访问 [OpenAI Cookbook](/cookbook)，其中包含示例代码和第三方资源链接，或了解更多关于我们的评估工具：
 
-*   [评估模型性能](/api/docs/guides/evals)
-*   [如何评估摘要任务](/cookbook/examples/evaluation/how_to_eval_abstractive_summarization)
-*   [微调](/api/docs/guides/model-optimization)
-*   [评分器](/api/docs/guides/graders)
-*   [Evals API 参考](/api/docs/api-reference/evals)
+*   [评估模型性能](/guides/evals)
+*   [如何评估摘要任务]( https://cdn.openai.com/API/docs/cookbook/examples/evaluation/how_to_eval_abstractive_summarization)
+*   [微调](/guides/model-optimization)
+*   [评分器](/guides/graders)
+*   [Evals API 参考]( https://developers.openai.com/api/reference/evals)

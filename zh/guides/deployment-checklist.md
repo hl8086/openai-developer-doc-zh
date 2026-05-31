@@ -1,4 +1,3 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/deployment-checklist -->
 
 | 内容 | 预期影响 |
 | --- | --- |
@@ -16,7 +15,7 @@
 
 ## Use the Responses API
 
-**始终从** [Responses API](/api/docs/guides/migrate-to-responses) 开始。它是 OpenAI 的旗舰 API，也是获取最新模型行为、内置工具、有状态工作流和 Agent 功能的最佳入口。
+**始终从** [Responses API](/guides/migrate-to-responses) 开始。它是 OpenAI 的旗舰 API，也是获取最新模型行为、内置工具、有状态工作流和 Agent 功能的最佳入口。
 
 ## Set up `reasoning.effort`
 
@@ -277,7 +276,7 @@ print(response.output_text)
 
 ## Leverage built-in tools
 
-[内置工具](/api/docs/guides/tools)是 API 的原生能力。你不需要自己构建每个工具，而是可以让模型访问已经在 Responses API 中工作的工具。模型随后可以决定何时使用它们。
+[内置工具](/guides/tools)是 API 的原生能力。你不需要自己构建每个工具，而是可以让模型访问已经在 Responses API 中工作的工具。模型随后可以决定何时使用它们。
 
 OpenAI 持续添加更多原生工具，因此当内置工具适合你的工作流时，优先使用它们。当原生选项无法覆盖任务时再构建自定义工具。当前的内置工具和相关工具选项包括：
 
@@ -295,7 +294,7 @@ OpenAI 持续添加更多原生工具，因此当内置工具适合你的工作�
 
 ## Leverage compaction
 
-[压缩](/api/docs/guides/compaction)是一种上下文工程工具：它决定模型在多轮对话中携带哪些信息。在长时间运行的 agent 中，问题不仅仅是"我会不会达到上下文限制？"而是旧消息、工具日志、重试和过时的细节会挤占模型所需的状态。
+[压缩](/guides/compaction)是一种上下文工程工具：它决定模型在多轮对话中携带哪些信息。在长时间运行的 agent 中，问题不仅仅是"我会不会达到上下文限制？"而是旧消息、工具日志、重试和过时的细节会挤占模型所需的状态。
 
 压缩为你提供了一种受控的方式来减少上下文大小，同时保留后续轮次所需的状态。在有意义的里程碑之后，例如完成调试阶段或缩小根本原因，你可以压缩先前的窗口并从压缩输出继续。这使模型保持敏锐，因为下一轮是围绕重要状态构建的，而不是每个中间推理、失败的命令和过时的推理分支。
 
@@ -374,7 +373,7 @@ print(next_response.output_text)
 
 ## Use `prompt_cache_key`
 
-[Prompt 缓存](/api/docs/guides/prompt-caching)在请求重用相同的长前缀时自动减少延迟和成本。对于高流量工作流，为共享相同稳定前缀的请求一致地设置 [`prompt_cache_key`](/api/docs/api-reference/responses/create#responses-create-prompt_cache_key)。
+[Prompt 缓存](/guides/prompt-caching)在请求重用相同的长前缀时自动减少延迟和成本。对于高流量工作流，为共享相同稳定前缀的请求一致地设置 [`prompt_cache_key`]( https://developers.openai.com/api/reference/responses/create#responses-create-prompt_cache_key)。
 
 缓存键与 prompt 前缀哈希组合使用，因此它有助于将相似的请求路由到相同的缓存，而不改变模型输入。对于真正共享的前缀保持键稳定，并选择一个粒度以避免向一个前缀-键对发送过多流量。如果一个前缀和 `prompt_cache_key` 组合超过大约每分钟 15 个请求，请求可能会溢出到其他机器并降低缓存效果。
 
@@ -423,7 +422,7 @@ print(response.output_text)
 
 ## Use `reasoning.encrypted_content`
 
-始终回传推理项。这通过允许模型从其先前的推理中工作来帮助模型。如果你的[零数据保留 (ZDR)](/api/docs/guides/your-data#zero-data-retention) 要求不允许存储响应数据，这就是 `reasoning.encrypted_content` 重要的地方。`reasoning.encrypted_content` 为你提供无状态的交接。
+始终回传推理项。这通过允许模型从其先前的推理中工作来帮助模型。如果你的[零数据保留 (ZDR)](/guides/your-data#zero-data-retention) 要求不允许存储响应数据，这就是 `reasoning.encrypted_content` 重要的地方。`reasoning.encrypted_content` 为你提供无状态的交接。
 
 将 `reasoning.encrypted_content` 添加到 `include` 中，响应输出中的推理项将包含加密的推理内容，可以传回下一个请求。你的应用不需要理解该值。它只需保持推理项完全按返回的样子，并在下一轮发送回去，这样模型就可以用它来继续工作流。
 
@@ -490,7 +489,7 @@ print(second.output_text)
 
 ## Use `background=True`
 
-对于可能需要很长时间的请求，使用 [`background=True`](/api/docs/guides/background)。API 不会保持客户端连接打开，而是启动一个作业并返回一个 ID。你的应用可以轮询该作业直到它完成、失败或被取消。用于大型分析、长时间工具运行或需要状态和重试行为的工作。
+对于可能需要很长时间的请求，使用 [`background=True`](/guides/background)。API 不会保持客户端连接打开，而是启动一个作业并返回一个 ID。你的应用可以轮询该作业直到它完成、失败或被取消。用于大型分析、长时间工具运行或需要状态和重试行为的工作。
 
 `background=True` **需要 `store=True`**。
 
@@ -557,11 +556,11 @@ print(job.output_text)
 
 从 UI 的角度来看，后台模式表示："这正在运行；这是状态；结果准备好后会出现在这里。"
 
-注意：`background=True` 与[零数据保留](/api/docs/guides/your-data#zero-data-retention)不兼容。
+注意：`background=True` 与[零数据保留](/guides/your-data#zero-data-retention)不兼容。
 
 ## Use WebSocket mode
 
-[WebSocket 模式](/api/docs/guides/websocket-mode)专为长时间运行、工具调用密集的工作流而构建，你保持一个持久连接打开，并通过仅发送新的输入项加上 `previous_response_id` 来继续。对于有 20 个或更多工具调用的部署，这种方法端到端大约快 40%。
+[WebSocket 模式](/guides/websocket-mode)专为长时间运行、工具调用密集的工作流而构建，你保持一个持久连接打开，并通过仅发送新的输入项加上 `previous_response_id` 来继续。对于有 20 个或更多工具调用的部署，这种方法端到端大约快 40%。
 
 **工作原理**：第一条消息看起来像一个正常的 Responses 请求：model、instructions、tools 和用户输入。服务器流式返回事件。如果模型请求工具，你的应用运行该工具。然后，不是发送新的 HTTP 请求，而是在同一个 socket 上发送另一个 `response.create` 事件，带有先前的 `previous_response_id` 和新项。这就是延迟优势的来源。在普通 HTTP 中，每次后续请求都是一个全新的请求。在 WebSocket 模式中，连接保持打开，最近的响应状态在该连接的内存中保持热状态。当下一轮从该响应继续时，后端需要做更少的设置工作。
 

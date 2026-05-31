@@ -1,6 +1,5 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/graders -->
 
-评分器是一种根据参考答案评估模型性能的方式。我们的[评分器 API](/api/docs/api-reference/graders)可以用来测试你的评分器、实验结果，并改进你的微调或评估框架以获得你想要的结果。
+评分器是一种根据参考答案评估模型性能的方式。我们的[评分器 API]( https://developers.openai.com/api/reference/graders)可以用来测试你的评分器、实验结果，并改进你的微调或评估框架以获得你想要的结果。
 
 ## 概述
 
@@ -15,13 +14,13 @@
 
 在强化微调中，你可以使用[多评分器](#multigraders)来嵌套和组合评分器。
 
-使用本指南了解每种评分器类型并查看入门示例。要构建评分器并开始强化微调，请参阅 [RFT 指南](/api/docs/guides/reinforcement-fine-tuning)。或者要开始使用评估，请参阅[评估指南](/api/docs/guides/evals)。
+使用本指南了解每种评分器类型并查看入门示例。要构建评分器并开始强化微调，请参阅 [RFT 指南](/guides/reinforcement-fine-tuning)。或者要开始使用评估，请参阅[评估指南](/guides/evals)。
 
 ## 模板语法
 
-某些评分器的输入使用模板语法，以便用相同的配置对多个示例进行评分。任何包含 `{{ }}` 双花括号的字符串都会被替换为变量值。
+某些评分器的输入使用模板语法，以便用相同的配置对多个示例进行评分。任何包含 `\{\{ \}\}` 双花括号的字符串都会被替换为变量值。
 
-`{{}}` 内的每个输入必须包含一个_命名空间_和一个_变量_，格式为 `{{ namespace.variable }}`。唯一支持的命名空间是 `item` 和 `sample`。
+`\{\{\}\}` 内的每个输入必须包含一个_命名空间_和一个_变量_，格式为 `\{\{ namespace.variable \}\}`。唯一支持的命名空间是 `item` 和 `sample`。
 
 所有嵌套变量都可以使用类似 JSON 路径的语法访问。
 
@@ -35,7 +34,7 @@ item 命名空间将由评估的输入数据源中的变量填充，微调时则
 }
 ```
 
-这可以在评分器中使用 `{{ item.reference_answer }}` 来引用。
+这可以在评分器中使用 `\{\{ item.reference_answer \}\}` 来引用。
 
 ### Sample 命名空间
 
@@ -43,15 +42,15 @@ sample 命名空间将由评估期间的模型采样步骤或微调步骤中的�
 
 *   `output_text`，模型输出内容的字符串形式。
 *   `output_json`，模型输出内容的 JSON 对象形式，仅在 sample 中包含 `response_format` 时可用。
-*   `output_tools`，模型输出的 `tool_calls`，其结构与 [chat completions API](/api/docs/api-reference/chat/object) 中的输出工具调用相同。
-*   `choices`，输出选项，其结构与 [chat completions API](/api/docs/api-reference/chat/object) 中的输出选项相同。
+*   `output_tools`，模型输出的 `tool_calls`，其结构与 [chat completions API]( https://developers.openai.com/api/reference/chat/object) 中的输出工具调用相同。
+*   `choices`，输出选项，其结构与 [chat completions API]( https://developers.openai.com/api/reference/chat/object) 中的输出选项相同。
 *   `output_audio`，模型音频输出对象，包含 Base64 编码的 `data` 和 `transcript`。
 
-例如，要以字符串形式访问模型输出内容，可以在评分器中使用 `{{ sample.output_text }}`。
+例如，要以字符串形式访问模型输出内容，可以在评分器中使用 `\{\{ sample.output_text \}\}`。
 
 工具调用评分详情
 
-当训练模型以改进工具调用行为时，你需要编写评分器来操作 `sample.output_tools` 变量。该变量的内容与 `response.choices[0].message.tool_calls` 的内容相同（[参见函数调用文档](/api/docs/guides/function-calling?api-mode=chat)）。
+当训练模型以改进工具调用行为时，你需要编写评分器来操作 `sample.output_tools` 变量。该变量的内容与 `response.choices[0].message.tool_calls` 的内容相同（[参见函数调用文档](/guides/function-calling?api-mode=chat)）。
 
 评分工具调用的常见方式是使用两个评分器，一个检查被调用工具的名称，另一个检查被调用函数的参数。下面展示了一个这样做的评分器示例：
 
@@ -63,14 +62,14 @@ sample 命名空间将由评估期间的模型采样步骤或微调步骤中的�
       "name": "function_name",
       "type": "string_check",
       "input": "get_acceptors",
-      "reference": "{{sample.output_tools[0].function.name}}",
+      "reference": "\{\{sample.output_tools[0].function.name\}\}",
       "operation": "eq"
     },
     "arguments": {
       "name": "arguments",
       "type": "string_check",
-      "input": "{\"smiles\": \"{{item.smiles}}\"}",
-      "reference": "{{sample.output_tools[0].function.arguments}}",
+      "input": "{\"smiles\": \"\{\{item.smiles\}\}\"}",
+      "reference": "\{\{sample.output_tools[0].function.arguments\}\}",
       "operation": "eq"
     }
   },
@@ -187,7 +186,7 @@ grader = {
         },
         {
             "role": "user",
-            "content": "Reference: {{ item.reference_answer }}. Model answer: {{ sample.output_text }}"
+            "content": "Reference: \{\{ item.reference_answer \}\}. Model answer: \{\{ sample.output_text \}\}"
         }
    ],
    "pass_threshold": 0.5,
@@ -462,16 +461,16 @@ names
     "name": {
       "name": "name_grader",
       "type": "text_similarity",
-      "input": "{{sample.output_json.name}}",
-      "reference": "{{item.name}}",
+      "input": "\{\{sample.output_json.name\}\}",
+      "reference": "\{\{item.name\}\}",
       "evaluation_metric": "fuzzy_match",
       "pass_threshold": 0.9
     },
     "email": {
       "name": "email_grader",
       "type": "string_check",
-      "input": "{{sample.output_json.email}}",
-      "reference": "{{item.email}}",
+      "input": "\{\{sample.output_json.email\}\}",
+      "reference": "\{\{item.email\}\}",
       "operation": "eq"
     }
   },

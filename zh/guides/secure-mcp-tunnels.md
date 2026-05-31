@@ -1,4 +1,3 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/secure-mcp-tunnels -->
 
 Secure MCP Tunnel 允许你将私有 MCP 服务器连接到受支持的 OpenAI 产品，无需开放入站防火墙端口或将这些服务器暴露到公共互联网。在能够访问你的 MCP 服务器的网络内运行 `tunnel-client`；它会向 OpenAI 打开一条出站 HTTPS 路径，拉取排队的 MCP 工作，将请求转发到本地，并通过同一隧道返回响应。
 
@@ -13,7 +12,7 @@ Secure MCP Tunnel 保持 MCP 服务器的私密性，同时为受支持的 OpenA
 *   你的 MCP 服务器运行在私有网络、本地环境、开发者机器上或现有访问控制之后。
 *   你希望 ChatGPT、Codex、Responses API 或其他受支持的 OpenAI 产品使用该服务器，而无需将 MCP 服务器公开。
 *   你的网络允许运行 `tunnel-client` 的主机默认向 `api.openai.com:443` 发出出站 HTTPS 请求，或在配置了控制平面 mTLS 时向 `mtls.api.openai.com:443` 发出请求，并能访问私有 MCP 服务器。
-*   请先阅读 [MCP 和连接器指南](/api/docs/guides/tools-connectors-mcp) 了解通用 MCP 概念。
+*   请先阅读 [MCP 和连接器指南](/guides/tools-connectors-mcp) 了解通用 MCP 概念。
 
 ## 工作原理
 
@@ -25,9 +24,9 @@ Secure MCP Tunnel 保持 MCP 服务器的私密性，同时为受支持的 OpenA
 
 私有 MCP 服务器不需要公共监听器。OpenAI 托管的端点为受支持的产品提供正常的 MCP 请求路径，而网络发起点保持在你的边界内。当连接器请求流式结果时，隧道路径可以转发中间的服务器发送事件。
 
- ![图示：OpenAI 产品通过 OpenAI 隧道服务将 MCP JSON-RPC 发送到 tunnel-client，tunnel-client 将请求转发到私有 MCP 服务器并通过同一隧道返回响应。](/images/platform/guides/secure-mcp-tunnels/request-flow-diagram.png) ![图示：OpenAI 产品通过 OpenAI 隧道服务将 MCP JSON-RPC 发送到 tunnel-client，tunnel-client 将请求转发到私有 MCP 服务器并通过同一隧道返回响应。](/images/platform/guides/secure-mcp-tunnels/request-flow-diagram.png)
+ ![图示：OpenAI 产品通过 OpenAI 隧道服务将 MCP JSON-RPC 发送到 tunnel-client，tunnel-client 将请求转发到私有 MCP 服务器并通过同一隧道返回响应。]( https://cdn.openai.com/API/docs/images/platform/guides/secure-mcp-tunnels/request-flow-diagram.png) ![图示：OpenAI 产品通过 OpenAI 隧道服务将 MCP JSON-RPC 发送到 tunnel-client，tunnel-client 将请求转发到私有 MCP 服务器并通过同一隧道返回响应。]( https://cdn.openai.com/API/docs/images/platform/guides/secure-mcp-tunnels/request-flow-diagram.png)
 
-![图示：OpenAI 产品通过 OpenAI 隧道服务将 MCP JSON-RPC 发送到 tunnel-client，tunnel-client 将请求转发到私有 MCP 服务器并通过同一隧道返回响应。](/images/platform/guides/secure-mcp-tunnels/request-flow-diagram.png) ![图示：OpenAI 产品通过 OpenAI 隧道服务将 MCP JSON-RPC 发送到 tunnel-client，tunnel-client 将请求转发到私有 MCP 服务器并通过同一隧道返回响应。](/images/platform/guides/secure-mcp-tunnels/request-flow-diagram.png)
+![图示：OpenAI 产品通过 OpenAI 隧道服务将 MCP JSON-RPC 发送到 tunnel-client，tunnel-client 将请求转发到私有 MCP 服务器并通过同一隧道返回响应。]( https://cdn.openai.com/API/docs/images/platform/guides/secure-mcp-tunnels/request-flow-diagram.png) ![图示：OpenAI 产品通过 OpenAI 隧道服务将 MCP JSON-RPC 发送到 tunnel-client，tunnel-client 将请求转发到私有 MCP 服务器并通过同一隧道返回响应。]( https://cdn.openai.com/API/docs/images/platform/guides/secure-mcp-tunnels/request-flow-diagram.png)
 
 OpenAI 产品调用 OpenAI 托管的隧道端点；`tunnel-client` 长轮询排队的工作并通过同一隧道返回 MCP 响应。
 
@@ -73,9 +72,9 @@ tunnel-client run --profile local-stdio
 
 在创建或测试连接器时，保持 `tunnel-client run ...` 运行正常。连接器发现和 MCP 工具调用依赖于正在运行的客户端。
 
- ![本地 tunnel-client 管理 UI 实时显示健康状态、就绪状态、隧道元数据和通道状态。](/images/platform/guides/secure-mcp-tunnels/tunnel-client-admin-ui.png) ![本地 tunnel-client 管理 UI 实时显示健康状态、就绪状态、隧道元数据和通道状态。](/images/platform/guides/secure-mcp-tunnels/tunnel-client-admin-ui.png)
+ ![本地 tunnel-client 管理 UI 实时显示健康状态、就绪状态、隧道元数据和通道状态。]( https://cdn.openai.com/API/docs/images/platform/guides/secure-mcp-tunnels/tunnel-client-admin-ui.png) ![本地 tunnel-client 管理 UI 实时显示健康状态、就绪状态、隧道元数据和通道状态。]( https://cdn.openai.com/API/docs/images/platform/guides/secure-mcp-tunnels/tunnel-client-admin-ui.png)
 
-![本地 tunnel-client 管理 UI 实时显示健康状态、就绪状态、隧道元数据和通道状态。](/images/platform/guides/secure-mcp-tunnels/tunnel-client-admin-ui.png) ![本地 tunnel-client 管理 UI 实时显示健康状态、就绪状态、隧道元数据和通道状态。](/images/platform/guides/secure-mcp-tunnels/tunnel-client-admin-ui.png)
+![本地 tunnel-client 管理 UI 实时显示健康状态、就绪状态、隧道元数据和通道状态。]( https://cdn.openai.com/API/docs/images/platform/guides/secure-mcp-tunnels/tunnel-client-admin-ui.png) ![本地 tunnel-client 管理 UI 实时显示健康状态、就绪状态、隧道元数据和通道状态。]( https://cdn.openai.com/API/docs/images/platform/guides/secure-mcp-tunnels/tunnel-client-admin-ui.png)
 
 `/ui` 处的本地管理 UI 显示运行中的客户端是否健康、就绪并已连接，然后你可以从 ChatGPT、Codex 或 API 流程进行测试。
 
@@ -95,9 +94,9 @@ tunnel-client run --profile local-stdio
 
 ## 安全性和网络
 
- ![图示：tunnel-client 在客户控制的环境内通过出站连接到 OpenAI 管理的隧道控制平面，而私有 MCP 服务器保持在客户网络内部。](/images/platform/guides/secure-mcp-tunnels/trust-boundaries-diagram.png) ![图示：tunnel-client 在客户控制的环境内通过出站连接到 OpenAI 管理的隧道控制平面，而私有 MCP 服务器保持在客户网络内部。](/images/platform/guides/secure-mcp-tunnels/trust-boundaries-diagram.png)
+ ![图示：tunnel-client 在客户控制的环境内通过出站连接到 OpenAI 管理的隧道控制平面，而私有 MCP 服务器保持在客户网络内部。]( https://cdn.openai.com/API/docs/images/platform/guides/secure-mcp-tunnels/trust-boundaries-diagram.png) ![图示：tunnel-client 在客户控制的环境内通过出站连接到 OpenAI 管理的隧道控制平面，而私有 MCP 服务器保持在客户网络内部。]( https://cdn.openai.com/API/docs/images/platform/guides/secure-mcp-tunnels/trust-boundaries-diagram.png)
 
-![图示：tunnel-client 在客户控制的环境内通过出站连接到 OpenAI 管理的隧道控制平面，而私有 MCP 服务器保持在客户网络内部。](/images/platform/guides/secure-mcp-tunnels/trust-boundaries-diagram.png) ![图示：tunnel-client 在客户控制的环境内通过出站连接到 OpenAI 管理的隧道控制平面，而私有 MCP 服务器保持在客户网络内部。](/images/platform/guides/secure-mcp-tunnels/trust-boundaries-diagram.png)
+![图示：tunnel-client 在客户控制的环境内通过出站连接到 OpenAI 管理的隧道控制平面，而私有 MCP 服务器保持在客户网络内部。]( https://cdn.openai.com/API/docs/images/platform/guides/secure-mcp-tunnels/trust-boundaries-diagram.png) ![图示：tunnel-client 在客户控制的环境内通过出站连接到 OpenAI 管理的隧道控制平面，而私有 MCP 服务器保持在客户网络内部。]( https://cdn.openai.com/API/docs/images/platform/guides/secure-mcp-tunnels/trust-boundaries-diagram.png)
 
 私有 MCP 服务器保持在客户控制的环境内。`tunnel-client` 使用运行时 API 密钥通过出站 HTTPS 连接到 OpenAI，在需要时还可使用可选的控制平面 mTLS。
 
@@ -115,7 +114,7 @@ Secure MCP Tunnel 还可以支持从受支持的代理或 API 流程到客户网
 ## 故障排除
 
 *   **隧道在 ChatGPT 中不可见：** 检查隧道的工作区范围和连接器操作者的 Tunnels **Use** 权限。
-*   **连接器发现或工具调用失败：** 确认 `tunnel-client run ...` 仍在运行，然后重新运行 `tunnel-client doctor --profile <name> --explain`。
+*   **连接器发现或工具调用失败：** 确认 `tunnel-client run ...` 仍在运行，然后重新运行 `tunnel-client doctor --profile `&lt;name>` --explain`。
 *   **你可以查看隧道但无法编辑：** 操作者可能具有 Tunnels **Read** 但没有 Tunnels **Manage** 权限。
 *   `tunnel-client` 暴露 `/healthz`、`/readyz`、`/metrics` 和位于 `/ui` 的本地管理 UI。
 *   管理 UI 默认仅限本地回环访问。仅在你确实需要操作网络访问时才将其远程暴露。
@@ -138,13 +137,13 @@ Secure MCP Tunnel 还可以支持从受支持的代理或 API 流程到客户网
 ## 后续步骤
 
 *   在 [Platform 隧道设置](https://platform.openai.com/settings/organization/tunnels) 中创建或管理隧道。
-*   使用 `tunnel-client doctor --profile <profile> --explain` 验证你的 `tunnel-client` 配置文件。
+*   使用 `tunnel-client doctor --profile `&lt;profile>` --explain` 验证你的 `tunnel-client` 配置文件。
 *   从 [ChatGPT 连接器设置](https://chatgpt.com/#settings/Connectors) 或你正在使用的受支持 OpenAI 产品连接隧道。
 
-[![Platform 隧道设置截图（已脱敏）。](/images/platform/guides/secure-mcp-tunnels/platform-tunnels-settings.png)](https://platform.openai.com/settings/organization/tunnels)
+[![Platform 隧道设置截图（已脱敏）。]( https://cdn.openai.com/API/docs/images/platform/guides/secure-mcp-tunnels/platform-tunnels-settings.png)](https://platform.openai.com/settings/organization/tunnels)
 
 从 Platform 隧道设置创建和管理 OpenAI 托管的 MCP 隧道端点。
 
-[![ChatGPT 连接器设置截图（已选择 Tunnel）（已脱敏）。](/images/platform/guides/secure-mcp-tunnels/chatgpt-connectors-tunnel.png)](https://chatgpt.com/#settings/Connectors)
+[![ChatGPT 连接器设置截图（已选择 Tunnel）（已脱敏）。]( https://cdn.openai.com/API/docs/images/platform/guides/secure-mcp-tunnels/chatgpt-connectors-tunnel.png)](https://chatgpt.com/#settings/Connectors)
 
 在将 ChatGPT 连接器连接到私有 MCP 服务器时选择 Tunnel。

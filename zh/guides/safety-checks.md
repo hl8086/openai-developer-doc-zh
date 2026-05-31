@@ -1,10 +1,9 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/safety-checks -->
 
 我们对模型及其使用方式进行多种类型的评估。本指南介绍了我们如何进行安全测试，以及您可以采取哪些措施来避免违规。
 
 ## GPT-5 及后续模型的安全分类器
 
-随着 [GPT-5](/api/docs/models/gpt-5) 的推出，我们添加了一些检查机制来发现并阻止危险信息被访问。某些用户最终可能会尝试将您的应用程序用于 OpenAI 政策之外的用途，尤其是在具有广泛使用场景的应用程序中。
+随着 [GPT-5](/models/gpt-5) 的推出，我们添加了一些检查机制来发现并阻止危险信息被访问。某些用户最终可能会尝试将您的应用程序用于 OpenAI 政策之外的用途，尤其是在具有广泛使用场景的应用程序中。
 
 ### 安全分类器流程
 
@@ -16,12 +15,12 @@
 
 如果您的组织从事违反我们安全政策的可疑活动，我们可能会返回错误、限制模型访问，甚至封禁您的账户。以下安全措施帮助我们识别高风险请求的来源，并封禁单个终端用户，而不是封禁您的整个组织。
 
-*   为个人用户与模型交互的产品[实施安全标识符](/api/docs/guides/safety-best-practices#implement-safety-identifiers)。安全标识符是推荐使用的，但不是必需的。
+*   为个人用户与模型交互的产品[实施安全标识符](/guides/safety-best-practices#implement-safety-identifiers)。安全标识符是推荐使用的，但不是必需的。
 *   如果您的使用场景需要访问限制较少的服务版本以从事生命科学领域的有益应用，请阅读我们的[特殊访问计划](https://help.openai.com/en/articles/11826767-life-science-research-special-access-program)，了解您是否符合条件。
 
 ### 为单个用户实施安全标识符
 
-`safety_identifier` 参数在 [Responses API](/api/docs/api-reference/responses/create) 和旧版 [Chat Completions API](/api/docs/api-reference/chat/create) 中均可使用。Realtime API 通过 `OpenAI-Safety-Identifier` 请求头支持相同的概念。要使用安全标识符，请在每个请求中为您的终端用户提供一个稳定的 ID。对用户邮箱或内部用户 ID 进行哈希处理，以避免传递任何个人信息。
+`safety_identifier` 参数在 [Responses API]( https://developers.openai.com/api/reference/responses/create) 和旧版 [Chat Completions API]( https://developers.openai.com/api/reference/chat/create) 中均可使用。Realtime API 通过 `OpenAI-Safety-Identifier` 请求头支持相同的概念。要使用安全标识符，请在每个请求中为您的终端用户提供一个稳定的 ID。对用户邮箱或内部用户 ID 进行哈希处理，以避免传递任何个人信息。
 
 安全标识符不会在 API 或会话之间传递。如果您的应用程序已经在 Responses API 请求中发送了 `safety_identifier`，请在创建或连接每个 Realtime 会话时单独传递相同的稳定值。
 
@@ -124,5 +123,5 @@ curl https://api.openai.com/v1/realtime/client_secrets \
 
 *   [模型评估中心](https://openai.com/safety/evaluations-hub)
 *   [网络安全](/codex/concepts/cyber-safety)
-*   [微调安全](/api/docs/guides/supervised-fine-tuning#safety-checks)
-*   [计算机使用中的安全检查](/api/docs/guides/tools-computer-use#acknowledge-safety-checks)
+*   [微调安全](/guides/supervised-fine-tuning#safety-checks)
+*   [计算机使用中的安全检查](/guides/tools-computer-use#acknowledge-safety-checks)

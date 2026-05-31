@@ -1,4 +1,3 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/agents/quickstart -->
 
 当你想要以最短路径构建一个基于 SDK 的 agent 时，请参考本页面。以下示例在 TypeScript 和 Python 中使用相同的高层概念：定义一个 agent，运行它，然后随着工作流的增长添加工具和专业 agent。
 
@@ -141,7 +140,7 @@ if __name__ == "__main__":
     asyncio.run(main())
 ```
 
-当你需要托管工具、tool search 或 agents-as-tools 时，请使用共享的[使用工具](/api/docs/guides/tools#usage-in-the-agents-sdk)指南。
+当你需要托管工具、tool search 或 agents-as-tools 时，请使用共享的[使用工具](/guides/tools#usage-in-the-agents-sdk)指南。
 
 ## 添加专业 agent
 
@@ -221,10 +220,10 @@ if __name__ == "__main__":
 
 一旦第一次运行成功，继续阅读与你想要添加的下一个功能匹配的指南。
 
-[Agent 定义 - 在扩展工作流之前先把一个专业 agent 设计好。](/api/docs/guides/agents/define-agents)
+[Agent 定义 - 在扩展工作流之前先把一个专业 agent 设计好。](/guides/agents/define-agents)
 
-[使用工具 - 添加托管工具、函数工具和 agents-as-tools。](/api/docs/guides/tools#usage-in-the-agents-sdk)
+[使用工具 - 添加托管工具、函数工具和 agents-as-tools。](/guides/tools#usage-in-the-agents-sdk)
 
-[运行 agent - 了解 agent 循环、流式传输和延续策略。](/api/docs/guides/agents/running-agents)
+[运行 agent - 了解 agent 循环、流式传输和延续策略。](/guides/agents/running-agents)
 
-[编排和 handoff - 决定何时让专业 agent 接管对话。](/api/docs/guides/agents/orchestration)
+[编排和 handoff - 决定何时让专业 agent 接管对话。](/guides/agents/orchestration)

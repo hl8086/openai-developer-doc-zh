@@ -1,6 +1,5 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/reasoning-best-practices -->
 
-OpenAI 提供两种类型的模型：[推理模型](/api/docs/models#o4-mini)（例如 o3 和 o4-mini）和 [GPT 模型](/api/docs/models#gpt-4.1)（如 GPT-4.1）。这两个模型系列的行为方式不同。
+OpenAI 提供两种类型的模型：[推理模型](/models#o4-mini)（例如 o3 和 o4-mini）和 [GPT 模型](/models#gpt-4.1)（如 GPT-4.1）。这两个模型系列的行为方式不同。
 
 本指南涵盖：
 
@@ -8,7 +7,7 @@ OpenAI 提供两种类型的模型：[推理模型](/api/docs/models#o4-mini)（
 2.  何时使用推理模型
 3.  如何有效地提示推理模型
 
-阅读更多关于[推理模型](/api/docs/guides/reasoning)及其工作原理的内容。
+阅读更多关于[推理模型](/guides/reasoning)及其工作原理的内容。
 
 ## 推理模型 vs. GPT 模型
 
@@ -39,7 +38,7 @@ _我们的 GPT-4o 和 GPT-4o mini 模型对订单详情和客户信息进行分�
 
 以下是我们从客户和 OpenAI 内部观察到的一些成功使用模式。这不是所有可能用例的全面回顾，而是测试 o 系列模型的一些实用指导。
 
-[准备使用推理模型？跳转到快速入门 →](/api/docs/guides/reasoning)
+[准备使用推理模型？跳转到快速入门 →](/guides/reasoning)
 
 ### 1\. 处理模糊任务
 
@@ -119,7 +118,7 @@ _我们的 GPT-4o 和 GPT-4o mini 模型对订单详情和客户信息进行分�
 
 ## 如何有效地提示推理模型
 
-这些模型在简洁直接的提示下表现最佳。一些提示工程技术，如指示模型"逐步思考"，可能不会增强性能（有时甚至会阻碍性能）。请参阅以下最佳实践，或[从提示示例开始](/api/docs/guides/reasoning/advice-on-prompting#prompt-examples)。
+这些模型在简洁直接的提示下表现最佳。一些提示工程技术，如指示模型"逐步思考"，可能不会增强性能（有时甚至会阻碍性能）。请参阅以下最佳实践，或[从提示示例开始](/guides/reasoning/advice-on-prompting#prompt-examples)。
 
 *   **开发者消息是新的系统消息**：从 `o1-2024-12-17` 开始，推理模型支持开发者消息而非系统消息，以与 [model spec](https://cdn.openai.com/spec/model-spec-2024-05-08.html#follow-the-chain-of-command) 中描述的指令链行为保持一致。
 *   **保持提示简洁直接**：这些模型擅长理解和响应简短、清晰的指令。
@@ -134,7 +133,7 @@ _我们的 GPT-4o 和 GPT-4o mini 模型对订单详情和客户信息进行分�
 
 随着 `o3` 和 `o4-mini` 模型的推出，Responses API 中持久化的推理项目被区别对待。以前（对于 `o1`、`o3-mini`、`o1-mini` 和 `o1-preview`），推理项目在后续 API 请求中总是被忽略，即使它们包含在请求的输入项目中。对于 `o3` 和 `o4-mini`，一些与函数调用相邻的推理项目会被包含在模型的上下文中，以帮助提高模型性能，同时使用最少的推理 token。
 
-为了获得此更改的最佳结果，我们建议使用 [Responses API](/api/docs/api-reference/responses)，将 `store` 参数设置为 `true`，并传入之前请求中的所有推理项目（通过使用 `previous_response_id`，或者将旧请求的所有输出项目作为新请求的输入项目传入）。OpenAI 将自动在模型的上下文中包含任何相关的推理项目，并忽略任何不相关的项目。在你希望更精确地管理模型上下文内容的更高级用例中，我们建议你至少包含最新函数调用和上一条用户消息之间的所有推理项目。这样做将确保模型在你响应函数调用时不必重新开始推理，从而获得更好的函数调用性能和更低的总体 token 使用量。
+为了获得此更改的最佳结果，我们建议使用 [Responses API]( https://developers.openai.com/api/reference/responses)，将 `store` 参数设置为 `true`，并传入之前请求中的所有推理项目（通过使用 `previous_response_id`，或者将旧请求的所有输出项目作为新请求的输入项目传入）。OpenAI 将自动在模型的上下文中包含任何相关的推理项目，并忽略任何不相关的项目。在你希望更精确地管理模型上下文内容的更高级用例中，我们建议你至少包含最新函数调用和上一条用户消息之间的所有推理项目。这样做将确保模型在你响应函数调用时不必重新开始推理，从而获得更好的函数调用性能和更低的总体 token 使用量。
 
 如果你使用的是 Chat Completions API，推理项目永远不会包含在模型的上下文中。这是因为 Chat Completions 是一个无状态 API。这将导致在涉及许多函数调用的复杂智能体场景中，模型性能略有下降且推理 token 使用量更大。在不涉及复杂多函数调用的情况下，无论使用哪个 API，性能都不会下降。
 
@@ -142,8 +141,8 @@ _我们的 GPT-4o 和 GPT-4o mini 模型对订单详情和客户信息进行分�
 
 如需更多灵感，请访问 [OpenAI Cookbook](/cookbook)，其中包含示例代码和第三方资源链接，或了解更多关于我们的模型和推理能力的信息：
 
-*   [认识模型](/api/docs/models)
-*   [推理指南](/api/docs/guides/reasoning)
-*   [如何使用推理进行验证](/cookbook/examples/o1/using_reasoning_for_data_validation)
+*   [认识模型](/models)
+*   [推理指南](/guides/reasoning)
+*   [如何使用推理进行验证]( https://cdn.openai.com/API/docs/cookbook/examples/o1/using_reasoning_for_data_validation)
 *   [视频课程：使用 o1 进行推理](https://www.deeplearning.ai/short-courses/reasoning-with-o1/)
-*   [关于高级提示以改进推理的论文](/cookbook/related_resources#papers-on-advanced-prompting-to-improve-reasoning)
+*   [关于高级提示以改进推理的论文]( https://cdn.openai.com/API/docs/cookbook/related_resources#papers-on-advanced-prompting-to-improve-reasoning)

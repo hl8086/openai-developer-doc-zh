@@ -1,4 +1,3 @@
-<!-- Source: https://developers.openai.com/api/docs/actions/actions-library -->
 
 ## 目的
 
@@ -6,21 +5,21 @@
 
 ## 入门
 
-如果你之前从未构建过 action，请先阅读[入门指南](/api/docs/actions/getting-started)，以更好地了解 actions 的工作原理。
+如果你之前从未构建过 action，请先阅读[入门指南](/actions/getting-started)，以更好地了解 actions 的工作原理。
 
 通常，本指南面向熟悉并能够熟练调用 API 的人员。如需调试帮助，请尝试向 ChatGPT 描述你的问题——并附上截图。
 
 ## 如何访问
 
-[OpenAI Cookbook](/cookbook) 有一个第三方应用程序和中间件应用程序的[目录](/cookbook/topic/chatgpt)。
+[OpenAI Cookbook](/cookbook) 有一个第三方应用程序和中间件应用程序的[目录]( https://cdn.openai.com/API/docs/cookbook/topic/chatgpt)。
 
 ### 第三方 Actions cookbook
 
-GPT Actions 可以直接与 HTTP 服务集成。利用 SaaS API 的 GPT Actions 将直接从 SaaS 提供商进行身份验证和请求资源，例如 [Google Drive](/cookbook/examples/chatgpt/gpt_actions_library/gpt_action_google_drive) 或 [Snowflake](/cookbook/examples/chatgpt/gpt_actions_library/gpt_action_snowflake_direct)。
+GPT Actions 可以直接与 HTTP 服务集成。利用 SaaS API 的 GPT Actions 将直接从 SaaS 提供商进行身份验证和请求资源，例如 [Google Drive]( https://cdn.openai.com/API/docs/cookbook/examples/chatgpt/gpt_actions_library/gpt_action_google_drive) 或 [Snowflake]( https://cdn.openai.com/API/docs/cookbook/examples/chatgpt/gpt_actions_library/gpt_action_snowflake_direct)。
 
 ### 中间件 Actions cookbook
 
-GPT Actions 可以从使用中间件中受益。中间件允许进行预处理、数据格式化、数据过滤，甚至连接未通过 HTTP 暴露的端点（例如：数据库）。有多个中间件 cookbook 描述了示例实现路径，例如 [Azure](/cookbook/examples/chatgpt/gpt_actions_library/gpt_middleware_azure_function)、[GCP](/cookbook/examples/chatgpt/gpt_actions_library/gpt_middleware_google_cloud_function) 和 [AWS](/cookbook/examples/chatgpt/gpt_actions_library/gpt_middleware_aws_function)。
+GPT Actions 可以从使用中间件中受益。中间件允许进行预处理、数据格式化、数据过滤，甚至连接未通过 HTTP 暴露的端点（例如：数据库）。有多个中间件 cookbook 描述了示例实现路径，例如 [Azure]( https://cdn.openai.com/API/docs/cookbook/examples/chatgpt/gpt_actions_library/gpt_middleware_azure_function)、[GCP]( https://cdn.openai.com/API/docs/cookbook/examples/chatgpt/gpt_actions_library/gpt_middleware_google_cloud_function) 和 [AWS]( https://cdn.openai.com/API/docs/cookbook/examples/chatgpt/gpt_actions_library/gpt_middleware_aws_function)。
 
 ## 向我们反馈
 
@@ -28,7 +27,7 @@ GPT Actions 可以从使用中间件中受益。中间件允许进行预处理�
 
 ## 为我们的库做贡献
 
-如果你有兴趣为我们的库做贡献，请遵循以下指南，然后在 github 上提交 PR 供我们审核。通常，请参照类似[此示例 GPT Action](/cookbook/examples/chatgpt/gpt_actions_library/gpt_action_bigquery) 的模板。
+如果你有兴趣为我们的库做贡献，请遵循以下指南，然后在 github 上提交 PR 供我们审核。通常，请参照类似[此示例 GPT Action]( https://cdn.openai.com/API/docs/cookbook/examples/chatgpt/gpt_actions_library/gpt_action_bigquery) 的模板。
 
 指南 - 包含以下部分：
 

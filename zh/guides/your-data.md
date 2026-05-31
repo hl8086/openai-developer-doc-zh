@@ -1,4 +1,3 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/your-data -->
 
 了解 OpenAI 如何使用您的数据，以及您如何控制它。
 
@@ -79,7 +78,7 @@ Zero Data Retention 以与 Modified Abuse Monitoring 相同的方式将客户内
 
 #### `/v1/chat/completions`
 
-*   音频输出的应用状态存储 1 小时，以支持[多轮对话](/api/docs/guides/audio)。
+*   音频输出的应用状态存储 1 小时，以支持[多轮对话](/guides/audio)。
 *   当组织启用 Zero Data Retention 时，`store` 参数将始终被视为 `false`，即使请求尝试将值设置为 `true`。
 *   参见[图像和文件输入](#image-and-file-inputs)。
 *   扩展提示缓存需要将加密的键/值张量存储到 GPU 本地存储作为应用状态。此数据存储在本地 GPU 机器上，在 24 小时数据过期后不会保留。对 gpt-5.5、gpt-5.5-pro 和所有未来模型的请求需要扩展提示缓存，将 prompt\_cache\_retention 值设置为 in\_memory 将导致请求错误。要了解更多信息，请参阅[提示缓存指南](https://developers.openai.com/api/docs/guides/prompt-caching#prompt-cache-retention)。
@@ -89,13 +88,13 @@ Zero Data Retention 以与 Modified Abuse Monitoring 相同的方式将客户内
 *   Responses API 默认有 30 天的应用状态保留期，或当 `store` 参数设置为 `true` 时。响应数据将至少存储 30 天。
 *   当组织启用 Zero Data Retention 时，`store` 参数将始终被视为 `false`，即使请求尝试将值设置为 `true`。
 *   后台模式将响应数据写入磁盘约 10 分钟以支持轮询。
-*   音频输出的应用状态存储 1 小时，以支持[多轮对话](/api/docs/guides/audio)。
+*   音频输出的应用状态存储 1 小时，以支持[多轮对话](/guides/audio)。
 *   参见[图像和文件输入](#image-and-file-inputs)。
-*   MCP 服务器（与[远程 MCP 服务器工具](/api/docs/guides/tools-remote-mcp)一起使用）是第三方服务，发送到 MCP 服务器的数据受其数据保留政策约束。
-*   [Hosted Shell](/api/docs/guides/tools-shell#hosted-shell-quickstart) 和 [Code Interpreter](/api/docs/guides/tools-code-interpreter) 使用的托管容器可能会在容器活跃期间将临时应用状态写入容器文件系统（由临时块存储支持）。容器数据在容器过期或被明确删除时删除。
+*   MCP 服务器（与[远程 MCP 服务器工具](/guides/tools-remote-mcp)一起使用）是第三方服务，发送到 MCP 服务器的数据受其数据保留政策约束。
+*   [Hosted Shell](/guides/tools-shell#hosted-shell-quickstart) 和 [Code Interpreter](/guides/tools-code-interpreter) 使用的托管容器可能会在容器活跃期间将临时应用状态写入容器文件系统（由临时块存储支持）。容器数据在容器过期或被明确删除时删除。
 *   扩展提示缓存需要将加密的键/值张量存储到 GPU 本地存储作为应用状态。此数据存储在本地 GPU 机器上，在 24 小时数据过期后不会保留。对 gpt-5.5、gpt-5.5-pro 和所有未来模型的请求需要扩展提示缓存，将 prompt\_cache\_retention 值设置为 in\_memory 将导致请求错误。要了解更多信息，请参阅[提示缓存指南](https://developers.openai.com/api/docs/guides/prompt-caching#prompt-cache-retention)。
 *   对于服务器端压缩，当 `store="false"` 时不保留任何数据。
-*   我们支持两种形式的 [Skills](/api/docs/guides/tools-skills)：本地执行和托管容器执行。托管 Skills 遵循与 Hosted Shell 相同的容器生命周期：挂载的 Skills 和容器文件在容器活跃期间可用，在容器过期或被删除时丢弃。
+*   我们支持两种形式的 [Skills](/guides/tools-skills)：本地执行和托管容器执行。托管 Skills 遵循与 Hosted Shell 相同的容器生命周期：挂载的 Skills 和容器文件在容器活跃期间可用，在容器过期或被删除时丢弃。
 *   通过网络连接传输到第三方服务的数据受其数据保留政策约束。
 
 #### `/v1/assistants`、`/v1/threads` 和 `/v1/vector_stores`
@@ -108,7 +107,7 @@ Zero Data Retention 以与 Modified Abuse Monitoring 相同的方式将客户内
 
 #### `/v1/files`
 
-*   文件可以通过 API 或仪表板手动删除，也可以通过设置 `expires_after` 参数自动删除。更多信息请参见[此处](/api/docs/api-reference/files/create#files_create-expires_after)。
+*   文件可以通过 API 或仪表板手动删除，也可以通过设置 `expires_after` 参数自动删除。更多信息请参见[此处]( https://developers.openai.com/api/reference/files/create#files_create-expires_after)。
 
 #### `/v1/videos`
 
@@ -126,7 +125,7 @@ Zero Data Retention 以与 Modified Abuse Monitoring 相同的方式将客户内
 
 数据驻留控制是一个项目配置选项，允许您配置 OpenAI 用于提供服务的基础设施位置。
 
-请联系我们的[销售团队](https://openai.com/contact-sales)了解您是否有资格使用数据驻留控制。对于 2026 年 3 月 5 日及之后发布的符合数据驻留条件的模型，数据驻留端点收取 [10% 的附加费](/api/docs/pricing)。
+请联系我们的[销售团队](https://openai.com/contact-sales)了解您是否有资格使用数据驻留控制。对于 2026 年 3 月 5 日及之后发布的符合数据驻留条件的模型，数据驻留端点收取 [10% 的附加费](/pricing)。
 
 ### 数据驻留如何工作？
 
@@ -317,13 +316,13 @@ gpt-3.5-turbo-0125 | 全部 |
 #### /v1/chat/completions
 
 *   在非美国区域不能设置 store=true。
-*   在不支持区域处理的区域中使用[扩展提示缓存](/api/docs/guides/prompt-caching#prompt-cache-retention)可能需要 OpenAI 在区域之外处理和临时存储客户内容以提供服务。
+*   在不支持区域处理的区域中使用[扩展提示缓存](/guides/prompt-caching#prompt-cache-retention)可能需要 OpenAI 在区域之外处理和临时存储客户内容以提供服务。
 
 #### /v1/responses
 
 *   computer-use-preview 快照仅支持美国/欧盟。
 *   在欧盟区域不能设置 background=True。
-*   在不支持区域处理的区域中使用[扩展提示缓存](/api/docs/guides/prompt-caching#prompt-cache-retention)可能需要 OpenAI 在区域之外处理和临时存储客户内容以提供服务。
+*   在不支持区域处理的区域中使用[扩展提示缓存](/guides/prompt-caching#prompt-cache-retention)可能需要 OpenAI 在区域之外处理和临时存储客户内容以提供服务。
 
 #### /v1/realtime
 

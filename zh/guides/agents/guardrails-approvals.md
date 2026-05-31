@@ -1,4 +1,3 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/agents/guardrails-approvals -->
 
 使用护栏进行自动检查，使用人工审核进行审批决策。两者共同定义了运行应何时继续、暂停或停止。
 
@@ -227,8 +226,8 @@ if __name__ == "__main__":
 
 一旦控制边界明确，继续阅读涵盖其周围运行时或工具层面的指南。
 
-[运行代理 - 了解中断和恢复如何融入运行时循环。](/api/docs/guides/agents/running-agents)
+[运行代理 - 了解中断和恢复如何融入运行时循环。](/guides/agents/running-agents)
 
-[结果和状态 - 了解暂停的运行向你的应用程序返回哪些结果。](/api/docs/guides/agents/results)
+[结果和状态 - 了解暂停的运行向你的应用程序返回哪些结果。](/guides/agents/results)
 
-[使用工具 - 决定哪些工具层面在副作用发生之前需要验证或审批。](/api/docs/guides/tools#usage-in-the-agents-sdk)
+[使用工具 - 决定哪些工具层面在副作用发生之前需要验证或审批。](/guides/tools#usage-in-the-agents-sdk)

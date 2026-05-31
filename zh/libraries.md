@@ -1,10 +1,9 @@
-<!-- Source: https://developers.openai.com/api/docs/libraries -->
 
-本页介绍了使用 [OpenAI API](/api/docs/api-reference) 进行开发的主要方式：用于应用代码的官方 SDK、用于 Shell 原生工作流的 OpenAI CLI、用于编排的 Agents SDK，或者您自己偏好的 HTTP 客户端。
+本页介绍了使用 [OpenAI API]( https://developers.openai.com/api/reference) 进行开发的主要方式：用于应用代码的官方 SDK、用于 Shell 原生工作流的 OpenAI CLI、用于编排的 Agents SDK，或者您自己偏好的 HTTP 客户端。
 
 ## 创建并导出 API 密钥
 
-在开始之前，[在控制台中创建一个 API 密钥](https://platform.openai.com/api-keys)，您将使用它来安全地[访问 API](/api/docs/api-reference/authentication)。将密钥存储在安全的位置，例如 [`.zshrc` 文件](https://www.freecodecamp.org/news/how-do-zsh-configuration-files-work/)或计算机上的其他文本文件中。生成 API 密钥后，在终端中将其导出为[环境变量](https://en.wikipedia.org/wiki/Environment_variable)。
+在开始之前，[在控制台中创建一个 API 密钥](https://platform.openai.com/api-keys)，您将使用它来安全地[访问 API]( https://developers.openai.com/api/reference/authentication)。将密钥存储在安全的位置，例如 [`.zshrc` 文件](https://www.freecodecamp.org/news/how-do-zsh-configuration-files-work/)或计算机上的其他文本文件中。生成 API 密钥后，在终端中将其导出为[环境变量](https://en.wikipedia.org/wiki/Environment_variable)。
 
 macOS / LinuxWindows
 
@@ -98,7 +97,7 @@ OpenAI 与 Microsoft 合作，提供了官方支持的 C# API 客户端。您可
 dotnet add package OpenAI
 ```
 
-向 [Responses API](/api/docs/api-reference/responses) 发送简单 API 请求的示例如下：
+向 [Responses API]( https://developers.openai.com/api/reference/responses) 发送简单 API 请求的示例如下：
 
 测试基本 API 请求
 
@@ -130,15 +129,15 @@ Java
 
 OpenAI 为 Java 编程语言提供了 API 辅助库，目前处于 Beta 阶段。您可以使用以下配置引入 Maven 依赖：
 
-```
-<dependency>
-  <groupId>com.openai</groupId>
-  <artifactId>openai-java</artifactId>
-  <version>4.0.0</version>
-</dependency>
+```text
+&lt;dependency>
+  &lt;groupId>com.openai&lt;/groupId>
+  &lt;artifactId>openai-java&lt;/artifactId>
+  &lt;version>4.0.0&lt;/version>
+&lt;/dependency>
 ```
 
-向 [Responses API](/api/docs/api-reference/responses) 发送简单 API 请求的示例如下：
+向 [Responses API]( https://developers.openai.com/api/reference/responses) 发送简单 API 请求的示例如下：
 
 测试基本 API 请求
 
@@ -177,7 +176,7 @@ import (
 )
 ```
 
-向 [Responses API](/api/docs/api-reference/responses) 发送简单 API 请求的示例如下：
+向 [Responses API]( https://developers.openai.com/api/reference/responses) 发送简单 API 请求的示例如下：
 
 测试基本 API 请求
 
@@ -269,13 +268,13 @@ openai responses create \
 
 使用 CLI 执行可重复的终端工作流，例如从文件中提取结构化数据、生成图像、创建语音，以及使用 `jq` 等 Shell 工具组合 API 调用。
 
-[OpenAI CLI 指南 - 了解更多关于 CLI 工作流和命令模式的信息。](/api/docs/libraries/openai-cli)
+[OpenAI CLI 指南 - 了解更多关于 CLI 工作流和命令模式的信息。](/libraries/openai-cli)
 
 ## 使用 Agents SDK
 
 使用上述官方 OpenAI SDK 进行直接 API 请求。当您的应用程序需要代码优先的编排来处理代理、工具、交接、护栏、追踪或沙箱执行时，请使用 Agents SDK。
 
-[Agents SDK 快速入门 - 使用 Agents SDK 构建您的第一个代理。](/api/docs/guides/agents/quickstart)
+[Agents SDK 快速入门 - 使用 Agents SDK 构建您的第一个代理。](/guides/agents/quickstart)
 
 *   [OpenAI Agents SDK for TypeScript](https://github.com/openai/openai-agents-js)
 *   [OpenAI Agents SDK for Python](https://github.com/openai/openai-agents-python)

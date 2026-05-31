@@ -1,4 +1,3 @@
-<!-- Source: https://developers.openai.com/api/docs/actions/authentication -->
 
 Actions 提供不同的认证方案以适应各种使用场景。要为你的 action 指定认证方案，请使用 GPT 编辑器并选择 "None"、"API Key" 或 "OAuth"。
 

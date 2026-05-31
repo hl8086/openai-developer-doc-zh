@@ -1,19 +1,18 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/model-optimization -->
 
 LLM 的输出是非确定性的，模型行为在不同的模型快照和模型系列之间会发生变化。开发者必须持续衡量和调优 LLM 应用的性能，以确保获得最佳结果。在本指南中，我们将探讨可用于确保模型高质量输出的技术和 OpenAI 平台工具。
 
-[Evals系统性地衡量性能。](/api/docs/guides/evals)
+[Evals系统性地衡量性能。](/guides/evals)
 
-[提示工程提供上下文、指令和目标。](/api/docs/guides/text?api-mode=responses#prompt-engineering)
+[提示工程提供上下文、指令和目标。](/guides/text?api-mode=responses#prompt-engineering)
 
-[微调训练模型以擅长特定任务。](/api/docs/guides/supervised-fine-tuning)
+[微调训练模型以擅长特定任务。](/guides/supervised-fine-tuning)
 
 ## 模型优化工作流
 
 优化模型输出需要结合 **evals**、**提示工程** 和 **微调**，形成一个反馈飞轮，从而产生更好的提示和更好的微调训练数据。优化过程通常如下所示。
 
-1.  编写 [evals](/api/docs/guides/evals) 来衡量模型输出，建立性能和准确性的基线。
-2.  [向模型发送提示](/api/docs/guides/text) 以获取输出，提供相关的上下文数据和指令。
+1.  编写 [evals](/guides/evals) 来衡量模型输出，建立性能和准确性的基线。
+2.  [向模型发送提示](/guides/text) 以获取输出，提供相关的上下文数据和指令。
 3.  对于某些用例，可能需要为特定任务 [微调](#fine-tune-a-model) 模型。
 4.  使用代表真实世界输入的测试数据运行 evals。衡量提示和微调模型的性能。
 5.  根据 eval 反馈调整提示或微调数据集。
@@ -23,21 +22,21 @@ LLM 的输出是非确定性的，模型行为在不同的模型快照和模型�
 
 ## 构建 evals
 
-在 OpenAI 平台中，你可以通过 API 或在 [仪表板](https://platform.openai.com/evaluations) 中 [构建和运行 evals](/api/docs/guides/evals)。你甚至可以考虑在开始编写提示 _之前_ 就编写 evals，采用类似行为驱动开发（BDD）的方法。
+在 OpenAI 平台中，你可以通过 API 或在 [仪表板](https://platform.openai.com/evaluations) 中 [构建和运行 evals](/guides/evals)。你甚至可以考虑在开始编写提示 _之前_ 就编写 evals，采用类似行为驱动开发（BDD）的方法。
 
-针对你预期在生产环境中看到的测试输入运行 evals。使用多种可用的 [评分器](/api/docs/guides/graders) 之一，根据测试数据集衡量提示的结果。
+针对你预期在生产环境中看到的测试输入运行 evals。使用多种可用的 [评分器](/guides/graders) 之一，根据测试数据集衡量提示的结果。
 
-[了解 evals - 对模型输出运行测试，确保获得正确的结果。](/api/docs/guides/evals)
+[了解 evals - 对模型输出运行测试，确保获得正确的结果。](/guides/evals)
 
 ## 编写有效的提示
 
-有了 evals 之后，你可以有效地迭代 [提示](/api/docs/guides/text)。提示工程过程可能就是你获得出色结果所需的全部。不同的模型可能需要不同的提示技巧，但有几个最佳实践可以广泛应用以获得更好的结果。
+有了 evals 之后，你可以有效地迭代 [提示](/guides/text)。提示工程过程可能就是你获得出色结果所需的全部。不同的模型可能需要不同的提示技巧，但有几个最佳实践可以广泛应用以获得更好的结果。
 
 *   **包含相关上下文** - 在指令中包含模型需要从其训练数据之外生成响应的文本或图像内容。这可以包括来自私有数据库的数据或最新的实时信息。
-*   **提供清晰的指令** - 你的提示应包含关于所需输出类型的明确目标。像 `gpt-4.1` 这样的 GPT 模型擅长遵循非常明确的指令，而像 `o4-mini` 这样的 [推理模型](/api/docs/guides/reasoning) 则倾向于在高层次的结果指导下表现更好。
+*   **提供清晰的指令** - 你的提示应包含关于所需输出类型的明确目标。像 `gpt-4.1` 这样的 GPT 模型擅长遵循非常明确的指令，而像 `o4-mini` 这样的 [推理模型](/guides/reasoning) 则倾向于在高层次的结果指导下表现更好。
 *   **提供示例输出** - 为模型提供几个给定提示的正确输出示例（这个过程称为少样本学习）。模型可以从这些示例中推断出它应该如何响应其他提示。
 
-[了解提示工程 - 学习为模型编写良好提示的基础知识。](/api/docs/guides/text)
+[了解提示工程 - 学习为模型编写良好提示的基础知识。](/guides/text)
 
 ## 微调模型
 
@@ -45,11 +44,11 @@ OpenAI 正在逐步关闭微调平台。该平台不再对新用户开放，但�
 
   
 
-所有微调模型将在其基础模型 [弃用](/api/docs/deprecations) 之前保持可用于推理。完整时间线在 [这里](/api/docs/deprecations)。
+所有微调模型将在其基础模型 [弃用](/deprecations) 之前保持可用于推理。完整时间线在 [这里](/deprecations)。
 
 OpenAI 模型已经过预训练，可以在广泛的主题和任务中表现良好。微调让你可以使用 OpenAI 基础模型，提供你在应用中期望的输入和输出类型，从而获得一个在你将使用的任务中表现出色的模型。
 
-微调可能是一个耗时的过程，但它也可以使模型以特定方式一致地格式化响应或处理新颖的输入。你可以将微调与 [提示工程](/api/docs/guides/text) 结合使用，以实现仅靠提示无法获得的一些额外优势：
+微调可能是一个耗时的过程，但它也可以使模型以特定方式一致地格式化响应或处理新颖的输入。你可以将微调与 [提示工程](/guides/text) 结合使用，以实现仅靠提示无法获得的一些额外优势：
 
 *   你可以提供比单个请求的上下文窗口所能容纳的更多的示例输入和输出，使模型能够处理更广泛的提示。
 *   你可以使用更短的提示，包含更少的示例和上下文数据，这在规模化时可以节省 token 成本，并且可以降低延迟。
@@ -64,14 +63,14 @@ OpenAI 模型已经过预训练，可以在广泛的主题和任务中表现良�
 
 | 方法 | 工作原理 | 最适合 | 适用模型 |
 | --- | --- | --- | --- |
-| [监督微调 (SFT)](/api/docs/guides/supervised-fine-tuning) | 提供对提示的正确响应示例，以引导模型的行为。通常使用人工生成的"标准答案"来向模型展示它应该如何响应。 | *   分类*   细微差别的翻译*   以特定格式生成内容*   纠正指令遵循失败 | `gpt-4.1-2025-04-14` `gpt-4.1-mini-2025-04-14` `gpt-4.1-nano-2025-04-14` |
-| [视觉微调](/api/docs/guides/vision-fine-tuning) | 为监督微调提供图像输入，以提高模型对图像输入的理解能力。 | *   图像分类 - 纠正复杂提示中指令遵循的失败 | `gpt-4o-2024-08-06` |
-| [直接偏好优化 (DPO)](/api/docs/guides/direct-preference-optimization) | 为一个提示同时提供正确和错误的示例响应。标明正确的响应以帮助模型表现更好。 | *   总结文本，关注正确的要点 - 以正确的语气和风格生成聊天消息 | `gpt-4.1-2025-04-14` `gpt-4.1-mini-2025-04-14` `gpt-4.1-nano-2025-04-14` |
-| [强化微调 (RFT)](/api/docs/guides/reinforcement-fine-tuning) | 为提示生成响应，由专家对结果进行评分，并强化模型在高分响应中的思维链。需要专家评分者就模型的理想输出达成一致。**仅限推理模型**。 | *   需要高级推理的复杂领域特定任务*   基于病史和诊断指南的医学诊断*   从法律判例法中确定相关段落 | `o4-mini-2025-04-16` |
+| [监督微调 (SFT)](/guides/supervised-fine-tuning) | 提供对提示的正确响应示例，以引导模型的行为。通常使用人工生成的"标准答案"来向模型展示它应该如何响应。 | *   分类*   细微差别的翻译*   以特定格式生成内容*   纠正指令遵循失败 | `gpt-4.1-2025-04-14` `gpt-4.1-mini-2025-04-14` `gpt-4.1-nano-2025-04-14` |
+| [视觉微调](/guides/vision-fine-tuning) | 为监督微调提供图像输入，以提高模型对图像输入的理解能力。 | *   图像分类 - 纠正复杂提示中指令遵循的失败 | `gpt-4o-2024-08-06` |
+| [直接偏好优化 (DPO)](/guides/direct-preference-optimization) | 为一个提示同时提供正确和错误的示例响应。标明正确的响应以帮助模型表现更好。 | *   总结文本，关注正确的要点 - 以正确的语气和风格生成聊天消息 | `gpt-4.1-2025-04-14` `gpt-4.1-mini-2025-04-14` `gpt-4.1-nano-2025-04-14` |
+| [强化微调 (RFT)](/guides/reinforcement-fine-tuning) | 为提示生成响应，由专家对结果进行评分，并强化模型在高分响应中的思维链。需要专家评分者就模型的理想输出达成一致。**仅限推理模型**。 | *   需要高级推理的复杂领域特定任务*   基于病史和诊断指南的医学诊断*   从法律判例法中确定相关段落 | `o4-mini-2025-04-16` |
 
 ### 微调的工作原理
 
-在 OpenAI 平台中，你可以在 [仪表板](https://platform.openai.com/finetune) 中或 [通过 API](/api/docs/api-reference/fine-tuning) 创建微调模型。以下是微调过程的一般流程：
+在 OpenAI 平台中，你可以在 [仪表板](https://platform.openai.com/finetune) 中或 [通过 API]( https://developers.openai.com/api/reference/fine-tuning) 创建微调模型。以下是微调过程的一般流程：
 
 1.  收集用作训练数据的示例数据集
 2.  将该数据集以 JSONL 格式上传到 OpenAI
@@ -79,7 +78,7 @@ OpenAI 模型已经过预训练，可以在广泛的主题和任务中表现良�
 4.  对于 RFT，你还需要定义一个评分器来对模型的行为进行评分
 5.  评估结果
 
-开始使用 [监督微调](/api/docs/guides/supervised-fine-tuning)、[视觉微调](/api/docs/guides/vision-fine-tuning)、[直接偏好优化](/api/docs/guides/direct-preference-optimization) 或 [强化微调](/api/docs/guides/reinforcement-fine-tuning)。
+开始使用 [监督微调](/guides/supervised-fine-tuning)、[视觉微调](/guides/vision-fine-tuning)、[直接偏好优化](/guides/direct-preference-optimization) 或 [强化微调](/guides/reinforcement-fine-tuning)。
 
 ## 向专家学习
 

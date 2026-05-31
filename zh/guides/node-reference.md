@@ -1,8 +1,7 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/node-reference -->
 
 [Agent Builder](https://platform.openai.com/agent-builder) 是一个用于组合智能体工作流的可视化画布。工作流由节点和连接组成，用于控制顺序和流程。插入节点，然后配置和连接它们，以定义你希望智能体遵循的流程。
 
-浏览下方所有可用节点。要了解更多信息，请阅读 [Agent Builder 指南](/api/docs/guides/agent-builder)。
+浏览下方所有可用节点。要了解更多信息，请阅读 [Agent Builder 指南](/guides/agent-builder)。
 
 ### 核心节点
 
@@ -43,7 +42,7 @@
 
 从你在 OpenAI 平台上创建的向量存储中检索数据。通过向量存储 ID 进行搜索，并添加模型应搜索的查询内容。你可以使用变量来包含工作流中前序节点的输出。
 
-参阅 [file search 文档](/api/docs/guides/tools-file-search) 以设置向量存储并查看支持的文件类型。
+参阅 [file search 文档](/guides/tools-file-search) 以设置向量存储并查看支持的文件类型。
 
 要在 OpenAI 托管存储之外进行搜索，请改用 [MCP](#mcp)。
 
@@ -57,7 +56,7 @@ Guardrails 默认为通过/失败模式，即它们测试前一个节点的输�
 
 调用第三方工具和服务。通过 OpenAI connectors 或第三方服务器连接，或添加你自己的服务器。MCP 连接适用于需要在其他应用程序（如 Gmail 或 Zapier）中读取或搜索数据的工作流。
 
-在 Agent Builder 中浏览选项。要了解更多关于 MCP 的信息，请参阅 [connectors 和 MCP 文档](/api/docs/guides/tools-connectors-mcp)。
+在 Agent Builder 中浏览选项。要了解更多关于 MCP 的信息，请参阅 [connectors 和 MCP 文档](/guides/tools-connectors-mcp)。
 
 ### 逻辑节点
 

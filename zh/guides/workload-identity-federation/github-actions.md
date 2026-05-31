@@ -1,4 +1,3 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/workload-identity-federation/github-actions -->
 
 使用 GitHub Actions 作为工作负载身份提供者，通过将 GitHub 签发的 OIDC 令牌交换为短期 OpenAI 访问令牌。这使得工作流无需在 GitHub secrets 中存储长期 API 密钥即可向 OpenAI API 进行身份验证。
 
@@ -45,7 +44,7 @@ TOKEN=$(curl -sSf -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
 
 在配置工作负载身份联合之前，在工作流运行器中解码示例 GitHub OIDC 令牌并检查其声明。在工作流步骤中请求令牌后：
 
-```
+```text
 TOKEN="$TOKEN" python3 - <<'PY'
 import base64
 import json
@@ -151,9 +150,9 @@ jobs:
 
       - name: Run OpenAI SDK code
         env:
-          OPENAI_WIF_AUDIENCE: ${{ vars.OPENAI_WIF_AUDIENCE }}
-          OPENAI_IDENTITY_PROVIDER_ID: ${{ vars.OPENAI_IDENTITY_PROVIDER_ID }}
-          OPENAI_SERVICE_ACCOUNT_ID: ${{ vars.OPENAI_SERVICE_ACCOUNT_ID }}
+          OPENAI_WIF_AUDIENCE: $\{\{ vars.OPENAI_WIF_AUDIENCE \}\}
+          OPENAI_IDENTITY_PROVIDER_ID: $\{\{ vars.OPENAI_IDENTITY_PROVIDER_ID \}\}
+          OPENAI_SERVICE_ACCOUNT_ID: $\{\{ vars.OPENAI_SERVICE_ACCOUNT_ID \}\}
         run: node ./scripts/call-openai.js
 ```
 
@@ -456,7 +455,7 @@ public final class GitHubActionsWorkloadIdentityExample {
                         .GET()
                         .build();
 
-                HttpResponse<String> response = java.net.http.HttpClient.newHttpClient()
+                HttpResponse&lt;String> response = java.net.http.HttpClient.newHttpClient()
                         .send(request, HttpResponse.BodyHandlers.ofString());
 
                 if (response.statusCode() < 200 || response.statusCode() >= 300) {
@@ -488,7 +487,7 @@ public final class GitHubActionsWorkloadIdentityExample {
         }
 
         @Override
-        public CompletableFuture<String> getTokenAsync(
+        public CompletableFuture&lt;String> getTokenAsync(
                 com.openai.core.http.HttpClient httpClient, JsonMapper jsonMapper) {
             return CompletableFuture.supplyAsync(() -> getToken(httpClient, jsonMapper));
         }

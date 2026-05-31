@@ -1,12 +1,11 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/rft-use-cases -->
 
-[强化微调](/api/docs/guides/reinforcement-fine-tuning)（RFT）提供了一种提升模型在特定任务上性能的方法。任务必须明确且具有可验证的答案。
+[强化微调](/guides/reinforcement-fine-tuning)（RFT）提供了一种提升模型在特定任务上性能的方法。任务必须明确且具有可验证的答案。
 
 OpenAI 正在逐步关闭微调平台。该平台不再对新用户开放，但现有微调平台用户在未来几个月内仍可创建训练任务。
 
   
 
-所有微调模型在其基础模型被[弃用](/api/docs/deprecations)之前将继续可用于推理。完整时间线请参见[此处](/api/docs/deprecations)。
+所有微调模型在其基础模型被[弃用](/deprecations)之前将继续可用于推理。完整时间线请参见[此处](/deprecations)。
 
 ## 何时使用强化微调
 
@@ -18,7 +17,7 @@ OpenAI 正在逐步关闭微调平台。该平台不再对新用户开放，但�
 2.  **将事实提取为整洁的格式**：从杂乱的非结构化文本中提取可验证的事实和摘要，并返回 JSON 结构化或其他基于模式的输出。
 3.  **正确应用复杂规则**：在提供的信息具有细微差别、数量庞大、层次分明或高风险时，做出细粒度的标签或策略决策。
 
-[准备好使用强化微调了吗？跳转到指南 →](/api/docs/guides/reinforcement-fine-tuning)
+[准备好使用强化微调了吗？跳转到指南 →](/guides/reinforcement-fine-tuning)
 
 ### 1\. 将指令转化为可运行的代码
 
@@ -283,9 +282,9 @@ def calculate_ast_grep_score(code_blocks: List[CodeBlock], ast_greps: Any) -> fl
     return total_score / pattern_count if pattern_count > 0 else 0.0
 
 def grade_format(output_text: str) -> float:
-        # Find <plan> and </plan> tags
-    plan_start = output_text.find('<plan>')
-    plan_end = output_text.find('</plan>')
+        # Find &lt;plan> and &lt;/plan> tags
+    plan_start = output_text.find('&lt;plan>')
+    plan_end = output_text.find('&lt;/plan>')
 
     # Find <code> and </code> tags
     code_start = output_text.find('<code>')
@@ -319,8 +318,8 @@ def grade_format(output_text: str) -> float:
         return reward
     reward += 0.2 # total: 0.6
 
-    # Extract content inside <plan> tags
-    plan_content = output_text[plan_start + len('<plan>'):plan_end].strip()
+    # Extract content inside &lt;plan> tags
+    plan_content = output_text[plan_start + len('&lt;plan>'):plan_end].strip()
     if not plan_content:
         print(f'no plan content found. format reward: {reward}')
         return reward
@@ -333,8 +332,8 @@ def grade_format(output_text: str) -> float:
         return reward
     reward += 0.1 # total: 0.8
 
-    # Extract content between </plan> and <code> tags
-    between_tags = output_text[plan_end + len('</plan>'):code_start].strip()
+    # Extract content between &lt;/plan> and <code> tags
+    between_tags = output_text[plan_end + len('&lt;/plan>'):code_start].strip()
     if between_tags:
         print(f'found text between plan and code tags. format reward: {reward}')
         return reward
@@ -627,7 +626,7 @@ def grade(sample: dict, item: dict) -> float:
 
 RFT 通过强化对提供的提示的更好答案来工作。如果我们无法区分不同答案的质量（即如果它们都获得最低或最高可能分数），那么就没有可学习的训练信号。但是，如果您的评估分数在最低和最高可能分数之间的某个范围内，就有足够的数据可以使用。
 
-有效的评估揭示了人类专家一致同意但当前前沿模型仍有困难的机会，为 RFT 提供了有价值的差距来弥合。[开始使用评估](/api/docs/guides/evals)。
+有效的评估揭示了人类专家一致同意但当前前沿模型仍有困难的机会，为 RFT 提供了有价值的差距来弥合。[开始使用评估](/guides/evals)。
 
 ## 如何从 RFT 获得更好的结果
 
@@ -638,7 +637,7 @@ RFT 通过强化对提供的提示的更好答案来工作。如果我们无法�
 好的任务给模型一个公平的学习机会，并让您量化改进。
 
 *   **从模型偶尔已经能解决的任务开始**。RFT 通过采样许多答案、保留看起来最好的答案，并推动模型朝这些答案靠拢来工作。如果模型今天从未得到正确答案，它就无法改进。
-*   **确保每个答案都可以评分**。评分器必须在没有人工参与的情况下读取答案并产生分数。我们支持多种[评分器类型](/api/docs/guides/graders)，包括自定义 Python 评分器和 LLM 评判者。如果您无法使用可用的评分器编写代码来评判答案，RFT 就不是合适的工具。
+*   **确保每个答案都可以评分**。评分器必须在没有人工参与的情况下读取答案并产生分数。我们支持多种[评分器类型](/guides/graders)，包括自定义 Python 评分器和 LLM 评判者。如果您无法使用可用的评分器编写代码来评判答案，RFT 就不是合适的工具。
 *   **消除对"正确"答案的疑虑**。如果两个认真的人经常对解决方案意见不一致，则任务太模糊。重写提示、添加上下文，或将任务拆分为更清晰的部分，直到领域专家达成一致。
 *   **限制侥幸猜测**。如果任务是多选题且有一个明显的最佳选项，模型可以靠运气获胜。添加更多类别、要求简短的开放式文本，或调整格式使猜测代价高昂。
 
@@ -649,17 +648,17 @@ RFT 通过强化对提供的提示的更好答案来工作。如果我们无法�
 *   **产生平滑的分数，而不是通过/失败的标记**。随着答案改进而逐渐变化的分数提供更好的训练信号。
 *   **防范奖励黑客**。当模型找到一种无需真正技能就能获得高分的捷径时，就会发生这种情况。
 *   **避免偏斜数据**。某个标签出现频率最高的数据集会诱使模型猜测该标签。平衡数据集或增加稀有案例的权重，使模型必须思考。
-*   **当代码不够用时使用 LLM 评判者**。对于丰富的开放式答案，让一个[独立的 OpenAI 模型评分](/api/docs/guides/graders#model-graders)您微调模型的答案。确保您：
+*   **当代码不够用时使用 LLM 评判者**。对于丰富的开放式答案，让一个[独立的 OpenAI 模型评分](/guides/graders#model-graders)您微调模型的答案。确保您：
     *   **评估评判者**：通过您的 LLM 评判者运行多个候选响应和正确答案，以确保返回的评分稳定且与偏好一致。
     *   **提供少样本示例**。在提示中包含优秀、一般和较差的答案，以提高评分器的有效性。
 
-了解更多关于[评分器类型](/api/docs/guides/graders)的信息。
+了解更多关于[评分器类型](/guides/graders)的信息。
 
 ## 其他资源
 
 如需更多灵感，请访问 [OpenAI Cookbook](/cookbook)，其中包含示例代码和第三方资源链接，或了解更多关于我们的模型和推理能力：
 
-*   [认识模型](/api/docs/models)
-*   [强化微调指南](/api/docs/guides/reinforcement-fine-tuning)
-*   [评分器](/api/docs/guides/graders)
-*   [模型优化概述](/api/docs/guides/model-optimization)
+*   [认识模型](/models)
+*   [强化微调指南](/guides/reinforcement-fine-tuning)
+*   [评分器](/guides/graders)
+*   [模型优化概述](/guides/model-optimization)

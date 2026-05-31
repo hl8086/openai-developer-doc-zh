@@ -1,4 +1,3 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/agents/models -->
 
 每个 SDK 运行最终都会解析出一个模型和一个传输方式。大多数应用应保持该设置简洁明了：显式选择模型，默认使用标准 OpenAI 路径，仅在工作流确实需要时才使用 provider 或 transport 覆盖。
 
@@ -70,7 +69,7 @@ if __name__ == "__main__":
     asyncio.run(main())
 ```
 
-对于大多数新的 SDK 工作流，建议从 [`gpt-5.5`](/api/docs/models/gpt-5.5) 开始，仅在延迟或成本足够重要时才切换到更小的变体。请参阅平台级的 [使用 GPT-5.5](/api/docs/guides/latest-model) 指南获取当前的模型选择建议。
+对于大多数新的 SDK 工作流，建议从 [`gpt-5.5`](/models/gpt-5.5) 开始，仅在延迟或成本足够重要时才切换到更小的变体。请参阅平台级的 [使用 GPT-5.5](/guides/latest-model) 指南获取当前的模型选择建议。
 
 ## 选择最简单的默认策略
 
@@ -94,7 +93,7 @@ if __name__ == "__main__":
 有两个重要区别：
 
 *   Responses WebSocket transport 仍然使用正常的文本和工具代理循环。它与语音会话路径是分开的。
-*   通过 WebRTC 或 WebSocket 的实时音频会话用于低延迟的语音或图像交互。请使用 [语音代理](/api/docs/guides/voice-agents) 和 [实时音频 API 指南](/api/docs/guides/realtime) 了解该路径。
+*   通过 WebRTC 或 WebSocket 的实时音频会话用于低延迟的语音或图像交互。请使用 [语音代理](/guides/voice-agents) 和 [实时音频 API 指南](/guides/realtime) 了解该路径。
 
 确切的 provider 配置、provider 生命周期管理和 transport 辅助 API 仍然是语言特定的内容。请将这些细节保留在 SDK 文档中，而不是在此处重复。
 
@@ -112,8 +111,8 @@ if __name__ == "__main__":
 
 一旦运行时契约明确，请继续阅读与工作流设计其余部分匹配的指南。
 
-[代理定义 - 使模型选择与每个专家的职责保持一致。](/api/docs/guides/agents/define-agents)
+[代理定义 - 使模型选择与每个专家的职责保持一致。](/guides/agents/define-agents)
 
-[运行代理 - 了解 transport 和模型选择如何影响运行时循环。](/api/docs/guides/agents/running-agents)
+[运行代理 - 了解 transport 和模型选择如何影响运行时循环。](/guides/agents/running-agents)
 
-[外部模型 - 当混合模型栈很重要时，比较更广泛的 provider 选项。](/api/docs/guides/external-models)
+[外部模型 - 当混合模型栈很重要时，比较更广泛的 provider 选项。](/guides/external-models)

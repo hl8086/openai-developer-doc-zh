@@ -1,4 +1,3 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/structured-outputs -->
 
 JSON 是世界上应用程序之间交换数据最广泛使用的格式之一。
 
@@ -120,7 +119,7 @@ event = response.output_parsed
 
 ### 支持的模型
 
-Structured Outputs 在我们[最新的大语言模型](/api/docs/models)中可用，从 GPT-4o 开始。较旧的模型如 `gpt-4-turbo` 及更早版本可以使用 [JSON mode](#json-mode) 代替。
+Structured Outputs 在我们[最新的大语言模型](/models)中可用，从 GPT-4o 开始。较旧的模型如 `gpt-4-turbo` 及更早版本可以使用 [JSON mode](#json-mode) 代替。
 
 ## 
 
@@ -132,7 +131,7 @@ Structured Outputs 在我们[最新的大语言模型](/api/docs/models)中可�
 
 Structured Outputs 在 OpenAI API 中有两种形式：
 
-1.  使用[函数调用](/api/docs/guides/function-calling)时
+1.  使用[函数调用](/guides/function-calling)时
 2.  使用 `json_schema` 响应格式时
 
 函数调用在您构建连接模型和应用程序功能的应用时非常有用。
@@ -155,7 +154,7 @@ Structured Outputs 在 OpenAI API 中有两种形式：
 
 Function Calling
 
-](/api/docs/guides/function-calling#function-calling-with-structured-outputs)
+](/guides/function-calling#function-calling-with-structured-outputs)
 
 指南。
 
@@ -165,7 +164,7 @@ Function Calling
 
 Function Calling
 
-](/api/docs/guides/function-calling#function-calling-with-structured-outputs)
+](/guides/function-calling#function-calling-with-structured-outputs)
 
 指南。
 
@@ -1290,9 +1289,9 @@ SDK 对象
 
 步骤 1：定义您的对象
 
-首先，您必须定义一个对象或数据结构来表示模型应该遵循的 JSON Schema。请参阅本指南顶部的[示例](/api/docs/guides/structured-outputs#examples)作为参考。
+首先，您必须定义一个对象或数据结构来表示模型应该遵循的 JSON Schema。请参阅本指南顶部的[示例](/guides/structured-outputs#examples)作为参考。
 
-虽然 Structured Outputs 支持大部分 JSON Schema，但由于性能或技术原因，某些功能不可用。有关更多详细信息，请参阅[此处](/api/docs/guides/structured-outputs#supported-schemas)。
+虽然 Structured Outputs 支持大部分 JSON Schema，但由于性能或技术原因，某些功能不可用。有关更多详细信息，请参阅[此处](/guides/structured-outputs#supported-schemas)。
 
 例如，您可以这样定义一个对象：
 
@@ -1482,9 +1481,9 @@ except Exception as e:
 
 步骤 1：定义您的 schema
 
-首先，您必须设计模型应该遵循的 JSON Schema。请参阅本指南顶部的[示例](/api/docs/guides/structured-outputs#examples)作为参考。
+首先，您必须设计模型应该遵循的 JSON Schema。请参阅本指南顶部的[示例](/guides/structured-outputs#examples)作为参考。
 
-虽然 Structured Outputs 支持大部分 JSON Schema，但由于性能或技术原因，某些功能不可用。有关更多详细信息，请参阅[此处](/api/docs/guides/structured-outputs#supported-schemas)。
+虽然 Structured Outputs 支持大部分 JSON Schema，但由于性能或技术原因，某些功能不可用。有关更多详细信息，请参阅[此处](/guides/structured-outputs#supported-schemas)。
 
 #### JSON Schema 的建议
 
@@ -2043,9 +2042,9 @@ const solution = JSON.parse(response.choices[0].message.content)) as Solution
 
 步骤 1：定义您的 schema
 
-首先，您必须设计模型应该遵循的 JSON Schema。请参阅本指南顶部的[示例](/api/docs/guides/structured-outputs#examples)作为参考。
+首先，您必须设计模型应该遵循的 JSON Schema。请参阅本指南顶部的[示例](/guides/structured-outputs#examples)作为参考。
 
-虽然 Structured Outputs 支持大部分 JSON Schema，但由于性能或技术原因，某些功能不可用。有关更多详细信息，请参阅[此处](/api/docs/guides/structured-outputs#supported-schemas)。
+虽然 Structured Outputs 支持大部分 JSON Schema，但由于性能或技术原因，某些功能不可用。有关更多详细信息，请参阅[此处](/guides/structured-outputs#supported-schemas)。
 
 #### JSON Schema 的建议
 
@@ -2751,7 +2750,7 @@ console.log(math_reasoning.parsed);
 
 #### 处理错误
 
-Structured Outputs 仍然可能包含错误。如果您发现错误，请尝试调整您的指令、在系统指令中提供示例，或将任务拆分为更简单的子任务。有关如何调整输入的更多指导，请参阅[提示工程指南](/api/docs/guides/prompt-engineering)。
+Structured Outputs 仍然可能包含错误。如果您发现错误，请尝试调整您的指令、在系统指令中提供示例，或将任务拆分为更简单的子任务。有关如何调整输入的更多指导，请参阅[提示工程指南](/guides/prompt-engineering)。
 
 #### 避免 JSON schema 分歧
 
@@ -2767,7 +2766,7 @@ Structured Outputs 仍然可能包含错误。如果您发现错误，请尝试�
 
 我们建议依赖 SDK 来处理 Structured Outputs 的流式传输。
 
-您可以在[函数调用指南](/api/docs/guides/function-calling#advanced-usage)中找到一个不使用 SDK `stream` 辅助工具流式传输函数调用参数的示例。
+您可以在[函数调用指南](/guides/function-calling#advanced-usage)中找到一个不使用 SDK `stream` 辅助工具流式传输函数调用参数的示例。
 
 以下是如何使用 `stream` 辅助工具流式传输模型响应：
 
@@ -3678,5 +3677,5 @@ except Exception as e:
 
 要了解更多关于 Structured Outputs 的信息，我们建议浏览以下资源：
 
-*   查看我们关于 Structured Outputs 的[入门 cookbook](/cookbook/examples/structured_outputs_intro)
-*   了解[如何使用 Structured Outputs 构建多代理系统](/cookbook/examples/structured_outputs_multi_agent)
+*   查看我们关于 Structured Outputs 的[入门 cookbook]( https://cdn.openai.com/API/docs/cookbook/examples/structured_outputs_intro)
+*   了解[如何使用 Structured Outputs 构建多代理系统]( https://cdn.openai.com/API/docs/cookbook/examples/structured_outputs_multi_agent)

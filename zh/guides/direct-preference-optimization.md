@@ -1,4 +1,3 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/direct-preference-optimization -->
 
 [Direct Preference Optimization](https://arxiv.org/abs/2305.18290)（DPO）微调允许你基于提示和成对的响应来微调模型。这种方法使模型能够从更主观的人类偏好中学习，优化生成更可能被偏好的输出。DPO 目前仅支持文本输入和输出。
 
@@ -20,7 +19,7 @@
 *   一个偏好输出（理想的助手响应）。
 *   一个非偏好输出（次优的助手响应）。
 
-数据应以 JSONL 格式组织，每行[代表一个示例](/api/docs/api-reference/fine-tuning/preference-input)，结构如下：
+数据应以 JSONL 格式组织，每行[代表一个示例]( https://developers.openai.com/api/reference/fine-tuning/preference-input)，结构如下：
 
 ```
 {
@@ -53,9 +52,9 @@
 
 ## 创建 DPO 微调任务
 
-上传训练数据和使用 DPO 微调模型遵循[此处描述的相同流程](/api/docs/guides/model-optimization)。
+上传训练数据和使用 DPO 微调模型遵循[此处描述的相同流程](/guides/model-optimization)。
 
-要创建 DPO 微调任务，请在[微调任务创建端点](/api/docs/api-reference/fine-tuning/create)中使用 `method` 字段，你可以在其中指定 `type` 以及任何相关的 `hyperparameters`。对于 DPO：
+要创建 DPO 微调任务，请在[微调任务创建端点]( https://developers.openai.com/api/reference/fine-tuning/create)中使用 `method` 字段，你可以在其中指定 `type` 以及任何相关的 `hyperparameters`。对于 DPO：
 
 *   将 `type` 参数设置为 `dpo`
 *   可选地设置 `hyperparameters` 属性，配置你想要的选项。
@@ -103,7 +102,7 @@ job = client.fine_tuning.jobs.create(
 
 ## 结合使用 SFT 和 DPO
 
-目前，OpenAI 提供[监督微调（SFT）](/api/docs/guides/supervised-fine-tuning)作为微调任务的默认方法。在运行 DPO 任务之前，先对你的偏好响应（或其子集）执行 SFT，可以显著增强模型的对齐性和性能。通过首先在期望的响应上微调模型，它可以更好地识别正确的模式，为 DPO 优化行为提供坚实的基础。
+目前，OpenAI 提供[监督微调（SFT）](/guides/supervised-fine-tuning)作为微调任务的默认方法。在运行 DPO 任务之前，先对你的偏好响应（或其子集）执行 SFT，可以显著增强模型的对齐性和性能。通过首先在期望的响应上微调模型，它可以更好地识别正确的模式，为 DPO 优化行为提供坚实的基础。
 
 推荐的工作流程如下：
 
@@ -146,8 +145,8 @@ job = client.fine_tuning.jobs.create(
 
 现在你已经了解了 DPO 的基础知识，也可以探索以下其他方法。
 
-[监督微调 - 通过为示例输入提供正确输出来微调模型。](/api/docs/guides/supervised-fine-tuning)
+[监督微调 - 通过为示例输入提供正确输出来微调模型。](/guides/supervised-fine-tuning)
 
-[视觉微调 - 学习使用图像输入进行计算机视觉微调。](/api/docs/guides/vision-fine-tuning)
+[视觉微调 - 学习使用图像输入进行计算机视觉微调。](/guides/vision-fine-tuning)
 
-[强化微调 - 通过对推理模型的输出进行评分来微调。](/api/docs/guides/reinforcement-fine-tuning)
+[强化微调 - 通过对推理模型的输出进行评分来微调。](/guides/reinforcement-fine-tuning)

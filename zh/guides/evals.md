@@ -1,10 +1,9 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/evals -->
 
 评估（通常称为 **evals**）用于测试模型输出，以确保它们满足你指定的风格和内容标准。编写评估来了解你的 LLM 应用程序相对于预期的表现如何，特别是在升级或尝试新模型时，是构建可靠应用程序的重要组成部分。
 
-在本指南中，我们将重点介绍**使用 [Evals API](/api/docs/api-reference/evals) 以编程方式配置评估**。如果你愿意，也可以[在 OpenAI 仪表板中](https://platform.openai.com/evaluations)配置评估。
+在本指南中，我们将重点介绍**使用 [Evals API]( https://developers.openai.com/api/reference/evals) 以编程方式配置评估**。如果你愿意，也可以[在 OpenAI 仪表板中](https://platform.openai.com/evaluations)配置评估。
 
-如果你是评估新手，或者希望在构建评估时有一个更具交互性的实验环境，可以考虑尝试 [Datasets](/api/docs/guides/evaluation-getting-started)。
+如果你是评估新手，或者希望在构建评估时有一个更具交互性的实验环境，可以考虑尝试 [Datasets](/guides/evaluation-getting-started)。
 
 总体而言，构建和运行 LLM 应用程序评估有三个步骤：
 
@@ -12,13 +11,13 @@
 2.  使用测试输入（提示词和输入数据）运行评估
 3.  分析结果，然后迭代和改进你的提示词
 
-这个过程有点类似于行为驱动开发（BDD），即在实现和测试系统之前，先指定系统应该如何行为。让我们看看如何使用 [Evals API](/api/docs/api-reference/evals) 完成上述每个步骤。
+这个过程有点类似于行为驱动开发（BDD），即在实现和测试系统之前，先指定系统应该如何行为。让我们看看如何使用 [Evals API]( https://developers.openai.com/api/reference/evals) 完成上述每个步骤。
 
 ## 为任务创建评估
 
 创建评估首先要描述模型需要完成的任务。假设我们想使用模型将 IT 支持工单的内容分类为三个类别之一：`Hardware`、`Software` 或 `Other`。
 
-要实现此用例，你可以使用 [Chat Completions API](/api/docs/api-reference/chat) 或 [Responses API](/api/docs/api-reference/responses)。下面的两个示例都将[开发者消息](/api/docs/guides/text)与包含支持工单文本的用户消息结合使用。
+要实现此用例，你可以使用 [Chat Completions API]( https://developers.openai.com/api/reference/chat) 或 [Responses API]( https://developers.openai.com/api/reference/responses)。下面的两个示例都将[开发者消息](/guides/text)与包含支持工单文本的用户消息结合使用。
 
 **分类 IT 支持工单**
 
@@ -149,10 +148,10 @@ completion = client.chat.completions.create(
 print(completion.choices[0].message.content)
 ```
 
-让我们设置一个评估来[通过 API](/api/docs/api-reference/evals) 测试此行为。评估需要两个关键要素：
+让我们设置一个评估来[通过 API]( https://developers.openai.com/api/reference/evals) 测试此行为。评估需要两个关键要素：
 
 *   `data_source_config`：你将与评估一起使用的测试数据的模式。
-*   `testing_criteria`：确定模型输出是否正确的[评分器](/api/docs/guides/graders)。
+*   `testing_criteria`：确定模型输出是否正确的[评分器](/guides/graders)。
 
 **创建评估**
 
@@ -178,9 +177,9 @@ curl https://api.openai.com/v1/evals \
             {
                 "type": "string_check",
                 "name": "Match output to human label",
-                "input": "{{ sample.output_text }}",
+                "input": "\{\{ sample.output_text \}\}",
                 "operation": "eq",
-                "reference": "{{ item.correct_label }}"
+                "reference": "\{\{ item.correct_label \}\}"
             }
         ]
     }'
@@ -207,9 +206,9 @@ const evalObj = await openai.evals.create({
         {
             type: "string_check",
             name: "Match output to human label",
-            input: "{{ sample.output_text }}",
+            input: "\{\{ sample.output_text \}\}",
             operation: "eq",
-            reference: "{{ item.correct_label }}",
+            reference: "\{\{ item.correct_label \}\}",
         },
     ],
 });
@@ -238,9 +237,9 @@ eval_obj = client.evals.create(
         {
             "type": "string_check",
             "name": "Match output to human label",
-            "input": "{{ sample.output_text }}",
+            "input": "\{\{ sample.output_text \}\}",
             "operation": "eq",
-            "reference": "{{ item.correct_label }}",
+            "reference": "\{\{ item.correct_label \}\}",
         }
     ],
 )
@@ -276,18 +275,18 @@ print(eval_obj)
 
 在我们的 `testing_criteria` 中，我们定义了如何判断模型输出是否满足数据集中每个项目的要求。在这种情况下，我们只希望模型根据输入工单输出三个类别字符串之一。它输出的字符串应该与测试数据中人工标注的 `correct_label` 字段完全匹配。因此在这种情况下，我们将使用 `string_check` 评分器来评估输出。
 
-在测试配置中，我们将引入模板语法，由下面的 `{{` 和 `}}` 括号表示。这是我们将动态内容插入此评估测试的方式。
+在测试配置中，我们将引入模板语法，由下面的 `\{\{` 和 `\}\}` 括号表示。这是我们将动态内容插入此评估测试的方式。
 
-*   `{{ item.correct_label }}` 引用测试数据中的真实标签值。
-*   `{{ sample.output_text }}` 引用我们将从模型生成的内容来评估提示词——我们将在实际启动评估运行时展示如何做到这一点。
+*   `\{\{ item.correct_label \}\}` 引用测试数据中的真实标签值。
+*   `\{\{ sample.output_text \}\}` 引用我们将从模型生成的内容来评估提示词——我们将在实际启动评估运行时展示如何做到这一点。
 
 ```
 {
   "type": "string_check",
   "name": "Category string match",
-  "input": "{{ sample.output_text }}",
+  "input": "\{\{ sample.output_text \}\}",
   "operation": "eq",
-  "reference": "{{ item.category }}"
+  "reference": "\{\{ item.category \}\}"
 }
 ```
 
@@ -306,8 +305,8 @@ print(eval_obj)
       "name": "Match output to human label",
       "id": "Match output to human label-c4fdf789-2fa5-407f-8a41-a6f4f9afd482",
       "type": "string_check",
-      "input": "{{ sample.output_text }}",
-      "reference": "{{ item.correct_label }}",
+      "input": "\{\{ sample.output_text \}\}",
+      "reference": "\{\{ item.correct_label \}\}",
       "operation": "eq"
     }
   ],
@@ -335,7 +334,7 @@ print(eval_obj)
 
 此数据集包含测试输入和真实标签，用于与模型输出进行比较。
 
-接下来，让我们将测试数据文件上传到 OpenAI 平台，以便稍后引用。你可以[在仪表板中上传文件](https://platform.openai.com/storage/files)，也可以[通过 API 上传文件](/api/docs/api-reference/files/create)。以下示例假设你在保存了上述示例 JSON 数据的目录中运行命令，文件名为 `tickets.jsonl`：
+接下来，让我们将测试数据文件上传到 OpenAI 平台，以便稍后引用。你可以[在仪表板中上传文件](https://platform.openai.com/storage/files)，也可以[通过 API 上传文件]( https://developers.openai.com/api/reference/files/create)。以下示例假设你在保存了上述示例 JSON 数据的目录中运行命令，文件名为 `tickets.jsonl`：
 
 **上传测试数据文件**
 
@@ -388,7 +387,7 @@ print(file)
 
 ### 创建评估运行
 
-测试数据准备就绪后，让我们评估一个提示词，看看它在测试标准下的表现如何。通过 API，我们可以[创建评估运行](/api/docs/api-reference/evals/createRun)来完成此操作。
+测试数据准备就绪后，让我们评估一个提示词，看看它在测试标准下的表现如何。通过 API，我们可以[创建评估运行]( https://developers.openai.com/api/reference/evals/createRun)来完成此操作。
 
 请确保将 `YOUR_EVAL_ID` 和 `YOUR_FILE_ID` 替换为你在上述步骤中创建的评估配置和测试数据文件的唯一 ID。
 
@@ -407,7 +406,7 @@ curl https://api.openai.com/v1/evals/YOUR_EVAL_ID/runs \
                 "type": "template",
                 "template": [
                     {"role": "developer", "content": "You are an expert in categorizing IT support tickets. Given the support ticket below, categorize the request into one of Hardware, Software, or Other. Respond with only one of those words."},
-                    {"role": "user", "content": "{{ item.ticket_text }}"}
+                    {"role": "user", "content": "\{\{ item.ticket_text \}\}"}
                 ]
             },
             "source": { "type": "file_id", "id": "YOUR_FILE_ID" }
@@ -427,7 +426,7 @@ const run = await openai.evals.runs.create("YOUR_EVAL_ID", {
             type: "template",
             template: [
                 { role: "developer", content: "You are an expert in categorizing IT support tickets. Given the support ticket below, categorize the request into one of 'Hardware', 'Software', or 'Other'. Respond with only one of those words." },
-                { role: "user", content: "{{ item.ticket_text }}" },
+                { role: "user", content: "\{\{ item.ticket_text \}\}" },
             ],
         },
         source: { type: "file_id", id: "YOUR_FILE_ID" },
@@ -450,7 +449,7 @@ run = client.evals.runs.create(
             "type": "template",
             "template": [
                 {"role": "developer", "content": "You are an expert in categorizing IT support tickets. Given the support ticket below, categorize the request into one of 'Hardware', 'Software', or 'Other'. Respond with only one of those words."},
-                {"role": "user", "content": "{{ item.ticket_text }}"},
+                {"role": "user", "content": "\{\{ item.ticket_text \}\}"},
             ],
         },
         "source": {"type": "file_id", "id": "YOUR_FILE_ID"},
@@ -475,7 +474,7 @@ curl https://api.openai.com/v1/evals/YOUR_EVAL_ID/runs \
                 "type": "template",
                 "template": [
                     {"role": "developer", "content": "You are an expert in categorizing IT support tickets. Given the support ticket below, categorize the request into one of Hardware, Software, or Other. Respond with only one of those words."},
-                    {"role": "user", "content": "{{ item.ticket_text }}"}
+                    {"role": "user", "content": "\{\{ item.ticket_text \}\}"}
                 ]
             },
             "source": { "type": "file_id", "id": "YOUR_FILE_ID" }
@@ -495,7 +494,7 @@ const run = await openai.evals.runs.create("YOUR_EVAL_ID", {
             type: "template",
             template: [
                 { role: "developer", content: "You are an expert in categorizing IT support tickets. Given the support ticket below, categorize the request into one of 'Hardware', 'Software', or 'Other'. Respond with only one of those words." },
-                { role: "user", content: "{{ item.ticket_text }}" },
+                { role: "user", content: "\{\{ item.ticket_text \}\}" },
             ],
         },
         source: { type: "file_id", id: "YOUR_FILE_ID" },
@@ -518,7 +517,7 @@ run = client.evals.runs.create(
             "type": "template",
             "template": [
                 {"role": "developer", "content": "You are an expert in categorizing IT support tickets. Given the support ticket below, categorize the request into one of 'Hardware', 'Software', or 'Other'. Respond with only one of those words."},
-                {"role": "user", "content": "{{ item.ticket_text }}"},
+                {"role": "user", "content": "\{\{ item.ticket_text \}\}"},
             ],
         },
         "source": {"type": "file_id", "id": "YOUR_FILE_ID"},
@@ -528,7 +527,7 @@ run = client.evals.runs.create(
 print(run)
 ```
 
-当我们创建运行时，我们使用 [Chat Completions](/api/docs/guides/text?api-mode=chat) 消息数组或 [Responses](/api/docs/api-reference/responses) 输入来设置提示词。此提示词用于为数据集中的每一行测试数据生成模型响应。我们可以使用双花括号语法来模板化动态变量 `item.ticket_text`，该变量取自当前测试数据项。
+当我们创建运行时，我们使用 [Chat Completions](/guides/text?api-mode=chat) 消息数组或 [Responses]( https://developers.openai.com/api/reference/responses) 输入来设置提示词。此提示词用于为数据集中的每一行测试数据生成模型响应。我们可以使用双花括号语法来模板化动态变量 `item.ticket_text`，该变量取自当前测试数据项。
 
 如果评估运行创建成功，你将收到如下所示的 API 响应：
 
@@ -567,7 +566,7 @@ print(run)
                     "role": "user",
                     "content": {
                         "type": "input_text",
-                        "text": "{{item.ticket_text}}"
+                        "text": "\{\{item.ticket_text\}\}"
                     }
                 }
             ]
@@ -615,7 +614,7 @@ print(run)
                     "role": "user",
                     "content": {
                         "type": "input_text",
-                        "text": "{{item.ticket_text}}"
+                        "text": "\{\{item.ticket_text\}\}"
                     }
                 }
             ]
@@ -632,9 +631,9 @@ print(run)
 
 ## 分析结果
 
-要在运行成功、失败或被取消时接收更新，请创建一个 webhook 端点并订阅 `eval.run.succeeded`、`eval.run.failed` 和 `eval.run.canceled` 事件。有关更多详细信息，请参阅 [webhooks 指南](/api/docs/guides/webhooks)。
+要在运行成功、失败或被取消时接收更新，请创建一个 webhook 端点并订阅 `eval.run.succeeded`、`eval.run.failed` 和 `eval.run.canceled` 事件。有关更多详细信息，请参阅 [webhooks 指南](/guides/webhooks)。
 
-根据数据集的大小，评估运行可能需要一些时间才能完成。你可以在仪表板中查看当前状态，也可以[通过 API 获取评估运行的当前状态](/api/docs/api-reference/evals/getRun)：
+根据数据集的大小，评估运行可能需要一些时间才能完成。你可以在仪表板中查看当前状态，也可以[通过 API 获取评估运行的当前状态]( https://developers.openai.com/api/reference/evals/getRun)：
 
 **获取评估运行状态**
 
@@ -717,7 +716,7 @@ print(run)
                     "role": "user",
                     "content": {
                         "type": "input_text",
-                        "text": "{{item.ticket_text}}"
+                        "text": "\{\{item.ticket_text\}\}"
                     }
                 }
             ]
@@ -785,7 +784,7 @@ print(run)
                     "role": "user",
                     "content": {
                         "type": "input_text",
-                        "text": "{{item.ticket_text}}"
+                        "text": "\{\{item.ticket_text\}\}"
                     }
                 }
             ]
@@ -812,6 +811,6 @@ API 响应包含有关测试标准结果、生成模型响应的 API 使用情�
 
 [Cookbook：监控存储的补全 - 检查存储的补全以测试提示词回归。](https://cookbook.openai.com/examples/evaluation/use-cases/completion-monitoring)
 
-[微调 - 提高模型生成针对你的用例定制的响应的能力。](/api/docs/guides/fine-tuning)
+[微调 - 提高模型生成针对你的用例定制的响应的能力。](/guides/fine-tuning)
 
-[模型蒸馏 - 了解如何将大型模型的结果蒸馏到更小、更便宜、更快的模型。](/api/docs/guides/distillation)
+[模型蒸馏 - 了解如何将大型模型的结果蒸馏到更小、更便宜、更快的模型。](/guides/distillation)

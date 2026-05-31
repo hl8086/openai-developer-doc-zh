@@ -1,12 +1,11 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/predicted-outputs -->
 
-**Predicted Outputs** 使你能够在许多输出 token 可以提前预知的情况下加速 [Chat Completions](/api/docs/api-reference/chat/create) 的 API 响应。这在你对文本或代码文件进行少量修改并重新生成时最为常见。你可以通过 [Chat Completions 中的 `prediction` 请求参数](/api/docs/api-reference/chat/create#chat-create-prediction) 来提供你的预测。
+**Predicted Outputs** 使你能够在许多输出 token 可以提前预知的情况下加速 [Chat Completions]( https://developers.openai.com/api/reference/chat/create) 的 API 响应。这在你对文本或代码文件进行少量修改并重新生成时最为常见。你可以通过 [Chat Completions 中的 `prediction` 请求参数]( https://developers.openai.com/api/reference/chat/create#chat-create-prediction) 来提供你的预测。
 
 Predicted Outputs 目前可在最新的 `gpt-4o`、`gpt-4o-mini`、`gpt-4.1`、`gpt-4.1-mini` 和 `gpt-4.1-nano` 模型上使用。继续阅读以了解如何使用 Predicted Outputs 来降低应用程序中的延迟。
 
 ## 代码重构示例
 
-Predicted Outputs 在对文本文档和代码文件进行少量修改并重新生成时特别有用。假设你想让 [GPT-4o 模型](/api/docs/models#gpt-4o) 重构一段 TypeScript 代码，将 `User` 类的 `username` 属性转换为 `email`：
+Predicted Outputs 在对文本文档和代码文件进行少量修改并重新生成时特别有用。假设你想让 [GPT-4o 模型](/models#gpt-4o) 重构一段 TypeScript 代码，将 `User` 类的 `username` 属性转换为 `email`：
 
 ```
 class User {
@@ -362,13 +361,13 @@ serve({
 使用 Predicted Outputs 时，你应该考虑以下因素和限制。
 
 *   Predicted Outputs 仅支持 GPT-4o、GPT-4o-mini、GPT-4.1、GPT-4.1-mini 和 GPT-4.1-nano 系列模型。
-*   提供预测时，任何不属于最终补全的 token 仍然按补全 token 费率计费。请查看 [`usage` 对象的 `rejected_prediction_tokens` 属性](/api/docs/api-reference/chat/object#chat/object-usage) 以了解有多少 token 未被用于最终响应。
-*   使用 Predicted Outputs 时，以下 [API 参数](/api/docs/api-reference/chat/create) 不受支持：
+*   提供预测时，任何不属于最终补全的 token 仍然按补全 token 费率计费。请查看 [`usage` 对象的 `rejected_prediction_tokens` 属性]( https://developers.openai.com/api/reference/chat/object#chat/object-usage) 以了解有多少 token 未被用于最终响应。
+*   使用 Predicted Outputs 时，以下 [API 参数]( https://developers.openai.com/api/reference/chat/create) 不受支持：
     *   `n`：不支持大于 1 的值
     *   `logprobs`：不支持
     *   `presence_penalty`：不支持大于 0 的值
     *   `frequency_penalty`：不支持大于 0 的值
-    *   `audio`：Predicted Outputs 与[音频输入和输出](/api/docs/guides/audio)不兼容
+    *   `audio`：Predicted Outputs 与[音频输入和输出](/guides/audio)不兼容
     *   `modalities`：仅支持 `text` 模态
     *   `max_completion_tokens`：不支持
     *   `tools`：Predicted Outputs 目前不支持函数调用

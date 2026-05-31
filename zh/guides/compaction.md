@@ -1,4 +1,3 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/compaction -->
 
 ## 概述
 
@@ -59,7 +58,7 @@ while keep_going:
 
 ## 独立压缩端点
 
-如需显式控制，可使用[独立压缩端点](/api/docs/api-reference/responses/compact)在长时间运行的工作流中进行无状态压缩。
+如需显式控制，可使用[独立压缩端点]( https://developers.openai.com/api/reference/responses/compact)在长时间运行的工作流中进行无状态压缩。
 
 此端点完全无状态且 ZDR 友好。
 

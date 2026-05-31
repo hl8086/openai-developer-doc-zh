@@ -1,4 +1,3 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/tools-web-search -->
 
 网页搜索允许模型访问互联网上的最新信息，并提供带有来源引用的答案。要启用此功能，请在 Responses API 中使用网页搜索工具，在某些情况下也可在 Chat Completions 中使用。
 
@@ -16,7 +15,7 @@ OpenAI 模型提供三种主要的网页搜索类型：
 | 现有的 Chat Completions 搜索集成 | Chat Completions 配合 `gpt-5-search-api` | 仅在需要保留 Chat Completions 集成时使用 |
 | 多步骤研究或长时间运行的报告 | `gpt-5.5` 配合 `high` 或 `xhigh` 推理 | 对于可能需要数分钟的报告，使用后台模式 |
 
-使用 [Responses API](/api/docs/api-reference/responses)，你可以通过在 API 请求的 `tools` 数组中配置网页搜索来启用它以生成内容。与任何其他工具一样，模型可以根据输入提示的内容选择是否搜索网页。
+使用 [Responses API]( https://developers.openai.com/api/reference/responses)，你可以通过在 API 请求的 `tools` 数组中配置网页搜索来启用它以生成内容。与任何其他工具一样，模型可以根据输入提示的内容选择是否搜索网页。
 
 对于新的 Responses API 集成，使用 `{ "type": "web_search" }`。早期的 `web_search_preview` 工具仍可用于旧版集成，但它不支持较新的控制参数，如 `filters`、`external_web_access` 和 `return_token_budget`。
 
@@ -63,7 +62,7 @@ curl "https://api.openai.com/v1/responses" \
 }'
 ```
 
-```
+```text
 openai responses create \
   --model gpt-5.5 \
   --raw-output \
@@ -97,7 +96,7 @@ Console.WriteLine(response.GetOutputText());
 使用网页搜索工具的模型响应将包含两部分：
 
 *   一个 `web_search_call` 输出项，包含搜索调用的 ID，以及在 `web_search_call.action` 中执行的操作。操作为以下之一：
-    *   `search`，表示网页搜索。它通常（但不总是）包含被搜索的 `queries`。搜索操作会产生工具调用费用（参见[定价](/api/docs/pricing#built-in-tools)）。
+    *   `search`，表示网页搜索。它通常（但不总是）包含被搜索的 `queries`。搜索操作会产生工具调用费用（参见[定价](/pricing#built-in-tools)）。
     *   `open_page`，表示打开一个页面。在推理模型中支持。
     *   `find_in_page`，表示在页面内搜索。在推理模型中支持。
 *   一个 `message` 输出项，包含：
@@ -143,9 +142,9 @@ Console.WriteLine(response.GetOutputText());
 ]
 ```
 
-使用 [Chat Completions API](/api/docs/api-reference/chat)，你可以直接访问 [ChatGPT 中的搜索](https://openai.com/index/introducing-chatgpt-search/) 所使用的微调模型和工具。
+使用 [Chat Completions API]( https://developers.openai.com/api/reference/chat)，你可以直接访问 [ChatGPT 中的搜索](https://openai.com/index/introducing-chatgpt-search/) 所使用的微调模型和工具。
 
-使用 Chat Completions 时，模型在响应你的查询之前始终会从网页检索信息。要让模型自行决定是否搜索，请切换到带有 `web_search` 工具的 [Responses API](/api/docs/guides/tools-web-search?api-mode=responses)。
+使用 Chat Completions 时，模型在响应你的查询之前始终会从网页检索信息。要让模型自行决定是否搜索，请切换到带有 `web_search` 工具的 [Responses API](/guides/tools-web-search?api-mode=responses)。
 
 目前，在 Chat Completions 中使用以下模型进行网页搜索：
 
@@ -733,8 +732,8 @@ Chat Completions API 仅支持专用搜索模型进行网页搜索。这些模�
 | 模型 | 上下文窗口 | 限制 |
 | --- | --- | --- |
 | `gpt-5-search-api` | 200k | 使用 Chat Completions 搜索模型路径 |
-| `gpt-4o-search-preview` | 128k | 使用 Chat Completions 搜索模型路径；[已弃用，2026-07-23 关闭](/api/docs/deprecations#2026-04-22-legacy-gpt-model-snapshots) |
-| `gpt-4o-mini-search-preview` | 128k | 使用 Chat Completions 搜索模型路径；[已弃用，2026-07-23 关闭](/api/docs/deprecations#2026-04-22-legacy-gpt-model-snapshots) |
+| `gpt-4o-search-preview` | 128k | 使用 Chat Completions 搜索模型路径；[已弃用，2026-07-23 关闭](/deprecations#2026-04-22-legacy-gpt-model-snapshots) |
+| `gpt-4o-mini-search-preview` | 128k | 使用 Chat Completions 搜索模型路径；[已弃用，2026-07-23 关闭](/deprecations#2026-04-22-legacy-gpt-model-snapshots) |
 
 #### Responses API
 
@@ -746,12 +745,12 @@ Chat Completions API 仅支持专用搜索模型进行网页搜索。这些模�
 | --- | --- | --- |
 | `gpt-4.1` | 1M | 搜索上下文限制为 128k |
 | `gpt-4.1-mini` | 1M | 搜索上下文限制为 128k |
-| `o4-mini` | 200k | 搜索上下文限制为 128k；[已弃用，2026-10-23 关闭](/api/docs/deprecations#2026-04-22-legacy-gpt-model-snapshots) |
+| `o4-mini` | 200k | 搜索上下文限制为 128k；[已弃用，2026-10-23 关闭](/deprecations#2026-04-22-legacy-gpt-model-snapshots) |
 
 对于 Responses API 网页搜索，搜索上下文窗口限制为 128k，即使模型上下文窗口更大。
 
-*   网页搜索不支持 [`gpt-5`](/api/docs/models/gpt-5) 的 `minimal` 推理。
-*   [`gpt-5.4`](/api/docs/models/gpt-5.4) 将推理努力设置为 `none` 可能产生较低质量的结果。
+*   网页搜索不支持 [`gpt-5`](/models/gpt-5) 的 `minimal` 推理。
+*   [`gpt-5.4`](/models/gpt-5.4) 将推理努力设置为 `none` 可能产生较低质量的结果。
 *   Responses API 网页搜索使用底层模型的分层速率限制。
 *   `web_search_preview` 不支持 `filters` 或 `return_token_budget`，并忽略 `external_web_access`。
 *   使用 `tool_choice: "auto"` 时，搜索是可选的。当搜索必须运行时，使用 `tool_choice: "required"` 或特定的网页搜索工具选择。
@@ -760,5 +759,5 @@ Chat Completions API 仅支持专用搜索模型进行网页搜索。这些模�
 
 | API 可用性 | 速率限制 | 备注 |
 | --- | --- | --- |
-| [Responses](/api/docs/api-reference/responses)[Chat Completions](/api/docs/api-reference/chat)[Assistants](/api/docs/api-reference/assistants) | 与使用该工具的底层[模型](/api/docs/models)的分层速率限制相同。 | [定价](/api/docs/pricing#built-in-tools)  
-[ZDR 和数据驻留](/api/docs/guides/your-data) |
+| [Responses]( https://developers.openai.com/api/reference/responses)[Chat Completions]( https://developers.openai.com/api/reference/chat)[Assistants]( https://developers.openai.com/api/reference/assistants) | 与使用该工具的底层[模型](/models)的分层速率限制相同。 | [定价](/pricing#built-in-tools)  
+[ZDR 和数据驻留](/guides/your-data) |

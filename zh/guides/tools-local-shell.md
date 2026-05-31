@@ -1,10 +1,9 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/tools-local-shell -->
 
-本地 shell 工具已过时。对于新的使用场景，请改用 [`shell`](/api/docs/guides/tools-shell) 工具配合 GPT-5.1。[了解更多](/api/docs/guides/tools-shell)。
+本地 shell 工具已过时。对于新的使用场景，请改用 [`shell`](/guides/tools-shell) 工具配合 GPT-5.1。[了解更多](/guides/tools-shell)。
 
-本地 shell 是一种工具，允许代理在您或用户提供的机器上本地运行 shell 命令。它设计用于与 [Codex CLI](https://github.com/openai/codex) 和 [`codex-mini-latest`](/api/docs/models/codex-mini-latest) 配合使用。命令在您自己的运行时中执行，**您完全控制哪些命令实际运行**——API 仅返回指令，但不会在 OpenAI 基础设施上执行它们。
+本地 shell 是一种工具，允许代理在您或用户提供的机器上本地运行 shell 命令。它设计用于与 [Codex CLI](https://github.com/openai/codex) 和 [`codex-mini-latest`](/models/codex-mini-latest) 配合使用。命令在您自己的运行时中执行，**您完全控制哪些命令实际运行**——API 仅返回指令，但不会在 OpenAI 基础设施上执行它们。
 
-本地 shell 通过 [Responses API](/api/docs/guides/responses-vs-chat-completions) 提供，用于 [`codex-mini-latest`](/api/docs/models/codex-mini-latest)。它不适用于其他模型，也不能通过 Chat Completions API 使用。
+本地 shell 通过 [Responses API](/guides/responses-vs-chat-completions) 提供，用于 [`codex-mini-latest`](/models/codex-mini-latest)。它不适用于其他模型，也不能通过 Chat Completions API 使用。
 
 运行任意 shell 命令可能是危险的。在将命令转发到系统 shell 之前，请始终对执行进行沙箱隔离或添加严格的允许/拒绝列表。
 

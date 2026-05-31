@@ -1,4 +1,3 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/production-best-practices -->
 
 本指南提供了一套全面的最佳实践，帮助您从原型过渡到生产环境。无论您是经验丰富的机器学习工程师还是新近的爱好者，本指南都应为您提供在生产环境中成功使用该平台所需的工具：从保护对我们 API 的访问到设计能够处理高流量的稳健架构。使用本指南来帮助制定尽可能顺利和有效地部署应用程序的计划。
 
@@ -8,7 +7,7 @@
 
 一旦您[登录](https://platform.openai.com/login)您的 OpenAI 账户，您可以在[组织设置](https://platform.openai.com/settings/organization/general)中找到您的组织名称和 ID。组织名称是您组织的标签，显示在用户界面中。组织 ID 是您组织的唯一标识符，可在 API 请求中使用。
 
-属于多个组织的用户可以[传递一个请求头](/api/docs/api-reference/requesting-organization)来指定 API 请求使用哪个组织。这些 API 请求的用量将计入指定组织的配额。如果未提供请求头，将对[默认组织](https://platform.openai.com/settings/organization/api-keys)计费。您可以在[用户设置](https://platform.openai.com/settings/organization/api-keys)中更改默认组织。
+属于多个组织的用户可以[传递一个请求头]( https://developers.openai.com/api/reference/requesting-organization)来指定 API 请求使用哪个组织。这些 API 请求的用量将计入指定组织的配额。如果未提供请求头，将对[默认组织](https://platform.openai.com/settings/organization/api-keys)计费。您可以在[用户设置](https://platform.openai.com/settings/organization/api-keys)中更改默认组织。
 
 您可以从[团队页面](https://platform.openai.com/settings/organization/team)邀请新成员加入您的组织。成员可以是**读者**或**所有者**。
 
@@ -26,7 +25,7 @@
 
 ### 管理账单限额
 
-一旦您输入了账单信息，您将获得 OpenAI 设定的每月 $100 的批准使用限额。随着您在平台上的使用量增加以及从一个[使用层级](/api/docs/guides/rate-limits#usage-tiers)升级到另一个层级，您的配额限制将自动增加。您可以在账户设置的[限额](https://platform.openai.com/settings/organization/limits)页面查看当前的使用限额。
+一旦您输入了账单信息，您将获得 OpenAI 设定的每月 $100 的批准使用限额。随着您在平台上的使用量增加以及从一个[使用层级](/guides/rate-limits#usage-tiers)升级到另一个层级，您的配额限制将自动增加。您可以在账户设置的[限额](https://platform.openai.com/settings/organization/limits)页面查看当前的使用限额。
 
 如果您希望在使用量超过某个金额时收到通知，可以通过[使用限额](https://platform.openai.com/settings/organization/limits)页面设置通知阈值。
 
@@ -53,11 +52,11 @@ API 密钥使用情况可以在启用跟踪后在[使用页面](https://platform
 
 ### 管理速率限制
 
-使用我们的 API 时，了解和规划[速率限制](/api/docs/guides/rate-limits)非常重要。
+使用我们的 API 时，了解和规划[速率限制](/guides/rate-limits)非常重要。
 
 ## 改善延迟
 
-查看我们关于[延迟优化](/api/docs/guides/latency-optimization)的最新指南。
+查看我们关于[延迟优化](/guides/latency-optimization)的最新指南。
 
 延迟是请求被处理并返回响应所需的时间。在本节中，我们将讨论影响文本生成模型延迟的一些因素，并提供减少延迟的建议。
 
@@ -111,7 +110,7 @@ API 到终端用户的延迟
 
 #### 批处理
 
-根据您的用例，批处理_可能有帮助_。如果您向同一端点发送多个请求，可以将提示[批量发送](/api/docs/guides/rate-limits#batching-requests)在同一个请求中。这将减少您需要发出的请求数量。prompt 参数最多可以容纳 20 个唯一提示。我们建议您测试此方法，看看是否有帮助。在某些情况下，您可能最终会增加生成的 token 数量，这将减慢响应时间。
+根据您的用例，批处理_可能有帮助_。如果您向同一端点发送多个请求，可以将提示[批量发送](/guides/rate-limits#batching-requests)在同一个请求中。这将减少您需要发出的请求数量。prompt 参数最多可以容纳 20 个唯一提示。我们建议您测试此方法，看看是否有帮助。在某些情况下，您可能最终会增加生成的 token 数量，这将减慢响应时间。
 
 ## 管理成本
 
@@ -121,7 +120,7 @@ API 到终端用户的延迟
 
 将原型投入生产的挑战之一是为运行应用程序的相关成本做预算。OpenAI 提供[按量付费定价模式](https://openai.com/api/pricing/)，按每 1,000 个 token（大约等于 750 个单词）计价。要估算成本，您需要预测 token 使用量。考虑流量水平、用户与应用程序交互的频率以及您将处理的数据量等因素。
 
-**思考降低成本的一个有用框架是将成本视为 token 数量和每个 token 成本的函数。** 使用此框架有两种潜在的降低成本途径。首先，您可以通过为某些任务切换到较小的模型来降低每个 token 的成本。或者，您可以尝试减少所需的 token 数量。有几种方法可以做到这一点，例如使用更短的提示、[微调](/api/docs/guides/model-optimization)模型，或缓存常见的用户查询以避免重复处理。
+**思考降低成本的一个有用框架是将成本视为 token 数量和每个 token 成本的函数。** 使用此框架有两种潜在的降低成本途径。首先，您可以通过为某些任务切换到较小的模型来降低每个 token 的成本。或者，您可以尝试减少所需的 token 数量。有几种方法可以做到这一点，例如使用更短的提示、[微调](/guides/model-optimization)模型，或缓存常见的用户查询以避免重复处理。
 
 您可以使用我们的交互式 [tokenizer 工具](https://platform.openai.com/tokenizer)来帮助估算成本。API 和 playground 也会在响应中返回 token 计数。一旦您使用我们最强大的模型使一切正常运行，您可以查看其他模型是否能以更低的延迟和成本产生相同的结果。在我们的 [token 使用帮助文章](https://help.openai.com/en/articles/6614209-how-do-i-check-my-token-usage)中了解更多信息。
 
@@ -144,7 +143,7 @@ API 到终端用户的延迟
 
 ### 安全最佳实践
 
-使用我们的 API 创建应用程序时，请考虑我们的[安全最佳实践](/api/docs/guides/safety-best-practices)，以确保您的应用程序安全且成功。这些建议强调了广泛测试产品、主动解决潜在问题以及限制滥用机会的重要性。
+使用我们的 API 创建应用程序时，请考虑我们的[安全最佳实践](/guides/safety-best-practices)，以确保您的应用程序安全且成功。这些建议强调了广泛测试产品、主动解决潜在问题以及限制滥用机会的重要性。
 
 ## 商业考虑
 

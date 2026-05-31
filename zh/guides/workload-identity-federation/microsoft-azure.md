@@ -1,4 +1,3 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/workload-identity-federation/microsoft-azure -->
 
 在以下任一场景中使用 Microsoft Azure 作为工作负载身份提供者：
 
@@ -23,8 +22,8 @@ Azure 托管标识允许 Azure 托管的工作负载在不存储长期密钥的�
 
 从分配了托管标识的 Azure 资源中，使用 Application ID URI 作为 `resource` 参数从 IMDS 请求令牌。此令牌是 OpenAI 用于交换 OpenAI 颁发的访问令牌的主体令牌。
 
-```
-APPLICATION_ID_URI="api://<application-client-id>"
+```text
+APPLICATION_ID_URI="api://&lt;application-client-id>"
 
 TOKEN=$(curl -sS -G -H "Metadata: true" \
   "http://169.254.169.254/metadata/identity/oauth2/token" \
@@ -39,7 +38,7 @@ TOKEN=$(curl -sS -G -H "Metadata: true" \
 
 在配置工作负载身份联合之前，在本地解码示例令牌并检查其声明：
 
-```
+```text
 TOKEN="$TOKEN" python3 - <<'PY'
 import base64
 import json
@@ -55,7 +54,7 @@ PY
 
 解码后的 Microsoft Entra ID 托管标识令牌类似于：
 
-```
+```text
 {
   "iss": "https://login.microsoftonline.com/11111111-2222-3333-4444-555555555555/v2.0",
   "aud": "api://00000000-1111-2222-3333-444444444444",
@@ -63,7 +62,7 @@ PY
   "appid": "22222222-3333-4444-5555-666666666666",
   "oid": "33333333-4444-5555-6666-777777777777",
   "sub": "33333333-4444-5555-6666-777777777777",
-  "xms_mirid": "/subscriptions/<subscription-id>/resourcegroups/my-resource-group/providers/Microsoft.Compute/virtualMachines/openai-wif-vm",
+  "xms_mirid": "/subscriptions/&lt;subscription-id>/resourcegroups/my-resource-group/providers/Microsoft.Compute/virtualMachines/openai-wif-vm",
   "iat": 1716235422,
   "exp": 1716239022
 }
@@ -71,7 +70,7 @@ PY
 
 验证您计划在 OpenAI 中配置的声明：
 
-*   `iss`：使用令牌中的确切颁发者值。颁发者可能是 `https://login.microsoftonline.com/<tenant-id>/v2.0`，但不要假设该后缀。
+*   `iss`：使用令牌中的确切颁发者值。颁发者可能是 `https://login.microsoftonline.com/`&lt;tenant-id>`/v2.0`，但不要假设该后缀。
 *   `aud`：必须与 Application ID URI、IMDS `resource` 参数和 OpenAI 工作负载身份提供者受众匹配。
 *   `tid`：Microsoft Entra 租户 ID。
 *   `appid`：托管标识的应用程序/客户端 ID（如果存在）。
@@ -90,7 +89,7 @@ PY
 
 1.  **创建工作负载身份提供者。** 将 **Name** 设置为唯一值，例如 `azure-managed-identity-prod`。使用 **Description**，例如 `Production Azure managed identity workloads`，帮助管理员识别提供者。
     
-2.  **设置颁发者和受众。** 将 **OIDC Issuer URL** 设置为令牌 `iss` 声明的确切值。先获取示例托管标识令牌并检查其声明。例如，颁发者可能是 `https://login.microsoftonline.com/<tenant-id>/v2.0`。将 **Audience** 设置为您配置的 Microsoft Entra Application ID URI，例如 `api://<application-client-id>`。此值必须与令牌的 `aud` 声明匹配。
+2.  **设置颁发者和受众。** 将 **OIDC Issuer URL** 设置为令牌 `iss` 声明的确切值。先获取示例托管标识令牌并检查其声明。例如，颁发者可能是 `https://login.microsoftonline.com/`&lt;tenant-id>`/v2.0`。将 **Audience** 设置为您配置的 Microsoft Entra Application ID URI，例如 `api://`&lt;application-client-id>``。此值必须与令牌的 `aud` 声明匹配。
     
 3.  **使用 Microsoft Entra 令牌验证。** 保持 **Use uploaded JWKS for token verification** 禁用。OpenAI 使用 Microsoft Entra 颁发者元数据和 JWKS 来验证托管标识令牌。
     
@@ -400,7 +399,7 @@ public final class AzureManagedIdentityWorkloadIdentityExample {
                         .GET()
                         .build();
 
-                HttpResponse<String> response = java.net.http.HttpClient.newHttpClient()
+                HttpResponse&lt;String> response = java.net.http.HttpClient.newHttpClient()
                         .send(request, HttpResponse.BodyHandlers.ofString());
                 if (response.statusCode() < 200 || response.statusCode() >= 300) {
                     throw new SubjectTokenProviderException(
@@ -431,7 +430,7 @@ public final class AzureManagedIdentityWorkloadIdentityExample {
         }
 
         @Override
-        public CompletableFuture<String> getTokenAsync(
+        public CompletableFuture&lt;String> getTokenAsync(
                 HttpClient httpClient, JsonMapper jsonMapper) {
             return CompletableFuture.supplyAsync(() -> getToken(httpClient, jsonMapper));
         }
@@ -553,8 +552,8 @@ AKS 工作负载也可以使用 Azure Workload Identity 为附加到工作负载
 
 ```
 az aks show \
-  --name <cluster-name> \
-  --resource-group <resource-group> \
+  --name &lt;cluster-name> \
+  --resource-group &lt;resource-group> \
   --query "oidcIssuerProfile.issuerUrl" \
   --output tsv
 ```
@@ -563,8 +562,8 @@ az aks show \
 
 ```
 az aks update \
-    --resource-group <resource-group> \
-    --name <cluster-name> \
+    --resource-group &lt;resource-group> \
+    --name &lt;cluster-name> \
     --enable-oidc-issuer
 ```
 
@@ -640,7 +639,7 @@ PY
     }
   }
 }
-```
+```text
 
 验证您计划在 OpenAI 中配置的声明：
 
@@ -670,7 +669,7 @@ PY
 
 1.  **创建服务账户映射。** 将 **Name** 设置为在该工作负载身份提供者中唯一的值，例如 `default-openai-wif`。使用 **Description**，例如 `Default namespace AKS OpenAI API workload`，说明哪个工作负载可以使用该映射。
     
-2.  **匹配 AKS 服务账户主体。** 将 **Key** 设置为 `sub`，**Value** 设置为 `system:serviceaccount:default:openai-wif`。对于 AKS 服务账户，主体格式为 `system:serviceaccount:<namespace>:<service-account-name>`。
+2.  **匹配 AKS 服务账户主体。** 将 **Key** 设置为 `sub`，**Value** 设置为 `system:serviceaccount:default:openai-wif`。对于 AKS 服务账户，主体格式为 `system:serviceaccount:`&lt;namespace>`:`&lt;service-account-name>``。
     
     工作负载身份提供者将令牌限制为配置的 AKS 颁发者。服务账户映射进一步将访问限制为指定的 Kubernetes 服务账户主体。
     
@@ -891,7 +890,7 @@ public final class AzureAksWorkloadIdentityExample {
         }
 
         @Override
-        public CompletableFuture<String> getTokenAsync(
+        public CompletableFuture&lt;String> getTokenAsync(
                 HttpClient httpClient, JsonMapper jsonMapper) {
             return CompletableFuture.supplyAsync(() -> getToken(httpClient, jsonMapper));
         }

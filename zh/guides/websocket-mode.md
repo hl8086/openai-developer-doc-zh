@@ -1,4 +1,3 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/websocket-mode -->
 
 Responses API 支持 WebSocket 模式，适用于长时间运行、工具调用密集的工作流。在此模式下，你保持一个到 `/v1/responses` 的持久连接，并通过仅发送新的输入项加上 `previous_response_id` 来继续每一轮对话。
 
@@ -103,7 +102,7 @@ WebSocket 模式使用与 HTTP 模式相同的 `previous_response_id` 链接语�
 
 ### 独立的 `/responses/compact`
 
-独立的 [`/responses/compact` 端点](/api/docs/api-reference/responses/compact) 返回一个新的压缩输入窗口，而不是响应 ID。压缩后，在你的 WebSocket 连接上使用压缩窗口作为 `input`（加上下一个用户/工具项）创建新响应。
+独立的 [`/responses/compact` 端点]( https://developers.openai.com/api/reference/responses/compact) 返回一个新的压缩输入窗口，而不是响应 ID。压缩后，在你的 WebSocket 连接上使用压缩窗口作为 `input`（加上下一个用户/工具项）创建新响应。
 
 通过省略 `previous_response_id` 或将其设置为 `null` 来开始新链。按原样传递压缩输出；不要修剪返回的窗口。
 
@@ -182,6 +181,6 @@ ws.send(
 
 ## 相关指南
 
-*   [会话状态](/api/docs/guides/conversation-state)
-*   [流式 API 响应](/api/docs/guides/streaming-responses)
-*   [Responses 流式事件参考](/api/docs/api-reference/responses-streaming)
+*   [会话状态](/guides/conversation-state)
+*   [流式 API 响应](/guides/streaming-responses)
+*   [Responses 流式事件参考]( https://developers.openai.com/api/reference/responses-streaming)

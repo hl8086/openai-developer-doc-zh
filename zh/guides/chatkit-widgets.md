@@ -1,4 +1,3 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/chatkit-widgets -->
 
 Widgets 是 ChatKit 自带的容器和组件。你可以使用预构建的 widgets、修改模板，或设计自己的 widgets 来完全自定义产品中的 ChatKit。
 
@@ -36,7 +35,7 @@ chatkit.setOptions({
 
 需要完整的服务器示例？请参阅 [ChatKit Python SDK 文档](https://openai.github.io/chatkit-python-sdk/guides/widget-actions) 获取端到端的完整演练。
 
-在[操作文档](/api/docs/guides/chatkit-actions)中了解更多信息。
+在[操作文档](/guides/chatkit-actions)中了解更多信息。
 
 ## 参考
 

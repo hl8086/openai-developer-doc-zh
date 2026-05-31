@@ -1,8 +1,7 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/prompt-engineering -->
 
-通过 OpenAI API，你可以使用[大语言模型](/api/docs/models)从提示词生成文本，就像使用 [ChatGPT](https://chatgpt.com) 一样。模型几乎可以生成任何类型的文本响应——如代码、数学方程式、结构化 JSON 数据或类人的散文。
+通过 OpenAI API，你可以使用[大语言模型](/models)从提示词生成文本，就像使用 [ChatGPT](https://chatgpt.com) 一样。模型几乎可以生成任何类型的文本响应——如代码、数学方程式、结构化 JSON 数据或类人的散文。
 
-以下是使用 [Responses API](/api/docs/api-reference/responses) 的简单示例。
+以下是使用 [Responses API]( https://developers.openai.com/api/reference/responses) 的简单示例。
 
 从简单提示词生成文本
 
@@ -156,13 +155,13 @@ curl "https://api.openai.com/v1/responses" \
 ]
 ```
 
-**`output` 数组通常包含多个项目！** 它可以包含工具调用、[推理模型](/api/docs/guides/reasoning)生成的推理 token 相关数据以及其他项目。不能假设模型的文本输出位于 `output[0].content[0].text`。
+**`output` 数组通常包含多个项目！** 它可以包含工具调用、[推理模型](/guides/reasoning)生成的推理 token 相关数据以及其他项目。不能假设模型的文本输出位于 `output[0].content[0].text`。
 
-我们的一些[官方 SDK](/api/docs/libraries) 在模型响应中包含了一个 `output_text` 属性以方便使用，它将模型的所有文本输出聚合为单个字符串。这可以作为访问模型文本输出的快捷方式。
+我们的一些[官方 SDK](/libraries) 在模型响应中包含了一个 `output_text` 属性以方便使用，它将模型的所有文本输出聚合为单个字符串。这可以作为访问模型文本输出的快捷方式。
 
-除了纯文本之外，你还可以让模型以 JSON 格式返回结构化数据——这个功能称为[**结构化输出**](/api/docs/guides/structured-outputs)。
+除了纯文本之外，你还可以让模型以 JSON 格式返回结构化数据——这个功能称为[**结构化输出**](/guides/structured-outputs)。
 
-以下是使用 [Chat Completions API](/api/docs/api-reference/chat) 的简单示例。
+以下是使用 [Chat Completions API]( https://developers.openai.com/api/reference/chat) 的简单示例。
 
 从简单提示词生成文本
 
@@ -234,17 +233,17 @@ curl "https://api.openai.com/v1/chat/completions" \
 ]
 ```
 
-除了纯文本之外，你还可以让模型以 JSON 格式返回结构化数据——这个功能称为[**结构化输出**](/api/docs/guides/structured-outputs)。
+除了纯文本之外，你还可以让模型以 JSON 格式返回结构化数据——这个功能称为[**结构化输出**](/guides/structured-outputs)。
 
 ## 选择模型
 
-生成内容时的一个关键选择是使用哪个模型——即上面代码示例中的 `model` 参数。[你可以在这里找到可用模型的完整列表](/api/docs/models)。以下是选择文本生成模型时需要考虑的几个因素。
+生成内容时的一个关键选择是使用哪个模型——即上面代码示例中的 `model` 参数。[你可以在这里找到可用模型的完整列表](/models)。以下是选择文本生成模型时需要考虑的几个因素。
 
-*   **[推理模型](/api/docs/guides/reasoning)** 会生成内部思维链来分析输入提示词，擅长理解复杂任务和多步骤规划。它们通常比 GPT 模型更慢且使用成本更高。
+*   **[推理模型](/guides/reasoning)** 会生成内部思维链来分析输入提示词，擅长理解复杂任务和多步骤规划。它们通常比 GPT 模型更慢且使用成本更高。
 *   **GPT 模型** 快速、经济高效且高度智能，但需要更明确的指令来说明如何完成任务。
 *   **大型和小型（mini 或 nano）模型** 在速度、成本和智能之间提供不同的权衡。大型模型在理解提示词和解决跨领域问题方面更有效，而小型模型通常更快且使用成本更低。
 
-如果不确定，[`gpt-5.5`](/api/docs/models/gpt-5.5) 为通用文本生成和提示词迭代提供了强大的默认选择。
+如果不确定，[`gpt-5.5`](/models/gpt-5.5) 为通用文本生成和提示词迭代提供了强大的默认选择。
 
 ## 提示词工程
 
@@ -254,8 +253,8 @@ curl "https://api.openai.com/v1/chat/completions" \
 
 一些提示词工程技术适用于每个模型，例如使用消息角色。但不同的模型类型（如推理模型与 GPT 模型）可能需要不同的提示方式才能产生最佳结果。即使是同一系列中不同快照的模型也可能产生不同的结果。因此，当你构建更复杂的应用程序时，我们强烈建议：
 
-*   将你的生产应用程序固定到特定的[模型快照](/api/docs/models)（例如 `gpt-4.1-2025-04-14`）以确保一致的行为
-*   构建[评估](/api/docs/guides/evals)来衡量提示词的行为，以便在迭代时或更改和升级模型版本时监控提示词性能
+*   将你的生产应用程序固定到特定的[模型快照](/models)（例如 `gpt-4.1-2025-04-14`）以确保一致的行为
+*   构建[评估](/guides/evals)来衡量提示词的行为，以便在迭代时或更改和升级模型版本时监控提示词性能
 
 现在，让我们来看看可用于构建提示词的工具和技术。
 
@@ -371,7 +370,7 @@ curl "https://api.openai.com/v1/responses" \
     }'
 ```
 
-请注意，`instructions` 参数仅适用于当前的响应生成请求。如果你使用 `previous_response_id` 参数[管理对话状态](/api/docs/guides/conversation-state)，之前轮次使用的 `instructions` 将不会出现在上下文中。
+请注意，`instructions` 参数仅适用于当前的响应生成请求。如果你使用 `previous_response_id` 参数[管理对话状态](/guides/conversation-state)，之前轮次使用的 `instructions` 将不会出现在上下文中。
 
 你可以使用**消息角色**以[不同的权限级别](https://model-spec.openai.com/2025-02-12.html#chain_of_command)向模型提供指令（提示词）。
 
@@ -443,7 +442,7 @@ curl "https://api.openai.com/v1/chat/completions" \
 | --- | --- | --- |
 | `developer` 消息是应用程序开发者提供的指令，优先级高于 `user` 消息。 | `user` 消息是终端用户提供的指令，优先级低于 `developer` 消息。 | 模型生成的消息具有 `assistant` 角色。 |
 
-多轮对话可能由这些类型的多条消息组成，以及你和模型提供的其他内容类型。了解更多关于[管理对话状态](/api/docs/guides/conversation-state)的信息。
+多轮对话可能由这些类型的多条消息组成，以及你和模型提供的其他内容类型。了解更多关于[管理对话状态](/guides/conversation-state)的信息。
 
 你可以将 `developer` 和 `user` 消息想象成编程语言中的函数及其参数。
 
@@ -454,15 +453,15 @@ curl "https://api.openai.com/v1/chat/completions" \
 
 在 OpenAI 仪表板中，你可以开发可复用的[提示词](https://platform.openai.com/chat/edit)，并在 API 请求中使用它们，而不是在代码中指定提示词的内容。这样，你可以更轻松地构建和评估提示词，并在不更改集成代码的情况下部署改进版本的提示词。
 
-可复用提示词目前仅在 [Responses API](/api/docs/guides/text?api-mode=responses#reusable-prompts) 中支持。它们在 Chat Completions API 中不可用。
+可复用提示词目前仅在 [Responses API](/guides/text?api-mode=responses#reusable-prompts) 中支持。它们在 Chat Completions API 中不可用。
 
 以下是其工作方式：
 
-1.  在[仪表板](https://platform.openai.com/chat/edit)中**创建可复用提示词**，使用 `{{customer_name}}` 等占位符。
+1.  在[仪表板](https://platform.openai.com/chat/edit)中**创建可复用提示词**，使用 `\{\{customer_name\}\}` 等占位符。
 2.  在 API 请求中使用 `prompt` 参数**使用提示词**。prompt 参数对象有三个可配置的属性：
     *   `id` — 提示词的唯一标识符，可在仪表板中找到
     *   `version` — 提示词的特定版本（默认为仪表板中指定的"当前"版本）
-    *   `variables` — 用于替换提示词中变量的值映射。替换值可以是字符串，也可以是其他 Response 输入消息类型，如 `input_image` 或 `input_file`。[查看完整 API 参考](/api/docs/api-reference/responses/create)。
+    *   `variables` — 用于替换提示词中变量的值映射。替换值可以是字符串，也可以是其他 Response 输入消息类型，如 `input_image` 或 `input_file`。[查看完整 API 参考]( https://developers.openai.com/api/reference/responses/create)。
 
 字符串变量带文件输入的变量
 
@@ -607,7 +606,7 @@ Markdown 标题和列表有助于标记提示词的不同部分，并向模型�
 通常，developer 消息将包含以下部分，通常按此顺序排列（尽管确切的最佳内容和顺序可能因你使用的模型而异）：
 
 *   **身份：** 描述助手的目的、沟通风格和高级目标。
-*   **指令：** 为模型提供关于如何生成你想要的响应的指导。它应该遵循什么规则？模型应该做什么，不应该做什么？此部分可能包含与你的用例相关的许多子部分，例如模型应如何[调用自定义函数](/api/docs/guides/function-calling)。
+*   **指令：** 为模型提供关于如何生成你想要的响应的指导。它应该遵循什么规则？模型应该做什么，不应该做什么？此部分可能包含与你的用例相关的许多子部分，例如模型应如何[调用自定义函数](/guides/function-calling)。
 *   **示例：** 提供可能输入的示例，以及模型的期望输出。
 *   **上下文：** 为模型提供生成响应可能需要的任何附加信息，例如训练数据之外的私有/专有数据，或你知道特别相关的任何其他数据。此内容通常最好放在提示词的末尾，因为你可能会为不同的生成请求包含不同的上下文。
 
@@ -637,13 +636,13 @@ Internet Explorer version 6.
 
 # Examples
 
-<user_query>
+&lt;user_query>
 How do I declare a string variable for a first name?
-</user_query>
+&lt;/user_query>
 
-<assistant_response>
+&lt;assistant_response>
 var first_name = "Anna";
-</assistant_response>
+&lt;/assistant_response>
 ```
 
 API 请求
@@ -693,11 +692,11 @@ curl https://api.openai.com/v1/responses \
 
 #### 通过提示词缓存节省成本和延迟
 
-在构建消息时，你应该尝试将预期在 API 请求中反复使用的内容放在提示词的开头，**并且**放在传递给 [Chat Completions](/api/docs/api-reference/chat) 或 [Responses](/api/docs/api-reference/responses) 的 JSON 请求体中的前几个 API 参数中。这使你能够最大化[提示词缓存](/api/docs/guides/prompt-caching)带来的成本和延迟节省。
+在构建消息时，你应该尝试将预期在 API 请求中反复使用的内容放在提示词的开头，**并且**放在传递给 [Chat Completions]( https://developers.openai.com/api/reference/chat) 或 [Responses]( https://developers.openai.com/api/reference/responses) 的 JSON 请求体中的前几个 API 参数中。这使你能够最大化[提示词缓存](/guides/prompt-caching)带来的成本和延迟节省。
 
 ## 少样本学习
 
-少样本学习让你通过在提示词中包含少量输入/输出示例来引导大语言模型完成新任务，而不是对模型进行[微调](/api/docs/guides/model-optimization)。模型会隐式地从这些示例中"学习"模式并将其应用于提示词。在提供示例时，尝试展示具有期望输出的多样化可能输入。
+少样本学习让你通过在提示词中包含少量输入/输出示例来引导大语言模型完成新任务，而不是对模型进行[微调](/guides/model-optimization)。模型会隐式地从这些示例中"学习"模式并将其应用于提示词。在提供示例时，尝试展示具有期望输出的多样化可能输入。
 
 通常，你会在 API 请求中作为 `developer` 消息的一部分提供示例。以下是一个包含示例的 `developer` 消息示例，展示模型如何将正面或负面的客户服务评论进行分类。
 
@@ -716,29 +715,29 @@ Positive, Negative, or Neutral.
 
 # Examples
 
-<product_review id="example-1">
+&lt;product_review id="example-1">
 I absolutely love this headphones — sound quality is amazing!
-</product_review>
+&lt;/product_review>
 
-<assistant_response id="example-1">
+&lt;assistant_response id="example-1">
 Positive
-</assistant_response>
+&lt;/assistant_response>
 
-<product_review id="example-2">
+&lt;product_review id="example-2">
 Battery life is okay, but the ear pads feel cheap.
-</product_review>
+&lt;/product_review>
 
-<assistant_response id="example-2">
+&lt;assistant_response id="example-2">
 Neutral
-</assistant_response>
+&lt;/assistant_response>
 
-<product_review id="example-3">
+&lt;product_review id="example-3">
 Terrible customer service, I'll never buy from them again.
-</product_review>
+&lt;/product_review>
 
-<assistant_response id="example-3">
+&lt;assistant_response id="example-3">
 Negative
-</assistant_response>
+&lt;/assistant_response>
 ```
 
 ## 包含相关上下文信息
@@ -748,23 +747,23 @@ Negative
 *   让模型访问专有数据，或模型训练数据集之外的任何其他数据。
 *   将模型的响应限制在你确定最有益的特定资源集中。
 
-向模型生成请求添加额外相关上下文的技术有时称为**检索增强生成（RAG）**。你可以通过多种方式向提示词添加额外上下文，从查询向量数据库并将获取的文本包含到提示词中，到使用 OpenAI 内置的[文件搜索工具](/api/docs/guides/tools-file-search)基于上传的文档生成内容。
+向模型生成请求添加额外相关上下文的技术有时称为**检索增强生成（RAG）**。你可以通过多种方式向提示词添加额外上下文，从查询向量数据库并将获取的文本包含到提示词中，到使用 OpenAI 内置的[文件搜索工具](/guides/tools-file-search)基于上传的文档生成内容。
 
 #### 规划上下文窗口
 
 模型在生成请求期间只能处理有限的数据量。这个内存限制称为**上下文窗口**，以 [token](https://blogs.nvidia.com/blog/ai-tokens-explained)（你传入的数据块，从文本到图像）为单位定义。
 
-不同模型的上下文窗口大小从低端的 100k 范围到较新的 GPT-4.1 模型的一百万 token 不等。[参考模型文档](/api/docs/models)了解每个模型的具体上下文窗口大小。
+不同模型的上下文窗口大小从低端的 100k 范围到较新的 GPT-4.1 模型的一百万 token 不等。[参考模型文档](/models)了解每个模型的具体上下文窗口大小。
 
 ## 提示当前 GPT-5 系列模型
 
-像 [`gpt-5.5`](/api/docs/models/gpt-5.5) 这样的 GPT 模型受益于精确的指令，这些指令在提示词中明确提供完成任务所需的逻辑和数据。要充分利用最新的 GPT-5 系列模型，请从当前的提示指南开始。
+像 [`gpt-5.5`](/models/gpt-5.5) 这样的 GPT 模型受益于精确的指令，这些指令在提示词中明确提供完成任务所需的逻辑和数据。要充分利用最新的 GPT-5 系列模型，请从当前的提示指南开始。
 
-[GPT-5.5 提示指南 - 通过当前指导、实际示例和迁移说明充分利用最新 GPT-5 系列模型的提示。](/api/docs/guides/prompt-guidance)
+[GPT-5.5 提示指南 - 通过当前指导、实际示例和迁移说明充分利用最新 GPT-5 系列模型的提示。](/guides/prompt-guidance)
 
 ### 最新 GPT-5 系列模型的提示最佳实践
 
-有关完整的当前内容，请使用[提示指导](/api/docs/guides/prompt-guidance)指南。以下实用提醒仍然适用。
+有关完整的当前内容，请使用[提示指导](/guides/prompt-guidance)指南。以下实用提醒仍然适用。
 
 编码
 
@@ -780,11 +779,11 @@ Negative
 
 **Markdown 标准** 指导模型使用内联代码、代码围栏、列表和表格生成干净、语义正确的 markdown——并使用反引号格式化文件路径、函数和类。
 
-有关编码特定的详细指导和提示词示例，请参阅我们的[提示指导](/api/docs/guides/prompt-guidance)指南。
+有关编码特定的详细指导和提示词示例，请参阅我们的[提示指导](/guides/prompt-guidance)指南。
 
 前端工程
 
-[GPT-5.5](/api/docs/models/gpt-5.5)
+[GPT-5.5](/models/gpt-5.5)
 
 在从零开始构建前端以及为大型成熟代码库做贡献方面表现出色。为获得最佳结果，我们建议使用以下库：
 
@@ -816,7 +815,7 @@ Step 4: Aim for simplicity while fully achieving the goal, and avoid external de
 *   **页面：** 提供常见布局的模板。
 *   **代理指令：** 要求模型确认设计假设、搭建项目脚手架、执行标准、集成 API、测试状态并记录代码。
 
-有关前端开发特定的详细指导和提示词示例，请参阅我们的[提示指导](/api/docs/guides/prompt-guidance)指南。
+有关前端开发特定的详细指导和提示词示例，请参阅我们的[提示指导](/guides/prompt-guidance)指南。
 
 代理任务
 
@@ -853,18 +852,18 @@ Before you call a tool explain why you are calling it
 
 使用 TODO 列表工具或评分标准来强制结构化规划并避免遗漏步骤。
 
-有关构建代理特定的详细指导和提示词示例，请参阅[提示指导](/api/docs/guides/prompt-guidance)指南。
+有关构建代理特定的详细指导和提示词示例，请参阅[提示指导](/guides/prompt-guidance)指南。
 
 ## 提示推理模型
 
-在提示[推理模型](/api/docs/guides/reasoning)与提示 GPT 模型时，有一些差异需要考虑。一般来说，推理模型在仅提供高级指导的任务上会产生更好的结果。这与 GPT 模型不同，GPT 模型受益于非常精确的指令。
+在提示[推理模型](/guides/reasoning)与提示 GPT 模型时，有一些差异需要考虑。一般来说，推理模型在仅提供高级指导的任务上会产生更好的结果。这与 GPT 模型不同，GPT 模型受益于非常精确的指令。
 
 你可以这样理解推理模型和 GPT 模型之间的区别：
 
 *   推理模型就像一位资深同事。你可以给他们一个要实现的目标，并信任他们来解决细节问题。
 *   GPT 模型就像一位初级同事。他们在有明确指令来创建特定输出时表现最佳。
 
-有关使用推理模型时的最佳实践的更多信息，[请参阅本指南](/api/docs/guides/reasoning-best-practices)。
+有关使用推理模型时的最佳实践的更多信息，[请参阅本指南](/guides/reasoning-best-practices)。
 
 ## 后续步骤
 
@@ -872,15 +871,15 @@ Before you call a tool explain why you are calling it
 
 [在 Playground 中构建提示词 - 使用 Playground 开发和迭代提示词。](https://platform.openai.com/chat/edit)
 
-[使用结构化输出生成 JSON 数据 - 确保模型输出的 JSON 数据符合 JSON schema。](/api/docs/guides/structured-outputs)
+[使用结构化输出生成 JSON 数据 - 确保模型输出的 JSON 数据符合 JSON schema。](/guides/structured-outputs)
 
-[完整 API 参考 - 查看 API 参考中文本生成的所有选项。](/api/docs/api-reference/responses)
+[完整 API 参考 - 查看 API 参考中文本生成的所有选项。]( https://developers.openai.com/api/reference/responses)
 
 ## 其他资源
 
 如需更多灵感，请访问 [OpenAI Cookbook](/cookbook)，其中包含示例代码以及第三方资源的链接，例如：
 
-*   [提示词库和工具](/cookbook/related_resources#prompting-libraries--tools)
-*   [提示词指南](/cookbook/related_resources#prompting-guides)
-*   [视频课程](/cookbook/related_resources#video-courses)
-*   [关于高级提示以改进推理的论文](/cookbook/related_resources#papers-on-advanced-prompting-to-improve-reasoning)
+*   [提示词库和工具]( https://cdn.openai.com/API/docs/cookbook/related_resources#prompting-libraries--tools)
+*   [提示词指南]( https://cdn.openai.com/API/docs/cookbook/related_resources#prompting-guides)
+*   [视频课程]( https://cdn.openai.com/API/docs/cookbook/related_resources#video-courses)
+*   [关于高级提示以改进推理的论文]( https://cdn.openai.com/API/docs/cookbook/related_resources#papers-on-advanced-prompting-to-improve-reasoning)

@@ -1,8 +1,7 @@
-<!-- Source: https://developers.openai.com/api/docs/mcp -->
 
 [Model Context Protocol](https://modelcontextprotocol.io/introduction) (MCP) 是一个开放协议，正在成为扩展 AI 模型工具和知识的行业标准。远程 MCP 服务器可用于通过互联网将模型连接到新的数据源和功能。
 
-在本指南中，我们将介绍如何构建一个远程 MCP 服务器，该服务器从私有数据源（[向量存储](/api/docs/guides/retrieval)）读取数据，并将其作为数据应用（以前称为连接器）在 ChatGPT 中提供，用于聊天、深度研究和公司知识，以及[通过 API](/api/docs/guides/deep-research) 使用。
+在本指南中，我们将介绍如何构建一个远程 MCP 服务器，该服务器从私有数据源（[向量存储](/guides/retrieval)）读取数据，并将其作为数据应用（以前称为连接器）在 ChatGPT 中提供，用于聊天、深度研究和公司知识，以及[通过 API](/guides/deep-research) 使用。
 
 **注意**：关于 ChatGPT 应用设置（开发者模式、连接 MCP 服务器和可选 UI），请先参阅 Apps SDK 文档：[快速入门](/apps-sdk/quickstart)、[构建 MCP 服务器](/apps-sdk/build/mcp-server)、[从 ChatGPT 连接](/apps-sdk/deploy/connect-chatgpt) 和 [身份验证](/apps-sdk/build/auth)。如果你正在构建数据应用，可以跳过 UI 资源，只需暴露工具即可。
 
@@ -10,9 +9,9 @@
 
 ## 配置数据源
 
-你可以使用任何来源的数据来驱动远程 MCP 服务器，但为了简单起见，我们将使用 OpenAI API 中的[向量存储](/api/docs/guides/retrieval)。首先将 PDF 文档上传到新的向量存储 - [你可以使用这本关于猫的 19 世纪公共领域书籍](https://cdn.openai.com/API/docs/cats.pdf)作为示例。
+你可以使用任何来源的数据来驱动远程 MCP 服务器，但为了简单起见，我们将使用 OpenAI API 中的[向量存储](/guides/retrieval)。首先将 PDF 文档上传到新的向量存储 - [你可以使用这本关于猫的 19 世纪公共领域书籍](https://cdn.openai.com/API/docs/cats.pdf)作为示例。
 
-你可以[在仪表板中](https://platform.openai.com/storage/vector_stores)上传文件并创建向量存储，也可以通过 API 创建向量存储和上传文件。[按照向量存储指南](/api/docs/guides/retrieval)设置向量存储并上传文件。
+你可以[在仪表板中](https://platform.openai.com/storage/vector_stores)上传文件并创建向量存储，也可以通过 API 创建向量存储和上传文件。[按照向量存储指南](/guides/retrieval)设置向量存储并上传文件。
 
 记下向量存储的唯一 ID，以便在后续示例中使用。
 

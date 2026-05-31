@@ -1,10 +1,9 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/chatkit-themes -->
 
-按照 [ChatKit 快速入门](/api/docs/guides/chatkit) 完成设置后，了解如何更改主题并为聊天嵌入添加自定义样式。通过浅色和深色主题、设置强调色、控制信息密度和圆角来匹配您应用的视觉风格。
+按照 [ChatKit 快速入门](/guides/chatkit) 完成设置后，了解如何更改主题并为聊天嵌入添加自定义样式。通过浅色和深色主题、设置强调色、控制信息密度和圆角来匹配您应用的视觉风格。
 
 ## 概述
 
-从高层来看，通过传入一个选项对象来自定义主题。如果您按照 [ChatKit 快速入门](/api/docs/guides/chatkit) 将 ChatKit 嵌入到前端，请使用下面的 React 语法。
+从高层来看，通过传入一个选项对象来自定义主题。如果您按照 [ChatKit 快速入门](/guides/chatkit) 将 ChatKit 嵌入到前端，请使用下面的 React 语法。
 
 *   **React**：将选项传递给 `useChatKit({...})`
 *   **高级集成**：使用 `chatkit.setOptions({...})` 设置选项
@@ -35,8 +34,8 @@
 
 有关所有主题选项，请参阅 [API 参考](https://openai.github.io/chatkit-js/api/openai/chatkit/type-aliases/themeoption/)。
 
-```
-const options: Partial<ChatKitOptions> = {
+```text
+const options: Partial&lt;ChatKitOptions> = {
   theme: {
     colorScheme: "dark",
     color: {
@@ -56,8 +55,8 @@ const options: Partial<ChatKitOptions> = {
 
 通过更改编辑器的占位文本，让用户知道可以问什么或引导他们的首次输入。
 
-```
-const options: Partial<ChatKitOptions> = {
+```text
+const options: Partial&lt;ChatKitOptions> = {
   composer: {
     placeholder: "Ask anything about your data…",
   },
@@ -71,8 +70,8 @@ const options: Partial<ChatKitOptions> = {
 
 通过在开始对话时建议提示想法，引导用户了解可以问什么或做什么。
 
-```
-const options: Partial<ChatKitOptions> = {
+```text
+const options: Partial&lt;ChatKitOptions> = {
   startScreen: {
     greeting: "What can I help you build today?",
     prompts: [
@@ -95,8 +94,8 @@ const options: Partial<ChatKitOptions> = {
 
 自定义头部按钮帮助您添加与集成相关的导航、上下文或操作。
 
-```
-const options: Partial<ChatKitOptions> = {
+```text
+const options: Partial&lt;ChatKitOptions> = {
   header: {
     customButtonLeft: {
       icon: "settings-cog",
@@ -116,8 +115,8 @@ const options: Partial<ChatKitOptions> = {
 
 您还可以控制用户可以附加到消息中的文件数量、大小和类型。
 
-```
-const options: Partial<ChatKitOptions> = {
+```text
+const options: Partial&lt;ChatKitOptions> = {
   composer: {
     attachments: {
       uploadStrategy: { type: 'hosted' },
@@ -136,8 +135,8 @@ const options: Partial<ChatKitOptions> = {
 *   使用 `onTagSearch` 根据输入查询返回实体列表。
 *   使用 `onClick` 处理实体的点击事件。
 
-```
-const options: Partial<ChatKitOptions> = {
+```text
+const options: Partial&lt;ChatKitOptions> = {
   entities: {
     async onTagSearch(query) {
       return [
@@ -168,8 +167,8 @@ const options: Partial<ChatKitOptions> = {
 
 [Widget 构建器 - 浏览可用的 widget。](https://widgets.chatkit.studio)
 
-```
-const options: Partial<ChatKitOptions> = {
+```text
+const options: Partial&lt;ChatKitOptions> = {
   entities: {
     async onTagSearch() { /* ... */ },
     onRequestPreview: async (entity) => ({
@@ -189,8 +188,8 @@ const options: Partial<ChatKitOptions> = {
 
 通过让用户从编辑器栏触发应用特定的操作来提高生产力。选定的工具将作为工具偏好发送给模型。
 
-```
-const options: Partial<ChatKitOptions> = {
+```text
+const options: Partial&lt;ChatKitOptions> = {
   composer: {
     tools: [
       {
@@ -208,8 +207,8 @@ const options: Partial<ChatKitOptions> = {
 
 如果您需要对头部中可用选项进行更多自定义并希望实现自己的替代方案，可以禁用主要 UI 区域和功能。当线程和历史记录的概念对您的用例没有意义时（例如在支持聊天机器人中），禁用历史记录会很有用。
 
-```
-const options: Partial<ChatKitOptions> = {
+```text
+const options: Partial&lt;ChatKitOptions> = {
   history: { enabled: false },
   header: { enabled: false },
 };
@@ -219,8 +218,8 @@ const options: Partial<ChatKitOptions> = {
 
 如果您有应用级别的语言设置，可以覆盖默认的语言区域设置。默认情况下，语言区域设置为浏览器的区域设置。
 
-```
-const options: Partial<ChatKitOptions> = {
+```text
+const options: Partial&lt;ChatKitOptions> = {
   locale: 'de-DE',
 };
 ```

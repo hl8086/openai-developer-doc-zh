@@ -1,8 +1,7 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/realtime-translation -->
 
 实时翻译允许你将源音频流式传输到专用翻译会话中，并在说话者仍在讲话时接收翻译后的音频和转录增量。适用于实时口译、多语言通话、广播、会议、课程和视频房间。
 
-当你的应用需要翻译人类所说的话时，使用 [`gpt-realtime-translate`](/api/docs/models/gpt-realtime-translate)。如果你需要一个能回答问题、调用工具和管理对话的助手，请改用 [`gpt-realtime-2`](/api/docs/models/gpt-realtime-2) 配合标准实时会话。
+当你的应用需要翻译人类所说的话时，使用 [`gpt-realtime-translate`](/models/gpt-realtime-translate)。如果你需要一个能回答问题、调用工具和管理对话的助手，请改用 [`gpt-realtime-2`](/models/gpt-realtime-2) 配合标准实时会话。
 
 ## 翻译会话的不同之处
 
@@ -249,7 +248,7 @@ while True:
 
 ## 关闭 WebSocket 会话
 
-当你的源流结束时，在关闭 WebSocket 之前发送 [`session.close`](/api/reference/resources/realtime/translation-client-events#session-close) 事件。该事件告诉服务刷新待处理的输入音频，发出所有剩余的翻译音频和转录输出，然后发送 `session.closed` 事件。`session.close` 事件仅支持翻译会话。
+当你的源流结束时，在关闭 WebSocket 之前发送 [`session.close`]( https://developers.openai.com/api/reference/resources/realtime/translation-client-events#session-close) 事件。该事件告诉服务刷新待处理的输入音频，发出所有剩余的翻译音频和转录输出，然后发送 `session.closed` 事件。`session.close` 事件仅支持翻译会话。
 
 发送 `session.close` 后，停止追加音频，并在正常的接收循环中继续读取事件，直到收到 `session.closed`。立即关闭 socket 可能会丢失仍在从会话中排出的翻译输出。
 
@@ -396,10 +395,10 @@ translation sessions ~= active source speaker tracks x distinct target languages
 
 ## 相关指南
 
-[实时和音频概述 - 比较语音代理、翻译和转录会话。](/api/docs/guides/realtime)
+[实时和音频概述 - 比较语音代理、翻译和转录会话。](/guides/realtime)
 
-[WebRTC 连接 - 将浏览器媒体连接到实时会话。](/api/docs/guides/realtime-webrtc)
+[WebRTC 连接 - 将浏览器媒体连接到实时会话。](/guides/realtime-webrtc)
 
-[WebSocket 连接 - 通过服务器端媒体管道流式传输原始音频。](/api/docs/guides/realtime-websocket)
+[WebSocket 连接 - 通过服务器端媒体管道流式传输原始音频。](/guides/realtime-websocket)
 
-[实时转录 - 从实时音频流式传输转录增量。](/api/docs/guides/realtime-transcription)
+[实时转录 - 从实时音频流式传输转录增量。](/guides/realtime-transcription)

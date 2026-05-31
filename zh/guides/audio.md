@@ -1,6 +1,5 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/audio -->
 
-音频模型可以理解语音输入、生成语音输出，或在同一次交互中同时完成两者。本指南解释了 OpenAI 音频文档中使用的术语。当你准备好选择实现路径时，请从[实时音频概览](/api/docs/guides/realtime)开始。
+音频模型可以理解语音输入、生成语音输出，或在同一次交互中同时完成两者。本指南解释了 OpenAI 音频文档中使用的术语。当你准备好选择实现路径时，请从[实时音频概览](/guides/realtime)开始。
 
 ## 音频模态
 
@@ -35,15 +34,15 @@ OpenAI 支持两种主要的音频架构：
 
 | 架构 | 适用场景 | 示例 |
 | --- | --- | --- |
-| 基于请求的音频 API | 你有一个文件、一个文本输入或一个有界请求。 | [语音转文本](/api/docs/guides/speech-to-text)、[文本转语音](/api/docs/guides/text-to-speech)。 |
-| 实时会话 | 音频是实时的，应用需要低延迟事件。 | [语音代理](/api/docs/guides/voice-agents)、[翻译](/api/docs/guides/realtime-translation)、[转录](/api/docs/guides/realtime-transcription)。 |
+| 基于请求的音频 API | 你有一个文件、一个文本输入或一个有界请求。 | [语音转文本](/guides/speech-to-text)、[文本转语音](/guides/text-to-speech)。 |
+| 实时会话 | 音频是实时的，应用需要低延迟事件。 | [语音代理](/guides/voice-agents)、[翻译](/guides/realtime-translation)、[转录](/guides/realtime-transcription)。 |
 | 多模态聊天补全 | 你正在为现有的聊天流程添加音频功能。 | [音频输入或输出](#add-audio-to-your-existing-application)。 |
 
-有关构建路径的指导，请参阅[实时音频概览](/api/docs/guides/realtime)。
+有关构建路径的指导，请参阅[实时音频概览](/guides/realtime)。
 
 ## 为现有应用添加音频功能
 
-[`gpt-realtime-2`](/api/docs/models/gpt-realtime-2) 和 [`gpt-audio-1.5`](/api/docs/models/gpt-audio-1.5) 等模型是原生多模态的，这意味着它们可以理解和生成音频与文本作为输入和输出。
+[`gpt-realtime-2`](/models/gpt-realtime-2) 和 [`gpt-audio-1.5`](/models/gpt-audio-1.5) 等模型是原生多模态的，这意味着它们可以理解和生成音频与文本作为输入和输出。
 
 对于浏览器中的实时语音到语音交互，请使用 JavaScript SDK 中的实时会话开始：
 
@@ -66,11 +65,11 @@ await session.connect({
 });
 ```
 
-此示例使用 JavaScript，因为浏览器语音代理通过 WebRTC 从客户端连接。对于 Python 语音工作流，请使用[语音代理指南](/api/docs/guides/voice-agents)，其中涵盖了链式语音管道。
+此示例使用 JavaScript，因为浏览器语音代理通过 WebRTC 从客户端连接。对于 Python 语音工作流，请使用[语音代理指南](/guides/voice-agents)，其中涵盖了链式语音管道。
 
-如果你已经有一个使用 [Chat Completions 端点](/api/docs/api-reference/chat/)的基于文本的 LLM 应用，你可能想要添加音频功能。例如，如果你的聊天应用支持文本输入，你可以添加音频输入和输出：在 `modalities` 数组中包含 `audio`，并使用音频模型，如 [`gpt-audio-1.5`](/api/docs/models/gpt-audio-1.5)。
+如果你已经有一个使用 [Chat Completions 端点]( https://developers.openai.com/api/reference/chat/)的基于文本的 LLM 应用，你可能想要添加音频功能。例如，如果你的聊天应用支持文本输入，你可以添加音频输入和输出：在 `modalities` 数组中包含 `audio`，并使用音频模型，如 [`gpt-audio-1.5`](/models/gpt-audio-1.5)。
 
-[Responses API](/api/docs/api-reference/responses) 文档目前描述的是文本和图像输入与文本输出。对于这种音频聊天模式，请使用 Chat Completions 配合支持音频的模型。
+[Responses API]( https://developers.openai.com/api/reference/responses) 文档目前描述的是文本和图像输入与文本输出。对于这种音频聊天模式，请使用 Chat Completions 配合支持音频的模型。
 
 Audio output from modelAudio input to model
 
@@ -237,7 +236,7 @@ curl "https://api.openai.com/v1/chat/completions" \
             { 
               "type": "input_audio", 
               "input_audio": { 
-                "data": "<base64 bytes here>", 
+                "data": "&lt;base64 bytes here>", 
                 "format": "wav" 
               }
             }

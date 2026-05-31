@@ -1,4 +1,3 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/optimizing-llm-accuracy -->
 
 ### 如何在使用 LLM 时最大化正确性和一致行为
 
@@ -54,7 +53,7 @@
 
 #### 优化
 
-要优化你的提示，我将主要借鉴 OpenAI API 文档中[提示工程指南](/api/docs/guides/prompt-engineering)的策略。每个策略帮助你调整上下文、LLM 或两者：
+要优化你的提示，我将主要借鉴 OpenAI API 文档中[提示工程指南](/guides/prompt-engineering)的策略。每个策略帮助你调整上下文、LLM 或两者：
 
 | 策略 | 上下文优化 | LLM 优化 |
 | --- | --- | --- |
@@ -120,7 +119,7 @@ USER: [input user query here]
 *   使用 [ROUGE](https://aclanthology.org/W04-1013/) 或 [BERTScore](https://arxiv.org/abs/1904.09675) 等方法来提供粗略判断。这与人类评审者的相关性不是很高，但可以快速有效地衡量一次迭代对模型输出的改变程度。
 *   使用 [GPT-4](https://arxiv.org/pdf/2303.16634.pdf) 作为评估器，如 G-Eval 论文中所述，你向 LLM 提供评分卡以尽可能客观地评估输出。
 
-如果你想深入了解这些内容，请查看[这个 cookbook](/cookbook/examples/evaluation/how_to_eval_abstractive_summarization)，它将带你在实践中了解所有这些方法。
+如果你想深入了解这些内容，请查看[这个 cookbook]( https://cdn.openai.com/API/docs/cookbook/examples/evaluation/how_to_eval_abstractive_summarization)，它将带你在实践中了解所有这些方法。
 
 ## 理解工具
 
@@ -179,7 +178,7 @@ RAG 应用引入了一个我们需要优化的新轴，即检索。为了使我�
 
 ![Fine-tuning process diagram](https://cdn.openai.com/API/docs/images/diagram-optimizing-accuracy-06.png)
 
-一旦你有了这个干净的集合，你可以通过执行**训练**运行来训练微调模型——根据你用于训练的平台或框架，你可能有可以调整的超参数，类似于任何其他机器学习模型。我们始终建议保留一个留出集用于训练后的**评估**以检测过拟合。有关如何构建良好训练集的提示，你可以查看我们微调文档中的[指导](/api/docs/guides/fine-tuning#analyzing-your-fine-tuned-model)。训练完成后，新的微调模型即可用于推理。
+一旦你有了这个干净的集合，你可以通过执行**训练**运行来训练微调模型——根据你用于训练的平台或框架，你可能有可以调整的超参数，类似于任何其他机器学习模型。我们始终建议保留一个留出集用于训练后的**评估**以检测过拟合。有关如何构建良好训练集的提示，你可以查看我们微调文档中的[指导](/guides/fine-tuning#analyzing-your-fine-tuned-model)。训练完成后，新的微调模型即可用于推理。
 
 对于优化微调，我们将重点关注我们在 OpenAI 模型定制产品中观察到的最佳实践，但这些原则应该适用于其他提供商和开源产品。这里需要遵循的关键实践是：
 

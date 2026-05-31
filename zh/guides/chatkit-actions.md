@@ -1,4 +1,3 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/chatkit-actions -->
 
 Actions 是 ChatKit SDK 前端在用户未提交消息的情况下触发流式响应的一种方式。它们也可以用于触发 ChatKit SDK 之外的副作用。
 
@@ -33,7 +32,7 @@ await chatKit.sendAction({
 
 默认情况下，actions 会被发送到你的服务器。你可以通过在 `ChatKitServer` 上实现 `action` 方法来在服务器端处理 actions。
 
-```
+```text
 class MyChatKitServer(ChatKitServer[RequestContext])
     async def action(
         self,
@@ -53,7 +52,7 @@ class MyChatKitServer(ChatKitServer[RequestContext])
                   id="item_123",
                   created_at=datetime.now(),
                   content=(
-                      "<USER_ACTION>The user did a thing</USER_ACTION>"
+                      "&lt;USER_ACTION>The user did a thing&lt;/USER_ACTION>"
                   ),
               ),
               context,
@@ -84,8 +83,8 @@ Button(
 
 然后，当 action 被触发时，它将被传递给你在实例化 ChatKit 时提供的回调函数。
 
-```
-async function handleWidgetAction(action: {type: string, Record<string, unknown>}) {
+```text
+async function handleWidgetAction(action: {type: string, Record&lt;string, unknown>}) {
   if (action.type === "example") {
     const res = await doSomething(action)
 

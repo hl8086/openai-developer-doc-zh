@@ -1,4 +1,3 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/tools -->
 
 在生成模型响应或构建智能体时，你可以使用内置工具、函数调用、工具搜索和远程 MCP 服务器来扩展能力。这些功能使模型能够搜索网络、从你的文件中检索信息、在运行时加载延迟的工具定义、调用你自己的函数或访问第三方服务。只有 `gpt-5.4` 及更高版本的模型支持 `tool_search`。
 
@@ -49,7 +48,7 @@ curl "https://api.openai.com/v1/responses" \
 }'
 ```
 
-```
+```text
 openai responses create \
   --model gpt-5.5 \
   --raw-output \
@@ -91,7 +90,7 @@ response = client.responses.create(
     input="What is deep research by OpenAI?",
     tools=[{
         "type": "file_search",
-        "vector_store_ids": ["<vector_store_id>"]
+        "vector_store_ids": ["&lt;vector_store_id>"]
     }]
 )
 print(response)
@@ -106,7 +105,7 @@ const response = await openai.responses.create({
     tools: [
         {
             type: "file_search",
-            vector_store_ids: ["<vector_store_id>"],
+            vector_store_ids: ["&lt;vector_store_id>"],
         },
     ],
 });
@@ -119,7 +118,7 @@ string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
 OpenAIResponseClient client = new(model: "gpt-5.5", apiKey: key);
 
 ResponseCreationOptions options = new();
-options.Tools.Add(ResponseTool.CreateFileSearchTool(["<vector_store_id>"]));
+options.Tools.Add(ResponseTool.CreateFileSearchTool(["&lt;vector_store_id>"]));
 
 OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
     ResponseItem.CreateUserMessageItem([
@@ -479,33 +478,33 @@ Console.WriteLine(response.GetOutputText());
 
 以下是 OpenAI 平台中可用工具的概览——选择其中一个以获取更多使用指南。
 
-[函数调用 - 调用自定义代码，让模型访问额外的数据和能力。](/api/docs/guides/function-calling)
+[函数调用 - 调用自定义代码，让模型访问额外的数据和能力。](/guides/function-calling)
 
-[网络搜索 - 在模型响应生成中包含来自互联网的数据。](/api/docs/guides/tools-web-search)
+[网络搜索 - 在模型响应生成中包含来自互联网的数据。](/guides/tools-web-search)
 
-[远程 MCP 服务器 - 通过模型上下文协议（MCP）服务器为模型提供新能力。](/api/docs/guides/tools-connectors-mcp)
+[远程 MCP 服务器 - 通过模型上下文协议（MCP）服务器为模型提供新能力。](/guides/tools-connectors-mcp)
 
-[技能 - 上传并在托管 shell 环境中复用版本化的技能包。](/api/docs/guides/tools-skills)
+[技能 - 上传并在托管 shell 环境中复用版本化的技能包。](/guides/tools-skills)
 
-[Shell - 在托管容器或你自己的本地运行时中运行 shell 命令。](/api/docs/guides/tools-shell)
+[Shell - 在托管容器或你自己的本地运行时中运行 shell 命令。](/guides/tools-shell)
 
-[计算机使用 - 创建使模型能够控制计算机界面的智能体工作流。](/api/docs/guides/tools-computer-use)
+[计算机使用 - 创建使模型能够控制计算机界面的智能体工作流。](/guides/tools-computer-use)
 
-[图像生成 - 使用 GPT Image 生成或编辑图像。](/api/docs/guides/tools-image-generation)
+[图像生成 - 使用 GPT Image 生成或编辑图像。](/guides/tools-image-generation)
 
-[文件搜索 - 在生成响应时搜索已上传文件的内容以获取上下文。](/api/docs/guides/tools-file-search)
+[文件搜索 - 在生成响应时搜索已上传文件的内容以获取上下文。](/guides/tools-file-search)
 
-[工具搜索 - 动态将相关工具加载到模型上下文中以优化 token 使用。](/api/docs/guides/tools-tool-search)
+[工具搜索 - 动态将相关工具加载到模型上下文中以优化 token 使用。](/guides/tools-tool-search)
 
 ## 在 API 中使用
 
-在发起请求以生成[模型响应](/api/docs/api-reference/responses/create)时，你通常通过在 `tools` 参数中指定配置来启用工具访问。每个工具都有其独特的配置要求——详细说明请参阅[可用工具](#可用工具)部分。
+在发起请求以生成[模型响应]( https://developers.openai.com/api/reference/responses/create)时，你通常通过在 `tools` 参数中指定配置来启用工具访问。每个工具都有其独特的配置要求——详细说明请参阅[可用工具](#可用工具)部分。
 
-根据提供的[提示](/api/docs/guides/text)，模型会自动决定是否使用已配置的工具。例如，如果你的提示请求超出模型训练截止日期的信息，并且启用了网络搜索，模型通常会调用网络搜索工具来检索相关的最新信息。
+根据提供的[提示](/guides/text)，模型会自动决定是否使用已配置的工具。例如，如果你的提示请求超出模型训练截止日期的信息，并且启用了网络搜索，模型通常会调用网络搜索工具来检索相关的最新信息。
 
-一些高级工作流还可以在交互过程中加载更多工具定义。例如，[工具搜索](/api/docs/guides/tools-tool-search)可以延迟函数定义，直到模型决定需要它们时才加载。
+一些高级工作流还可以在交互过程中加载更多工具定义。例如，[工具搜索](/guides/tools-tool-search)可以延迟函数定义，直到模型决定需要它们时才加载。
 
-你可以通过[在 API 请求中](/api/docs/api-reference/responses/create)设置 `tool_choice` 参数来显式控制或引导此行为。
+你可以通过[在 API 请求中]( https://developers.openai.com/api/reference/responses/create)设置 `tool_choice` 参数来显式控制或引导此行为。
 
 ## 在 Agents SDK 中使用
 
@@ -579,4 +578,4 @@ main_agent = Agent(
 )
 ```
 
-当你在塑造单个专家智能体时使用[智能体定义](/api/docs/guides/agents/define-agents)，当工具影响所有权时使用[编排和交接](/api/docs/guides/agents/orchestration)，当工具影响审批时使用[护栏和人工审核](/api/docs/guides/agents/guardrails-approvals)，当能力来自 MCP 时使用[集成和可观测性](/api/docs/guides/agents/integrations-observability#mcp)。
+当你在塑造单个专家智能体时使用[智能体定义](/guides/agents/define-agents)，当工具影响所有权时使用[编排和交接](/guides/agents/orchestration)，当工具影响审批时使用[护栏和人工审核](/guides/agents/guardrails-approvals)，当能力来自 MCP 时使用[集成和可观测性](/guides/agents/integrations-observability#mcp)。

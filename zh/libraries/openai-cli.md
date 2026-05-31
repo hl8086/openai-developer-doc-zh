@@ -1,4 +1,3 @@
-<!-- Source: https://developers.openai.com/api/docs/libraries/openai-cli -->
 
 通过 `openai` 命令行工具，直接在终端中与 OpenAI API 交互。
 
@@ -59,7 +58,7 @@ export OPENAI_API_KEY="sk-..."
 | `--transform` | 在打印前使用 GJSON 路径提取或重塑响应数据。 |
 | `--debug` | 将请求和响应详情打印到 stderr。授权信息会被脱敏；分享日志前请检查头信息。 |
 
-本指南重点介绍 CLI 模式。有关任何 API 系列的最新参数和响应格式，请使用在线 [API 参考](/api/reference)。
+本指南重点介绍 CLI 模式。有关任何 API 系列的最新参数和响应格式，请使用在线 [API 参考]( https://developers.openai.com/api/reference)。
 
 当你需要将 CLI 指向另一个兼容端点时，也可以更改基础 URL，例如支持不同模型集或仅支持部分 API 接口的部署。
 
@@ -118,14 +117,14 @@ Responses 输出可能在助手消息之前包含非消息项，例如推理项�
 
 对于简单的本地文件，使用命令替换内联构建提示：
 
-```
+```text
 openai responses create \
 --model gpt-5.5 \
 --input "Summarize this note in one sentence.
 
-<note>
+&lt;note>
 $(cat ./note.md)
-</note>" \
+&lt;/note>" \
 --format yaml \
 --transform 'output.#(type=="message").content.0.text'
 ```
@@ -144,7 +143,7 @@ The note says the launch checklist is ready except for final support ownership.
 
 命令：
 
-```
+```text
 openai responses create \
   --format yaml \
   --transform 'output.#(type=="message").content.0.text' <<'YAML'
@@ -154,9 +153,9 @@ max_output_tokens: 120
 input: |
   Summarize this release note in one sentence.
 
-  <release_note>
+  &lt;release_note>
   Fixed the image generation example and added CLI installation guidance.
-  </release_note>
+  &lt;/release_note>
 YAML
 ```
 
@@ -168,13 +167,13 @@ The release note updates the CLI docs with corrected image generation and instal
 
 当提示本身需要 shell 组装时，构建 YAML 体并通过管道传入命令：
 
-```
+```text
 {
 printf 'input: |\n'
 printf '  Summarize this note in one sentence.\n\n'
-printf '  <note>\n'
+printf '  &lt;note>\n'
 sed 's/^/  /' ./note.md
-printf '  </note>\n'
+printf '  &lt;/note>\n'
 } | openai responses create \
 --model gpt-5.5 \
 --format yaml \
@@ -258,7 +257,7 @@ openai responses create \
 
 命令：
 
-```
+```text
 : > records.jsonl
 
 for file in notes/*.md; do
@@ -267,11 +266,11 @@ for file in notes/*.md; do
       --model gpt-5.5 \
       --text.format "$(cat ./records-schema.json)" \
       --raw-output \
-      --transform 'output.#(type=="message").content.0.text' <<YAML
+      --transform 'output.#(type=="message").content.0.text' <&lt;YAML
 input: |
-  <note path="$file">
+  &lt;note path="$file">
 $(sed 's/^/  /' "$file")
-  </note>
+  &lt;/note>
 YAML
   )"
 
@@ -289,7 +288,7 @@ Responses 可以从同一个 YAML 请求体中调用托管工具：
 
 命令：
 
-```
+```text
 openai responses create \
 --model gpt-5.5 \
 --format yaml \
@@ -316,7 +315,7 @@ YAML
 
 命令：
 
-```
+```text
 FILE_ID=$(
   openai files create \
     --file ./brief.pdf \
@@ -328,7 +327,7 @@ FILE_ID=$(
 openai responses create \
   --model gpt-5.5 \
   --format yaml \
-  --transform 'output.#(type=="message").content.0.text' <<YAML
+  --transform 'output.#(type=="message").content.0.text' <&lt;YAML
 input:
   - role: user
     content:
@@ -531,7 +530,7 @@ openai audio:transcriptions create \
 
 使用 Admin API 进行组织管理、凭证配置、合规性和使用量监控工作流。设置 `OPENAI_ADMIN_KEY`，然后调用生成的 `admin:organization:*` 命令。
 
-要配置新的机器凭证，[创建一个项目](/api/reference/resources/admin/subresources/organization/subresources/projects/methods/create)，在该项目中[创建一个服务账户](/api/reference/resources/admin/subresources/organization/subresources/projects/subresources/service_accounts/methods/create)，然后使用返回的 API 密钥。
+要配置新的机器凭证，[创建一个项目]( https://developers.openai.com/api/reference/resources/admin/subresources/organization/subresources/projects/methods/create)，在该项目中[创建一个服务账户]( https://developers.openai.com/api/reference/resources/admin/subresources/organization/subresources/projects/subresources/service_accounts/methods/create)，然后使用返回的 API 密钥。
 
 ### 创建项目、服务账户和 API 密钥
 
@@ -574,4 +573,4 @@ jq -r '.api_key.value | "OPENAI_API_KEY=\(.)"' \
 
 这会将项目响应写入 `project.json`，将其 ID 解析到下一个命令中，将服务账户响应写入 `service-account.json`，并将返回的凭证以 `OPENAI_API_KEY=...` 的形式写入 `.env`。将这两个 JSON 文件视为机密，并在仓库中使用此模式之前将 `project.json`、`service-account.json` 和 `.env` 添加到 `.gitignore`。
 
-有关其余接口，请参阅 [Admin API 指南](/api/docs/guides/admin-apis)和当前的 [Administration API 参考](/api/reference/administration/overview)。请谨慎授予未经审查的参与者对管理员密钥的访问权限。
+有关其余接口，请参阅 [Admin API 指南](/guides/admin-apis)和当前的 [Administration API 参考]( https://developers.openai.com/api/reference/administration/overview)。请谨慎授予未经审查的参与者对管理员密钥的访问权限。

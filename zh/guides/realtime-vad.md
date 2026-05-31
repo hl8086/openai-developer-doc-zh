@@ -1,6 +1,5 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/realtime-vad -->
 
-语音活动检测（VAD）是 Realtime API 中的一项功能，允许自动检测用户何时开始或停止说话。它在[语音到语音](/api/docs/guides/realtime-conversations) Realtime 会话中默认启用，但它是可选的，可以关闭。在[转录](/api/docs/guides/realtime-transcription) Realtime 会话中，轮次检测支持取决于转录模型。支持 VAD 的模型默认使用 `server_vad`，而 `gpt-realtime-whisper` 要求省略轮次检测或将其设置为 `null`。
+语音活动检测（VAD）是 Realtime API 中的一项功能，允许自动检测用户何时开始或停止说话。它在[语音到语音](/guides/realtime-conversations) Realtime 会话中默认启用，但它是可选的，可以关闭。在[转录](/guides/realtime-transcription) Realtime 会话中，轮次检测支持取决于转录模型。支持 VAD 的模型默认使用 `server_vad`，而 `gpt-realtime-whisper` 要求省略轮次检测或将其设置为 `null`。
 
 ## 概述
 
@@ -11,7 +10,7 @@
 
 你可以使用这些事件在应用程序中处理语音轮次。例如，你可以使用它们来管理对话状态或分块处理转录文本。
 
-你可以通过 [`session.update`](/api/docs/api-reference/realtime-client-events/session/update) 客户端事件设置 `session.audio.input.turn_detection` 来配置 VAD。
+你可以通过 [`session.update`]( https://developers.openai.com/api/reference/realtime-client-events/session/update) 客户端事件设置 `session.audio.input.turn_detection` 来配置 VAD。
 
 VAD 有两种模式：
 

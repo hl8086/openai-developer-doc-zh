@@ -1,4 +1,3 @@
-<!-- Source: https://developers.openai.com/api/docs/actions/sending-files -->
 
 ## 发送文件
 

@@ -1,10 +1,9 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/webhooks -->
 
-OpenAI [webhooks](http://chatgpt.com/?q=eli5+what+is+a+webhook?) 允许你接收 API 中事件的实时通知，例如当批处理完成、后台响应生成完毕或微调任务结束时。Webhooks 会发送到你控制的 HTTP 端点，遵循 [Standard Webhooks 规范](https://github.com/standard-webhooks/standard-webhooks/blob/main/spec/standard-webhooks.md)。完整的 webhook 事件列表可在 [API 参考](/api/docs/api-reference/webhook-events) 中找到。
+OpenAI [webhooks](http://chatgpt.com/?q=eli5+what+is+a+webhook?) 允许你接收 API 中事件的实时通知，例如当批处理完成、后台响应生成完毕或微调任务结束时。Webhooks 会发送到你控制的 HTTP 端点，遵循 [Standard Webhooks 规范](https://github.com/standard-webhooks/standard-webhooks/blob/main/spec/standard-webhooks.md)。完整的 webhook 事件列表可在 [API 参考]( https://developers.openai.com/api/reference/webhook-events) 中找到。
 
-[Webhook 事件 API 参考 - 查看完整的 webhook 事件列表。](/api/docs/api-reference/webhook-events)
+[Webhook 事件 API 参考 - 查看完整的 webhook 事件列表。]( https://developers.openai.com/api/reference/webhook-events)
 
-以下是能够接收 OpenAI webhooks 的简单服务器示例，专门针对 [`response.completed`](/api/docs/api-reference/webhook-events/response/completed) 事件。
+以下是能够接收 OpenAI webhooks 的简单服务器示例，专门针对 [`response.completed`]( https://developers.openai.com/api/reference/webhook-events/response/completed) 事件。
 
 **Webhooks 服务器**
 
@@ -77,7 +76,7 @@ app.listen(8000, () => {
 });
 ```
 
-要查看此类 webhook 的实际运行效果，你可以在 OpenAI 仪表板中设置一个订阅了 `response.completed` 的 webhook 端点，然后发起一个 API 请求来[在后台模式下生成响应](/api/docs/guides/background)。
+要查看此类 webhook 的实际运行效果，你可以在 OpenAI 仪表板中设置一个订阅了 `response.completed` 的 webhook 端点，然后发起一个 API 请求来[在后台模式下生成响应](/guides/background)。
 
 你也可以从 [webhook 设置页面](https://platform.openai.com/settings/project/webhooks) 使用示例数据触发测试事件。
 
@@ -175,7 +174,7 @@ webhook-signature: v1,K5oZfzN95Z9UVu1EsfQmfVNQhnkZ2pj9o9NDN/H/pI4=
 当你在 OpenAI 仪表板中创建 webhook 端点时，你将获得一个签名密钥，应将其作为环境变量在服务器上使用：
 
 ```
-export OPENAI_WEBHOOK_SECRET="<your secret here>"
+export OPENAI_WEBHOOK_SECRET="&lt;your secret here>"
 ```
 
 验证 webhook 签名最简单的方法是使用官方 OpenAI SDK 辅助工具的 `unwrap()` 方法：

@@ -1,4 +1,3 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/agents/integrations-observability -->
 
 当工作流的形态明确后，接下来的问题是哪些外部接口应该存在于代理循环中，以及你将如何检查运行时实际发生了什么。
 
@@ -10,7 +9,7 @@
 | 从你的运行时连接本地或私有 MCP 服务器 | 通过 stdio 或 streamable HTTP 的 SDK 管理的 MCP 服务器 | 你的运行时拥有连接、审批和网络边界的控制权 |
 | 调试提示词、工具、交接或审批 | 内置追踪 | 追踪在你正式建立评估之前展示端到端的记录 |
 
-工具能力的语义仍然在[使用工具](/api/docs/guides/tools)中定义。本页重点介绍 SDK 特定的 MCP 接线和可观测性循环。
+工具能力的语义仍然在[使用工具](/guides/tools)中定义。本页重点介绍 SDK 特定的 MCP 接线和可观测性循环。
 
 ## MCP
 
@@ -115,7 +114,7 @@ if __name__ == "__main__":
 *   当公共远程服务器符合平台信任模型时，使用**托管 MCP**。
 *   当你的运行时需要拥有连接、过滤或审批的控制权时，使用**本地或私有 MCP**。
 
-关于平台级概念、信任模型和产品支持方案，请以 [MCP 和连接器](/api/docs/guides/tools-connectors-mcp)作为权威参考。
+关于平台级概念、信任模型和产品支持方案，请以 [MCP 和连接器](/guides/tools-connectors-mcp)作为权威参考。
 
 ## 追踪
 
@@ -177,14 +176,14 @@ if __name__ == "__main__":
 追踪用于两个目的：
 
 *   调试单次工作流运行，了解发生了什么。
-*   当你准备系统性地评分行为时，将更高信号的示例输入到[代理工作流评估](/api/docs/guides/agent-evals)中。
+*   当你准备系统性地评分行为时，将更高信号的示例输入到[代理工作流评估](/guides/agent-evals)中。
 
 ## 后续步骤
 
 一旦外部接口接入完成，继续阅读涵盖能力设计、审查边界或评估的指南。
 
-[使用工具 - 了解托管工具、函数工具和代理即工具如何与 MCP 配合使用。](/api/docs/guides/tools#usage-in-the-agents-sdk)
+[使用工具 - 了解托管工具、函数工具和代理即工具如何与 MCP 配合使用。](/guides/tools#usage-in-the-agents-sdk)
 
-[护栏和人工审查 - 围绕敏感能力添加审批或验证边界。](/api/docs/guides/agents/guardrails-approvals)
+[护栏和人工审查 - 围绕敏感能力添加审批或验证边界。](/guides/agents/guardrails-approvals)
 
-[代理工作流评估 - 当行为稳定后，从一次性追踪转向可重复的评分。](/api/docs/guides/agent-evals)
+[代理工作流评估 - 当行为稳定后，从一次性追踪转向可重复的评分。](/guides/agent-evals)

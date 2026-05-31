@@ -1,4 +1,3 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/supervised-fine-tuning -->
 
 监督微调（SFT）让你可以使用针对特定用例的示例来训练 OpenAI 模型。结果是一个定制化模型，能更可靠地生成你期望的风格和内容。
 
@@ -6,7 +5,7 @@ OpenAI 正在逐步关闭微调平台。该平台不再对新用户开放，但�
 
   
 
-所有微调模型在其基础模型被[弃用](/api/docs/deprecations)之前将继续可用于推理。完整时间线请参见[此处](/api/docs/deprecations)。
+所有微调模型在其基础模型被[弃用](/deprecations)之前将继续可用于推理。完整时间线请参见[此处](/deprecations)。
 
   
 
@@ -33,7 +32,7 @@ OpenAI 正在逐步关闭微调平台。该平台不再对新用户开放，但�
 
   
 
-[设置评估 →](/api/docs/guides/evals)
+[设置评估 →](/guides/evals)
 
 ## 构建数据集
 
@@ -43,7 +42,7 @@ OpenAI 正在逐步关闭微调平台。该平台不再对新用户开放，但�
 
 *   微调所需的最少示例数量为 10 个
 *   我们观察到 50-100 个示例就能带来微调改进，但适合你的数量因用例而异
-*   我们建议从 50 个精心制作的示例开始，然后[评估结果](/api/docs/guides/evals)
+*   我们建议从 50 个精心制作的示例开始，然后[评估结果](/guides/evals)
 
 如果 50 个好的示例能带来性能提升，尝试添加更多示例以获得进一步改进。如果 50 个示例没有效果，在添加训练数据之前重新思考你的任务或提示。
 
@@ -51,12 +50,12 @@ OpenAI 正在逐步关闭微调平台。该平台不再对新用户开放，但�
 
 *   你在应用中期望的提示和输出，尽可能真实
 *   具体、清晰的问题和答案
-*   使用历史数据、专家数据、日志数据或[其他类型的收集数据](/api/docs/guides/evals)
+*   使用历史数据、专家数据、日志数据或[其他类型的收集数据](/guides/evals)
 
 ### 格式化数据
 
 *   使用 [JSONL 格式](https://jsonlines.org/)，训练数据文件的每一行都是一个完整的 JSON 结构
-*   使用 [chat completions 格式](/api/docs/api-reference/fine-tuning/chat-input)
+*   使用 [chat completions 格式]( https://developers.openai.com/api/reference/fine-tuning/chat-input)
 *   文件必须至少有 10 行
 
 JSONL 格式示例文件对应的 JSON 数据
@@ -129,7 +128,7 @@ JSONL 格式示例文件
 为较小模型构建训练数据集的一种方法是蒸馏大模型的结果，为监督微调创建训练数据。该技术的一般流程是：
 
 *   为较大模型（如 `gpt-4.1`）调优提示，直到在评估标准上获得出色表现。
-*   使用任何方便的技术捕获模型生成的结果——注意 [Responses API](/api/docs/api-reference/responses) 默认存储模型响应 30 天。
+*   使用任何方便的技术捕获模型生成的结果——注意 [Responses API]( https://developers.openai.com/api/reference/responses) 默认存储模型响应 30 天。
 *   使用符合标准的大模型捕获响应，利用上述工具和技术生成数据集。
 *   使用从大模型创建的数据集来调优较小模型（如 `gpt-4.1-mini`）。
 
@@ -139,7 +138,7 @@ JSONL 格式示例文件
 
 将示例数据集上传到 OpenAI。我们使用它来更新模型的权重，并生成与数据中包含的输出类似的结果。
 
-除了文本补全，你还可以训练模型更有效地生成[结构化 JSON 输出](/api/docs/guides/structured-outputs)或[函数调用](/api/docs/guides/function-calling)。
+除了文本补全，你还可以训练模型更有效地生成[结构化 JSON 输出](/guides/structured-outputs)或[函数调用](/guides/function-calling)。
 
 通过按钮点击上传数据调用 API 上传数据
 
@@ -178,9 +177,9 @@ curl https://api.openai.com/v1/files \
 
 ## 创建微调任务
 
-上传测试数据后，[创建微调任务](/api/docs/api-reference/fine-tuning/create)以使用你提供的训练数据定制基础模型。创建微调任务时，你必须指定：
+上传测试数据后，[创建微调任务]( https://developers.openai.com/api/reference/fine-tuning/create)以使用你提供的训练数据定制基础模型。创建微调任务时，你必须指定：
 
-*   用于微调的基础模型（`model`）。可以是 OpenAI 模型 ID 或之前微调模型的 ID。在[模型文档](/api/docs/models)中查看哪些模型支持微调。
+*   用于微调的基础模型（`model`）。可以是 OpenAI 模型 ID 或之前微调模型的 ID。在[模型文档](/models)中查看哪些模型支持微调。
 *   训练文件（`training_file`）ID。这是你在上一步上传的文件。
 *   微调方法（`method`）。指定你要使用哪种微调方法来定制模型。监督微调是默认方法。
 
@@ -194,7 +193,7 @@ curl https://api.openai.com/v1/files \
 
 调用 API 上传数据
 
-通过调用[微调 API](/api/docs/api-reference/fine-tuning) 创建监督微调任务：
+通过调用[微调 API]( https://developers.openai.com/api/reference/fine-tuning) 创建监督微调任务：
 
 ```
 curl https://api.openai.com/v1/fine_tuning/jobs \
@@ -206,7 +205,7 @@ curl https://api.openai.com/v1/fine_tuning/jobs \
   }'
 ```
 
-API 会返回正在进行的微调任务信息。根据训练数据的大小，训练过程可能需要几分钟到几小时。你可以[轮询 API](/api/docs/api-reference/fine-tuning/retrieve) 获取特定任务的更新。
+API 会返回正在进行的微调任务信息。根据训练数据的大小，训练过程可能需要几分钟到几小时。你可以[轮询 API]( https://developers.openai.com/api/reference/fine-tuning/retrieve) 获取特定任务的更新。
 
 当微调任务完成后，你的微调模型就可以使用了。完成的微调任务返回如下数据：
 
@@ -250,7 +249,7 @@ API 会返回正在进行的微调任务信息。根据训练数据的大小，�
 }
 ```
 
-注意 `fine_tuned_model` 属性。这是在 [Responses](/api/docs/api-reference/responses) 或 [Chat Completions](/api/docs/api-reference/chat) 中使用微调模型进行 API 请求的模型 ID。
+注意 `fine_tuned_model` 属性。这是在 [Responses]( https://developers.openai.com/api/reference/responses) 或 [Chat Completions]( https://developers.openai.com/api/reference/chat) 中使用微调模型进行 API 请求的模型 ID。
 
 以下是使用微调模型 ID 调用 Responses API 的示例：
 
@@ -288,9 +287,9 @@ curl https://api.openai.com/v1/responses \
 
 ### 与评估对比
 
-要查看微调模型是否比原始基础模型表现更好，[使用评估](/api/docs/guides/evals)。在运行微调任务之前，从你在第 1 步收集的相同训练数据集中划分出数据。这些保留数据在用于评估时充当对照组。确保训练数据和保留数据具有大致相同的用户输入类型和模型响应多样性。
+要查看微调模型是否比原始基础模型表现更好，[使用评估](/guides/evals)。在运行微调任务之前，从你在第 1 步收集的相同训练数据集中划分出数据。这些保留数据在用于评估时充当对照组。确保训练数据和保留数据具有大致相同的用户输入类型和模型响应多样性。
 
-[了解更多关于运行评估的信息](/api/docs/guides/evals)。
+[了解更多关于运行评估的信息](/guides/evals)。
 
 ### 监控状态
 
@@ -357,7 +356,7 @@ curl https://api.openai.com/v1/fine_tuning/jobs/ftjob-uL1VKpwx7maorHNbOiDwFIn6 \
 
 ### 尝试使用微调模型
 
-通过使用微调模型来评估它！当微调模型完成训练后，在 [Responses](/api/docs/api-reference/responses) 或 [Chat Completions](/api/docs/api-reference/chat) API 中使用其 ID，就像使用 OpenAI 基础模型一样。
+通过使用微调模型来评估它！当微调模型完成训练后，在 [Responses]( https://developers.openai.com/api/reference/responses) 或 [Chat Completions]( https://developers.openai.com/api/reference/chat) API 中使用其 ID，就像使用 OpenAI 基础模型一样。
 
 在 Playground 中使用模型通过 API 调用使用模型
 
@@ -397,8 +396,8 @@ curl https://api.openai.com/v1/responses \
 
 通过 API 查询检查点
 
-1.  等待任务成功完成，你可以通过[查询任务状态](/api/docs/api-reference/fine-tuning/retrieve)来验证。
-2.  使用微调任务 ID [查询检查点端点](/api/docs/api-reference/fine-tuning/list-checkpoints)以访问微调任务的模型检查点列表。
+1.  等待任务成功完成，你可以通过[查询任务状态]( https://developers.openai.com/api/reference/fine-tuning/retrieve)来验证。
+2.  使用微调任务 ID [查询检查点端点]( https://developers.openai.com/api/reference/fine-tuning/list-checkpoints)以访问微调任务的模型检查点列表。
 3.  找到 `fine_tuned_model_checkpoint` 字段获取模型检查点的名称。
 4.  像使用最终微调模型一样使用此模型。
 
@@ -454,7 +453,7 @@ curl https://api.openai.com/v1/responses \
 
 如何通过安全检查
 
-除了查看微调任务对象中任何失败的安全检查外，你还可以通过查询[微调 API 事件端点](/api/docs/api-reference/fine-tuning/list-events)来获取哪些类别失败的详细信息。查找类型为 `moderation_checks` 的事件以获取类别结果和执行的详细信息。这些信息可以帮助你缩小需要重新训练和改进的类别范围。[模型规范](https://cdn.openai.com/spec/model-spec-2024-05-08.html#overview)包含规则和示例，可以帮助识别需要额外训练数据的领域。
+除了查看微调任务对象中任何失败的安全检查外，你还可以通过查询[微调 API 事件端点]( https://developers.openai.com/api/reference/fine-tuning/list-events)来获取哪些类别失败的详细信息。查找类型为 `moderation_checks` 的事件以获取类别结果和执行的详细信息。这些信息可以帮助你缩小需要重新训练和改进的类别范围。[模型规范](https://cdn.openai.com/spec/model-spec-2024-05-08.html#overview)包含规则和示例，可以帮助识别需要额外训练数据的领域。
 
 虽然这些评估涵盖了广泛的安全类别，但请对微调模型进行你自己的评估，以确保它适合你的用例。
 
@@ -462,8 +461,8 @@ curl https://api.openai.com/v1/responses \
 
 现在你已经了解了监督微调的基础知识，也可以探索这些其他方法。
 
-[视觉微调 - 学习使用图像输入进行计算机视觉微调。](/api/docs/guides/vision-fine-tuning)
+[视觉微调 - 学习使用图像输入进行计算机视觉微调。](/guides/vision-fine-tuning)
 
-[直接偏好优化 - 使用直接偏好优化（DPO）微调模型。](/api/docs/guides/direct-preference-optimization)
+[直接偏好优化 - 使用直接偏好优化（DPO）微调模型。](/guides/direct-preference-optimization)
 
-[强化微调 - 通过对输出评分来微调推理模型。](/api/docs/guides/reinforcement-fine-tuning)
+[强化微调 - 通过对输出评分来微调推理模型。](/guides/reinforcement-fine-tuning)

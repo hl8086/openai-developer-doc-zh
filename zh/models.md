@@ -1,4 +1,3 @@
-<!-- Source: https://developers.openai.com/api/docs/models -->
 
 # 模型
 
@@ -6,7 +5,7 @@
 
 如果你不确定从哪里开始，请使用 gpt-5.5，这是我们用于复杂推理和编程的旗舰模型。如果你想优化延迟和成本，可以选择较小的变体，如 gpt-5.4-mini 或 gpt-5.4-nano。
 
-所有最新的 OpenAI 模型都支持文本和图像输入、文本输出、多语言能力和视觉功能。模型可通过 [Responses API](/api/docs/api-reference/responses) 和我们的[客户端 SDK](/api/docs/libraries) 使用。
+所有最新的 OpenAI 模型都支持文本和图像输入、文本输出、多语言能力和视觉功能。模型可通过 [Responses API]( https://developers.openai.com/api/reference/responses) 和我们的[客户端 SDK](/libraries) 使用。
 
 ## 前沿模型
 
@@ -14,17 +13,17 @@
 
 查看全部对比模型
 
-[GPT-5.5New面向编程和专业工作的新一代智能。](/api/docs/models/gpt-5.5)
+[GPT-5.5New面向编程和专业工作的新一代智能。](/models/gpt-5.5)
 
-[](/api/docs/models/gpt-5.5)
+[](/models/gpt-5.5)
 
-[](/api/docs/models/gpt-5.5)
+[](/models/gpt-5.5)
 
-[Model IDgpt-5.5](/api/docs/models/gpt-5.5)
+[Model IDgpt-5.5](/models/gpt-5.5)
 
-[](/api/docs/models/gpt-5.5)
+[](/models/gpt-5.5)
 
-[](/api/docs/models/gpt-5.5)[Reasoning](https://developers.openai.com/api/docs/guides/reasoning#get-started-with-reasoning)
+[](/models/gpt-5.5)[Reasoning](https://developers.openai.com/api/docs/guides/reasoning#get-started-with-reasoning)
 
 nonelowmediumhighxhigh
 
@@ -48,7 +47,7 @@ $30 / 输出 MTok
 
 1M
 
-[工具](/api/docs/guides/tools)
+[工具](/guides/tools)
 
 Functions, Web search, File search, Computer use
 
@@ -56,17 +55,17 @@ Functions, Web search, File search, Computer use
 
 2025 年 12 月 1 日
 
-[GPT-5.4面向编程和专业工作的更实惠模型。](/api/docs/models/gpt-5.4)
+[GPT-5.4面向编程和专业工作的更实惠模型。](/models/gpt-5.4)
 
-[](/api/docs/models/gpt-5.4)
+[](/models/gpt-5.4)
 
-[](/api/docs/models/gpt-5.4)
+[](/models/gpt-5.4)
 
-[Model IDgpt-5.4](/api/docs/models/gpt-5.4)
+[Model IDgpt-5.4](/models/gpt-5.4)
 
-[](/api/docs/models/gpt-5.4)
+[](/models/gpt-5.4)
 
-[](/api/docs/models/gpt-5.4)[Reasoning](https://developers.openai.com/api/docs/guides/reasoning#get-started-with-reasoning)
+[](/models/gpt-5.4)[Reasoning](https://developers.openai.com/api/docs/guides/reasoning#get-started-with-reasoning)
 
 nonelowmediumhighxhigh
 
@@ -90,7 +89,7 @@ $15 / 输出 MTok
 
 1M
 
-[工具](/api/docs/guides/tools)
+[工具](/guides/tools)
 
 Functions, Web search, File search, Computer use
 
@@ -98,17 +97,17 @@ Functions, Web search, File search, Computer use
 
 2025 年 8 月 31 日
 
-[GPT-5.4 mini我们迄今为止最强大的 mini 模型，适用于编程、计算机使用和子代理](/api/docs/models/gpt-5.4-mini)
+[GPT-5.4 mini我们迄今为止最强大的 mini 模型，适用于编程、计算机使用和子代理](/models/gpt-5.4-mini)
 
-[](/api/docs/models/gpt-5.4-mini)
+[](/models/gpt-5.4-mini)
 
-[](/api/docs/models/gpt-5.4-mini)
+[](/models/gpt-5.4-mini)
 
-[Model IDgpt-5.4-mini](/api/docs/models/gpt-5.4-mini)
+[Model IDgpt-5.4-mini](/models/gpt-5.4-mini)
 
-[](/api/docs/models/gpt-5.4-mini)
+[](/models/gpt-5.4-mini)
 
-[](/api/docs/models/gpt-5.4-mini)[Reasoning](https://developers.openai.com/api/docs/guides/reasoning#get-started-with-reasoning)
+[](/models/gpt-5.4-mini)[Reasoning](https://developers.openai.com/api/docs/guides/reasoning#get-started-with-reasoning)
 
 nonelowmediumhighxhigh
 
@@ -132,7 +131,7 @@ $4.50 / 输出 MTok
 
 400K
 
-[工具](/api/docs/guides/tools)
+[工具](/guides/tools)
 
 Functions, Web search, File search, Computer use
 
@@ -150,35 +149,35 @@ Functions, Web search, File search, Computer use
 
 用于图像生成和编辑的模型
 
-[GPT Image 2最先进的图像生成模型](/api/docs/models/gpt-image-2)
+[GPT Image 2最先进的图像生成模型](/models/gpt-image-2)
 
 实时
 
 用于实时语音和翻译的模型
 
-[gpt-realtime-2用于实时语音交互的推理模型](/api/docs/models/gpt-realtime-2)
+[gpt-realtime-2用于实时语音交互的推理模型](/models/gpt-realtime-2)
 
-[gpt-realtime-translate流式语音到语音翻译模型](/api/docs/models/gpt-realtime-translate)
+[gpt-realtime-translate流式语音到语音翻译模型](/models/gpt-realtime-translate)
 
-[gpt-realtime-1.5音频输入、音频输出的最佳语音模型](/api/docs/models/gpt-realtime-1.5)
+[gpt-realtime-1.5音频输入、音频输出的最佳语音模型](/models/gpt-realtime-1.5)
 
-[gpt-realtime-miniGPT Realtime 的高性价比版本](/api/docs/models/gpt-realtime-mini)
+[gpt-realtime-miniGPT Realtime 的高性价比版本](/models/gpt-realtime-mini)
 
 语音生成
 
 用于从文本生成自然语音的模型
 
-[GPT-4o mini TTS由 GPT-4o mini 驱动的文本转语音模型](/api/docs/models/gpt-4o-mini-tts)
+[GPT-4o mini TTS由 GPT-4o mini 驱动的文本转语音模型](/models/gpt-4o-mini-tts)
 
 转录
 
 用于将语音转录为文本的模型
 
-[gpt-realtime-whisper用于实时转录的流式语音转文本模型](/api/docs/models/gpt-realtime-whisper)
+[gpt-realtime-whisper用于实时转录的流式语音转文本模型](/models/gpt-realtime-whisper)
 
-[GPT-4o Transcribe由 GPT-4o 驱动的语音转文本模型](/api/docs/models/gpt-4o-transcribe)
+[GPT-4o Transcribe由 GPT-4o 驱动的语音转文本模型](/models/gpt-4o-transcribe)
 
-[GPT-4o mini Transcribe由 GPT-4o mini 驱动的语音转文本模型](/api/docs/models/gpt-4o-mini-transcribe)
+[GPT-4o mini Transcribe由 GPT-4o mini 驱动的语音转文本模型](/models/gpt-4o-mini-transcribe)
 
 ## 浏览我们完整的模型目录
 
@@ -186,4 +185,4 @@ Functions, Web search, File search, Computer use
 
 查看所有模型对比模型
 
-[我们如何使用你的数据](/api/docs/guides/your-data)·[已弃用的模型](/api/docs/deprecations)
+[我们如何使用你的数据](/guides/your-data)·[已弃用的模型](/deprecations)

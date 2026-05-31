@@ -1,4 +1,3 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/latency-optimization -->
 
 本指南涵盖了一组核心原则，您可以应用这些原则来改善各种 LLM 相关用例的延迟。这些技术来自于与大量客户和开发者在生产应用上的合作经验，因此无论您在构建什么——从细粒度的工作流到端到端的聊天机器人——都应该适用。
 
@@ -22,11 +21,11 @@
 
 影响推理速度的主要因素是**模型大小**——较小的模型通常运行更快（也更便宜），并且在正确使用时甚至可以超越较大的模型。要在使用较小模型时保持高质量性能，您可以探索：
 
-*   使用更长、[更详细的提示词](/api/docs/guides/prompt-engineering#tactic-specify-the-steps-required-to-complete-a-task)，
-*   添加（更多）[少样本示例](/api/docs/guides/prompt-engineering#tactic-provide-examples)，或
-*   [微调](/api/docs/guides/model-optimization) / 蒸馏。
+*   使用更长、[更详细的提示词](/guides/prompt-engineering#tactic-specify-the-steps-required-to-complete-a-task)，
+*   添加（更多）[少样本示例](/guides/prompt-engineering#tactic-provide-examples)，或
+*   [微调](/guides/model-optimization) / 蒸馏。
 
-您还可以采用推理优化技术，例如我们的 [**Predicted outputs**](/api/docs/guides/predicted-outputs) 功能。Predicted outputs 让您在预先知道大部分输出内容时（例如代码编辑任务）显著降低生成延迟。通过给模型一个预测，LLM 可以更多地关注实际变化，而不是保持不变的内容。
+您还可以采用推理优化技术，例如我们的 [**Predicted outputs**](/guides/predicted-outputs) 功能。Predicted outputs 让您在预先知道大部分输出内容时（例如代码编辑任务）显著降低生成延迟。通过给模型一个预测，LLM 可以更多地关注实际变化，而不是保持不变的内容。
 
 深入了解
 
@@ -54,7 +53,7 @@
 *   **过滤上下文输入**，例如修剪 RAG 结果、清理 HTML 等。
 *   **最大化共享提示词前缀**，将动态部分（例如 RAG 结果、历史记录等）放在提示词的后面。这使您的请求更加 [KV cache](https://medium.com/@joaolages/kv-caching-explained-276520203249) 友好（大多数 LLM 提供商都使用它），意味着每次请求处理的输入 token 更少。
 
-查看我们的文档以了解更多关于[提示词缓存](/api/docs/guides/prompt-engineering#prompt-caching)的工作原理。
+查看我们的文档以了解更多关于[提示词缓存](/guides/prompt-engineering#prompt-caching)的工作原理。
 
 ## 减少请求次数
 
@@ -268,7 +267,7 @@ USER: [JSON-formatted input conversation here]
 
 **我们能否使用微调的 GPT-3.5 代替 GPT-4？** 也许可以——但一般来说，助手的开放式响应最好留给 GPT-4，这样它可以更好地处理更大范围的情况。话虽如此，查看推理步骤本身，它们可能并不都需要 GPT-4 级别的推理能力来生成。其定义明确、范围有限的特性使它们成为**微调的良好潜在候选**。
 
-```
+```text
 {
   "message_is_conversation_continuation": "True", // <-
   "number_of_messages_in_conversation_so_far": "1", // <-
@@ -371,7 +370,7 @@ USER: # Relevant Information
 
 仔细查看推理 JSON，您可能会注意到字段名本身相当长。
 
-```
+```text
 {
   "message_is_conversation_continuation": "True", // <-
   "number_of_messages_in_conversation_so_far": "1", // <-

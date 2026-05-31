@@ -1,8 +1,7 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/image-generation -->
 
 探索
 
-[![](https://cdn.openai.com/API/docs/images/images-gallery-2/sci-fi-hangar.png)](/api/docs/guides/image-generation?gallery=open&galleryItem=sci-fi-hangar)[![](https://cdn.openai.com/API/docs/images/images-gallery-2/mechanical-bouquet.png)](/api/docs/guides/image-generation?gallery=open&galleryItem=mechanical-bouquet)[![](https://cdn.openai.com/API/docs/images/images-gallery-2/mechanical-watch.png)](/api/docs/guides/image-generation?gallery=open&galleryItem=mechanical-watch)[![](https://cdn.openai.com/API/docs/images/images-gallery-2/botanical-perfume-output.png)](/api/docs/guides/image-generation?gallery=open&galleryItem=botanical-perfume)[![](https://cdn.openai.com/API/docs/images/images-gallery-2/lavender-sunrise.png)](/api/docs/guides/image-generation?gallery=open&galleryItem=lavender-sunrise)[![](https://cdn.openai.com/API/docs/images/images-gallery-2/moon-control-room-1969.png)](/api/docs/guides/image-generation?gallery=open&galleryItem=moon-control-room-1969)[![](https://cdn.openai.com/API/docs/images/images-gallery-2/mountain-map.png)](/api/docs/guides/image-generation?gallery=open&galleryItem=mountain-map)[![](https://cdn.openai.com/API/docs/images/images-gallery-2/shipyard-welding-documentary.png)](/api/docs/guides/image-generation?gallery=open&galleryItem=shipyard-welding-documentary)[![](https://cdn.openai.com/API/docs/images/images-gallery-2/coral-reef.png)](/api/docs/guides/image-generation?gallery=open&galleryItem=coral-reef)[![](https://cdn.openai.com/API/docs/images/images-gallery-2/smart-home-dashboard.png)](/api/docs/guides/image-generation?gallery=open&galleryItem=smart-home-dashboard)[![](https://cdn.openai.com/API/docs/images/images-gallery-2/abstract-orbit.png)](/api/docs/guides/image-generation?gallery=open&galleryItem=abstract-orbit)[![](https://cdn.openai.com/API/docs/images/images-gallery-2/airport-departure-kiosk-ui.png)](/api/docs/guides/image-generation?gallery=open&galleryItem=airport-departure-kiosk)[![](https://cdn.openai.com/API/docs/images/images-gallery-2/icons-poster.png)](/api/docs/guides/image-generation?gallery=open&galleryItem=icons)[![](https://cdn.openai.com/API/docs/images/images-gallery-2/3d-city.png)](/api/docs/guides/image-generation?gallery=open&galleryItem=3d-city)[![](https://cdn.openai.com/API/docs/images/images-gallery-2/ink-wash-temple.png)](/api/docs/guides/image-generation?gallery=open&galleryItem=ink-wash-temple)[![](https://cdn.openai.com/API/docs/images/images-gallery-2/cliffside-portrait.png)](/api/docs/guides/image-generation?gallery=open&galleryItem=cliffside-portrait)[](/api/docs/guides/image-generation?gallery=open&galleryItem=chameleon-macro)[](/api/docs/guides/image-generation?gallery=open&galleryItem=clay-garden)[](/api/docs/guides/image-generation?gallery=open&galleryItem=paper-cut-forest)[](/api/docs/guides/image-generation?gallery=open&galleryItem=alien-rock)[](/api/docs/guides/image-generation?gallery=open&galleryItem=clay-figurine)[](/api/docs/guides/image-generation?gallery=open&galleryItem=furniture)[](/api/docs/guides/image-generation?gallery=open&galleryItem=desert-sunrise-portrait)[](/api/docs/guides/image-generation?gallery=open&galleryItem=ceramic-mug)[](/api/docs/guides/image-generation?gallery=open&galleryItem=hiking-poster)[](/api/docs/guides/image-generation?gallery=open&galleryItem=floorplan)[](/api/docs/guides/image-generation?gallery=open&galleryItem=mountain-bike)[](/api/docs/guides/image-generation?gallery=open&galleryItem=kitchen-service-rush)[](/api/docs/guides/image-generation?gallery=open&galleryItem=interior-design)[](/api/docs/guides/image-generation?gallery=open&galleryItem=ecommerce-product-page)[](/api/docs/guides/image-generation?gallery=open&galleryItem=paper-sculpture-city)[](/api/docs/guides/image-generation?gallery=open&galleryItem=colorize)[](/api/docs/guides/image-generation?gallery=open&galleryItem=game-design)[](/api/docs/guides/image-generation?gallery=open&galleryItem=sprites)[](/api/docs/guides/image-generation?gallery=open&galleryItem=cosmic-ballet)[](/api/docs/guides/image-generation?gallery=open&galleryItem=chocolate)[](/api/docs/guides/image-generation?gallery=open&galleryItem=winter-wolf-portrait)[](/api/docs/guides/image-generation?gallery=open&galleryItem=street-cafe)[](/api/docs/guides/image-generation?gallery=open&galleryItem=watercolor-harbor-map)[](/api/docs/guides/image-generation?gallery=open&galleryItem=buildings-sprite)[](/api/docs/guides/image-generation?gallery=open&galleryItem=rooftop-garden)[](/api/docs/guides/image-generation?gallery=open&galleryItem=thunderstorm)[](/api/docs/guides/image-generation?gallery=open&galleryItem=roman-forum-rain)[](/api/docs/guides/image-generation?gallery=open&galleryItem=spacecraft-dashboard)[](/api/docs/guides/image-generation?gallery=open&galleryItem=daytime)[](/api/docs/guides/image-generation?gallery=open&galleryItem=camera-manual)[](/api/docs/guides/image-generation?gallery=open&galleryItem=weeknight-cookbook-layout)[](/api/docs/guides/image-generation?gallery=open&galleryItem=isometric-icons)[](/api/docs/guides/image-generation?gallery=open&galleryItem=patterns)[](/api/docs/guides/image-generation?gallery=open&galleryItem=landscape)[](/api/docs/guides/image-generation?gallery=open&galleryItem=city-heat-infographic)[](/api/docs/guides/image-generation?gallery=open&galleryItem=robot-toy)[](/api/docs/guides/image-generation?gallery=open&galleryItem=bottle)[](/api/docs/guides/image-generation?gallery=open&galleryItem=school-science-fair-iphone)[](/api/docs/guides/image-generation?gallery=open&galleryItem=whales-poster)[](/api/docs/guides/image-generation?gallery=open&galleryItem=neon)[](/api/docs/guides/image-generation?gallery=open&galleryItem=album-cover)[](/api/docs/guides/image-generation?gallery=open&galleryItem=sneakers)[](/api/docs/guides/image-generation?gallery=open&galleryItem=paris-cafe-iphone)[](/api/docs/guides/image-generation?gallery=open&galleryItem=kyoto-poster)
+[![](https://cdn.openai.com/API/docs/images/images-gallery-2/sci-fi-hangar.png)](/guides/image-generation?gallery=open&galleryItem=sci-fi-hangar)[![](https://cdn.openai.com/API/docs/images/images-gallery-2/mechanical-bouquet.png)](/guides/image-generation?gallery=open&galleryItem=mechanical-bouquet)[![](https://cdn.openai.com/API/docs/images/images-gallery-2/mechanical-watch.png)](/guides/image-generation?gallery=open&galleryItem=mechanical-watch)[![](https://cdn.openai.com/API/docs/images/images-gallery-2/botanical-perfume-output.png)](/guides/image-generation?gallery=open&galleryItem=botanical-perfume)[![](https://cdn.openai.com/API/docs/images/images-gallery-2/lavender-sunrise.png)](/guides/image-generation?gallery=open&galleryItem=lavender-sunrise)[![](https://cdn.openai.com/API/docs/images/images-gallery-2/moon-control-room-1969.png)](/guides/image-generation?gallery=open&galleryItem=moon-control-room-1969)[![](https://cdn.openai.com/API/docs/images/images-gallery-2/mountain-map.png)](/guides/image-generation?gallery=open&galleryItem=mountain-map)[![](https://cdn.openai.com/API/docs/images/images-gallery-2/shipyard-welding-documentary.png)](/guides/image-generation?gallery=open&galleryItem=shipyard-welding-documentary)[![](https://cdn.openai.com/API/docs/images/images-gallery-2/coral-reef.png)](/guides/image-generation?gallery=open&galleryItem=coral-reef)[![](https://cdn.openai.com/API/docs/images/images-gallery-2/smart-home-dashboard.png)](/guides/image-generation?gallery=open&galleryItem=smart-home-dashboard)[![](https://cdn.openai.com/API/docs/images/images-gallery-2/abstract-orbit.png)](/guides/image-generation?gallery=open&galleryItem=abstract-orbit)[![](https://cdn.openai.com/API/docs/images/images-gallery-2/airport-departure-kiosk-ui.png)](/guides/image-generation?gallery=open&galleryItem=airport-departure-kiosk)[![](https://cdn.openai.com/API/docs/images/images-gallery-2/icons-poster.png)](/guides/image-generation?gallery=open&galleryItem=icons)[![](https://cdn.openai.com/API/docs/images/images-gallery-2/3d-city.png)](/guides/image-generation?gallery=open&galleryItem=3d-city)[![](https://cdn.openai.com/API/docs/images/images-gallery-2/ink-wash-temple.png)](/guides/image-generation?gallery=open&galleryItem=ink-wash-temple)[![](https://cdn.openai.com/API/docs/images/images-gallery-2/cliffside-portrait.png)](/guides/image-generation?gallery=open&galleryItem=cliffside-portrait)[](/guides/image-generation?gallery=open&galleryItem=chameleon-macro)[](/guides/image-generation?gallery=open&galleryItem=clay-garden)[](/guides/image-generation?gallery=open&galleryItem=paper-cut-forest)[](/guides/image-generation?gallery=open&galleryItem=alien-rock)[](/guides/image-generation?gallery=open&galleryItem=clay-figurine)[](/guides/image-generation?gallery=open&galleryItem=furniture)[](/guides/image-generation?gallery=open&galleryItem=desert-sunrise-portrait)[](/guides/image-generation?gallery=open&galleryItem=ceramic-mug)[](/guides/image-generation?gallery=open&galleryItem=hiking-poster)[](/guides/image-generation?gallery=open&galleryItem=floorplan)[](/guides/image-generation?gallery=open&galleryItem=mountain-bike)[](/guides/image-generation?gallery=open&galleryItem=kitchen-service-rush)[](/guides/image-generation?gallery=open&galleryItem=interior-design)[](/guides/image-generation?gallery=open&galleryItem=ecommerce-product-page)[](/guides/image-generation?gallery=open&galleryItem=paper-sculpture-city)[](/guides/image-generation?gallery=open&galleryItem=colorize)[](/guides/image-generation?gallery=open&galleryItem=game-design)[](/guides/image-generation?gallery=open&galleryItem=sprites)[](/guides/image-generation?gallery=open&galleryItem=cosmic-ballet)[](/guides/image-generation?gallery=open&galleryItem=chocolate)[](/guides/image-generation?gallery=open&galleryItem=winter-wolf-portrait)[](/guides/image-generation?gallery=open&galleryItem=street-cafe)[](/guides/image-generation?gallery=open&galleryItem=watercolor-harbor-map)[](/guides/image-generation?gallery=open&galleryItem=buildings-sprite)[](/guides/image-generation?gallery=open&galleryItem=rooftop-garden)[](/guides/image-generation?gallery=open&galleryItem=thunderstorm)[](/guides/image-generation?gallery=open&galleryItem=roman-forum-rain)[](/guides/image-generation?gallery=open&galleryItem=spacecraft-dashboard)[](/guides/image-generation?gallery=open&galleryItem=daytime)[](/guides/image-generation?gallery=open&galleryItem=camera-manual)[](/guides/image-generation?gallery=open&galleryItem=weeknight-cookbook-layout)[](/guides/image-generation?gallery=open&galleryItem=isometric-icons)[](/guides/image-generation?gallery=open&galleryItem=patterns)[](/guides/image-generation?gallery=open&galleryItem=landscape)[](/guides/image-generation?gallery=open&galleryItem=city-heat-infographic)[](/guides/image-generation?gallery=open&galleryItem=robot-toy)[](/guides/image-generation?gallery=open&galleryItem=bottle)[](/guides/image-generation?gallery=open&galleryItem=school-science-fair-iphone)[](/guides/image-generation?gallery=open&galleryItem=whales-poster)[](/guides/image-generation?gallery=open&galleryItem=neon)[](/guides/image-generation?gallery=open&galleryItem=album-cover)[](/guides/image-generation?gallery=open&galleryItem=sneakers)[](/guides/image-generation?gallery=open&galleryItem=paris-cafe-iphone)[](/guides/image-generation?gallery=open&galleryItem=kyoto-poster)
 
 ## 概述
 
@@ -10,7 +9,7 @@ OpenAI API 允许你使用 GPT Image 模型（包括我们最新的 `gpt-image-2
 
 ### Image API
 
-从 `gpt-image-1` 及更新的模型开始，[Image API](/api/docs/api-reference/images) 提供两个端点，各具不同功能：
+从 `gpt-image-1` 及更新的模型开始，[Image API]( https://developers.openai.com/api/reference/images) 提供两个端点，各具不同功能：
 
 *   **生成**：基于文本提示从零开始[生成图像](#generate-images)
 *   **编辑**：使用新提示[修改现有图像](#edit-images)，可以是部分修改或完全修改
@@ -19,12 +18,12 @@ Image API 还包含一个变体端点，适用于支持该功能的模型，如 
 
 ### Responses API
 
-[Responses API](/api/docs/api-reference/responses/create#responses-create-tools) 允许你在对话或多步骤流程中生成图像。它支持将图像生成作为[内置工具](/api/docs/guides/tools?api-mode=responses)使用，并在上下文中接受图像输入和输出。
+[Responses API]( https://developers.openai.com/api/reference/responses/create#responses-create-tools) 允许你在对话或多步骤流程中生成图像。它支持将图像生成作为[内置工具](/guides/tools?api-mode=responses)使用，并在上下文中接受图像输入和输出。
 
 与 Image API 相比，它增加了：
 
 *   **多轮编辑**：通过提示迭代地对图像进行高保真编辑
-*   **灵活输入**：接受图像 [File](/api/docs/api-reference/files) ID 作为输入图像，而不仅仅是字节数据
+*   **灵活输入**：接受图像 [File]( https://developers.openai.com/api/reference/files) ID 作为输入图像，而不仅仅是字节数据
 
 Responses API 图像生成工具使用其自身的 GPT Image 模型选择。有关支持调用此工具的主线模型的详细信息，请参阅下方的[支持的模型](#supported-models)。
 
@@ -43,7 +42,7 @@ Responses API 图像生成工具使用其自身的 GPT Image 模型选择。有�
 
 ## 生成图像
 
-你可以使用[图像生成端点](/api/docs/api-reference/images/create)基于文本提示创建图像，或使用 Responses API 中的[图像生成工具](/api/docs/guides/tools?api-mode=responses)在对话中生成图像。
+你可以使用[图像生成端点]( https://developers.openai.com/api/reference/images/create)基于文本提示创建图像，或使用 Responses API 中的[图像生成工具](/guides/tools?api-mode=responses)在对话中生成图像。
 
 要了解更多关于自定义输出（尺寸、质量、格式、压缩）的信息，请参阅下方的[自定义图像输出](#customize-image-output)部分。
 
@@ -166,7 +165,7 @@ openai images generate \
 
 ### 多轮图像生成
 
-使用 Responses API，你可以通过在上下文中提供图像生成调用输出（也可以只使用图像 ID），或使用 [`previous_response_id` 参数](/api/docs/guides/conversation-state?api-mode=responses#openai-apis-for-conversation-state)来构建涉及图像生成的多轮对话。这让你可以跨多个轮次迭代图像——优化提示、应用新指令，并随着对话进展演变视觉输出。
+使用 Responses API，你可以通过在上下文中提供图像生成调用输出（也可以只使用图像 ID），或使用 [`previous_response_id` 参数](/guides/conversation-state?api-mode=responses#openai-apis-for-conversation-state)来构建涉及图像生成的多轮对话。这让你可以跨多个轮次迭代图像——优化提示、应用新指令，并随着对话进展演变视觉输出。
 
 使用 Responses API 图像生成工具时，支持的工具模型可以选择是生成新图像还是编辑对话中已有的图像。可选的 `action` 参数控制此行为：保持 `action: "auto"` 让模型自行决定，设置 `action: "generate"` 始终创建新图像，或设置 `action: "edit"` 在上下文中有图像时强制编辑。
 
@@ -424,7 +423,7 @@ if image_data_fwup:
     image_base64 = image_data_fwup[0]
     with open("cat_and_otter_realistic.png", "wb") as f:
         f.write(base64.b64decode(image_base64))
-```
+```text
 
 #### 结果
 
@@ -567,7 +566,7 @@ for event in stream:
 
 ## 编辑图像
 
-[图像编辑](/api/docs/api-reference/images/createEdit)端点允许你：
+[图像编辑]( https://developers.openai.com/api/reference/images/createEdit)端点允许你：
 
 *   编辑现有图像
 *   使用其他图像作为参考生成新图像
@@ -591,7 +590,7 @@ Responses API
 
 *   提供完整的 URL
 *   以 Base64 编码的 data URL 提供图像
-*   提供文件 ID（通过 [Files API](/api/docs/api-reference/files) 创建）
+*   提供文件 ID（通过 [Files API]( https://developers.openai.com/api/reference/files) 创建）
 
 #### 创建文件
 
@@ -1072,7 +1071,7 @@ with open(img_path_mask_alpha, "wb") as f:
 
 `input_fidelity` 参数控制模型在编辑和参考图像工作流中保留输入图像细节的强度。对于 `gpt-image-2`，请省略此参数；API 不允许更改它，因为该模型会自动以高保真度处理每个图像输入。
 
-由于 `gpt-image-2` 始终以高保真度处理图像输入，包含参考图像的编辑请求的图像输入 token 可能会更高。要了解成本影响，请参阅[视觉成本](/api/docs/guides/images-vision?api-mode=responses#calculating-costs)部分。
+由于 `gpt-image-2` 始终以高保真度处理图像输入，包含参考图像的编辑请求的图像输入 token 可能会更高。要了解成本影响，请参阅[视觉成本](/guides/images-vision?api-mode=responses#calculating-costs)部分。
 
 ## 自定义图像输出
 
@@ -1126,7 +1125,7 @@ GPT Image 模型（`gpt-image-2`、`gpt-image-1.5`、`gpt-image-1` 和 `gpt-imag
 
 ### 支持的模型
 
-在 Responses API 中使用图像生成时，`gpt-5` 及更新的模型应支持图像生成工具。[查看你的模型的模型详情页面](/api/docs/models)以确认你所需的模型是否可以使用图像生成工具。
+在 Responses API 中使用图像生成时，`gpt-5` 及更新的模型应支持图像生成工具。[查看你的模型的模型详情页面](/models)以确认你所需的模型是否可以使用图像生成工具。
 
 ## 成本和延迟
 
@@ -1156,9 +1155,9 @@ Output tokens
 | Medium | 1056 tokens | 1584 tokens | 1568 tokens |
 | High | 4160 tokens | 6240 tokens | 6208 tokens |
 
-请注意，你还需要考虑[输入 token](/api/docs/guides/images-vision?api-mode=responses#calculating-costs)：提示的文本 token 以及编辑图像时输入图像的图像 token。由于 `gpt-image-2` 始终以高保真度处理图像输入，包含参考图像的编辑请求可能会使用更多输入 token。
+请注意，你还需要考虑[输入 token](/guides/images-vision?api-mode=responses#calculating-costs)：提示的文本 token 以及编辑图像时输入图像的图像 token。由于 `gpt-image-2` 始终以高保真度处理图像输入，包含参考图像的编辑请求可能会使用更多输入 token。
 
-请参阅[定价页面](/api/docs/pricing#image-generation)了解当前文本和图像 token 价格，并使用下方的[计算成本](#calculating-costs)部分来估算请求成本。
+请参阅[定价页面](/pricing#image-generation)了解当前文本和图像 token 价格，并使用下方的[计算成本](#calculating-costs)部分来估算请求成本。
 
 最终成本是以下各项的总和：
 

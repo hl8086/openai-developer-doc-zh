@@ -1,14 +1,13 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/reasoning -->
 
-**推理模型**（如 [GPT-5.5](/api/docs/models/gpt-5.5)）在生成响应之前会使用内部推理 token。这有助于模型进行规划、有效使用工具、检查替代方案、从歧义中恢复，以及解决更困难的多步骤任务。推理模型在复杂问题求解、编程、科学推理和多步骤智能体工作流方面表现尤为出色。它们也是 [Codex CLI](https://github.com/openai/codex)（我们的轻量级编程智能体）的最佳模型。
+**推理模型**（如 [GPT-5.5](/models/gpt-5.5)）在生成响应之前会使用内部推理 token。这有助于模型进行规划、有效使用工具、检查替代方案、从歧义中恢复，以及解决更困难的多步骤任务。推理模型在复杂问题求解、编程、科学推理和多步骤智能体工作流方面表现尤为出色。它们也是 [Codex CLI](https://github.com/openai/codex)（我们的轻量级编程智能体）的最佳模型。
 
-对于大多数推理工作负载，建议从 `gpt-5.5` 开始。如果您需要最高智能的 API 选项来处理更具挑战性的问题且可以容忍更多延迟，请使用 [`gpt-5.5-pro`](/api/docs/models/gpt-5.5-pro)。如需更低成本，可考虑 `gpt-5.4`；如需更低成本和延迟，可考虑 `gpt-5.4-mini`。
+对于大多数推理工作负载，建议从 `gpt-5.5` 开始。如果您需要最高智能的 API 选项来处理更具挑战性的问题且可以容忍更多延迟，请使用 [`gpt-5.5-pro`](/models/gpt-5.5-pro)。如需更低成本，可考虑 `gpt-5.4`；如需更低成本和延迟，可考虑 `gpt-5.4-mini`。
 
-**推理模型与 [Responses API](/api/docs/guides/migrate-to-responses) 配合使用效果更好**。虽然 Chat Completions API 仍然受支持，但使用 Responses 可以获得更好的模型智能和性能。
+**推理模型与 [Responses API](/guides/migrate-to-responses) 配合使用效果更好**。虽然 Chat Completions API 仍然受支持，但使用 Responses 可以获得更好的模型智能和性能。
 
 ## 开始使用推理模型
 
-调用 [Responses API](/api/docs/api-reference/responses/create) 并指定您的推理模型和推理力度：
+调用 [Responses API]( https://developers.openai.com/api/reference/responses/create) 并指定您的推理模型和推理力度：
 
 **在 Responses API 中使用推理模型**
 
@@ -92,7 +91,7 @@ curl https://api.openai.com/v1/responses \
 
 对于延迟敏感的应用程序，为了更快地获得第一个可见 token，可以要求模型在继续深入推理之前先生成一个简短的前言。
 
-某些模型仅支持这些值的子集，因此在选择设置之前请查看相关的[模型页面](/api/docs/models)。
+某些模型仅支持这些值的子集，因此在选择设置之前请查看相关的[模型页面](/models)。
 
 ## 推理的工作原理
 
@@ -106,7 +105,7 @@ curl https://api.openai.com/v1/responses \
 
 ### 管理上下文窗口
 
-在创建响应时，确保上下文窗口中有足够的空间容纳推理 token 非常重要。根据问题的复杂程度，模型可能会生成从几百到数万个推理 token。使用的确切推理 token 数量可在[响应对象的 usage 对象](/api/docs/api-reference/responses/object)中的 `output_tokens_details` 下查看：
+在创建响应时，确保上下文窗口中有足够的空间容纳推理 token 非常重要。根据问题的复杂程度，模型可能会生成从几百到数万个推理 token。使用的确切推理 token 数量可在[响应对象的 usage 对象]( https://developers.openai.com/api/reference/responses/object)中的 `output_tokens_details` 下查看：
 
 ```
 {
@@ -124,11 +123,11 @@ curl https://api.openai.com/v1/responses \
 }
 ```
 
-上下文窗口长度可在[模型参考页面](/api/docs/models)找到，不同模型快照之间会有所不同。
+上下文窗口长度可在[模型参考页面](/models)找到，不同模型快照之间会有所不同。
 
 ### 控制成本
 
-要管理推理模型的成本，您可以使用 [`max_output_tokens`](/api/docs/api-reference/responses/create#responses-create-max_output_tokens) 参数限制模型生成的总 token 数（包括推理和最终输出 token）。
+要管理推理模型的成本，您可以使用 [`max_output_tokens`]( https://developers.openai.com/api/reference/responses/create#responses-create-max_output_tokens) 参数限制模型生成的总 token 数（包括推理和最终输出 token）。
 
 ### 为推理分配空间
 
@@ -204,13 +203,13 @@ if response.status == "incomplete" and response.incomplete_details.reason == "ma
 
 ### 在上下文中保留推理项
 
-在 [Responses API](/api/docs/api-reference/responses) 中使用推理模型进行[函数调用](/api/docs/guides/function-calling)时，我们强烈建议您将上次函数调用返回的所有推理项（以及函数的输出）一起传回。如果模型连续调用多个函数，您应该传回自上一条 `user` 消息以来的所有推理项、函数调用项和函数调用输出项。这允许模型继续其推理过程，以最节省 token 的方式产生更好的结果。
+在 [Responses API]( https://developers.openai.com/api/reference/responses) 中使用推理模型进行[函数调用](/guides/function-calling)时，我们强烈建议您将上次函数调用返回的所有推理项（以及函数的输出）一起传回。如果模型连续调用多个函数，您应该传回自上一条 `user` 消息以来的所有推理项、函数调用项和函数调用输出项。这允许模型继续其推理过程，以最节省 token 的方式产生更好的结果。
 
-最简单的方法是将前一个响应中的所有推理项传入下一个响应。我们的系统会智能地忽略与您的函数无关的推理项，只保留相关的推理项在上下文中。您可以通过 `previous_response_id` 参数传递前一个响应的推理项，或者手动将过去响应的所有[输出](/api/docs/api-reference/responses/object#responses/object-output)项传入新响应的[输入](/api/docs/api-reference/responses/create#responses-create-input)中。
+最简单的方法是将前一个响应中的所有推理项传入下一个响应。我们的系统会智能地忽略与您的函数无关的推理项，只保留相关的推理项在上下文中。您可以通过 `previous_response_id` 参数传递前一个响应的推理项，或者手动将过去响应的所有[输出]( https://developers.openai.com/api/reference/responses/object#responses/object-output)项传入新响应的[输入]( https://developers.openai.com/api/reference/responses/create#responses-create-input)中。
 
 对于可能需要截断和优化上下文窗口部分内容再传递给下一个响应的高级用例，只需确保最后一条用户消息和您的函数调用输出之间的所有项都原封不动地传入下一个响应。这将确保模型拥有所需的所有上下文。
 
-查看[本指南](/api/docs/guides/conversation-state)了解更多关于手动上下文管理的信息。
+查看[本指南](/guides/conversation-state)了解更多关于手动上下文管理的信息。
 
 ### 加密推理项
 
@@ -233,11 +232,11 @@ curl https://api.openai.com/v1/responses \
 
 ## 推理摘要
 
-虽然我们不公开模型发出的原始推理 token，但您可以使用 `summary` 参数查看模型推理的摘要。请查看我们的[模型文档](/api/docs/models)以了解哪些推理模型支持摘要。
+虽然我们不公开模型发出的原始推理 token，但您可以使用 `summary` 参数查看模型推理的摘要。请查看我们的[模型文档](/models)以了解哪些推理模型支持摘要。
 
 不同模型支持不同的推理摘要设置。例如，我们的计算机使用模型支持 `concise` 摘要器，而 o4-mini 支持 `detailed`。要访问模型可用的最详细摘要器，请将此参数的值设置为 `auto`。对于当前大多数推理模型，`auto` 等同于 `detailed`，但未来可能会有更细粒度的设置。
 
-推理摘要输出是 `reasoning` [输出项](/api/docs/api-reference/responses/object#responses/object-output)中 `summary` 数组的一部分。除非您明确选择包含推理摘要，否则不会包含此输出。
+推理摘要输出是 `reasoning` [输出项]( https://developers.openai.com/api/reference/responses/object#responses/object-output)中 `summary` 数组的一部分。除非您明确选择包含推理摘要，否则不会包含此输出。
 
 以下示例展示了如何发出包含推理摘要的 API 请求。
 
@@ -322,7 +321,7 @@ curl https://api.openai.com/v1/responses \
 
 ## `phase` 参数
 
-对于在 Responses API 中使用 GPT-5.5 和 GPT-5.4 的长时间运行或工具密集型流程，使用助手消息的 `phase` 字段可以避免提前停止和其他异常行为。`phase` 在 API 层面是可选的，但 OpenAI 建议使用它。对于中间助手更新（如工具调用前的前言），使用 `phase: "commentary"`；对于完成的答案，使用 `phase: "final_answer"`。不要在用户消息中添加 `phase`。使用 `previous_response_id` 通常是最简单的方式，因为之前的助手状态会被保留。如果您手动重放助手历史记录，请保留每个原始的 `phase` 值。缺失或丢弃的 `phase` 可能导致前言在这些工作流中被视为最终答案。有关模型特定的提示指南，请参阅[提示 GPT-5.5](/api/docs/guides/prompt-guidance?model=gpt-5.5#phase-parameter)。
+对于在 Responses API 中使用 GPT-5.5 和 GPT-5.4 的长时间运行或工具密集型流程，使用助手消息的 `phase` 字段可以避免提前停止和其他异常行为。`phase` 在 API 层面是可选的，但 OpenAI 建议使用它。对于中间助手更新（如工具调用前的前言），使用 `phase: "commentary"`；对于完成的答案，使用 `phase: "final_answer"`。不要在用户消息中添加 `phase`。使用 `previous_response_id` 通常是最简单的方式，因为之前的助手状态会被保留。如果您手动重放助手历史记录，请保留每个原始的 `phase` 值。缺失或丢弃的 `phase` 可能导致前言在这些工作流中被视为最终答案。有关模型特定的提示指南，请参阅[提示 GPT-5.5](/guides/prompt-guidance?model=gpt-5.5#phase-parameter)。
 
 ### 往返传递助手 phase 值
 
@@ -391,7 +390,7 @@ print(response.output_text)
 *   将 `reasoning.effort` 视为调节旋钮，而不是恢复质量的主要方式。
 *   对于智能体或研究密集型工作流，定义什么算作完成以及模型应如何验证其工作。
 
-有关使用推理模型的最佳实践的更多信息，[请参阅本指南](/api/docs/guides/reasoning-best-practices)。
+有关使用推理模型的最佳实践的更多信息，[请参阅本指南](/guides/reasoning-best-practices)。
 
 ### 提示示例
 

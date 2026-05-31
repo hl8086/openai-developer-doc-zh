@@ -1,4 +1,3 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/file-inputs -->
 
 OpenAI 模型可以接受文件作为 `input_file` 项。在 Responses API 中，你可以以 Base64 编码数据、Files API (`/v1/files`) 返回的文件 ID 或外部 URL 的形式发送文件。
 
@@ -12,8 +11,8 @@ OpenAI 模型可以接受文件作为 `input_file` 项。在 Responses API 中�
 
 当以下相关工具更适合你的任务时，请使用它们：
 
-*   使用 [File Search](/api/docs/guides/tools-file-search) 对大文件进行检索，而不是直接将其作为 `input_file` 传递。
-*   使用 [Hosted Shell](/api/docs/guides/tools-shell#hosted-shell-quickstart) 处理需要详细分析的电子表格密集型任务，例如聚合、连接、图表或自定义计算。
+*   使用 [File Search](/guides/tools-file-search) 对大文件进行检索，而不是直接将其作为 `input_file` 传递。
+*   使用 [Hosted Shell](/guides/tools-shell#hosted-shell-quickstart) 处理需要详细分析的电子表格密集型任务，例如聚合、连接、图表或自定义计算。
 
 ## 非 PDF 图像和图表的限制
 
@@ -140,11 +139,11 @@ OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
 Console.WriteLine(response.GetOutputText());
 ```
 
-Chat Completions 不支持文件 URL。请使用 [Responses API](/api/docs/guides/file-inputs?api-mode=responses#file-urls) 来实现此选项。
+Chat Completions 不支持文件 URL。请使用 [Responses API](/guides/file-inputs?api-mode=responses#file-urls) 来实现此选项。
 
 ## 上传文件
 
-以下示例使用 [Files API](/api/docs/api-reference/files) 上传文件，然后在发送给模型的请求中引用其文件 ID。
+以下示例使用 [Files API]( https://developers.openai.com/api/reference/files) 上传文件，然后在发送给模型的请求中引用其文件 ID。
 
 **上传文件**
 
@@ -547,10 +546,10 @@ print(completion.choices[0].message.content)
 
 使用文件输入时请注意以下限制：
 
-*   **Token 用量：** PDF 解析会将提取的文本和页面图像都包含在上下文中，这可能会增加 token 用量。在大规模部署之前，请查看定价和 token 影响。[更多定价信息](/api/docs/pricing)。
+*   **Token 用量：** PDF 解析会将提取的文本和页面图像都包含在上下文中，这可能会增加 token 用量。在大规模部署之前，请查看定价和 token 影响。[更多定价信息](/pricing)。
 *   **文件大小限制：** 单个请求可以包含多个文件，但每个文件必须小于 50 MB。请求中所有文件的总大小限制为 50 MB。
 *   **支持的模型：** 包含文本和页面图像的 PDF 解析需要具有视觉能力的模型，如 `gpt-4o` 及更新的模型。
-*   **文件上传用途：** 你可以使用任何支持的 [purpose](/api/docs/api-reference/files/create#files-create-purpose) 上传文件，但对于计划作为模型输入传递的文件，请使用 `user_data`。
+*   **文件上传用途：** 你可以使用任何支持的 [purpose]( https://developers.openai.com/api/reference/files/create#files-create-purpose) 上传文件，但对于计划作为模型输入传递的文件，请使用 `user_data`。
 
 ## 接受的文件类型完整列表
 
@@ -569,8 +568,8 @@ print(completion.choices[0].message.content)
 
 [在 Playground 中试验文件输入 - 使用 Playground 开发和迭代带有文件输入的提示词。](https://platform.openai.com/chat/edit)
 
-[完整 API 参考 - 查看 API 参考以了解更多选项。](/api/docs/api-reference/responses)
+[完整 API 参考 - 查看 API 参考以了解更多选项。]( https://developers.openai.com/api/reference/responses)
 
-[使用 File Search 处理大型语料库 - 当你需要可扩展的搜索而不是在单个上下文窗口中发送整个文件时，使用对分块文件的检索。](/api/docs/guides/tools-file-search)
+[使用 File Search 处理大型语料库 - 当你需要可扩展的搜索而不是在单个上下文窗口中发送整个文件时，使用对分块文件的检索。](/guides/tools-file-search)
 
-[使用 Hosted Shell 进行深度电子表格分析 - 使用 Hosted Shell 处理高级电子表格工作流，如连接、聚合和图表。](/api/docs/guides/tools-shell#hosted-shell-quickstart)
+[使用 Hosted Shell 进行深度电子表格分析 - 使用 Hosted Shell 处理高级电子表格工作流，如连接、聚合和图表。](/guides/tools-shell#hosted-shell-quickstart)

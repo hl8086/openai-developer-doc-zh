@@ -1,4 +1,3 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/agents/orchestration -->
 
 多智能体工作流在需要由专家负责不同部分工作时非常有用。第一个设计决策是确定在工作流的每个分支中，谁拥有最终面向用户的回答的所有权。
 
@@ -105,8 +104,8 @@ main_agent = Agent(
 
 一旦所有权模式明确，继续阅读涵盖相关运行时或状态问题的指南。
 
-[智能体定义 - 完善每个专家的指令、工具和输出契约。](/api/docs/guides/agents/define-agents)
+[智能体定义 - 完善每个专家的指令、工具和输出契约。](/guides/agents/define-agents)
 
-[运行智能体 - 了解 handoffs 和工具在运行中的行为。](/api/docs/guides/agents/running-agents)
+[运行智能体 - 了解 handoffs 和工具在运行中的行为。](/guides/agents/running-agents)
 
-[结果与状态 - 了解 lastAgent 和可恢复状态如何影响下一轮对话。](/api/docs/guides/agents/results)
+[结果与状态 - 了解 lastAgent 和可恢复状态如何影响下一轮对话。](/guides/agents/results)

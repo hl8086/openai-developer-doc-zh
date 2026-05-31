@@ -1,4 +1,3 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/workload-identity-federation/google-cloud -->
 
 在以下任一场景中使用 Google Cloud 作为工作负载身份提供者：
 
@@ -45,7 +44,7 @@ TOKEN=$(curl -sS -G -H "Metadata-Flavor: Google" \
 
 在配置工作负载身份联合之前，在本地解码示例 Google 身份令牌并检查其声明：
 
-```
+```text
 TOKEN="$TOKEN" python3 - <<'PY'
 import base64
 import json
@@ -378,7 +377,7 @@ public final class GoogleWorkloadIdentityExample {
                         .GET()
                         .build();
 
-                HttpResponse<String> response = java.net.http.HttpClient.newHttpClient()
+                HttpResponse&lt;String> response = java.net.http.HttpClient.newHttpClient()
                         .send(request, HttpResponse.BodyHandlers.ofString());
                 if (response.statusCode() < 200 || response.statusCode() >= 300) {
                     throw new SubjectTokenProviderException(
@@ -408,7 +407,7 @@ public final class GoogleWorkloadIdentityExample {
         }
 
         @Override
-        public CompletableFuture<String> getTokenAsync(
+        public CompletableFuture&lt;String> getTokenAsync(
                 HttpClient httpClient, JsonMapper jsonMapper) {
             return CompletableFuture.supplyAsync(() -> getToken(httpClient, jsonMapper));
         }
@@ -531,7 +530,7 @@ GKE 工作负载可以使用以下任一方式进行身份验证：
 
 ### 设置 GKE
 
-这些说明假设使用托管 GKE 集群。对于自管理 Kubernetes 集群，请使用 [Kubernetes 指南](/api/docs/guides/workload-identity-federation/kubernetes)。
+这些说明假设使用托管 GKE 集群。对于自管理 Kubernetes 集群，请使用 [Kubernetes 指南](/guides/workload-identity-federation/kubernetes)。
 
 为需要调用 OpenAI API 的 GKE 工作负载使用 Kubernetes `ServiceAccount`。如果您还没有，请创建一个：
 
@@ -617,7 +616,7 @@ PY
     }
   }
 }
-```
+```text
 
 使用解码后的有效载荷将收到的令牌与 OpenAI 中配置的颁发者、受众和映射值进行比较。大多数配置问题在交换令牌之前就可以在 `iss`、`aud` 和 `sub` 声明中看到。
 
@@ -642,7 +641,7 @@ PY
 
 1.  **创建服务账号映射。** 将 **Name** 设置为工作负载身份提供者内的唯一值，例如 `default-openai-wif`。使用 **Description**，例如 `Default namespace GKE OpenAI API workload`，说明哪个工作负载可以使用该映射。
     
-2.  **匹配 GKE 服务账号主体。** 将 **Key** 设置为 `sub`，**Value** 设置为 `system:serviceaccount:default:openai-wif`。对于 GKE 服务账号，主体格式为 `system:serviceaccount:<namespace>:<service-account-name>`。
+2.  **匹配 GKE 服务账号主体。** 将 **Key** 设置为 `sub`，**Value** 设置为 `system:serviceaccount:default:openai-wif`。对于 GKE 服务账号，主体格式为 `system:serviceaccount:`&lt;namespace>`:`&lt;service-account-name>``。
     
 3.  **选择 OpenAI 目标。** 将 **Project** 设置为拥有目标服务账号的 OpenAI 项目。将 **Service account** 设置为 GKE 工作负载可以使用的 OpenAI 服务账号，例如 `google-gke-prod-openai-wif`。
     
@@ -861,7 +860,7 @@ public final class GoogleGkeWorkloadIdentityExample {
         }
 
         @Override
-        public CompletableFuture<String> getTokenAsync(
+        public CompletableFuture&lt;String> getTokenAsync(
                 HttpClient httpClient, JsonMapper jsonMapper) {
             return CompletableFuture.supplyAsync(() -> getToken(httpClient, jsonMapper));
         }

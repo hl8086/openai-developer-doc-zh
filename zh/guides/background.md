@@ -1,4 +1,3 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/background -->
 
 像 [Codex](https://openai.com/index/introducing-codex/) 和 [Deep Research](https://openai.com/index/introducing-deep-research/) 这样的智能体表明，推理模型可能需要几分钟来解决复杂问题。后台模式使你能够在 GPT-5.2 和 GPT-5.2 pro 等模型上可靠地执行长时间运行的任务，而无需担心超时或其他连接问题。
 

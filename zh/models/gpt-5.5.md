@@ -1,8 +1,7 @@
-<!-- Source: https://developers.openai.com/api/docs/models/gpt-5.5 -->
 
-[模型](/api/docs/models)
+[模型](/models)
 
-![gpt-5.5](/images/api/models/icons/gpt-5.5.png)
+![gpt-5.5]( https://cdn.openai.com/API/docs/images/api/models/icons/gpt-5.5.png)
 
 GPT-5.5
 
@@ -36,7 +35,7 @@ $5•$30
 
 文本
 
-GPT-5.5 是我们最新的前沿模型，适用于最复杂的专业工作。在我们的[最新模型指南](/api/docs/guides/latest-model)中了解更多。Reasoning.effort 支持：none、low、medium（默认）、high 和 xhigh。
+GPT-5.5 是我们最新的前沿模型，适用于最复杂的专业工作。在我们的[最新模型指南](/guides/latest-model)中了解更多。Reasoning.effort 支持：none、low、medium（默认）、high 和 xhigh。
 
 1,050,000 上下文窗口
 
@@ -48,7 +47,7 @@ GPT-5.5 是我们最新的前沿模型，适用于最复杂的专业工作。在
 
 定价
 
-定价基于使用的 token 数量，或根据模型类型的其他指标。对于特定工具模型（如搜索和计算机使用），每次工具调用会收取费用。详情请参阅[定价页面](/api/docs/pricing)。
+定价基于使用的 token 数量，或根据模型类型的其他指标。对于特定工具模型（如搜索和计算机使用），每次工具调用会收取费用。详情请参阅[定价页面](/pricing)。
 
 文本 token
 
@@ -248,7 +247,7 @@ Tool search
 
 快照允许您锁定模型的特定版本，以保持性能和行为的一致性。以下是 GPT-5.5 所有可用快照和别名的列表。
 
-![gpt-5.5](/images/api/models/icons/gpt-5.5.png)
+![gpt-5.5]( https://cdn.openai.com/API/docs/images/api/models/icons/gpt-5.5.png)
 
 gpt-5.5
 

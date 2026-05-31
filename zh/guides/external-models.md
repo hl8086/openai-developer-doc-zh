@@ -1,4 +1,3 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/external-models -->
 
 模型选择是帮助开发者改进 AI 应用的重要手段。在 OpenAI 平台上使用评估功能时，除了可以评估 OpenAI 的原生模型外，您还可以评估各种外部模型。
 
@@ -8,7 +7,7 @@
 
 要使用第三方模型，必须满足以下条件：
 
-*   您的 OpenAI 组织必须处于[使用层级 1](/api/docs/guides/rate-limits/usage-tiers#usage-tiers) 或更高层级。
+*   您的 OpenAI 组织必须处于[使用层级 1](/guides/rate-limits/usage-tiers#usage-tiers) 或更高层级。
 *   您的 OpenAI 组织管理员必须通过 [Settings > Organization > General](https://platform.openai.com/settings/organization/general) 启用此功能。要启用此功能，管理员必须接受所显示的使用免责声明。
 
 对外部模型的调用会将数据传递给第三方，并且与调用 OpenAI 模型相比，受不同的条款约束且安全保障较弱。
@@ -44,7 +43,7 @@ OpenAI 目前承担第三方模型的推理费用，但受以下基于您组织�
 
 一旦您有资格使用自定义提供商，您可以在 [Settings](https://platform.openai.com/settings/) 的 **Evaluations** 标签页下设置提供商。请注意，自定义提供商是按项目配置的。要连接您的自定义端点，您需要：
 
-*   与 [OpenAI 的 chat completions 端点](/api/docs/api-reference/chat/create)兼容的端点
+*   与 [OpenAI 的 chat completions 端点]( https://developers.openai.com/api/reference/chat/create)兼容的端点
 *   一个 API 密钥
 
 为您的端点命名，提供端点 URL，并指定您的 API 密钥。我们要求您使用 `https://` 端点，并且我们会加密您的密钥以确保安全。指定您希望评估的任何模型名称（slugs）。您可以点击 **Verify** 按钮来确保您的模型设置正确。这将向您的每个模型 slug 发送包含最少输入的测试调用，并指示任何失败情况。
@@ -62,6 +61,6 @@ OpenAI 目前承担第三方模型的推理费用，但受以下基于您组织�
 
 如需更多灵感，请访问 [OpenAI Cookbook](/cookbook)，其中包含示例代码和第三方资源链接，或了解更多关于我们评估工具的信息：
 
-[评估入门 - 使用数据集快速构建评估并迭代提示词。](/api/docs/guides/evaluation-getting-started)
+[评估入门 - 使用数据集快速构建评估并迭代提示词。](/guides/evaluation-getting-started)
 
-[使用评估 - 针对外部模型进行评估、通过 API 与评估交互等。](/api/docs/guides/evals)
+[使用评估 - 针对外部模型进行评估、通过 API 与评估交互等。](/guides/evals)

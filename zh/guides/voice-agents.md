@@ -1,4 +1,3 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/voice-agents -->
 
 语音代理将相同的代理概念转化为口语化的低延迟交互。关键的设计选择在于决定模型是否应该直接处理实时音频，还是由你的应用程序显式地串联语音转文本、文本推理和文本转语音。
 
@@ -52,9 +51,9 @@ await session.connect({
 
 当你需要更底层的控制时，从传输文档开始：
 
-*   [实时和音频概述](/api/docs/guides/realtime)
-*   [使用 WebRTC 的实时音频 API](/api/docs/guides/realtime-webrtc)
-*   [使用 WebSocket 的实时音频 API](/api/docs/guides/realtime-websocket)
+*   [实时和音频概述](/guides/realtime)
+*   [使用 WebRTC 的实时音频 API](/guides/realtime-webrtc)
+*   [使用 WebSocket 的实时音频 API](/guides/realtime-websocket)
 
 ## 构建链式语音工作流
 
@@ -109,20 +108,20 @@ if __name__ == "__main__":
 
 语音接口改变了传输和音频循环，但核心工作流决策是相同的：
 
-*   当语音代理需要外部能力时，使用[使用工具](/api/docs/guides/tools#usage-in-the-agents-sdk)。
-*   当口语工作流需要流式传输、延续或持久状态时，使用[运行代理](/api/docs/guides/agents/running-agents)。
-*   当口语工作流需要跨专家分支时，使用[编排和交接](/api/docs/guides/agents/orchestration)。
-*   当口语工作流需要安全检查或审批时，使用[护栏和人工审核](/api/docs/guides/agents/guardrails-approvals)。
-*   当你需要基于 MCP 的能力或想要检查语音工作流的行为时，使用[集成和可观测性](/api/docs/guides/agents/integrations-observability)。
+*   当语音代理需要外部能力时，使用[使用工具](/guides/tools#usage-in-the-agents-sdk)。
+*   当口语工作流需要流式传输、延续或持久状态时，使用[运行代理](/guides/agents/running-agents)。
+*   当口语工作流需要跨专家分支时，使用[编排和交接](/guides/agents/orchestration)。
+*   当口语工作流需要安全检查或审批时，使用[护栏和人工审核](/guides/agents/guardrails-approvals)。
+*   当你需要基于 MCP 的能力或想要检查语音工作流的行为时，使用[集成和可观测性](/guides/agents/integrations-observability)。
 
 实用规则是：首先选择音频架构，然后以与文本相同的方式设计代理工作流的其余部分。
 
 ## 后续步骤
 
-[实时和音频概述 - 为你的用例选择正确的实时或音频指南。](/api/docs/guides/realtime)
+[实时和音频概述 - 为你的用例选择正确的实时或音频指南。](/guides/realtime)
 
-[管理对话 - 使用实时会话生命周期和事件模型。](/api/docs/guides/realtime-conversations)
+[管理对话 - 使用实时会话生命周期和事件模型。](/guides/realtime-conversations)
 
-[WebRTC 连接 - 将浏览器和移动端音频直接连接到实时会话。](/api/docs/guides/realtime-webrtc)
+[WebRTC 连接 - 将浏览器和移动端音频直接连接到实时会话。](/guides/realtime-webrtc)
 
-[实时提示指南 - 调优推理、前言、工具、实体捕获和语音行为。](/api/docs/guides/realtime-models-prompting)
+[实时提示指南 - 调优推理、前言、工具、实体捕获和语音行为。](/guides/realtime-models-prompting)

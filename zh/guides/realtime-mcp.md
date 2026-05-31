@@ -1,6 +1,5 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/realtime-mcp -->
 
-你可以将工具附加到 Realtime 会话中，以便模型在实时对话期间查找数据、执行操作或调用服务。无论你的客户端使用的是 [WebRTC 数据通道](/api/docs/guides/realtime-webrtc) 还是 [WebSocket](/api/docs/guides/realtime-websocket)，工具配置都使用相同的事件接口。
+你可以将工具附加到 Realtime 会话中，以便模型在实时对话期间查找数据、执行操作或调用服务。无论你的客户端使用的是 [WebRTC 数据通道](/guides/realtime-webrtc) 还是 [WebSocket](/guides/realtime-websocket)，工具配置都使用相同的事件接口。
 
 当你的应用程序需要执行工具并返回结果时，使用 function 工具。当你希望 Realtime API 代替你连接到远程工具服务器时，使用 MCP 工具或内置连接器。
 
@@ -14,8 +13,8 @@
 
 在**以下两个位置之一**添加工具：
 
-*   在**会话级别**，通过 [`session.update`](/api/docs/api-reference/realtime-client-events/session/update) 中的 `session.tools`，如果你希望工具在整个会话期间可用。
-*   在**响应级别**，通过 [`response.create`](/api/docs/api-reference/realtime-client-events/response/create) 中的 `response.tools`，如果你只需要工具用于一个回合。
+*   在**会话级别**，通过 [`session.update`]( https://developers.openai.com/api/reference/realtime-client-events/session/update) 中的 `session.tools`，如果你希望工具在整个会话期间可用。
+*   在**响应级别**，通过 [`response.create`]( https://developers.openai.com/api/reference/realtime-client-events/response/create) 中的 `response.tools`，如果你只需要工具用于一个回合。
 
 ## 配置 function 工具
 
@@ -121,7 +120,7 @@ ws.send(json.dumps(event))
 ws.send(json.dumps({"type": "response.create"}))
 ```
 
-有关函数调用的完整逐事件演练，请参阅[管理对话](/api/docs/guides/realtime-conversations#function-calling)。
+有关函数调用的完整逐事件演练，请参阅[管理对话](/guides/realtime-conversations#function-calling)。
 
 ## 配置 MCP 工具
 
@@ -200,7 +199,7 @@ const event = {
         type: "mcp",
         server_label: "google_calendar",
         connector_id: "connector_googlecalendar",
-        authorization: "<google-oauth-access-token>",
+        authorization: "&lt;google-oauth-access-token>",
         allowed_tools: ["search_events", "read_event"],
         require_approval: "never",
       },
@@ -222,7 +221,7 @@ event = {
                 "type": "mcp",
                 "server_label": "google_calendar",
                 "connector_id": "connector_googlecalendar",
-                "authorization": "<google-oauth-access-token>",
+                "authorization": "&lt;google-oauth-access-token>",
                 "allowed_tools": ["search_events", "read_event"],
                 "require_approval": "never",
             }
@@ -243,11 +242,11 @@ ws.send(json.dumps(event))
 
 1.  你发送 `session.update` 或 `response.create`，其中包含 `type` 为 `mcp` 的 `tools` 条目。
 2.  服务器开始导入工具并发出 `mcp_list_tools.in_progress`。
-3.  在列表仍在进行中时，模型无法调用尚未加载的工具。如果你想在开始依赖这些工具的回合之前等待，请监听 [`mcp_list_tools.completed`](/api/docs/api-reference/realtime-server-events/mcp_list_tools/completed)。`item.type` 为 `mcp_list_tools` 的 [`conversation.item.done`](/api/docs/api-reference/realtime-server-events/conversation/item/done) 事件显示实际导入了哪些工具名称。如果导入失败，你将收到 [`mcp_list_tools.failed`](/api/docs/api-reference/realtime-server-events/mcp_list_tools/failed)。
+3.  在列表仍在进行中时，模型无法调用尚未加载的工具。如果你想在开始依赖这些工具的回合之前等待，请监听 [`mcp_list_tools.completed`]( https://developers.openai.com/api/reference/realtime-server-events/mcp_list_tools/completed)。`item.type` 为 `mcp_list_tools` 的 [`conversation.item.done`]( https://developers.openai.com/api/reference/realtime-server-events/conversation/item/done) 事件显示实际导入了哪些工具名称。如果导入失败，你将收到 [`mcp_list_tools.failed`]( https://developers.openai.com/api/reference/realtime-server-events/mcp_list_tools/failed)。
 4.  用户说话或发送文本，并创建响应，由你的客户端或会话配置自动创建。
 5.  如果模型选择了 MCP 工具，你将看到 `response.mcp_call_arguments.delta` 和 `response.mcp_call_arguments.done`。
 6.  **如果需要审批**，服务器会添加一个 `item.type` 为 `mcp_approval_request` 的对话项。你的客户端必须用 `mcp_approval_response` 项来回应。
-7.  工具运行后，你将看到 `response.mcp_call.in_progress`。成功时，你稍后会收到 `item.type` 为 `mcp_call` 的 [`response.output_item.done`](/api/docs/api-reference/realtime-server-events/response/output_item/done) 事件；失败时，你将收到 [`response.mcp_call.failed`](/api/docs/api-reference/realtime-server-events/response/mcp_call/failed)。助手消息项和 `response.done` 完成该回合。
+7.  工具运行后，你将看到 `response.mcp_call.in_progress`。成功时，你稍后会收到 `item.type` 为 `mcp_call` 的 [`response.output_item.done`]( https://developers.openai.com/api/reference/realtime-server-events/response/output_item/done) 事件；失败时，你将收到 [`response.mcp_call.failed`]( https://developers.openai.com/api/reference/realtime-server-events/response/mcp_call/failed)。助手消息项和 `response.done` 完成该回合。
 
 此事件处理程序涵盖了主要检查点：
 
@@ -399,8 +398,8 @@ def on_message(ws, message):
 
 ## 常见故障
 
-*   [`mcp_list_tools.failed`](/api/docs/api-reference/realtime-server-events/mcp_list_tools/failed)：Realtime API 无法从远程服务器或连接器导入工具。检查 `server_url` 或 `connector_id`、身份验证、服务器连接性以及你指定的任何 `allowed_tools` 名称。
-*   [`response.mcp_call.failed`](/api/docs/api-reference/realtime-server-events/response/mcp_call/failed)：模型选择了一个工具，但工具调用未完成。检查事件负载和后续的 `mcp_call` 项以查找 MCP 协议、执行或传输错误。
+*   [`mcp_list_tools.failed`]( https://developers.openai.com/api/reference/realtime-server-events/mcp_list_tools/failed)：Realtime API 无法从远程服务器或连接器导入工具。检查 `server_url` 或 `connector_id`、身份验证、服务器连接性以及你指定的任何 `allowed_tools` 名称。
+*   [`response.mcp_call.failed`]( https://developers.openai.com/api/reference/realtime-server-events/response/mcp_call/failed)：模型选择了一个工具，但工具调用未完成。检查事件负载和后续的 `mcp_call` 项以查找 MCP 协议、执行或传输错误。
 *   `mcp_approval_request` 没有匹配的 `mcp_approval_response`：工具调用无法继续，直到你的客户端明确批准或拒绝它。
 *   在 `mcp_list_tools.in_progress` 仍然活跃时开始一个回合：只有已完成加载的工具才有资格用于该回合。
 *   响应使用 `tool_choice: "required"` 但当前没有可用工具：模型没有可调用的合格工具。等待 `mcp_list_tools.completed`，确认至少导入了一个工具，或者对不需要工具的回合使用不同的 `tool_choice`。
@@ -408,7 +407,7 @@ def on_message(ws, message):
 
 ## 批准或拒绝 MCP 工具调用
 
-如果工具需要审批，Realtime API 会在对话中插入一个 `mcp_approval_request` 项。**要继续**，发送一个新的 [`conversation.item.create`](/api/docs/api-reference/realtime-client-events/conversation/item/create) 事件，其 `item.type` 为 `mcp_approval_response`。
+如果工具需要审批，Realtime API 会在对话中插入一个 `mcp_approval_request` 项。**要继续**，发送一个新的 [`conversation.item.create`]( https://developers.openai.com/api/reference/realtime-client-events/conversation/item/create) 事件，其 `item.type` 为 `mcp_approval_response`。
 
 **批准 MCP 请求**
 

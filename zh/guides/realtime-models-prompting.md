@@ -1,4 +1,3 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/realtime-models-prompting -->
 
 `gpt-realtime-2` 是我们最先进的推理语音模型，专为低延迟的语音到语音应用设计。它能在说话前进行思考，更可靠地遵循指令，使用更大的上下文窗口，并且比早期的实时模型更精确地调用工具。
 
@@ -10,8 +9,8 @@
 
 | 模型 | 适用场景 | 提示词重点 |
 | --- | --- | --- |
-| [`gpt-realtime-2`](/api/docs/models/gpt-realtime-2) | 需要最强的实时推理、工具使用和指令遵循能力。 | 调整推理力度、前导语、工具策略、精确实体捕获和长会话状态。 |
-| [`gpt-realtime-1.5`](/api/docs/models/gpt-realtime-1.5) | 需要快速、可靠的非推理语音到语音模型。 | 遵循核心实时提示词结构，并测试延迟敏感行为。 |
+| [`gpt-realtime-2`](/models/gpt-realtime-2) | 需要最强的实时推理、工具使用和指令遵循能力。 | 调整推理力度、前导语、工具策略、精确实体捕获和长会话状态。 |
+| [`gpt-realtime-1.5`](/models/gpt-realtime-1.5) | 需要快速、可靠的非推理语音到语音模型。 | 遵循核心实时提示词结构，并测试延迟敏感行为。 |
 
 gpt-realtime-2gpt-realtime-1.5
 
@@ -96,7 +95,7 @@ gpt-realtime-2gpt-realtime-1.5
 
 `gpt-realtime-2` 默认生成前导语。先测试默认行为。如果不符合你的产品体验，再明确调整。
 
-![Preamble generation and playback timeline](/images/platform/guides/realtime-2-preambles.png)
+![Preamble generation and playback timeline]( https://cdn.openai.com/API/docs/images/platform/guides/realtime-2-preambles.png)
 
 ```
 ## Preambles
@@ -991,7 +990,7 @@ You are a high-energy game-show host guiding the caller to guess a secret number
 
 以下是使用 `gpt-realtime-1.5` 应用指令后的回复。
 
-![lang constraint en](/cookbook/assets/images/lang_constraint_en.png)
+![lang constraint en]( https://cdn.openai.com/API/docs/cookbook/assets/images/lang_constraint_en.png)
 
 #### 示例（模型教授语言）
 
@@ -1021,7 +1020,7 @@ Speak in French when conducting practice, giving examples, or engaging in dialog
 
 以下是使用 `gpt-realtime-1.5` 应用指令后的回复。
 
-![multi language](/cookbook/assets/images/multi-language.png)
+![multi language]( https://cdn.openai.com/API/docs/cookbook/assets/images/multi-language.png)
 
 模型能够根据自定义指令从一种语言切换到另一种语言。
 
@@ -1058,11 +1057,11 @@ Speak in French when conducting practice, giving examples, or engaging in dialog
 
 以下是使用 `gpt-realtime-1.5` 应用指令**之前**的回复。模型重复相同的确认：`Got it`。
 
-![repeat before](/cookbook/assets/images/repeat_before.png)
+![repeat before]( https://cdn.openai.com/API/docs/cookbook/assets/images/repeat_before.png)
 
 以下是使用 `gpt-realtime-1.5` 应用指令**之后**的回复。
 
-![repeat after](/cookbook/assets/images/repeat_after.png)
+![repeat after]( https://cdn.openai.com/API/docs/cookbook/assets/images/repeat_after.png)
 
 现在模型能够变化其回复和确认，不再听起来机械化。
 
@@ -1145,7 +1144,7 @@ _（取自我们 [openai-realtime-agents](https://github.com/openai/openai-realt
 
 此章节介绍指导模型解决任务、应用最佳实践和修复可能问题的提示词指导。
 
-也许不出所料，我们推荐类似于 [GPT-4.1 最佳效果](/cookbook/examples/gpt4-1_prompting_guide) 的提示模式。
+也许不出所料，我们推荐类似于 [GPT-4.1 最佳效果]( https://cdn.openai.com/API/docs/cookbook/examples/gpt4-1_prompting_guide) 的提示模式。
 
 ### 指令遵循
 
@@ -1306,7 +1305,7 @@ Can you provide some variants of the prompt so that the model can better underst
 
 以下是使用 `gpt-realtime-1.5` 应用指令后的回复。
 
-![tool proactive](/cookbook/assets/images/tool_proactive.png)
+![tool proactive]( https://cdn.openai.com/API/docs/cookbook/assets/images/tool_proactive.png)
 
 使用该指令，模型在工具调用的同时输出音频回复 "I'm checking that right now"。
 
@@ -1363,7 +1362,7 @@ Preamble sample phrases:
 
 以下是使用 `gpt-realtime-1.5` 应用指令**之后**的回复。
 
-![tool no confirm](/cookbook/assets/images/tool_no_confirm.png)
+![tool no confirm]( https://cdn.openai.com/API/docs/cookbook/assets/images/tool_no_confirm.png)
 
 在示例中，你会注意到实时模型没有产生任何回复音频；它直接调用了相应的工具。
 
@@ -1955,18 +1954,18 @@ Examples that would require escalation:
 
 第一个示例展示了使用该指令的 `gpt-4o-realtime-preview-2025-06-03` 的对话回复。
 
-![escalate 06](/cookbook/assets/images/escalate_06.png)
+![escalate 06]( https://cdn.openai.com/API/docs/cookbook/assets/images/escalate_06.png)
 
 第二个示例展示了使用该指令的 `gpt-realtime-1.5` 的对话回复。
 
-![escalate 07](/cookbook/assets/images/escalate_07.png)
+![escalate 07]( https://cdn.openai.com/API/docs/cookbook/assets/images/escalate_07.png)
 
 `gpt-realtime-1.5` 能够遵循指令并更可靠地升级到人工。
 
 ## 后续步骤
 
-*   查看早期的 [Realtime 提示词指南](/cookbook/examples/realtime_prompting_guide) 获取更多 `gpt-realtime-1.5` 示例。
-*   查看 [Realtime 评估指南](/cookbook/examples/realtime_eval_guide) 来测试代表性的语音代理行为。
-*   了解如何通过 [WebRTC](/api/docs/guides/realtime-webrtc)、[WebSocket](/api/docs/guides/realtime-websocket) 或 [SIP](/api/docs/guides/realtime-sip) 连接。
-*   了解 [Realtime 对话生命周期](/api/docs/guides/realtime-conversations)。
-*   查看 [Realtime 成本](/api/docs/guides/realtime-costs)。
+*   查看早期的 [Realtime 提示词指南]( https://cdn.openai.com/API/docs/cookbook/examples/realtime_prompting_guide) 获取更多 `gpt-realtime-1.5` 示例。
+*   查看 [Realtime 评估指南]( https://cdn.openai.com/API/docs/cookbook/examples/realtime_eval_guide) 来测试代表性的语音代理行为。
+*   了解如何通过 [WebRTC](/guides/realtime-webrtc)、[WebSocket](/guides/realtime-websocket) 或 [SIP](/guides/realtime-sip) 连接。
+*   了解 [Realtime 对话生命周期](/guides/realtime-conversations)。
+*   查看 [Realtime 成本](/guides/realtime-costs)。

@@ -1,4 +1,3 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/agents/running-agents -->
 
 定义一个 agent 只是设置步骤。运行时的问题是：单次运行做什么、下一轮如何继续、以及工作流在暂停等待审批或工具工作时如何表现。
 
@@ -222,8 +221,8 @@ if __name__ == "__main__":
 
 一旦运行时循环清晰了，请转到与你需要设计的下一个工作流边界匹配的指南。
 
-[结果和状态 - 了解你的应用应该将哪些结果表面带入下一轮。](/api/docs/guides/agents/results)
+[结果和状态 - 了解你的应用应该将哪些结果表面带入下一轮。](/guides/agents/results)
 
-[编排和移交 - 决定多个专家在同一运行时循环内如何协作。](/api/docs/guides/agents/orchestration)
+[编排和移交 - 决定多个专家在同一运行时循环内如何协作。](/guides/agents/orchestration)
 
-[Guardrails 和人工审核 - 添加验证和审批暂停而不破坏轮次连续性。](/api/docs/guides/agents/guardrails-approvals)
+[Guardrails 和人工审核 - 添加验证和审批暂停而不破坏轮次连续性。](/guides/agents/guardrails-approvals)

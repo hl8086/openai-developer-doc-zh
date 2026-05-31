@@ -1,4 +1,3 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/tools-shell -->
 
 Shell 工具赋予模型在完整终端环境中工作的能力。我们支持本地执行和通过 Responses API 进行托管执行的 shell。
 
@@ -7,7 +6,7 @@ Shell 工具允许模型通过以下方式运行命令：
 *   由 OpenAI 管理的托管 shell 容器。
 *   你自行托管和执行的[本地 shell 运行时](#local-shell-mode)。
 
-Shell 通过 [Responses API](/api/docs/guides/responses-vs-chat-completions) 提供。它不支持通过 Chat Completions API 使用。
+Shell 通过 [Responses API](/guides/responses-vs-chat-completions) 提供。它不支持通过 Chat Completions API 使用。
 
 运行任意 shell 命令可能存在危险。请始终对执行进行沙箱隔离，尽可能应用允许列表或拒绝列表，并记录工具活动以供审计。
 
@@ -223,7 +222,7 @@ print(response.output_text)
 
 技能是可复用的、版本化的包，你可以将其挂载到托管 shell 环境中。这定义了可用的技能，在 shell 执行时模型决定是否调用它们。
 
-使用[技能指南](/api/docs/guides/tools-skills)了解上传和版本管理的详细信息。
+使用[技能指南](/guides/tools-skills)了解上传和版本管理的详细信息。
 
 **创建附加技能的容器**
 
@@ -384,7 +383,7 @@ print(response.output_text)
 
 托管 Shell 和 Code Interpreter 使用的托管容器可能会在容器活跃期间将临时应用状态写入容器文件系统（由临时块存储支持）。容器数据在容器过期或被显式删除时删除。
 
-有关数据控制的更多详情，请参阅 [ZDR 和数据驻留](/api/docs/guides/your-data)。
+有关数据控制的更多详情，请参阅 [ZDR 和数据驻留](/guides/your-data)。
 
 ### 下载产物
 
@@ -598,11 +597,11 @@ client = OpenAI()
 deleted = client.containers.delete("container_id")
 
 print(deleted)
-```
+```text
 
 ## 域名密钥
 
-当你的 `allowed_domains` 列表中的域名需要私有授权头（例如 `Authorization: Bearer <token>`）时，使用 `domain_secrets`。
+当你的 `allowed_domains` 列表中的域名需要私有授权头（例如 `Authorization: Bearer `&lt;token>``）时，使用 `domain_secrets`。
 
 每个密钥条目包括：
 
@@ -962,11 +961,11 @@ shell\_call\_output 载荷示例
 }
 ```
 
-有关旧版迁移详情，请参阅旧版[本地 shell 指南](/api/docs/guides/tools-local-shell)。
+有关旧版迁移详情，请参阅旧版[本地 shell 指南](/guides/tools-local-shell)。
 
 ## 在 Agents SDK 中使用本地 shell
 
-如果你正在使用 [Agents SDK](/api/docs/guides/tools#usage-in-the-agents-sdk)，可以将你自己的 shell 执行器实现传递给 shell 工具辅助函数。
+如果你正在使用 [Agents SDK](/guides/tools#usage-in-the-agents-sdk)，可以将你自己的 shell 执行器实现传递给 shell 工具辅助函数。
 
 **在 Agents SDK 中使用本地 shell**
 
@@ -982,7 +981,7 @@ import {
 } from "@openai/agents";
 
 class LocalShell implements Shell {
-  async run(action: ShellAction): Promise<ShellResult> {
+  async run(action: ShellAction): Promise&lt;ShellResult> {
     return {
       output: [
         {
@@ -1108,4 +1107,4 @@ if __name__ == "__main__":
 
 #### 验证数据驻留和保留要求
 
-[OpenAI 数据控制](/api/docs/guides/your-data)适用于 OpenAI 边界内。但是，通过网络连接传输到第三方服务的数据受其数据保留策略约束。确保外部端点满足你的驻留、保留和合规要求。
+[OpenAI 数据控制](/guides/your-data)适用于 OpenAI 边界内。但是，通过网络连接传输到第三方服务的数据受其数据保留策略约束。确保外部端点满足你的驻留、保留和合规要求。

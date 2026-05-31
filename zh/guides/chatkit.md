@@ -1,4 +1,3 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/chatkit -->
 
 ChatKit 是构建智能体聊天体验的最佳方式。无论你是在构建内部知识库助手、HR 入职帮手、研究伴侣、购物或日程安排助手、故障排除机器人、财务规划顾问还是客服代理，ChatKit 都提供了可定制的聊天嵌入组件来处理所有用户体验细节。
 
@@ -8,14 +7,14 @@ ChatKit 是构建智能体聊天体验的最佳方式。无论你是在构建内
 
 实现 ChatKit 有两种方式：
 
-*   **推荐集成方式**。在你的前端嵌入 ChatKit，自定义其外观和风格，让 OpenAI 从 [Agent Builder](/api/docs/guides/agent-builder) 托管和扩展后端。需要一个开发服务器。
+*   **推荐集成方式**。在你的前端嵌入 ChatKit，自定义其外观和风格，让 OpenAI 从 [Agent Builder](/guides/agent-builder) 托管和扩展后端。需要一个开发服务器。
 *   **高级集成方式**。在你自己的基础设施上运行 ChatKit。使用 ChatKit Python SDK 并连接到任何智能体后端。使用组件构建前端。
 
 ## ChatKit 入门
 
 [在你的前端嵌入 ChatKit嵌入聊天组件，自定义其外观和风格，让 OpenAI 托管和扩展后端](#embed-chatkit-in-your-frontend)
 
-[高级集成使用任何后端和 ChatKit SDK 构建你自己的自定义 ChatKit 用户体验](/api/docs/guides/custom-chatkit)
+[高级集成使用任何后端和 ChatKit SDK 构建你自己的自定义 ChatKit 用户体验](/guides/custom-chatkit)
 
 ## 在你的前端嵌入 ChatKit
 
@@ -28,7 +27,7 @@ ChatKit](https://cdn.openai.com/API/docs/images/openai-hosted.png)
 
 ### 1\. 创建智能体工作流
 
-使用 [Agent Builder](/api/docs/guides/agent-builder) 创建智能体工作流。Agent Builder 是一个用于设计多步骤智能体工作流的可视化画布。你将获得一个工作流 ID。
+使用 [Agent Builder](/guides/agent-builder) 创建智能体工作流。Agent Builder 是一个用于设计多步骤智能体工作流的可视化画布。你将获得一个工作流 ID。
 
 嵌入在你前端的聊天将指向你创建的工作流作为后端。
 
@@ -72,7 +71,7 @@ ChatKit](https://cdn.openai.com/API/docs/images/openai-hosted.png)
     ```typescript
     export default async function getChatKitSessionToken(
     deviceId: string
-    ): Promise<string> {
+    ): Promise&lt;string> {
     const response = await fetch("https://api.openai.com/v1/chatkit/sessions", {
         method: "POST",
         headers: {
@@ -96,17 +95,17 @@ ChatKit](https://cdn.openai.com/API/docs/images/openai-hosted.png)
     
     ```
     npm install @openai/chatkit-react
-    ```
+    ```text
     
-4.  将 ChatKit JS 脚本添加到你的页面。将此代码片段放入页面的 `<head>` 或你加载脚本的任何位置，浏览器将为你获取并运行 ChatKit。
+4.  将 ChatKit JS 脚本添加到你的页面。将此代码片段放入页面的 ``&lt;head>`` 或你加载脚本的任何位置，浏览器将为你获取并运行 ChatKit。
     
     **index.html**
     
     ```html
-    <script
+    &lt;script
     src="https://cdn.platform.openai.com/deployments/chatkit/chatkit.js"
     async
-    ></script>
+    >&lt;/script>
     ```
     
 5.  在你的 UI 中渲染 ChatKit。此代码从你的服务器获取客户端密钥并挂载一个实时聊天组件，连接到你的工作流作为后端。
@@ -136,7 +135,7 @@ ChatKit](https://cdn.openai.com/API/docs/images/openai-hosted.png)
            },
          });
     
-         return <ChatKit control={control} className="h-[600px] w-[320px]" />;
+         return &lt;ChatKit control={control} className="h-[600px] w-[320px]" />;
        }
     ```
     ```javascript
@@ -167,7 +166,7 @@ ChatKit](https://cdn.openai.com/API/docs/images/openai-hosted.png)
 
 ### 3\. 构建和迭代
 
-查看[自定义主题](/api/docs/guides/chatkit-themes)、[组件](/api/docs/guides/chatkit-widgets)和[操作](/api/docs/guides/chatkit-actions)文档，了解更多关于 ChatKit 工作原理的信息。或探索以下资源来测试你的聊天、迭代提示词，以及添加组件和工具。
+查看[自定义主题](/guides/chatkit-themes)、[组件](/guides/chatkit-widgets)和[操作](/guides/chatkit-actions)文档，了解更多关于 ChatKit 工作原理的信息。或探索以下资源来测试你的聊天、迭代提示词，以及添加组件和工具。
 
 #### 构建你的实现
 
@@ -193,4 +192,4 @@ ChatKit](https://cdn.openai.com/API/docs/images/openai-hosted.png)
 
 ## 后续步骤
 
-当你对 ChatKit 实现满意后，了解如何通过[评估](/api/docs/guides/agent-evals)来优化它。要在你自己的基础设施上运行 ChatKit，请参阅[高级集成文档](/api/docs/guides/custom-chatkit)。
+当你对 ChatKit 实现满意后，了解如何通过[评估](/guides/agent-evals)来优化它。要在你自己的基础设施上运行 ChatKit，请参阅[高级集成文档](/guides/custom-chatkit)。

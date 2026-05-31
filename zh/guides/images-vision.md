@@ -1,8 +1,7 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/images-vision -->
 
 ## 概述
 
-[创建图像使用 GPT Image 模型生成或编辑图像。](/api/docs/guides/image-generation)
+[创建图像使用 GPT Image 模型生成或编辑图像。](/guides/image-generation)
 
 [处理图像输入使用我们模型的视觉能力来分析图像。](#analyze-images)
 
@@ -16,11 +15,11 @@ OpenAI API 提供了多个端点来处理图像输入或生成图像输出，使
 
 | API | 支持的用例 |
 | --- | --- |
-| [Responses API](/api/docs/api-reference/responses) | 分析图像并将其用作输入和/或生成图像作为输出 |
-| [Images API](/api/docs/api-reference/images) | 生成图像作为输出，可选择使用图像作为输入 |
-| [Chat Completions API](/api/docs/api-reference/chat) | 分析图像并将其用作输入以生成文本或音频 |
+| [Responses API]( https://developers.openai.com/api/reference/responses) | 分析图像并将其用作输入和/或生成图像作为输出 |
+| [Images API]( https://developers.openai.com/api/reference/images) | 生成图像作为输出，可选择使用图像作为输入 |
+| [Chat Completions API]( https://developers.openai.com/api/reference/chat) | 分析图像并将其用作输入以生成文本或音频 |
 
-要了解更多关于我们模型支持的输入和输出模态，请参阅我们的[模型页面](/api/docs/models)。
+要了解更多关于我们模型支持的输入和输出模态，请参阅我们的[模型页面](/models)。
 
 ## 生成或编辑图像
 
@@ -86,7 +85,7 @@ input: Generate an image of a gray tabby cat hugging an otter with an orange sca
 YAML
 ```
 
-您可以在我们的[图像生成](/api/docs/guides/image-generation)指南中了解更多关于图像生成的信息。
+您可以在我们的[图像生成](/guides/image-generation)指南中了解更多关于图像生成的信息。
 
 ### 利用世界知识进行图像生成
 
@@ -251,7 +250,7 @@ completion = client.chat.completions.create(
 print(completion.choices[0].message.content)
 ```
 ```curl
-BASE64_IMAGE=$(base64 < path_to_your_image.jpg) && curl https://api.openai.com/v1/chat/completions   -H "Content-Type: application/json"   -H "Authorization: Bearer $OPENAI_API_KEY"   -d @- <<EOF
+BASE64_IMAGE=$(base64 < path_to_your_image.jpg) && curl https://api.openai.com/v1/chat/completions   -H "Content-Type: application/json"   -H "Authorization: Bearer $OPENAI_API_KEY"   -d @- <&lt;EOF
   {
     "model": "gpt-4.1-mini",
     "messages": [
@@ -280,7 +279,7 @@ EOF
 
 *   提供图像文件的完整 URL
 *   以 Base64 编码的数据 URL 提供图像
-*   提供文件 ID（通过 [Files API](/api/docs/api-reference/files) 创建）
+*   提供文件 ID（通过 [Files API]( https://developers.openai.com/api/reference/files) 创建）
 
 您可以在单个请求中通过在 `content` 数组中包含多个图像来提供多个图像作为输入，但请注意[图像会计为 token](#calculating-costs) 并相应计费。
 
@@ -585,7 +584,7 @@ OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
 ]);
 
 Console.WriteLine(response.GetOutputText());
-```
+```text
 
 ### 图像输入要求
 
@@ -621,7 +620,7 @@ Console.WriteLine(response.GetOutputText());
 | `original` | 大型、密集、空间敏感或计算机使用图像。在 `gpt-5.4` 及未来模型上可用。 |
 | `auto` | 自动细节选择。在 `gpt-5.5` 上，`auto` 和省略/默认行为等同于 `original`。 |
 
-对于 `gpt-5.4` 及未来模型上的计算机使用、定位和点击精度用例，我们建议使用 `"detail": "original"`。有关更多详情，请参阅[计算机使用指南](/api/docs/guides/tools-computer-use)。
+对于 `gpt-5.4` 及未来模型上的计算机使用、定位和点击精度用例，我们建议使用 `"detail": "original"`。有关更多详情，请参阅[计算机使用指南](/guides/tools-computer-use)。
 
 在下方的[模型缩放行为](#model-sizing-behavior)部分阅读更多关于模型如何调整图像大小的信息，以及在[计算成本](#calculating-costs)部分了解 token 成本。
 
@@ -720,14 +719,14 @@ _对于 `gpt-4.1-mini` 和 `gpt-4.1-nano`，这适用于 2025-04-14 快照变体
 
 ### GPT Image 1
 
-对于 GPT Image 1，我们以与上述相同的方式计算图像输入的成本，不同之处在于我们将图像缩小使最短边为 512px 而不是 768px。价格取决于图像的尺寸和[输入保真度](/api/docs/guides/image-generation?image-generation-model=gpt-image-1#input-fidelity)。
+对于 GPT Image 1，我们以与上述相同的方式计算图像输入的成本，不同之处在于我们将图像缩小使最短边为 512px 而不是 768px。价格取决于图像的尺寸和[输入保真度](/guides/image-generation?image-generation-model=gpt-image-1#input-fidelity)。
 
 当输入保真度设置为 low 时，基础成本为 65 个图像 token，每个瓦片花费 129 个图像 token。使用 high 输入保真度时，我们会根据图像的纵横比在上述图像 token 之外添加固定数量的 token。
 
 *   如果您的图像是正方形的，我们会额外添加 4160 个输入图像 token。
 *   如果更接近纵向或横向，我们会额外添加 6240 个 token。
 
-要查看图像输入 token 的定价，请参阅我们的[定价页面](/api/docs/pricing#latest-models)。
+要查看图像输入 token 的定价，请参阅我们的[定价页面](/pricing#latest-models)。
 
 ## 限制
 

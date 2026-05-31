@@ -1,4 +1,3 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/priority-processing -->
 
 优先处理（Priority processing）相比标准处理提供显著更低且更一致的延迟，同时保持按需付费的灵活性。
 
@@ -67,9 +66,9 @@ print(response)
 
 ## 使用注意事项
 
-*   每 token 的费用按标准价格的溢价计费——详见[定价](/api/docs/pricing)了解更多信息。
+*   每 token 的费用按标准价格的溢价计费——详见[定价](/pricing)了解更多信息。
 *   缓存折扣仍适用于优先处理请求。
 *   优先处理同样适用于多模态/图像输入请求。
 *   使用优先处理的请求可以在仪表板中通过"按服务层级分组"选项查看。
-*   请参阅[定价页面](/api/docs/pricing)了解当前支持优先处理的模型。
+*   请参阅[定价页面](/pricing)了解当前支持优先处理的模型。
 *   长上下文、微调模型和嵌入模型尚不支持。

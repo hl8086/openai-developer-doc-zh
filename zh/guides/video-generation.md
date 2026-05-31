@@ -1,16 +1,15 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/video-generation -->
 
 探索
 
-[![](https://cdn.openai.com/API/docs/video-gallery/posters/Space-Race.jpg)](/api/docs/guides/video-generation?gallery=open&galleryItem=Space-Race)[![](https://cdn.openai.com/API/docs/video-gallery/posters/maui.jpg)](/api/docs/guides/video-generation?gallery=open&galleryItem=maui)[![](https://cdn.openai.com/API/docs/video-gallery/posters/Upside-Down-City.jpg)](/api/docs/guides/video-generation?gallery=open&galleryItem=Upside-Down-City)[![](https://cdn.openai.com/API/docs/video-gallery/posters/fox-walk.jpg)](/api/docs/guides/video-generation?gallery=open&galleryItem=fox-walk)[![](https://cdn.openai.com/API/docs/video-gallery/posters/zebra-chase.jpg)](/api/docs/guides/video-generation?gallery=open&galleryItem=zebra-chase)[![](https://cdn.openai.com/API/docs/video-gallery/posters/mushroom-network.jpg)](/api/docs/guides/video-generation?gallery=open&galleryItem=mushroom-network)[![](https://cdn.openai.com/API/docs/video-gallery/posters/90s-TV-Ad.jpg)](/api/docs/guides/video-generation?gallery=open&galleryItem=90s-TV-Ad)[![](https://cdn.openai.com/API/docs/video-gallery/posters/chameleon.jpg)](/api/docs/guides/video-generation?gallery=open&galleryItem=chameleon)[![](https://cdn.openai.com/API/docs/video-gallery/posters/cozy-coffee-shop-interior.jpg)](/api/docs/guides/video-generation?gallery=open&galleryItem=Cozy-Coffee-Shop-Interior)[![](https://cdn.openai.com/API/docs/video-gallery/posters/coloring.jpg)](/api/docs/guides/video-generation?gallery=open&galleryItem=coloring)[![](https://cdn.openai.com/API/docs/video-gallery/posters/Sleeping-Otters.jpg)](/api/docs/guides/video-generation?gallery=open&galleryItem=Sleeping-Otters)[![](https://cdn.openai.com/API/docs/video-gallery/posters/indie-cafe-rainy-window.jpg)](/api/docs/guides/video-generation?gallery=open&galleryItem=indie-cafe-rainy-window)
+[![](https://cdn.openai.com/API/docs/video-gallery/posters/Space-Race.jpg)](/guides/video-generation?gallery=open&galleryItem=Space-Race)[![](https://cdn.openai.com/API/docs/video-gallery/posters/maui.jpg)](/guides/video-generation?gallery=open&galleryItem=maui)[![](https://cdn.openai.com/API/docs/video-gallery/posters/Upside-Down-City.jpg)](/guides/video-generation?gallery=open&galleryItem=Upside-Down-City)[![](https://cdn.openai.com/API/docs/video-gallery/posters/fox-walk.jpg)](/guides/video-generation?gallery=open&galleryItem=fox-walk)[![](https://cdn.openai.com/API/docs/video-gallery/posters/zebra-chase.jpg)](/guides/video-generation?gallery=open&galleryItem=zebra-chase)[![](https://cdn.openai.com/API/docs/video-gallery/posters/mushroom-network.jpg)](/guides/video-generation?gallery=open&galleryItem=mushroom-network)[![](https://cdn.openai.com/API/docs/video-gallery/posters/90s-TV-Ad.jpg)](/guides/video-generation?gallery=open&galleryItem=90s-TV-Ad)[![](https://cdn.openai.com/API/docs/video-gallery/posters/chameleon.jpg)](/guides/video-generation?gallery=open&galleryItem=chameleon)[![](https://cdn.openai.com/API/docs/video-gallery/posters/cozy-coffee-shop-interior.jpg)](/guides/video-generation?gallery=open&galleryItem=Cozy-Coffee-Shop-Interior)[![](https://cdn.openai.com/API/docs/video-gallery/posters/coloring.jpg)](/guides/video-generation?gallery=open&galleryItem=coloring)[![](https://cdn.openai.com/API/docs/video-gallery/posters/Sleeping-Otters.jpg)](/guides/video-generation?gallery=open&galleryItem=Sleeping-Otters)[![](https://cdn.openai.com/API/docs/video-gallery/posters/indie-cafe-rainy-window.jpg)](/guides/video-generation?gallery=open&galleryItem=indie-cafe-rainy-window)
 
-Sora 2 视频生成模型和 Videos API 已弃用，将于 2026 年 9 月 24 日关闭。受影响的包括 Videos API、`sora-2`、`sora-2-pro`、`sora-2-2025-10-06`、`sora-2-2025-12-08` 和 `sora-2-pro-2025-10-06`。详情请参阅[弃用页面](/api/docs/deprecations)。
+Sora 2 视频生成模型和 Videos API 已弃用，将于 2026 年 9 月 24 日关闭。受影响的包括 Videos API、`sora-2`、`sora-2-pro`、`sora-2-2025-10-06`、`sora-2-2025-12-08` 和 `sora-2-pro-2025-10-06`。详情请参阅[弃用页面](/deprecations)。
 
 ## 概述
 
 Sora 是 OpenAI 在生成式媒体领域的最新前沿成果——一个最先进的视频模型，能够根据自然语言或图像创建细节丰富、动态生动且带有音频的视频片段。基于多年的多模态扩散研究，并在多样化的视觉数据上训练，Sora 为文本到视频生成带来了对 3D 空间、运动和场景连续性的深刻理解。
 
-[Videos API](/api/reference/resources/videos) 首次向开发者开放了这些能力，支持以编程方式创建、延展、编辑和管理视频。
+[Videos API]( https://developers.openai.com/api/reference/resources/videos) 首次向开发者开放了这些能力，支持以编程方式创建、延展、编辑和管理视频。
 
 你可以用它来：
 
@@ -20,7 +19,7 @@ Sora 是 OpenAI 在生成式媒体领域的最新前沿成果——一个最先�
 *   通过视频延展来继续已完成的片段。
 *   对现有视频进行有针对性的编辑修改。
 *   下载已完成的视频和辅助资产。
-*   通过 [Batch API](/api/docs/guides/batch) 提交大规模离线渲染队列。
+*   通过 [Batch API](/guides/batch) 提交大规模离线渲染队列。
 
 ## 模型
 
@@ -137,7 +136,7 @@ API 强制执行以下内容限制：
 *   _"一个孩子在草地公园放红色风筝的广角镜头，黄金时段的阳光，镜头缓慢向上平移。"_
 *   _"木桌上一杯冒着热气的咖啡的特写，百叶窗透过的晨光，柔和的景深。"_
 
-这种程度的具体描述有助于模型产生一致的结果，而不会生成不需要的细节。更多高级提示词技巧，请参阅我们专门的 Sora 2 [提示词指南](/cookbook/examples/sora/sora2_prompting_guide)。
+这种程度的具体描述有助于模型产生一致的结果，而不会生成不需要的细节。更多高级提示词技巧，请参阅我们专门的 Sora 2 [提示词指南]( https://cdn.openai.com/API/docs/cookbook/examples/sora/sora2_prompting_guide)。
 
 ### 监控进度
 
@@ -213,7 +212,7 @@ asyncio.run(main())
 
 #### 使用 webhooks 接收通知
 
-与其反复使用 `GET` 轮询任务状态，不如注册一个 [webhook](/api/docs/guides/webhooks) 以在视频生成完成或失败时自动收到通知。
+与其反复使用 `GET` 轮询任务状态，不如注册一个 [webhook](/guides/webhooks) 以在视频生成完成或失败时自动收到通知。
 
 Webhooks 可以在你的 [webhook 设置页面](https://platform.openai.com/settings/project/webhooks)中配置。当任务完成时，API 会发出以下两种事件类型之一：`video.completed` 和 `video.failed`。每个事件都包含触发它的任务 ID。
 
@@ -388,7 +387,7 @@ curl -X POST "https://api.openai.com/v1/videos" \
   -F input_reference="@sample_720p.jpeg;type=image/jpeg"
 ```
 
-| 使用 [OpenAI GPT Image](/api/docs/guides/image-generation) 生成的输入图像 | 使用 Sora 2 生成的视频（转换为 GIF） |
+| 使用 [OpenAI GPT Image](/guides/image-generation) 生成的输入图像 | 使用 Sora 2 生成的视频（转换为 GIF） |
 | --- | --- |
 | ![](https://cdn.openai.com/API/docs/images/sora/sora_woman_skyline_original_2.jpeg)[下载此图像](https://cdn.openai.com/API/docs/images/sora/woman_skyline_original_720p.jpeg) | ![](https://cdn.openai.com/API/docs/images/sora/sora_woman_skyline_video.gif) 提示词：_"She turns around and smiles, then slowly walks out of the frame."_ |
 | ![](https://cdn.openai.com/API/docs/images/sora/sora_monster_original_2.jpeg)[下载此图像](https://cdn.openai.com/API/docs/images/sora/monster_original_720p.jpeg) | ![](https://cdn.openai.com/API/docs/images/sora/sora_monster_original.gif) 提示词：_"The fridge door opens. A cute, chubby purple monster comes out of it."_ |
@@ -495,7 +494,7 @@ curl -X POST "https://api.openai.com/v1/videos/edits" \
 
 ## 通过 Batch API 运行视频任务
 
-当你需要为离线处理、审核流程或工作室工作流排队大量视频渲染时，请使用 [Batch API](/api/docs/guides/batch)。批处理输入文件中的每一行使用与你发送到 `POST /v1/videos` 相同的 JSON 请求体，这使其非常适合镜头列表和计划渲染队列。
+当你需要为离线处理、审核流程或工作室工作流排队大量视频渲染时，请使用 [Batch API](/guides/batch)。批处理输入文件中的每一行使用与你发送到 `POST /v1/videos` 相同的 JSON 请求体，这使其非常适合镜头列表和计划渲染队列。
 
 Batch 中的视频生成：
 

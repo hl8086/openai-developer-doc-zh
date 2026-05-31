@@ -1,4 +1,3 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/citation-formatting -->
 
 可靠的引用能够建立信任，并帮助读者验证回复的准确性。本指南提供了关于如何准备可引用材料以及指导模型有效格式化引用的实用指导，使用的是 OpenAI 模型熟悉的模式。
 
@@ -74,8 +73,8 @@ Updated: 2026-03-01
 
 ### 模板
 
-```
-{CITATION_START}<citation_family>{CITATION_DELIMITER}<source_id>{CITATION_DELIMITER}<locator>{CITATION_STOP}
+```text
+{CITATION_START}&lt;citation_family>{CITATION_DELIMITER}&lt;source_id>{CITATION_DELIMITER}&lt;locator>{CITATION_STOP}
 ```
 
 ### 示例
@@ -147,8 +146,8 @@ You *must* cite any results you use from this tool using the:
 
 以下规则在你需要更高质量的溯源行为时通常值得包含。根据你的用例需求调整此部分。
 
-```
-<extra_considerations_for_citations>
+```text
+&lt;extra_considerations_for_citations>
 - **Relevance:** Include only search results and citations that support the cited response text. Irrelevant sources permanently degrade user trust.
 - **Diversity:** You must base your answer on sources from diverse domains, and cite accordingly.
 - **Trustworthiness:** To produce a credible response, you must rely on high quality domains, and ignore information from less reputable domains unless they are the only source.
@@ -160,7 +159,7 @@ Remember, the quality of a domain/source depends on the context.
 - Ensure more than half of citations come from widely recognized authoritative outlets on the topic.
 - For debated topics, cite at least one reliable source representing each major viewpoint.
 - Do not ignore the content of a relevant source because it is low quality.
-</extra_considerations_for_citations>
+&lt;/extra_considerations_for_citations>
 ```
 
 ## 解析引用
@@ -214,9 +213,9 @@ def extract_citations(
     family_pattern = "|".join(re.escape(family) for family in families)
     token_re = re.compile(
         rf"{re.escape(CITATION_START)}"
-        rf"(?P<family>{family_pattern})"
+        rf"(?P&lt;family>{family_pattern})"
         rf"{re.escape(CITATION_DELIMITER)}"
-        rf"(?P<body>.*?)"
+        rf"(?P&lt;body>.*?)"
         rf"{re.escape(CITATION_STOP)}",
         re.DOTALL,
     )
@@ -289,7 +288,7 @@ const LINE_LOCATOR_RE = /^L\d+(?:-L\d+)?$/;
  *   {CITATION_START}cite{CITATION_DELIMITER}turn0search0{CITATION_DELIMITER}turn1news2{CITATION_STOP}
  *
  * @param {string} text
- * @param {{ families?: string[] }} [options]
+ * @param \{\{ families?: string[] \}\} [options]
  * @returns {Citation[]}
  */
 function extractCitations(text, { families = ["cite"] } = {}) {
@@ -302,7 +301,7 @@ function extractCitations(text, { families = ["cite"] } = {}) {
     .join("|");
 
   const tokenRe = new RegExp(
-    `${CITATION_START}(?<family>${familyPattern})${CITATION_DELIMITER}(?<body>[\\s\\S]*?)${CITATION_STOP}`,
+    `${CITATION_START}(?&lt;family>${familyPattern})${CITATION_DELIMITER}(?&lt;body>[\\s\\S]*?)${CITATION_STOP}`,
     "g"
   );
 
@@ -345,7 +344,7 @@ function extractCitations(text, { families = ["cite"] } = {}) {
 
 /**
  * @param {string} text
- * @param {Iterable<Citation>} citations
+ * @param {Iterable&lt;Citation>} citations
  * @returns {string}
  */
 function stripCitations(text, citations) {
@@ -457,15 +456,15 @@ The on-call handoff process is documented in the weekly support sync notes. \ue2
 对于注入上下文，一种常见模式是将源片段包装在带有稳定引用 ID 的显式标签中。
 
 ```
-<BLOCK id="block1">
+&lt;BLOCK id="block1">
 The service agreement states that termination for convenience requires thirty (30) days' written notice, unless superseded by a customer-specific addendum.
 In practice, renewal terms auto-extend for successive one-year periods when no written non-renewal notice is received before the deadline.
 Appendix B further clarifies that pricing exceptions must be approved in writing by both Finance and the account owner.
-</BLOCK>
+&lt;/BLOCK>
 
-<BLOCK id="block2">
+&lt;BLOCK id="block2">
 Syllabus
-</BLOCK>
+&lt;/BLOCK>
 ...
 ```
 
@@ -476,14 +475,14 @@ Syllabus
 ```
 ## Citations
 
-Supporting context is provided directly in the prompt as citable units. Each citable unit is identified by the value of its `id` attribute in the first occurrence of a tag such as `<BLOCK id="block5"> ... </BLOCK>`. In this example, `block5` would be the source reference ID.
+Supporting context is provided directly in the prompt as citable units. Each citable unit is identified by the value of its `id` attribute in the first occurrence of a tag such as `&lt;BLOCK id="block5"> ... &lt;/BLOCK>`. In this example, `block5` would be the source reference ID.
 
 Because this pattern does not invoke tools, there is no tool turn counter to increment. That means you do not need to use a `turn#` prefix for the citation marker. You can keep IDs in a `turn0block5` style if that matches the rest of your system, or use plain IDs like `block5` as shown here. The key requirement is that the citation marker matches the injected context ID exactly and consistently.
 
 Citations are references to these provided citable units. Citations may be used to refer to either a single source or multiple sources.
 
 A citation to a single source must be written as:
-{CITATION_START}cite{CITATION_DELIMITER}<block_id>{CITATION_STOP}
+{CITATION_START}cite{CITATION_DELIMITER}&lt;block_id>{CITATION_STOP}
 
 For example:
 {CITATION_START}cite{CITATION_DELIMITER}block5{CITATION_STOP}
@@ -507,4 +506,4 @@ You must NOT write block IDs verbatim in the response text without putting them 
 The Court held that the District Court lacked personal jurisdiction over the petitioner. \ue200cite\ue202block5\ue201
 ```
 
-**注意：** OpenAI 托管的工具（如 web search）提供自动内联引用。如果你想使用托管工具，请参阅[工具概述](/api/docs/guides/tools)、[web search 指南](/api/docs/guides/tools-web-search)和[file search 指南](/api/docs/guides/tools-file-search)。
+**注意：** OpenAI 托管的工具（如 web search）提供自动内联引用。如果你想使用托管工具，请参阅[工具概述](/guides/tools)、[web search 指南](/guides/tools-web-search)和[file search 指南](/guides/tools-file-search)。

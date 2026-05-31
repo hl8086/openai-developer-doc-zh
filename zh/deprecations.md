@@ -1,4 +1,3 @@
-<!-- Source: https://developers.openai.com/api/docs/deprecations -->
 
 ## 概述
 
@@ -125,7 +124,7 @@
 
 Realtime API Beta 已于 2026 年 5 月 12 日被弃用并从 API 中移除。
 
-Realtime beta API 和已发布的 GA API 之间的接口存在一些关键差异。请参阅[迁移指南](/api/docs/guides/realtime#beta-to-ga-migration)了解当前 GA 接口和相关 Realtime 文档。
+Realtime beta API 和已发布的 GA API 之间的接口存在一些关键差异。请参阅[迁移指南](/guides/realtime#beta-to-ga-migration)了解当前 GA 接口和相关 Realtime 文档。
 
 | 关闭日期 | 模型 / 系统 | 推荐替代 |
 | --- | --- | --- |
@@ -135,9 +134,9 @@ Realtime beta API 和已发布的 GA API 之间的接口存在一些关键差异
 
 2025 年 8 月 26 日，我们通知了使用 Assistants API 的开发者，该 API 将在一年后（即 2026 年 8 月 26 日）被弃用并从 API 中移除。
 
-当我们在 [2025 年 3 月](/api/docs/changelog)发布 [Responses API](/api/docs/api-reference/responses/create) 时，我们宣布计划将所有 Assistants API 功能迁移到更易用的 Responses API，并设定了 2026 年的日落日期。
+当我们在 [2025 年 3 月](/changelog)发布 [Responses API]( https://developers.openai.com/api/reference/responses/create) 时，我们宣布计划将所有 Assistants API 功能迁移到更易用的 Responses API，并设定了 2026 年的日落日期。
 
-请参阅 Assistants 到 Conversations 的[迁移指南](/api/docs/assistants/migration)，了解如何将当前集成迁移到 Responses API 和 Conversations API。
+请参阅 Assistants 到 Conversations 的[迁移指南](/assistants/migration)，了解如何将当前集成迁移到 Responses API 和 Conversations API。
 
 | 关闭日期 | 模型 / 系统 | 推荐替代 |
 | --- | --- | --- |
@@ -221,9 +220,9 @@ Realtime beta API 和已发布的 GA API 之间的接口存在一些关键差异
 
 ### 2024-10-02: Assistants API beta v1
 
-在 [2024 年 4 月](/api/docs/assistants/whats-new)我们发布 Assistants API v2 beta 版本时，我们宣布将在 2024 年底前关闭 v1 beta 的访问权限。v1 beta 的访问将于 2024 年 12 月 18 日终止。
+在 [2024 年 4 月](/assistants/whats-new)我们发布 Assistants API v2 beta 版本时，我们宣布将在 2024 年底前关闭 v1 beta 的访问权限。v1 beta 的访问将于 2024 年 12 月 18 日终止。
 
-请参阅 Assistants API v2 beta [迁移指南](/api/docs/assistants/migration)，了解如何将工具使用迁移到最新版本的 Assistants API。
+请参阅 Assistants API v2 beta [迁移指南](/assistants/migration)，了解如何将工具使用迁移到最新版本的 Assistants API。
 
 | 关闭日期 | 模型 / 系统 | 推荐替代 |
 | --- | --- | --- |

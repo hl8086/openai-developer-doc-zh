@@ -1,4 +1,3 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/prompting -->
 
 **提示词（Prompting）** 是向模型提供输入的过程。输出的质量通常取决于你向模型提供提示词的能力。
 
@@ -10,12 +9,12 @@
 
 OpenAI 提供了一个长期存在的提示词对象，具有版本控制和模板功能，供项目中的所有用户共享。这种设计让你可以在团队中管理、测试和复用提示词，通过一个集中定义跨 API、SDK 和仪表板使用。
 
-通用提示词 ID 为你提供了测试和构建的灵活性。变量和提示词共享一个基础提示词，因此当你创建新版本时，可以将其用于 [评估](/api/docs/guides/evals) 并确定提示词的表现是更好还是更差。
+通用提示词 ID 为你提供了测试和构建的灵活性。变量和提示词共享一个基础提示词，因此当你创建新版本时，可以将其用于 [评估](/guides/evals) 并确定提示词的表现是更好还是更差。
 
 ### 提示词工具和技术
 
-*   **[提示词缓存](/api/docs/guides/prompt-caching)**：将延迟降低最多 80%，成本降低最多 75%
-*   **[提示词工程](/api/docs/guides/prompt-engineering)**：学习构建提示词的策略、技术和工具
+*   **[提示词缓存](/guides/prompt-caching)**：将延迟降低最多 80%，成本降低最多 75%
+*   **[提示词工程](/guides/prompt-engineering)**：学习构建提示词的策略、技术和工具
 
 ## 创建提示词
 
@@ -29,11 +28,11 @@ OpenAI 提供了一个长期存在的提示词对象，具有版本控制和模�
     
 2.  **添加提示词变量**
     
-    变量允许你在不更改提示词的情况下注入动态值。可以在任何消息角色中使用 `{{variable}}` 来使用它们。例如，在创建本地天气提示词时，你可以添加一个值为 `San Francisco` 的 `city` 变量。
+    变量允许你在不更改提示词的情况下注入动态值。可以在任何消息角色中使用 `\{\{variable\}\}` 来使用它们。例如，在创建本地天气提示词时，你可以添加一个值为 `San Francisco` 的 `city` 变量。
     
       
     
-3.  **在 [Responses API](/api/docs/guides/text?api-mode=responses) 调用中使用提示词**
+3.  **在 [Responses API](/guides/text?api-mode=responses) 调用中使用提示词**
     
     在 URL 中找到你的提示词 ID 和版本号，并将其作为 `prompt_id` 传递：
     
@@ -77,6 +76,6 @@ OpenAI 提供了一个长期存在的提示词对象，具有版本控制和模�
 
 [在 Playground 中构建提示词 - 使用 Playground 开发和迭代提示词。](https://platform.openai.com/chat/edit)
 
-[文本生成 - 学习如何提示模型生成文本。](/api/docs/guides/text)
+[文本生成 - 学习如何提示模型生成文本。](/guides/text)
 
-[工程化更好的提示词 - 了解 OpenAI 的提示词工程工具和技术。](/api/docs/guides/prompt-engineering)
+[工程化更好的提示词 - 了解 OpenAI 的提示词工程工具和技术。](/guides/prompt-engineering)

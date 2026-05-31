@@ -1,6 +1,5 @@
-<!-- Source: https://developers.openai.com/api/docs/guides/prompt-caching -->
 
-模型提示词通常包含重复内容，例如系统提示词和常见指令。OpenAI 会将 API 请求路由到最近处理过相同提示词的服务器，使其比从头处理提示词更便宜、更快速。提示词缓存可以将延迟降低多达 80%，将输入 token 成本降低多达 90%。提示词缓存会自动应用于所有 API 请求（无需更改代码），且不会产生额外费用。提示词缓存适用于所有最新[模型](/api/docs/models)，gpt-4o 及更新版本。
+模型提示词通常包含重复内容，例如系统提示词和常见指令。OpenAI 会将 API 请求路由到最近处理过相同提示词的服务器，使其比从头处理提示词更便宜、更快速。提示词缓存可以将延迟降低多达 80%，将输入 token 成本降低多达 90%。提示词缓存会自动应用于所有 API 请求（无需更改代码），且不会产生额外费用。提示词缓存适用于所有最新[模型](/models)，gpt-4o 及更新版本。
 
 本指南详细介绍了提示词缓存的工作原理，以便您优化提示词以降低延迟和成本。
 
@@ -17,7 +16,7 @@
 1.  **缓存路由**：
 
 *   请求根据提示词初始前缀的哈希值路由到某台机器。哈希通常使用前 256 个 token，但确切长度因模型而异。
-*   如果您提供了 [`prompt_cache_key`](/api/docs/api-reference/responses/create#responses-create-prompt_cache_key) 参数，它会与前缀哈希组合，允许您影响路由并提高缓存命中率。当许多请求共享较长的公共前缀时，这尤其有益。
+*   如果您提供了 [`prompt_cache_key`]( https://developers.openai.com/api/reference/responses/create#responses-create-prompt_cache_key) 参数，它会与前缀哈希组合，允许您影响路由并提高缓存命中率。当许多请求共享较长的公共前缀时，这尤其有益。
 *   如果相同前缀和 `prompt_cache_key` 组合的请求超过一定速率（大约每分钟 15 个请求），部分请求可能会溢出并路由到其他机器，从而降低缓存效果。
 
 2.  **缓存查找**：系统检查您提示词的初始部分（前缀）是否存在于所选机器的缓存中。
@@ -75,7 +74,7 @@ key/value 张量是模型注意力层在预填充期间产生的中间表示。�
 
 缓存适用于包含 1024 个或更多 token 的提示词。
 
-所有请求（包括少于 1024 个 token 的请求）都会在 `usage.prompt_tokens_details` [Response 对象](/api/docs/api-reference/responses/object)或 [Chat 对象](/api/docs/api-reference/chat/object)中显示 `cached_tokens` 字段，指示有多少提示词 token 命中了缓存。对于少于 1024 个 token 的请求，`cached_tokens` 将为零。
+所有请求（包括少于 1024 个 token 的请求）都会在 `usage.prompt_tokens_details` [Response 对象]( https://developers.openai.com/api/reference/responses/object)或 [Chat 对象]( https://developers.openai.com/api/reference/chat/object)中显示 `cached_tokens` 字段，指示有多少提示词 token 命中了缓存。对于少于 1024 个 token 的请求，`cached_tokens` 将为零。
 
 ```
 "usage": {
@@ -103,7 +102,7 @@ key/value 张量是模型注意力层在预填充期间产生的中间表示。�
 ## 最佳实践
 
 *   将提示词结构化为**静态或重复内容在开头**，动态的用户特定内容在末尾。
-*   在共享公共前缀的请求中一致使用 **[`prompt_cache_key`](/api/docs/api-reference/responses/create#responses-create-prompt_cache_key) 参数**。选择适当的粒度，使每个唯一的前缀-`prompt_cache_key` 组合保持在每分钟 15 个请求以下，以避免缓存溢出。
+*   在共享公共前缀的请求中一致使用 **[`prompt_cache_key`]( https://developers.openai.com/api/reference/responses/create#responses-create-prompt_cache_key) 参数**。选择适当的粒度，使每个唯一的前缀-`prompt_cache_key` 组合保持在每分钟 15 个请求以下，以避免缓存溢出。
 *   **监控您的缓存性能指标**，包括缓存命中率、延迟和缓存 token 的比例，以优化您的策略。您可以通过记录如上所示的 usage 字段结果来监控缓存 token 计数，或在 OpenAI Usage 仪表板中查看。
 *   **保持具有相同提示词前缀的稳定请求流**，以最大限度地减少缓存驱逐并最大化缓存收益。
 
@@ -131,7 +130,7 @@ key/value 张量是模型注意力层在预填充期间产生的中间表示。�
     
 6.  **提示词缓存是否适用于零数据保留请求？**
     
-    内存缓存保留不会将任何数据保存到磁盘。扩展提示词缓存可能会将 key/value 张量存储在 GPU 本地存储中，而 key-value 张量源自客户内容。此数据不会在缓存过期后保留——key-value 张量保留 1-2 小时（大多数使用情况），最多 24 小时。如果您的项目启用了零数据保留，扩展提示词缓存请求不会被阻止。其他零数据保留仍然适用，例如从滥用日志中排除客户内容以及阻止使用 `store=True`。有关零数据保留的更多信息，请参阅[您的数据](/api/docs/guides/your-data)指南。
+    内存缓存保留不会将任何数据保存到磁盘。扩展提示词缓存可能会将 key/value 张量存储在 GPU 本地存储中，而 key-value 张量源自客户内容。此数据不会在缓存过期后保留——key-value 张量保留 1-2 小时（大多数使用情况），最多 24 小时。如果您的项目启用了零数据保留，扩展提示词缓存请求不会被阻止。其他零数据保留仍然适用，例如从滥用日志中排除客户内容以及阻止使用 `store=True`。有关零数据保留的更多信息，请参阅[您的数据](/guides/your-data)指南。
     
 7.  **提示词缓存是否适用于数据驻留？**
     
