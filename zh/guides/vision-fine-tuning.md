@@ -1,3 +1,4 @@
+# Vision fine-tuning
 
 视觉微调使用图像输入进行[监督微调](/guides/supervised-fine-tuning)，以提升模型对图像输入的理解能力。本指南将带您了解 SFT 的这一子集，并概述使用图像输入进行微调时的一些重要注意事项。
 

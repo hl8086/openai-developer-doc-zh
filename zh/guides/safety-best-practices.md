@@ -1,3 +1,4 @@
+# Safety best practices
 
 ### 使用我们免费的 Moderation API
 

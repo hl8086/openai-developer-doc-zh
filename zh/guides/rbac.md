@@ -1,3 +1,4 @@
+# Permissions
 
 基于角色的访问控制（RBAC）让你决定谁可以在组织和项目中执行哪些操作——无论是通过 API 还是在 Dashboard 中。相同的权限管理两个界面：如果某人可以调用某个端点（例如 `/v1/chat/completions`），他们就可以使用对应的 Dashboard 页面，而缺少权限则会禁用相关的 UI（例如 Playground 中的 **Upload** 按钮）。通过 RBAC，你可以：
 

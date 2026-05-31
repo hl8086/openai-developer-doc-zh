@@ -1,3 +1,4 @@
+# Data retrieval
 
 GPT 中的 action 最常执行的任务之一就是数据检索。一个 action 可能会：
 

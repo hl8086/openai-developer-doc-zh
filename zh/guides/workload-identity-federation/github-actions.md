@@ -1,3 +1,4 @@
+# GitHub Actions
 
 使用 GitHub Actions 作为工作负载身份提供者，通过将 GitHub 签发的 OIDC 令牌交换为短期 OpenAI 访问令牌。这使得工作流无需在 GitHub secrets 中存储长期 API 密钥即可向 OpenAI API 进行身份验证。
 

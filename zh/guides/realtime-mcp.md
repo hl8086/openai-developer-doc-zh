@@ -1,3 +1,4 @@
+# Realtime with tools
 
 你可以将工具附加到 Realtime 会话中，以便模型在实时对话期间查找数据、执行操作或调用服务。无论你的客户端使用的是 [WebRTC 数据通道](/guides/realtime-webrtc) 还是 [WebSocket](/guides/realtime-websocket)，工具配置都使用相同的事件接口。
 

@@ -1,3 +1,4 @@
+# Widgets
 
 Widgets 是 ChatKit 自带的容器和组件。你可以使用预构建的 widgets、修改模板，或设计自己的 widgets 来完全自定义产品中的 ChatKit。
 

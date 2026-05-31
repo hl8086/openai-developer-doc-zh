@@ -1,3 +1,4 @@
+# Direct preference optimization
 
 [Direct Preference Optimization](https://arxiv.org/abs/2305.18290)（DPO）微调允许你基于提示和成对的响应来微调模型。这种方法使模型能够从更主观的人类偏好中学习，优化生成更可能被偏好的输出。DPO 目前仅支持文本输入和输出。
 

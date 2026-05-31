@@ -1,3 +1,4 @@
+# Shell
 
 Shell 工具赋予模型在完整终端环境中工作的能力。我们支持本地执行和通过 Responses API 进行托管执行的 shell。
 

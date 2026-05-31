@@ -1,3 +1,4 @@
+# Introduction
 
 GPT Actions 存储在 [Custom GPTs](https://openai.com/blog/introducing-gpts) 中，它允许用户通过提供指令、附加文档作为知识库以及连接第三方服务来为特定用例定制 ChatGPT。
 

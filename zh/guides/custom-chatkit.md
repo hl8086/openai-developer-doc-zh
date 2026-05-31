@@ -1,3 +1,4 @@
+# Advanced integrations
 
 当你需要完全控制——自定义认证、数据驻留、本地部署或定制化的 Agent 编排——你可以在自己的基础设施上运行 ChatKit。使用 OpenAI 的高级自托管选项来使用你自己的服务器和定制化的 ChatKit。
 
