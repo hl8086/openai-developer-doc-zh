@@ -1,5 +1,7 @@
 # MCP and Connectors
 
+> 除了通过[函数调用](/guides/function-calling)向模型提供的工具外，你还可以使用**连接器（connectors）**和**远程 MCP 服务器**为模型赋予新的能力。
+
 除了通过[函数调用](/guides/function-calling)向模型提供的工具外，你还可以使用**连接器（connectors）**和**远程 MCP 服务器**为模型赋予新的能力。这些工具使模型能够在需要响应用户提示时连接并控制外部服务。这些工具调用可以自动允许，也可以限制为需要你作为开发者的明确批准。
 
 *   **连接器**是 OpenAI 维护的 MCP 封装，用于连接 Google Workspace 或 Dropbox 等热门服务，类似于 [ChatGPT](https://chatgpt.com) 中可用的连接器。

@@ -1,5 +1,7 @@
 # Best practices
 
+> 生成式 AI 具有可变性。
+
 生成式 AI 具有可变性。模型有时会对相同的输入产生不同的输出，这使得传统的软件测试方法不足以应对 AI 架构。评估（**evals**）是一种在这种可变性下测试 AI 系统的方法。
 
 本指南提供了设计评估的高层指导。要开始使用 [Evals API]( https://developers.openai.com/api/reference/evals)，请参阅[评估模型性能](/guides/evals)。

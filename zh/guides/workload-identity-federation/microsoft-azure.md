@@ -1,5 +1,7 @@
 # Microsoft Azure
 
+> 在以下任一场景中使用 Microsoft Azure 作为工作负载身份提供者：
+
 在以下任一场景中使用 Microsoft Azure 作为工作负载身份提供者：
 
 *   **Azure 托管标识：** 将为托管标识颁发的 Microsoft Entra ID 访问令牌交换为短期 OpenAI 访问令牌。

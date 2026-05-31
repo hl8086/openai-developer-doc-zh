@@ -1,5 +1,7 @@
 # GitHub Actions
 
+> 使用 GitHub Actions 作为工作负载身份提供者，通过将 GitHub 签发的 OIDC 令牌交换为短期 OpenAI 访问令牌。
+
 使用 GitHub Actions 作为工作负载身份提供者，通过将 GitHub 签发的 OIDC 令牌交换为短期 OpenAI 访问令牌。这使得工作流无需在 GitHub secrets 中存储长期 API 密钥即可向 OpenAI API 进行身份验证。
 
 GitHub 可以为具有 `id-token: write` 权限并请求身份令牌的工作流作业铸造签名的 OIDC JWT。OpenAI 在签发 OpenAI 访问令牌之前会验证令牌的签发者、受众、签名和映射属性。

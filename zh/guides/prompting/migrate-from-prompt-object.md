@@ -1,5 +1,7 @@
 # Migration guide
 
+> 要从 OpenAI API 平台中的 **Prompts** 迁移出来，请将提示内容从托管的 `prompt` 对象移到你的应用程序代码中。
+
 要从 OpenAI API 平台中的 **Prompts** 迁移出来，请将提示内容从托管的 `prompt` 对象移到你的应用程序代码中。这让你能更好地控制审查、测试、部署和版本管理。
 
 ## 之前：使用 Prompt 对象

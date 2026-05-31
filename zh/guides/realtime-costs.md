@@ -1,5 +1,7 @@
 # Managing costs
 
+> 本文档描述了 Realtime API 的计费方式，并提供了优化成本的策略。
+
 本文档描述了 Realtime API 的计费方式，并提供了优化成本的策略。语音代理会话在文本、音频和图像模态上累积输入和输出 token。流式翻译和流式转录会话按音频时长计费。价格因模型而异，具体价格列在模型页面上（例如 [`gpt-realtime-2`](/models/gpt-realtime-2)、[`gpt-realtime-translate`](/models/gpt-realtime-translate)、[`gpt-realtime-whisper`](/models/gpt-realtime-whisper) 和 [`gpt-realtime`](/models/gpt-realtime)）。
 
 对话式 Realtime API 会话由一系列 _轮次_ 组成，用户添加输入触发 _Response_ 来生成模型输出。服务器维护一个 _Conversation_，即构成下一轮输入的 _Items_ 列表。当 Response 返回时，输出会自动添加到 Conversation 中。

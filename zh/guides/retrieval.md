@@ -1,5 +1,7 @@
 # Retrieval
 
+> 对你的数据执行语义搜索。
+
 **Retrieval API** 允许你对数据执行[**语义搜索**](#semantic-search)，这是一种能够返回语义相似结果的技术——即使结果与查询几乎没有或完全没有共同关键词。检索本身就很有用，但与我们的模型结合使用来生成回答时尤其强大。
 
 ![Retrieval depiction](https://cdn.openai.com/API/docs/images/retrieval-depiction.png)

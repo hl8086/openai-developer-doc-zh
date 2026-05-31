@@ -1,5 +1,7 @@
 # Google Cloud
 
+> 在以下任一场景中使用 Google Cloud 作为工作负载身份提供者：
+
 在以下任一场景中使用 Google Cloud 作为工作负载身份提供者：
 
 *   **Google 工作负载身份：** 将颁发给关联 Google 服务账号的 Google 签名 OIDC 令牌交换为短期 OpenAI 访问令牌。

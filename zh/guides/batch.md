@@ -1,5 +1,7 @@
 # Batch
 
+> 了解如何使用 OpenAI 的 Batch API 发送异步请求组，享受 50% 的成本折扣、独立的显著更高速率限制池，以及明确的 24 小时完成时间。
+
 了解如何使用 OpenAI 的 Batch API 发送异步请求组，享受 50% 的成本折扣、独立的显著更高速率限制池，以及明确的 24 小时完成时间。该服务非常适合处理不需要即时响应的任务。您也可以[在此处直接查看 API 参考]( https://developers.openai.com/api/reference/batch)。
 
 ## 概述

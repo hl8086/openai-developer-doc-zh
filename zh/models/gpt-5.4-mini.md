@@ -1,5 +1,7 @@
 # GPT-5.4 mini
 
+> GPT-5.4 mini 模型详情和能力。
+
 [模型](/models)
 
 ![gpt-5.4-mini]( https://cdn.openai.com/API/docs/images/api/models/icons/gpt-5.4-mini.png)

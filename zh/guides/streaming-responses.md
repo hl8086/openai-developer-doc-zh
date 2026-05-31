@@ -1,5 +1,7 @@
 # Streaming
 
+> 默认情况下，当你向 OpenAI API 发送请求时，我们会在生成模型的完整输出后，通过单个 HTTP 响应将其发送回来。
+
 默认情况下，当你向 OpenAI API 发送请求时，我们会在生成模型的完整输出后，通过单个 HTTP 响应将其发送回来。当生成较长的输出时，等待响应可能需要一些时间。流式响应允许你在模型继续生成完整响应的同时，开始打印或处理模型输出的开头部分。
 
 本指南重点介绍通过服务器发送事件（SSE）的 HTTP 流式传输（`stream=true`）。如需通过 `previous_response_id` 实现增量输入的持久 WebSocket 传输，请参阅 [Responses API WebSocket 模式](/guides/websocket-mode)。

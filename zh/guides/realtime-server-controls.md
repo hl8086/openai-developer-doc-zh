@@ -1,5 +1,7 @@
 # Webhooks and server-side controls
 
+> Realtime API 允许客户端通过 WebRTC 或 SIP 直接连接到 API 服务器。
+
 Realtime API 允许客户端通过 WebRTC 或 SIP 直接连接到 API 服务器。然而，你很可能希望将工具使用和其他业务逻辑放在应用服务器上，以保持这些逻辑的私密性和客户端无关性。
 
 通过"旁路"控制通道连接，将工具使用、业务逻辑和其他细节安全地保留在服务器端。我们现在为 SIP 和 WebRTC 连接都提供了旁路选项。

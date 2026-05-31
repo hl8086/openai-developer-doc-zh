@@ -1,5 +1,7 @@
 # Tools
 
+> 在 Responses API 实现功能对等后，我们已弃用 Assistants API。
+
 在 Responses API 实现功能对等后，我们已弃用 Assistants API。该 API 将于 2026 年 8 月 26 日关闭。请按照[迁移指南](/platform/assistants/migration)更新您的集成。[了解更多](https://platform.openai.com/docs/guides/migrate-to-responses)。
 
 ## 概述

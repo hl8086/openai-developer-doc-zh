@@ -1,5 +1,7 @@
 # AWS
 
+> 在以下任一场景中使用 AWS 作为工作负载身份提供者：
+
 在以下任一场景中使用 AWS 作为工作负载身份提供者：
 
 *   **AWS 出站身份联合：** 将 AWS STS 通过 `GetWebIdentityToken` 签发的 OIDC JWT 交换为短期 OpenAI 访问令牌。

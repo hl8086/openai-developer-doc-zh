@@ -1,5 +1,7 @@
 # Secure MCP Tunnel
 
+> Secure MCP Tunnel 允许你将私有 MCP 服务器连接到受支持的 OpenAI 产品，无需开放入站防火墙端口或将这些服务器暴露到公共互联网。
+
 Secure MCP Tunnel 允许你将私有 MCP 服务器连接到受支持的 OpenAI 产品，无需开放入站防火墙端口或将这些服务器暴露到公共互联网。在能够访问你的 MCP 服务器的网络内运行 `tunnel-client`；它会向 OpenAI 打开一条出站 HTTPS 路径，拉取排队的 MCP 工作，将请求转发到本地，并通过同一隧道返回响应。
 
 ## 什么是 MCP 隧道？
