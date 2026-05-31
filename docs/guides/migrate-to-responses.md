@@ -26,18 +26,18 @@ The Responses API contains several benefits over Chat Completions:
 
 | Capabilities | Chat Completions API | Responses API |
 | --- | --- | --- |
-| Text generation |  |  |
-| Audio |  | Coming soon |
-| Vision |  |  |
-| Structured Outputs |  |  |
-| Function calling |  |  |
-| Web search |  |  |
-| File search |  |  |
-| Computer use |  |  |
-| Code interpreter |  |  |
-| MCP |  |  |
-| Image generation |  |  |
-| Reasoning summaries |  |  |
+| Text generation | ✅ | ✅ |
+| Audio | ✅ | Coming soon |
+| Vision | ✅ | ✅ |
+| Structured Outputs | ✅ | ✅ |
+| Function calling | ✅ | ✅ |
+| Web search | ❌ | ✅ |
+| File search | ❌ | ✅ |
+| Computer use | ❌ | ✅ |
+| Code interpreter | ❌ | ✅ |
+| MCP | ❌ | ✅ |
+| Image generation | ❌ | ✅ |
+| Reasoning summaries | ❌ | ✅ |
 
 ### Examples
 
