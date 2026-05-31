@@ -1,7 +1,5 @@
 # GPT-5.4
 
-> GPT-5.4 模型详情和能力。
-
 [模型](/models)
 
 ![gpt-5.4]( https://cdn.openai.com/API/docs/images/api/models/icons/gpt-5.4.png)

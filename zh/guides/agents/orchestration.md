@@ -1,7 +1,5 @@
 # Orchestration
 
-> Coordinate multiple agents with handoffs and routing.
-
 多智能体工作流在需要由专家负责不同部分工作时非常有用。第一个设计决策是确定在工作流的每个分支中，谁拥有最终面向用户的回答的所有权。
 
 ## 选择编排模式

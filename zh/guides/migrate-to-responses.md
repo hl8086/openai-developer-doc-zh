@@ -1,7 +1,5 @@
 # Migrate to the Responses API
 
-> Learn how to migrate from Chat Completions to the Responses API.
-
 [Responses API]( https://developers.openai.com/api/reference/responses) 是我们新的 API 基础原语，是 [Chat Completions]( https://developers.openai.com/api/reference/chat) 的演进版本，为你的集成带来了更简洁的体验和强大的智能体原语。
 
 **虽然 Chat Completions 仍然受支持，但我们建议所有新项目使用 Responses。**

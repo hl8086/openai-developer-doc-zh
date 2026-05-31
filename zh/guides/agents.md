@@ -1,7 +1,5 @@
 # Overview
 
-> Build agentic applications that can plan, use tools, and collaborate.
-
 Agents 是能够进行规划、调用工具、跨专家协作，并保持足够状态以完成多步骤工作的应用程序。
 
 *   当你需要直接的 API 客户端来进行模型请求时，使用 **OpenAI 客户端库**。

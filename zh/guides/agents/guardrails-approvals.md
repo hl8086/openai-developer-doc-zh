@@ -1,7 +1,5 @@
 # Guardrails
 
-> Add guardrails and human-in-the-loop approvals to agent workflows.
-
 使用护栏进行自动检查，使用人工审核进行审批决策。两者共同定义了运行应何时继续、暂停或停止。
 
 *   **护栏** 自动验证输入、输出或工具行为。

@@ -1,7 +1,5 @@
 # Actions library
 
-> 浏览可用的 Actions 示例库。
-
 ## 目的
 
 虽然 GPT Actions 对于 API 开发者来说，相比从零开始使用这些 API 构建整个应用程序所需的工作量要少得多，但要让 GPT Actions 运行起来仍然需要一些设置工作。GPT Actions 库旨在为在常见应用程序上构建 GPT Actions 提供指导。

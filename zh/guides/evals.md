@@ -1,7 +1,5 @@
 # Working with evals
 
-> 评估（通常称为 **evals**）用于测试模型输出，以确保它们满足你指定的风格和内容标准。
-
 评估（通常称为 **evals**）用于测试模型输出，以确保它们满足你指定的风格和内容标准。编写评估来了解你的 LLM 应用程序相对于预期的表现如何，特别是在升级或尝试新模型时，是构建可靠应用程序的重要组成部分。
 
 在本指南中，我们将重点介绍**使用 [Evals API]( https://developers.openai.com/api/reference/evals) 以编程方式配置评估**。如果你愿意，也可以[在 OpenAI 仪表板中](https://platform.openai.com/evaluations)配置评估。

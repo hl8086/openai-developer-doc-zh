@@ -1,7 +1,5 @@
 # Cybersecurity checks
 
-> GPT-5.
-
 GPT-5.3-Codex 及更新的模型，包括 GPT-5.4 和 GPT-5.5，根据我们的[准备框架](https://cdn.openai.com/pdf/18a02b5d-6b67-4cec-ab64-68cdfbddebcd/preparedness-framework-v2.pdf)被归类为具有高网络安全能力。因此，当通过 API 使用这些模型时，会应用额外的自动化安全措施。请注意，API 中应用的安全措施与 Codex 中使用的不同。您可以在[此处](https://developers.openai.com/codex/concepts/cyber-safety/)了解更多关于 Codex 安全措施的信息。
 
 这些安全措施会监控潜在可疑网络安全活动的信号。如果达到某些阈值，在审查活动期间，对模型的访问可能会被暂时限制。由于这些系统仍在校准中，合法的安全研究或防御性工作偶尔可能会被标记。我们预计只有少部分流量会受到影响，并且我们正在持续优化整体 API 体验。

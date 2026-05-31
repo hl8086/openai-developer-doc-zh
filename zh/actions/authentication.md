@@ -1,7 +1,5 @@
 # Authentication
 
-> Actions 提供不同的认证方案以适应各种使用场景。
-
 Actions 提供不同的认证方案以适应各种使用场景。要为你的 action 指定认证方案，请使用 GPT 编辑器并选择 "None"、"API Key" 或 "OAuth"。
 
 默认情况下，所有 actions 的认证方式设置为 "None"，但你可以更改此设置，并允许不同的 actions 使用不同的认证方式。

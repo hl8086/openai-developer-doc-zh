@@ -1,7 +1,5 @@
 # Skills
 
-> Agent Skills 允许你上传和复用版本化的文件包，适用于托管和本地 shell 环境。
-
 Agent Skills 允许你上传和复用版本化的文件包，适用于托管和本地 shell 环境。
 
 我们支持两种形式的 Skills：本地执行和托管的基于容器的执行。要在你自己的机器上运行代码，请使用 [shell 工具](/guides/tools-shell) 的本地执行模式。

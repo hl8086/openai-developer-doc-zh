@@ -1,7 +1,5 @@
 # Code generation
 
-> Learn how to use OpenAI models to generate, edit, and explain code.
-
 编写、审查、编辑代码以及回答代码相关问题是当今 OpenAI 模型的主要用例之一。本指南将介绍使用 GPT-5.4 和 Codex 进行代码生成的各种选项。
 
 ## 快速开始

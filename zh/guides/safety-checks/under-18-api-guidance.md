@@ -1,7 +1,5 @@
 # Under 18 API Guidance
 
-> 青少年在线上和线下都有独特的需求，因此开发者在使用我们的 API 为未成年人（18 岁以下）提供服务时，应实施额外的安全措施。
-
 青少年在线上和线下都有独特的需求，因此开发者在使用我们的 API 为未成年人（18 岁以下）提供服务时，应实施额外的安全措施。这些措施是对我们的[使用政策](https://openai.com/policies/usage-policies/)和[条款与条件](https://openai.com/policies/services-agreement/)中要求的补充。
 
 **监管标准**

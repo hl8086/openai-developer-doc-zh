@@ -1,7 +1,5 @@
 # Introduction
 
-> GPT Actions 存储在 [Custom GPTs](https://openai.
-
 GPT Actions 存储在 [Custom GPTs](https://openai.com/blog/introducing-gpts) 中，它允许用户通过提供指令、附加文档作为知识库以及连接第三方服务来为特定用例定制 ChatGPT。
 
 GPT Actions 使 ChatGPT 用户能够仅通过自然语言与外部应用程序进行交互，通过 RESTful API 调用访问 ChatGPT 之外的服务。它们将自然语言文本转换为 API 调用所需的 json schema。GPT Actions 通常用于向 ChatGPT [检索数据](/actions/data-retrieval)（例如查询数据仓库）或在其他应用程序中执行操作（例如创建 JIRA 工单）。

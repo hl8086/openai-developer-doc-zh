@@ -1,7 +1,5 @@
 # Function calling
 
-> Give models access to new functionality and data they can use to follow instructions and respond to prompts.
-
 **函数调用**（也称为**工具调用**）为 OpenAI 模型提供了一种强大而灵活的方式来与外部系统交互，并访问其训练数据之外的数据。本指南展示了如何将模型连接到应用程序提供的数据和操作。我们将展示如何使用函数工具（由 JSON schema 定义）以及使用自由文本输入和输出的自定义工具。
 
 如果你的应用程序有很多函数或大型 schema，你可以将函数调用与 [tool search](/guides/tools-tool-search) 配合使用，以延迟加载不常用的工具，仅在模型需要时才加载它们。只有 `gpt-5.4` 及更高版本的模型支持 `tool_search`。

@@ -1,7 +1,5 @@
 # Prompt guidance
 
-> Model-specific prompting tips and migration guidance.
-
 ## GPT-5.5 提示词指南
 
 GPT-5.5 相比 GPT-5.4 的新特性

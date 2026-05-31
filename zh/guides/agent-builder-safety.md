@@ -1,7 +1,5 @@
 # Safety in building agents
 
-> 当你使用 [Agent Builder](/guides/agent-builder) 构建和部署智能体时，了解相关风险非常重要。
-
 当你使用 [Agent Builder](/guides/agent-builder) 构建和部署智能体时，了解相关风险非常重要。了解风险类型以及在构建多智能体工作流时如何缓解这些风险。
 
 ## 风险类型
