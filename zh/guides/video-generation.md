@@ -58,6 +58,7 @@ Sora 是 OpenAI 在生成式媒体领域的最新前沿成果——一个最先�
 
 **创建视频**
 
+::: code-group
 ```javascript
 import OpenAI from 'openai';
 
@@ -70,6 +71,7 @@ let video = await openai.videos.create({
 
 console.log('Video generation started: ', video);
 ```
+
 ```python
 from openai import OpenAI
 
@@ -82,6 +84,7 @@ video = openai.videos.create(
 
 print("Video generation started:", video)
 ```
+
 ```curl
 curl -X POST "https://api.openai.com/v1/videos" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -91,6 +94,8 @@ curl -X POST "https://api.openai.com/v1/videos" \
   -F size="1280x720" \
   -F seconds="8" \
 ```
+
+:::
 
 响应是一个包含唯一 id 和初始状态（如 `queued` 或 `in_progress`）的 JSON 对象。这意味着渲染任务已经开始。
 
@@ -152,6 +157,7 @@ API 强制执行以下内容限制：
 
 **轮询状态端点**
 
+::: code-group
 ```javascript
 import OpenAI from 'openai';
 
@@ -172,6 +178,7 @@ async function main() {
 
 main();
 ```
+
 ```python
 import asyncio
 
@@ -194,6 +201,8 @@ async def main() -> None:
 
 asyncio.run(main())
 ```
+
+:::
 
 响应示例：
 
@@ -238,6 +247,7 @@ Webhook 负载示例：
 
 **下载 MP4**
 
+::: code-group
 ```javascript
 import OpenAI from 'openai';
 
@@ -288,11 +298,13 @@ require('fs').writeFileSync('video.mp4', buffer);
 
 console.log('Wrote video.mp4');
 ```
+
 ```curl
 curl -L "https://api.openai.com/v1/videos/video_abc123/content" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   --output video.mp4
 ```
+
 ```python
 from openai import OpenAI
 import sys
@@ -344,6 +356,8 @@ content.write_to_file("video.mp4")
 
 print("Wrote video.mp4")
 ```
+
+:::
 
 现在你已经获得了可用于播放、编辑或分发的最终视频文件。下载 URL 在生成后最多有效 1 小时。如果你需要长期存储，请及时将文件复制到你自己的存储系统。
 

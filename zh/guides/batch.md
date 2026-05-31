@@ -100,6 +100,7 @@ Batch API 提供了一组简单的端点，允许您将一组请求收集到单�
 
 **为 Batch API 上传文件**
 
+::: code-group
 ```javascript
 import fs from "fs";
 import OpenAI from "openai";
@@ -112,6 +113,7 @@ const file = await openai.files.create({
 
 console.log(file);
 ```
+
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -123,12 +125,15 @@ batch_input_file = client.files.create(
 
 print(batch_input_file)
 ```
+
 ```curl
 curl https://api.openai.com/v1/files \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -F purpose="batch" \
   -F file="@batchinput.jsonl"
 ```
+
+:::
 ```cli
 openai files create \
   --file batchinput.jsonl \
@@ -141,6 +146,7 @@ openai files create \
 
 **创建批次**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const openai = new OpenAI();
@@ -153,6 +159,7 @@ const batch = await openai.batches.create({
 
 console.log(batch);
 ```
+
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -167,6 +174,7 @@ client.batches.create(
     }
 )
 ```
+
 ```curl
 curl https://api.openai.com/v1/batches \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -177,6 +185,8 @@ curl https://api.openai.com/v1/batches \
     "completion_window": "24h"
   }'
 ```
+
+:::
 ```cli
 openai batches create \
   --input-file-id file-abc123 \
@@ -218,6 +228,7 @@ openai batches create \
 
 **检查批次状态**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const openai = new OpenAI();
@@ -225,6 +236,7 @@ const openai = new OpenAI();
 const batch = await openai.batches.retrieve("batch_abc123");
 console.log(batch);
 ```
+
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -232,11 +244,14 @@ client = OpenAI()
 batch = client.batches.retrieve("batch_abc123")
 print(batch)
 ```
+
 ```curl
 curl https://api.openai.com/v1/batches/batch_abc123 \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: application/json"
 ```
+
+:::
 ```cli
 openai batches retrieve \
   --batch-id batch_abc123
@@ -261,6 +276,7 @@ openai batches retrieve \
 
 **检索批次结果**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const openai = new OpenAI();
@@ -270,6 +286,7 @@ const fileContents = await fileResponse.text();
 
 console.log(fileContents);
 ```
+
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -277,10 +294,13 @@ client = OpenAI()
 file_response = client.files.content("file-xyz123")
 print(file_response.text)
 ```
+
 ```curl
 curl https://api.openai.com/v1/files/file-xyz123/content \
   -H "Authorization: Bearer $OPENAI_API_KEY" > batch_output.jsonl
 ```
+
+:::
 ```cli
 openai files content \
   --file-id file-xyz123 \
@@ -306,6 +326,7 @@ openai files content \
 
 **取消批次**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const openai = new OpenAI();
@@ -313,18 +334,22 @@ const openai = new OpenAI();
 const batch = await openai.batches.cancel("batch_abc123");
 console.log(batch);
 ```
+
 ```python
 from openai import OpenAI
 client = OpenAI()
 
 client.batches.cancel("batch_abc123")
 ```
+
 ```curl
 curl https://api.openai.com/v1/batches/batch_abc123/cancel \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: application/json" \
   -X POST
 ```
+
+:::
 ```cli
 openai batches cancel \
   --batch-id batch_abc123
@@ -336,6 +361,7 @@ openai batches cancel \
 
 **获取所有批次列表**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const openai = new OpenAI();
@@ -346,17 +372,21 @@ for await (const batch of list) {
   console.log(batch);
 }
 ```
+
 ```python
 from openai import OpenAI
 client = OpenAI()
 
 client.batches.list(limit=10)
 ```
+
 ```curl
 curl https://api.openai.com/v1/batches?limit=10 \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: application/json"
 ```
+
+:::
 ```cli
 openai batches list \
   --limit 10

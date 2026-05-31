@@ -5,6 +5,7 @@
 
 **使用 prompt 对象**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -21,6 +22,7 @@ const response = await client.responses.create({
   },
 });
 ```
+
 ```python
 from openai import OpenAI
 
@@ -37,6 +39,7 @@ response = client.responses.create(
     }
 )
 ```
+
 ```curl
 curl https://api.openai.com/v1/responses \
   -H "Content-Type: application/json" \
@@ -53,10 +56,13 @@ curl https://api.openai.com/v1/responses \
   }'
 ```
 
+:::
+
 ## 之后：在代码中内联提示
 
 **在代码中内联提示**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -84,6 +90,7 @@ Write a response to the customer.
 
 console.log(response.output_text);
 ```
+
 ```python
 from openai import OpenAI
 
@@ -110,6 +117,7 @@ Write a response to the customer.
 
 print(response.output_text)
 ```
+
 ```curl
 curl https://api.openai.com/v1/responses \
   -H "Content-Type: application/json" \
@@ -128,6 +136,8 @@ curl https://api.openai.com/v1/responses \
     ]
   }'
 ```
+
+:::
 
 ## 使用 Codex 进行迁移
 
@@ -151,6 +161,7 @@ $openai-docs update this project to store prompts in code instead of using a pro
 
 **使用辅助函数构建提示**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -186,6 +197,7 @@ const response = await client.responses.create({
   }),
 });
 ```
+
 ```python
 from openai import OpenAI
 
@@ -220,6 +232,8 @@ response = client.responses.create(
     ),
 )
 ```
+
+:::
 
 ## 你将获得的好处
 

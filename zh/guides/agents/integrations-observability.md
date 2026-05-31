@@ -17,6 +17,7 @@
 
 **附加托管 MCP 服务器**
 
+::: code-group
 ```typescript
 import { Agent, hostedMcpTool } from "@openai/agents";
 
@@ -31,6 +32,7 @@ const agent = new Agent({
   ],
 });
 ```
+
 ```python
 from agents import Agent, HostedMCPTool
 
@@ -50,10 +52,13 @@ agent = Agent(
 )
 ```
 
+:::
+
 当你的应用程序需要直接连接到 MCP 服务器时，使用本地传输。
 
 **连接本地 MCP 服务器**
 
+::: code-group
 ```typescript
 import { Agent, MCPServerStdio, run } from "@openai/agents";
 
@@ -77,6 +82,7 @@ try {
   await server.close();
 }
 ```
+
 ```python
 import asyncio
 
@@ -109,6 +115,8 @@ if __name__ == "__main__":
     asyncio.run(main())
 ```
 
+:::
+
 实际的划分方式是：
 
 *   当公共远程服务器符合平台信任模型时，使用**托管 MCP**。
@@ -132,6 +140,7 @@ if __name__ == "__main__":
 
 **将多次运行包裹在一个追踪中**
 
+::: code-group
 ```typescript
 import { Agent, run, withTrace } from "@openai/agents";
 
@@ -147,6 +156,7 @@ await withTrace("Joke workflow", async () => {
   console.log(second.finalOutput);
 });
 ```
+
 ```python
 import asyncio
 
@@ -172,6 +182,8 @@ async def main() -> None:
 if __name__ == "__main__":
     asyncio.run(main())
 ```
+
+:::
 
 追踪用于两个目的：
 

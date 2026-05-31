@@ -24,6 +24,7 @@ Agent 是基于 SDK 工作流的核心单元。它封装了模型、指令以及
 
 **定义单个 agent**
 
+::: code-group
 ```typescript
 import { Agent, tool } from "@openai/agents";
 import { z } from "zod";
@@ -44,6 +45,7 @@ const agent = new Agent({
   tools: [getWeather],
 });
 ```
+
 ```python
 from agents import Agent, function_tool
 
@@ -62,6 +64,8 @@ agent = Agent(
 )
 ```
 
+:::
+
 ## 精心设计指令、交接和输出
 
 三个配置选择需要特别注意：
@@ -72,6 +76,7 @@ agent = Agent(
 
 **返回结构化输出**
 
+::: code-group
 ```typescript
 import { Agent, run } from "@openai/agents";
 import { z } from "zod";
@@ -95,6 +100,7 @@ const result = await run(
 
 console.log(result.finalOutput);
 ```
+
 ```python
 import asyncio
 
@@ -128,6 +134,8 @@ if __name__ == "__main__":
     asyncio.run(main())
 ```
 
+:::
+
 当你想引用 Responses API 中存储的提示配置而不是在代码中嵌入整个系统提示时，使用 `prompt`。
 
 ## 将本地上下文与模型上下文分开
@@ -136,6 +144,7 @@ SDK 允许你将应用状态和依赖项传入运行中，而不将它们发送�
 
 **将本地上下文传递给工具**
 
+::: code-group
 ```typescript
 import { Agent, RunContext, run, tool } from "@openai/agents";
 import { z } from "zod";
@@ -165,6 +174,7 @@ const result = await run(agent, "What is the age of the user?", {
 
 console.log(result.finalOutput);
 ```
+
 ```python
 import asyncio
 from dataclasses import dataclass
@@ -202,6 +212,8 @@ async def main() -> None:
 if __name__ == "__main__":
     asyncio.run(main())
 ```
+
+:::
 
 重要的边界是：
 

@@ -19,6 +19,7 @@ Admin APIs 允许你自动化组织管理工作流，例如用户邀请、审计
 
 **使用 Admin API 密钥设置 SDK**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -26,6 +27,7 @@ const client = new OpenAI({
   adminAPIKey: process.env.OPENAI_ADMIN_KEY,
 });
 ```
+
 ```python
 import os
 from openai import OpenAI
@@ -34,6 +36,8 @@ client = OpenAI(
     admin_api_key=os.environ["OPENAI_ADMIN_KEY"],
 )
 ```
+
+:::
 ```go
 package main
 
@@ -74,6 +78,7 @@ OpenAIClient client = OpenAIOkHttpClient.builder()
 
 **设置项目模型允许列表/拒绝列表**
 
+::: code-group
 ```javascript
 const modelPermissions =
   await client.admin.organization.projects.modelPermissions.update("proj_abc", {
@@ -83,6 +88,7 @@ const modelPermissions =
 
 console.log(modelPermissions.mode);
 ```
+
 ```python
 model_permissions = client.admin.organization.projects.model_permissions.update(
     "proj_abc",
@@ -92,6 +98,8 @@ model_permissions = client.admin.organization.projects.model_permissions.update(
 
 print(model_permissions.mode)
 ```
+
+:::
 ```go
 ctx := context.Background()
 
@@ -144,6 +152,7 @@ System.out.println(modelPermissions.mode());
 
 **创建项目支出限额警报**
 
+::: code-group
 ```javascript
 const spendAlert =
   await client.admin.organization.projects.spendAlerts.create("proj_abc", {
@@ -159,6 +168,7 @@ const spendAlert =
 
 console.log(spendAlert.id);
 ```
+
 ```python
 spend_alert = client.admin.organization.projects.spend_alerts.create(
     "proj_abc",
@@ -174,6 +184,8 @@ spend_alert = client.admin.organization.projects.spend_alerts.create(
 
 print(spend_alert.id)
 ```
+
+:::
 ```go
 ctx := context.Background()
 
@@ -244,6 +256,7 @@ System.out.println(spendAlert.id());
 
 **设置项目数据保留**
 
+::: code-group
 ```javascript
 const dataRetention =
   await client.admin.organization.projects.dataRetention.update("proj_abc", {
@@ -252,6 +265,7 @@ const dataRetention =
 
 console.log(dataRetention.type);
 ```
+
 ```python
 data_retention = client.admin.organization.projects.data_retention.update(
     "proj_abc",
@@ -260,6 +274,8 @@ data_retention = client.admin.organization.projects.data_retention.update(
 
 print(data_retention.type)
 ```
+
+:::
 ```go
 ctx := context.Background()
 
@@ -308,6 +324,7 @@ System.out.println(dataRetention.type());
 
 **通过邮箱邀请用户**
 
+::: code-group
 ```javascript
 const invite = await client.admin.organization.invites.create({
   email: "user@example.com",
@@ -316,6 +333,7 @@ const invite = await client.admin.organization.invites.create({
 
 console.log(invite.id);
 ```
+
 ```python
 invite = client.admin.organization.invites.create(
     email="user@example.com",
@@ -324,6 +342,8 @@ invite = client.admin.organization.invites.create(
 
 print(invite.id)
 ```
+
+:::
 ```go
 ctx := context.Background()
 
@@ -365,6 +385,7 @@ System.out.println(invite.id());
 
 **检索审计日志**
 
+::: code-group
 ```javascript
 const auditLogs = await client.admin.organization.auditLogs.list({
   limit: 10,
@@ -372,12 +393,15 @@ const auditLogs = await client.admin.organization.auditLogs.list({
 
 console.log(auditLogs.data);
 ```
+
 ```python
 audit_logs = client.admin.organization.audit_logs.list(limit=10)
 
 for audit_log in audit_logs.data:
     print(audit_log.id)
 ```
+
+:::
 ```go
 ctx := context.Background()
 

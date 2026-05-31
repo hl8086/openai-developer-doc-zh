@@ -31,6 +31,7 @@ Audio API 提供两个语音转文字端点：
 
 **转录音频**
 
+::: code-group
 ```javascript
 import fs from "fs";
 import OpenAI from "openai";
@@ -44,6 +45,7 @@ const transcription = await openai.audio.transcriptions.create({
 
 console.log(transcription.text);
 ```
+
 ```python
 from openai import OpenAI
 
@@ -57,6 +59,8 @@ transcription = client.audio.transcriptions.create(
 
 print(transcription.text)
 ```
+
+:::
 ```cli
 openai audio:transcriptions create \
   --model gpt-4o-transcribe \
@@ -86,6 +90,7 @@ Audio API 还允许您在请求中设置其他参数。例如，如果您想将 
 
 **其他选项**
 
+::: code-group
 ```javascript
 import fs from "fs";
 import OpenAI from "openai";
@@ -100,6 +105,7 @@ const transcription = await openai.audio.transcriptions.create({
 
 console.log(transcription.text);
 ```
+
 ```python
 from openai import OpenAI
 
@@ -114,6 +120,7 @@ transcription = client.audio.transcriptions.create(
 
 print(transcription.text)
 ```
+
 ```curl
 curl --request POST \
   --url https://api.openai.com/v1/audio/transcriptions \
@@ -123,6 +130,8 @@ curl --request POST \
   --form model=gpt-4o-transcribe \
   --form response_format=text
 ```
+
+:::
 
 [API 参考]( https://developers.openai.com/api/reference/audio)包含可用参数的完整列表。
 
@@ -136,6 +145,7 @@ curl --request POST \
 
 **对会议录音进行说话人分离**
 
+::: code-group
 ```javascript
 import fs from "fs";
 import OpenAI from "openai";
@@ -159,6 +169,7 @@ for (const segment of transcript.segments) {
   console.log(`${segment.speaker}: ${segment.text}`, segment.start, segment.end);
 }
 ```
+
 ```python
 import base64
 from openai import OpenAI
@@ -184,6 +195,7 @@ with open("meeting.wav", "rb") as audio_file:
 for segment in transcript.segments:
     print(segment.speaker, segment.text, segment.start, segment.end)
 ```
+
 ```curl
 curl --request POST \
   --url https://api.openai.com/v1/audio/transcriptions \
@@ -197,6 +209,8 @@ curl --request POST \
   --form 'known_speaker_references[]=data:audio/wav;base64,AAA...'
 ```
 
+:::
+
 当 `stream=true` 时，说话人分离响应会在片段完成时发出 `transcript.text.segment` 事件。`transcript.text.delta` 事件包含 `segment_id` 字段，但说话人分离的增量不会在每个片段最终确定之前流式传输部分说话人分配。
 
 `gpt-4o-transcribe-diarize` 目前仅通过 `/v1/audio/transcriptions` 可用，尚不支持 Realtime API。
@@ -207,6 +221,7 @@ curl --request POST \
 
 **翻译音频**
 
+::: code-group
 ```javascript
 import fs from "fs";
 import OpenAI from "openai";
@@ -220,6 +235,7 @@ const translation = await openai.audio.translations.create({
 
 console.log(translation.text);
 ```
+
 ```python
 from openai import OpenAI
 
@@ -233,6 +249,7 @@ translation = client.audio.translations.create(
 
 print(translation.text)
 ```
+
 ```curl
 curl --request POST \
   --url https://api.openai.com/v1/audio/translations \
@@ -241,6 +258,8 @@ curl --request POST \
   --form file=@/path/to/file/german.mp3 \
   --form model=whisper-1 \
 ```
+
+:::
 
 在这个例子中，输入的音频是德语，输出的文本如下：
 
@@ -266,6 +285,7 @@ Hello, my name is Wolfgang and I come from Germany. Where are you heading today?
 
 **时间戳选项**
 
+::: code-group
 ```javascript
 import fs from "fs";
 import OpenAI from "openai";
@@ -281,6 +301,7 @@ const transcription = await openai.audio.transcriptions.create({
 
 console.log(transcription.words);
 ```
+
 ```python
 from openai import OpenAI
 
@@ -296,6 +317,7 @@ transcription = client.audio.transcriptions.create(
 
 print(transcription.words)
 ```
+
 ```curl
 curl https://api.openai.com/v1/audio/transcriptions \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -305,6 +327,8 @@ curl https://api.openai.com/v1/audio/transcriptions \
   -F model="whisper-1" \
   -F response_format="verbose_json"
 ```
+
+:::
 
 `timestamp_granularities[]` 参数仅支持 `whisper-1`。
 
@@ -335,6 +359,7 @@ _OpenAI 不对 PyDub 等第三方软件的可用性或安全性做任何保证�
 
 **提示词**
 
+::: code-group
 ```javascript
 import fs from "fs";
 import OpenAI from "openai";
@@ -350,6 +375,7 @@ const transcription = await openai.audio.transcriptions.create({
 
 console.log(transcription.text);
 ```
+
 ```python
 from openai import OpenAI
 
@@ -365,6 +391,7 @@ transcription = client.audio.transcriptions.create(
 
 print(transcription.text)
 ```
+
 ```curl
 curl --request POST \
   --url https://api.openai.com/v1/audio/transcriptions \
@@ -374,6 +401,8 @@ curl --request POST \
   --form model=gpt-4o-transcribe \
   --form prompt="The following conversation is a lecture about the recent developments around OpenAI, GPT-4.5 and the future of AI."
 ```
+
+:::
 
 对于 `gpt-4o-transcribe` 和 `gpt-4o-mini-transcribe`，您可以使用 `prompt` 参数通过为模型提供额外上下文来提高转录质量，方式类似于您对其他 GPT-4o 模型的提示。`gpt-4o-transcribe-diarize` 目前不支持提示词。
 
@@ -401,6 +430,7 @@ curl --request POST \
 
 **流式转录**
 
+::: code-group
 ```javascript
 import fs from "fs";
 import OpenAI from "openai";
@@ -422,6 +452,7 @@ for await (const event of stream) {
 }
 // highlight-end
 ```
+
 ```python
 from openai import OpenAI
 
@@ -442,6 +473,7 @@ for event in stream:
   print(event)
 # highlight-end
 ```
+
 ```curl
 curl --request POST \
   --url https://api.openai.com/v1/audio/transcriptions \
@@ -452,6 +484,8 @@ curl --request POST \
   # highlight-start
   --form stream=True
 ```
+
+:::
 
 一旦模型完成该部分音频的转录，您将收到 `transcript.text.delta` 事件流，随后在转录完成时收到包含完整转录的 `transcript.text.done` 事件。使用 `response_format="diarized_json"` 时，流还会在每个片段最终确定时发出带有说话人标签的 `transcript.text.segment` 事件。
 
@@ -475,6 +509,7 @@ curl --request POST \
 
 **Prompt 参数**
 
+::: code-group
 ```javascript
 import fs from "fs";
 import OpenAI from "openai";
@@ -490,6 +525,7 @@ const transcription = await openai.audio.transcriptions.create({
 
 console.log(transcription.text);
 ```
+
 ```python
 from openai import OpenAI
 
@@ -505,6 +541,7 @@ transcription = client.audio.transcriptions.create(
 
 print(transcription.text)
 ```
+
 ```curl
 curl --request POST \
   --url https://api.openai.com/v1/audio/transcriptions \
@@ -514,6 +551,8 @@ curl --request POST \
   --form model=whisper-1 \
   --form prompt="ZyntriQix, Digique Plus, CynapseFive, VortiQore V8, EchoNix Array, OrbitalLink Seven, DigiFractal Matrix, PULSE, RAPT, B.R.I.C.K., Q.U.A.R.T.Z., F.L.I.N.T."
 ```
+
+:::
 
 虽然这提高了可靠性，但此技术限于 224 个 token，因此您的 SKU 列表需要相对较小才能使其成为可扩展的解决方案。
 
@@ -525,6 +564,7 @@ curl --request POST \
 
 **后处理**
 
+::: code-group
 ```javascript
 const systemPrompt = `
 You are a helpful assistant for the company ZyntriQix. Your task is 
@@ -555,6 +595,7 @@ store: true,
 
 console.log(completion.choices[0].message.content);
 ```
+
 ```python
 system_prompt = """
 You are a helpful assistant for the company ZyntriQix. Your task is to correct 
@@ -586,5 +627,7 @@ corrected_text = generate_corrected_transcript(
   0, system_prompt, fake_company_filepath
 )
 ```
+
+:::
 
 如果您在自己的音频文件上尝试此方法，您会看到 GPT-4 纠正了转录中的许多拼写错误。由于其更大的上下文窗口，此方法可能比使用 Whisper 的 prompt 参数更具可扩展性。它也更可靠，因为 GPT-4 可以以 Whisper 由于缺乏指令遵循能力而无法实现的方式进行指导和引导。

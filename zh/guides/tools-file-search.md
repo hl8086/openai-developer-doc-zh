@@ -17,6 +17,7 @@
 
 **上传文件**
 
+::: code-group
 ```python
 import requests
 from io import BytesIO
@@ -48,6 +49,7 @@ def create_file(client, file_path):
 # Replace with your own file path or URL
 file_id = create_file(client, "https://cdn.openai.com/API/docs/deep_research_blog.pdf")
 ```
+
 ```javascript
 import fs from "fs";
 import OpenAI from "openai";
@@ -85,16 +87,20 @@ const fileId = await createFile(
 console.log(fileId);
 ```
 
+:::
+
 #### 创建向量存储
 
 **创建向量存储**
 
+::: code-group
 ```python
 vector_store = client.vector_stores.create(
     name="knowledge_base"
 )
 print(vector_store.id)
 ```
+
 ```javascript
 const vectorStore = await openai.vectorStores.create({
     name: "knowledge_base",
@@ -102,10 +108,13 @@ const vectorStore = await openai.vectorStores.create({
 console.log(vectorStore.id);
 ```
 
+:::
+
 #### 将文件添加到向量存储
 
 **将文件添加到向量存储**
 
+::: code-group
 ```python
 result = client.vector_stores.files.create(
     vector_store_id=vector_store.id,
@@ -113,6 +122,7 @@ result = client.vector_stores.files.create(
 )
 print(result)
 ```
+
 ```javascript
 await openai.vectorStores.files.create(
     vectorStore.id,
@@ -122,18 +132,22 @@ await openai.vectorStores.files.create(
 });
 ```
 
+:::
+
 #### 检查状态
 
 运行此代码直到文件准备就绪可以使用（即状态为 `completed` 时）。
 
 **检查状态**
 
+::: code-group
 ```python
 result = client.vector_stores.files.list(
     vector_store_id=vector_store.id
 )
 print(result)
 ```
+
 ```javascript
 const result = await openai.vectorStores.files.list({
     vector_store_id: vectorStore.id,
@@ -141,10 +155,13 @@ const result = await openai.vectorStores.files.list({
 console.log(result);
 ```
 
+:::
+
 一旦您的知识库设置完成，您可以在模型可用的工具列表中包含 `file_search` 工具，以及要搜索的向量存储列表。
 
 **文件搜索工具**
 
+::: code-group
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -159,6 +176,7 @@ response = client.responses.create(
 )
 print(response)
 ```
+
 ```javascript
 import OpenAI from "openai";
 const openai = new OpenAI();
@@ -175,6 +193,8 @@ const response = await openai.responses.create({
 });
 console.log(response);
 ```
+
+:::
 ```csharp
 using OpenAI.Responses;
 
@@ -259,6 +279,7 @@ Console.WriteLine(response.GetOutputText());
 
 **限制结果数量**
 
+::: code-group
 ```python
 response = client.responses.create(
     model="gpt-4.1",
@@ -273,6 +294,7 @@ response = client.responses.create(
 )
 print(response)
 ```
+
 ```javascript
 const response = await openai.responses.create({
     model: "gpt-4.1",
@@ -288,6 +310,8 @@ const response = await openai.responses.create({
 console.log(response);
 ```
 
+:::
+
 ### 在响应中包含搜索结果
 
 虽然您可以在输出文本中看到注释（对文件的引用），但文件搜索调用默认不会返回搜索结果。
@@ -296,6 +320,7 @@ console.log(response);
 
 **包含搜索结果**
 
+::: code-group
 ```python
 response = client.responses.create(
     model="gpt-4.1",
@@ -310,6 +335,7 @@ response = client.responses.create(
 )
 print(response)
 ```
+
 ```javascript
 const response = await openai.responses.create({
     model: "gpt-4.1",
@@ -325,6 +351,8 @@ const response = await openai.responses.create({
 console.log(response);
 ```
 
+:::
+
 ### 元数据过滤
 
 您可以根据文件的元数据过滤搜索结果。有关更多详细信息，请参阅我们的[检索指南](/guides/retrieval)，其中涵盖：
@@ -334,6 +362,7 @@ console.log(response);
 
 **元数据过滤**
 
+::: code-group
 ```python
 response = client.responses.create(
     model="gpt-4.1",
@@ -352,6 +381,7 @@ response = client.responses.create(
 )
 print(response)
 ```
+
 ```javascript
 const response = await openai.responses.create({
     model: "gpt-4.1",
@@ -370,6 +400,8 @@ const response = await openai.responses.create({
 });
 console.log(response);
 ```
+
+:::
 
 ## 支持的文件
 

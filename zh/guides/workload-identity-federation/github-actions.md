@@ -162,6 +162,7 @@ jobs:
 
 **从 GitHub Actions OIDC 令牌进行身份验证**
 
+::: code-group
 ```typescript
 import OpenAI from "openai";
 import type { SubjectTokenProvider } from "openai/auth";
@@ -230,6 +231,7 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 ```
+
 ```python
 import json
 import os
@@ -284,6 +286,8 @@ response = client.responses.create(
 
 print(response.output_text)
 ```
+
+:::
 ```go
 package main
 

@@ -122,6 +122,7 @@ await pc.setRemoteDescription({
 
 **连接到翻译会话**
 
+::: code-group
 ```javascript
 import WebSocket from "ws";
 
@@ -135,6 +136,7 @@ const ws = new WebSocket(
   }
 );
 ```
+
 ```python
 import os
 import websocket
@@ -149,10 +151,13 @@ ws.connect(
 )
 ```
 
+:::
+
 在 socket 打开后配置目标语言：
 
 **配置目标语言**
 
+::: code-group
 ```javascript
 ws.on("open", () => {
   ws.send(
@@ -169,6 +174,7 @@ ws.on("open", () => {
   );
 });
 ```
+
 ```python
 import json
 
@@ -188,10 +194,13 @@ ws.send(
 )
 ```
 
+:::
+
 然后持续追加音频：
 
 **追加源音频**
 
+::: code-group
 ```javascript
 ws.send(
   JSON.stringify({
@@ -200,6 +209,7 @@ ws.send(
   })
 );
 ```
+
 ```python
 ws.send(
     json.dumps(
@@ -211,10 +221,13 @@ ws.send(
 )
 ```
 
+:::
+
 监听翻译后的音频和转录：
 
 **监听翻译后的音频和转录**
 
+::: code-group
 ```javascript
 ws.on("message", (data) => {
   const event = JSON.parse(data);
@@ -232,6 +245,7 @@ ws.on("message", (data) => {
   }
 });
 ```
+
 ```python
 while True:
     event = json.loads(ws.recv())
@@ -246,6 +260,8 @@ while True:
         update_source_transcript(event["delta"])
 ```
 
+:::
+
 ## 关闭 WebSocket 会话
 
 当你的源流结束时，在关闭 WebSocket 之前发送 [`session.close`]( https://developers.openai.com/api/reference/resources/realtime/translation-client-events#session-close) 事件。该事件告诉服务刷新待处理的输入音频，发出所有剩余的翻译音频和转录输出，然后发送 `session.closed` 事件。`session.close` 事件仅支持翻译会话。
@@ -254,6 +270,7 @@ while True:
 
 **关闭翻译会话**
 
+::: code-group
 ```javascript
 let translationSessionClosing = false;
 
@@ -293,6 +310,7 @@ ws.on("message", (data) => {
 // Call this when the source stream ends.
 closeTranslationSession();
 ```
+
 ```python
 translation_session_closing = False
 
@@ -325,6 +343,8 @@ while True:
         ws.close()
         break
 ```
+
+:::
 
 ## 构建旁听翻译
 

@@ -30,6 +30,7 @@ Responses API
 
 **通过 Responses API 提供安全标识符**
 
+::: code-group
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -40,6 +41,7 @@ input="This is a test",
 safety_identifier="user_123456",
 )
 ```
+
 ```curl
 curl https://api.openai.com/v1/responses \
 -H "Content-Type: application/json" \
@@ -51,10 +53,13 @@ curl https://api.openai.com/v1/responses \
 }'
 ```
 
+:::
+
 Chat Completions API
 
 **通过 Chat Completions API 提供安全标识符**
 
+::: code-group
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -67,6 +72,7 @@ messages=[
 safety_identifier="user_123456"
 )
 ```
+
 ```curl
 curl https://api.openai.com/v1/chat/completions \
 -H "Content-Type: application/json" \
@@ -79,6 +85,8 @@ curl https://api.openai.com/v1/chat/completions \
 "safety_identifier": "user_123456"
 }'
 ```
+
+:::
 
 Realtime API
 

@@ -111,6 +111,7 @@ PY
 
 **从 Google 元数据服务器身份令牌进行身份验证**
 
+::: code-group
 ```typescript
 import OpenAI from "openai";
 import type { SubjectTokenProvider } from "openai/auth";
@@ -171,6 +172,7 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 ```
+
 ```python
 import os
 from urllib.parse import urlencode
@@ -218,6 +220,8 @@ response = client.responses.create(
 
 print(response.output_text)
 ```
+
+:::
 ```go
 package main
 
@@ -658,6 +662,7 @@ PY
 
 **从 GKE 投射服务账号令牌进行身份验证**
 
+::: code-group
 ```typescript
 import { readFile } from "node:fs/promises";
 import OpenAI from "openai";
@@ -699,6 +704,7 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 ```
+
 ```python
 import os
 from pathlib import Path
@@ -734,6 +740,8 @@ response = client.responses.create(
 
 print(response.output_text)
 ```
+
+:::
 ```go
 package main
 

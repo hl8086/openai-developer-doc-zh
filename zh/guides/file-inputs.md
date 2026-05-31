@@ -44,6 +44,7 @@ API 不会将整个工作表传递给模型，而是解析每个工作表的前 
 
 **使用外部文件 URL**
 
+::: code-group
 ```curl
 curl "https://api.openai.com/v1/responses" \
     -H "Content-Type: application/json" \
@@ -67,6 +68,7 @@ curl "https://api.openai.com/v1/responses" \
         ]
     }'
 ```
+
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -92,6 +94,7 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 ```
+
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -117,6 +120,8 @@ response = client.responses.create(
 
 print(response.output_text)
 ```
+
+:::
 ```csharp
 using OpenAI.Files;
 using OpenAI.Responses;
@@ -147,6 +152,7 @@ Chat Completions 不支持文件 URL。请使用 [Responses API](/guides/file-in
 
 **上传文件**
 
+::: code-group
 ```curl
 curl https://api.openai.com/v1/files \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -175,6 +181,7 @@ curl "https://api.openai.com/v1/responses" \
         ]
     }'
 ```
+
 ```javascript
 import fs from "fs";
 import OpenAI from "openai";
@@ -206,6 +213,7 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 ```
+
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -236,6 +244,8 @@ response = client.responses.create(
 
 print(response.output_text)
 ```
+
+:::
 ```csharp
 using OpenAI.Files;
 using OpenAI.Responses;
@@ -258,6 +268,7 @@ Console.WriteLine(response.GetOutputText());
 
 **上传文件**
 
+::: code-group
 ```curl
 curl https://api.openai.com/v1/files \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -288,6 +299,7 @@ curl "https://api.openai.com/v1/chat/completions" \
         ]
     }'
 ```
+
 ```javascript
 import fs from "fs";
 import OpenAI from "openai";
@@ -321,6 +333,7 @@ const completion = await client.chat.completions.create({
 
 console.log(completion.choices[0].message.content);
 ```
+
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -354,12 +367,15 @@ completion = client.chat.completions.create(
 print(completion.choices[0].message.content)
 ```
 
+:::
+
 ## Base64 编码文件
 
 你也可以以 Base64 编码文件数据的形式发送文件输入。
 
 **发送 Base64 编码文件**
 
+::: code-group
 ```curl
 curl "https://api.openai.com/v1/responses" \
     -H "Content-Type: application/json" \
@@ -384,6 +400,7 @@ curl "https://api.openai.com/v1/responses" \
         ]
     }'
 ```
+
 ```javascript
 import fs from "fs";
 import OpenAI from "openai";
@@ -414,6 +431,7 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 ```
+
 ```python
 import base64
 from openai import OpenAI
@@ -447,8 +465,11 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
+:::
+
 **发送 Base64 编码文件**
 
+::: code-group
 ```curl
 curl "https://api.openai.com/v1/chat/completions" \
     -H "Content-Type: application/json" \
@@ -475,6 +496,7 @@ curl "https://api.openai.com/v1/chat/completions" \
         ]
     }'
 ```
+
 ```javascript
 import fs from "fs";
 import OpenAI from "openai";
@@ -507,6 +529,7 @@ const completion = await client.chat.completions.create({
 
 console.log(completion.choices[0].message.content);
 ```
+
 ```python
 import base64
 from openai import OpenAI
@@ -541,6 +564,8 @@ completion = client.chat.completions.create(
 
 print(completion.choices[0].message.content)
 ```
+
+:::
 
 ## 使用注意事项
 

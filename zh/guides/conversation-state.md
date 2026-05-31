@@ -9,6 +9,7 @@ OpenAI 提供了几种管理对话状态的方式，这对于在对话中的多�
 
 **手动构建过去的对话**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -34,6 +35,7 @@ const response = await openai.chat.completions.create({
 
 console.log(response.choices[0].message.content);
 ```
+
 ```python
 from openai import OpenAI
 
@@ -51,8 +53,11 @@ response = client.chat.completions.create(
 print(response.choices[0].message.content)
 ```
 
+:::
+
 **手动构建过去的对话**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -69,6 +74,7 @@ const response = await openai.responses.create({
 
 console.log(response.output_text);
 ```
+
 ```python
 from openai import OpenAI
 
@@ -86,6 +92,8 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
+:::
+
 通过使用交替的 `user` 和 `assistant` 消息，您可以在一次请求中捕获对话的先前状态。
 
 要手动在生成的响应之间共享上下文，请将模型先前的响应输出作为输入包含进来，并将该输入附加到您的下一个请求中。
@@ -94,6 +102,7 @@ print(response.output_text)
 
 **使用 Chat Completions API 手动管理对话状态。**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -126,6 +135,7 @@ const secondCompletion = await openai.chat.completions.create({
 
 console.log(secondCompletion.choices[0].message.content);
 ```
+
 ```python
 from openai import OpenAI
 
@@ -156,8 +166,11 @@ second_response = client.chat.completions.create(
 print(second_response.choices[0].message.content)
 ```
 
+:::
+
 **使用 Responses API 手动管理对话状态。**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -201,6 +214,7 @@ const secondResponse = await openai.responses.create({
 
 console.log(secondResponse.output_text);
 ```
+
 ```python
 from openai import OpenAI
 
@@ -234,6 +248,8 @@ second_response = client.responses.create(
 
 print(second_response.output_text)
 ```
+
+:::
 
 ## 用于对话状态的 OpenAI API
 
@@ -273,6 +289,7 @@ response = openai.responses.create(
 
 **通过传递上一个响应 ID 来链接跨轮次的响应**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -295,6 +312,7 @@ const secondResponse = await openai.responses.create({
 
 console.log(secondResponse.output_text);
 ```
+
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -312,11 +330,14 @@ second_response = client.responses.create(
 )
 print(second_response.output_text)
 ```
+
+:::
 
 在以下示例中，我们要求模型讲一个笑话。然后单独要求模型解释为什么这个笑话好笑，模型拥有所有必要的上下文来提供一个好的回答。
 
 **使用 Responses API 手动管理对话状态**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -339,6 +360,7 @@ const secondResponse = await openai.responses.create({
 
 console.log(secondResponse.output_text);
 ```
+
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -356,6 +378,8 @@ second_response = client.responses.create(
 )
 print(second_response.output_text)
 ```
+
+:::
 
 #### WebSocket 模式下的 `previous_response_id`
 

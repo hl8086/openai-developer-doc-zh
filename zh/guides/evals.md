@@ -21,6 +21,7 @@
 
 **分类 IT 支持工单**
 
+::: code-group
 ```curl
 curl https://api.openai.com/v1/responses \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -39,6 +40,7 @@ curl https://api.openai.com/v1/responses \
         ]
     }'
 ```
+
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -61,6 +63,7 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 ```
+
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -84,8 +87,11 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
+:::
+
 **分类 IT 支持工单**
 
+::: code-group
 ```curl
 curl https://api.openai.com/v1/chat/completions \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -103,6 +109,7 @@ curl https://api.openai.com/v1/chat/completions \
         ]
     }'
 ```
+
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -125,6 +132,7 @@ const completion = await client.chat.completions.create({
 
 console.log(completion.choices[0].message.content);
 ```
+
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -148,6 +156,8 @@ completion = client.chat.completions.create(
 print(completion.choices[0].message.content)
 ```
 
+:::
+
 让我们设置一个评估来[通过 API]( https://developers.openai.com/api/reference/evals) 测试此行为。评估需要两个关键要素：
 
 *   `data_source_config`：你将与评估一起使用的测试数据的模式。
@@ -155,6 +165,7 @@ print(completion.choices[0].message.content)
 
 **创建评估**
 
+::: code-group
 ```curl
 curl https://api.openai.com/v1/evals \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -184,6 +195,7 @@ curl https://api.openai.com/v1/evals \
         ]
     }'
 ```
+
 ```javascript
 import OpenAI from "openai";
 const openai = new OpenAI();
@@ -215,6 +227,7 @@ const evalObj = await openai.evals.create({
 
 console.log(evalObj);
 ```
+
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -246,6 +259,8 @@ eval_obj = client.evals.create(
 
 print(eval_obj)
 ```
+
+:::
 
 说明：data\_source\_config 参数
 
@@ -338,12 +353,14 @@ print(eval_obj)
 
 **上传测试数据文件**
 
+::: code-group
 ```curl
 curl https://api.openai.com/v1/files \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -F purpose="evals" \
   -F file="@tickets.jsonl"
 ```
+
 ```javascript
 import fs from "fs";
 import OpenAI from "openai";
@@ -357,6 +374,7 @@ const file = await openai.files.create({
 
 console.log(file);
 ```
+
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -368,6 +386,8 @@ file = client.files.create(
 
 print(file)
 ```
+
+:::
 
 上传文件时，请记下响应负载中的唯一 `id` 属性（如果通过浏览器上传，也可以在 UI 中找到）——我们稍后需要引用该值：
 
@@ -393,6 +413,7 @@ print(file)
 
 **创建评估运行**
 
+::: code-group
 ```curl
 curl https://api.openai.com/v1/evals/YOUR_EVAL_ID/runs \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -413,6 +434,7 @@ curl https://api.openai.com/v1/evals/YOUR_EVAL_ID/runs \
         }
     }'
 ```
+
 ```javascript
 import OpenAI from "openai";
 const openai = new OpenAI();
@@ -435,6 +457,7 @@ const run = await openai.evals.runs.create("YOUR_EVAL_ID", {
 
 console.log(run);
 ```
+
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -459,8 +482,11 @@ run = client.evals.runs.create(
 print(run)
 ```
 
+:::
+
 **创建评估运行**
 
+::: code-group
 ```curl
 curl https://api.openai.com/v1/evals/YOUR_EVAL_ID/runs \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -481,6 +507,7 @@ curl https://api.openai.com/v1/evals/YOUR_EVAL_ID/runs \
         }
     }'
 ```
+
 ```javascript
 import OpenAI from "openai";
 const openai = new OpenAI();
@@ -503,6 +530,7 @@ const run = await openai.evals.runs.create("YOUR_EVAL_ID", {
 
 console.log(run);
 ```
+
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -526,6 +554,8 @@ run = client.evals.runs.create(
 
 print(run)
 ```
+
+:::
 
 当我们创建运行时，我们使用 [Chat Completions](/guides/text?api-mode=chat) 消息数组或 [Responses]( https://developers.openai.com/api/reference/responses) 输入来设置提示词。此提示词用于为数据集中的每一行测试数据生成模型响应。我们可以使用双花括号语法来模板化动态变量 `item.ticket_text`，该变量取自当前测试数据项。
 
@@ -637,11 +667,13 @@ print(run)
 
 **获取评估运行状态**
 
+::: code-group
 ```curl
 curl https://api.openai.com/v1/evals/YOUR_EVAL_ID/runs/YOUR_RUN_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
     -H "Content-Type: application/json"
 ```
+
 ```javascript
 import OpenAI from "openai";
 const openai = new OpenAI();
@@ -651,6 +683,7 @@ const run = await openai.evals.runs.retrieve("YOUR_RUN_ID", {
 });
 console.log(run);
 ```
+
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -658,6 +691,8 @@ client = OpenAI()
 run = client.evals.runs.retrieve("YOUR_EVAL_ID", "YOUR_RUN_ID")
 print(run)
 ```
+
+:::
 
 你需要评估和评估运行的 UUID 来获取其状态。获取后，你将看到如下所示的评估运行数据：
 

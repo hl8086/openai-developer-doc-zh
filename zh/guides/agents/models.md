@@ -11,6 +11,7 @@
 
 **为每个代理和每次运行设置模型**
 
+::: code-group
 ```typescript
 import { Agent, Runner } from "@openai/agents";
 
@@ -37,6 +38,7 @@ const result = await runner.run(
 
 console.log(result.finalOutput);
 ```
+
 ```python
 import asyncio
 
@@ -68,6 +70,8 @@ async def main() -> None:
 if __name__ == "__main__":
     asyncio.run(main())
 ```
+
+:::
 
 对于大多数新的 SDK 工作流，建议从 [`gpt-5.5`](/models/gpt-5.5) 开始，仅在延迟或成本足够重要时才切换到更小的变体。请参阅平台级的 [使用 GPT-5.5](/guides/latest-model) 指南获取当前的模型选择建议。
 

@@ -29,6 +29,7 @@ OpenAI API 提供了多个端点来处理图像输入或生成图像输出，使
 
 **使用 Responses 生成图像**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const openai = new OpenAI();
@@ -50,6 +51,7 @@ if (imageData.length > 0) {
   fs.writeFileSync("cat_and_otter.png", Buffer.from(imageBase64, "base64"));
 }
 ```
+
 ```python
 from openai import OpenAI
 import base64
@@ -74,6 +76,8 @@ if image_data:
     with open("cat_and_otter.png", "wb") as f:
         f.write(base64.b64decode(image_base64))
 ```
+
+:::
 ```cli
 openai responses create \
   --model gpt-5.5 \
@@ -109,6 +113,7 @@ GPT Image 模型可以利用对世界的视觉理解来生成逼真的图像，�
 
 **分析图像内容**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const openai = new OpenAI();
@@ -131,6 +136,7 @@ const response = await openai.chat.completions.create({
 
 console.log(response.choices[0].message.content);
 ```
+
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -153,6 +159,7 @@ response = client.chat.completions.create(
 
 print(response.choices[0].message.content)
 ```
+
 ```curl
 curl https://api.openai.com/v1/chat/completions \
   -H "Content-Type: application/json" \
@@ -180,10 +187,13 @@ curl https://api.openai.com/v1/chat/completions \
   }'
 ```
 
+:::
+
 传递 Base64 编码图像
 
 **分析图像内容**
 
+::: code-group
 ```javascript
 import fs from "fs";
 import OpenAI from "openai";
@@ -211,6 +221,7 @@ const completion = await openai.chat.completions.create({
 
 console.log(completion.choices[0].message.content);
 ```
+
 ```python
 import base64
 from openai import OpenAI
@@ -249,6 +260,7 @@ completion = client.chat.completions.create(
 
 print(completion.choices[0].message.content)
 ```
+
 ```curl
 BASE64_IMAGE=$(base64 < path_to_your_image.jpg) && curl https://api.openai.com/v1/chat/completions   -H "Content-Type: application/json"   -H "Authorization: Bearer $OPENAI_API_KEY"   -d @- <&lt;EOF
   {
@@ -275,6 +287,8 @@ BASE64_IMAGE=$(base64 < path_to_your_image.jpg) && curl https://api.openai.com/v
 EOF
 ```
 
+:::
+
 您可以通过多种方式将图像作为输入提供给生成请求：
 
 *   提供图像文件的完整 URL
@@ -289,6 +303,7 @@ EOF
 
 **分析图像内容**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -310,6 +325,7 @@ const response = await openai.responses.create({
 
 console.log(response.output_text);
 ```
+
 ```python
 from openai import OpenAI
 
@@ -331,6 +347,8 @@ response = client.responses.create(
 
 print(response.output_text)
 ```
+
+:::
 ```csharp
 using OpenAI.Responses;
 
@@ -387,6 +405,7 @@ YAML
 
 **分析图像内容**
 
+::: code-group
 ```javascript
 import fs from "fs";
 import OpenAI from "openai";
@@ -414,6 +433,7 @@ const response = await openai.responses.create({
 
 console.log(response.output_text);
 ```
+
 ```python
 import base64
 from openai import OpenAI
@@ -451,6 +471,8 @@ response = client.responses.create(
 
 print(response.output_text)
 ```
+
+:::
 ```csharp
 using OpenAI.Responses;
 
@@ -489,6 +511,7 @@ Console.WriteLine($"From byte array: {response2.GetOutputText()}");
 
 **分析图像内容**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 import fs from "fs";
@@ -526,6 +549,7 @@ const response = await openai.responses.create({
 
 console.log(response.output_text);
 ```
+
 ```python
 from openai import OpenAI
 
@@ -559,6 +583,8 @@ response = client.responses.create(
 
 print(response.output_text)
 ```
+
+:::
 ```csharp
 using OpenAI.Files;
 using OpenAI.Responses;

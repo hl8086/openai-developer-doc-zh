@@ -9,6 +9,7 @@
 
 **启动深度研究任务**
 
+::: code-group
 ```python
 from openai import OpenAI
 client = OpenAI(timeout=3600)
@@ -49,6 +50,7 @@ response = client.responses.create(
 
 print(response.output_text)
 ```
+
 ```javascript
 import OpenAI from "openai";
 const openai = new OpenAI({ timeout: 3600 * 1000 });
@@ -86,6 +88,7 @@ const response = await openai.responses.create({
 
 console.log(response);
 ```
+
 ```curl
 curl https://api.openai.com/v1/responses   -H "Authorization: Bearer $OPENAI_API_KEY"   -H "Content-Type: application/json"   -d '{
     "model": "o3-deep-research",
@@ -104,6 +107,8 @@ curl https://api.openai.com/v1/responses   -H "Authorization: Bearer $OPENAI_API
     ]
   }'
 ```
+
+:::
 
 深度研究请求可能需要很长时间，因此我们建议在[后台模式](/guides/background)下运行。您可以配置一个 [webhook](/guides/webhooks)，在后台请求完成时接收通知。后台模式会保留响应数据大约 10 分钟以确保轮询可靠工作，这使其与零数据保留（ZDR）要求不兼容。出于历史原因，我们仍然在 ZDR 凭证上接受 `background=true`，但如果您需要 ZDR，则应将其关闭。修改后的滥用监控（MAM）项目可以安全使用后台模式。
 
@@ -177,6 +182,7 @@ curl https://api.openai.com/v1/responses   -H "Authorization: Bearer $OPENAI_API
 
 **使用更快、更小的模型提出澄清问题**
 
+::: code-group
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -203,6 +209,7 @@ response = client.responses.create(
 
 print(response.output_text)
 ```
+
 ```javascript
 import OpenAI from "openai";
 const openai = new OpenAI();
@@ -229,6 +236,7 @@ instructions,
 
 console.log(response.output_text);
 ```
+
 ```curl
 curl https://api.openai.com/v1/responses \
 -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -240,8 +248,11 @@ curl https://api.openai.com/v1/responses \
 }'
 ```
 
+:::
+
 **使用更快、更小的模型丰富用户提示词**
 
+::: code-group
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -322,6 +333,7 @@ response = client.responses.create(
 
 print(response.output_text)
 ```
+
 ```javascript
 import OpenAI from "openai";
 const openai = new OpenAI();
@@ -402,6 +414,7 @@ const response = await openai.responses.create({
 
 console.log(response.output_text);
 ```
+
 ```curl
 curl https://api.openai.com/v1/responses \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -412,6 +425,8 @@ curl https://api.openai.com/v1/responses \
     "instructions": "You are a helpful assistant that generates a prompt for a deep research task. Examine the users prompt and generate a set of clarifying questions that will help the deep research model generate a better response."
   }'
 ```
+
+:::
 
 ## 使用您自己的数据进行研究
 
@@ -449,6 +464,7 @@ curl https://api.openai.com/v1/responses \
 
 **深度研究的远程 MCP 服务器配置**
 
+::: code-group
 ```curl
 curl https://api.openai.com/v1/responses \
   -H "Content-Type: application/json" \
@@ -466,6 +482,7 @@ curl https://api.openai.com/v1/responses \
   "input": "What similarities are in the notes for our closed/lost Salesforce opportunities?"
 }'
 ```
+
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -492,6 +509,7 @@ const resp = await client.responses.create({
 
 console.log(resp.output_text);
 ```
+
 ```python
 from openai import OpenAI
 
@@ -519,6 +537,8 @@ resp = client.responses.create(
 
 print(resp.output_text)
 ```
+
+:::
 
 [构建深度研究兼容的远程 MCP 服务器 - 通过远程模型上下文协议（MCP）服务器让深度研究模型访问私有数据。](/mcp)
 

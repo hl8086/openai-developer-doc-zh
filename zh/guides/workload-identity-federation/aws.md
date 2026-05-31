@@ -152,6 +152,7 @@ PY
 
 **从 AWS 签发的 OIDC 令牌进行身份验证**
 
+::: code-group
 ```typescript
 import { GetWebIdentityTokenCommand, STSClient } from "@aws-sdk/client-sts";
 import OpenAI from "openai";
@@ -206,6 +207,7 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 ```
+
 ```python
 import os
 
@@ -248,6 +250,8 @@ response = client.responses.create(
 
 print(response.output_text)
 ```
+
+:::
 ```go
 package main
 
@@ -632,6 +636,7 @@ PY
 
 **从 EKS 投射服务账户令牌进行身份验证**
 
+::: code-group
 ```typescript
 import { readFile } from "node:fs/promises";
 import OpenAI from "openai";
@@ -673,6 +678,7 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 ```
+
 ```python
 import os
 from pathlib import Path
@@ -708,6 +714,8 @@ response = client.responses.create(
 
 print(response.output_text)
 ```
+
+:::
 ```go
 package main
 

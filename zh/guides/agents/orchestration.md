@@ -14,6 +14,7 @@
 
 **使用 handoffs 进行委托**
 
+::: code-group
 ```typescript
 import { Agent, handoff } from "@openai/agents";
 
@@ -25,6 +26,7 @@ const triageAgent = Agent.create({
   handoffs: [billingAgent, handoff(refundAgent)],
 });
 ```
+
 ```python
 from agents import Agent, handoff
 
@@ -36,6 +38,8 @@ triage_agent = Agent(
     handoffs=[billing_agent, handoff(refund_agent)],
 )
 ```
+
+:::
 
 保持路由表面清晰易读：
 
@@ -51,6 +55,7 @@ triage_agent = Agent(
 
 **将专家作为工具调用**
 
+::: code-group
 ```typescript
 import { Agent } from "@openai/agents";
 
@@ -69,6 +74,7 @@ const mainAgent = new Agent({
   ],
 });
 ```
+
 ```python
 from agents import Agent
 
@@ -87,6 +93,8 @@ main_agent = Agent(
     ],
 )
 ```
+
+:::
 
 以下情况通常更适合使用此模式：
 

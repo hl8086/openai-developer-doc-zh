@@ -22,6 +22,7 @@ Token 计数 API 能处理所有这些情况。使用与发送给 `responses.cre
 
 **简单文本输入**
 
+::: code-group
 ```python
 from openai import OpenAI
 
@@ -33,6 +34,7 @@ response = client.responses.input_tokens.count(
 )
 print(response.input_tokens)
 ```
+
 ```javascript
 import OpenAI from "openai";
 
@@ -45,6 +47,7 @@ const response = await client.responses.input_tokens.count({
 
 console.log(response.input_tokens);
 ```
+
 ```curl
 curl https://api.openai.com/v1/responses/input_tokens \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -54,6 +57,8 @@ curl https://api.openai.com/v1/responses/input_tokens \
     "input": "Tell me a joke."
   }'
 ```
+
+:::
 ```cli
 openai responses:input-tokens count \
   --model gpt-5 \
@@ -66,6 +71,7 @@ openai responses:input-tokens count \
 
 **多轮对话**
 
+::: code-group
 ```python
 from openai import OpenAI
 
@@ -81,6 +87,7 @@ response = client.responses.input_tokens.count(
 )
 print(response.input_tokens)
 ```
+
 ```javascript
 import OpenAI from "openai";
 
@@ -97,6 +104,7 @@ const response = await client.responses.input_tokens.count({
 
 console.log(response.input_tokens);
 ```
+
 ```curl
 curl https://api.openai.com/v1/responses/input_tokens \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -110,6 +118,8 @@ curl https://api.openai.com/v1/responses/input_tokens \
     ]
   }'
 ```
+
+:::
 ```cli
 openai responses:input-tokens count \
   --raw-output \
@@ -129,6 +139,7 @@ YAML
 
 **带系统指令的输入**
 
+::: code-group
 ```python
 from openai import OpenAI
 
@@ -141,6 +152,7 @@ response = client.responses.input_tokens.count(
 )
 print(response.input_tokens)
 ```
+
 ```javascript
 import OpenAI from "openai";
 
@@ -155,6 +167,7 @@ const response = await client.responses.input_tokens.count({
 
 console.log(response.input_tokens);
 ```
+
 ```curl
 curl https://api.openai.com/v1/responses/input_tokens \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -165,6 +178,8 @@ curl https://api.openai.com/v1/responses/input_tokens \
     "input": "Explain quantum computing in one sentence."
   }'
 ```
+
+:::
 ```cli
 openai responses:input-tokens count \
   --raw-output \
@@ -181,6 +196,7 @@ YAML
 
 **带图片的输入**
 
+::: code-group
 ```python
 from openai import OpenAI
 
@@ -201,6 +217,7 @@ response = client.responses.input_tokens.count(
 )
 print(response.input_tokens)
 ```
+
 ```javascript
 import OpenAI from "openai";
 
@@ -224,6 +241,7 @@ const response = await client.responses.input_tokens.count({
 
 console.log(response.input_tokens);
 ```
+
 ```curl
 curl https://api.openai.com/v1/responses/input_tokens \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -239,6 +257,8 @@ curl https://api.openai.com/v1/responses/input_tokens \
     }]
   }'
 ```
+
+:::
 ```cli
 openai responses:input-tokens count \
   --raw-output \
@@ -262,6 +282,7 @@ YAML
 
 **带函数工具的输入**
 
+::: code-group
 ```python
 from openai import OpenAI
 
@@ -285,6 +306,7 @@ response = client.responses.input_tokens.count(
 )
 print(response.input_tokens)
 ```
+
 ```javascript
 import OpenAI from "openai";
 
@@ -309,6 +331,7 @@ const response = await client.responses.input_tokens.count({
 
 console.log(response.input_tokens);
 ```
+
 ```curl
 curl https://api.openai.com/v1/responses/input_tokens \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -328,6 +351,8 @@ curl https://api.openai.com/v1/responses/input_tokens \
     "input": "What is the weather in San Francisco?"
   }'
 ```
+
+:::
 ```cli
 openai responses:input-tokens count \
   --raw-output \

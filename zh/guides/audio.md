@@ -77,6 +77,7 @@ Audio output from modelAudio input to model
 
 **创建类似人类的音频回复**
 
+::: code-group
 ```javascript
 import { writeFileSync } from "node:fs";
 import OpenAI from "openai";
@@ -107,6 +108,7 @@ writeFileSync(
   { encoding: "utf-8" }
 );
 ```
+
 ```python
 import base64
 from openai import OpenAI
@@ -131,6 +133,7 @@ wav_bytes = base64.b64decode(completion.choices[0].message.audio.data)
 with open("dog.wav", "wb") as f:
     f.write(wav_bytes)
 ```
+
 ```curl
 curl "https://api.openai.com/v1/chat/completions" \
     -H "Content-Type: application/json" \
@@ -148,10 +151,13 @@ curl "https://api.openai.com/v1/chat/completions" \
     }'
 ```
 
+:::
+
 模型的音频输入
 
 **使用音频输入来提示模型**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const openai = new OpenAI();
@@ -180,6 +186,7 @@ const response = await openai.chat.completions.create({
 
 console.log(response.choices[0]);
 ```
+
 ```python
 import base64
 import requests
@@ -220,6 +227,7 @@ completion = client.chat.completions.create(
 
 print(completion.choices[0].message)
 ```
+
 ```curl
 curl "https://api.openai.com/v1/chat/completions" \
     -H "Content-Type: application/json" \
@@ -245,3 +253,5 @@ curl "https://api.openai.com/v1/chat/completions" \
       ]
     }'
 ```
+
+:::

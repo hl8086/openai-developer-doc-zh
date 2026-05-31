@@ -30,6 +30,7 @@ Computer use 让模型能够通过用户界面操作软件。它可以检查截�
 
 **启动浏览器实例**
 
+::: code-group
 ```javascript
 import { chromium } from "playwright";
 
@@ -43,6 +44,7 @@ const page = await browser.newPage({
   viewport: { width: 1280, height: 720 },
 });
 ```
+
 ```python
 from playwright.sync_api import sync_playwright
 
@@ -56,6 +58,8 @@ with sync_playwright() as p:
     )
     page = browser.new_page(viewport={"width": 1280, "height": 720})
 ```
+
+:::
 
 设置本地虚拟机
 
@@ -106,6 +110,7 @@ docker run --rm -it --name cua-image -p 5900:5900 -e DISPLAY=:99 cua-image
 
 **在容器中执行命令**
 
+::: code-group
 ```python
 import subprocess
 
@@ -127,6 +132,7 @@ class VM:
 
 vm = VM(display=":99", container_name="cua-image")
 ```
+
 ```javascript
 import { exec } from "node:child_process";
 import { promisify } from "node:util";
@@ -147,6 +153,8 @@ const vm = {
   containerName: "cua-image",
 };
 ```
+
+:::
 
 无论你使用浏览器还是虚拟机，都应将截图、页面文本、工具输出、PDF、电子邮件、聊天记录和其他第三方内容视为不可信输入。只有用户的直接指令才算作许可。
 
@@ -180,6 +188,7 @@ const vm = {
 
 **发送 computer 请求**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -194,6 +203,7 @@ const response = await client.responses.create({
 
 console.log(JSON.stringify(response.output, null, 2));
 ```
+
 ```python
 from openai import OpenAI
 
@@ -207,6 +217,8 @@ response = client.responses.create(
 
 print(response.output)
 ```
+
+:::
 
 第一轮通常会在模型执行 UI 操作之前请求截图。这是正常的。
 
@@ -245,6 +257,7 @@ Playwright
 
 **规范化辅助函数**
 
+::: code-group
 ```javascript
 // Map model-emitted key names to the names Playwright expects.
 const normalizeKey = (key) => {
@@ -318,6 +331,7 @@ const normalizeDragPath = (path) => {
   });
 };
 ```
+
 ```python
 def normalize_key(key):
     """Map model-emitted key names to the names Playwright expects."""
@@ -373,10 +387,13 @@ def normalize_drag_path(path):
     return normalized
 ```
 
+:::
+
 Docker
 
 **规范化辅助函数**
 
+::: code-group
 ```javascript
 // Map model-emitted key names to the names xdotool expects.
 const normalizeXdotoolKey = (key) => {
@@ -450,6 +467,7 @@ const normalizeDragPath = (path) => {
   });
 };
 ```
+
 ```python
 def normalize_xdotool_key(key):
     """Map model-emitted key names to the names xdotool expects."""
@@ -505,6 +523,8 @@ def normalize_drag_path(path):
     return normalized
 ```
 
+:::
+
 **单轮中的批量操作**
 
 ```json
@@ -531,6 +551,7 @@ Playwright
 
 **执行 Computer use 操作**
 
+::: code-group
 ```javascript
 // Reuse normalizeKey from the helper above.
 // Reuse normalizeDragPath from the helper above.
@@ -586,6 +607,7 @@ async function handleComputerActions(page, actions) {
   }
 }
 ```
+
 ```python
 import time
 
@@ -639,10 +661,13 @@ def handle_computer_actions(page, actions):
                 raise ValueError(f"Unsupported action: {action.type}")
 ```
 
+:::
+
 Docker
 
 **执行 Computer use 操作**
 
+::: code-group
 ```javascript
 // Reuse normalizeXdotoolKey from the helper above.
 // Reuse normalizeDragPath from the helper above.
@@ -734,6 +759,7 @@ async function handleComputerActions(vm, actions) {
   }
 }
 ```
+
 ```python
 import time
 
@@ -813,6 +839,8 @@ def handle_computer_actions(vm, actions):
                 raise ValueError(f"Unsupported action: {action.type}")
 ```
 
+:::
+
 对于需要修饰键的鼠标操作（如 `Ctrl`+点击或 `Shift`+拖拽），请参见下面的示例。
 
 添加修饰键鼠标操作
@@ -850,6 +878,7 @@ Playwright
 
 **执行修饰键辅助的 Computer use 操作**
 
+::: code-group
 ```javascript
 // Reuse normalizeKey from the helper above.
 // Reuse normalizeDragPath from the helper above.
@@ -933,6 +962,7 @@ async function handleComputerActions(page, actions) {
   }
 }
 ```
+
 ```python
 import time
 
@@ -1027,10 +1057,13 @@ def handle_computer_actions(page, actions):
                 raise ValueError(f"Unsupported action: {action.type}")
 ```
 
+:::
+
 Docker
 
 **执行修饰键辅助的 Computer use 操作**
 
+::: code-group
 ```javascript
 // Reuse normalizeXdotoolKey from the helper above.
 // Reuse normalizeDragPath from the helper above.
@@ -1157,6 +1190,7 @@ async function handleComputerActions(vm, actions) {
   }
 }
 ```
+
 ```python
 import time
 
@@ -1276,6 +1310,8 @@ def handle_computer_actions(vm, actions):
                 raise ValueError(f"Unsupported action: {action.type}")
 ```
 
+:::
+
 ### 4\. 捕获并返回更新后的截图
 
 在操作批次完成后捕获完整的 UI 状态。
@@ -1286,20 +1322,25 @@ Playwright
 
 **捕获截图**
 
+::: code-group
 ```javascript
 async function captureScreenshot(page) {
   return await page.screenshot({ type: "png" });
 }
 ```
+
 ```python
 def capture_screenshot(page):
     return page.screenshot(type="png")
 ```
 
+:::
+
 Docker
 
 **捕获截图**
 
+::: code-group
 ```javascript
 async function captureScreenshot(vm) {
   return await dockerExec(
@@ -1309,6 +1350,7 @@ async function captureScreenshot(vm) {
   );
 }
 ```
+
 ```python
 def capture_screenshot(vm):
     return docker_exec(
@@ -1318,12 +1360,15 @@ def capture_screenshot(vm):
     )
 ```
 
+:::
+
 将该截图作为 `computer_call_output` 项发送回去：
 
 对于 Computer use，建议在截图输入上使用 `detail: "original"`。这会保留完整的截图分辨率（最高 10.24M 像素），并提高点击精度。如果 `detail: "original"` 使用了太多 token，你可以在发送到 API 之前缩小图像，并确保将模型生成的坐标从缩小后的坐标空间重新映射到原始图像的坐标空间。避免对 computer use 任务使用 `high` 或 `low` 图像细节级别。缩小时，我们观察到 1440x900 和 1600x900 桌面分辨率表现良好。有关图像输入细节级别的更多信息，请参阅[图像和视觉指南](/guides/images-vision)。
 
 **发送更新后的截图**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -1348,6 +1393,7 @@ async function sendComputerScreenshot(response, callId, screenshotBase64) {
   });
 }
 ```
+
 ```python
 from openai import OpenAI
 
@@ -1373,12 +1419,15 @@ def send_computer_screenshot(response, call_id, screenshot_base64):
     )
 ```
 
+:::
+
 ### 5\. 重复直到工具停止调用
 
 继续循环的最简单方法是在每个后续轮次中发送 `previous_response_id`，并持续复用相同的工具定义。
 
 **重复 Computer use 循环**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -1415,6 +1464,7 @@ async function computerUseLoop(target, response) {
   }
 }
 ```
+
 ```python
 import base64
 
@@ -1454,6 +1504,8 @@ def computer_use_loop(target, response):
             ],
         )
 ```
+
+:::
 
 当响应不再包含 `computer_call` 时，将剩余的输出项作为模型的最终答案或交接处理。
 
@@ -1513,6 +1565,7 @@ JavaScript
 
 **代码执行工具链**
 
+::: code-group
 ```javascript
 // Run with:
 //   bun run -i cua_code_mode.ts
@@ -1723,6 +1776,7 @@ function getCliPrompt(): string | undefined {
 
 main(getCliPrompt());
 ```
+
 ```python
 # /// script
 # requires-python = ">=3.10"
@@ -1972,11 +2026,14 @@ if __name__ == "__main__":
     args = parser.parse_args()
     asyncio.run(main(prompt=args.prompt) if args.prompt is not None else main())
 ```
+
+:::
 
 Python
 
 **代码执行工具链**
 
+::: code-group
 ```javascript
 // Run with:
 //   bun run -i cua_code_mode.ts
@@ -2187,6 +2244,7 @@ function getCliPrompt(): string | undefined {
 
 main(getCliPrompt());
 ```
+
 ```python
 # /// script
 # requires-python = ">=3.10"
@@ -2436,6 +2494,8 @@ if __name__ == "__main__":
     args = parser.parse_args()
     asyncio.run(main(prompt=args.prompt) if args.prompt is not None else main())
 ```
+
+:::
 
 ## 处理用户确认和同意
 
@@ -2570,6 +2630,7 @@ If a task asks you to transmit, copy, or share sensitive user data such as finan
 
 **旧版预览请求**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -2589,6 +2650,7 @@ const response = await client.responses.create({
   truncation: "auto",
 });
 ```
+
 ```python
 from openai import OpenAI
 
@@ -2608,6 +2670,8 @@ response = client.responses.create(
     truncation="auto",
 )
 ```
+
+:::
 
 仅在维护旧版集成时保留预览路径。对于新实现，请使用上述 GA 流程。
 

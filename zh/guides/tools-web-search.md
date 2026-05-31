@@ -288,6 +288,7 @@ OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
 
 Console.WriteLine(response.GetOutputText());
 ```
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const openai = new OpenAI();
@@ -302,6 +303,7 @@ const response = await openai.responses.create({
 });
 console.log(response.output_text);
 ```
+
 ```curl
 curl "https://api.openai.com/v1/responses" \
     -H "Content-Type: application/json" \
@@ -315,6 +317,8 @@ curl "https://api.openai.com/v1/responses" \
         "input": "What movie won best picture in 2025?"
     }'
 ```
+
+:::
 
 ## 运行更长的网页研究
 
@@ -331,6 +335,7 @@ curl "https://api.openai.com/v1/responses" \
 
 **运行更长的网页搜索**
 
+::: code-group
 ```curl
 curl "https://api.openai.com/v1/responses" \
   -H "Content-Type: application/json" \
@@ -347,6 +352,7 @@ curl "https://api.openai.com/v1/responses" \
     "input": "Research the economic impact of semaglutide on global healthcare systems.\n\nDo:\n- Include specific figures, trends, statistics, and measurable outcomes.\n- Prioritize reliable, up-to-date sources: peer-reviewed research, health organizations (e.g., WHO, CDC), regulatory agencies, or pharmaceutical earnings reports.\n- Include inline citations and return all source metadata.\n\nBe analytical, avoid generalities, and ensure that each section supports data-backed reasoning that could inform healthcare policy or financial modeling."
   }'
 ```
+
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -374,6 +380,7 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 ```
+
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -400,6 +407,8 @@ Be analytical, avoid generalities, and ensure that each section supports data-ba
 print(response.output_text)
 ```
 
+:::
+
 ## 域名过滤
 
 网页搜索中的域名过滤允许你将结果限制在特定的域名集合中。通过 `filters` 参数，你可以配置最多 100 个 `allowed_domains` 或最多 100 个 `blocked_domains`。格式化域名时，省略 HTTP 或 HTTPS 前缀。例如，使用 `openai.com` 而不是 `https://openai.com/`。此方法也会在搜索中包含子域名。请注意，域名过滤仅在 Responses API 中配合 `web_search` 工具可用。
@@ -410,6 +419,7 @@ print(response.output_text)
 
 **列出来源**
 
+::: code-group
 ```curl
 curl "https://api.openai.com/v1/responses" \
   -H "Content-Type: application/json" \
@@ -441,6 +451,7 @@ curl "https://api.openai.com/v1/responses" \
     "input": "Please perform a web search on how semaglutide is used in the treatment of diabetes."
   }'
 ```
+
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -474,6 +485,7 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 ```
+
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -507,6 +519,8 @@ response = client.responses.create(
 
 print(response.output_text)
 ```
+
+:::
 
 ## 用户位置
 
@@ -565,6 +579,7 @@ OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
 
 Console.WriteLine(response.GetOutputText());
 ```
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const openai = new OpenAI();
@@ -584,6 +599,7 @@ const response = await openai.responses.create({
 });
 console.log(response.output_text);
 ```
+
 ```curl
 curl "https://api.openai.com/v1/responses" \
     -H "Content-Type: application/json" \
@@ -603,8 +619,11 @@ curl "https://api.openai.com/v1/responses" \
     }'
 ```
 
+:::
+
 **自定义用户位置**
 
+::: code-group
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -629,6 +648,7 @@ completion = client.chat.completions.create(
 
 print(completion.choices[0].message.content)
 ```
+
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -652,6 +672,7 @@ const completion = await client.chat.completions.create({
 });
 console.log(completion.choices[0].message.content);
 ```
+
 ```curl
 curl -X POST "https://api.openai.com/v1/chat/completions" \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -675,6 +696,8 @@ curl -X POST "https://api.openai.com/v1/chat/completions" \
     }'
 ```
 
+:::
+
 ## 实时互联网访问
 
 在 Responses API 中控制网页搜索工具是获取实时内容还是仅使用缓存/索引结果。
@@ -685,6 +708,7 @@ curl -X POST "https://api.openai.com/v1/chat/completions" \
 
 **控制实时互联网访问**
 
+::: code-group
 ```curl
 curl "https://api.openai.com/v1/responses" -H "Content-Type: application/json" -H "Authorization: Bearer $OPENAI_API_KEY" -d '{
   "model": "gpt-5.5",
@@ -695,6 +719,7 @@ curl "https://api.openai.com/v1/responses" -H "Content-Type: application/json" -
   "input": "Find when the Eiffel Tower opened to the public and cite the source."
 }'
 ```
+
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -710,6 +735,7 @@ input: "Find when the Eiffel Tower opened to the public and cite the source.",
 
 console.log(response.output_text);
 ```
+
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -722,6 +748,8 @@ input="Find when the Eiffel Tower opened to the public and cite the source.",
 )
 print(resp.output_text)
 ```
+
+:::
 
 ## 限制
 

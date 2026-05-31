@@ -55,6 +55,7 @@ curl -X POST 'https://api.openai.com/v1/skills' \
 
 **在托管 shell 中使用 skills**
 
+::: code-group
 ```curl
 curl -L 'https://api.openai.com/v1/responses' \
   -H "Content-Type: application/json" \
@@ -76,6 +77,7 @@ curl -L 'https://api.openai.com/v1/responses' \
     "input": "Use the skills to add 144 and 377, then compute triangle area with base 9 height 13."
   }'
 ```
+
 ```javascript
 import OpenAI from "openai";
 
@@ -100,6 +102,7 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 ```
+
 ```python
 from openai import OpenAI
 
@@ -164,6 +167,7 @@ curl -L 'https://api.openai.com/v1/responses' \
     "input": "Use the csv-insights skill and run locally to summarize today'\''s CSV reports in this repo."
   }'
 ```
+
 ```javascript
 import OpenAI from "openai";
 
@@ -191,6 +195,7 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 ```
+
 ```python
 from openai import OpenAI
 
@@ -253,6 +258,8 @@ Skill 指令是用户提示输入（不是系统提示输入），因此它们�
 创建新的 skill 版本
 
 ```
+
+:::
 curl -X POST 'https://api.openai.com/v1/skills/&lt;skill_id>/versions' \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -F 'files=@./geometry.zip;type=application/zip'

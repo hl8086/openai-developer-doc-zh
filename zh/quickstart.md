@@ -368,6 +368,7 @@ File URL
 
 **使用文件 URL 作为输入**
 
+::: code-group
 ```curl
 curl "https://api.openai.com/v1/responses" \
     -H "Content-Type: application/json" \
@@ -391,6 +392,7 @@ curl "https://api.openai.com/v1/responses" \
         ]
     }'
 ```
+
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -416,6 +418,7 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 ```
+
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -441,6 +444,8 @@ response = client.responses.create(
 
 print(response.output_text)
 ```
+
+:::
 ```csharp
 using OpenAI.Files;
 using OpenAI.Responses;
@@ -467,6 +472,7 @@ Upload file
 
 **上传文件并将其用作输入**
 
+::: code-group
 ```curl
 curl https://api.openai.com/v1/files \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -495,6 +501,7 @@ curl "https://api.openai.com/v1/responses" \
         ]
     }'
 ```
+
 ```javascript
 import fs from "fs";
 import OpenAI from "openai";
@@ -526,6 +533,7 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 ```
+
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -556,6 +564,8 @@ response = client.responses.create(
 
 print(response.output_text)
 ```
+
+:::
 ```csharp
 using OpenAI.Files;
 using OpenAI.Responses;
@@ -664,6 +674,7 @@ File search
 
 **在响应中搜索你的文件**
 
+::: code-group
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -678,6 +689,7 @@ response = client.responses.create(
 )
 print(response)
 ```
+
 ```javascript
 import OpenAI from "openai";
 const openai = new OpenAI();
@@ -694,6 +706,8 @@ const response = await openai.responses.create({
 });
 console.log(response);
 ```
+
+:::
 ```csharp
 using OpenAI.Responses;
 
@@ -862,6 +876,7 @@ Remote MCP
 
 **调用远程 MCP 服务器**
 
+::: code-group
 ```curl
 curl https://api.openai.com/v1/responses \ 
 -H "Content-Type: application/json" \ 
@@ -880,6 +895,7 @@ curl https://api.openai.com/v1/responses \
     "input": "Roll 2d4+1"
   }'
 ```
+
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -900,6 +916,7 @@ const resp = await client.responses.create({
 
 console.log(resp.output_text);
 ```
+
 ```python
 from openai import OpenAI
 
@@ -921,6 +938,8 @@ resp = client.responses.create(
 
 print(resp.output_text)
 ```
+
+:::
 ```csharp
 using OpenAI.Responses;
 
@@ -953,6 +972,7 @@ Console.WriteLine(response.GetOutputText());
 
 **从 API 流式传输服务器发送事件**
 
+::: code-group
 ```javascript
 import { OpenAI } from "openai";
 const client = new OpenAI();
@@ -972,6 +992,7 @@ for await (const event of stream) {
     console.log(event);
 }
 ```
+
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -990,6 +1011,8 @@ stream = client.responses.create(
 for event in stream:
     print(event)
 ```
+
+:::
 ```csharp
 using OpenAI.Responses;
 

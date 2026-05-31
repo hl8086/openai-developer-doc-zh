@@ -23,6 +23,7 @@ export default User;
 
 **使用 Predicted Output 重构 TypeScript 类**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -66,6 +67,7 @@ const completion = await openai.chat.completions.create({
 console.log(completion);
 console.log(completion.choices[0].message.content);
 ```
+
 ```python
 from openai import OpenAI
 
@@ -107,6 +109,7 @@ completion = client.chat.completions.create(
 print(completion)
 print(completion.choices[0].message.content)
 ```
+
 ```curl
 curl https://api.openai.com/v1/chat/completions \
   -H "Content-Type: application/json" \
@@ -129,6 +132,8 @@ curl https://api.openai.com/v1/chat/completions \
     }
   }'
 ```
+
+:::
 
 除了重构后的代码之外，模型响应还将包含类似如下的数据：
 
@@ -165,6 +170,7 @@ curl https://api.openai.com/v1/chat/completions \
 
 **Predicted Outputs 与流式传输**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -210,6 +216,7 @@ for await (const chunk of stream) {
   process.stdout.write(chunk.choices[0]?.delta?.content || "");
 }
 ```
+
 ```python
 from openai import OpenAI
 
@@ -253,6 +260,8 @@ for chunk in stream:
     if chunk.choices[0].delta.content is not None:
         print(chunk.choices[0].delta.content, end="")
 ```
+
+:::
 
 ## 预测文本在响应中的位置
 

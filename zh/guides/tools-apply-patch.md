@@ -191,6 +191,7 @@ followup = client.responses.create(
 
 **在 Agents SDK 中使用 apply patch 工具**
 
+::: code-group
 ```javascript
 import { applyDiff, Agent, run, applyPatchTool, Editor } from "@openai/agents";
 
@@ -243,6 +244,7 @@ const result = await run(
 
 console.log(`\nFinal response:\n${result.finalOutput}`);
 ```
+
 ```python
 from agents import Agent, ApplyPatchTool, Runner, apply_diff
 
@@ -299,6 +301,8 @@ if __name__ == "__main__":
 
     asyncio.run(main())
 ```
+
+:::
 
 你可以在 GitHub 上找到完整的可运行示例。
 

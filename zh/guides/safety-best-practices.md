@@ -53,6 +53,7 @@ OpenAI 的 [Moderation API](/guides/moderation) 可免费使用，能帮助减�
 
 **示例：提供安全标识符**
 
+::: code-group
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -66,6 +67,7 @@ max_tokens=5,
 safety_identifier="user_123456"
 )
 ```
+
 ```curl
 curl https://api.openai.com/v1/chat/completions \
 -H "Content-Type: application/json" \
@@ -79,6 +81,8 @@ curl https://api.openai.com/v1/chat/completions \
 "safety_identifier": "user123456"
 }'
 ```
+
+:::
 
 对于 Realtime API 请求，使用 `OpenAI-Safety-Identifier` 头提供相同的稳定、保护隐私的标识符。当你创建临时 Realtime 客户端密钥时，在创建密钥的服务器端请求中包含该头，以便将标识符绑定到该会话。对于从可信后端发起的直接 WebSocket 或 WebRTC 连接请求，在连接请求中包含该头。
 

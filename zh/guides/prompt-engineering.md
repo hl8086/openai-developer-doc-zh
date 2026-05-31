@@ -266,6 +266,7 @@ curl "https://api.openai.com/v1/chat/completions" \
 
 **使用 instructions 生成文本**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -279,6 +280,7 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 ```
+
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -292,6 +294,7 @@ response = client.responses.create(
 
 print(response.output_text)
 ```
+
 ```curl
 curl "https://api.openai.com/v1/responses" \
     -H "Content-Type: application/json" \
@@ -304,10 +307,13 @@ curl "https://api.openai.com/v1/responses" \
     }'
 ```
 
+:::
+
 上面的示例大致等同于在 `input` 数组中使用以下输入消息：
 
 **使用不同角色的消息生成文本**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -329,6 +335,7 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 ```
+
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -350,6 +357,7 @@ response = client.responses.create(
 
 print(response.output_text)
 ```
+
 ```curl
 curl "https://api.openai.com/v1/responses" \
     -H "Content-Type: application/json" \
@@ -370,12 +378,15 @@ curl "https://api.openai.com/v1/responses" \
     }'
 ```
 
+:::
+
 请注意，`instructions` 参数仅适用于当前的响应生成请求。如果你使用 `previous_response_id` 参数[管理对话状态](/guides/conversation-state)，之前轮次使用的 `instructions` 将不会出现在上下文中。
 
 你可以使用**消息角色**以[不同的权限级别](https://model-spec.openai.com/2025-02-12.html#chain_of_command)向模型提供指令（提示词）。
 
 **使用不同角色的消息生成文本**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -396,6 +407,7 @@ const completion = await client.chat.completions.create({
 
 console.log(completion.choices[0].message);
 ```
+
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -417,6 +429,7 @@ completion = client.chat.completions.create(
 
 print(completion.choices[0].message.content)
 ```
+
 ```curl
 curl "https://api.openai.com/v1/chat/completions" \
     -H "Content-Type: application/json" \
@@ -435,6 +448,8 @@ curl "https://api.openai.com/v1/chat/completions" \
         ]
     }'
 ```
+
+:::
 
 [OpenAI 模型规范](https://model-spec.openai.com/2025-02-12.html#chain_of_command)描述了我们的模型如何对不同角色的消息赋予不同的优先级。
 
@@ -469,6 +484,7 @@ curl "https://api.openai.com/v1/chat/completions" \
 
 **使用提示词模板生成文本**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -487,6 +503,7 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 ```
+
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -505,6 +522,7 @@ response = client.responses.create(
 
 print(response.output_text)
 ```
+
 ```curl
 curl https://api.openai.com/v1/responses \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -522,10 +540,13 @@ curl https://api.openai.com/v1/responses \
   }'
 ```
 
+:::
+
 带文件输入的变量
 
 **带文件输入变量的提示词模板**
 
+::: code-group
 ```javascript
 import fs from "fs";
 import OpenAI from "openai";
@@ -553,6 +574,7 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 ```
+
 ```python
 import openai, pathlib
 
@@ -580,6 +602,7 @@ response = client.responses.create(
 
 print(response.output_text)
 ```
+
 ```curl
 # Assume you have already uploaded the PDF and obtained FILE_ID
 curl https://api.openai.com/v1/responses   -H "Authorization: Bearer $OPENAI_API_KEY"   -H "Content-Type: application/json"   -d '{
@@ -596,6 +619,8 @@ curl https://api.openai.com/v1/responses   -H "Authorization: Bearer $OPENAI_API
     }
   }'
 ```
+
+:::
 
 ## 使用 Markdown 和 XML 进行消息格式化
 
@@ -649,6 +674,7 @@ API 请求
 
 **通过 API 发送提示词生成代码**
 
+::: code-group
 ```javascript
 import fs from "fs/promises";
 import OpenAI from "openai";
@@ -664,6 +690,7 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 ```
+
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -679,6 +706,7 @@ response = client.responses.create(
 
 print(response.output_text)
 ```
+
 ```curl
 curl https://api.openai.com/v1/responses \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -689,6 +717,8 @@ curl https://api.openai.com/v1/responses \
     "input": "How would I declare a variable for a last name?"
   }'
 ```
+
+:::
 
 #### 通过提示词缓存节省成本和延迟
 

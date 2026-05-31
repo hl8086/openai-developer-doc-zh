@@ -27,6 +27,7 @@
 
 **根据任务调整推理 effort**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -49,6 +50,7 @@ const response = await openai.responses.create({
 
 console.log(response.output_text);
 ```
+
 ```python
 from openai import OpenAI
 
@@ -72,6 +74,8 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
+:::
+
 ## Set up `text.verbosity`
 
 `text.verbosity` 是平衡简洁性与完整性的主要控制项。当产品需要快速、紧凑的回答时使用较低的 verbosity，当响应需要更丰富的解释、更清晰的结构或完整的上下文时使用较高的 verbosity。较低的 verbosity 意味着更少的输出 token，因此模型生成更少的内容并更快返回输出。
@@ -80,6 +84,7 @@ print(response.output_text)
 
 **设置较低的 verbosity 以获得紧凑输出**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -101,6 +106,7 @@ const response = await openai.responses.create({
 
 console.log(response.output_text);
 ```
+
 ```python
 from openai import OpenAI
 
@@ -120,6 +126,8 @@ response = client.responses.create(
 
 print(response.output_text)
 ```
+
+:::
 
 ## Set up the assistant `phase` parameter
 
@@ -170,6 +178,7 @@ Assistant 最终答案消息
 
 **使用托管 tool search 与延迟加载工具**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -221,6 +230,7 @@ const response = await openai.responses.create({
 
 console.log(response.output_text);
 ```
+
 ```python
 from openai import OpenAI
 
@@ -274,6 +284,8 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
+:::
+
 ## Leverage built-in tools
 
 [内置工具](/guides/tools)是 API 的原生能力。你不需要自己构建每个工具，而是可以让模型访问已经在 Responses API 中工作的工具。模型随后可以决定何时使用它们。
@@ -307,6 +319,7 @@ OpenAI 持续添加更多原生工具，因此当内置工具适合你的工作�
 
 **从压缩的响应状态继续**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -338,6 +351,7 @@ const nextResponse = await openai.responses.create({
 
 console.log(nextResponse.output_text);
 ```
+
 ```python
 from openai import OpenAI
 
@@ -371,6 +385,8 @@ next_response = client.responses.create(
 print(next_response.output_text)
 ```
 
+:::
+
 ## Use `prompt_cache_key`
 
 [Prompt 缓存](/guides/prompt-caching)在请求重用相同的长前缀时自动减少延迟和成本。对于高流量工作流，为共享相同稳定前缀的请求一致地设置 [`prompt_cache_key`]( https://developers.openai.com/api/reference/responses/create#responses-create-prompt_cache_key)。
@@ -379,6 +395,7 @@ print(next_response.output_text)
 
 **将相关请求路由到相同的 prompt 缓存**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -399,6 +416,7 @@ const response = await openai.responses.create({
 
 console.log(response.output_text);
 ```
+
 ```python
 from openai import OpenAI
 
@@ -420,6 +438,8 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
+:::
+
 ## Use `reasoning.encrypted_content`
 
 始终回传推理项。这通过允许模型从其先前的推理中工作来帮助模型。如果你的[零数据保留 (ZDR)](/guides/your-data#zero-data-retention) 要求不允许存储响应数据，这就是 `reasoning.encrypted_content` 重要的地方。`reasoning.encrypted_content` 为你提供无状态的交接。
@@ -428,6 +448,7 @@ print(response.output_text)
 
 **在无状态轮次之间传递加密推理**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -457,6 +478,7 @@ const second = await openai.responses.create({
 
 console.log(second.output_text);
 ```
+
 ```python
 from openai import OpenAI
 
@@ -487,6 +509,8 @@ second = client.responses.create(
 print(second.output_text)
 ```
 
+:::
+
 ## Use `background=True`
 
 对于可能需要很长时间的请求，使用 [`background=True`](/guides/background)。API 不会保持客户端连接打开，而是启动一个作业并返回一个 ID。你的应用可以轮询该作业直到它完成、失败或被取消。用于大型分析、长时间工具运行或需要状态和重试行为的工作。
@@ -495,6 +519,7 @@ print(second.output_text)
 
 **运行并轮询后台响应**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -523,6 +548,7 @@ while (["queued", "in_progress"].includes(job.status)) {
 
 console.log(job.output_text);
 ```
+
 ```python
 from openai import OpenAI
 import time
@@ -552,6 +578,8 @@ while job.status in {"queued", "in_progress"}:
 print(job.output_text)
 ```
 
+:::
+
 你可以将它与 `stream=True` 结合使用以获取进度事件，但第一个事件可能比正常请求花费更长时间。
 
 从 UI 的角度来看，后台模式表示："这正在运行；这是状态；结果准备好后会出现在这里。"
@@ -574,6 +602,7 @@ print(job.output_text)
 
 **启动 Responses API WebSocket 会话**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 import WebSocket from "ws";
@@ -616,6 +645,7 @@ ws.on("message", (data) => {
   console.log(firstEvent.type);
 });
 ```
+
 ```python
 from openai import OpenAI
 from websocket import create_connection
@@ -659,6 +689,8 @@ ws.send(
 first_event = json.loads(ws.recv())
 print(first_event["type"])
 ```
+
+:::
 
 ## Final takeaway
 

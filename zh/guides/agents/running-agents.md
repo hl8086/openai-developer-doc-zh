@@ -28,6 +28,7 @@
 
 **使用 session 持久化多轮状态**
 
+::: code-group
 ```typescript
 import { Agent, MemorySession, run } from "@openai/agents";
 
@@ -48,6 +49,7 @@ console.log(firstTurn.finalOutput);
 const secondTurn = await run(agent, "What state is it in?", { session });
 console.log(secondTurn.finalOutput);
 ```
+
 ```python
 import asyncio
 
@@ -81,10 +83,13 @@ if __name__ == "__main__":
     asyncio.run(main())
 ```
 
+:::
+
 当你需要持久化记忆、可恢复的审批流程或由你的应用控制的存储时，session 是最佳默认选择。
 
 **使用服务器管理状态继续**
 
+::: code-group
 ```typescript
 import { Agent, run } from "@openai/agents";
 import OpenAI from "openai";
@@ -107,6 +112,7 @@ const second = await run(agent, "What state is it in?", {
 });
 console.log(second.finalOutput);
 ```
+
 ```python
 import asyncio
 
@@ -137,6 +143,8 @@ if __name__ == "__main__":
     asyncio.run(main())
 ```
 
+:::
+
 当多个系统需要共享一个命名对话时使用 `conversationId`。当你想要最低成本的响应到响应延续选项时使用 `previousResponseId`。
 
 ## 增量流式运行
@@ -145,6 +153,7 @@ if __name__ == "__main__":
 
 **在文本到达时流式运行**
 
+::: code-group
 ```typescript
 import { Agent, run } from "@openai/agents";
 
@@ -169,6 +178,7 @@ for await (const event of stream) {
 await stream.completed;
 console.log("\nFinal:", stream.finalOutput);
 ```
+
 ```python
 import asyncio
 
@@ -201,6 +211,8 @@ async def main() -> None:
 if __name__ == "__main__":
     asyncio.run(main())
 ```
+
+:::
 
 三条实用规则很重要：
 

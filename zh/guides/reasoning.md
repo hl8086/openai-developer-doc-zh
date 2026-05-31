@@ -11,6 +11,7 @@
 
 **在 Responses API 中使用推理模型**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -34,6 +35,7 @@ const response = await openai.responses.create({
 
 console.log(response.output_text);
 ```
+
 ```python
 from openai import OpenAI
 
@@ -57,6 +59,7 @@ response = client.responses.create(
 
 print(response.output_text)
 ```
+
 ```curl
 curl https://api.openai.com/v1/responses \
   -H "Content-Type: application/json" \
@@ -72,6 +75,8 @@ curl https://api.openai.com/v1/responses \
     ]
   }'
 ```
+
+:::
 
 ## 推理力度
 
@@ -137,6 +142,7 @@ curl https://api.openai.com/v1/responses \
 
 **处理不完整的响应**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -171,6 +177,7 @@ if (
     }
 }
 ```
+
 ```python
 from openai import OpenAI
 
@@ -200,6 +207,8 @@ if response.status == "incomplete" and response.incomplete_details.reason == "ma
     else: 
         print("Ran out of tokens during reasoning")
 ```
+
+:::
 
 ### 在上下文中保留推理项
 
@@ -242,6 +251,7 @@ curl https://api.openai.com/v1/responses \
 
 **在 API 响应中包含推理摘要**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const openai = new OpenAI();
@@ -257,6 +267,7 @@ const response = await openai.responses.create({
 
 console.log(response.output);
 ```
+
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -272,6 +283,7 @@ response = client.responses.create(
 
 print(response.output)
 ```
+
 ```curl
 curl https://api.openai.com/v1/responses \
   -H "Content-Type: application/json" \
@@ -285,6 +297,8 @@ curl https://api.openai.com/v1/responses \
     }
   }'
 ```
+
+:::
 
 此 API 请求将返回一个输出数组，其中包含助手消息和模型在生成该响应时的推理摘要。
 
@@ -327,6 +341,7 @@ curl https://api.openai.com/v1/responses \
 
 **往返传递助手 phase 值**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -354,6 +369,7 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 ```
+
 ```python
 from openai import OpenAI
 
@@ -381,6 +397,8 @@ response = client.responses.create(
 
 print(response.output_text)
 ```
+
+:::
 
 ## 提示建议
 

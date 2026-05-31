@@ -27,6 +27,7 @@ export OPENAI_API_KEY=sk-...
 
 **创建并运行一个 agent**
 
+::: code-group
 ```typescript
 import { Agent, run } from "@openai/agents";
 
@@ -40,6 +41,7 @@ const agent = new Agent({
 const result = await run(agent, "When did the Roman Empire fall?");
 console.log(result.finalOutput);
 ```
+
 ```python
 import asyncio
 
@@ -60,6 +62,8 @@ async def main() -> None:
 if __name__ == "__main__":
     asyncio.run(main())
 ```
+
+:::
 
 你应该会在终端中看到一个简洁的回答。一旦这个循环正常工作，保持相同的结构并逐步添加功能，而不是一开始就设计一个大型多 agent 系统。
 
@@ -82,6 +86,7 @@ if __name__ == "__main__":
 
 **添加函数工具**
 
+::: code-group
 ```typescript
 import { Agent, run, tool } from "@openai/agents";
 import { z } from "zod";
@@ -109,6 +114,7 @@ const result = await run(
 
 console.log(result.finalOutput);
 ```
+
 ```python
 import asyncio
 
@@ -140,6 +146,8 @@ if __name__ == "__main__":
     asyncio.run(main())
 ```
 
+:::
+
 当你需要托管工具、tool search 或 agents-as-tools 时，请使用共享的[使用工具](/guides/tools#usage-in-the-agents-sdk)指南。
 
 ## 添加专业 agent
@@ -148,6 +156,7 @@ if __name__ == "__main__":
 
 **路由到专业 agent**
 
+::: code-group
 ```typescript
 import { Agent, run } from "@openai/agents";
 
@@ -175,6 +184,7 @@ const result = await run(
 console.log(result.finalOutput);
 console.log(result.lastAgent?.name);
 ```
+
 ```python
 import asyncio
 
@@ -211,6 +221,8 @@ async def main() -> None:
 if __name__ == "__main__":
     asyncio.run(main())
 ```
+
+:::
 
 ## 尽早检查 traces
 

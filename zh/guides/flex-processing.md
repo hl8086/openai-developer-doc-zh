@@ -11,6 +11,7 @@ Flex processing 目前处于 Beta 阶段，模型可用性有限。支持的模�
 
 **Flex processing 示例**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI({
@@ -26,6 +27,7 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 ```
+
 ```python
 from openai import OpenAI
 client = OpenAI(
@@ -43,6 +45,7 @@ response = client.with_options(timeout=900.0).responses.create(
 
 print(response.output_text)
 ```
+
 ```curl
 curl https://api.openai.com/v1/responses \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -55,8 +58,11 @@ curl https://api.openai.com/v1/responses \
   }'
 ```
 
+:::
+
 **Flex processing 示例**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI({
@@ -74,6 +80,7 @@ const response = await client.chat.completions.create({
 
 console.log(response.choices[0].message.content);
 ```
+
 ```python
 from openai import OpenAI
 client = OpenAI(
@@ -92,6 +99,7 @@ response = client.chat.completions.create(
 
 print(response.choices[0].message.content)
 ```
+
 ```curl
 curl https://api.openai.com/v1/chat/completions   -H "Content-Type: application/json"   -H "Authorization: Bearer $OPENAI_API_KEY"   -d '{
     "model": "gpt-5.5",
@@ -102,6 +110,8 @@ curl https://api.openai.com/v1/chat/completions   -H "Content-Type: application/
     "service_tier": "flex"
   }' --max-time 900
 ```
+
+:::
 
 #### API 请求超时
 

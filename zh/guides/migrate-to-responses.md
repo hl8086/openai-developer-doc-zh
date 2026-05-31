@@ -162,6 +162,7 @@ Responses API
 
 **Web search 工具**
 
+::: code-group
 ```bash
 INPUT='[
   { "role": "system", "content": "You are a helpful assistant." },
@@ -184,6 +185,7 @@ curl -s https://api.openai.com/v1/responses \
     \"input\": $INPUT
   }"
 ```
+
 ```javascript
 const context = [
   { role: 'system', content: 'You are a helpful assistant.' },
@@ -200,6 +202,7 @@ const response = await client.responses.create({
   input: context
 });
 ```
+
 ```python
 context = [
   { "role": "system", "content": "You are a helpful assistant." },
@@ -217,6 +220,8 @@ response = client.responses.create(
 )
 ```
 
+:::
+
 Chat CompletionsResponses
 
 Chat Completions
@@ -225,6 +230,7 @@ Chat Completions
 
 **从模型生成文本**
 
+::: code-group
 ```javascript
 import OpenAI from 'openai';
 const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
@@ -238,6 +244,7 @@ const completion = await client.chat.completions.create({
 });
 console.log(completion.choices[0].message.content);
 ```
+
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -251,6 +258,7 @@ completion = client.chat.completions.create(
 )
 print(completion.choices[0].message.content)
 ```
+
 ```bash
 curl https://api.openai.com/v1/chat/completions \
   -H "Content-Type: application/json" \
@@ -264,12 +272,15 @@ curl https://api.openai.com/v1/chat/completions \
   }'
 ```
 
+:::
+
 Responses
 
 使用 Responses，你可以在顶层分离 instructions 和 input。API 形状与 Chat Completions 类似，但语义更清晰。
 
 **从模型生成文本**
 
+::: code-group
 ```javascript
 import OpenAI from 'openai';
 const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
@@ -282,6 +293,7 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 ```
+
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -293,6 +305,7 @@ response = client.responses.create(
 )
 print(response.output_text)
 ```
+
 ```bash
 curl https://api.openai.com/v1/responses \
   -H "Content-Type: application/json" \
@@ -303,6 +316,8 @@ curl https://api.openai.com/v1/responses \
       "input": "Hello!"
   }'
 ```
+
+:::
 
 ### 2\. 更新 item 定义
 
@@ -314,6 +329,7 @@ Chat Completions
 
 **从模型生成文本**
 
+::: code-group
 ```javascript
 import OpenAI from 'openai';
 const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
@@ -327,6 +343,7 @@ const completion = await client.chat.completions.create({
 });
 console.log(completion.choices[0].message.content);
 ```
+
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -340,6 +357,7 @@ completion = client.chat.completions.create(
 )
 print(completion.choices[0].message.content)
 ```
+
 ```bash
 curl https://api.openai.com/v1/chat/completions \
   -H "Content-Type: application/json" \
@@ -353,12 +371,15 @@ curl https://api.openai.com/v1/chat/completions \
   }'
 ```
 
+:::
+
 Responses
 
 使用 Responses，你可以在顶层分离 instructions 和 input。API 形状与 Chat Completions 类似，但语义更清晰。
 
 **从模型生成文本**
 
+::: code-group
 ```javascript
 import OpenAI from 'openai';
 const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
@@ -371,6 +392,7 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 ```
+
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -382,6 +404,7 @@ response = client.responses.create(
 )
 print(response.output_text)
 ```
+
 ```bash
 curl https://api.openai.com/v1/responses \
   -H "Content-Type: application/json" \
@@ -392,6 +415,8 @@ curl https://api.openai.com/v1/responses \
       "input": "Hello!"
   }'
 ```
+
+:::
 
 ### 3\. 更新多轮对话
 
@@ -405,6 +430,7 @@ Chat Completions
 
 **多轮对话**
 
+::: code-group
 ```javascript
 let messages = [
     { 'role': 'system', 'content': 'You are a helpful assistant.' },
@@ -423,6 +449,7 @@ const res2 = await client.chat.completions.create({
   messages
 });
 ```
+
 ```python
 messages = [
     {"role": "system", "content": "You are a helpful assistant."},
@@ -436,12 +463,15 @@ messages += [{"role": "user", "content": "And its population?"}]
 res2 = client.chat.completions.create(model="gpt-5", messages=messages)
 ```
 
+:::
+
 Responses
 
 使用 Responses，模式类似，你可以将一个响应的输出传递给另一个响应的输入。
 
 **多轮对话**
 
+::: code-group
 ```python
 context = [
     { "role": "role", "content": "What is the capital of France?" }
@@ -464,6 +494,7 @@ res2 = client.responses.create(
     input=context,
 )
 ```
+
 ```javascript
 let context = [
   { role: "role", content: "What is the capital of France?" }
@@ -486,10 +517,13 @@ const res2 = await client.responses.create({
 });
 ```
 
+:::
+
 作为简化，我们还构建了一种方式，通过传递 id 来简单引用之前响应的输入和输出。你可以使用 `previous_response_id` 来形成相互构建的响应链或在历史记录中创建分支。
 
 **多轮对话**
 
+::: code-group
 ```javascript
 const res1 = await client.responses.create({
   model: 'gpt-5',
@@ -504,6 +538,7 @@ const res2 = await client.responses.create({
   store: true
 });
 ```
+
 ```python
 res1 = client.responses.create(
     model="gpt-5",
@@ -518,6 +553,8 @@ res2 = client.responses.create(
     store=True
 )
 ```
+
+:::
 
 ### 4\. 决定何时使用有状态功能
 
@@ -602,6 +639,7 @@ Chat Completions
 
 **结构化输出**
 
+::: code-group
 ```bash
 curl https://api.openai.com/v1/chat/completions \
   -H "Content-Type: application/json" \
@@ -644,6 +682,7 @@ curl https://api.openai.com/v1/chat/completions \
   "reasoning_effort": "medium"
 }'
 ```
+
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -686,6 +725,7 @@ response = client.chat.completions.create(
   reasoning_effort="medium"
 )
 ```
+
 ```javascript
 const completion = await openai.chat.completions.create({
   model: "gpt-5",
@@ -726,10 +766,13 @@ const completion = await openai.chat.completions.create({
 });
 ```
 
+:::
+
 Responses
 
 **结构化输出**
 
+::: code-group
 ```bash
 curl https://api.openai.com/v1/responses \
   -H "Content-Type: application/json" \
@@ -765,6 +808,7 @@ curl https://api.openai.com/v1/responses \
   }
 }'
 ```
+
 ```python
 response = client.responses.create(
   model="gpt-5",
@@ -797,6 +841,7 @@ response = client.responses.create(
   }
 )
 ```
+
 ```javascript
 const response = await openai.responses.create({
   model: "gpt-5",
@@ -830,6 +875,8 @@ const response = await openai.responses.create({
 });
 ```
 
+:::
+
 ### 7\. 升级到原生工具
 
 如果你的应用程序有可以从 OpenAI 原生[工具](/guides/tools)中受益的用例，你可以更新你的工具调用以开箱即用地使用 OpenAI 的工具。
@@ -842,6 +889,7 @@ Chat Completions
 
 **Web search 工具**
 
+::: code-group
 ```javascript
 async function web_search(query) {
     const fetch = (await import('node-fetch')).default;
@@ -869,6 +917,7 @@ const completion = await client.chat.completions.create({
   ]
 });
 ```
+
 ```python
 import requests
 
@@ -895,6 +944,7 @@ completion = client.chat.completions.create(
     ]
 )
 ```
+
 ```bash
 curl https://api.example.com/search \
   -G \
@@ -902,12 +952,15 @@ curl https://api.example.com/search \
   --data-urlencode "key=$SEARCH_API_KEY"
 ```
 
+:::
+
 Responses
 
 使用 Responses，你只需指定你感兴趣的工具即可。
 
 **Web search 工具**
 
+::: code-group
 ```javascript
 const answer = await client.responses.create({
     model: 'gpt-5.5',
@@ -917,6 +970,7 @@ const answer = await client.responses.create({
 
 console.log(answer.output_text);
 ```
+
 ```python
 answer = client.responses.create(
     model="gpt-5.5",
@@ -926,6 +980,7 @@ answer = client.responses.create(
 
 print(answer.output_text)
 ```
+
 ```bash
 curl https://api.openai.com/v1/responses \
   -H "Content-Type: application/json" \
@@ -936,6 +991,8 @@ curl https://api.openai.com/v1/responses \
     "tools": [{"type": "web_search"}]
   }'
 ```
+
+:::
 
 ## 增量迁移
 

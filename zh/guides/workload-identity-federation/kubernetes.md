@@ -135,6 +135,7 @@ PY
 
 **从 Kubernetes 投射的服务账户令牌进行身份验证**
 
+::: code-group
 ```typescript
 import { readFile } from "node:fs/promises";
 import OpenAI from "openai";
@@ -176,6 +177,7 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 ```
+
 ```python
 import os
 from pathlib import Path
@@ -211,6 +213,8 @@ response = client.responses.create(
 
 print(response.output_text)
 ```
+
+:::
 ```go
 package main
 

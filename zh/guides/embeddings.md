@@ -24,6 +24,7 @@ OpenAI 的文本嵌入用于衡量文本字符串之间的相关性。嵌入通�
 
 **示例：获取嵌入**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const openai = new OpenAI();
@@ -36,6 +37,7 @@ const embedding = await openai.embeddings.create({
 
 console.log(embedding);
 ```
+
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -47,6 +49,7 @@ response = client.embeddings.create(
 
 print(response.data[0].embedding)
 ```
+
 ```curl
 curl https://api.openai.com/v1/embeddings \
   -H "Content-Type: application/json" \
@@ -56,6 +59,8 @@ curl https://api.openai.com/v1/embeddings \
     "model": "text-embedding-3-small"
   }'
 ```
+
+:::
 
 响应包含嵌入向量（浮点数列表）以及一些额外的元数据。你可以提取嵌入向量，将其保存在向量数据库中，并用于许多不同的用例。
 

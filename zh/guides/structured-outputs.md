@@ -13,6 +13,7 @@ Structured Outputs 的一些优势包括：
 
 **获取结构化响应**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 import { zodResponseFormat } from "openai/helpers/zod";
@@ -37,6 +38,7 @@ const completion = await openai.chat.completions.parse({
 
 const event = completion.choices[0].message.parsed;
 ```
+
 ```python
 from pydantic import BaseModel
 from openai import OpenAI
@@ -60,8 +62,11 @@ completion = client.chat.completions.parse(
 event = completion.choices[0].message.parsed
 ```
 
+:::
+
 **获取结构化响应**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 import { zodTextFormat } from "openai/helpers/zod";
@@ -91,6 +96,7 @@ const response = await openai.responses.parse({
 
 const event = response.output_parsed;
 ```
+
 ```python
 from openai import OpenAI
 from pydantic import BaseModel
@@ -116,6 +122,8 @@ response = client.responses.parse(
 
 event = response.output_parsed
 ```
+
+:::
 
 ### 支持的模型
 
@@ -202,6 +210,7 @@ Structured Outputs 是 [JSON mode](#json-mode) 的演进。虽然两者都确保
 
 **用于思维链数学辅导的 Structured Outputs**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 import { z } from "zod";
@@ -230,6 +239,7 @@ const completion = await openai.chat.completions.parse({
 
 const math_reasoning = completion.choices[0].message.parsed;
 ```
+
 ```python
 from pydantic import BaseModel
 from openai import OpenAI
@@ -255,6 +265,7 @@ completion = client.chat.completions.parse(
 
 math_reasoning = completion.choices[0].message.parsed
 ```
+
 ```curl
 curl https://api.openai.com/v1/chat/completions \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -301,8 +312,11 @@ curl https://api.openai.com/v1/chat/completions \
   }'
 ```
 
+:::
+
 **用于思维链数学辅导的 Structured Outputs**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 import { zodTextFormat } from "openai/helpers/zod";
@@ -337,6 +351,7 @@ const response = await openai.responses.parse({
 
 const math_reasoning = response.output_parsed;
 ```
+
 ```python
 from openai import OpenAI
 from pydantic import BaseModel
@@ -365,6 +380,7 @@ response = client.responses.parse(
 
 math_reasoning = response.output_parsed
 ```
+
 ```curl
 curl https://api.openai.com/v1/responses \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -410,6 +426,8 @@ curl https://api.openai.com/v1/responses \
     }
   }'
 ```
+
+:::
 
 #### 示例响应
 
@@ -449,6 +467,7 @@ curl https://api.openai.com/v1/responses \
 
 **使用 Structured Outputs 从研究论文中提取数据**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 import { z } from "zod";
@@ -474,6 +493,7 @@ const completion = await openai.chat.completions.parse({
 
 const research_paper = completion.choices[0].message.parsed;
 ```
+
 ```python
 from pydantic import BaseModel
 from openai import OpenAI
@@ -497,6 +517,7 @@ completion = client.chat.completions.parse(
 
 research_paper = completion.choices[0].message.parsed
 ```
+
 ```curl
 curl https://api.openai.com/v1/chat/completions \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -540,8 +561,11 @@ curl https://api.openai.com/v1/chat/completions \
   }'
 ```
 
+:::
+
 **使用 Structured Outputs 从研究论文中提取数据**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 import { zodTextFormat } from "openai/helpers/zod";
@@ -573,6 +597,7 @@ const response = await openai.responses.parse({
 
 const research_paper = response.output_parsed;
 ```
+
 ```python
 from openai import OpenAI
 from pydantic import BaseModel
@@ -599,6 +624,7 @@ response = client.responses.parse(
 
 research_paper = response.output_parsed
 ```
+
 ```curl
 curl https://api.openai.com/v1/responses \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -642,6 +668,8 @@ curl https://api.openai.com/v1/responses \
   }'
 ```
 
+:::
+
 #### 示例响应
 
 ```
@@ -668,6 +696,7 @@ UI 生成
 
 **使用 Structured Outputs 生成 HTML**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 import { z } from "zod";
@@ -703,6 +732,7 @@ const completion = await openai.chat.completions.parse({
 
 const ui = completion.choices[0].message.parsed;
 ```
+
 ```python
 from enum import Enum
 from typing import List
@@ -746,6 +776,7 @@ completion = client.chat.completions.parse(
 ui = completion.choices[0].message.parsed
 print(ui)
 ```
+
 ```curl
 curl https://api.openai.com/v1/chat/completions \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -813,8 +844,11 @@ curl https://api.openai.com/v1/chat/completions \
   }'
 ```
 
+:::
+
 **使用 Structured Outputs 生成 HTML**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 import { zodTextFormat } from "openai/helpers/zod";
@@ -855,6 +889,7 @@ const response = await openai.responses.parse({
 
 const ui = response.output_parsed;
 ```
+
 ```python
 from enum import Enum
 from typing import List
@@ -901,6 +936,7 @@ response = client.responses.parse(
 
 ui = response.output_parsed
 ```
+
 ```curl
 curl https://api.openai.com/v1/responses \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -967,6 +1003,8 @@ curl https://api.openai.com/v1/responses \
     }
   }'
 ```
+
+:::
 
 #### 示例响应
 
@@ -1053,6 +1091,7 @@ curl https://api.openai.com/v1/responses \
 
 **使用 Structured Outputs 进行内容审核**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 import { z } from "zod";
@@ -1077,6 +1116,7 @@ const completion = await openai.chat.completions.parse({
 
 const compliance = completion.choices[0].message.parsed;
 ```
+
 ```python
 from enum import Enum
 from typing import Optional
@@ -1106,6 +1146,7 @@ completion = client.chat.completions.parse(
 
 compliance = completion.choices[0].message.parsed
 ```
+
 ```curl
 curl https://api.openai.com/v1/chat/completions \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -1153,8 +1194,11 @@ curl https://api.openai.com/v1/chat/completions \
   }'
 ```
 
+:::
+
 **使用 Structured Outputs 进行内容审核**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 import { zodTextFormat } from "openai/helpers/zod";
@@ -1187,6 +1231,7 @@ const response = await openai.responses.parse({
 
 const compliance = response.output_parsed;
 ```
+
 ```python
 from enum import Enum
 from typing import Optional
@@ -1220,6 +1265,7 @@ response = client.responses.parse(
 
 compliance = response.output_parsed
 ```
+
 ```curl
 curl https://api.openai.com/v1/responses \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -1267,6 +1313,8 @@ curl https://api.openai.com/v1/responses \
   }'
 ```
 
+:::
+
 #### 示例响应
 
 ```
@@ -1295,6 +1343,7 @@ SDK 对象
 
 例如，您可以这样定义一个对象：
 
+::: code-group
 ```python
 from pydantic import BaseModel
 
@@ -1306,6 +1355,7 @@ class MathResponse(BaseModel):
 steps: list[Step]
 final_answer: str
 ```
+
 ```javascript
 import { z } from "zod";
 import { zodResponseFormat } from "openai/helpers/zod";
@@ -1321,6 +1371,8 @@ final_answer: z.string(),
 });
 ```
 
+:::
+
 #### 数据结构的建议
 
 为了最大化模型生成的质量，我们建议以下做法：
@@ -1335,6 +1387,7 @@ final_answer: z.string(),
 
 在底层，SDK 负责提供与您的数据结构对应的 JSON schema，然后将响应解析为对象。
 
+::: code-group
 ```python
 completion = client.chat.completions.parse(
     model="gpt-4o-2024-08-06",
@@ -1345,6 +1398,7 @@ completion = client.chat.completions.parse(
     response_format=MathResponse
   )
 ```
+
 ```javascript
 const completion = await openai.chat.completions.parse({
 model: "gpt-4o-2024-08-06",
@@ -1356,12 +1410,15 @@ response_format: zodResponseFormat(MathResponse, "math_response"),
 });
 ```
 
+:::
+
 步骤 3：处理边缘情况
 
 在某些情况下，模型可能不会生成与提供的 JSON schema 匹配的有效响应。
 
 这可能发生在拒绝的情况下（如果模型出于安全原因拒绝回答），或者例如您达到了最大 token 限制且响应不完整。
 
+::: code-group
 ```javascript
 try {
   const completion = await openai.chat.completions.create({
@@ -1432,6 +1489,7 @@ try {
   console.error(e);
 }
 ```
+
 ```python
 try:
     response = client.chat.completions.create(
@@ -1476,6 +1534,8 @@ except Exception as e:
     # handle errors like finish_reason, refusal, content_filter, etc.
     pass
 ```
+
+:::
 
 手动 schema
 
@@ -1507,6 +1567,7 @@ text: { format: { type: "json_schema", "strict": true, "schema": … } }
 
 例如：
 
+::: code-group
 ```python
 response = client.chat.completions.create(
     model="gpt-4o-2024-08-06",
@@ -1545,6 +1606,7 @@ response = client.chat.completions.create(
 
 print(response.choices[0].message.content)
 ```
+
 ```javascript
 const response = await openai.chat.completions.create({
 model: "gpt-4o-2024-08-06",
@@ -1584,6 +1646,7 @@ strict: true
 
 console.log(response.choices[0].message.content);
 ```
+
 ```curl
 curl https://api.openai.com/v1/chat/completions \
 -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -1668,6 +1731,7 @@ text={
 
 print(response.output_text)
 ```
+
 ```javascript
 const response = await openai.responses.create({
 model: "gpt-4o-2024-08-06",
@@ -1706,6 +1770,7 @@ strict: true
 
 console.log(response.output_text);
 ```
+
 ```curl
 curl https://api.openai.com/v1/responses \
 -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -1752,6 +1817,8 @@ curl https://api.openai.com/v1/responses \
 }'
 ```
 
+:::
+
 **注意：** 您使用任何 schema 发出的第一个请求将有额外的延迟，因为我们的 API 会处理该 schema，但使用相同 schema 的后续请求不会有额外延迟。
 
 步骤 3：处理边缘情况
@@ -1760,6 +1827,7 @@ curl https://api.openai.com/v1/responses \
 
 这可能发生在拒绝的情况下（如果模型出于安全原因拒绝回答），或者例如您达到了最大 token 限制且响应不完整。
 
+::: code-group
 ```javascript
 try {
   const completion = await openai.chat.completions.create({
@@ -1830,6 +1898,7 @@ try {
   console.error(e);
 }
 ```
+
 ```python
 try:
     response = client.chat.completions.create(
@@ -1944,6 +2013,7 @@ try {
   console.error(e);
 }
 ```
+
 ```python
 try:
     response = client.responses.create(
@@ -1989,6 +2059,8 @@ except Exception as e:
     pass
 ```
 
+:::
+
 步骤 4：以类型安全的方式使用生成的结构化数据
 
 通常，在使用 Structured Outputs 时，您会在编程语言的类型系统中有一个类型或类来表示 JSON Schema 对象。
@@ -1997,6 +2069,7 @@ except Exception as e:
 
 例如：
 
+::: code-group
 ```python
 from pydantic import BaseModel, ValidationError
 from typing import List
@@ -2019,6 +2092,7 @@ print(solution)
 except ValidationError as e: # Handle validation errors
 print(e.json())
 ```
+
 ```javascript
 // Here we specify types in TypeScript that exactly match the JSON Schema we provided when calling the OpenAI API. Note that these _must_ be kept in sync.
 
@@ -2037,6 +2111,8 @@ final_answer: string;
 // Now so long as the JSON Schema we created was exactly equivalent to our TypeScript types, this is type-safe
 const solution = JSON.parse(response.choices[0].message.content)) as Solution
 ```
+
+:::
 
 ## 如何使用 text.format 的 Structured Outputs
 
@@ -2068,6 +2144,7 @@ text: { format: { type: "json_schema", "strict": true, "schema": … } }
 
 例如：
 
+::: code-group
 ```python
 response = client.chat.completions.create(
     model="gpt-4o-2024-08-06",
@@ -2106,6 +2183,7 @@ response = client.chat.completions.create(
 
 print(response.choices[0].message.content)
 ```
+
 ```javascript
 const response = await openai.chat.completions.create({
 model: "gpt-4o-2024-08-06",
@@ -2145,6 +2223,7 @@ strict: true
 
 console.log(response.choices[0].message.content);
 ```
+
 ```curl
 curl https://api.openai.com/v1/chat/completions \
 -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -2229,6 +2308,7 @@ text={
 
 print(response.output_text)
 ```
+
 ```javascript
 const response = await openai.responses.create({
 model: "gpt-4o-2024-08-06",
@@ -2267,6 +2347,7 @@ strict: true
 
 console.log(response.output_text);
 ```
+
 ```curl
 curl https://api.openai.com/v1/responses \
 -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -2313,6 +2394,8 @@ curl https://api.openai.com/v1/responses \
 }'
 ```
 
+:::
+
 **注意：** 您使用任何 schema 发出的第一个请求将有额外的延迟，因为我们的 API 会处理该 schema，但使用相同 schema 的后续请求不会有额外延迟。
 
 步骤 3：处理边缘情况
@@ -2321,6 +2404,7 @@ curl https://api.openai.com/v1/responses \
 
 这可能发生在拒绝的情况下（如果模型出于安全原因拒绝回答），或者例如您达到了最大 token 限制且响应不完整。
 
+::: code-group
 ```javascript
 try {
   const completion = await openai.chat.completions.create({
@@ -2391,6 +2475,7 @@ try {
   console.error(e);
 }
 ```
+
 ```python
 try:
     response = client.chat.completions.create(
@@ -2505,6 +2590,7 @@ try {
   console.error(e);
 }
 ```
+
 ```python
 try:
     response = client.responses.create(
@@ -2550,6 +2636,8 @@ except Exception as e:
     pass
 ```
 
+:::
+
 步骤 4：以类型安全的方式使用生成的结构化数据
 
 通常，在使用 Structured Outputs 时，您会在编程语言的类型系统中有一个类型或类来表示 JSON Schema 对象。
@@ -2558,6 +2646,7 @@ except Exception as e:
 
 例如：
 
+::: code-group
 ```python
 from pydantic import BaseModel, ValidationError
 from typing import List
@@ -2580,6 +2669,7 @@ print(solution)
 except ValidationError as e: # Handle validation errors
 print(e.json())
 ```
+
 ```javascript
 // Here we specify types in TypeScript that exactly match the JSON Schema we provided when calling the OpenAI API. Note that these _must_ be kept in sync.
 
@@ -2599,6 +2689,8 @@ final_answer: string;
 const solution = JSON.parse(response.choices[0].message.content)) as Solution
 ```
 
+:::
+
 ### 
 
 Structured Outputs 的拒绝
@@ -2607,6 +2699,7 @@ Structured Outputs 的拒绝
 
 当 `refusal` 属性出现在您的输出对象中时，您可能会在 UI 中展示拒绝信息，或在消费响应的代码中包含条件逻辑来处理请求被拒绝的情况。
 
+::: code-group
 ```python
 class Step(BaseModel):
     explanation: str
@@ -2634,6 +2727,7 @@ print(math_reasoning.refusal)
 else:
 print(math_reasoning.parsed)
 ```
+
 ```javascript
 const Step = z.object({
 explanation: z.string(),
@@ -2664,8 +2758,11 @@ console.log(math_reasoning.parsed);
 }
 ```
 
+:::
+
 拒绝的 API 响应将类似于这样：
 
+::: code-group
 ```json
 {
   "id": "chatcmpl-9nYAG9LPNonX8DAyrkwYfemr3C8HC",
@@ -2736,6 +2833,8 @@ console.log(math_reasoning.parsed);
 }
 ```
 
+:::
+
 ### 
 
 提示和最佳实践
@@ -2770,6 +2869,7 @@ Structured Outputs 仍然可能包含错误。如果您发现错误，请尝试�
 
 以下是如何使用 `stream` 辅助工具流式传输模型响应：
 
+::: code-group
 ```python
 from typing import List
 from pydantic import BaseModel
@@ -2805,6 +2905,7 @@ print("Error in stream:", event.error)
 final_completion = stream.get_final_completion()
 print("Final completion:", final_completion)
 ```
+
 ```javascript
 import OpenAI from "openai";
 import { zodResponseFormat } from "openai/helpers/zod";
@@ -2847,8 +2948,11 @@ const finalCompletion = await stream.finalChatCompletion();
 console.log(finalCompletion);
 ```
 
+:::
+
 您还可以使用 `stream` 辅助工具来解析函数调用参数：
 
+::: code-group
 ```python
 from pydantic import BaseModel
 import openai
@@ -2879,6 +2983,7 @@ print(event)
 
 print(stream.get_final_completion())
 ```
+
 ```javascript
 import { zodFunction } from "openai/helpers/zod";
 import OpenAI from "openai/index";
@@ -2955,6 +3060,7 @@ print("Completed") # print(event.response.output)
     final_response = stream.get_final_response()
     print(final_response)
 ```
+
 ```javascript
 import { OpenAI } from "openai";
 import { zodTextFormat } from "openai/helpers/zod";
@@ -2994,6 +3100,8 @@ const result = await stream.finalResponse();
 
 console.log(result);
 ```
+
+:::
 
 ## 支持的模式
 
@@ -3486,6 +3594,7 @@ JSON mode 是 Structured Outputs 功能的更基础版本。虽然 JSON mode 确
 
 处理边缘情况
 
+::: code-group
 ```javascript
 const we_did_not_specify_stop_tokens = true;
 
@@ -3536,6 +3645,7 @@ try {
   console.error(e)
 }
 ```
+
 ```python
 we_did_not_specify_stop_tokens = True
 
@@ -3629,6 +3739,7 @@ try {
   console.error(e)
 }
 ```
+
 ```python
 we_did_not_specify_stop_tokens = True
 
@@ -3672,6 +3783,8 @@ except Exception as e:
     # Your code should handle errors here, for example a network error calling the API
     print(e)
 ```
+
+:::
 
 ## 资源
 

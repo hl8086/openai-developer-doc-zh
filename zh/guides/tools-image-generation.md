@@ -11,6 +11,7 @@
 
 **生成图像**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const openai = new OpenAI();
@@ -32,6 +33,7 @@ if (imageData.length > 0) {
   fs.writeFileSync("otter.png", Buffer.from(imageBase64, "base64"));
 }
 ```
+
 ```python
 from openai import OpenAI
 import base64
@@ -56,6 +58,8 @@ if image_data:
     with open("otter.png", "wb") as f:
         f.write(base64.b64decode(image_base64))
 ```
+
+:::
 
 你可以使用文件 ID 或 base64 数据[提供输入图像](/guides/image-generation?image-generation-model=gpt-image#edit-images)。
 
@@ -112,6 +116,7 @@ if image_data:
 
 **多轮图像生成**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const openai = new OpenAI();
@@ -155,6 +160,7 @@ if (imageData_fwup.length > 0) {
   );
 }
 ```
+
 ```python
 from openai import OpenAI
 import base64
@@ -201,10 +207,13 @@ if image_data_fwup:
         f.write(base64.b64decode(image_base64))
 ```
 
+:::
+
 使用图像 ID
 
 **多轮图像生成**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const openai = new OpenAI();
@@ -258,6 +267,7 @@ if (imageData_fwup.length > 0) {
   );
 }
 ```
+
 ```python
 import openai
 import base64
@@ -312,6 +322,8 @@ if image_data_fwup:
         f.write(base64.b64decode(image_base64))
 ```
 
+:::
+
 ## 流式传输
 
 图像生成工具支持在生成最终结果时流式传输部分图像。这为用户提供了更快的视觉反馈并改善了感知延迟。
@@ -320,6 +332,7 @@ if image_data_fwup:
 
 **流式传输图像**
 
+::: code-group
 ```javascript
 import fs from "fs";
 import OpenAI from "openai";
@@ -344,6 +357,7 @@ for await (const event of stream) {
   }
 }
 ```
+
 ```python
 from openai import OpenAI
 import base64
@@ -365,6 +379,8 @@ for event in stream:
         with open(f"river{idx}.png", "wb") as f:
             f.write(image_bytes)
 ```
+
+:::
 
 ## 支持的模型
 

@@ -7,6 +7,7 @@ OpenAI [webhooks](http://chatgpt.com/?q=eli5+what+is+a+webhook?) 允许你接收
 
 **Webhooks 服务器**
 
+::: code-group
 ```python
 import os
 from openai import OpenAI, InvalidWebhookSignatureError
@@ -34,6 +35,7 @@ def webhook():
 if __name__ == "__main__":
     app.run(port=8000)
 ```
+
 ```javascript
 import OpenAI from "openai";
 import express from "express";
@@ -76,12 +78,15 @@ app.listen(8000, () => {
 });
 ```
 
+:::
+
 要查看此类 webhook 的实际运行效果，你可以在 OpenAI 仪表板中设置一个订阅了 `response.completed` 的 webhook 端点，然后发起一个 API 请求来[在后台模式下生成响应](/guides/background)。
 
 你也可以从 [webhook 设置页面](https://platform.openai.com/settings/project/webhooks) 使用示例数据触发测试事件。
 
 **生成后台响应**
 
+::: code-group
 ```curl
 curl https://api.openai.com/v1/responses \
 -H "Content-Type: application/json" \
@@ -92,6 +97,7 @@ curl https://api.openai.com/v1/responses \
   "background": true
 }'
 ```
+
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -104,6 +110,7 @@ const resp = await client.responses.create({
 
 console.log(resp.status);
 ```
+
 ```python
 from openai import OpenAI
 
@@ -117,6 +124,8 @@ resp = client.responses.create(
 
 print(resp.status)
 ```
+
+:::
 
 在本指南中，你将学习如何在仪表板中创建 webhook 端点、设置服务器端代码来处理它们，以及验证入站请求是否来自 OpenAI。
 
@@ -181,6 +190,7 @@ export OPENAI_WEBHOOK_SECRET="&lt;your secret here>"
 
 **使用 OpenAI SDK 进行签名验证**
 
+::: code-group
 ```python
 client = OpenAI()
 webhook_secret = os.environ["OPENAI_WEBHOOK_SECRET"]
@@ -188,6 +198,7 @@ webhook_secret = os.environ["OPENAI_WEBHOOK_SECRET"]
 # will raise if the signature is invalid
 event = client.webhooks.unwrap(request.data, request.headers, secret=webhook_secret)
 ```
+
 ```javascript
 const client = new OpenAI();
 const webhook_secret = process.env.OPENAI_WEBHOOK_SECRET;
@@ -195,6 +206,8 @@ const webhook_secret = process.env.OPENAI_WEBHOOK_SECRET;
 // will throw if the signature is invalid
 const event = client.webhooks.unwrap(req.body, req.headers, { secret: webhook_secret });
 ```
+
+:::
 
 也可以使用 [Standard Webhooks 库](https://github.com/standard-webhooks/standard-webhooks/tree/main?tab=readme-ov-file#reference-implementations) 来验证签名：
 

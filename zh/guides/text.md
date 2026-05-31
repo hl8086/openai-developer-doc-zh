@@ -188,6 +188,7 @@ OpenAI 有许多不同的[模型](/models)和多个 API 可供选择。[推理�
 
 **使用指令生成文本**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -201,6 +202,7 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 ```
+
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -214,6 +216,7 @@ response = client.responses.create(
 
 print(response.output_text)
 ```
+
 ```curl
 curl "https://api.openai.com/v1/responses" \
     -H "Content-Type: application/json" \
@@ -226,10 +229,13 @@ curl "https://api.openai.com/v1/responses" \
     }'
 ```
 
+:::
+
 上面的示例大致等同于在 `input` 数组中使用以下输入消息：
 
 **使用不同角色的消息生成文本**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -251,6 +257,7 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 ```
+
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -272,6 +279,7 @@ response = client.responses.create(
 
 print(response.output_text)
 ```
+
 ```curl
 curl "https://api.openai.com/v1/responses" \
     -H "Content-Type: application/json" \
@@ -291,6 +299,8 @@ curl "https://api.openai.com/v1/responses" \
         ]
     }'
 ```
+
+:::
 
 请注意，`instructions` 参数仅适用于当前的响应生成请求。如果你使用 `previous_response_id` 参数[管理对话状态](/guides/conversation-state)，之前轮次使用的 `instructions` 将不会出现在上下文中。
 
@@ -325,6 +335,7 @@ curl "https://api.openai.com/v1/responses" \
 
 **使用提示词模板生成文本**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -343,6 +354,7 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 ```
+
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -361,6 +373,7 @@ response = client.responses.create(
 
 print(response.output_text)
 ```
+
 ```curl
 curl https://api.openai.com/v1/responses \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -378,10 +391,13 @@ curl https://api.openai.com/v1/responses \
   }'
 ```
 
+:::
+
 带文件输入的变量
 
 **带文件输入变量的提示词模板**
 
+::: code-group
 ```javascript
 import fs from "fs";
 import OpenAI from "openai";
@@ -409,6 +425,7 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 ```
+
 ```python
 import openai, pathlib
 
@@ -436,6 +453,7 @@ response = client.responses.create(
 
 print(response.output_text)
 ```
+
 ```curl
 # Assume you have already uploaded the PDF and obtained FILE_ID
 curl https://api.openai.com/v1/responses   -H "Authorization: Bearer $OPENAI_API_KEY"   -H "Content-Type: application/json"   -d '{
@@ -452,6 +470,8 @@ curl https://api.openai.com/v1/responses   -H "Authorization: Bearer $OPENAI_API
     }
   }'
 ```
+
+:::
 
 ## 后续步骤
 

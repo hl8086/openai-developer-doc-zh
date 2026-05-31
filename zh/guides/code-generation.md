@@ -23,6 +23,7 @@ Codex 与 GPT-5 系列的最新模型配合效果最佳，例如 [`gpt-5.5`](/mo
 
 **大多数编码任务的默认模型**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const openai = new OpenAI();
@@ -35,6 +36,7 @@ const result = await openai.responses.create({
 
 console.log(result.output_text);
 ```
+
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -47,6 +49,7 @@ result = client.responses.create(
 
 print(result.output_text)
 ```
+
 ```curl
 curl https://api.openai.com/v1/responses \
   -H "Content-Type: application/json" \
@@ -57,6 +60,8 @@ curl https://api.openai.com/v1/responses \
     "reasoning": { "effort": "high" }
   }'
 ```
+
+:::
 
 ## 前端开发
 
