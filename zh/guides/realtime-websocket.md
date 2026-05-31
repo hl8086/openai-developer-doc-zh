@@ -116,7 +116,7 @@ Realtime API 会话通过[客户端发送事件]( https://developers.openai.com/
 
 通过 WebSocket，您将以 JSON 序列化的文本字符串形式发送和接收事件，如下面的 Node.js 示例所示（相同的原理适用于其他 WebSocket 库）：
 
-```
+```javascript
 import WebSocket from "ws";
 
 const url = "wss://api.openai.com/v1/realtime?model=gpt-realtime-2";

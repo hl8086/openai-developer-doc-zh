@@ -60,7 +60,7 @@
 
 您组织的微调速率限制也可以[在仪表板中找到](https://platform.openai.com/settings/organization/limits)，也可以通过 API 获取：
 
-```
+```curl
 curl https://api.openai.com/v1/fine_tuning/model_limits \
   -H "Authorization: Bearer $OPENAI_API_KEY"
 ```

@@ -19,7 +19,7 @@ Widget 操作允许用户从 UI 触发逻辑。操作可以绑定到各种 widge
 
 使用 `WidgetsOption` 中的 `onAction` 回调或等效的 React hook 捕获 widget 事件。将操作负载转发到你的后端来处理操作。
 
-```
+```javascript
 chatkit.setOptions({
   widgets: {
     async onAction(action, item) {

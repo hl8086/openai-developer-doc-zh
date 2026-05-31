@@ -237,6 +237,7 @@ print(response.output_text)
 ```
 
 :::
+::: code-group
 ```go
 package main
 
@@ -349,6 +350,7 @@ func main() {
 	fmt.Println(response.OutputText())
 }
 ```
+
 ```java
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.json.JsonMapper;
@@ -465,6 +467,7 @@ public final class AzureManagedIdentityWorkloadIdentityExample {
     }
 }
 ```
+
 ```ruby
 require "json"
 require "net/http"
@@ -544,6 +547,8 @@ response = client.responses.create(
 puts(response.output_text)
 ```
 
+:::
+
 ## Azure Kubernetes Service (AKS)
 
 通过将 AKS 颁发的投射服务账户令牌交换为短期 OpenAI 访问令牌，使用 AKS 作为工作负载身份提供者。
@@ -610,7 +615,7 @@ spec:
 
 在配置工作负载身份联合之前，在本地解码示例投射服务账户令牌并检查其声明。从挂载了投射令牌的运行中的 Pod：
 
-```
+```python
 TOKEN=$(kubectl exec -n default openai-wif-app -- cat /var/run/secrets/tokens/token)
 
 TOKEN="$TOKEN" python3 - <<'PY'
@@ -628,7 +633,8 @@ PY
 
 解码后的 AKS 投射服务账户令牌类似于：
 
-```
+::: code-group
+```javascript
 {
   "iss": "https://eastus.oic.prod-aks.azure.com/11111111-2222-3333-4444-555555555555/22222222-3333-4444-5555-666666666666/",
   "aud": ["https://api.openai.com/v1"],
@@ -643,6 +649,7 @@ PY
     }
   }
 }
+::: code-group
 ```text
 
 验证您计划在 OpenAI 中配置的声明：
@@ -772,6 +779,11 @@ print(response.output_text)
 ```
 
 :::
+
+:::
+
+:::
+::: code-group
 ```go
 package main
 
@@ -843,6 +855,7 @@ func main() {
 	fmt.Println(response.OutputText())
 }
 ```
+
 ```java
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.openai.auth.SubjectTokenProvider;
@@ -928,6 +941,7 @@ public final class AzureAksWorkloadIdentityExample {
     }
 }
 ```
+
 ```ruby
 require "openai"
 
@@ -979,6 +993,8 @@ response = client.responses.create(
 
 puts(response.output_text)
 ```
+
+:::
 
 ## Microsoft Azure 最佳实践
 

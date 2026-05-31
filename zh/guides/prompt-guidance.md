@@ -478,6 +478,7 @@ If a lookup returns empty, partial, or suspiciously narrow results:
 
 一旦工作流看起来完成，在返回答案或执行不可逆操作之前添加轻量级验证步骤。这有助于在提交前捕获需求遗漏、基础事实问题和格式漂移。
 
+::: code-group
 ```text
 &lt;verification_loop>
 Before finalizing:
@@ -495,6 +496,8 @@ Before finalizing:
 - If you must proceed, label assumptions explicitly and choose a reversible action.
 &lt;/missing_context_gating>
 ```
+
+:::
 
 对于主动执行操作的智能体，添加简短的执行框架：
 
@@ -516,6 +519,7 @@ Before finalizing:
 
 当引用质量重要时，使来源边界和格式要求都明确。这有助于减少虚构引用、无支持的声明和引用格式漂移。
 
+::: code-group
 ```text
 &lt;citation_rules>
 - Only cite sources retrieved in the current workflow.
@@ -533,6 +537,8 @@ Before finalizing:
 - If a statement is an inference rather than a directly supported fact, label it as an inference.
 &lt;/grounding_rules>
 ```
+
+:::
 
 如果你的应用需要内联引用，要求内联引用。如果需要脚注，要求脚注。关键是锁定格式并防止模型即兴创造无支持的引用。
 
@@ -645,6 +651,7 @@ Never use nested bullets. Keep lists flat (single level). If you need hierarchy,
 
 仅在需要额外前端指导时使用。
 
+::: code-group
 ```text
 &lt;frontend_tasks>
 When doing frontend design tasks, avoid generic, overbuilt layouts.
@@ -674,6 +681,8 @@ Exception: If working within an existing website or design system, preserve the 
 - After changes, run a lightweight verification step such as ls, tests, or a build before declaring the task done.
 &lt;/terminal_tool_hygiene>
 ```
+
+:::
 
 ### 文档本地化和 OCR 框
 
@@ -1718,7 +1727,7 @@ POST https://api.openai.com/v1/responses/compact
 
 这是一个示例：
 
-```
+```python
 from openai import OpenAI
 import json
 

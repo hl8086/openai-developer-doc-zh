@@ -51,6 +51,7 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const openai = new OpenAI({ timeout: 3600 * 1000 });
@@ -107,6 +108,8 @@ curl https://api.openai.com/v1/responses   -H "Authorization: Bearer $OPENAI_API
     ]
   }'
 ```
+
+:::
 
 :::
 
@@ -210,6 +213,7 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const openai = new OpenAI();
@@ -247,6 +251,8 @@ curl https://api.openai.com/v1/responses \
   "instructions": "You are talking to a user who is asking for a research task to be conducted. Your job is to gather more information from the user to successfully complete the task. GUIDELINES: - Be concise while gathering all necessary information** - Make sure to gather all the information needed to carry out the research task in a concise, well-structured manner. - Use bullet points or numbered lists if appropriate for clarity. - Don't ask for unnecessary information, or information that the user has already provided. IMPORTANT: Do NOT conduct any research yourself, just gather information that will be given to a researcher to conduct the research task."
 }'
 ```
+
+:::
 
 :::
 
@@ -334,6 +340,7 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const openai = new OpenAI();
@@ -428,6 +435,8 @@ curl https://api.openai.com/v1/responses \
 
 :::
 
+:::
+
 ## 使用您自己的数据进行研究
 
 深度研究模型旨在访问公共和私有数据源，但私有或内部数据需要特定的设置。默认情况下，这些模型可以通过[网络搜索工具](/guides/tools-web-search)访问公共互联网上的信息。要让模型访问您自己的数据，您有以下几种选择：
@@ -483,6 +492,7 @@ curl https://api.openai.com/v1/responses \
 }'
 ```
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -537,6 +547,8 @@ resp = client.responses.create(
 
 print(resp.output_text)
 ```
+
+:::
 
 :::
 

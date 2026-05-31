@@ -38,6 +38,7 @@ client = OpenAI(
 ```
 
 :::
+::: code-group
 ```go
 package main
 
@@ -56,6 +57,7 @@ func main() {
     _ = client
 }
 ```
+
 ```ruby
 require "openai"
 
@@ -63,6 +65,7 @@ openai = OpenAI::Client.new(
   admin_api_key: ENV.fetch("OPENAI_ADMIN_KEY")
 )
 ```
+
 ```java
 import com.openai.client.OpenAIClient;
 import com.openai.client.okhttp.OpenAIOkHttpClient;
@@ -71,6 +74,8 @@ OpenAIClient client = OpenAIOkHttpClient.builder()
     .adminApiKey(System.getenv("OPENAI_ADMIN_KEY"))
     .build();
 ```
+
+:::
 
 ## 限制项目的模型访问
 
@@ -100,6 +105,7 @@ print(model_permissions.mode)
 ```
 
 :::
+::: code-group
 ```go
 ctx := context.Background()
 
@@ -117,6 +123,7 @@ if err != nil {
 
 println(modelPermissions.Mode)
 ```
+
 ```ruby
 model_permissions = openai.admin.organization.projects.model_permissions.update(
   "proj_abc",
@@ -126,6 +133,7 @@ model_permissions = openai.admin.organization.projects.model_permissions.update(
 
 puts(model_permissions.mode)
 ```
+
 ```java
 import com.openai.models.admin.organization.projects.modelpermissions.ModelPermissionUpdateParams;
 import com.openai.models.admin.organization.projects.modelpermissions.ProjectModelPermissions;
@@ -145,6 +153,8 @@ ProjectModelPermissions modelPermissions = client.admin()
 
 System.out.println(modelPermissions.mode());
 ```
+
+:::
 
 ## 管理支出限额警报
 
@@ -186,6 +196,7 @@ print(spend_alert.id)
 ```
 
 :::
+::: code-group
 ```go
 ctx := context.Background()
 
@@ -209,6 +220,7 @@ if err != nil {
 
 println(spendAlert.ID)
 ```
+
 ```ruby
 spend_alert = openai.admin.organization.projects.spend_alerts.create(
   "proj_abc",
@@ -224,6 +236,7 @@ spend_alert = openai.admin.organization.projects.spend_alerts.create(
 
 puts(spend_alert.id)
 ```
+
 ```java
 import com.openai.models.admin.organization.projects.spendalerts.ProjectSpendAlert;
 import com.openai.models.admin.organization.projects.spendalerts.SpendAlertCreateParams;
@@ -249,6 +262,8 @@ ProjectSpendAlert spendAlert = client.admin()
 
 System.out.println(spendAlert.id());
 ```
+
+:::
 
 ## 管理数据保留
 
@@ -276,6 +291,7 @@ print(data_retention.type)
 ```
 
 :::
+::: code-group
 ```go
 ctx := context.Background()
 
@@ -292,6 +308,7 @@ if err != nil {
 
 println(dataRetention.Type)
 ```
+
 ```ruby
 data_retention = openai.admin.organization.projects.data_retention.update(
   "proj_abc",
@@ -300,6 +317,7 @@ data_retention = openai.admin.organization.projects.data_retention.update(
 
 puts(data_retention.type)
 ```
+
 ```java
 import com.openai.models.admin.organization.projects.dataretention.DataRetentionUpdateParams;
 import com.openai.models.admin.organization.projects.dataretention.ProjectDataRetention;
@@ -317,6 +335,8 @@ ProjectDataRetention dataRetention = client.admin()
 
 System.out.println(dataRetention.type());
 ```
+
+:::
 
 ## 通过邮箱邀请用户
 
@@ -344,6 +364,7 @@ print(invite.id)
 ```
 
 :::
+::: code-group
 ```go
 ctx := context.Background()
 
@@ -357,6 +378,7 @@ if err != nil {
 
 println(invite.ID)
 ```
+
 ```ruby
 invite = openai.admin.organization.invites.create(
   email: "user@example.com",
@@ -365,6 +387,7 @@ invite = openai.admin.organization.invites.create(
 
 puts(invite.id)
 ```
+
 ```java
 import com.openai.models.admin.organization.invites.Invite;
 import com.openai.models.admin.organization.invites.InviteCreateParams;
@@ -378,6 +401,8 @@ Invite invite = client.admin().organization().invites().create(
 
 System.out.println(invite.id());
 ```
+
+:::
 
 ## 检索审计日志
 
@@ -402,6 +427,7 @@ for audit_log in audit_logs.data:
 ```
 
 :::
+::: code-group
 ```go
 ctx := context.Background()
 
@@ -416,6 +442,7 @@ for _, auditLog := range auditLogs.Data {
     println(auditLog.ID)
 }
 ```
+
 ```ruby
 audit_logs = openai.admin.organization.audit_logs.list(limit: 10)
 
@@ -423,6 +450,7 @@ audit_logs.data.each do |audit_log|
   puts(audit_log.id)
 end
 ```
+
 ```java
 import com.openai.models.admin.organization.auditlogs.AuditLogListParams;
 
@@ -434,3 +462,5 @@ var page = client.admin().organization().auditLogs().list(
 
 page.data().forEach(auditLog -> System.out.println(auditLog.id()));
 ```
+
+:::

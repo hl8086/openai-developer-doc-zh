@@ -42,6 +42,7 @@ curl https://api.openai.com/v1/responses \
   }'
 ```
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -84,6 +85,8 @@ resp = client.responses.create(
 
 print(resp.output_text)
 ```
+
+:::
 
 :::
 ```csharp
@@ -136,6 +139,7 @@ curl https://api.openai.com/v1/responses \
   }'
 ```
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -178,6 +182,8 @@ resp = client.responses.create(
 
 print(resp.output_text)
 ```
+
+:::
 
 :::
 ```csharp
@@ -316,6 +322,7 @@ curl https://api.openai.com/v1/responses \
   }'
 ```
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -356,6 +363,8 @@ resp = client.responses.create(
 
 print(resp.output_text)
 ```
+
+:::
 
 :::
 ```csharp
@@ -445,6 +454,7 @@ curl https://api.openai.com/v1/responses \
   }'
 ```
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -493,6 +503,8 @@ resp = client.responses.create(
 
 print(resp.output_text)
 ```
+
+:::
 
 :::
 ```csharp
@@ -555,6 +567,7 @@ curl https://api.openai.com/v1/responses \
   }'
 ```
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -605,6 +618,8 @@ print(resp.output_text)
 ```
 
 :::
+
+:::
 ```csharp
 using OpenAI.Responses;
 
@@ -653,6 +668,7 @@ curl https://api.openai.com/v1/responses \
   }'
 ```
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -693,6 +709,8 @@ resp = client.responses.create(
 
 print(resp.output_text)
 ```
+
+:::
 
 :::
 ```csharp
@@ -777,6 +795,7 @@ curl https://api.openai.com/v1/responses \
   }'
 ```
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -819,6 +838,8 @@ resp = client.responses.create(
 
 print(resp.output_text)
 ```
+
+:::
 
 :::
 ```csharp

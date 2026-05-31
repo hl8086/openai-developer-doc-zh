@@ -314,7 +314,7 @@ Model Answer: \{\{sample.output_json.explanation\}\}
 3.  将 schema 包装在具有 `type` 和 `name` 键的字典中，并将 `strict` 设置为 true
 4.  获取结果对象并将其作为 RFT 任务中的 `response_format` 提供
 
-```
+```python
 from openai.lib._pydantic import to_strict_json_schema
 from pydantic import BaseModel
 
@@ -340,7 +340,7 @@ response_format = dict(
 
 使用 API 配置任务有很多组成部分，因此许多用户更喜欢在[微调仪表板 UI](https://platform.openai.com/finetune) 中配置它们。但是，以下是使用我们在本指南中设置的所有配置启动微调任务的完整 API 请求：
 
-```
+```curl
 curl https://api.openai.com/v1/fine_tuning/jobs \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -458,7 +458,7 @@ curl https://api.openai.com/v1/fine_tuning/jobs \
 
 通过 API 调用使用您的模型
 
-```
+```curl
 curl https://api.openai.com/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \

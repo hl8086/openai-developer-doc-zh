@@ -249,7 +249,7 @@ Realtime 会话可以配置为在生成音频输出时使用多种内置语音�
 
 [WebRTC 连接指南](/guides/realtime-webrtc)中的示例代码展示了使用浏览器 API 配置本地和远程音频的基本示例：
 
-```
+```javascript
 // Create a peer connection
 const pc = new RTCPeerConnection();
 
@@ -940,7 +940,7 @@ Realtime 模型还支持**函数调用**，使你能够执行自定义代码来�
 
 与 HTTP 请求和响应不同（响应隐式地与客户端的请求关联），我们需要在客户端事件上使用 `event_id` 属性来了解其中一个事件何时在服务器上触发了错误条件。下面的代码展示了这种技术，其中客户端尝试发出不支持的事件类型。
 
-```
+```javascript
 const event = {
   event_id: "my_awesome_event",
   type: "scooby.dooby.doo",

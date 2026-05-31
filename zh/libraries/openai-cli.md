@@ -70,7 +70,7 @@ export OPENAI_API_KEY="sk-..."
 
 命令：
 
-```
+```bash
 openai responses create \
 --model gpt-5.5 \
 --input "Say hello in one sentence."
@@ -205,7 +205,7 @@ printf '  &lt;/note>\n'
 
 命令：
 
-```
+```bash
 openai responses create \
 --model gpt-5.5 \
 --instructions "Extract the person and topic from the input." \

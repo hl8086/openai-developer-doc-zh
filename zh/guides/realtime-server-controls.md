@@ -9,7 +9,7 @@ Realtime API 允许客户端通过 WebRTC 或 SIP 直接连接到 API 服务器�
 
 1.  在[建立对等连接](/guides/realtime-webrtc)时，你需要从 Realtime API 获取并接收 SDP 响应来配置连接。如果你使用了 WebRTC 指南中的示例代码，大致如下：
 
-```
+```javascript
 const baseUrl = "https://api.openai.com/v1/realtime/calls";
 const sdpResponse = await fetch(baseUrl, {
   method: "POST",
@@ -23,7 +23,7 @@ const sdpResponse = await fetch(baseUrl, {
 
 2.  fetch 响应将包含一个 `Location` 头，其中有一个唯一的通话 ID，可在服务器上用于建立到同一 Realtime 会话的 WebSocket 连接。
 
-```
+```javascript
 // Location: /v1/realtime/calls/rtc_123456
 const location = sdpResponse.headers.get("Location");
 const callId = location?.split("/").pop();
@@ -32,7 +32,7 @@ console.log(callId);
 
 3.  在服务器上，你可以使用该通话 ID 通过 URL `wss://api.openai.com/v1/realtime?call_id=rtc_xxxxx` 来[监听事件和配置会话](/guides/realtime-conversations)，就像从典型的 Realtime API WebSocket 连接一样，如下所示：
 
-```
+```javascript
 import WebSocket from "ws";
 const callId = "rtc_u1_9c6574da8b8a41a18da9308f4ad974ce";
 

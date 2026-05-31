@@ -215,6 +215,7 @@ print(response.output_text)
 ```
 
 :::
+::: code-group
 ```go
 package main
 
@@ -286,6 +287,7 @@ func main() {
 	fmt.Println(response.OutputText())
 }
 ```
+
 ```java
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.openai.auth.SubjectTokenProvider;
@@ -371,6 +373,7 @@ public final class KubernetesWorkloadIdentityExample {
     }
 }
 ```
+
 ```ruby
 require "openai"
 
@@ -422,6 +425,8 @@ response = client.responses.create(
 
 puts(response.output_text)
 ```
+
+:::
 
 ## Kubernetes 最佳实践
 

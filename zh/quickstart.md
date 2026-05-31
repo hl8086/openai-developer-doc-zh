@@ -55,7 +55,7 @@ npm install openai
 
 测试基本 API 请求
 
-```
+```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
 
@@ -85,7 +85,7 @@ pip install openai
 
 测试基本 API 请求
 
-```
+```python
 from openai import OpenAI
 client = OpenAI()
 
@@ -113,7 +113,7 @@ dotnet add package OpenAI
 
 测试基本 API 请求
 
-```
+```python
 using System;
 using System.Threading.Tasks;
 using OpenAI;
@@ -255,9 +255,8 @@ Image URL
 
 分析图像内容
 
-javascript
-
-```
+::: code-group
+```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
 
@@ -283,7 +282,7 @@ const response = await client.responses.create({
 console.log(response.output_text);
 ```
 
-```
+```curl
 curl "https://api.openai.com/v1/responses" \
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -322,7 +321,7 @@ input:
 YAML
 ```
 
-```
+```python
 from openai import OpenAI
 client = OpenAI()
 
@@ -347,6 +346,8 @@ response = client.responses.create(
 
 print(response.output_text)
 ```
+
+:::
 
 ```
 using OpenAI.Responses;
@@ -393,6 +394,7 @@ curl "https://api.openai.com/v1/responses" \
     }'
 ```
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -444,6 +446,8 @@ response = client.responses.create(
 
 print(response.output_text)
 ```
+
+:::
 
 :::
 ```csharp
@@ -502,6 +506,7 @@ curl "https://api.openai.com/v1/responses" \
     }'
 ```
 
+::: code-group
 ```javascript
 import fs from "fs";
 import OpenAI from "openai";
@@ -566,6 +571,8 @@ print(response.output_text)
 ```
 
 :::
+
+:::
 ```csharp
 using OpenAI.Files;
 using OpenAI.Responses;
@@ -600,9 +607,8 @@ Web search
 
 在响应中使用网络搜索
 
-javascript
-
-```
+::: code-group
+```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
 
@@ -617,7 +623,7 @@ const response = await client.responses.create({
 console.log(response.output_text);
 ```
 
-```
+```python
 from openai import OpenAI
 client = OpenAI()
 
@@ -630,7 +636,7 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
-```
+```curl
 curl "https://api.openai.com/v1/responses" \
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -641,7 +647,7 @@ curl "https://api.openai.com/v1/responses" \
 }'
 ```
 
-```
+```bash
 openai responses create \
   --model gpt-5.5 \
   --raw-output \
@@ -651,6 +657,8 @@ tools:
 input: What was a positive news story from today?
 YAML
 ```
+
+:::
 
 ```
 using OpenAI.Responses;
@@ -730,9 +738,8 @@ Function calling
 
 调用你自己的函数
 
-javascript
-
-```
+::: code-group
+```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
 
@@ -767,7 +774,7 @@ const response = await client.responses.create({
 console.log(response.output[0].to_json());
 ```
 
-```
+```python
 from openai import OpenAI
 
 client = OpenAI()
@@ -802,6 +809,8 @@ response = client.responses.create(
 
 print(response.output[0].to_json())
 ```
+
+:::
 
 ```
 using System.Text.Json;
@@ -841,7 +850,7 @@ OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
 Console.WriteLine(JsonSerializer.Serialize(response.OutputItems[0]));
 ```
 
-```
+```curl
 curl -X POST https://api.openai.com/v1/responses \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: application/json" \
@@ -896,6 +905,7 @@ curl https://api.openai.com/v1/responses \
   }'
 ```
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -938,6 +948,8 @@ resp = client.responses.create(
 
 print(resp.output_text)
 ```
+
+:::
 
 :::
 ```csharp
@@ -1044,9 +1056,8 @@ await foreach (var response in responses)
 
 构建语言分流智能体
 
-javascript
-
-```
+::: code-group
+```javascript
 import { Agent, run } from '@openai/agents';
 
 const spanishAgent = new Agent({
@@ -1070,7 +1081,7 @@ const result = await run(triageAgent, 'Hola, ¿cómo estás?');
 console.log(result.finalOutput);
 ```
 
-```
+```python
 from agents import Agent, Runner
 import asyncio
 
@@ -1099,5 +1110,7 @@ async def main():
 if __name__ == "__main__":
     asyncio.run(main())
 ```
+
+:::
 
 [构建能够执行操作的智能体 - 了解如何使用 OpenAI 平台构建强大、高效的 AI 智能体。](/guides/agents)

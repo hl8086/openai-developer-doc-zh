@@ -41,6 +41,7 @@ const buffer = Buffer.from(await mp3.arrayBuffer());
 await fs.promises.writeFile(speechFile, buffer);
 ```
 
+::: code-group
 ```python
 from pathlib import Path
 from openai import OpenAI
@@ -69,6 +70,8 @@ curl https://api.openai.com/v1/audio/speech \
   }' \
   --output speech.mp3
 ```
+
+:::
 
 :::
 ```cli
@@ -144,6 +147,7 @@ const response = await openai.audio.speech.create({
 await playAudio(response);
 ```
 
+::: code-group
 ```python
 import asyncio
 
@@ -178,6 +182,8 @@ curl https://api.openai.com/v1/audio/speech \
     "response_format": "wav"
   }' | ffplay -i -
 ```
+
+:::
 
 :::
 
@@ -262,7 +268,7 @@ TTS 模型在语言支持方面通常遵循 Whisper 模型。Whisper [支持以�
 
 然后通过 API 上传录音。成功上传将返回同意录音 ID，您稍后将引用该 ID。请注意，如果同一配音演员进行多次尝试，同意录音可以用于多次不同的语音创建。
 
-```
+```curl
 curl https://api.openai.com/v1/audio/voice_consents \
   -X POST \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -275,7 +281,7 @@ curl https://api.openai.com/v1/audio/voice_consents \
 
 接下来，您将通过引用同意录音 ID 并提供语音样本来创建实际语音。
 
-```
+```curl
 curl https://api.openai.com/v1/audio/voices \
   -X POST \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -292,7 +298,7 @@ curl https://api.openai.com/v1/audio/voices \
 
 **文本转语音示例**
 
-```
+```curl
 curl https://api.openai.com/v1/audio/speech \
   -X POST \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -311,7 +317,7 @@ curl https://api.openai.com/v1/audio/speech \
 
 **Realtime API 示例**
 
-```
+```javascript
 const sessionConfig = JSON.stringify({
   session: {
     type: "realtime",

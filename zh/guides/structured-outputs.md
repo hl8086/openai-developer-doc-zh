@@ -240,6 +240,7 @@ const completion = await openai.chat.completions.parse({
 const math_reasoning = completion.choices[0].message.parsed;
 ```
 
+::: code-group
 ```python
 from pydantic import BaseModel
 from openai import OpenAI
@@ -314,6 +315,8 @@ curl https://api.openai.com/v1/chat/completions \
 
 :::
 
+:::
+
 **用于思维链数学辅导的 Structured Outputs**
 
 ::: code-group
@@ -352,6 +355,7 @@ const response = await openai.responses.parse({
 const math_reasoning = response.output_parsed;
 ```
 
+::: code-group
 ```python
 from openai import OpenAI
 from pydantic import BaseModel
@@ -429,6 +433,8 @@ curl https://api.openai.com/v1/responses \
 
 :::
 
+:::
+
 #### 示例响应
 
 ```
@@ -494,6 +500,7 @@ const completion = await openai.chat.completions.parse({
 const research_paper = completion.choices[0].message.parsed;
 ```
 
+::: code-group
 ```python
 from pydantic import BaseModel
 from openai import OpenAI
@@ -563,6 +570,8 @@ curl https://api.openai.com/v1/chat/completions \
 
 :::
 
+:::
+
 **使用 Structured Outputs 从研究论文中提取数据**
 
 ::: code-group
@@ -598,6 +607,7 @@ const response = await openai.responses.parse({
 const research_paper = response.output_parsed;
 ```
 
+::: code-group
 ```python
 from openai import OpenAI
 from pydantic import BaseModel
@@ -670,6 +680,8 @@ curl https://api.openai.com/v1/responses \
 
 :::
 
+:::
+
 #### 示例响应
 
 ```
@@ -733,6 +745,7 @@ const completion = await openai.chat.completions.parse({
 const ui = completion.choices[0].message.parsed;
 ```
 
+::: code-group
 ```python
 from enum import Enum
 from typing import List
@@ -846,6 +859,8 @@ curl https://api.openai.com/v1/chat/completions \
 
 :::
 
+:::
+
 **使用 Structured Outputs 生成 HTML**
 
 ::: code-group
@@ -890,6 +905,7 @@ const response = await openai.responses.parse({
 const ui = response.output_parsed;
 ```
 
+::: code-group
 ```python
 from enum import Enum
 from typing import List
@@ -1006,6 +1022,8 @@ curl https://api.openai.com/v1/responses \
 
 :::
 
+:::
+
 #### 示例响应
 
 ```
@@ -1117,6 +1135,7 @@ const completion = await openai.chat.completions.parse({
 const compliance = completion.choices[0].message.parsed;
 ```
 
+::: code-group
 ```python
 from enum import Enum
 from typing import Optional
@@ -1196,6 +1215,8 @@ curl https://api.openai.com/v1/chat/completions \
 
 :::
 
+:::
+
 **使用 Structured Outputs 进行内容审核**
 
 ::: code-group
@@ -1232,6 +1253,7 @@ const response = await openai.responses.parse({
 const compliance = response.output_parsed;
 ```
 
+::: code-group
 ```python
 from enum import Enum
 from typing import Optional
@@ -1312,6 +1334,8 @@ curl https://api.openai.com/v1/responses \
     }
   }'
 ```
+
+:::
 
 :::
 
@@ -1607,6 +1631,7 @@ response = client.chat.completions.create(
 print(response.choices[0].message.content)
 ```
 
+::: code-group
 ```javascript
 const response = await openai.chat.completions.create({
 model: "gpt-4o-2024-08-06",
@@ -1819,6 +1844,8 @@ curl https://api.openai.com/v1/responses \
 
 :::
 
+:::
+
 **注意：** 您使用任何 schema 发出的第一个请求将有额外的延迟，因为我们的 API 会处理该 schema，但使用相同 schema 的后续请求不会有额外延迟。
 
 步骤 3：处理边缘情况
@@ -1899,6 +1926,7 @@ try {
 }
 ```
 
+::: code-group
 ```python
 try:
     response = client.chat.completions.create(
@@ -2058,6 +2086,8 @@ except Exception as e:
     # handle errors like finish_reason, refusal, content_filter, etc.
     pass
 ```
+
+:::
 
 :::
 
@@ -2184,6 +2214,7 @@ response = client.chat.completions.create(
 print(response.choices[0].message.content)
 ```
 
+::: code-group
 ```javascript
 const response = await openai.chat.completions.create({
 model: "gpt-4o-2024-08-06",
@@ -2396,6 +2427,8 @@ curl https://api.openai.com/v1/responses \
 
 :::
 
+:::
+
 **注意：** 您使用任何 schema 发出的第一个请求将有额外的延迟，因为我们的 API 会处理该 schema，但使用相同 schema 的后续请求不会有额外延迟。
 
 步骤 3：处理边缘情况
@@ -2476,6 +2509,7 @@ try {
 }
 ```
 
+::: code-group
 ```python
 try:
     response = client.chat.completions.create(
@@ -2635,6 +2669,8 @@ except Exception as e:
     # handle errors like finish_reason, refusal, content_filter, etc.
     pass
 ```
+
+:::
 
 :::
 
@@ -2984,6 +3020,7 @@ print(event)
 print(stream.get_final_completion())
 ```
 
+::: code-group
 ```javascript
 import { zodFunction } from "openai/helpers/zod";
 import OpenAI from "openai/index";
@@ -3100,6 +3137,8 @@ const result = await stream.finalResponse();
 
 console.log(result);
 ```
+
+:::
 
 :::
 
@@ -3646,6 +3685,7 @@ try {
 }
 ```
 
+::: code-group
 ```python
 we_did_not_specify_stop_tokens = True
 
@@ -3783,6 +3823,8 @@ except Exception as e:
     # Your code should handle errors here, for example a network error calling the API
     print(e)
 ```
+
+:::
 
 :::
 

@@ -41,6 +41,7 @@ curl https://api.openai.com/v1/responses \
     }'
 ```
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -89,6 +90,8 @@ print(response.output_text)
 
 :::
 
+:::
+
 **分类 IT 支持工单**
 
 ::: code-group
@@ -110,6 +113,7 @@ curl https://api.openai.com/v1/chat/completions \
     }'
 ```
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -158,6 +162,8 @@ print(completion.choices[0].message.content)
 
 :::
 
+:::
+
 让我们设置一个评估来[通过 API]( https://developers.openai.com/api/reference/evals) 测试此行为。评估需要两个关键要素：
 
 *   `data_source_config`：你将与评估一起使用的测试数据的模式。
@@ -196,6 +202,7 @@ curl https://api.openai.com/v1/evals \
     }'
 ```
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const openai = new OpenAI();
@@ -259,6 +266,8 @@ eval_obj = client.evals.create(
 
 print(eval_obj)
 ```
+
+:::
 
 :::
 
@@ -361,6 +370,7 @@ curl https://api.openai.com/v1/files \
   -F file="@tickets.jsonl"
 ```
 
+::: code-group
 ```javascript
 import fs from "fs";
 import OpenAI from "openai";
@@ -386,6 +396,8 @@ file = client.files.create(
 
 print(file)
 ```
+
+:::
 
 :::
 
@@ -435,6 +447,7 @@ curl https://api.openai.com/v1/evals/YOUR_EVAL_ID/runs \
     }'
 ```
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const openai = new OpenAI();
@@ -484,6 +497,8 @@ print(run)
 
 :::
 
+:::
+
 **创建评估运行**
 
 ::: code-group
@@ -508,6 +523,7 @@ curl https://api.openai.com/v1/evals/YOUR_EVAL_ID/runs \
     }'
 ```
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const openai = new OpenAI();
@@ -554,6 +570,8 @@ run = client.evals.runs.create(
 
 print(run)
 ```
+
+:::
 
 :::
 
@@ -674,6 +692,7 @@ curl https://api.openai.com/v1/evals/YOUR_EVAL_ID/runs/YOUR_RUN_ID \
     -H "Content-Type: application/json"
 ```
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const openai = new OpenAI();
@@ -691,6 +710,8 @@ client = OpenAI()
 run = client.evals.runs.retrieve("YOUR_EVAL_ID", "YOUR_RUN_ID")
 print(run)
 ```
+
+:::
 
 :::
 

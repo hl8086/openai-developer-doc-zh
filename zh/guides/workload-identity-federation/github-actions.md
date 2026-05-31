@@ -17,7 +17,7 @@ permissions:
 
 使用在 OpenAI 工作负载身份提供者中配置的确切受众来请求令牌。自定义 JavaScript actions 可以调用 `core.getIDToken("your-wif-audience")`；shell 步骤可以直接调用 GitHub 的 OIDC 请求 URL。包含保留 URL 字符的受众值（如 `https://api.openai.com/v1`）在附加到请求 URL 之前应进行 URL 编码：
 
-```
+```curl
 AUDIENCE="https://api.openai.com/v1"
 ENCODED_AUDIENCE=$(jq -rn --arg audience "$AUDIENCE" '$audience | @uri')
 
@@ -288,6 +288,7 @@ print(response.output_text)
 ```
 
 :::
+::: code-group
 ```go
 package main
 
@@ -406,6 +407,7 @@ func main() {
 	fmt.Println(response.OutputText())
 }
 ```
+
 ```java
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.json.JsonMapper;
@@ -524,6 +526,7 @@ public final class GitHubActionsWorkloadIdentityExample {
     }
 }
 ```
+
 ```ruby
 require "json"
 require "net/http"
@@ -603,6 +606,8 @@ response = client.responses.create(
 
 puts(response.output_text)
 ```
+
+:::
 
 ## GitHub Actions 最佳实践
 

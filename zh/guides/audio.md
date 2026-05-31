@@ -109,6 +109,7 @@ writeFileSync(
 );
 ```
 
+::: code-group
 ```python
 import base64
 from openai import OpenAI
@@ -153,6 +154,8 @@ curl "https://api.openai.com/v1/chat/completions" \
 
 :::
 
+:::
+
 模型的音频输入
 
 **使用音频输入来提示模型**
@@ -187,6 +190,7 @@ const response = await openai.chat.completions.create({
 console.log(response.choices[0]);
 ```
 
+::: code-group
 ```python
 import base64
 import requests
@@ -253,5 +257,7 @@ curl "https://api.openai.com/v1/chat/completions" \
       ]
     }'
 ```
+
+:::
 
 :::

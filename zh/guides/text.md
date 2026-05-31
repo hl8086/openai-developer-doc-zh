@@ -5,9 +5,8 @@
 
 通过简单提示词生成文本
 
-javascript
-
-```
+::: code-group
+```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
 
@@ -19,7 +18,7 @@ const response = await client.responses.create({
 console.log(response.output_text);
 ```
 
-```
+```python
 from openai import OpenAI
 client = OpenAI()
 
@@ -31,7 +30,7 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
-```
+```bash
 openai responses create \
   --model "gpt-5.5" \
   --input "Write a one-sentence bedtime story about a unicorn." \
@@ -39,7 +38,7 @@ openai responses create \
   --transform 'output.#(type=="message").content.0.text'
 ```
 
-```
+```python
 using System;
 using System.Threading.Tasks;
 using OpenAI;
@@ -62,6 +61,8 @@ class Program
     }
 }
 ```
+
+:::
 
 ```
 import com.openai.client.OpenAIClient;
@@ -126,7 +127,7 @@ response = openai.responses.create(
 puts(response.output_text)
 ```
 
-```
+```curl
 curl "https://api.openai.com/v1/responses" \
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -203,6 +204,7 @@ const response = await client.responses.create({
 console.log(response.output_text);
 ```
 
+::: code-group
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -228,6 +230,8 @@ curl "https://api.openai.com/v1/responses" \
         "input": "Are semicolons optional in JavaScript?"
     }'
 ```
+
+:::
 
 :::
 
@@ -258,6 +262,7 @@ const response = await client.responses.create({
 console.log(response.output_text);
 ```
 
+::: code-group
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -299,6 +304,8 @@ curl "https://api.openai.com/v1/responses" \
         ]
     }'
 ```
+
+:::
 
 :::
 
@@ -355,6 +362,7 @@ const response = await client.responses.create({
 console.log(response.output_text);
 ```
 
+::: code-group
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -393,6 +401,8 @@ curl https://api.openai.com/v1/responses \
 
 :::
 
+:::
+
 带文件输入的变量
 
 **带文件输入变量的提示词模板**
@@ -426,6 +436,7 @@ const response = await client.responses.create({
 console.log(response.output_text);
 ```
 
+::: code-group
 ```python
 import openai, pathlib
 
@@ -470,6 +481,8 @@ curl https://api.openai.com/v1/responses   -H "Authorization: Bearer $OPENAI_API
     }
   }'
 ```
+
+:::
 
 :::
 

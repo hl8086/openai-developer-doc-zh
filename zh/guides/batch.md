@@ -114,6 +114,7 @@ const file = await openai.files.create({
 console.log(file);
 ```
 
+::: code-group
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -132,6 +133,8 @@ curl https://api.openai.com/v1/files \
   -F purpose="batch" \
   -F file="@batchinput.jsonl"
 ```
+
+:::
 
 :::
 ```cli
@@ -160,6 +163,7 @@ const batch = await openai.batches.create({
 console.log(batch);
 ```
 
+::: code-group
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -185,6 +189,8 @@ curl https://api.openai.com/v1/batches \
     "completion_window": "24h"
   }'
 ```
+
+:::
 
 :::
 ```cli
@@ -237,6 +243,7 @@ const batch = await openai.batches.retrieve("batch_abc123");
 console.log(batch);
 ```
 
+::: code-group
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -250,6 +257,8 @@ curl https://api.openai.com/v1/batches/batch_abc123 \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: application/json"
 ```
+
+:::
 
 :::
 ```cli
@@ -287,6 +296,7 @@ const fileContents = await fileResponse.text();
 console.log(fileContents);
 ```
 
+::: code-group
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -299,6 +309,8 @@ print(file_response.text)
 curl https://api.openai.com/v1/files/file-xyz123/content \
   -H "Authorization: Bearer $OPENAI_API_KEY" > batch_output.jsonl
 ```
+
+:::
 
 :::
 ```cli
@@ -335,6 +347,7 @@ const batch = await openai.batches.cancel("batch_abc123");
 console.log(batch);
 ```
 
+::: code-group
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -348,6 +361,8 @@ curl https://api.openai.com/v1/batches/batch_abc123/cancel \
   -H "Content-Type: application/json" \
   -X POST
 ```
+
+:::
 
 :::
 ```cli
@@ -373,6 +388,7 @@ for await (const batch of list) {
 }
 ```
 
+::: code-group
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -385,6 +401,8 @@ curl https://api.openai.com/v1/batches?limit=10 \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: application/json"
 ```
+
+:::
 
 :::
 ```cli

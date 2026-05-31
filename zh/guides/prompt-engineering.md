@@ -5,9 +5,8 @@
 
 从简单提示词生成文本
 
-javascript
-
-```
+::: code-group
+```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
 
@@ -19,7 +18,7 @@ const response = await client.responses.create({
 console.log(response.output_text);
 ```
 
-```
+```python
 from openai import OpenAI
 client = OpenAI()
 
@@ -31,7 +30,7 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
-```
+```bash
 openai responses create \
   --model "gpt-5.5" \
   --input "Write a one-sentence bedtime story about a unicorn." \
@@ -39,7 +38,7 @@ openai responses create \
   --transform 'output.#(type=="message").content.0.text'
 ```
 
-```
+```python
 using System;
 using System.Threading.Tasks;
 using OpenAI;
@@ -62,6 +61,8 @@ class Program
     }
 }
 ```
+
+:::
 
 ```
 import com.openai.client.OpenAIClient;
@@ -126,7 +127,7 @@ response = openai.responses.create(
 puts(response.output_text)
 ```
 
-```
+```curl
 curl "https://api.openai.com/v1/responses" \
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -165,9 +166,8 @@ curl "https://api.openai.com/v1/responses" \
 
 从简单提示词生成文本
 
-javascript
-
-```
+::: code-group
+```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
 
@@ -184,7 +184,7 @@ const completion = await client.chat.completions.create({
 console.log(completion.choices[0].message.content);
 ```
 
-```
+```python
 from openai import OpenAI
 client = OpenAI()
 
@@ -201,7 +201,7 @@ completion = client.chat.completions.create(
 print(completion.choices[0].message.content)
 ```
 
-```
+```curl
 curl "https://api.openai.com/v1/chat/completions" \
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -215,6 +215,8 @@ curl "https://api.openai.com/v1/chat/completions" \
         ]
     }'
 ```
+
+:::
 
 模型生成的内容数组位于响应的 `choices` 属性中。在这个简单示例中，我们只有一个输出，如下所示：
 
@@ -281,6 +283,7 @@ const response = await client.responses.create({
 console.log(response.output_text);
 ```
 
+::: code-group
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -306,6 +309,8 @@ curl "https://api.openai.com/v1/responses" \
         "input": "Are semicolons optional in JavaScript?"
     }'
 ```
+
+:::
 
 :::
 
@@ -336,6 +341,7 @@ const response = await client.responses.create({
 console.log(response.output_text);
 ```
 
+::: code-group
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -380,6 +386,8 @@ curl "https://api.openai.com/v1/responses" \
 
 :::
 
+:::
+
 请注意，`instructions` 参数仅适用于当前的响应生成请求。如果你使用 `previous_response_id` 参数[管理对话状态](/guides/conversation-state)，之前轮次使用的 `instructions` 将不会出现在上下文中。
 
 你可以使用**消息角色**以[不同的权限级别](https://model-spec.openai.com/2025-02-12.html#chain_of_command)向模型提供指令（提示词）。
@@ -408,6 +416,7 @@ const completion = await client.chat.completions.create({
 console.log(completion.choices[0].message);
 ```
 
+::: code-group
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -448,6 +457,8 @@ curl "https://api.openai.com/v1/chat/completions" \
         ]
     }'
 ```
+
+:::
 
 :::
 
@@ -504,6 +515,7 @@ const response = await client.responses.create({
 console.log(response.output_text);
 ```
 
+::: code-group
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -542,6 +554,8 @@ curl https://api.openai.com/v1/responses \
 
 :::
 
+:::
+
 带文件输入的变量
 
 **带文件输入变量的提示词模板**
@@ -575,6 +589,7 @@ const response = await client.responses.create({
 console.log(response.output_text);
 ```
 
+::: code-group
 ```python
 import openai, pathlib
 
@@ -619,6 +634,8 @@ curl https://api.openai.com/v1/responses   -H "Authorization: Bearer $OPENAI_API
     }
   }'
 ```
+
+:::
 
 :::
 
@@ -691,6 +708,7 @@ const response = await client.responses.create({
 console.log(response.output_text);
 ```
 
+::: code-group
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -717,6 +735,8 @@ curl https://api.openai.com/v1/responses \
     "input": "How would I declare a variable for a last name?"
   }'
 ```
+
+:::
 
 :::
 

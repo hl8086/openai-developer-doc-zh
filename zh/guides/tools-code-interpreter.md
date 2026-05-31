@@ -26,6 +26,7 @@ curl https://api.openai.com/v1/responses \
   }'
 ```
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -77,6 +78,8 @@ print(resp.output)
 
 :::
 
+:::
+
 虽然我们将此工具称为 Code Interpreter，但模型将其识别为"python tool"。模型通常能理解引用 code interpreter 工具的提示，但最明确的调用方式是在提示中要求使用"the python tool"。
 
 ## 容器
@@ -115,6 +118,7 @@ curl https://api.openai.com/v1/responses \
   }'
 ```
 
+::: code-group
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -154,6 +158,8 @@ const resp = await client.responses.create({
 
 console.log(resp.output_text);
 ```
+
+:::
 
 :::
 

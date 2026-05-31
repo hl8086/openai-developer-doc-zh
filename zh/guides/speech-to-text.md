@@ -61,6 +61,7 @@ print(transcription.text)
 ```
 
 :::
+::: code-group
 ```cli
 openai audio:transcriptions create \
   --model gpt-4o-transcribe \
@@ -68,6 +69,7 @@ openai audio:transcriptions create \
   --raw-output \
   --transform text
 ```
+
 ```curl
 curl --request POST \
   --url https://api.openai.com/v1/audio/transcriptions \
@@ -76,6 +78,8 @@ curl --request POST \
   --form file=@/path/to/file/audio.mp3 \
   --form model=gpt-4o-transcribe
 ```
+
+:::
 
 默认情况下，响应类型为 json，其中包含原始文本。
 
@@ -106,6 +110,7 @@ const transcription = await openai.audio.transcriptions.create({
 console.log(transcription.text);
 ```
 
+::: code-group
 ```python
 from openai import OpenAI
 
@@ -130,6 +135,8 @@ curl --request POST \
   --form model=gpt-4o-transcribe \
   --form response_format=text
 ```
+
+:::
 
 :::
 
@@ -170,6 +177,7 @@ for (const segment of transcript.segments) {
 }
 ```
 
+::: code-group
 ```python
 import base64
 from openai import OpenAI
@@ -211,6 +219,8 @@ curl --request POST \
 
 :::
 
+:::
+
 当 `stream=true` 时，说话人分离响应会在片段完成时发出 `transcript.text.segment` 事件。`transcript.text.delta` 事件包含 `segment_id` 字段，但说话人分离的增量不会在每个片段最终确定之前流式传输部分说话人分配。
 
 `gpt-4o-transcribe-diarize` 目前仅通过 `/v1/audio/transcriptions` 可用，尚不支持 Realtime API。
@@ -236,6 +246,7 @@ const translation = await openai.audio.translations.create({
 console.log(translation.text);
 ```
 
+::: code-group
 ```python
 from openai import OpenAI
 
@@ -258,6 +269,8 @@ curl --request POST \
   --form file=@/path/to/file/german.mp3 \
   --form model=whisper-1 \
 ```
+
+:::
 
 :::
 
@@ -302,6 +315,7 @@ const transcription = await openai.audio.transcriptions.create({
 console.log(transcription.words);
 ```
 
+::: code-group
 ```python
 from openai import OpenAI
 
@@ -327,6 +341,8 @@ curl https://api.openai.com/v1/audio/transcriptions \
   -F model="whisper-1" \
   -F response_format="verbose_json"
 ```
+
+:::
 
 :::
 
@@ -376,6 +392,7 @@ const transcription = await openai.audio.transcriptions.create({
 console.log(transcription.text);
 ```
 
+::: code-group
 ```python
 from openai import OpenAI
 
@@ -401,6 +418,8 @@ curl --request POST \
   --form model=gpt-4o-transcribe \
   --form prompt="The following conversation is a lecture about the recent developments around OpenAI, GPT-4.5 and the future of AI."
 ```
+
+:::
 
 :::
 
@@ -453,6 +472,7 @@ for await (const event of stream) {
 // highlight-end
 ```
 
+::: code-group
 ```python
 from openai import OpenAI
 
@@ -484,6 +504,8 @@ curl --request POST \
   # highlight-start
   --form stream=True
 ```
+
+:::
 
 :::
 
@@ -526,6 +548,7 @@ const transcription = await openai.audio.transcriptions.create({
 console.log(transcription.text);
 ```
 
+::: code-group
 ```python
 from openai import OpenAI
 
@@ -551,6 +574,8 @@ curl --request POST \
   --form model=whisper-1 \
   --form prompt="ZyntriQix, Digique Plus, CynapseFive, VortiQore V8, EchoNix Array, OrbitalLink Seven, DigiFractal Matrix, PULSE, RAPT, B.R.I.C.K., Q.U.A.R.T.Z., F.L.I.N.T."
 ```
+
+:::
 
 :::
 

@@ -152,7 +152,7 @@ JSONL 格式示例文件
 
 假设上述数据保存在名为 `mydata.jsonl` 的文件中，你可以使用以下代码将其上传到 OpenAI 平台。注意上传文件的 `purpose` 设置为 `fine-tune`：
 
-```
+```curl
 curl https://api.openai.com/v1/files \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -F purpose="fine-tune" \
@@ -195,7 +195,7 @@ curl https://api.openai.com/v1/files \
 
 通过调用[微调 API]( https://developers.openai.com/api/reference/fine-tuning) 创建监督微调任务：
 
-```
+```curl
 curl https://api.openai.com/v1/fine_tuning/jobs \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -253,7 +253,7 @@ API 会返回正在进行的微调任务信息。根据训练数据的大小，�
 
 以下是使用微调模型 ID 调用 Responses API 的示例：
 
-```
+```curl
 curl https://api.openai.com/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -307,7 +307,7 @@ curl https://api.openai.com/v1/responses \
 
 使用此 curl 命令获取微调任务的信息：
 
-```
+```curl
 curl https://api.openai.com/v1/fine_tuning/jobs/ftjob-uL1VKpwx7maorHNbOiDwFIn6 \
   -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
@@ -370,7 +370,7 @@ curl https://api.openai.com/v1/fine_tuning/jobs/ftjob-uL1VKpwx7maorHNbOiDwFIn6 \
 
 通过 API 调用使用模型
 
-```
+```curl
 curl https://api.openai.com/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \

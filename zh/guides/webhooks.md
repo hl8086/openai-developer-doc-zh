@@ -98,6 +98,7 @@ curl https://api.openai.com/v1/responses \
 }'
 ```
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -124,6 +125,8 @@ resp = client.responses.create(
 
 print(resp.status)
 ```
+
+:::
 
 :::
 
@@ -213,6 +216,7 @@ const event = client.webhooks.unwrap(req.body, req.headers, { secret: webhook_se
 
 **使用 Standard Webhooks 库进行签名验证**
 
+::: code-group
 ```rust
 use standardwebhooks::Webhook;
 
@@ -220,11 +224,14 @@ let webhook_secret = std::env::var("OPENAI_WEBHOOK_SECRET").expect("OPENAI_WEBHO
 let wh = Webhook::new(webhook_secret);
 wh.verify(webhook_payload, webhook_headers).expect("Webhook verification failed");
 ```
+
 ```php
 $webhook_secret = getenv("OPENAI_WEBHOOK_SECRET");
 $wh = new \StandardWebhooks\Webhook($webhook_secret);
 $wh->verify($webhook_payload, $webhook_headers);
 ```
+
+:::
 
 或者，如果需要，你可以按照 [Standard Webhooks 规范中的描述](https://github.com/standard-webhooks/standard-webhooks/blob/main/spec/standard-webhooks.md#verifying-webhook-authenticity) 实现自己的签名验证。
 

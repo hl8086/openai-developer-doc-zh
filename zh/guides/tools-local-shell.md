@@ -40,7 +40,7 @@
 
 以下是一个展示请求/响应循环的最小化（Python）示例。为简洁起见，省略了错误处理和安全检查——**在生产环境中不要在没有额外安全措施的情况下执行不受信任的命令**。
 
-```
+```python
 import os
 import shlex
 import subprocess

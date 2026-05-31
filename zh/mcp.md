@@ -113,7 +113,7 @@ _返回：_
 
 完整实现 - FastMCP 服务器
 
-```
+```python
 """
 Sample MCP Server for ChatGPT Integration
 
@@ -355,7 +355,7 @@ https://777xxx.janeway.replit.dev/sse/
 
 你可以使用 Responses API 直接测试 MCP 服务器，请求如下：
 
-```
+```curl
 curl https://api.openai.com/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \

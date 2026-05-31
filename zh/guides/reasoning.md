@@ -36,6 +36,7 @@ const response = await openai.responses.create({
 console.log(response.output_text);
 ```
 
+::: code-group
 ```python
 from openai import OpenAI
 
@@ -75,6 +76,8 @@ curl https://api.openai.com/v1/responses \
     ]
   }'
 ```
+
+:::
 
 :::
 
@@ -224,7 +227,7 @@ if response.status == "incomplete" and response.incomplete_details.reason == "ma
 
 在无状态模式下使用 Responses API 时（`store` 设置为 `false`，或组织已注册零数据保留），您仍然必须使用上述技术在对话轮次之间保留推理项。但为了获得可以随后续 API 请求发送的推理项，您的每个 API 请求必须在 `include` 参数中包含 `reasoning.encrypted_content`，如下所示：
 
-```
+```curl
 curl https://api.openai.com/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -268,6 +271,7 @@ const response = await openai.responses.create({
 console.log(response.output);
 ```
 
+::: code-group
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -297,6 +301,8 @@ curl https://api.openai.com/v1/responses \
     }
   }'
 ```
+
+:::
 
 :::
 

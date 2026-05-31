@@ -21,9 +21,8 @@ OpenAI 模型提供三种主要的网页搜索类型：
 
 网页搜索工具示例
 
-javascript
-
-```
+::: code-group
+```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
 
@@ -38,7 +37,7 @@ const response = await client.responses.create({
 console.log(response.output_text);
 ```
 
-```
+```python
 from openai import OpenAI
 client = OpenAI()
 
@@ -51,7 +50,7 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
-```
+```curl
 curl "https://api.openai.com/v1/responses" \
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -72,6 +71,8 @@ tools:
 input: What was a positive news story from today?
 YAML
 ```
+
+:::
 
 ```
 using OpenAI.Responses;
@@ -152,9 +153,8 @@ Console.WriteLine(response.GetOutputText());
 
 网页搜索参数示例
 
-javascript
-
-```
+::: code-group
+```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
 
@@ -170,7 +170,7 @@ const completion = await client.chat.completions.create({
 console.log(completion.choices[0].message.content);
 ```
 
-```
+```python
 from openai import OpenAI
 client = OpenAI()
 
@@ -188,7 +188,7 @@ completion = client.chat.completions.create(
 print(completion.choices[0].message.content)
 ```
 
-```
+```curl
 curl -X POST "https://api.openai.com/v1/chat/completions" \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
     -H "Content-type: application/json" \
@@ -201,6 +201,8 @@ curl -X POST "https://api.openai.com/v1/chat/completions" \
         }]
     }'
 ```
+
+:::
 
 ## 输出和引用
 
@@ -252,6 +254,7 @@ curl -X POST "https://api.openai.com/v1/chat/completions" \
 
 **设置搜索上下文大小**
 
+::: code-group
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -267,6 +270,7 @@ response = client.responses.create(
 
 print(response.output_text)
 ```
+
 ```csharp
 using OpenAI.Responses;
 
@@ -288,6 +292,8 @@ OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
 
 Console.WriteLine(response.GetOutputText());
 ```
+
+:::
 ::: code-group
 ```javascript
 import OpenAI from "openai";
@@ -353,6 +359,7 @@ curl "https://api.openai.com/v1/responses" \
   }'
 ```
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -409,6 +416,8 @@ print(response.output_text)
 
 :::
 
+:::
+
 ## 域名过滤
 
 网页搜索中的域名过滤允许你将结果限制在特定的域名集合中。通过 `filters` 参数，你可以配置最多 100 个 `allowed_domains` 或最多 100 个 `blocked_domains`。格式化域名时，省略 HTTP 或 HTTPS 前缀。例如，使用 `openai.com` 而不是 `https://openai.com/`。此方法也会在搜索中包含子域名。请注意，域名过滤仅在 Responses API 中配合 `web_search` 工具可用。
@@ -452,6 +461,7 @@ curl "https://api.openai.com/v1/responses" \
   }'
 ```
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -522,6 +532,8 @@ print(response.output_text)
 
 :::
 
+:::
+
 ## 用户位置
 
 要根据地理位置优化搜索结果，你可以使用国家、城市、地区和/或时区指定大致的用户位置。
@@ -534,6 +546,7 @@ print(response.output_text)
 
 **自定义用户位置**
 
+::: code-group
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -554,6 +567,7 @@ response = client.responses.create(
 
 print(response.output_text)
 ```
+
 ```csharp
 using OpenAI.Responses;
 
@@ -579,6 +593,8 @@ OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
 
 Console.WriteLine(response.GetOutputText());
 ```
+
+:::
 ::: code-group
 ```javascript
 import OpenAI from "openai";
@@ -649,6 +665,7 @@ completion = client.chat.completions.create(
 print(completion.choices[0].message.content)
 ```
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -698,6 +715,8 @@ curl -X POST "https://api.openai.com/v1/chat/completions" \
 
 :::
 
+:::
+
 ## 实时互联网访问
 
 在 Responses API 中控制网页搜索工具是获取实时内容还是仅使用缓存/索引结果。
@@ -720,6 +739,7 @@ curl "https://api.openai.com/v1/responses" -H "Content-Type: application/json" -
 }'
 ```
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -748,6 +768,8 @@ input="Find when the Eiffel Tower opened to the public and cite the source.",
 )
 print(resp.output_text)
 ```
+
+:::
 
 :::
 

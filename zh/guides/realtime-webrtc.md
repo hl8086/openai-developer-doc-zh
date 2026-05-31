@@ -24,7 +24,7 @@ Realtime API 支持两种从浏览器连接到 Realtime API 的机制：使用�
 
 以下是一个简单的 Node.js [express](https://expressjs.com/) 服务器示例，用于创建 Realtime API 会话：
 
-```
+```javascript
 import express from "express";
 
 const app = express();
@@ -71,7 +71,7 @@ app.listen(3000);
 
 在浏览器中，你可以使用标准 WebRTC API 通过你的应用服务器连接到 Realtime API。客户端直接将其 SDP 数据 POST 到你的服务器。
 
-```
+```javascript
 // Create a peer connection
 const pc = new RTCPeerConnection();
 
@@ -124,7 +124,7 @@ await pc.setRemoteDescription(answer);
 
 以下是一个简单的 Node.js [express](https://expressjs.com/) 服务器示例，使用 REST API 生成临时 API 密钥：
 
-```
+```javascript
 import express from "express";
 
 const app = express();
@@ -177,7 +177,7 @@ app.listen(3000);
 
 在浏览器中，你可以使用标准 WebRTC API 通过临时令牌连接到 Realtime API。客户端首先从你的服务器端点获取令牌，然后将其 SDP 数据（附带临时令牌）POST 到 Realtime API。
 
-```
+```javascript
 // Get a session token for OpenAI Realtime API
 const tokenResponse = await fetch("/token");
 const data = await tokenResponse.json();
@@ -228,7 +228,7 @@ Realtime API 会话通过[客户端发送的事件]( https://developers.openai.c
 
 要发送和接收其他客户端和服务端事件，你可以使用 WebRTC 对等连接的[数据通道](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API/Using_data_channels)。
 
-```
+```javascript
 // This is the data channel set up in the browser code above...
 const dc = pc.createDataChannel("oai-events");
 

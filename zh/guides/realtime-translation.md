@@ -29,7 +29,7 @@
 
 创建翻译客户端密钥
 
-```
+```javascript
 app.post("/session", async (req, res) => {
   const language = req.body.targetLanguage ?? "es";
 
@@ -61,7 +61,7 @@ app.post("/session", async (req, res) => {
 
 连接浏览器翻译通话
 
-```
+```javascript
 const { value: clientSecret } = await fetch("/session", {
   method: "POST",
   headers: { "Content-Type": "application/json" },

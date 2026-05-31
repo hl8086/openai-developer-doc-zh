@@ -41,6 +41,7 @@ curl -L 'https://api.openai.com/v1/responses' \
   }'
 ```
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -95,6 +96,8 @@ print(response.output_text)
 
 :::
 
+:::
+
 ## 托管运行时详情
 
 *   运行时当前基于 `Debian 12`，可能会随时间变化。
@@ -133,6 +136,7 @@ curl -L 'https://api.openai.com/v1/containers' \
   }'
 ```
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -163,6 +167,8 @@ print(container.id)
 
 :::
 
+:::
+
 ### 2\. 在 Responses 中引用容器
 
 **使用 container\_reference 的 shell**
@@ -187,6 +193,7 @@ curl -L 'https://api.openai.com/v1/responses' \
   }'
 ```
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -233,6 +240,8 @@ print(response.output_text)
 
 :::
 
+:::
+
 ## 附加技能
 
 技能是可复用的、版本化的包，你可以将其挂载到托管 shell 环境中。这定义了可用的技能，在 shell 执行时模型决定是否调用它们。
@@ -255,6 +264,7 @@ curl -L 'https://api.openai.com/v1/containers' \
   }'
 ```
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -286,6 +296,8 @@ container = client.containers.create(
 
 print(container.id)
 ```
+
+:::
 
 :::
 
@@ -329,6 +341,7 @@ curl -L 'https://api.openai.com/v1/responses' \
   }'
 ```
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -391,6 +404,8 @@ response = client.responses.create(
 
 print(response.output_text)
 ```
+
+:::
 
 :::
 
@@ -479,6 +494,7 @@ curl -L 'https://api.openai.com/v1/responses' \
   }'
 ```
 
+::: code-group
 ```javascript
 import fs from "fs";
 import OpenAI from "openai";
@@ -598,6 +614,8 @@ print(response.output_text)
 
 :::
 
+:::
+
 对于后续请求，使用 `container_reference` 传递相同的 `container_id`。挂载的技能和现有容器文件在容器活跃期间保持可用。
 
 ### 主动删除容器
@@ -612,6 +630,7 @@ curl -L -X DELETE 'https://api.openai.com/v1/containers/container_id' \
   -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -766,6 +785,8 @@ print(response.output_text)
 
 :::
 
+:::
+
 ## 多轮工作流
 
 要在同一托管环境中继续工作，复用容器并传递 `previous_response_id`。
@@ -793,6 +814,7 @@ curl -L 'https://api.openai.com/v1/responses' \
   }'
 ```
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -841,6 +863,8 @@ print(response.output_text)
 
 :::
 
+:::
+
 ## Responses 中的 Shell 输出
 
 托管 shell 和本地 shell 使用相同的输出项类型。Shell 运行由成对的输出项表示：
@@ -884,6 +908,7 @@ curl -L 'https://api.openai.com/v1/responses' \
   }'
 ```
 
+::: code-group
 ```python
 from openai import OpenAI
 
@@ -913,6 +938,8 @@ const response = await client.responses.create({
 
 console.log(response);
 ```
+
+:::
 
 :::
 

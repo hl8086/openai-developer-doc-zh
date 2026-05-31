@@ -30,7 +30,7 @@ Use this skill when you need a quick sum or product of numbers.
 
 创建 skill（multipart）
 
-```
+```curl
 curl -X POST 'https://api.openai.com/v1/skills' \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -F 'files[]=@./basic_math/SKILL.md;filename=basic_math/SKILL.md;type=text/markdown' \
@@ -43,7 +43,7 @@ curl -X POST 'https://api.openai.com/v1/skills' \
 
 创建 skill（zip）
 
-```
+```curl
 curl -X POST 'https://api.openai.com/v1/skills' \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -F 'files=@./basic_math.zip;type=application/zip'
@@ -78,6 +78,7 @@ curl -L 'https://api.openai.com/v1/responses' \
   }'
 ```
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -260,6 +261,8 @@ Skill 指令是用户提示输入（不是系统提示输入），因此它们�
 ```
 
 :::
+
+:::
 curl -X POST 'https://api.openai.com/v1/skills/&lt;skill_id>/versions' \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -F 'files=@./geometry.zip;type=application/zip'
@@ -269,7 +272,7 @@ curl -X POST 'https://api.openai.com/v1/skills/&lt;skill_id>/versions' \
 
 设置 skill 的默认版本
 
-```
+```curl
 curl -X POST 'https://api.openai.com/v1/skills/&lt;skill_id>' \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -298,7 +301,7 @@ OpenAI 维护了一组第一方 skills，可以通过 id 引用（例如 `openai
 
 内联 skill 包
 
-```
+```curl
 INLINE_ZIP=$(base64 -i ./basic_math.zip)
 
 curl -L 'https://api.openai.com/v1/containers' \

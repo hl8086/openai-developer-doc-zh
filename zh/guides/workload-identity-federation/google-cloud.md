@@ -30,7 +30,7 @@ gcloud iam service-accounts create openai-wif \
 
 从附加了服务账号的 Google Cloud 资源中，使用配置的受众从元数据服务器请求 OIDC 身份令牌。此令牌是 OpenAI 交换为 OpenAI 颁发的访问令牌的主体令牌。
 
-```
+```curl
 AUDIENCE="https://api.openai.com/v1"
 
 TOKEN=$(curl -sS -G -H "Metadata-Flavor: Google" \
@@ -222,6 +222,7 @@ print(response.output_text)
 ```
 
 :::
+::: code-group
 ```go
 package main
 
@@ -332,6 +333,7 @@ func main() {
 	fmt.Println(response.OutputText())
 }
 ```
+
 ```java
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.openai.auth.SubjectTokenProvider;
@@ -442,6 +444,7 @@ public final class GoogleWorkloadIdentityExample {
     }
 }
 ```
+
 ```ruby
 require "net/http"
 require "openai"
@@ -519,6 +522,8 @@ response = client.responses.create(
 puts(response.output_text)
 ```
 
+:::
+
 ## Google Kubernetes Engine
 
 通过将 GKE 颁发的投射服务账号令牌交换为短期 OpenAI 访问令牌，使用 Google Kubernetes Engine 作为工作负载身份提供者。
@@ -587,7 +592,7 @@ spec:
 
 在配置工作负载身份联合之前，在本地解码示例投射服务账号令牌并检查其声明。从挂载了投射令牌的运行中 Pod：
 
-```
+```python
 TOKEN=$(kubectl exec -n default openai-wif-app -- cat /var/run/secrets/tokens/token)
 
 TOKEN="$TOKEN" python3 - <<'PY'
@@ -605,7 +610,8 @@ PY
 
 解码后的 GKE 投射服务账号令牌类似于：
 
-```
+::: code-group
+```javascript
 {
   "iss": "https://container.googleapis.com/v1/projects/my-project/locations/us-central1/clusters/openai-wif",
   "aud": ["https://api.openai.com/v1"],
@@ -620,6 +626,7 @@ PY
     }
   }
 }
+::: code-group
 ```text
 
 使用解码后的有效载荷将收到的令牌与 OpenAI 中配置的颁发者、受众和映射值进行比较。大多数配置问题在交换令牌之前就可以在 `iss`、`aud` 和 `sub` 声明中看到。
@@ -742,6 +749,11 @@ print(response.output_text)
 ```
 
 :::
+
+:::
+
+:::
+::: code-group
 ```go
 package main
 
@@ -813,6 +825,7 @@ func main() {
 	fmt.Println(response.OutputText())
 }
 ```
+
 ```java
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.openai.auth.SubjectTokenProvider;
@@ -898,6 +911,7 @@ public final class GoogleGkeWorkloadIdentityExample {
     }
 }
 ```
+
 ```ruby
 require "openai"
 
@@ -949,6 +963,8 @@ response = client.responses.create(
 
 puts(response.output_text)
 ```
+
+:::
 
 ## Google Cloud 最佳实践
 

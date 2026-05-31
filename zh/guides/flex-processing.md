@@ -28,6 +28,7 @@ const response = await client.responses.create({
 console.log(response.output_text);
 ```
 
+::: code-group
 ```python
 from openai import OpenAI
 client = OpenAI(
@@ -60,6 +61,8 @@ curl https://api.openai.com/v1/responses \
 
 :::
 
+:::
+
 **Flex processing 示例**
 
 ::: code-group
@@ -81,6 +84,7 @@ const response = await client.chat.completions.create({
 console.log(response.choices[0].message.content);
 ```
 
+::: code-group
 ```python
 from openai import OpenAI
 client = OpenAI(
@@ -110,6 +114,8 @@ curl https://api.openai.com/v1/chat/completions   -H "Content-Type: application/
     "service_tier": "flex"
   }' --max-time 900
 ```
+
+:::
 
 :::
 

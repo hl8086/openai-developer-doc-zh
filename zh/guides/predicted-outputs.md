@@ -7,7 +7,7 @@ Predicted Outputs 目前可在最新的 `gpt-4o`、`gpt-4o-mini`、`gpt-4.1`、`
 
 Predicted Outputs 在对文本文档和代码文件进行少量修改并重新生成时特别有用。假设你想让 [GPT-4o 模型](/models#gpt-4o) 重构一段 TypeScript 代码，将 `User` 类的 `username` 属性转换为 `email`：
 
-```
+```python
 class User {
   firstName: string = "";
   lastName: string = "";
@@ -68,6 +68,7 @@ console.log(completion);
 console.log(completion.choices[0].message.content);
 ```
 
+::: code-group
 ```python
 from openai import OpenAI
 
@@ -132,6 +133,8 @@ curl https://api.openai.com/v1/chat/completions \
     }
   }'
 ```
+
+:::
 
 :::
 
@@ -267,7 +270,7 @@ for chunk in stream:
 
 在提供预测文本时，你的预测可以出现在生成响应中的任何位置，仍然能为响应提供延迟降低效果。假设你的预测文本是下面所示的简单 [Hono](https://hono.dev/) 服务器：
 
-```
+```javascript
 import { serveStatic } from "@hono/node-server/serve-static";
 import { serve } from "@hono/node-server";
 import { Hono } from "hono";
@@ -306,7 +309,7 @@ markdown formatting.
 
 对该提示词的响应可能如下所示：
 
-```
+```javascript
 import { serveStatic } from "@hono/node-server/serve-static";
 import { serve } from "@hono/node-server";
 import { Hono } from "hono";

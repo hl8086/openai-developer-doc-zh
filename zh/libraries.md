@@ -43,7 +43,7 @@ npm install openai
 
 测试基本 API 请求
 
-```
+```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
 
@@ -73,7 +73,7 @@ pip install openai
 
 测试基本 API 请求
 
-```
+```python
 from openai import OpenAI
 client = OpenAI()
 
@@ -101,7 +101,7 @@ dotnet add package OpenAI
 
 测试基本 API 请求
 
-```
+```python
 using System;
 using System.Threading.Tasks;
 using OpenAI;
@@ -258,7 +258,7 @@ brew install openai/tools/openai
 
 测试基本 API 请求
 
-```
+```bash
 openai responses create \
   --model "gpt-5.5" \
   --input "Write a one-sentence bedtime story about a unicorn." \

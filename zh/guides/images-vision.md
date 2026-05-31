@@ -137,6 +137,7 @@ const response = await openai.chat.completions.create({
 console.log(response.choices[0].message.content);
 ```
 
+::: code-group
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -189,6 +190,8 @@ curl https://api.openai.com/v1/chat/completions \
 
 :::
 
+:::
+
 传递 Base64 编码图像
 
 **分析图像内容**
@@ -222,6 +225,7 @@ const completion = await openai.chat.completions.create({
 console.log(completion.choices[0].message.content);
 ```
 
+::: code-group
 ```python
 import base64
 from openai import OpenAI
@@ -289,6 +293,8 @@ EOF
 
 :::
 
+:::
+
 您可以通过多种方式将图像作为输入提供给生成请求：
 
 *   提供图像文件的完整 URL
@@ -349,6 +355,7 @@ print(response.output_text)
 ```
 
 :::
+::: code-group
 ```csharp
 using OpenAI.Responses;
 
@@ -366,6 +373,7 @@ OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
 
 Console.WriteLine(response.GetOutputText());
 ```
+
 ```curl
 curl https://api.openai.com/v1/responses \
   -H "Content-Type: application/json" \
@@ -386,6 +394,7 @@ curl https://api.openai.com/v1/responses \
     ]
   }'
 ```
+
 ```cli
 openai responses create \
   --model gpt-5.5 \
@@ -400,6 +409,8 @@ input:
         image_url: https://api.nga.gov/iiif/a2e6da57-3cd1-4235-b20e-95dcaefed6c8/full/!800,800/0/default.jpg
 YAML
 ```
+
+:::
 
 传递 Base64 编码图像
 

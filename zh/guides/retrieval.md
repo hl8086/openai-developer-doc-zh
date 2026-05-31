@@ -12,6 +12,7 @@ Retrieval API 由[**向量存储**](#vector-stores)驱动，向量存储作为�
 
 **创建带文件的向量存储**
 
+::: code-group
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -25,6 +26,7 @@ client.vector_stores.files.upload_and_poll(        # Upload file
     file=open("customer_policies.txt", "rb")
 )
 ```
+
 ```node
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -38,11 +40,14 @@ await client.vector_stores.files.upload_and_poll({         // Upload file
     file: fs.createReadStream("customer_policies.txt"),
 });
 ```
+
+:::
 *   **发送搜索查询**以获取相关结果。
     
 
 **搜索查询**
 
+::: code-group
 ```python
 user_query = "What is the return policy?"
 
@@ -51,6 +56,7 @@ results = client.vector_stores.search(
     query=user_query,
 )
 ```
+
 ```node
 const userQuery = "What is the return policy?";
 
@@ -59,6 +65,8 @@ const results = await client.vectorStores.search({
     query: userQuery,
 });
 ```
+
+:::
 
 要了解如何将结果与我们的模型配合使用，请查看[生成回答](#synthesizing-responses)部分。
 
@@ -86,18 +94,22 @@ _（关键词使用 [Jaccard](https://en.wikipedia.org/wiki/Jaccard_index) 相�
 
 **搜索查询**
 
+::: code-group
 ```python
 results = client.vector_stores.search(
     vector_store_id=vector_store.id,
     query="How many woodchucks are allowed per passenger?",
 )
 ```
+
 ```node
 const results = await client.vectorStores.search({
     vector_store_id: vector_store.id,
     query: "How many woodchucks are allowed per passenger?",
 });
 ```
+
+:::
 
 结果
 
@@ -324,12 +336,14 @@ const results = await client.vectorStores.search({
 
 **创建向量存储**
 
+::: code-group
 ```python
 client.vector_stores.create(
     name="Support FAQ",
     file_ids=["file_123"]
 )
 ```
+
 ```node
 await client.vector_stores.create({
     name: "Support FAQ",
@@ -337,31 +351,39 @@ await client.vector_stores.create({
 });
 ```
 
+:::
+
 检索
 
 **检索向量存储**
 
+::: code-group
 ```python
 client.vector_stores.retrieve(
     vector_store_id="vs_123"
 )
 ```
+
 ```node
 await client.vector_stores.retrieve({
     vector_store_id: "vs_123"
 });
 ```
 
+:::
+
 更新
 
 **更新向量存储**
 
+::: code-group
 ```python
 client.vector_stores.update(
     vector_store_id="vs_123",
     name="Support FAQ Updated"
 )
 ```
+
 ```node
 await client.vector_stores.update({
     vector_store_id: "vs_123",
@@ -369,31 +391,41 @@ await client.vector_stores.update({
 });
 ```
 
+:::
+
 删除
 
 **删除向量存储**
 
+::: code-group
 ```python
 client.vector_stores.delete(
     vector_store_id="vs_123"
 )
 ```
+
 ```node
 await client.vector_stores.delete({
     vector_store_id: "vs_123"
 });
 ```
 
+:::
+
 列表
 
 **列出向量存储**
 
+::: code-group
 ```python
 client.vector_stores.list()
 ```
+
 ```node
 await client.vector_stores.list();
 ```
+
+:::
 
 ### 向量存储文件操作
 
@@ -407,12 +439,14 @@ await client.vector_stores.list();
 
 **创建向量存储文件**
 
+::: code-group
 ```python
 client.vector_stores.files.create_and_poll(
     vector_store_id="vs_123",
     file_id="file_123"
 )
 ```
+
 ```node
 await client.vector_stores.files.create_and_poll({
     vector_store_id: "vs_123",
@@ -420,16 +454,20 @@ await client.vector_stores.files.create_and_poll({
 });
 ```
 
+:::
+
 上传
 
 **上传向量存储文件**
 
+::: code-group
 ```python
 client.vector_stores.files.upload_and_poll(
     vector_store_id="vs_123",
     file=open("customer_policies.txt", "rb")
 )
 ```
+
 ```node
 await client.vector_stores.files.upload_and_poll({
     vector_store_id: "vs_123",
@@ -437,16 +475,20 @@ await client.vector_stores.files.upload_and_poll({
 });
 ```
 
+:::
+
 检索
 
 **检索向量存储文件**
 
+::: code-group
 ```python
 client.vector_stores.files.retrieve(
     vector_store_id="vs_123",
     file_id="file_123"
 )
 ```
+
 ```node
 await client.vector_stores.files.retrieve({
     vector_store_id: "vs_123",
@@ -454,10 +496,13 @@ await client.vector_stores.files.retrieve({
 });
 ```
 
+:::
+
 更新
 
 **更新向量存储文件**
 
+::: code-group
 ```python
 client.vector_stores.files.update(
     vector_store_id="vs_123",
@@ -465,6 +510,7 @@ client.vector_stores.files.update(
     attributes={"key": "value"}
 )
 ```
+
 ```node
 await client.vector_stores.files.update({
     vector_store_id: "vs_123",
@@ -473,16 +519,20 @@ await client.vector_stores.files.update({
 });
 ```
 
+:::
+
 删除
 
 **删除向量存储文件**
 
+::: code-group
 ```python
 client.vector_stores.files.delete(
     vector_store_id="vs_123",
     file_id="file_123"
 )
 ```
+
 ```node
 await client.vector_stores.files.delete({
     vector_store_id: "vs_123",
@@ -490,20 +540,26 @@ await client.vector_stores.files.delete({
 });
 ```
 
+:::
+
 列表
 
 **列出向量存储文件**
 
+::: code-group
 ```python
 client.vector_stores.files.list(
     vector_store_id="vs_123"
 )
 ```
+
 ```node
 await client.vector_stores.files.list({
     vector_store_id: "vs_123"
 });
 ```
+
+:::
 
 ### 批量操作
 
@@ -513,6 +569,7 @@ await client.vector_stores.files.list({
 
 **批量创建操作**
 
+::: code-group
 ```python
 client.vector_stores.file_batches.create_and_poll(
     vector_store_id="vs_123",
@@ -532,6 +589,7 @@ client.vector_stores.file_batches.create_and_poll(
     ]
 )
 ```
+
 ```node
 await client.vector_stores.file_batches.create_and_poll({
     vector_store_id: "vs_123",
@@ -552,16 +610,20 @@ await client.vector_stores.file_batches.create_and_poll({
 });
 ```
 
+:::
+
 检索
 
 **批量检索操作**
 
+::: code-group
 ```python
 client.vector_stores.file_batches.retrieve(
     vector_store_id="vs_123",
     batch_id="vsfb_123"
 )
 ```
+
 ```node
 await client.vector_stores.file_batches.retrieve({
     vector_store_id: "vs_123",
@@ -569,16 +631,20 @@ await client.vector_stores.file_batches.retrieve({
 });
 ```
 
+:::
+
 取消
 
 **批量取消操作**
 
+::: code-group
 ```python
 client.vector_stores.file_batches.cancel(
     vector_store_id="vs_123",
     batch_id="vsfb_123"
 )
 ```
+
 ```node
 await client.vector_stores.file_batches.cancel({
     vector_store_id: "vs_123",
@@ -586,20 +652,26 @@ await client.vector_stores.file_batches.cancel({
 });
 ```
 
+:::
+
 列表
 
 **批量列表操作**
 
+::: code-group
 ```python
 client.vector_stores.file_batches.list(
     vector_store_id="vs_123"
 )
 ```
+
 ```node
 await client.vector_stores.file_batches.list({
     vector_store_id: "vs_123"
 });
 ```
+
+:::
 
 创建批量时，你可以提供 `file_ids` 并附带可选的 `attributes` 和/或 `chunking_strategy`，或者使用 `files` 数组传递包含 `file_id` 以及每个文件可选的 `attributes` 和 `chunking_strategy` 的对象。这两个选项是互斥的，这样你可以清晰地控制是所有文件共享相同设置，还是需要按文件单独覆盖。
 
@@ -611,6 +683,7 @@ await client.vector_stores.file_batches.list({
 
 **创建带属性的向量存储文件**
 
+::: code-group
 ```python
 client.vector_stores.files.create(
     vector_store_id="&lt;vector_store_id>",
@@ -622,6 +695,7 @@ client.vector_stores.files.create(
     }
 )
 ```
+
 ```node
 await client.vector_stores.files.create(&lt;vector_store_id>, {
     file_id: "file_123",
@@ -633,12 +707,15 @@ await client.vector_stores.files.create(&lt;vector_store_id>, {
 });
 ```
 
+:::
+
 ### 过期策略
 
 你可以使用 `expires_after` 在 `vector_store` 对象上设置过期策略。一旦向量存储过期，所有关联的 `vector_store.file` 对象将被删除，你将不再为它们付费。
 
 **设置向量存储的过期策略**
 
+::: code-group
 ```python
 client.vector_stores.update(
     vector_store_id="vs_123",
@@ -648,6 +725,7 @@ client.vector_stores.update(
     }
 )
 ```
+
 ```node
 await client.vector_stores.update({
     vector_store_id: "vs_123",
@@ -657,6 +735,8 @@ await client.vector_stores.update({
     },
 });
 ```
+
+:::
 
 ### 限制
 
@@ -706,6 +786,7 @@ _对于 `text/` MIME 类型，编码必须是 `utf-8`、`utf-16` 或 `ascii` 之
 
 **执行搜索查询获取结果**
 
+::: code-group
 ```python
 from openai import OpenAI
 
@@ -718,6 +799,7 @@ results = client.vector_stores.search(
     query=user_query,
 )
 ```
+
 ```node
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -730,8 +812,11 @@ const results = await client.vectorStores.search({
 });
 ```
 
+:::
+
 **根据结果生成回答**
 
+::: code-group
 ```python
 formatted_results = format_results(results.data)
 
@@ -753,6 +838,7 @@ completion = client.chat.completions.create(
 
 print(completion.choices[0].message.content)
 ```
+
 ```node
 const formattedResults = formatResults(results.data);
 // Join the text content of all results
@@ -775,6 +861,8 @@ const completion = await client.chat.completions.create({
 console.log(completion.choices[0].message.content);
 ```
 
+:::
+
 ```
 "Our return policy allows returns within 30 days of purchase."
 ```
@@ -783,6 +871,7 @@ console.log(completion.choices[0].message.content);
 
 **示例结果格式化函数**
 
+::: code-group
 ```python
 def format_results(results):
     formatted_results = ''
@@ -793,6 +882,7 @@ def format_results(results):
         formatted_results += formatted_result + "&lt;/result>"
     return f"&lt;sources>{formatted_results}&lt;/sources>"
 ```
+
 ```node
 function formatResults(results) {
     let formattedResults = '';
@@ -806,3 +896,5 @@ function formatResults(results) {
     return `&lt;sources>${formattedResults}&lt;/sources>`;
 }
 ```
+
+:::

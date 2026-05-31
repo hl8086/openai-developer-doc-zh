@@ -39,7 +39,7 @@ webhook-signature: v1,K5oZfzN95Z9UVu1EsfQmfVNQhnkZ2pj9o9NDN/H/pI4= # signature t
 
 使用[接受通话端点]( https://developers.openai.com/api/reference/realtime-calls/accept-call)来批准来电并配置将应答该通话的实时会话。发送与[`create client secret`]( https://developers.openai.com/api/reference/realtime-sessions/create-realtime-client-secret)请求相同的参数，即确保在将通话桥接到模型之前设置好实时模型、语音、工具或指令。
 
-```
+```curl
 curl -X POST "https://api.openai.com/v1/realtime/calls/$CALL_ID/accept" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: application/json" \
@@ -56,7 +56,7 @@ curl -X POST "https://api.openai.com/v1/realtime/calls/$CALL_ID/accept" \
 
 当你不想处理来电时（例如，来自不支持的国家代码），使用[拒绝通话端点]( https://developers.openai.com/api/reference/realtime-calls/reject-call)来拒绝邀请。提供 `call_id` 路径参数和 JSON 正文中可选的 SIP `status_code`（例如，`486` 表示"忙碌"）来控制发送回运营商的响应。
 
-```
+```curl
 curl -X POST "https://api.openai.com/v1/realtime/calls/$CALL_ID/reject" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: application/json" \
@@ -85,7 +85,7 @@ curl -X POST "https://api.openai.com/v1/realtime/calls/$CALL_ID/reject" \
 
 WebSocket 的行为与任何其他 Realtime API 连接完全相同。发送 [`response.create`]( https://developers.openai.com/api/reference/realtime_client_events/response/create) 和其他客户端事件来控制通话，并监听服务器事件来跟踪进度。更多信息请参阅 [Webhooks 和服务端控制](/guides/realtime-server-controls)。
 
-```
+```javascript
 import WebSocket from "ws";
 
 const callId = "rtc_u1_9c6574da8b8a41a18da9308f4ad974ce";
@@ -108,7 +108,7 @@ ws.on("open", () => {
 
 使用[转接通话端点]( https://developers.openai.com/api/reference/realtime-calls/refer-call)转移活跃通话。提供 `call_id` 以及应放置在 SIP `Refer-To` 头中的 `target_uri`（例如 `tel:+14155550123` 或 `sip:agent@example.com`）。
 
-```
+```curl
 curl -X POST "https://api.openai.com/v1/realtime/calls/$CALL_ID/refer" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: application/json" \
@@ -121,7 +121,7 @@ OpenAI 在 REFER 被转发到你的 SIP 提供商后返回 `200 OK`。下游系�
 
 当你的应用程序需要断开呼叫者连接时，使用[挂断端点]( https://developers.openai.com/api/reference/realtime-calls/hangup-call)结束会话。此端点可用于终止 SIP 和 WebRTC 实时会话。
 
-```
+```curl
 curl -X POST "https://api.openai.com/v1/realtime/calls/$CALL_ID/hangup" \
   -H "Authorization: Bearer $OPENAI_API_KEY"
 ```

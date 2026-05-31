@@ -167,7 +167,7 @@ sample 命名空间将由评估期间的模型采样步骤或微调步骤中的�
 
 以下是一个完整的可运行代码示例：
 
-```
+```python
 import os
 import requests
 
@@ -301,7 +301,7 @@ model_grader(answer_1, reference_answer) > model_grader(answer_2, reference_answ
 
 Python 源代码必须包含一个 grade 函数，该函数恰好接受两个参数并返回一个浮点值作为评分。
 
-```
+```python
 from typing import Any
 
 def grade(sample: dict[str, Any], item: dict[str, Any]) -> float:
@@ -332,7 +332,7 @@ def grade(sample: dict[str, Any], item: dict[str, Any]) -> float:
 
 以下是一个可运行的示例：
 
-```
+```python
 import os
 import requests
 

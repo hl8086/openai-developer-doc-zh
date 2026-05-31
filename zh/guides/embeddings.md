@@ -38,6 +38,7 @@ const embedding = await openai.embeddings.create({
 console.log(embedding);
 ```
 
+::: code-group
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -59,6 +60,8 @@ curl https://api.openai.com/v1/embeddings \
     "model": "text-embedding-3-small"
   }'
 ```
+
+:::
 
 :::
 
@@ -116,7 +119,7 @@ OpenAI 提供两个强大的第三代嵌入模型（模型 ID 中以 `-3` 表示
 
 Get\_embeddings\_from\_dataset.ipynb
 
-```
+```python
 from openai import OpenAI
 client = OpenAI()
 
@@ -145,7 +148,7 @@ df['ada_embedding'] = df.ada_embedding.apply(eval).apply(np.array)
 
 通常，在创建嵌入时使用 `dimensions` 参数是建议的方法。在某些情况下，你可能需要在生成嵌入后更改嵌入维度。当你手动更改维度时，需要确保对嵌入的维度进行归一化，如下所示。
 
-```
+```python
 from openai import OpenAI
 import numpy as np
 
@@ -181,7 +184,7 @@ print(norm_dim)
 
 在许多常见情况下，模型没有在包含关键事实和信息的数据上进行训练，而你希望在生成用户查询的响应时能够访问这些信息。解决此问题的一种方法（如下所示）是将额外信息放入模型的上下文窗口中。这在许多用例中是有效的，但会导致更高的 token 成本。在本笔记本中，我们探讨了这种方法与基于嵌入的搜索之间的权衡。
 
-```
+```python
 query = f"""Use the below article on the 2022 Winter Olympics to answer the subsequent question. If the answer cannot be found, write "I don't know."
 
 Article:
@@ -209,7 +212,7 @@ print(response.choices[0].message.content)
 
 为了检索最相关的文档，我们使用查询和每个文档的嵌入向量之间的余弦相似度，并返回得分最高的文档。
 
-```
+```python
 from openai.embeddings_utils import get_embedding, cosine_similarity
 
 def search_reviews(df, product_description, n=3, pprint=True):
@@ -229,7 +232,7 @@ res = search_reviews(df, 'delicious beans', n=3)
 
 要执行代码搜索，我们使用相同的模型将自然语言查询进行嵌入。然后计算生成的查询嵌入与每个函数嵌入之间的余弦相似度。余弦相似度最高的结果最为相关。
 
-```
+```python
 from openai.embeddings_utils import get_embedding, cosine_similarity
 
 df['code_embedding'] = df['code'].apply(lambda x: get_embedding(x, model='text-embedding-3-small'))
@@ -252,7 +255,7 @@ res = search_functions(df, 'Completions API tests', n=3)
 
 下面，我们展示了一个基本的推荐器。它接收一个字符串列表和一个"源"字符串，计算它们的嵌入，然后返回字符串的排名，从最相似到最不相似。作为一个具体示例，下面链接的笔记本将此函数的一个版本应用于 [AG news 数据集](http://groups.di.unipi.it/~gulli/AG_corpus_of_news_articles.html)（缩减到 2,000 条新闻文章描述），以返回与任何给定源文章最相似的前 5 篇文章。
 
-```
+```python
 def recommendations_from_strings(
     strings: List[str],
     index_of_source_string: int,
@@ -373,7 +376,7 @@ preds = clf.predict(X_test)
 
 我们可以使用嵌入进行零样本分类，无需任何标注的训练数据。对于每个类别，我们嵌入类别名称或类别的简短描述。要以零样本方式对某些新文本进行分类，我们将其嵌入与所有类别嵌入进行比较，并预测相似度最高的类别。
 
-```
+```python
 from openai.embeddings_utils import cosine_similarity, get_embedding
 
 df= df[df.Score!=3]
@@ -433,7 +436,7 @@ df['Cluster'] = kmeans.labels_
 
 示例代码：
 
-```
+```python
 import tiktoken
 
 def num_tokens_from_string(string: str, encoding_name: str) -> int:

@@ -19,7 +19,7 @@ Button(
 
 Actions 也可以通过前端的 `sendAction()` 以命令式方式发送。当你需要 ChatKit 响应 ChatKit 之外发生的交互时，这可能最为有用，但它也可以用于在需要同时在客户端和服务器端响应时链接 actions（下面会详细介绍）。
 
-```
+```javascript
 await chatKit.sendAction({
   type: "example",
   payload: { id: 123 },
@@ -107,7 +107,7 @@ chatKit.setOptions({
 
 默认情况下 `Action` 和 `ActionConfig` 不是强类型的。但是，我们在 `Action` 上暴露了一个 `create` 辅助方法，使得从一组强类型 actions 生成 `ActionConfig` 变得简单。
 
-```
+```python
 class ExamplePayload(BaseModel)
     id: int
 
@@ -157,7 +157,7 @@ class MyChatKitServer(ChatKitServer[RequestContext])
 *   `Select(name="title")` → `action.payload.title`
 *   `Select(name="todo.title")` → `action.payload.todo.title`
 
-```
+```python
 Form(
 	direction="col",
 	validation="native"

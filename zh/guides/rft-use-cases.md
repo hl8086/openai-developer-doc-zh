@@ -52,7 +52,7 @@ OpenAI 正在逐步关闭微调平台。该平台不再对新用户开放，但�
 > 
 > 从概念上讲，这旨在建模类似 `Dict[str, str]` 的类型。
 
-```
+```python
 {
   "type": "python",
   "name": "donors_caas",
@@ -104,7 +104,7 @@ def grade(sample: dict[str, str], item: dict[str, str]) -> float:
 
 评分器代码
 
-```
+```python
 # Note this file gets uploaded to the OpenAI API as a grader
 from ast_grep_py import SgRoot
 from pydantic import BaseModel, Field  # type: ignore
@@ -461,7 +461,7 @@ You will be provided with a question and a text excerpt. Identify any passages i
 
 评分器
 
-```
+```python
 from rapidfuzz import fuzz
 
 

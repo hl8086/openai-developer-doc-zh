@@ -72,6 +72,7 @@ let video = await openai.videos.create({
 console.log('Video generation started: ', video);
 ```
 
+::: code-group
 ```python
 from openai import OpenAI
 
@@ -94,6 +95,8 @@ curl -X POST "https://api.openai.com/v1/videos" \
   -F size="1280x720" \
   -F seconds="8" \
 ```
+
+:::
 
 :::
 
@@ -299,6 +302,7 @@ require('fs').writeFileSync('video.mp4', buffer);
 console.log('Wrote video.mp4');
 ```
 
+::: code-group
 ```curl
 curl -L "https://api.openai.com/v1/videos/video_abc123/content" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -359,13 +363,15 @@ print("Wrote video.mp4")
 
 :::
 
+:::
+
 现在你已经获得了可用于播放、编辑或分发的最终视频文件。下载 URL 在生成后最多有效 1 小时。如果你需要长期存储，请及时将文件复制到你自己的存储系统。
 
 #### 下载辅助资产
 
 对于每个已完成的视频，你还可以下载**缩略图**和**精灵图**。这些是轻量级资产，适用于预览、进度条或目录展示。使用 `variant` 查询参数指定你要下载的内容。默认值为 `variant=video`，即 MP4 文件。
 
-```
+```curl
 # 下载缩略图
 curl -L "https://api.openai.com/v1/videos/video_abc123/content?variant=thumbnail" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -390,7 +396,7 @@ curl -L "https://api.openai.com/v1/videos/video_abc123/content?variant=spriteshe
 
 支持的文件格式为 `image/jpeg`、`image/png` 和 `image/webp`。
 
-```
+```curl
 curl -X POST "https://api.openai.com/v1/videos" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: multipart/form-data" \
@@ -418,7 +424,7 @@ curl -X POST "https://api.openai.com/v1/videos" \
 
 描绘人类外貌的角色上传默认被阻止。请联系你的客户经理或[联系我们的销售团队](https://openai.com/contact-sales/)了解更多关于人类外貌访问资格的信息。
 
-```
+```curl
 curl -X POST "https://api.openai.com/v1/videos/characters" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: multipart/form-data" \
@@ -430,7 +436,7 @@ curl -X POST "https://api.openai.com/v1/videos/characters" \
 
 角色可以与 `input_reference` 组合使用。延展不支持角色。
 
-```
+```curl
 curl -X POST "https://api.openai.com/v1/videos" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: application/json" \
@@ -453,7 +459,7 @@ curl -X POST "https://api.openai.com/v1/videos" \
 
 每次延展最多可添加 `20` 秒。单个视频最多可延展六次，最大总长度为 `120` 秒。延展目前仅接受源视频和提示词。它们不支持角色或图像参考。
 
-```
+```curl
 curl -X POST "https://api.openai.com/v1/videos/extensions" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: application/json" \
@@ -476,7 +482,7 @@ curl -X POST "https://api.openai.com/v1/videos/extensions" \
 
 编辑上传的视频仅对符合条件的客户可用。如果你需要此工作流程，请联系你的客户经理或[联系我们的销售团队](https://openai.com/contact-sales/)。
 
-```
+```curl
 curl -X POST "https://api.openai.com/v1/videos/edits" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: application/json" \
@@ -490,7 +496,7 @@ curl -X POST "https://api.openai.com/v1/videos/edits" \
 
 如果你上传新视频而不是编辑现有生成的视频，请在请求中显式设置 `model`。
 
-```
+```curl
 curl -X POST "https://api.openai.com/v1/videos/edits" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: multipart/form-data" \
@@ -530,14 +536,14 @@ Batch 中的视频生成：
 
 使用 `GET /videos` 列举你的视频。该端点支持可选的分页和排序查询参数。
 
-```
+```curl
 curl "https://api.openai.com/v1/videos?limit=20&after=video_123&order=asc" \
   -H "Authorization: Bearer $OPENAI_API_KEY" | jq .
 ```
 
 使用 `DELETE /videos/{video_id}` 从 OpenAI 的存储中删除你不再需要的视频。
 
-```
+```curl
 curl -X DELETE "https://api.openai.com/v1/videos/REPLACE_WITH_YOUR_VIDEO_ID" \
   -H "Authorization: Bearer $OPENAI_API_KEY" | jq .
 ```

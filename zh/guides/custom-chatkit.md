@@ -23,7 +23,7 @@ pip install openai-chatkit
 
 `ChatKitServer` 驱动对话。重写 `respond` 方法，在用户消息或客户端工具输出到达时流式传输事件。像 `stream_agent_response` 这样的辅助方法使连接到 Agents SDK 变得简单。
 
-```
+```python
 class MyChatKitServer(ChatKitServer):
     def __init__(self, data_store: Store, file_store: FileStore | None = None):
         super().__init__(data_store, file_store)
@@ -63,7 +63,7 @@ class MyChatKitServer(ChatKitServer):
 
 使用你选择的框架将 HTTP 请求转发到服务器实例。例如，使用 FastAPI：
 
-```
+```javascript
 app = FastAPI()
 data_store = SQLiteStore()
 file_store = DiskFileStore(data_store)

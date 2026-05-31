@@ -1833,7 +1833,7 @@ Exit when: Caller declines more help.
 
 #### 示例
 
-```
+```python
 from typing import Dict, List, Literal
 
 State = Literal["verify", "resolve"]

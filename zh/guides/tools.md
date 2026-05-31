@@ -7,9 +7,8 @@
 
 在模型响应中包含网络搜索结果
 
-javascript
-
-```
+::: code-group
+```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
 
@@ -24,7 +23,7 @@ const response = await client.responses.create({
 console.log(response.output_text);
 ```
 
-```
+```python
 from openai import OpenAI
 client = OpenAI()
 
@@ -37,7 +36,7 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
-```
+```curl
 curl "https://api.openai.com/v1/responses" \
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -58,6 +57,8 @@ tools:
 input: What was a positive news story from today?
 YAML
 ```
+
+:::
 
 ```
 using OpenAI.Responses;
@@ -255,9 +256,8 @@ console.log(response.output);
 
 调用你自己的函数
 
-javascript
-
-```
+::: code-group
+```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
 
@@ -292,7 +292,7 @@ const response = await client.responses.create({
 console.log(response.output[0].to_json());
 ```
 
-```
+```python
 from openai import OpenAI
 
 client = OpenAI()
@@ -327,6 +327,8 @@ response = client.responses.create(
 
 print(response.output[0].to_json())
 ```
+
+:::
 
 ```
 using System.Text.Json;
@@ -366,7 +368,7 @@ OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
 Console.WriteLine(JsonSerializer.Serialize(response.OutputItems[0]));
 ```
 
-```
+```curl
 curl -X POST https://api.openai.com/v1/responses \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: application/json" \
@@ -421,6 +423,7 @@ curl https://api.openai.com/v1/responses \
   }'
 ```
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -463,6 +466,8 @@ resp = client.responses.create(
 
 print(resp.output_text)
 ```
+
+:::
 
 :::
 ```csharp

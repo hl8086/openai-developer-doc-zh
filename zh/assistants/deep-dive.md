@@ -19,18 +19,21 @@
 
 例如，要创建一个可以基于 `.csv` 文件创建数据可视化的 Assistant，首先上传一个文件。
 
+::: code-group
 ```python
 file = client.files.create(
   file=open("revenue-forecast.csv", "rb"),
   purpose='assistants'
 )
 ```
+
 ```node
 const file = await openai.files.create({
   file: fs.createReadStream("revenue-forecast.csv"),
   purpose: "assistants",
 });
 ```
+
 ```curl
 curl https://api.openai.com/v1/files \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -38,8 +41,11 @@ curl https://api.openai.com/v1/files \
   -F file="@revenue-forecast.csv"
 ```
 
+:::
+
 然后，创建启用了 `code_interpreter` 工具的 Assistant，并将文件作为资源提供给该工具。
 
+::: code-group
 ```python
 assistant = client.beta.assistants.create(
   name="Data visualizer",
@@ -53,6 +59,7 @@ assistant = client.beta.assistants.create(
   }
 )
 ```
+
 ```node
 const assistant = await openai.beta.assistants.create({
   name: "Data visualizer",
@@ -66,6 +73,7 @@ const assistant = await openai.beta.assistants.create({
   }
 });
 ```
+
 ```curl
 curl https://api.openai.com/v1/assistants \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -84,6 +92,8 @@ curl https://api.openai.com/v1/assistants \
   }'
 ```
 
+:::
+
 您最多可以将 20 个文件附加到 `code_interpreter`，将 10,000 个文件附加到 `file_search`（使用 `vector_store` [对象]( https://developers.openai.com/api/reference/vector-stores/object)）。对于 2025 年 11 月之后创建的向量存储，`file_search` 的限制为 100,000,000 个文件。
 
 每个文件最大为 512 MB，最多包含 5,000,000 个 token。默认情况下，每个项目最多可存储 2.5 TB 的文件。没有组织级别的存储限制。您可以联系我们的支持团队来提高此限制。
@@ -94,6 +104,7 @@ Threads 和 Messages 代表 Assistant 与用户之间的对话会话。每个 Th
 
 您可以使用初始 Messages 列表创建 Thread，如下所示：
 
+::: code-group
 ```python
 thread = client.beta.threads.create(
   messages=[
@@ -110,6 +121,7 @@ thread = client.beta.threads.create(
   ]
 )
 ```
+
 ```node
 const thread = await openai.beta.threads.create({
   messages: [
@@ -126,6 +138,7 @@ const thread = await openai.beta.threads.create({
   ]
 });
 ```
+
 ```curl
 curl https://api.openai.com/v1/threads \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -147,6 +160,8 @@ curl https://api.openai.com/v1/threads \
   }'
 ```
 
+:::
+
 Messages 可以包含文本、图像或文件附件。Message 的 `attachments` 是将文件添加到线程 `tool_resources` 的辅助方法。您也可以选择直接将文件添加到 `thread.tool_resources`。
 
 ### 创建图像输入内容
@@ -155,6 +170,7 @@ Message 内容可以包含外部图像 URL 或通过 [File API]( https://develop
 
 除非另有指定，工具无法访问图像内容。要将图像文件传递给 Code Interpreter，请在消息的 `attachments` 列表中添加文件 ID，以允许该工具读取和分析输入。目前 Code Interpreter 无法下载图像 URL。
 
+::: code-group
 ```python
 file = client.files.create(
   file=open("myimage.png", "rb"),
@@ -182,6 +198,7 @@ thread = client.beta.threads.create(
   ]
 )
 ```
+
 ```node
 import fs from "fs";
 const file = await openai.files.create({
@@ -210,6 +227,7 @@ const thread = await openai.beta.threads.create({
   ]
 });
 ```
+
 ```curl
 # Upload a file with an "vision" purpose
 curl https://api.openai.com/v1/files \
@@ -246,6 +264,8 @@ curl https://api.openai.com/v1/threads \
 }'
 ```
 
+:::
+
 #### 低保真度或高保真度图像理解
 
 通过控制 `detail` 参数（有三个选项：`low`、`high` 或 `auto`），您可以控制模型如何处理图像并生成其文本理解。
@@ -253,6 +273,7 @@ curl https://api.openai.com/v1/threads \
 *   `low` 将启用"低分辨率"模式。模型将接收 512px x 512px 的低分辨率版本图像，并以 85 个 token 的预算表示该图像。这允许 API 返回更快的响应并消耗更少的输入 token，适用于不需要高细节的用例。
 *   `high` 将启用"高分辨率"模式，首先让模型查看低分辨率图像，然后根据输入图像大小创建输入图像的详细裁剪。使用[定价计算器](https://openai.com/api/pricing/)查看各种图像大小的 token 数量。
 
+::: code-group
 ```python
 thread = client.beta.threads.create(
   messages=[
@@ -275,6 +296,7 @@ thread = client.beta.threads.create(
   ]
 )
 ```
+
 ```node
 const thread = await openai.beta.threads.create({
   messages: [
@@ -297,6 +319,7 @@ const thread = await openai.beta.threads.create({
   ]
 });
 ```
+
 ```curl
 curl https://api.openai.com/v1/threads \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -323,6 +346,8 @@ curl https://api.openai.com/v1/threads \
     ]
   }'
 ```
+
+:::
 
 ### 上下文窗口管理
 
@@ -389,18 +414,21 @@ message_content.value += '\n' + '\n'.join(citations)
 
 当您在 Thread 中从用户那里获得了所有需要的上下文后，您可以使用您选择的 Assistant 来运行该 Thread。
 
+::: code-group
 ```python
 run = client.beta.threads.runs.create(
   thread_id=thread.id,
   assistant_id=assistant.id
 )
 ```
+
 ```node
 const run = await openai.beta.threads.runs.create(
   thread.id,
   { assistant_id: assistant.id }
 );
 ```
+
 ```curl
 curl https://api.openai.com/v1/threads/THREAD_ID/runs \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -411,8 +439,11 @@ curl https://api.openai.com/v1/threads/THREAD_ID/runs \
   }'
 ```
 
+:::
+
 默认情况下，Run 将使用 Assistant 对象中指定的 `model` 和 `tools` 配置，但您可以在创建 Run 时覆盖其中大部分配置以增加灵活性：
 
+::: code-group
 ```python
 run = client.beta.threads.runs.create(
   thread_id=thread.id,
@@ -422,6 +453,7 @@ run = client.beta.threads.runs.create(
   tools=[{"type": "code_interpreter"}, {"type": "file_search"}]
 )
 ```
+
 ```node
 const run = await openai.beta.threads.runs.create(
   thread.id,
@@ -433,6 +465,7 @@ const run = await openai.beta.threads.runs.create(
   }
 );
 ```
+
 ```curl
 curl https://api.openai.com/v1/threads/THREAD_ID/runs \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -445,6 +478,8 @@ curl https://api.openai.com/v1/threads/THREAD_ID/runs \
     "tools": [{"type": "code_interpreter"}, {"type": "file_search"}]
   }'
 ```
+
+:::
 
 注意：与 Assistant 关联的 `tool_resources` 不能在 Run 创建期间被覆盖。您必须使用[修改 Assistant]( https://developers.openai.com/api/reference/assistants/modifyAssistant) 端点来执行此操作。
 

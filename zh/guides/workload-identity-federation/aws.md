@@ -252,6 +252,7 @@ print(response.output_text)
 ```
 
 :::
+::: code-group
 ```go
 package main
 
@@ -340,6 +341,7 @@ func main() {
 	fmt.Println(response.OutputText())
 }
 ```
+
 ```java
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.openai.auth.SubjectTokenProvider;
@@ -436,6 +438,7 @@ public final class AwsOutboundWorkloadIdentityExample {
     }
 }
 ```
+
 ```ruby
 require "aws-sdk-sts"
 require "openai"
@@ -495,6 +498,8 @@ response = client.responses.create(
 
 puts(response.output_text)
 ```
+
+:::
 
 ## Amazon EKS 投射服务账户令牌
 
@@ -559,7 +564,7 @@ spec:
 
 在配置工作负载身份联合之前，在本地解码一个示例投射服务账户令牌并检查其声明。从挂载了投射令牌的运行中 Pod：
 
-```
+```python
 TOKEN=$(kubectl exec -n default openai-wif-app -- cat /var/run/secrets/tokens/token)
 
 TOKEN="$TOKEN" python3 - <<'PY'
@@ -716,6 +721,7 @@ print(response.output_text)
 ```
 
 :::
+::: code-group
 ```go
 package main
 
@@ -787,6 +793,7 @@ func main() {
 	fmt.Println(response.OutputText())
 }
 ```
+
 ```java
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.openai.auth.SubjectTokenProvider;
@@ -872,6 +879,7 @@ public final class AwsEksWorkloadIdentityExample {
     }
 }
 ```
+
 ```ruby
 require "openai"
 
@@ -923,6 +931,8 @@ response = client.responses.create(
 
 puts(response.output_text)
 ```
+
+:::
 
 ## AWS 最佳实践
 

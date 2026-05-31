@@ -69,6 +69,7 @@ curl "https://api.openai.com/v1/responses" \
     }'
 ```
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -120,6 +121,8 @@ response = client.responses.create(
 
 print(response.output_text)
 ```
+
+:::
 
 :::
 ```csharp
@@ -182,6 +185,7 @@ curl "https://api.openai.com/v1/responses" \
     }'
 ```
 
+::: code-group
 ```javascript
 import fs from "fs";
 import OpenAI from "openai";
@@ -246,6 +250,8 @@ print(response.output_text)
 ```
 
 :::
+
+:::
 ```csharp
 using OpenAI.Files;
 using OpenAI.Responses;
@@ -300,6 +306,7 @@ curl "https://api.openai.com/v1/chat/completions" \
     }'
 ```
 
+::: code-group
 ```javascript
 import fs from "fs";
 import OpenAI from "openai";
@@ -369,6 +376,8 @@ print(completion.choices[0].message.content)
 
 :::
 
+:::
+
 ## Base64 编码文件
 
 你也可以以 Base64 编码文件数据的形式发送文件输入。
@@ -401,6 +410,7 @@ curl "https://api.openai.com/v1/responses" \
     }'
 ```
 
+::: code-group
 ```javascript
 import fs from "fs";
 import OpenAI from "openai";
@@ -467,6 +477,8 @@ print(response.output_text)
 
 :::
 
+:::
+
 **发送 Base64 编码文件**
 
 ::: code-group
@@ -497,6 +509,7 @@ curl "https://api.openai.com/v1/chat/completions" \
     }'
 ```
 
+::: code-group
 ```javascript
 import fs from "fs";
 import OpenAI from "openai";
@@ -564,6 +577,8 @@ completion = client.chat.completions.create(
 
 print(completion.choices[0].message.content)
 ```
+
+:::
 
 :::
 

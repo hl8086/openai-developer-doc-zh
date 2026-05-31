@@ -130,6 +130,7 @@ const image_bytes = Buffer.from(image_base64, "base64");
 fs.writeFileSync("otter.png", image_bytes);
 ```
 
+::: code-group
 ```python
 from openai import OpenAI
 import base64
@@ -162,6 +163,8 @@ curl -X POST "https://api.openai.com/v1/images/generations" \
         "prompt": "A childrens book drawing of a veterinarian using a stethoscope to listen to the heartbeat of a baby otter."
     }' | jq -r '.data[0].b64_json' | base64 --decode > otter.png
 ```
+
+:::
 
 :::
 ```cli
@@ -390,6 +393,7 @@ if (imageData_fwup.length > 0) {
 }
 ```
 
+::: code-group
 ```python
 import openai
 import base64
@@ -507,6 +511,8 @@ for event in stream:
         with open(f"river{idx}.png", "wb") as f:
             f.write(image_bytes)
 ```
+
+:::
 
 :::
 
@@ -833,6 +839,7 @@ with open("gift-basket.png", "wb") as f:
     f.write(image_bytes)
 ```
 
+::: code-group
 ```javascript
 import fs from "fs";
 import OpenAI, { toFile } from "openai";
@@ -884,6 +891,8 @@ curl -s -D >(grep -i x-request-id >&2) \
   -F "image[]=@soap.png" \
   -F 'prompt=Generate a photorealistic image of a gift basket on a white background labeled "Relax & Unwind" with a ribbon and handwriting-like font, containing all the items in the reference pictures'
 ```
+
+:::
 
 :::
 ```cli
@@ -1034,6 +1043,7 @@ with open("composition.png", "wb") as f:
     f.write(image_bytes)
 ```
 
+::: code-group
 ```javascript
 import fs from "fs";
 import OpenAI, { toFile } from "openai";
@@ -1067,6 +1077,8 @@ curl -s -D >(grep -i x-request-id >&2) \
   -F "image[]=@sunlit_lounge.png" \
   -F 'prompt=A sunlit indoor lounge area with a pool containing a flamingo'
 ```
+
+:::
 
 :::
 ```cli

@@ -19,6 +19,7 @@ curl https://api.openai.com/v1/responses \
 }'
 ```
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -48,6 +49,8 @@ print(resp.status)
 
 :::
 
+:::
+
 ## 轮询后台响应
 
 要检查后台请求的状态，请使用 Responses 的 GET 端点。在请求处于 queued 或 in\_progress 状态时持续轮询。当它离开这些状态时，表示已达到最终（终端）状态。
@@ -61,6 +64,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
   -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -102,6 +106,8 @@ print(f"Final status: {resp.status}\nOutput:\n{resp.output_text}")
 
 :::
 
+:::
+
 ## 取消后台响应
 
 你也可以像这样取消正在进行的响应：
@@ -115,6 +121,7 @@ curl -X POST https://api.openai.com/v1/responses/resp_123/cancel \
   -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -132,6 +139,8 @@ resp = client.responses.cancel("resp_123")
 
 print(resp.status)
 ```
+
+:::
 
 :::
 
@@ -163,6 +172,7 @@ curl "https://api.openai.com/v1/responses/resp_123?stream=true&starting_after=42
 -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -208,6 +218,8 @@ for event in stream:
 # for event in client.responses.stream(resp.id, starting_after=cursor):
 #     print(event)
 ```
+
+:::
 
 :::
 

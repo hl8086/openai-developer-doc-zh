@@ -317,7 +317,7 @@ Assistants APIResponses API
 
 Assistants API
 
-```
+```javascript
 thread = openai.threads.create()
 
   @app.post("/messages")

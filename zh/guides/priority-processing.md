@@ -20,6 +20,7 @@ curl https://api.openai.com/v1/responses   -H "Authorization: Bearer $OPENAI_API
   }'
 ```
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -46,6 +47,8 @@ response = client.responses.create(
 )
 print(response)
 ```
+
+:::
 
 :::
 

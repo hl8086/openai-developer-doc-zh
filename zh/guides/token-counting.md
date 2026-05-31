@@ -35,6 +35,7 @@ response = client.responses.input_tokens.count(
 print(response.input_tokens)
 ```
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -57,6 +58,8 @@ curl https://api.openai.com/v1/responses/input_tokens \
     "input": "Tell me a joke."
   }'
 ```
+
+:::
 
 :::
 ```cli
@@ -88,6 +91,7 @@ response = client.responses.input_tokens.count(
 print(response.input_tokens)
 ```
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -118,6 +122,8 @@ curl https://api.openai.com/v1/responses/input_tokens \
     ]
   }'
 ```
+
+:::
 
 :::
 ```cli
@@ -153,6 +159,7 @@ response = client.responses.input_tokens.count(
 print(response.input_tokens)
 ```
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -178,6 +185,8 @@ curl https://api.openai.com/v1/responses/input_tokens \
     "input": "Explain quantum computing in one sentence."
   }'
 ```
+
+:::
 
 :::
 ```cli
@@ -218,6 +227,7 @@ response = client.responses.input_tokens.count(
 print(response.input_tokens)
 ```
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -257,6 +267,8 @@ curl https://api.openai.com/v1/responses/input_tokens \
     }]
   }'
 ```
+
+:::
 
 :::
 ```cli
@@ -307,6 +319,7 @@ response = client.responses.input_tokens.count(
 print(response.input_tokens)
 ```
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -351,6 +364,8 @@ curl https://api.openai.com/v1/responses/input_tokens \
     "input": "What is the weather in San Francisco?"
   }'
 ```
+
+:::
 
 :::
 ```cli

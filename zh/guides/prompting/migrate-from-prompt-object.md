@@ -23,6 +23,7 @@ const response = await client.responses.create({
 });
 ```
 
+::: code-group
 ```python
 from openai import OpenAI
 
@@ -55,6 +56,8 @@ curl https://api.openai.com/v1/responses \
     }
   }'
 ```
+
+:::
 
 :::
 
@@ -91,6 +94,7 @@ Write a response to the customer.
 console.log(response.output_text);
 ```
 
+::: code-group
 ```python
 from openai import OpenAI
 
@@ -136,6 +140,8 @@ curl https://api.openai.com/v1/responses \
     ]
   }'
 ```
+
+:::
 
 :::
 

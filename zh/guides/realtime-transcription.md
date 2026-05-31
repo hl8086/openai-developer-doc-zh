@@ -77,7 +77,7 @@ ws.send(
 
 监听增量转录增量和完成事件：
 
-```
+```javascript
 ws.on("message", (data) => {
   const event = JSON.parse(data);
 
