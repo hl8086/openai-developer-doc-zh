@@ -39,7 +39,6 @@ OpenAI SDK 配置为自动从系统环境中读取你的 API 密钥。
 
 ## 安装 OpenAI SDK 并运行 API 调用
 
-JavaScriptPython.NETJavaGo
 
 JavaScript
 
@@ -601,7 +600,7 @@ Console.WriteLine(response.GetOutputText());
 
 通过附加[工具](/guides/tools)，让模型访问外部数据和函数。使用内置工具如网络搜索或文件搜索，或定义你自己的工具来调用 API、运行代码或与第三方系统集成。
 
-Web searchFile searchFunction callingRemote MCP
+
 
 Web search
 

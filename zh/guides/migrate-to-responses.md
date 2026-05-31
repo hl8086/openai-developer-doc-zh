@@ -225,7 +225,7 @@ response = client.responses.create(
 
 
 
-Chat CompletionsResponses
+
 
 Chat Completions
 
@@ -330,7 +330,7 @@ curl https://api.openai.com/v1/responses \
 
 ### 2\. 更新 item 定义
 
-Chat CompletionsResponses
+
 
 Chat Completions
 
@@ -437,7 +437,7 @@ curl https://api.openai.com/v1/responses \
 
 如果你的应用程序中有多轮对话，请更新你的上下文逻辑。
 
-Chat CompletionsResponses
+
 
 Chat Completions
 
@@ -656,7 +656,7 @@ Responses API
 
 在 Responses API 中，定义结构化输出已从 `response_format` 移至 `text.format`：
 
-Chat CompletionsResponses
+
 
 Chat Completions
 
@@ -910,7 +910,7 @@ const response = await openai.responses.create({
 
 如果你的应用程序有可以从 OpenAI 原生[工具](/guides/tools)中受益的用例，你可以更新你的工具调用以开箱即用地使用 OpenAI 的工具。
 
-Chat CompletionsResponses
+
 
 Chat Completions
 

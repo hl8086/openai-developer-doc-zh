@@ -14,7 +14,7 @@
 
 查看以下示例，了解远程 MCP 服务器和连接器如何通过 [Responses API]( https://developers.openai.com/api/reference/responses/create) 工作。连接器和远程 MCP 服务器都可以使用 `mcp` 内置工具类型。
 
-Using remote MCP serversUsing connectors
+
 
 Using remote MCP servers
 

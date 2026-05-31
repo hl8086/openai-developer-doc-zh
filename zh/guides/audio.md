@@ -71,7 +71,7 @@ await session.connect({
 
 [Responses API]( https://developers.openai.com/api/reference/responses) 文档目前描述的是文本和图像输入与文本输出。对于这种音频聊天模式，请使用 Chat Completions 配合支持音频的模型。
 
-Audio output from modelAudio input to model
+
 
 模型的音频输出
 
