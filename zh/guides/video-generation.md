@@ -1,7 +1,7 @@
 
 探索
 
-[![](https://cdn.openai.com/API/docs/video-gallery/posters/Space-Race.jpg)](/guides/video-generation?gallery=open&galleryItem=Space-Race)[![](https://cdn.openai.com/API/docs/video-gallery/posters/maui.jpg)](/guides/video-generation?gallery=open&galleryItem=maui)[![](https://cdn.openai.com/API/docs/video-gallery/posters/Upside-Down-City.jpg)](/guides/video-generation?gallery=open&galleryItem=Upside-Down-City)[![](https://cdn.openai.com/API/docs/video-gallery/posters/fox-walk.jpg)](/guides/video-generation?gallery=open&galleryItem=fox-walk)[![](https://cdn.openai.com/API/docs/video-gallery/posters/zebra-chase.jpg)](/guides/video-generation?gallery=open&galleryItem=zebra-chase)[![](https://cdn.openai.com/API/docs/video-gallery/posters/mushroom-network.jpg)](/guides/video-generation?gallery=open&galleryItem=mushroom-network)[![](https://cdn.openai.com/API/docs/video-gallery/posters/90s-TV-Ad.jpg)](/guides/video-generation?gallery=open&galleryItem=90s-TV-Ad)[![](https://cdn.openai.com/API/docs/video-gallery/posters/chameleon.jpg)](/guides/video-generation?gallery=open&galleryItem=chameleon)[![](https://cdn.openai.com/API/docs/video-gallery/posters/cozy-coffee-shop-interior.jpg)](/guides/video-generation?gallery=open&galleryItem=Cozy-Coffee-Shop-Interior)[![](https://cdn.openai.com/API/docs/video-gallery/posters/coloring.jpg)](/guides/video-generation?gallery=open&galleryItem=coloring)[![](https://cdn.openai.com/API/docs/video-gallery/posters/Sleeping-Otters.jpg)](/guides/video-generation?gallery=open&galleryItem=Sleeping-Otters)[![](https://cdn.openai.com/API/docs/video-gallery/posters/indie-cafe-rainy-window.jpg)](/guides/video-generation?gallery=open&galleryItem=indie-cafe-rainy-window)
+![](https://cdn.openai.com/API/docs/video-gallery/posters/Space-Race.jpg)
 
 Sora 2 视频生成模型和 Videos API 已弃用，将于 2026 年 9 月 24 日关闭。受影响的包括 Videos API、`sora-2`、`sora-2-pro`、`sora-2-2025-10-06`、`sora-2-2025-12-08` 和 `sora-2-pro-2025-10-06`。详情请参阅[弃用页面](/deprecations)。
 
@@ -414,8 +414,8 @@ curl -X POST "https://api.openai.com/v1/videos" \
 
 | 使用 [OpenAI GPT Image](/guides/image-generation) 生成的输入图像 | 使用 Sora 2 生成的视频（转换为 GIF） |
 | --- | --- |
-| ![](https://cdn.openai.com/API/docs/images/sora/sora_woman_skyline_original_2.jpeg)[下载此图像](https://cdn.openai.com/API/docs/images/sora/woman_skyline_original_720p.jpeg) | ![](https://cdn.openai.com/API/docs/images/sora/sora_woman_skyline_video.gif) 提示词：_"She turns around and smiles, then slowly walks out of the frame."_ |
-| ![](https://cdn.openai.com/API/docs/images/sora/sora_monster_original_2.jpeg)[下载此图像](https://cdn.openai.com/API/docs/images/sora/monster_original_720p.jpeg) | ![](https://cdn.openai.com/API/docs/images/sora/sora_monster_original.gif) 提示词：_"The fridge door opens. A cute, chubby purple monster comes out of it."_ |
+![](https://cdn.openai.com/API/docs/images/sora/sora_woman_skyline_original_2.jpeg)
+![](https://cdn.openai.com/API/docs/images/sora/sora_monster_original_2.jpeg)
 
 ## 使用角色保持一致性
 
@@ -514,8 +514,7 @@ curl -X POST "https://api.openai.com/v1/videos/edits" \
 
 | 原始视频 | 编辑后生成的视频 |
 | --- | --- |
-| ![](https://cdn.openai.com/API/docs/images/sora/sora_monster_original.gif) | ![](https://cdn.openai.com/API/docs/images/sora/sora_monster_orange.gif) 提示词：_"Change the color of the monster to orange."_ |
-| ![](https://cdn.openai.com/API/docs/images/sora/sora_monster_original.gif) | ![](https://cdn.openai.com/API/docs/images/sora/sora_monster_2monsters.gif) 提示词：_"A second monster comes out right after."_ |
+![](https://cdn.openai.com/API/docs/images/sora/sora_monster_original.gif)
 
 ## 通过 Batch API 运行视频任务
 

@@ -27,9 +27,8 @@ Secure MCP Tunnel 保持 MCP 服务器的私密性，同时为受支持的 OpenA
 
 私有 MCP 服务器不需要公共监听器。OpenAI 托管的端点为受支持的产品提供正常的 MCP 请求路径，而网络发起点保持在你的边界内。当连接器请求流式结果时，隧道路径可以转发中间的服务器发送事件。
 
- ![图示：OpenAI 产品通过 OpenAI 隧道服务将 MCP JSON-RPC 发送到 tunnel-client，tunnel-client 将请求转发到私有 MCP 服务器并通过同一隧道返回响应。]( https://cdn.openai.com/API/docs/images/platform/guides/secure-mcp-tunnels/request-flow-diagram.png) ![图示：OpenAI 产品通过 OpenAI 隧道服务将 MCP JSON-RPC 发送到 tunnel-client，tunnel-client 将请求转发到私有 MCP 服务器并通过同一隧道返回响应。]( https://cdn.openai.com/API/docs/images/platform/guides/secure-mcp-tunnels/request-flow-diagram.png)
+![图示：OpenAI 产品通过 OpenAI 隧道服务将 MCP JSON-RPC 发送到 tunnel-client，tunnel-client 将请求转发到私有 MCP 服务器并通过同一隧道返回响应。]( https://cdn.openai.com/API/docs/images/platform/guides/secure-mcp-tunnels/request-flow-diagram.png)
 
-![图示：OpenAI 产品通过 OpenAI 隧道服务将 MCP JSON-RPC 发送到 tunnel-client，tunnel-client 将请求转发到私有 MCP 服务器并通过同一隧道返回响应。]( https://cdn.openai.com/API/docs/images/platform/guides/secure-mcp-tunnels/request-flow-diagram.png) ![图示：OpenAI 产品通过 OpenAI 隧道服务将 MCP JSON-RPC 发送到 tunnel-client，tunnel-client 将请求转发到私有 MCP 服务器并通过同一隧道返回响应。]( https://cdn.openai.com/API/docs/images/platform/guides/secure-mcp-tunnels/request-flow-diagram.png)
 
 OpenAI 产品调用 OpenAI 托管的隧道端点；`tunnel-client` 长轮询排队的工作并通过同一隧道返回 MCP 响应。
 
@@ -75,9 +74,8 @@ tunnel-client run --profile local-stdio
 
 在创建或测试连接器时，保持 `tunnel-client run ...` 运行正常。连接器发现和 MCP 工具调用依赖于正在运行的客户端。
 
- ![本地 tunnel-client 管理 UI 实时显示健康状态、就绪状态、隧道元数据和通道状态。]( https://cdn.openai.com/API/docs/images/platform/guides/secure-mcp-tunnels/tunnel-client-admin-ui.png) ![本地 tunnel-client 管理 UI 实时显示健康状态、就绪状态、隧道元数据和通道状态。]( https://cdn.openai.com/API/docs/images/platform/guides/secure-mcp-tunnels/tunnel-client-admin-ui.png)
+![本地 tunnel-client 管理 UI 实时显示健康状态、就绪状态、隧道元数据和通道状态。]( https://cdn.openai.com/API/docs/images/platform/guides/secure-mcp-tunnels/tunnel-client-admin-ui.png)
 
-![本地 tunnel-client 管理 UI 实时显示健康状态、就绪状态、隧道元数据和通道状态。]( https://cdn.openai.com/API/docs/images/platform/guides/secure-mcp-tunnels/tunnel-client-admin-ui.png) ![本地 tunnel-client 管理 UI 实时显示健康状态、就绪状态、隧道元数据和通道状态。]( https://cdn.openai.com/API/docs/images/platform/guides/secure-mcp-tunnels/tunnel-client-admin-ui.png)
 
 `/ui` 处的本地管理 UI 显示运行中的客户端是否健康、就绪并已连接，然后你可以从 ChatGPT、Codex 或 API 流程进行测试。
 
@@ -97,9 +95,8 @@ tunnel-client run --profile local-stdio
 
 ## 安全性和网络
 
- ![图示：tunnel-client 在客户控制的环境内通过出站连接到 OpenAI 管理的隧道控制平面，而私有 MCP 服务器保持在客户网络内部。]( https://cdn.openai.com/API/docs/images/platform/guides/secure-mcp-tunnels/trust-boundaries-diagram.png) ![图示：tunnel-client 在客户控制的环境内通过出站连接到 OpenAI 管理的隧道控制平面，而私有 MCP 服务器保持在客户网络内部。]( https://cdn.openai.com/API/docs/images/platform/guides/secure-mcp-tunnels/trust-boundaries-diagram.png)
+![图示：tunnel-client 在客户控制的环境内通过出站连接到 OpenAI 管理的隧道控制平面，而私有 MCP 服务器保持在客户网络内部。]( https://cdn.openai.com/API/docs/images/platform/guides/secure-mcp-tunnels/trust-boundaries-diagram.png)
 
-![图示：tunnel-client 在客户控制的环境内通过出站连接到 OpenAI 管理的隧道控制平面，而私有 MCP 服务器保持在客户网络内部。]( https://cdn.openai.com/API/docs/images/platform/guides/secure-mcp-tunnels/trust-boundaries-diagram.png) ![图示：tunnel-client 在客户控制的环境内通过出站连接到 OpenAI 管理的隧道控制平面，而私有 MCP 服务器保持在客户网络内部。]( https://cdn.openai.com/API/docs/images/platform/guides/secure-mcp-tunnels/trust-boundaries-diagram.png)
 
 私有 MCP 服务器保持在客户控制的环境内。`tunnel-client` 使用运行时 API 密钥通过出站 HTTPS 连接到 OpenAI，在需要时还可使用可选的控制平面 mTLS。
 

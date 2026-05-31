@@ -248,7 +248,6 @@ Tool search
 
 快照允许您锁定模型的特定版本，以便性能和行为保持一致。以下是 GPT-5.4 所有可用快照和别名的列表。
 
-![gpt-5.4]( https://cdn.openai.com/API/docs/images/api/models/icons/gpt-5.4.png)
 
 gpt-5.4
 
