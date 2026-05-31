@@ -1,5 +1,7 @@
 # Sandbox agents
 
+> Run agents in isolated sandbox environments.
+
 沙盒为 agent 提供了一个隔离的、类 Unix 的执行环境，包含文件系统、shell、已安装的包、挂载的数据、暴露的端口、快照以及对外部系统的受控访问。
 
 当模型需要这类工作空间但只能接收提示上下文时，agent 工作流会变得脆弱。大型文档集、生成的产物、命令、预览和可恢复的工作都需要一个 agent 可以检查和修改的环境。

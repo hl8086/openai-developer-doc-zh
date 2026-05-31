@@ -1,5 +1,7 @@
 # Integrations and observability
 
+> Integrate external services and observe agent behavior.
+
 当工作流的形态明确后，接下来的问题是哪些外部接口应该存在于代理循环中，以及你将如何检查运行时实际发生了什么。
 
 ## 选择哪些内容放在 SDK 中

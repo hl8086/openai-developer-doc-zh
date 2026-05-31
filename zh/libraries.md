@@ -1,5 +1,7 @@
 # OpenAI SDK
 
+> Install and configure the OpenAI SDK for your preferred language.
+
 本页介绍了使用 [OpenAI API]( https://developers.openai.com/api/reference) 进行开发的主要方式：用于应用代码的官方 SDK、用于 Shell 原生工作流的 OpenAI CLI、用于编排的 Agents SDK，或者您自己偏好的 HTTP 客户端。
 
 ## 创建并导出 API 密钥

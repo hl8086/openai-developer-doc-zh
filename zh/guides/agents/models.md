@@ -1,5 +1,7 @@
 # Models and providers
 
+> Configure models and providers for agent runs.
+
 每个 SDK 运行最终都会解析出一个模型和一个传输方式。大多数应用应保持该设置简洁明了：显式选择模型，默认使用标准 OpenAI 路径，仅在工作流确实需要时才使用 provider 或 transport 覆盖。
 
 ## 从显式模型选择开始
