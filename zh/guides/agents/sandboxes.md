@@ -1,3 +1,4 @@
+# Sandbox agents
 
 沙盒为 agent 提供了一个隔离的、类 Unix 的执行环境，包含文件系统、shell、已安装的包、挂载的数据、暴露的端口、快照以及对外部系统的受控访问。
 
@@ -11,15 +12,13 @@
 
 保持这些边界分离可以让你的应用程序将敏感的控制平面工作保留在受信任的基础设施中，而沙盒专注于特定提供商的执行。沙盒可以使用窄权限凭证和挂载对文件运行代码；控制层可以将认证、计费、审计日志、人工审核和恢复状态保留在任何单个容器之外。
 
- ![Diagram showing an agent harness running inside sandbox compute with filesystem access and gateway-mediated access to data, APIs, and the web.]( https://cdn.openai.com/API/docs/images/api/agents/harness_with_compute.png) ![Diagram showing an agent harness running inside sandbox compute with filesystem access and gateway-mediated access to data, APIs, and the web.]( https://cdn.openai.com/API/docs/images/api/agents/harness_with_compute.png)
+![Diagram showing an agent harness running inside sandbox compute with filesystem access and gateway-mediated access to data, APIs, and the web.]( https://cdn.openai.com/API/docs/images/api/agents/harness_with_compute.png)
 
-![Diagram showing an agent harness running inside sandbox compute with filesystem access and gateway-mediated access to data, APIs, and the web.]( https://cdn.openai.com/API/docs/images/api/agents/harness_with_compute.png) ![Diagram showing an agent harness running inside sandbox compute with filesystem access and gateway-mediated access to data, APIs, and the web.]( https://cdn.openai.com/API/docs/images/api/agents/harness_with_compute.png)
 
 在沙盒内运行控制层对于原型开发来说很方便，但它将编排和模型指导的执行放在了同一个计算边界内。
 
- ![Diagram showing an agent harness separate from sandbox compute, where the harness accesses trusted services and the sandbox executes commands against a filesystem.]( https://cdn.openai.com/API/docs/images/api/agents/harness_separate_from_compute.png) ![Diagram showing an agent harness separate from sandbox compute, where the harness accesses trusted services and the sandbox executes commands against a filesystem.]( https://cdn.openai.com/API/docs/images/api/agents/harness_separate_from_compute.png)
+![Diagram showing an agent harness separate from sandbox compute, where the harness accesses trusted services and the sandbox executes commands against a filesystem.]( https://cdn.openai.com/API/docs/images/api/agents/harness_separate_from_compute.png)
 
-![Diagram showing an agent harness separate from sandbox compute, where the harness accesses trusted services and the sandbox executes commands against a filesystem.]( https://cdn.openai.com/API/docs/images/api/agents/harness_separate_from_compute.png) ![Diagram showing an agent harness separate from sandbox compute, where the harness accesses trusted services and the sandbox executes commands against a filesystem.]( https://cdn.openai.com/API/docs/images/api/agents/harness_separate_from_compute.png)
 
 控制层可以在你的基础设施中运行，而沙盒处理特定提供商的有状态执行。
 
