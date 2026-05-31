@@ -1,3 +1,4 @@
+# Structured Outputs
 
 JSON 是世界上应用程序之间交换数据最广泛使用的格式之一。
 
