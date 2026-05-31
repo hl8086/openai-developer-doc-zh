@@ -1,7 +1,4 @@
-
-GPT-5.5GPT-5.4GPT-5.3 CodexGPT-5.2GPT-5.1GPT-5GPT-4.1
-
-GPT-5.5
+# Prompt guidance
 
 ## GPT-5.5 提示词指南
 
@@ -267,7 +264,7 @@ Role: [1-2 sentences defining the model's function, context, and job]
 [when to retry, fallback, abstain, ask, or stop]
 ```
 
-GPT-5.4
+---
 
 ## GPT-5.4 提示词指南
 
@@ -893,7 +890,7 @@ GPT-5.4 在任务需要多步骤证据收集、长上下文综合和明确提示
 *   阅读 [Prompt engineering](/guides/prompt-engineering) 了解适用于所有模型系列的更广泛提示策略。
 *   如果你正在 Responses API 中构建长时间运行的 GPT-5.4 会话，请阅读 [压缩](/guides/compaction)。
 
-GPT-5.3 Codex
+---
 
 ## GPT-5.3 Codex 提示词指南
 
@@ -1583,7 +1580,7 @@ write out targeted (but generalized) additions/changes/deletions to your instruc
 *   对于过度思考 / 启动慢：要求它提出减少首次工具调用或首个具体计划时间的指令更改。
 *   对于过于日志式的前导语：要求它重写你的用户更新指令以满足你的特定偏好约束。
 
-GPT-5.2
+---
 
 ## GPT-5.2 提示词指南
 
@@ -2006,7 +2003,7 @@ First deliver what you can (safe partial answers, verified material, or a closel
 If something cannot be verified, say so plainly, explain what you did verify, what remains unknown, and the best next step to resolve it (without asking the user a question).
 ```
 
-GPT-5.1
+---
 
 ## GPT-5.1 提示词指南
 
@@ -2582,7 +2579,7 @@ revised_system_prompt:
 
 在 [文档](/guides/latest-model) 中开始使用 GPT-5.1，或阅读 [博客文章](https://openai.com/index/gpt-5-1-for-developers/) 了解更多。
 
-GPT-5
+---
 
 ## GPT-5 提示词指南
 
