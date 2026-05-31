@@ -215,7 +215,7 @@ if image_data_fwup:
 
 使用图像 ID
 
-**多轮图像生成**
+**多轮图像生成 (Responses API)**
 
 ::: code-group
 ```javascript

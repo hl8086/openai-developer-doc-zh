@@ -645,7 +645,7 @@ curl "https://api.openai.com/v1/responses" \
 
 
 
-**自定义用户位置**
+**自定义用户位置 (Chat Completions API)**
 
 ::: code-group
 ```python

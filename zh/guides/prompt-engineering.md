@@ -397,7 +397,7 @@ curl "https://api.openai.com/v1/responses" \
 
 你可以使用**消息角色**以[不同的权限级别](https://model-spec.openai.com/2025-02-12.html#chain_of_command)向模型提供指令（提示词）。
 
-**使用不同角色的消息生成文本**
+**使用不同角色的消息生成文本 (Chat Completions API)**
 
 ::: code-group
 ```javascript

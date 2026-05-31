@@ -93,7 +93,7 @@ print(response.output_text)
 
 
 
-**分类 IT 支持工单**
+**分类 IT 支持工单 (Chat Completions API)**
 
 ::: code-group
 ```curl

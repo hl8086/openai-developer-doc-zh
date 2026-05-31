@@ -272,7 +272,7 @@ Console.WriteLine(response.GetOutputText());
 
 
 
-**上传文件**
+**上传文件 (Chat Completions API)**
 
 ::: code-group
 ```curl
@@ -481,7 +481,7 @@ print(response.output_text)
 
 
 
-**发送 Base64 编码文件**
+**发送 Base64 编码文件 (Chat Completions API)**
 
 ::: code-group
 ```curl

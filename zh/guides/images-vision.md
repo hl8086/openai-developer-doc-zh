@@ -198,7 +198,7 @@ curl https://api.openai.com/v1/chat/completions \
 
 传递 Base64 编码图像
 
-**分析图像内容**
+**分析图像内容 (Chat Completions API)**
 
 ::: code-group
 ```javascript

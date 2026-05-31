@@ -286,7 +286,7 @@ Responses
 
 使用 Responses，你可以在顶层分离 instructions 和 input。API 形状与 Chat Completions 类似，但语义更清晰。
 
-**从模型生成文本**
+**从模型生成文本 (Responses API)**
 
 ::: code-group
 ```javascript
@@ -493,7 +493,7 @@ Responses
 
 使用 Responses，模式类似，你可以将一个响应的输出传递给另一个响应的输入。
 
-**多轮对话**
+**多轮对话 (Responses API)**
 
 ::: code-group
 ```python
@@ -805,7 +805,7 @@ const completion = await openai.chat.completions.create({
 
 Responses
 
-**结构化输出**
+**结构化输出 (Responses API)**
 
 ::: code-group
 ```bash
@@ -926,7 +926,7 @@ Chat Completions
 
 使用 Chat Completions，你无法原生使用 OpenAI 的工具，必须自己编写。
 
-**Web search 工具**
+**Web search 工具 (Chat Completions API)**
 
 ::: code-group
 ```javascript

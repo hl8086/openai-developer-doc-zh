@@ -764,7 +764,7 @@ const completion = await openai.chat.completions.create({
 
 将结果追加到 `input` 后，你可以将它们发送回模型以获取最终响应。
 
-**将结果发送回模型**
+**将结果发送回模型 (Responses API)**
 
 ::: code-group
 ```python

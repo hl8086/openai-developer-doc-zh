@@ -64,7 +64,7 @@ curl https://api.openai.com/v1/responses \
 
 
 
-**Flex processing 示例**
+**Flex processing 示例 (Chat Completions API)**
 
 ::: code-group
 ```javascript

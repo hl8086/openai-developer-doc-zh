@@ -58,7 +58,7 @@ print(response.choices[0].message.content)
 
 
 
-**手动构建过去的对话**
+**手动构建过去的对话 (Responses API)**
 
 ::: code-group
 ```javascript

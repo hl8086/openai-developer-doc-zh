@@ -67,7 +67,7 @@ event = completion.choices[0].message.parsed
 
 
 
-**获取结构化响应**
+**获取结构化响应 (Responses API)**
 
 ::: code-group
 ```javascript
@@ -324,7 +324,7 @@ curl https://api.openai.com/v1/chat/completions \
 
 
 
-**用于思维链数学辅导的 Structured Outputs**
+**用于思维链数学辅导的 Structured Outputs (Responses API)**
 
 ::: code-group
 ```javascript
@@ -580,7 +580,7 @@ curl https://api.openai.com/v1/chat/completions \
 
 
 
-**使用 Structured Outputs 从研究论文中提取数据**
+**使用 Structured Outputs 从研究论文中提取数据 (Responses API)**
 
 ::: code-group
 ```javascript
@@ -870,7 +870,7 @@ curl https://api.openai.com/v1/chat/completions \
 
 
 
-**使用 Structured Outputs 生成 HTML**
+**使用 Structured Outputs 生成 HTML (Responses API)**
 
 ::: code-group
 ```javascript
@@ -1227,7 +1227,7 @@ curl https://api.openai.com/v1/chat/completions \
 
 
 
-**使用 Structured Outputs 进行内容审核**
+**使用 Structured Outputs 进行内容审核 (Responses API)**
 
 ::: code-group
 ```javascript
