@@ -1,3 +1,4 @@
+# 开发者快速入门
 
 OpenAI API 提供了一个简洁的接口，可访问最先进的 AI [模型](/models)，用于文本生成、自然语言处理、计算机视觉等。首先创建一个 API Key 并运行你的第一个 API 调用。了解如何生成文本、分析图像、构建智能体等。
 
@@ -17,23 +18,15 @@ OpenAI Developers 插件使 Codex 能够连接到 OpenAI 平台，遵循 OpenAI 
 
 在开始之前，请在控制面板中创建一个 API 密钥，你将使用它来安全地[访问 API]( https://developers.openai.com/api/reference/authentication)。将密钥存储在安全的位置，例如 [`.zshrc` 文件](https://www.freecodecamp.org/news/how-do-zsh-configuration-files-work/)或计算机上的其他文本文件中。生成 API 密钥后，在终端中将其导出为[环境变量](https://en.wikipedia.org/wiki/Environment_variable)。
 
-macOS / LinuxWindows
-
-macOS / Linux
-
-在 macOS 或 Linux 系统上导出环境变量
-
-```
+::: code-group
+```bash [macOS / Linux]
 export OPENAI_API_KEY="your_api_key_here"
 ```
 
-Windows
-
-在 PowerShell 中导出环境变量
-
-```
+```powershell [Windows]
 setx OPENAI_API_KEY "your_api_key_here"
 ```
+:::
 
 OpenAI SDK 配置为自动从系统环境中读取你的 API 密钥。
 
