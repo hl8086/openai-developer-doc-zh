@@ -1,0 +1,19 @@
+<!-- Source: https://developers.openai.com/api/docs/guides/red-teaming -->
+
+红队测试使用对抗性测试用例来帮助在部署前发现不安全、不可靠或违反策略的行为。它通过关注滥用场景、故障模式和高风险交互来补充评估，这些是普通质量测试可能无法暴露的问题。
+
+**重要提示：** 仅向 OpenAI Red Teaming 提交您拥有或明确授权测试的代码或其他资产。未经 OpenAI 明确书面许可，请勿使用 OpenAI Red Teaming 分析或报告开源或任何第三方代码中的漏洞。
+
+## 使用 Promptfoo 进行开源红队测试
+
+[Promptfoo](https://github.com/promptfoo/promptfoo) 是一个用于评估提示词、智能体和 AI 应用的开源框架。其红队测试工作流可帮助您生成对抗性测试用例、检查目标行为，并利用结果改进您的系统。
+
+有关更广泛的开源方法论，请参阅 Promptfoo 的 [LLM 红队测试指南](https://www.promptfoo.dev/docs/red-team/)。
+
+## 企业可用性
+
+OpenAI Red Teaming 面向需要托管方案来对 AI 应用和智能体进行红队测试的企业客户。企业工作流可以支持比独立本地工作流更广泛的协调、审查和报告需求。
+
+## 红队测试与评估
+
+使用[评估](/api/docs/guides/evals)来衡量 AI 系统是否按预期运行。使用红队测试来探测该系统在对抗性、滥用性或意外输入下的行为表现。成熟的评估项目通常会同时使用两者。
