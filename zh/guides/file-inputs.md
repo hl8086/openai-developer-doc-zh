@@ -44,6 +44,7 @@ API 不会将整个工作表传递给模型，而是解析每个工作表的前 
 
 **使用外部文件 URL**
 
+::: code-group
 ```curl
 curl "https://api.openai.com/v1/responses" \
     -H "Content-Type: application/json" \
@@ -120,7 +121,6 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
-
 ```csharp
 using OpenAI.Files;
 using OpenAI.Responses;
@@ -143,6 +143,8 @@ OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
 Console.WriteLine(response.GetOutputText());
 ```
 
+:::
+
 Chat Completions 不支持文件 URL。请使用 [Responses API](/guides/file-inputs?api-mode=responses#file-urls) 来实现此选项。
 
 ## 上传文件
@@ -151,6 +153,7 @@ Chat Completions 不支持文件 URL。请使用 [Responses API](/guides/file-in
 
 **上传文件**
 
+::: code-group
 ```curl
 curl https://api.openai.com/v1/files \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -243,7 +246,6 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
-
 ```csharp
 using OpenAI.Files;
 using OpenAI.Responses;
@@ -264,8 +266,11 @@ OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
 Console.WriteLine(response.GetOutputText());
 ```
 
+:::
+
 **上传文件**
 
+::: code-group
 ```curl
 curl https://api.openai.com/v1/files \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -364,6 +369,8 @@ completion = client.chat.completions.create(
 print(completion.choices[0].message.content)
 ```
 
+:::
+
 
 
 ## Base64 编码文件
@@ -372,6 +379,7 @@ print(completion.choices[0].message.content)
 
 **发送 Base64 编码文件**
 
+::: code-group
 ```curl
 curl "https://api.openai.com/v1/responses" \
     -H "Content-Type: application/json" \
@@ -461,10 +469,13 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
+:::
+
 
 
 **发送 Base64 编码文件**
 
+::: code-group
 ```curl
 curl "https://api.openai.com/v1/chat/completions" \
     -H "Content-Type: application/json" \
@@ -559,6 +570,8 @@ completion = client.chat.completions.create(
 
 print(completion.choices[0].message.content)
 ```
+
+:::
 
 
 

@@ -192,7 +192,6 @@ import (
 
 测试基本 API 请求
 
-::: code-group
 ```go
 package main
 
@@ -256,6 +255,7 @@ Image URL
 
 分析图像内容
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -365,10 +365,12 @@ Console.WriteLine(response.GetOutputText());
 
 :::
 
+
 File URL
 
 **使用文件 URL 作为输入**
 
+::: code-group
 ```curl
 curl "https://api.openai.com/v1/responses" \
     -H "Content-Type: application/json" \
@@ -445,7 +447,6 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
-
 ```csharp
 using OpenAI.Files;
 using OpenAI.Responses;
@@ -467,6 +468,8 @@ OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
 
 Console.WriteLine(response.GetOutputText());
 ```
+
+:::
 
 Upload file
 
@@ -565,7 +568,6 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
-
 ```csharp
 using OpenAI.Files;
 using OpenAI.Responses;
@@ -586,6 +588,8 @@ OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
 Console.WriteLine(response.GetOutputText());
 ```
 
+:::
+
 [图像输入指南 - 了解如何使用图像输入模型并从图像中提取含义。](/guides/images)
 
 [文件输入指南 - 了解如何使用文件输入模型并从文档中提取含义。](/guides/file-inputs)
@@ -600,6 +604,7 @@ Web search
 
 在响应中使用网络搜索
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -668,10 +673,13 @@ OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
 Console.WriteLine(response.GetOutputText());
 ```
 
+:::
+
 File search
 
 **在响应中搜索你的文件**
 
+::: code-group
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -722,10 +730,13 @@ OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
 Console.WriteLine(response.GetOutputText());
 ```
 
+:::
+
 Function calling
 
 调用你自己的函数
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -868,6 +879,7 @@ curl -X POST https://api.openai.com/v1/responses \
 
 :::
 
+
 Remote MCP
 
 **调用远程 MCP 服务器**
@@ -935,7 +947,6 @@ resp = client.responses.create(
 print(resp.output_text)
 ```
 
-
 ```csharp
 using OpenAI.Responses;
 
@@ -958,6 +969,8 @@ OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
 Console.WriteLine(response.GetOutputText());
 ```
 
+:::
+
 [使用内置工具 - 了解强大的内置工具，如网络搜索和文件搜索。](/guides/tools)
 
 [函数调用指南 - 了解如何让模型调用你自己的自定义代码。](/guides/function-calling)
@@ -968,6 +981,7 @@ Console.WriteLine(response.GetOutputText());
 
 **从 API 流式传输服务器发送事件**
 
+::: code-group
 ```javascript
 import { OpenAI } from "openai";
 const client = new OpenAI();
@@ -1028,6 +1042,8 @@ await foreach (var response in responses)
 }
 ```
 
+:::
+
 [使用流式事件 - 使用服务器发送事件将模型响应快速流式传输给用户。](/guides/streaming-responses)
 
 [开始使用 Realtime API - 使用 WebRTC 或 WebSockets 构建超快的语音对语音 AI 应用。](/guides/realtime)
@@ -1038,6 +1054,7 @@ await foreach (var response in responses)
 
 构建语言分流智能体
 
+::: code-group
 ```javascript
 import { Agent, run } from '@openai/agents';
 
@@ -1093,6 +1110,7 @@ if __name__ == "__main__":
 ```
 
 :::
+
 
 
 [构建能够执行操作的智能体 - 了解如何使用 OpenAI 平台构建强大、高效的 AI 智能体。](/guides/agents)

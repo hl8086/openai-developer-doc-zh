@@ -114,6 +114,7 @@ PY
 
 **从 Azure 托管标识令牌进行身份验证**
 
+::: code-group
 ```typescript
 import OpenAI from "openai";
 import type { SubjectTokenProvider } from "openai/auth";
@@ -544,6 +545,8 @@ response = client.responses.create(
 puts(response.output_text)
 ```
 
+:::
+
 
 ## Azure Kubernetes Service (AKS)
 
@@ -693,6 +696,7 @@ PY
 
 **从 AKS 投射服务账户令牌进行身份验证**
 
+::: code-group
 ```typescript
 import { readFile } from "node:fs/promises";
 import OpenAI from "openai";
@@ -771,8 +775,11 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
+:::
 
 
+
+::: code-group
 ```go
 package main
 
@@ -982,6 +989,8 @@ response = client.responses.create(
 
 puts(response.output_text)
 ```
+
+:::
 
 
 ## Microsoft Azure 最佳实践

@@ -220,6 +220,8 @@ response = client.responses.create(
 )
 ```
 
+:::
+
 
 
 Chat CompletionsResponses
@@ -230,6 +232,7 @@ Chat Completions
 
 **从模型生成文本**
 
+::: code-group
 ```javascript
 import OpenAI from 'openai';
 const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
@@ -271,6 +274,8 @@ curl https://api.openai.com/v1/chat/completions \
   }'
 ```
 
+:::
+
 
 
 Responses
@@ -279,6 +284,7 @@ Responses
 
 **从模型生成文本**
 
+::: code-group
 ```javascript
 import OpenAI from 'openai';
 const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
@@ -314,6 +320,8 @@ curl https://api.openai.com/v1/responses \
       "input": "Hello!"
   }'
 ```
+
+:::
 
 
 
@@ -327,6 +335,7 @@ Chat Completions
 
 **从模型生成文本**
 
+::: code-group
 ```javascript
 import OpenAI from 'openai';
 const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
@@ -368,6 +377,8 @@ curl https://api.openai.com/v1/chat/completions \
   }'
 ```
 
+:::
+
 
 
 Responses
@@ -376,6 +387,7 @@ Responses
 
 **从模型生成文本**
 
+::: code-group
 ```javascript
 import OpenAI from 'openai';
 const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
@@ -411,6 +423,8 @@ curl https://api.openai.com/v1/responses \
       "input": "Hello!"
   }'
 ```
+
+:::
 
 
 
@@ -426,6 +440,7 @@ Chat Completions
 
 **多轮对话**
 
+::: code-group
 ```javascript
 let messages = [
     { 'role': 'system', 'content': 'You are a helpful assistant.' },
@@ -459,6 +474,7 @@ res2 = client.chat.completions.create(model="gpt-5", messages=messages)
 ```
 
 :::
+
 
 
 Responses
@@ -513,11 +529,14 @@ const res2 = await client.responses.create({
 });
 ```
 
+:::
+
 
 作为简化，我们还构建了一种方式，通过传递 id 来简单引用之前响应的输入和输出。你可以使用 `previous_response_id` 来形成相互构建的响应链或在历史记录中创建分支。
 
 **多轮对话**
 
+::: code-group
 ```javascript
 const res1 = await client.responses.create({
   model: 'gpt-5',
@@ -549,6 +568,7 @@ res2 = client.responses.create(
 ```
 
 :::
+
 
 
 ### 4\. 决定何时使用有状态功能
@@ -634,6 +654,7 @@ Chat Completions
 
 **结构化输出**
 
+::: code-group
 ```bash
 curl https://api.openai.com/v1/chat/completions \
   -H "Content-Type: application/json" \
@@ -760,6 +781,8 @@ const completion = await openai.chat.completions.create({
 });
 ```
 
+:::
+
 
 
 Responses
@@ -869,6 +892,8 @@ const response = await openai.responses.create({
 });
 ```
 
+:::
+
 
 
 ### 7\. 升级到原生工具
@@ -883,6 +908,7 @@ Chat Completions
 
 **Web search 工具**
 
+::: code-group
 ```javascript
 async function web_search(query) {
     const fetch = (await import('node-fetch')).default;
@@ -945,6 +971,8 @@ curl https://api.example.com/search \
   --data-urlencode "key=$SEARCH_API_KEY"
 ```
 
+:::
+
 
 
 Responses
@@ -953,6 +981,7 @@ Responses
 
 **Web search 工具**
 
+::: code-group
 ```javascript
 const answer = await client.responses.create({
     model: 'gpt-5.5',
@@ -985,6 +1014,7 @@ curl https://api.openai.com/v1/responses \
 ```
 
 :::
+
 
 
 

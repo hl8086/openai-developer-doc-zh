@@ -21,6 +21,7 @@
 
 **分类 IT 支持工单**
 
+::: code-group
 ```curl
 curl https://api.openai.com/v1/responses \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -86,10 +87,13 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
+:::
+
 
 
 **分类 IT 支持工单**
 
+::: code-group
 ```curl
 curl https://api.openai.com/v1/chat/completions \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -154,6 +158,8 @@ completion = client.chat.completions.create(
 print(completion.choices[0].message.content)
 ```
 
+:::
+
 
 
 让我们设置一个评估来[通过 API]( https://developers.openai.com/api/reference/evals) 测试此行为。评估需要两个关键要素：
@@ -163,6 +169,7 @@ print(completion.choices[0].message.content)
 
 **创建评估**
 
+::: code-group
 ```curl
 curl https://api.openai.com/v1/evals \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -257,6 +264,8 @@ eval_obj = client.evals.create(
 print(eval_obj)
 ```
 
+:::
+
 
 
 说明：data\_source\_config 参数
@@ -350,6 +359,7 @@ print(eval_obj)
 
 **上传测试数据文件**
 
+::: code-group
 ```curl
 curl https://api.openai.com/v1/files \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -383,6 +393,8 @@ file = client.files.create(
 print(file)
 ```
 
+:::
+
 
 
 上传文件时，请记下响应负载中的唯一 `id` 属性（如果通过浏览器上传，也可以在 UI 中找到）——我们稍后需要引用该值：
@@ -409,6 +421,7 @@ print(file)
 
 **创建评估运行**
 
+::: code-group
 ```curl
 curl https://api.openai.com/v1/evals/YOUR_EVAL_ID/runs \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -477,10 +490,13 @@ run = client.evals.runs.create(
 print(run)
 ```
 
+:::
+
 
 
 **创建评估运行**
 
+::: code-group
 ```curl
 curl https://api.openai.com/v1/evals/YOUR_EVAL_ID/runs \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -548,6 +564,8 @@ run = client.evals.runs.create(
 
 print(run)
 ```
+
+:::
 
 
 
@@ -661,6 +679,7 @@ print(run)
 
 **获取评估运行状态**
 
+::: code-group
 ```curl
 curl https://api.openai.com/v1/evals/YOUR_EVAL_ID/runs/YOUR_RUN_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -684,6 +703,8 @@ client = OpenAI()
 run = client.evals.runs.retrieve("YOUR_EVAL_ID", "YOUR_RUN_ID")
 print(run)
 ```
+
+:::
 
 
 

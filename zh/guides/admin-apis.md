@@ -73,6 +73,8 @@ OpenAIClient client = OpenAIOkHttpClient.builder()
     .build();
 ```
 
+:::
+
 
 ## 限制项目的模型访问
 
@@ -80,6 +82,7 @@ OpenAIClient client = OpenAIOkHttpClient.builder()
 
 **设置项目模型允许列表/拒绝列表**
 
+::: code-group
 ```javascript
 const modelPermissions =
   await client.admin.organization.projects.modelPermissions.update("proj_abc", {
@@ -148,6 +151,8 @@ ProjectModelPermissions modelPermissions = client.admin()
 System.out.println(modelPermissions.mode());
 ```
 
+:::
+
 
 ## 管理支出限额警报
 
@@ -155,6 +160,7 @@ System.out.println(modelPermissions.mode());
 
 **创建项目支出限额警报**
 
+::: code-group
 ```javascript
 const spendAlert =
   await client.admin.organization.projects.spendAlerts.create("proj_abc", {
@@ -253,6 +259,8 @@ ProjectSpendAlert spendAlert = client.admin()
 System.out.println(spendAlert.id());
 ```
 
+:::
+
 
 ## 管理数据保留
 
@@ -260,6 +268,7 @@ System.out.println(spendAlert.id());
 
 **设置项目数据保留**
 
+::: code-group
 ```javascript
 const dataRetention =
   await client.admin.organization.projects.dataRetention.update("proj_abc", {
@@ -322,6 +331,8 @@ ProjectDataRetention dataRetention = client.admin()
 System.out.println(dataRetention.type());
 ```
 
+:::
+
 
 ## 通过邮箱邀请用户
 
@@ -329,6 +340,7 @@ System.out.println(dataRetention.type());
 
 **通过邮箱邀请用户**
 
+::: code-group
 ```javascript
 const invite = await client.admin.organization.invites.create({
   email: "user@example.com",
@@ -384,6 +396,8 @@ Invite invite = client.admin().organization().invites().create(
 System.out.println(invite.id());
 ```
 
+:::
+
 
 ## 检索审计日志
 
@@ -391,6 +405,7 @@ System.out.println(invite.id());
 
 **检索审计日志**
 
+::: code-group
 ```javascript
 const auditLogs = await client.admin.organization.auditLogs.list({
   limit: 10,
@@ -442,4 +457,5 @@ page.data().forEach(auditLog -> System.out.println(auditLog.id()));
 ```
 
 :::
+
 

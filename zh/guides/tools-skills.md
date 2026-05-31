@@ -55,6 +55,7 @@ curl -X POST 'https://api.openai.com/v1/skills' \
 
 **在托管 shell 中使用 skills**
 
+::: code-group
 ```curl
 curl -L 'https://api.openai.com/v1/responses' \
   -H "Content-Type: application/json" \
@@ -127,6 +128,8 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
+:::
+
 ### 提示行为
 
 一旦 skill 被挂载，模型可以自行决定何时使用它。如果你想要更确定性的行为，请在适当时明确指示模型"使用 `&lt;skill name>` skill"。
@@ -142,6 +145,7 @@ Skills 也适用于本地 shell 模式，但本地 shell 和托管 shell 不接�
 
 **在本地 shell 模式中使用 skills**
 
+::: code-group
 ```curl
 curl -L 'https://api.openai.com/v1/responses' \
   -H "Content-Type: application/json" \
@@ -222,6 +226,8 @@ response = client.responses.create(
 
 print(response.output_text)
 ```
+
+:::
 
 ## 用户提示中的 Skills
 

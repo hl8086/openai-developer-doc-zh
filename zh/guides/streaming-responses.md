@@ -7,6 +7,7 @@
 
 要开始流式传输响应，请在向 Responses 端点发送请求时设置 `stream=True`：
 
+::: code-group
 ```javascript
 import { OpenAI } from "openai";
 const client = new OpenAI();
@@ -66,6 +67,8 @@ await foreach (var response in responses)
     }
 }
 ```
+
+:::
 
 Responses API 使用语义事件进行流式传输。每个事件都有预定义的类型和模式，因此你可以监听你关心的事件。
 

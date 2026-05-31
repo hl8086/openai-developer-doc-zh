@@ -22,6 +22,7 @@ Using remote MCP servers
 
 **在 Responses API 中使用远程 MCP 服务器**
 
+::: code-group
 ```curl
 curl https://api.openai.com/v1/responses \ 
 -H "Content-Type: application/json" \ 
@@ -84,7 +85,6 @@ resp = client.responses.create(
 print(resp.output_text)
 ```
 
-
 ```csharp
 using OpenAI.Responses;
 
@@ -107,6 +107,8 @@ OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
 Console.WriteLine(response.GetOutputText());
 ```
 
+:::
+
 开发者信任其使用的任何远程 MCP 服务器非常重要。恶意服务器可以从进入模型上下文的任何内容中窃取敏感数据。在使用此工具之前，请仔细阅读下方的**风险与安全**部分。
 
 Using connectors
@@ -115,6 +117,7 @@ Using connectors
 
 **在 Responses API 中使用连接器**
 
+::: code-group
 ```curl
 curl https://api.openai.com/v1/responses \
 -H "Content-Type: application/json" \
@@ -177,7 +180,6 @@ resp = client.responses.create(
 print(resp.output_text)
 ```
 
-
 ```csharp
 using OpenAI.Responses;
 
@@ -201,6 +203,8 @@ OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
 
 Console.WriteLine(response.GetOutputText());
 ```
+
+:::
 
 API 将在模型响应的 `output` 数组中返回新的项目。如果模型决定使用连接器或 MCP 服务器，它将首先向服务器请求可用工具列表，这将创建一个 `mcp_list_tools` 输出项。从上面简单的远程 MCP 服务器示例中，它只包含一个工具定义：
 
@@ -293,6 +297,7 @@ MCP 工具（适用于远程 MCP 服务器和连接器）在 [Responses API]( ht
 
 **限制允许的工具**
 
+::: code-group
 ```curl
 curl https://api.openai.com/v1/responses \
 -H "Content-Type: application/json" \
@@ -354,7 +359,6 @@ resp = client.responses.create(
 print(resp.output_text)
 ```
 
-
 ```csharp
 using OpenAI.Responses;
 
@@ -377,6 +381,8 @@ OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
 
 Console.WriteLine(response.GetOutputText());
 ```
+
+:::
 
 ### 步骤 2：调用工具
 
@@ -417,6 +423,7 @@ Console.WriteLine(response.GetOutputText());
 
 **在 API 请求中批准工具的使用**
 
+::: code-group
 ```curl
 curl https://api.openai.com/v1/responses \
 -H "Content-Type: application/json" \
@@ -490,7 +497,6 @@ resp = client.responses.create(
 print(resp.output_text)
 ```
 
-
 ```csharp
 using OpenAI.Responses;
 
@@ -522,12 +528,15 @@ OpenAIResponse response2 = (OpenAIResponse)client.CreateResponse([
 Console.WriteLine(response2.GetOutputText());
 ```
 
+:::
+
 这里我们使用 `previous_response_id` 参数将这个新的 Response 与生成审批请求的前一个 Response 链接起来。但你也可以将[一个响应的输出作为另一个响应的输入](/guides/conversation-state#manually-manage-conversation-state)传递，以最大程度地控制进入模型上下文的内容。
 
 如果你觉得可以信任某个远程 MCP 服务器，可以选择跳过审批以降低延迟。为此，你可以将 MCP 工具的 `require_approval` 参数设置为一个对象，列出你想跳过审批的工具，如下所示，或将其设置为 `'never'` 以跳过该远程 MCP 服务器中所有工具的审批。
 
 **对某些工具永不要求审批**
 
+::: code-group
 ```curl
 curl https://api.openai.com/v1/responses \
 -H "Content-Type: application/json" \
@@ -599,7 +608,6 @@ resp = client.responses.create(
 print(resp.output_text)
 ```
 
-
 ```csharp
 using OpenAI.Responses;
 
@@ -623,12 +631,15 @@ OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
 Console.WriteLine(response.GetOutputText());
 ```
 
+:::
+
 ## 认证
 
 与[我们上面使用的示例 MCP 服务器](https://dash.deno.com/playground/dmcp-server)不同，大多数其他 MCP 服务器需要认证。最常见的方案是 OAuth 访问令牌。使用 MCP 工具的 `authorization` 字段提供此令牌：
 
 **使用 Stripe MCP 工具**
 
+::: code-group
 ```curl
 curl https://api.openai.com/v1/responses \
 -H "Content-Type: application/json" \
@@ -688,7 +699,6 @@ resp = client.responses.create(
 print(resp.output_text)
 ```
 
-
 ```csharp
 using OpenAI.Responses;
 
@@ -711,6 +721,8 @@ OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
 
 Console.WriteLine(response.GetOutputText());
 ```
+
+:::
 
 为防止敏感令牌泄露，Responses API 不会存储你在 `authorization` 字段中提供的值。此值也不会在创建的 Response 对象中可见。因此，你必须在每次 Responses API 创建请求中发送 `authorization` 值。
 
@@ -751,6 +763,7 @@ https://www.googleapis.com/auth/calendar.events
 
 **使用 Google Calendar 连接器**
 
+::: code-group
 ```curl
 curl https://api.openai.com/v1/responses \
   -H "Content-Type: application/json" \
@@ -813,7 +826,6 @@ resp = client.responses.create(
 print(resp.output_text)
 ```
 
-
 ```csharp
 using OpenAI.Responses;
 
@@ -837,6 +849,8 @@ OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
 
 Console.WriteLine(response.GetOutputText());
 ```
+
+:::
 
 来自连接器的 MCP 工具调用与来自远程 MCP 服务器的 MCP 工具调用看起来相同，使用 `mcp_call` 输出项类型。在这种情况下，连接器的参数和响应都是 JSON 字符串：
 

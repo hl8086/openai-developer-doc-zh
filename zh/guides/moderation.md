@@ -52,11 +52,14 @@ curl https://api.openai.com/v1/moderations \
 }'
 ```
 
+:::
+
 
 审核图像和文本
 
 **获取图像和文本输入的分类信息**
 
+::: code-group
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -124,6 +127,7 @@ curl https://api.openai.com/v1/moderations \
 ```
 
 :::
+
 
 
 以下是一个完整的输出示例，其中输入是一部战争电影的单帧图像。模型正确预测了图像中的暴力指标，`violence` 类别分数大于 0.8。

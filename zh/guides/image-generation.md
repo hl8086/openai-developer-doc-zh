@@ -102,11 +102,14 @@ if image_data:
         f.write(base64.b64decode(image_base64))
 ```
 
+:::
+
 
 Image API
 
 **生成图像**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 import fs from "fs";
@@ -169,6 +172,8 @@ openai images generate \
   --transform 'data.0.b64_json' | base64 --decode > otter.png
 ```
 
+:::
+
 ### 多轮图像生成
 
 使用 Responses API，你可以通过在上下文中提供图像生成调用输出（也可以只使用图像 ID），或使用 [`previous_response_id` 参数](/guides/conversation-state?api-mode=responses#openai-apis-for-conversation-state)来构建涉及图像生成的多轮对话。这让你可以跨多个轮次迭代图像——优化提示、应用新指令，并随着对话进展演变视觉输出。
@@ -177,6 +182,7 @@ openai images generate \
 
 **使用 action 强制创建图像**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const openai = new OpenAI();
@@ -224,6 +230,8 @@ if image_data:
         f.write(base64.b64decode(image_base64))
 ```
 
+:::
+
 
 如果你在上下文中没有提供图像时强制使用 `edit`，调用将返回错误。将 `action` 保持为 `auto` 让模型自行决定何时生成或编辑。
 
@@ -233,6 +241,7 @@ if image_data:
 
 **多轮图像生成**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const openai = new OpenAI();
@@ -323,11 +332,14 @@ if image_data_fwup:
         f.write(base64.b64decode(image_base64))
 ```
 
+:::
+
 
 使用 image ID
 
 **多轮图像生成**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const openai = new OpenAI();
@@ -436,6 +448,8 @@ if image_data_fwup:
         f.write(base64.b64decode(image_base64))
 ```
 
+:::
+
 #### 结果
 
 <table style="width:100%"><tbody><tr><td style="vertical-align:top;padding:0 16px 16px 0">"Generate an image of gray tabby cat hugging an otter with an orange scarf"</td><td style="text-align:right;vertical-align:top;padding-bottom:16px"><img src="https://cdn.openai.com/API/docs/images/cat_and_otter.png" alt="一只猫和一只水獭" style="width:200px;border-radius:8px"></td></tr><tr><td style="vertical-align:top;padding:0 16px 0 0">"Now make it look realistic"</td><td style="text-align:right;vertical-align:top"><img src="https://cdn.openai.com/API/docs/images/cat_and_otter_realistic.png" alt="一只猫和一只水獭" style="width:200px;border-radius:8px"></td></tr></tbody></table>
@@ -455,6 +469,7 @@ Responses API
 
 **流式传输图像**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 import fs from "fs";
@@ -500,12 +515,15 @@ for event in stream:
             f.write(image_bytes)
 ```
 
+:::
+
 
 
 Image API
 
 **流式传输图像**
 
+::: code-group
 ```javascript
 import fs from "fs";
 import OpenAI from "openai";
@@ -554,6 +572,7 @@ for event in stream:
 ```
 
 :::
+
 
 
 #### 结果
@@ -614,6 +633,7 @@ Responses API
 
 **创建文件**
 
+::: code-group
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -643,6 +663,8 @@ async function createFile(filePath) {
 }
 ```
 
+:::
+
 
 #### 创建 base64 编码图像
 
@@ -663,9 +685,12 @@ function encodeImage(filePath) {
 }
 ```
 
+:::
+
 
 **编辑图像**
 
+::: code-group
 ```python
 from openai import OpenAI
 import base64
@@ -784,11 +809,14 @@ if (imageData.length > 0) {
 }
 ```
 
+:::
+
 
 Image API
 
 **编辑图像**
 
+::: code-group
 ```python
 import base64
 from openai import OpenAI
@@ -883,6 +911,8 @@ openai images edit \
   --transform 'data.0.b64_json' | base64 --decode > gift-basket.png
 ```
 
+:::
+
 ### 使用蒙版编辑图像
 
 你可以提供蒙版来指示图像的哪个部分应该被编辑。
@@ -899,6 +929,7 @@ Responses API
 
 **使用蒙版编辑图像**
 
+::: code-group
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -992,11 +1023,14 @@ if (imageData.length > 0) {
 }
 ```
 
+:::
+
 
 Image API
 
 **使用蒙版编辑图像**
 
+::: code-group
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -1061,6 +1095,7 @@ openai images edit \
 ```
 
 :::
+
 
 | 图像 | 蒙版 | 输出 |
 | --- | --- | --- |

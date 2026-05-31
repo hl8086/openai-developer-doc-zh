@@ -663,6 +663,7 @@ PY
 
 **从 GKE 投射服务账号令牌进行身份验证**
 
+::: code-group
 ```typescript
 import { readFile } from "node:fs/promises";
 import OpenAI from "openai";
@@ -741,8 +742,11 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
+:::
 
 
+
+::: code-group
 ```go
 package main
 
@@ -952,6 +956,8 @@ response = client.responses.create(
 
 puts(response.output_text)
 ```
+
+:::
 
 
 ## Google Cloud 最佳实践

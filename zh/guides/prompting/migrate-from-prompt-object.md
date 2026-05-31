@@ -56,12 +56,15 @@ curl https://api.openai.com/v1/responses \
   }'
 ```
 
+:::
+
 
 
 ## 之后：在代码中内联提示
 
 **在代码中内联提示**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -137,6 +140,7 @@ curl https://api.openai.com/v1/responses \
 ```
 
 :::
+
 
 
 

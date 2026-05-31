@@ -90,7 +90,6 @@ Batch API 提供了一组简单的端点，允许您将一组请求收集到单�
     ]
   }
 }
-::: code-group
 ```javascript
 
 建议使用 `image_url` 引用远程资源（而非 base64 blob），以使您的 `.jsonl` 文件远低于 200 MB 的 Batch 上传限制，尤其是对于多模态 Moderations 请求。
@@ -126,6 +125,7 @@ batch_input_file = client.files.create(
 print(batch_input_file)
 ```
 
+::: code-group
 ```curl
 curl https://api.openai.com/v1/files \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -139,12 +139,15 @@ openai files create \
   --purpose batch
 ```
 
+:::
+
 ### 3\. 创建批次
 
 成功上传输入文件后，您可以使用输入 File 对象的 ID 来创建批次。在本例中，假设文件 ID 为 `file-abc123`。目前，完成窗口只能设置为 `24h`。您还可以通过可选的 `metadata` 参数提供自定义元数据。
 
 **创建批次**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const openai = new OpenAI();
@@ -193,6 +196,7 @@ openai batches create \
 
 :::
 
+
 此请求将返回一个包含批次元数据的 [Batch 对象]( https://developers.openai.com/api/reference/batch/object)：
 
 ```
@@ -219,7 +223,6 @@ openai batches create \
   },
   "metadata": null
 }
-::: code-group
 ```javascript
 
 ### 4\. 检查批次状态
@@ -244,6 +247,7 @@ batch = client.batches.retrieve("batch_abc123")
 print(batch)
 ```
 
+::: code-group
 ```curl
 curl https://api.openai.com/v1/batches/batch_abc123 \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -254,6 +258,8 @@ curl https://api.openai.com/v1/batches/batch_abc123 \
 openai batches retrieve \
   --batch-id batch_abc123
 ```
+
+:::
 
 给定 Batch 对象的状态可以是以下任何一种：
 
@@ -274,6 +280,7 @@ openai batches retrieve \
 
 **检索批次结果**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const openai = new OpenAI();
@@ -305,6 +312,7 @@ openai files content \
 
 :::
 
+
 输出的 `.jsonl` 文件将为输入文件中每个成功的请求行包含一个响应行。批次中任何失败的请求都会将其错误信息写入错误文件，该文件可通过批次的 `error_file_id` 找到。
 
 对于 `/v1/videos`，已完成的批次结果包含已达到终态（如 `completed`、`failed` 或 `expired`）的视频对象。您可以在批次完成后立即使用返回的视频 ID 下载最终资源。
@@ -314,7 +322,6 @@ openai files content \
 ```
 {"id": "batch_req_123", "custom_id": "request-2", "response": {"status_code": 200, "request_id": "req_123", "body": {"id": "chatcmpl-123", "object": "chat.completion", "created": 1711652795, "model": "gpt-3.5-turbo-0125", "choices": [{"index": 0, "message": {"role": "assistant", "content": "Hello."}, "logprobs": null, "finish_reason": "stop"}], "usage": {"prompt_tokens": 22, "completion_tokens": 2, "total_tokens": 24}, "system_fingerprint": "fp_123"}}, "error": null}
 {"id": "batch_req_456", "custom_id": "request-1", "response": {"status_code": 200, "request_id": "req_789", "body": {"id": "chatcmpl-abc", "object": "chat.completion", "created": 1711652789, "model": "gpt-3.5-turbo-0125", "choices": [{"index": 0, "message": {"role": "assistant", "content": "Hello! How can I assist you today?"}, "logprobs": null, "finish_reason": "stop"}], "usage": {"prompt_tokens": 20, "completion_tokens": 9, "total_tokens": 29}, "system_fingerprint": "fp_3ba"}}, "error": null}
-::: code-group
 ```javascript
 
 输出文件将在批次完成后 30 天自动删除。
@@ -340,6 +347,7 @@ client = OpenAI()
 client.batches.cancel("batch_abc123")
 ```
 
+::: code-group
 ```curl
 curl https://api.openai.com/v1/batches/batch_abc123/cancel \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -352,12 +360,15 @@ openai batches cancel \
   --batch-id batch_abc123
 ```
 
+:::
+
 ### 7\. 获取所有批次列表
 
 您可以随时查看所有批次。对于拥有大量批次的用户，可以使用 `limit` 和 `after` 参数对结果进行分页。
 
 **获取所有批次列表**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const openai = new OpenAI();
@@ -388,6 +399,7 @@ openai batches list \
 ```
 
 :::
+
 
 ## 模型可用性
 

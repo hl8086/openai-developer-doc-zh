@@ -609,6 +609,7 @@ for (const toolCall of completion.choices[0].message.tool_calls) {
 :::
 
 
+
 响应的 `output` 数组包含 `type` 值为 `function_call` 的条目。每个条目都有一个 `call_id`（稍后用于提交函数结果）、`name` 和 JSON 编码的 `arguments`。
 
 包含多个函数调用的示例响应
@@ -681,10 +682,12 @@ for (const toolCall of response.output) {
 :::
 
 
+
 在上面的示例中，我们有一个假设的 `call_function` 来路由每个调用。以下是一个可能的实现：
 
 **执行函数调用并追加结果**
 
+::: code-group
 ```python
 def call_function(name, args):
     if name == "get_weather":
@@ -704,6 +707,8 @@ const callFunction = async (name, args) => {
 };
 ```
 
+:::
+
 
 ### 格式化结果
 
@@ -719,6 +724,7 @@ const callFunction = async (name, args) => {
 
 **将结果发送回模型**
 
+::: code-group
 ```python
 completion = client.chat.completions.create(
     model="gpt-4.1",
@@ -736,11 +742,14 @@ const completion = await openai.chat.completions.create({
 });
 ```
 
+:::
+
 
 将结果追加到 `input` 后，你可以将它们发送回模型以获取最终响应。
 
 **将结果发送回模型**
 
+::: code-group
 ```python
 response = client.responses.create(
     model="gpt-4.1",
@@ -756,6 +765,8 @@ const response = await openai.responses.create({
     tools,
 });
 ```
+
+:::
 
 
 最终响应
@@ -1057,6 +1068,7 @@ null
 
 **累积 tool\_call delta**
 
+::: code-group
 ```python
 final_tool_calls = {}
 
@@ -1086,6 +1098,8 @@ for await (const chunk of stream) {
     }
 }
 ```
+
+:::
 
 
 累积的 final\_tool\_calls\[0\]
@@ -1215,6 +1229,7 @@ for await (const event of stream) {
 
 **累积 tool\_call delta**
 
+::: code-group
 ```python
 final_tool_calls = {}
 
@@ -1243,6 +1258,8 @@ for await (const event of stream) {
     }
 }
 ```
+
+:::
 
 
 累积的 final\_tool\_calls\[0\]

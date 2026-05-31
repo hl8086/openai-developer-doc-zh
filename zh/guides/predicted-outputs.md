@@ -7,7 +7,6 @@ Predicted Outputs 目前可在最新的 `gpt-4o`、`gpt-4o-mini`、`gpt-4.1`、`
 
 Predicted Outputs 在对文本文档和代码文件进行少量修改并重新生成时特别有用。假设你想让 [GPT-4o 模型](/models#gpt-4o) 重构一段 TypeScript 代码，将 `User` 类的 `username` 属性转换为 `email`：
 
-::: code-group
 ```python
 class User {
   firstName: string = "";
@@ -24,6 +23,7 @@ export default User;
 
 **使用 Predicted Output 重构 TypeScript 类**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -134,6 +134,7 @@ curl https://api.openai.com/v1/chat/completions \
 ```
 
 :::
+
 
 
 

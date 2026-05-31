@@ -500,6 +500,7 @@ Before finalizing:
 :::
 
 
+
 对于主动执行操作的智能体，添加简短的执行框架：
 
 ```text
@@ -540,6 +541,7 @@ Before finalizing:
 ```
 
 :::
+
 
 
 如果你的应用需要内联引用，要求内联引用。如果需要脚注，要求脚注。关键是锁定格式并防止模型即兴创造无支持的引用。
@@ -685,6 +687,7 @@ Exception: If working within an existing website or design system, preserve the 
 ```
 
 :::
+
 
 
 ### 文档本地化和 OCR 框

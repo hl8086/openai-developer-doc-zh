@@ -17,6 +17,7 @@
 
 **上传文件**
 
+::: code-group
 ```python
 import requests
 from io import BytesIO
@@ -86,11 +87,14 @@ const fileId = await createFile(
 console.log(fileId);
 ```
 
+:::
+
 
 #### 创建向量存储
 
 **创建向量存储**
 
+::: code-group
 ```python
 vector_store = client.vector_stores.create(
     name="knowledge_base"
@@ -105,11 +109,14 @@ const vectorStore = await openai.vectorStores.create({
 console.log(vectorStore.id);
 ```
 
+:::
+
 
 #### 将文件添加到向量存储
 
 **将文件添加到向量存储**
 
+::: code-group
 ```python
 result = client.vector_stores.files.create(
     vector_store_id=vector_store.id,
@@ -127,6 +134,8 @@ await openai.vectorStores.files.create(
 });
 ```
 
+:::
+
 
 #### 检查状态
 
@@ -134,6 +143,7 @@ await openai.vectorStores.files.create(
 
 **检查状态**
 
+::: code-group
 ```python
 result = client.vector_stores.files.list(
     vector_store_id=vector_store.id
@@ -148,11 +158,14 @@ const result = await openai.vectorStores.files.list({
 console.log(result);
 ```
 
+:::
+
 
 一旦您的知识库设置完成，您可以在模型可用的工具列表中包含 `file_search` 工具，以及要搜索的向量存储列表。
 
 **文件搜索工具**
 
+::: code-group
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -202,6 +215,8 @@ OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
 
 Console.WriteLine(response.GetOutputText());
 ```
+
+:::
 
 当模型调用此工具时，您将收到包含多个输出的响应：
 
@@ -269,6 +284,7 @@ Console.WriteLine(response.GetOutputText());
 
 **限制结果数量**
 
+::: code-group
 ```python
 response = client.responses.create(
     model="gpt-4.1",
@@ -299,6 +315,8 @@ const response = await openai.responses.create({
 console.log(response);
 ```
 
+:::
+
 
 ### 在响应中包含搜索结果
 
@@ -308,6 +326,7 @@ console.log(response);
 
 **包含搜索结果**
 
+::: code-group
 ```python
 response = client.responses.create(
     model="gpt-4.1",
@@ -338,6 +357,8 @@ const response = await openai.responses.create({
 console.log(response);
 ```
 
+:::
+
 
 ### 元数据过滤
 
@@ -348,6 +369,7 @@ console.log(response);
 
 **元数据过滤**
 
+::: code-group
 ```python
 response = client.responses.create(
     model="gpt-4.1",
@@ -385,6 +407,8 @@ const response = await openai.responses.create({
 });
 console.log(response);
 ```
+
+:::
 
 
 ## 支持的文件

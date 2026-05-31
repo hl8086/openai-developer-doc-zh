@@ -62,6 +62,7 @@ with sync_playwright() as p:
 :::
 
 
+
 设置本地虚拟机
 
 如果你需要更完整的桌面环境，请在本地虚拟机或容器中运行模型，并将操作转换为操作系统级别的输入事件。
@@ -111,6 +112,7 @@ docker run --rm -it --name cua-image -p 5900:5900 -e DISPLAY=:99 cua-image
 
 **在容器中执行命令**
 
+::: code-group
 ```python
 import subprocess
 
@@ -154,6 +156,8 @@ const vm = {
 };
 ```
 
+:::
+
 
 无论你使用浏览器还是虚拟机，都应将截图、页面文本、工具输出、PDF、电子邮件、聊天记录和其他第三方内容视为不可信输入。只有用户的直接指令才算作许可。
 
@@ -187,6 +191,7 @@ const vm = {
 
 **发送 computer 请求**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -216,6 +221,8 @@ response = client.responses.create(
 print(response.output)
 ```
 
+:::
+
 
 第一轮通常会在模型执行 UI 操作之前请求截图。这是正常的。
 
@@ -225,7 +232,6 @@ print(response.output)
 
 **截图请求**
 
-::: code-group
 ```json
 {
   "output": [
@@ -255,6 +261,7 @@ Playwright
 
 **规范化辅助函数**
 
+::: code-group
 ```javascript
 // Map model-emitted key names to the names Playwright expects.
 const normalizeKey = (key) => {
@@ -384,11 +391,14 @@ def normalize_drag_path(path):
     return normalized
 ```
 
+:::
+
 
 Docker
 
 **规范化辅助函数**
 
+::: code-group
 ```javascript
 // Map model-emitted key names to the names xdotool expects.
 const normalizeXdotoolKey = (key) => {
@@ -519,6 +529,7 @@ def normalize_drag_path(path):
 ```
 
 :::
+
 
 
 **单轮中的批量操作**
@@ -658,6 +669,7 @@ def handle_computer_actions(page, actions):
 ```
 
 :::
+
 
 
 Docker
@@ -839,6 +851,7 @@ def handle_computer_actions(vm, actions):
 :::
 
 
+
 对于需要修饰键的鼠标操作（如 `Ctrl`+点击或 `Shift`+拖拽），请参见下面的示例。
 
 添加修饰键鼠标操作
@@ -849,7 +862,6 @@ def handle_computer_actions(vm, actions):
 
 **修饰键辅助操作**
 
-::: code-group
 ```json
 {
   "output": [
@@ -877,6 +889,7 @@ Playwright
 
 **执行修饰键辅助的 Computer use 操作**
 
+::: code-group
 ```javascript
 // Reuse normalizeKey from the helper above.
 // Reuse normalizeDragPath from the helper above.
@@ -1055,11 +1068,14 @@ def handle_computer_actions(page, actions):
                 raise ValueError(f"Unsupported action: {action.type}")
 ```
 
+:::
+
 
 Docker
 
 **执行修饰键辅助的 Computer use 操作**
 
+::: code-group
 ```javascript
 // Reuse normalizeXdotoolKey from the helper above.
 // Reuse normalizeDragPath from the helper above.
@@ -1309,6 +1325,7 @@ def handle_computer_actions(vm, actions):
 :::
 
 
+
 ### 4\. 捕获并返回更新后的截图
 
 在操作批次完成后捕获完整的 UI 状态。
@@ -1332,6 +1349,7 @@ def capture_screenshot(page):
 ```
 
 :::
+
 
 
 Docker
@@ -1358,6 +1376,8 @@ def capture_screenshot(vm):
     )
 ```
 
+:::
+
 
 将该截图作为 `computer_call_output` 项发送回去：
 
@@ -1365,6 +1385,7 @@ def capture_screenshot(vm):
 
 **发送更新后的截图**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -1415,6 +1436,8 @@ def send_computer_screenshot(response, call_id, screenshot_base64):
     )
 ```
 
+:::
+
 
 ### 5\. 重复直到工具停止调用
 
@@ -1422,6 +1445,7 @@ def send_computer_screenshot(response, call_id, screenshot_base64):
 
 **重复 Computer use 循环**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -1499,6 +1523,8 @@ def computer_use_loop(target, response):
         )
 ```
 
+:::
+
 
 当响应不再包含 `computer_call` 时，将剩余的输出项作为模型的最终答案或交接处理。
 
@@ -1558,472 +1584,7 @@ JavaScript
 
 **代码执行工具链**
 
-```javascript
-// Run with:
-//   bun run -i cua_code_mode.ts
-// Override the user prompt with:
-//   bun run -i cua_code_mode.ts --prompt "Go to example.com and summarize the page."
-// Note: this script intentionally leaves the Playwright browser open after the
-// model reaches a final answer. Because the browser/context are not closed,
-// Bun stays alive until you close the browser or stop the process manually.
-
-import OpenAI from "openai";
-import readline from "node:readline/promises";
-import vm from "node:vm";
-import { chromium } from "playwright";
-import util from "node:util";
-
-async function main(
-  prompt: string = "Go to Hacker News, click on the most interesting link (be prepared to justify your choice), take a screenshot, and give me a critique of the visual layout.",
-  max_steps: number = 50,
-  model: string = "gpt-5.5"
-) {
-  type Phase = null | "commentary" | "final_answer";
-  const client = new OpenAI();
-  const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout,
-  });
-  const browser = await chromium.launch({
-    headless: false,
-    args: ["--window-size=1440,900"],
-  });
-  const context = await browser.newContext({
-    viewport: { width: 1440, height: 900 },
-  });
-  const page = await context.newPage();
-
-  const conversation: any[] = [];
-  const js_output: any[] = [];
-  const sandbox: Record&lt;string, any> = {
-    console: {
-      log: (...xs: any[]) => {
-        js_output.push({
-          type: "input_text",
-          text: util.formatWithOptions(
-            { showHidden: false, getters: false, maxStringLength: 2000 },
-            ...xs
-          ),
-        });
-      },
-    },
-    browser: browser,
-    context: context,
-    page: page,
-    display: (base64_image: string) => {
-      js_output.push({
-        type: "input_image",
-        image_url: `data:image/png;base64,${base64_image}`,
-        detail: "original",
-      });
-    },
-  };
-  const ctx = vm.createContext(sandbox);
-
-  conversation.push({
-    role: "user",
-    content: prompt,
-  });
-
-  for (let i = 0; i < max_steps; i++) {
-    const resp = await client.responses.create({
-      model,
-      tools: [
-        {
-          type: "function" as const,
-          name: "exec_js",
-          description:
-            "Execute provided interactive JavaScript in a persistent REPL context.",
-          parameters: {
-            type: "object",
-            properties: {
-              code: {
-                type: "string",
-                description: `
-JavaScript to execute. Write small snippets of interactive code. To persist variables or functions across tool calls, you must save them to globalThis. Code is executed in an async node:vm context, so you can use await. You have access to ONLY the following:
-- console.log(x): Use this to read contents back to you. But be minimal: otherwise the output may be too long. Avoid using console.log() for large base64 payloads like screenshots or buffer. If you create an image or screenshot, pass the base64 string to display().
-- display(base64_image_string): Use this to view a base64-encoded image.
-- Do not write screenshots or image data to temporary files or disk just to pass them back. Keep image data in memory and send it directly to display().
-- Do not assume package globals like Bun.file are available unless they are explicitly provided.
-- browser: A playwright chromium browser instance.
-- context: A playwright browser context with viewport 1440x900.
-- page: A playwright page already created in that context.
-`,
-              },
-            },
-            required: ["code"],
-            additionalProperties: false,
-          },
-        },
-        {
-          type: "function" as const,
-          name: "ask_user",
-          description:
-            "Ask the user a clarification question and wait for their response.",
-          parameters: {
-            type: "object",
-            properties: {
-              question: {
-                type: "string",
-                description:
-                  "The exact question to show the human. Use this instead of answering with a freeform clarifying question in a final answer.",
-              },
-            },
-            required: ["question"],
-            additionalProperties: false,
-          },
-        },
-      ],
-      input: conversation,
-      reasoning: {
-        effort: "low",
-      },
-    });
-
-    // Save model outputs into the running conversation
-    conversation.push(...resp.output);
-
-    let hadToolCall = false;
-    let latestPhase: Phase = null;
-
-    // Handle tool calls
-    for (const item of resp.output) {
-      if (item.type === "function_call" && item.name === "exec_js") {
-        hadToolCall = true;
-        const parsed = JSON.parse(item.arguments ?? "{}") as {
-          code?: string;
-        };
-        const code = parsed.code ?? "";
-        console.log(code);
-        console.log("----");
-        const wrappedCode = `
-                (async () => {
-                    ${code}
-                })();
-            `;
-
-        try {
-          await new vm.Script(wrappedCode, {
-            filename: "exec_js.js",
-          }).runInContext(ctx);
-        } catch (e: any) {
-          sandbox.console.log(e, e?.message, e?.stack);
-        }
-
-        // Send tool output back to the model, keyed by call_id
-        conversation.push({
-          type: "function_call_output",
-          call_id: item.call_id,
-          output: js_output.slice(),
-        });
-
-        for (const out of js_output) {
-          if (out.type === "input_text") {
-            console.log("JS LOG:", out.text);
-          } else if (out.type === "input_image") {
-            console.log("JS IMAGE: [base64 string omitted]");
-          }
-        }
-        console.log("=====");
-
-        js_output.length = 0;
-      } else if (item.type === "function_call" && item.name === "ask_user") {
-        hadToolCall = true;
-        const parsed = JSON.parse(item.arguments ?? "{}") as {
-          question?: string;
-        };
-        const question = parsed.question ?? "Please provide more information.";
-        console.log(`MODEL QUESTION: ${question}`);
-        const answer = await rl.question("> ");
-        conversation.push({
-          type: "function_call_output",
-          call_id: item.call_id,
-          output: answer,
-        });
-      } else if (item.type === "message") {
-        console.log(item.content[0]?.text ?? item.content);
-        if ("phase" in item) {
-          latestPhase = (item.phase as Phase) ?? null;
-        }
-      } else if (item.type === "output_item.done" && "phase" in item) {
-        latestPhase = (item.phase as Phase) ?? null;
-      }
-    }
-
-    // Stop only when the model explicitly marks the turn as a final answer
-    // and there were no tool calls in the same turn.
-    if (!hadToolCall && latestPhase === "final_answer") return;
-  }
-}
-
-function getCliPrompt(): string | undefined {
-  const args = Bun.argv.slice(2);
-  for (let i = 0; i < args.length; i++) {
-    if (args[i] === "--prompt") {
-      return args[i + 1];
-    }
-  }
-  return undefined;
-}
-
-main(getCliPrompt());
-```
-
-```python
-# /// script
-# requires-python = ">=3.10"
-# dependencies = [
-#   "openai",
-#   "playwright",
-# ]
-# ///
-# Run with: `uv run cua_code_mode_py_async.py`
-# Override the user prompt with:
-#   `uv run cua_code_mode_py_async.py --prompt "Go to example.com and summarize the page."`
-# Install Chromium once first: `uv run --with playwright python -m playwright install chromium`
-# Requires `OPENAI_API_KEY` in the environment.
-
-"""Async Python analogue of cua_code_mode.ts.
-
-Runs a Responses API loop with one persistent Playwright browser/context/page,
-and tools that let the model execute short async Python snippets and ask the
-user clarifying questions.
-
-The model can return visual observations by calling:
-    display(base64_png_string)
-"""
-
-from __future__ import annotations
-
-import argparse
-import asyncio
-import json
-import traceback
-from typing import Any
-
-from openai import OpenAI
-from playwright.async_api import async_playwright
-
-Phase = str | None
-
-
-def _message_text(item: Any) -> str:
-    try:
-        parts = getattr(item, "content", None)
-        if isinstance(parts, list) and parts:
-            out: list[str] = []
-            for p in parts:
-                t = getattr(p, "text", None)
-                if isinstance(t, str) and t:
-                    out.append(t)
-            if out:
-                return "\n".join(out)
-    except Exception:
-        pass
-    return str(item)
-
-
-async def _ainput(prompt: str) -> str:
-    return await asyncio.to_thread(input, prompt)
-
-
-async def main(
-    prompt: str = "Go to Hacker News, click on the most interesting link (be prepared to justify your choice), take a screenshot, and give me a critique of the visual layout.",
-    max_steps: int = 20,
-    model: str = "gpt-5.5",
-) -> None:
-    client = OpenAI()
-
-    async with async_playwright() as p:
-        browser = await p.chromium.launch(
-            headless=False,
-            args=["--window-size=1440,900"],
-        )
-        context = await browser.new_context(viewport={"width": 1440, "height": 900})
-        page = await context.new_page()
-
-        conversation: list[dict[str, Any]] = [{"role": "user", "content": prompt}]
-        py_output: list[dict[str, Any]] = []
-
-        def log(*xs: Any) -> None:
-            text = " ".join(str(x) for x in xs)
-            py_output.append({"type": "input_text", "text": text[:5000]})
-
-        def display(base64_image: str) -> None:
-            py_output.append(
-                {
-                    "type": "input_image",
-                    "image_url": f"data:image/png;base64,{base64_image}",
-                    "detail": "original",
-                }
-            )
-
-        runtime_globals: dict[str, Any] = {
-            "__builtins__": __builtins__,
-            "asyncio": asyncio,
-            "browser": browser,
-            "context": context,
-            "page": page,
-            "display": display,
-            "log": log,
-        }
-
-        for _ in range(max_steps):
-            resp = client.responses.create(
-                model=model,
-                tools=[
-                    {
-                        "type": "function",
-                        "name": "exec_py",
-                        "description": "Execute provided interactive async Python in a persistent runtime context.",
-                        "parameters": {
-                            "type": "object",
-                            "properties": {
-                                "code": {
-                                    "type": "string",
-                                    "description": (
-                                        "Python code to execute. Write small snippets. "
-                                        "State persists across tool calls via globals(). "
-                                        "This runtime uses Playwright's async Python API, so you may use await directly. "
-                                        "Do not call asyncio.run(...), loop.run_until_complete(...), or manage the event loop yourself. "
-                                        "You can use ONLY these prebound objects/helpers: "
-                                        "log(x) for text output, display(base64_png_string) for image output, "
-                                        "browser (async Playwright browser), context (viewport 1440x900), page (already created), "
-                                        "asyncio (module). "
-                                        "Be concise with log(x): do not send large base64 payloads, screenshots, buffers, page HTML, "
-                                        "or other large blobs through log(). If you create an image or screenshot, pass the base64 PNG "
-                                        "string to display(). Do not write screenshots or image data to temporary files or disk just "
-                                        "to pass them back; keep image data in memory and send it directly to display(). "
-                                        "Do not assume extra globals or helpers are available unless they are explicitly listed here. "
-                                        "Do not close browser/context/page unless explicitly asked."
-                                    ),
-                                }
-                            },
-                            "required": ["code"],
-                            "additionalProperties": False,
-                        },
-                    },
-                    {
-                        "type": "function",
-                        "name": "ask_user",
-                        "description": "Ask the user a clarification question and wait for their response.",
-                        "parameters": {
-                            "type": "object",
-                            "properties": {
-                                "question": {
-                                    "type": "string",
-                                    "description": "The exact question to show the user. Use this instead of asking a freeform clarifying question in a final answer.",
-                                }
-                            },
-                            "required": ["question"],
-                            "additionalProperties": False,
-                        },
-                    },
-                ],
-                input=conversation,
-            )
-
-            conversation.extend(resp.output)
-
-            had_tool_call = False
-            latest_phase: Phase = None
-
-            for item in resp.output:
-                item_type = getattr(item, "type", None)
-
-                if item_type == "function_call" and getattr(item, "name", None) == "exec_py":
-                    had_tool_call = True
-                    raw_args = getattr(item, "arguments", "{}") or "{}"
-                    try:
-                        args = json.loads(raw_args)
-                    except json.JSONDecodeError:
-                        args = {}
-                    code = args.get("code", "") if isinstance(args, dict) else ""
-
-                    print(code)
-                    print("----")
-
-                    wrapped = (
-                        "async def __codex_exec__():\n"
-                        + "".join(
-                            f"    {line}\n" if line else "    \n"
-                            for line in (code or "pass").splitlines()
-                        )
-                    )
-
-                    try:
-                        exec(wrapped, runtime_globals, runtime_globals)
-                        await runtime_globals["__codex_exec__"]()
-                    except Exception:
-                        log(traceback.format_exc())
-
-                    conversation.append(
-                        {
-                            "type": "function_call_output",
-                            "call_id": getattr(item, "call_id", None),
-                            "output": py_output[:],
-                        }
-                    )
-
-                    for out in py_output:
-                        if out.get("type") == "input_text":
-                            print("PY LOG:", out.get("text", ""))
-                        elif out.get("type") == "input_image":
-                            print("PY IMAGE: [base64 string omitted]")
-                    print("=====")
-
-                    py_output.clear()
-
-                elif item_type == "function_call" and getattr(item, "name", None) == "ask_user":
-                    had_tool_call = True
-                    raw_args = getattr(item, "arguments", "{}") or "{}"
-                    try:
-                        args = json.loads(raw_args)
-                    except json.JSONDecodeError:
-                        args = {}
-                    question = (
-                        args.get("question", "Please provide more information.")
-                        if isinstance(args, dict)
-                        else "Please provide more information."
-                    )
-
-                    print(f"MODEL QUESTION: {question}")
-                    answer = await _ainput("> ")
-
-                    conversation.append(
-                        {
-                            "type": "function_call_output",
-                            "call_id": getattr(item, "call_id", None),
-                            "output": answer,
-                        }
-                    )
-
-                elif item_type == "message":
-                    print(_message_text(item))
-                    phase = getattr(item, "phase", None)
-                    if isinstance(phase, str) or phase is None:
-                        latest_phase = phase
-                elif item_type == "output_item.done":
-                    phase = getattr(item, "phase", None)
-                    if isinstance(phase, str) or phase is None:
-                        latest_phase = phase
-
-            if not had_tool_call and latest_phase == "final_answer":
-                return
-
-
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--prompt", help="Override the default user prompt.")
-    args = parser.parse_args()
-    asyncio.run(main(prompt=args.prompt) if args.prompt is not None else main())
-```
-
-
-Python
-
-**代码执行工具链**
-
+::: code-group
 ```javascript
 // Run with:
 //   bun run -i cua_code_mode.ts
@@ -2486,6 +2047,476 @@ if __name__ == "__main__":
 ```
 
 :::
+
+
+Python
+
+**代码执行工具链**
+
+::: code-group
+```javascript
+// Run with:
+//   bun run -i cua_code_mode.ts
+// Override the user prompt with:
+//   bun run -i cua_code_mode.ts --prompt "Go to example.com and summarize the page."
+// Note: this script intentionally leaves the Playwright browser open after the
+// model reaches a final answer. Because the browser/context are not closed,
+// Bun stays alive until you close the browser or stop the process manually.
+
+import OpenAI from "openai";
+import readline from "node:readline/promises";
+import vm from "node:vm";
+import { chromium } from "playwright";
+import util from "node:util";
+
+async function main(
+  prompt: string = "Go to Hacker News, click on the most interesting link (be prepared to justify your choice), take a screenshot, and give me a critique of the visual layout.",
+  max_steps: number = 50,
+  model: string = "gpt-5.5"
+) {
+  type Phase = null | "commentary" | "final_answer";
+  const client = new OpenAI();
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+  });
+  const browser = await chromium.launch({
+    headless: false,
+    args: ["--window-size=1440,900"],
+  });
+  const context = await browser.newContext({
+    viewport: { width: 1440, height: 900 },
+  });
+  const page = await context.newPage();
+
+  const conversation: any[] = [];
+  const js_output: any[] = [];
+  const sandbox: Record&lt;string, any> = {
+    console: {
+      log: (...xs: any[]) => {
+        js_output.push({
+          type: "input_text",
+          text: util.formatWithOptions(
+            { showHidden: false, getters: false, maxStringLength: 2000 },
+            ...xs
+          ),
+        });
+      },
+    },
+    browser: browser,
+    context: context,
+    page: page,
+    display: (base64_image: string) => {
+      js_output.push({
+        type: "input_image",
+        image_url: `data:image/png;base64,${base64_image}`,
+        detail: "original",
+      });
+    },
+  };
+  const ctx = vm.createContext(sandbox);
+
+  conversation.push({
+    role: "user",
+    content: prompt,
+  });
+
+  for (let i = 0; i < max_steps; i++) {
+    const resp = await client.responses.create({
+      model,
+      tools: [
+        {
+          type: "function" as const,
+          name: "exec_js",
+          description:
+            "Execute provided interactive JavaScript in a persistent REPL context.",
+          parameters: {
+            type: "object",
+            properties: {
+              code: {
+                type: "string",
+                description: `
+JavaScript to execute. Write small snippets of interactive code. To persist variables or functions across tool calls, you must save them to globalThis. Code is executed in an async node:vm context, so you can use await. You have access to ONLY the following:
+- console.log(x): Use this to read contents back to you. But be minimal: otherwise the output may be too long. Avoid using console.log() for large base64 payloads like screenshots or buffer. If you create an image or screenshot, pass the base64 string to display().
+- display(base64_image_string): Use this to view a base64-encoded image.
+- Do not write screenshots or image data to temporary files or disk just to pass them back. Keep image data in memory and send it directly to display().
+- Do not assume package globals like Bun.file are available unless they are explicitly provided.
+- browser: A playwright chromium browser instance.
+- context: A playwright browser context with viewport 1440x900.
+- page: A playwright page already created in that context.
+`,
+              },
+            },
+            required: ["code"],
+            additionalProperties: false,
+          },
+        },
+        {
+          type: "function" as const,
+          name: "ask_user",
+          description:
+            "Ask the user a clarification question and wait for their response.",
+          parameters: {
+            type: "object",
+            properties: {
+              question: {
+                type: "string",
+                description:
+                  "The exact question to show the human. Use this instead of answering with a freeform clarifying question in a final answer.",
+              },
+            },
+            required: ["question"],
+            additionalProperties: false,
+          },
+        },
+      ],
+      input: conversation,
+      reasoning: {
+        effort: "low",
+      },
+    });
+
+    // Save model outputs into the running conversation
+    conversation.push(...resp.output);
+
+    let hadToolCall = false;
+    let latestPhase: Phase = null;
+
+    // Handle tool calls
+    for (const item of resp.output) {
+      if (item.type === "function_call" && item.name === "exec_js") {
+        hadToolCall = true;
+        const parsed = JSON.parse(item.arguments ?? "{}") as {
+          code?: string;
+        };
+        const code = parsed.code ?? "";
+        console.log(code);
+        console.log("----");
+        const wrappedCode = `
+                (async () => {
+                    ${code}
+                })();
+            `;
+
+        try {
+          await new vm.Script(wrappedCode, {
+            filename: "exec_js.js",
+          }).runInContext(ctx);
+        } catch (e: any) {
+          sandbox.console.log(e, e?.message, e?.stack);
+        }
+
+        // Send tool output back to the model, keyed by call_id
+        conversation.push({
+          type: "function_call_output",
+          call_id: item.call_id,
+          output: js_output.slice(),
+        });
+
+        for (const out of js_output) {
+          if (out.type === "input_text") {
+            console.log("JS LOG:", out.text);
+          } else if (out.type === "input_image") {
+            console.log("JS IMAGE: [base64 string omitted]");
+          }
+        }
+        console.log("=====");
+
+        js_output.length = 0;
+      } else if (item.type === "function_call" && item.name === "ask_user") {
+        hadToolCall = true;
+        const parsed = JSON.parse(item.arguments ?? "{}") as {
+          question?: string;
+        };
+        const question = parsed.question ?? "Please provide more information.";
+        console.log(`MODEL QUESTION: ${question}`);
+        const answer = await rl.question("> ");
+        conversation.push({
+          type: "function_call_output",
+          call_id: item.call_id,
+          output: answer,
+        });
+      } else if (item.type === "message") {
+        console.log(item.content[0]?.text ?? item.content);
+        if ("phase" in item) {
+          latestPhase = (item.phase as Phase) ?? null;
+        }
+      } else if (item.type === "output_item.done" && "phase" in item) {
+        latestPhase = (item.phase as Phase) ?? null;
+      }
+    }
+
+    // Stop only when the model explicitly marks the turn as a final answer
+    // and there were no tool calls in the same turn.
+    if (!hadToolCall && latestPhase === "final_answer") return;
+  }
+}
+
+function getCliPrompt(): string | undefined {
+  const args = Bun.argv.slice(2);
+  for (let i = 0; i < args.length; i++) {
+    if (args[i] === "--prompt") {
+      return args[i + 1];
+    }
+  }
+  return undefined;
+}
+
+main(getCliPrompt());
+```
+
+```python
+# /// script
+# requires-python = ">=3.10"
+# dependencies = [
+#   "openai",
+#   "playwright",
+# ]
+# ///
+# Run with: `uv run cua_code_mode_py_async.py`
+# Override the user prompt with:
+#   `uv run cua_code_mode_py_async.py --prompt "Go to example.com and summarize the page."`
+# Install Chromium once first: `uv run --with playwright python -m playwright install chromium`
+# Requires `OPENAI_API_KEY` in the environment.
+
+"""Async Python analogue of cua_code_mode.ts.
+
+Runs a Responses API loop with one persistent Playwright browser/context/page,
+and tools that let the model execute short async Python snippets and ask the
+user clarifying questions.
+
+The model can return visual observations by calling:
+    display(base64_png_string)
+"""
+
+from __future__ import annotations
+
+import argparse
+import asyncio
+import json
+import traceback
+from typing import Any
+
+from openai import OpenAI
+from playwright.async_api import async_playwright
+
+Phase = str | None
+
+
+def _message_text(item: Any) -> str:
+    try:
+        parts = getattr(item, "content", None)
+        if isinstance(parts, list) and parts:
+            out: list[str] = []
+            for p in parts:
+                t = getattr(p, "text", None)
+                if isinstance(t, str) and t:
+                    out.append(t)
+            if out:
+                return "\n".join(out)
+    except Exception:
+        pass
+    return str(item)
+
+
+async def _ainput(prompt: str) -> str:
+    return await asyncio.to_thread(input, prompt)
+
+
+async def main(
+    prompt: str = "Go to Hacker News, click on the most interesting link (be prepared to justify your choice), take a screenshot, and give me a critique of the visual layout.",
+    max_steps: int = 20,
+    model: str = "gpt-5.5",
+) -> None:
+    client = OpenAI()
+
+    async with async_playwright() as p:
+        browser = await p.chromium.launch(
+            headless=False,
+            args=["--window-size=1440,900"],
+        )
+        context = await browser.new_context(viewport={"width": 1440, "height": 900})
+        page = await context.new_page()
+
+        conversation: list[dict[str, Any]] = [{"role": "user", "content": prompt}]
+        py_output: list[dict[str, Any]] = []
+
+        def log(*xs: Any) -> None:
+            text = " ".join(str(x) for x in xs)
+            py_output.append({"type": "input_text", "text": text[:5000]})
+
+        def display(base64_image: str) -> None:
+            py_output.append(
+                {
+                    "type": "input_image",
+                    "image_url": f"data:image/png;base64,{base64_image}",
+                    "detail": "original",
+                }
+            )
+
+        runtime_globals: dict[str, Any] = {
+            "__builtins__": __builtins__,
+            "asyncio": asyncio,
+            "browser": browser,
+            "context": context,
+            "page": page,
+            "display": display,
+            "log": log,
+        }
+
+        for _ in range(max_steps):
+            resp = client.responses.create(
+                model=model,
+                tools=[
+                    {
+                        "type": "function",
+                        "name": "exec_py",
+                        "description": "Execute provided interactive async Python in a persistent runtime context.",
+                        "parameters": {
+                            "type": "object",
+                            "properties": {
+                                "code": {
+                                    "type": "string",
+                                    "description": (
+                                        "Python code to execute. Write small snippets. "
+                                        "State persists across tool calls via globals(). "
+                                        "This runtime uses Playwright's async Python API, so you may use await directly. "
+                                        "Do not call asyncio.run(...), loop.run_until_complete(...), or manage the event loop yourself. "
+                                        "You can use ONLY these prebound objects/helpers: "
+                                        "log(x) for text output, display(base64_png_string) for image output, "
+                                        "browser (async Playwright browser), context (viewport 1440x900), page (already created), "
+                                        "asyncio (module). "
+                                        "Be concise with log(x): do not send large base64 payloads, screenshots, buffers, page HTML, "
+                                        "or other large blobs through log(). If you create an image or screenshot, pass the base64 PNG "
+                                        "string to display(). Do not write screenshots or image data to temporary files or disk just "
+                                        "to pass them back; keep image data in memory and send it directly to display(). "
+                                        "Do not assume extra globals or helpers are available unless they are explicitly listed here. "
+                                        "Do not close browser/context/page unless explicitly asked."
+                                    ),
+                                }
+                            },
+                            "required": ["code"],
+                            "additionalProperties": False,
+                        },
+                    },
+                    {
+                        "type": "function",
+                        "name": "ask_user",
+                        "description": "Ask the user a clarification question and wait for their response.",
+                        "parameters": {
+                            "type": "object",
+                            "properties": {
+                                "question": {
+                                    "type": "string",
+                                    "description": "The exact question to show the user. Use this instead of asking a freeform clarifying question in a final answer.",
+                                }
+                            },
+                            "required": ["question"],
+                            "additionalProperties": False,
+                        },
+                    },
+                ],
+                input=conversation,
+            )
+
+            conversation.extend(resp.output)
+
+            had_tool_call = False
+            latest_phase: Phase = None
+
+            for item in resp.output:
+                item_type = getattr(item, "type", None)
+
+                if item_type == "function_call" and getattr(item, "name", None) == "exec_py":
+                    had_tool_call = True
+                    raw_args = getattr(item, "arguments", "{}") or "{}"
+                    try:
+                        args = json.loads(raw_args)
+                    except json.JSONDecodeError:
+                        args = {}
+                    code = args.get("code", "") if isinstance(args, dict) else ""
+
+                    print(code)
+                    print("----")
+
+                    wrapped = (
+                        "async def __codex_exec__():\n"
+                        + "".join(
+                            f"    {line}\n" if line else "    \n"
+                            for line in (code or "pass").splitlines()
+                        )
+                    )
+
+                    try:
+                        exec(wrapped, runtime_globals, runtime_globals)
+                        await runtime_globals["__codex_exec__"]()
+                    except Exception:
+                        log(traceback.format_exc())
+
+                    conversation.append(
+                        {
+                            "type": "function_call_output",
+                            "call_id": getattr(item, "call_id", None),
+                            "output": py_output[:],
+                        }
+                    )
+
+                    for out in py_output:
+                        if out.get("type") == "input_text":
+                            print("PY LOG:", out.get("text", ""))
+                        elif out.get("type") == "input_image":
+                            print("PY IMAGE: [base64 string omitted]")
+                    print("=====")
+
+                    py_output.clear()
+
+                elif item_type == "function_call" and getattr(item, "name", None) == "ask_user":
+                    had_tool_call = True
+                    raw_args = getattr(item, "arguments", "{}") or "{}"
+                    try:
+                        args = json.loads(raw_args)
+                    except json.JSONDecodeError:
+                        args = {}
+                    question = (
+                        args.get("question", "Please provide more information.")
+                        if isinstance(args, dict)
+                        else "Please provide more information."
+                    )
+
+                    print(f"MODEL QUESTION: {question}")
+                    answer = await _ainput("> ")
+
+                    conversation.append(
+                        {
+                            "type": "function_call_output",
+                            "call_id": getattr(item, "call_id", None),
+                            "output": answer,
+                        }
+                    )
+
+                elif item_type == "message":
+                    print(_message_text(item))
+                    phase = getattr(item, "phase", None)
+                    if isinstance(phase, str) or phase is None:
+                        latest_phase = phase
+                elif item_type == "output_item.done":
+                    phase = getattr(item, "phase", None)
+                    if isinstance(phase, str) or phase is None:
+                        latest_phase = phase
+
+            if not had_tool_call and latest_phase == "final_answer":
+                return
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--prompt", help="Override the default user prompt.")
+    args = parser.parse_args()
+    asyncio.run(main(prompt=args.prompt) if args.prompt is not None else main())
+```
+
+:::
+
 
 
 ## 处理用户确认和同意

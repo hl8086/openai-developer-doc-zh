@@ -80,6 +80,7 @@ curl --request POST \
 :::
 
 
+
 默认情况下，响应类型为 json，其中包含原始文本。
 
 ```
@@ -87,7 +88,6 @@ curl --request POST \
   "text": "Imagine the wildest idea that you've ever had, and you're curious about how it might scale to something that's a 100, a 1,000 times bigger.
 ....
 }
-::: code-group
 ```javascript
 
 Audio API 还允许您在请求中设置其他参数。例如，如果您想将 `response_format` 设置为 `text`，您的请求将如下所示：
@@ -148,6 +148,7 @@ curl --request POST \
 
 **对会议录音进行说话人分离**
 
+::: code-group
 ```javascript
 import fs from "fs";
 import OpenAI from "openai";
@@ -211,6 +212,8 @@ curl --request POST \
   --form 'known_speaker_references[]=data:audio/wav;base64,AAA...'
 ```
 
+:::
+
 
 
 当 `stream=true` 时，说话人分离响应会在片段完成时发出 `transcript.text.segment` 事件。`transcript.text.delta` 事件包含 `segment_id` 字段，但说话人分离的增量不会在每个片段最终确定之前流式传输部分说话人分配。
@@ -223,6 +226,7 @@ curl --request POST \
 
 **翻译音频**
 
+::: code-group
 ```javascript
 import fs from "fs";
 import OpenAI from "openai";
@@ -264,11 +268,11 @@ curl --request POST \
 
 
 
+
 在这个例子中，输入的音频是德语，输出的文本如下：
 
 ```
 Hello, my name is Wolfgang and I come from Germany. Where are you heading today?
-::: code-group
 ```javascript
 
 我们目前仅支持翻译为英语。
@@ -331,7 +335,6 @@ curl https://api.openai.com/v1/audio/transcriptions \
   -F response_format="verbose_json"
 ```
 
-:::
 
 
 
@@ -354,7 +357,6 @@ ten_minutes = 10 * 60 * 1000
 first_10_minutes = song[:ten_minutes]
 
 first_10_minutes.export("good_morning_10.mp3", format="mp3")
-::: code-group
 ```javascript
 
 _OpenAI 不对 PyDub 等第三方软件的可用性或安全性做任何保证。_
@@ -435,6 +437,7 @@ curl --request POST \
 
 **流式转录**
 
+::: code-group
 ```javascript
 import fs from "fs";
 import OpenAI from "openai";
@@ -489,6 +492,8 @@ curl --request POST \
   --form stream=True
 ```
 
+:::
+
 
 
 一旦模型完成该部分音频的转录，您将收到 `transcript.text.delta` 事件流，随后在转录完成时收到包含完整转录的 `transcript.text.done` 事件。使用 `response_format="diarized_json"` 时，流还会在每个片段最终确定时发出带有说话人标签的 `transcript.text.segment` 事件。
@@ -513,6 +518,7 @@ curl --request POST \
 
 **Prompt 参数**
 
+::: code-group
 ```javascript
 import fs from "fs";
 import OpenAI from "openai";
@@ -555,6 +561,8 @@ curl --request POST \
   --form prompt="ZyntriQix, Digique Plus, CynapseFive, VortiQore V8, EchoNix Array, OrbitalLink Seven, DigiFractal Matrix, PULSE, RAPT, B.R.I.C.K., Q.U.A.R.T.Z., F.L.I.N.T."
 ```
 
+:::
+
 
 
 虽然这提高了可靠性，但此技术限于 224 个 token，因此您的 SKU 列表需要相对较小才能使其成为可扩展的解决方案。
@@ -567,6 +575,7 @@ curl --request POST \
 
 **后处理**
 
+::: code-group
 ```javascript
 const systemPrompt = `
 You are a helpful assistant for the company ZyntriQix. Your task is 
@@ -631,6 +640,7 @@ corrected_text = generate_corrected_transcript(
 ```
 
 :::
+
 
 
 如果您在自己的音频文件上尝试此方法，您会看到 GPT-4 纠正了转录中的许多拼写错误。由于其更大的上下文窗口，此方法可能比使用 Whisper 的 prompt 参数更具可扩展性。它也更可靠，因为 GPT-4 可以以 Whisper 由于缺乏指令遵循能力而无法实现的方式进行指导和引导。

@@ -7,6 +7,7 @@
 
 **在后台生成响应**
 
+::: code-group
 ```curl
 curl https://api.openai.com/v1/responses \
 -H "Content-Type: application/json" \
@@ -45,6 +46,8 @@ resp = client.responses.create(
 print(resp.status)
 ```
 
+:::
+
 
 
 ## 轮询后台响应
@@ -53,6 +56,7 @@ print(resp.status)
 
 **检索在后台执行的响应**
 
+::: code-group
 ```curl
 curl https://api.openai.com/v1/responses/resp_123 \
   -H "Content-Type: application/json" \
@@ -98,6 +102,8 @@ while resp.status in {"queued", "in_progress"}:
 print(f"Final status: {resp.status}\nOutput:\n{resp.output_text}")
 ```
 
+:::
+
 
 
 ## 取消后台响应
@@ -106,6 +112,7 @@ print(f"Final status: {resp.status}\nOutput:\n{resp.output_text}")
 
 **取消正在进行的响应**
 
+::: code-group
 ```curl
 curl -X POST https://api.openai.com/v1/responses/resp_123/cancel \
   -H "Content-Type: application/json" \
@@ -130,6 +137,8 @@ resp = client.responses.cancel("resp_123")
 print(resp.status)
 ```
 
+:::
+
 
 
 取消操作是幂等的——后续调用只会返回最终的 `Response` 对象。
@@ -142,6 +151,7 @@ print(resp.status)
 
 **生成并流式传输后台响应**
 
+::: code-group
 ```curl
 curl https://api.openai.com/v1/responses \
 -H "Content-Type: application/json" \
@@ -204,6 +214,8 @@ for event in stream:
 # for event in client.responses.stream(resp.id, starting_after=cursor):
 #     print(event)
 ```
+
+:::
 
 
 

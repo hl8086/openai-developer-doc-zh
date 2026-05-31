@@ -58,10 +58,13 @@ curl https://api.openai.com/v1/responses \
   }'
 ```
 
+:::
+
 
 
 **Flex processing 示例**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI({
@@ -111,6 +114,7 @@ curl https://api.openai.com/v1/chat/completions   -H "Content-Type: application/
 ```
 
 :::
+
 
 
 

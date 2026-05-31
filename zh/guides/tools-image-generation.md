@@ -11,6 +11,7 @@
 
 **生成图像**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const openai = new OpenAI();
@@ -57,6 +58,8 @@ if image_data:
     with open("otter.png", "wb") as f:
         f.write(base64.b64decode(image_base64))
 ```
+
+:::
 
 
 你可以使用文件 ID 或 base64 数据[提供输入图像](/guides/image-generation?image-generation-model=gpt-image#edit-images)。

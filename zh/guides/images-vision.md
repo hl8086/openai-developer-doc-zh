@@ -88,6 +88,8 @@ input: Generate an image of a gray tabby cat hugging an otter with an orange sca
 YAML
 ```
 
+:::
+
 您可以在我们的[图像生成](/guides/image-generation)指南中了解更多关于图像生成的信息。
 
 ### 利用世界知识进行图像生成
@@ -112,6 +114,7 @@ GPT Image 模型可以利用对世界的视觉理解来生成逼真的图像，�
 
 **分析图像内容**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const openai = new OpenAI();
@@ -185,12 +188,15 @@ curl https://api.openai.com/v1/chat/completions \
   }'
 ```
 
+:::
+
 
 
 传递 Base64 编码图像
 
 **分析图像内容**
 
+::: code-group
 ```javascript
 import fs from "fs";
 import OpenAI from "openai";
@@ -284,6 +290,8 @@ BASE64_IMAGE=$(base64 < path_to_your_image.jpg) && curl https://api.openai.com/v
 EOF
 ```
 
+:::
+
 
 
 您可以通过多种方式将图像作为输入提供给生成请求：
@@ -300,6 +308,7 @@ EOF
 
 **分析图像内容**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -398,11 +407,14 @@ input:
 YAML
 ```
 
+:::
+
 
 传递 Base64 编码图像
 
 **分析图像内容**
 
+::: code-group
 ```javascript
 import fs from "fs";
 import OpenAI from "openai";
@@ -503,10 +515,13 @@ OpenAIResponse response2 = (OpenAIResponse)client.CreateResponse([
 Console.WriteLine($"From byte array: {response2.GetOutputText()}");
 ```
 
+:::
+
 传递文件 ID
 
 **分析图像内容**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 import fs from "fs";
@@ -606,6 +621,8 @@ OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
 Console.WriteLine(response.GetOutputText());
 ```
 
+:::
+
 ### 图像输入要求
 
 输入图像必须满足以下要求才能在 API 中使用。
@@ -618,7 +635,6 @@ Console.WriteLine(response.GetOutputText());
 
 ```
 
-:::
 "image_url": {
     "url": "https://api.nga.gov/iiif/a2e6da57-3cd1-4235-b20e-95dcaefed6c8/full/!800,800/0/default.jpg",
     "detail": "original"

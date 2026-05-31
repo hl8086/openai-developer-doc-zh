@@ -62,9 +62,12 @@ completion = client.chat.completions.parse(
 event = completion.choices[0].message.parsed
 ```
 
+:::
+
 
 **获取结构化响应**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 import { zodTextFormat } from "openai/helpers/zod";
@@ -120,6 +123,8 @@ response = client.responses.parse(
 
 event = response.output_parsed
 ```
+
+:::
 
 
 ### 支持的模型
@@ -207,6 +212,7 @@ Structured Outputs 是 [JSON mode](#json-mode) 的演进。虽然两者都确保
 
 **用于思维链数学辅导的 Structured Outputs**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 import { z } from "zod";
@@ -308,10 +314,13 @@ curl https://api.openai.com/v1/chat/completions \
   }'
 ```
 
+:::
+
 
 
 **用于思维链数学辅导的 Structured Outputs**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 import { zodTextFormat } from "openai/helpers/zod";
@@ -426,6 +435,7 @@ curl https://api.openai.com/v1/responses \
 
 
 
+
 #### 示例响应
 
 ```
@@ -454,7 +464,6 @@ curl https://api.openai.com/v1/responses \
   ],
   "final_answer": "x = -15 / 4"
 }
-::: code-group
 ```javascript
 
 结构化数据提取
@@ -562,6 +571,7 @@ curl https://api.openai.com/v1/chat/completions \
 
 **使用 Structured Outputs 从研究论文中提取数据**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 import { zodTextFormat } from "openai/helpers/zod";
@@ -668,6 +678,7 @@ curl https://api.openai.com/v1/responses \
 
 
 
+
 #### 示例响应
 
 ```
@@ -684,7 +695,6 @@ curl https://api.openai.com/v1/responses \
     "space travel"
   ]
 }
-::: code-group
 ```javascript
 
 UI 生成
@@ -846,6 +856,7 @@ curl https://api.openai.com/v1/chat/completions \
 
 **使用 Structured Outputs 生成 HTML**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 import { zodTextFormat } from "openai/helpers/zod";
@@ -1005,6 +1016,7 @@ curl https://api.openai.com/v1/responses \
 
 
 
+
 #### 示例响应
 
 ```
@@ -1080,7 +1092,6 @@ curl https://api.openai.com/v1/responses \
     }
   ]
 }
-::: code-group
 ```javascript
 
 内容审核
@@ -1197,6 +1208,7 @@ curl https://api.openai.com/v1/chat/completions \
 
 **使用 Structured Outputs 进行内容审核**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 import { zodTextFormat } from "openai/helpers/zod";
@@ -1315,6 +1327,7 @@ curl https://api.openai.com/v1/responses \
 
 
 
+
 #### 示例响应
 
 ```
@@ -1343,6 +1356,7 @@ SDK 对象
 
 例如，您可以这样定义一个对象：
 
+::: code-group
 ```python
 from pydantic import BaseModel
 
@@ -1370,6 +1384,8 @@ final_answer: z.string(),
 });
 ```
 
+:::
+
 
 #### 数据结构的建议
 
@@ -1385,6 +1401,7 @@ final_answer: z.string(),
 
 在底层，SDK 负责提供与您的数据结构对应的 JSON schema，然后将响应解析为对象。
 
+::: code-group
 ```python
 completion = client.chat.completions.parse(
     model="gpt-4o-2024-08-06",
@@ -1406,6 +1423,8 @@ messages: [
 response_format: zodResponseFormat(MathResponse, "math_response"),
 });
 ```
+
+:::
 
 
 步骤 3：处理边缘情况
@@ -1532,6 +1551,7 @@ except Exception as e:
 ```
 
 :::
+
 
 
 手动 schema
@@ -1818,6 +1838,7 @@ curl https://api.openai.com/v1/responses \
 
 
 
+
 **注意：** 您使用任何 schema 发出的第一个请求将有额外的延迟，因为我们的 API 会处理该 schema，但使用相同 schema 的后续请求不会有额外延迟。
 
 步骤 3：处理边缘情况
@@ -2062,6 +2083,7 @@ except Exception as e:
 
 
 
+
 步骤 4：以类型安全的方式使用生成的结构化数据
 
 通常，在使用 Structured Outputs 时，您会在编程语言的类型系统中有一个类型或类来表示 JSON Schema 对象。
@@ -2070,6 +2092,7 @@ except Exception as e:
 
 例如：
 
+::: code-group
 ```python
 from pydantic import BaseModel, ValidationError
 from typing import List
@@ -2111,6 +2134,8 @@ final_answer: string;
 // Now so long as the JSON Schema we created was exactly equivalent to our TypeScript types, this is type-safe
 const solution = JSON.parse(response.choices[0].message.content)) as Solution
 ```
+
+:::
 
 
 ## 如何使用 text.format 的 Structured Outputs
@@ -2397,6 +2422,7 @@ curl https://api.openai.com/v1/responses \
 
 
 
+
 **注意：** 您使用任何 schema 发出的第一个请求将有额外的延迟，因为我们的 API 会处理该 schema，但使用相同 schema 的后续请求不会有额外延迟。
 
 步骤 3：处理边缘情况
@@ -2641,6 +2667,7 @@ except Exception as e:
 
 
 
+
 步骤 4：以类型安全的方式使用生成的结构化数据
 
 通常，在使用 Structured Outputs 时，您会在编程语言的类型系统中有一个类型或类来表示 JSON Schema 对象。
@@ -2649,6 +2676,7 @@ except Exception as e:
 
 例如：
 
+::: code-group
 ```python
 from pydantic import BaseModel, ValidationError
 from typing import List
@@ -2691,6 +2719,8 @@ final_answer: string;
 const solution = JSON.parse(response.choices[0].message.content)) as Solution
 ```
 
+:::
+
 
 ### 
 
@@ -2700,6 +2730,7 @@ Structured Outputs 的拒绝
 
 当 `refusal` 属性出现在您的输出对象中时，您可能会在 UI 中展示拒绝信息，或在消费响应的代码中包含条件逻辑来处理请求被拒绝的情况。
 
+::: code-group
 ```python
 class Step(BaseModel):
     explanation: str
@@ -2757,6 +2788,8 @@ console.log(math_reasoning.refusal);
 console.log(math_reasoning.parsed);
 }
 ```
+
+:::
 
 
 拒绝的 API 响应将类似于这样：
@@ -2832,6 +2865,8 @@ console.log(math_reasoning.parsed);
 }
 ```
 
+:::
+
 
 ### 
 
@@ -2867,6 +2902,7 @@ Structured Outputs 仍然可能包含错误。如果您发现错误，请尝试�
 
 以下是如何使用 `stream` 辅助工具流式传输模型响应：
 
+::: code-group
 ```python
 from typing import List
 from pydantic import BaseModel
@@ -2945,9 +2981,12 @@ const finalCompletion = await stream.finalChatCompletion();
 console.log(finalCompletion);
 ```
 
+:::
+
 
 您还可以使用 `stream` 辅助工具来解析函数调用参数：
 
+::: code-group
 ```python
 from pydantic import BaseModel
 import openai
@@ -3097,6 +3136,7 @@ console.log(result);
 ```
 
 :::
+
 
 
 
@@ -3533,7 +3573,6 @@ Structured Outputs 仅支持生成指定的键/值，因此我们要求开发者
 
 使用显式递归的递归 schema 示例：
 
-::: code-group
 ```json
 {
     "type": "object",
@@ -3592,6 +3631,7 @@ JSON mode 是 Structured Outputs 功能的更基础版本。虽然 JSON mode 确
 
 处理边缘情况
 
+::: code-group
 ```javascript
 const we_did_not_specify_stop_tokens = true;
 
@@ -3782,6 +3822,7 @@ except Exception as e:
 ```
 
 :::
+
 
 
 

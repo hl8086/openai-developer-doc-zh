@@ -7,6 +7,7 @@ OpenAI [webhooks](http://chatgpt.com/?q=eli5+what+is+a+webhook?) 允许你接收
 
 **Webhooks 服务器**
 
+::: code-group
 ```python
 import os
 from openai import OpenAI, InvalidWebhookSignatureError
@@ -77,6 +78,8 @@ app.listen(8000, () => {
 });
 ```
 
+:::
+
 
 要查看此类 webhook 的实际运行效果，你可以在 OpenAI 仪表板中设置一个订阅了 `response.completed` 的 webhook 端点，然后发起一个 API 请求来[在后台模式下生成响应](/guides/background)。
 
@@ -84,6 +87,7 @@ app.listen(8000, () => {
 
 **生成后台响应**
 
+::: code-group
 ```curl
 curl https://api.openai.com/v1/responses \
 -H "Content-Type: application/json" \
@@ -121,6 +125,8 @@ resp = client.responses.create(
 
 print(resp.status)
 ```
+
+:::
 
 
 
@@ -224,6 +230,7 @@ $wh->verify($webhook_payload, $webhook_headers);
 ```
 
 :::
+
 
 
 或者，如果需要，你可以按照 [Standard Webhooks 规范中的描述](https://github.com/standard-webhooks/standard-webhooks/blob/main/spec/standard-webhooks.md#verifying-webhook-authenticity) 实现自己的签名验证。

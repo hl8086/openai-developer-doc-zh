@@ -11,6 +11,7 @@
 
 **使用优先处理创建响应**
 
+::: code-group
 ```curl
 curl https://api.openai.com/v1/responses   -H "Authorization: Bearer $OPENAI_API_KEY"   -H "Content-Type: application/json"   -d '{
     "model": "gpt-5",
@@ -45,6 +46,8 @@ response = client.responses.create(
 )
 print(response)
 ```
+
+:::
 
 
 

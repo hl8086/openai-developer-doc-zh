@@ -10,6 +10,7 @@ Code Interpreter 工具允许模型在沙盒环境中编写和运行 Python 代�
 
 **使用 Responses API 配合 Code Interpreter**
 
+::: code-group
 ```curl
 curl https://api.openai.com/v1/responses \
   -H "Content-Type: application/json" \
@@ -74,6 +75,8 @@ resp = client.responses.create(
 print(resp.output)
 ```
 
+:::
+
 
 
 虽然我们将此工具称为 Code Interpreter，但模型将其识别为"python tool"。模型通常能理解引用 code interpreter 工具的提示，但最明确的调用方式是在提示中要求使用"the python tool"。
@@ -89,6 +92,7 @@ Code Interpreter 工具需要一个[容器对象]( https://developers.openai.com
 
 **使用显式容器创建**
 
+::: code-group
 ```curl
 curl https://api.openai.com/v1/containers \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -152,6 +156,8 @@ const resp = await client.responses.create({
 
 console.log(resp.output_text);
 ```
+
+:::
 
 
 

@@ -83,11 +83,14 @@ if __name__ == "__main__":
     asyncio.run(main())
 ```
 
+:::
+
 
 当你需要持久化记忆、可恢复的审批流程或由你的应用控制的存储时，session 是最佳默认选择。
 
 **使用服务器管理状态继续**
 
+::: code-group
 ```typescript
 import { Agent, run } from "@openai/agents";
 import OpenAI from "openai";
@@ -141,6 +144,8 @@ if __name__ == "__main__":
     asyncio.run(main())
 ```
 
+:::
+
 
 当多个系统需要共享一个命名对话时使用 `conversationId`。当你想要最低成本的响应到响应延续选项时使用 `previousResponseId`。
 
@@ -150,6 +155,7 @@ if __name__ == "__main__":
 
 **在文本到达时流式运行**
 
+::: code-group
 ```typescript
 import { Agent, run } from "@openai/agents";
 
@@ -209,6 +215,7 @@ if __name__ == "__main__":
 ```
 
 :::
+
 
 
 三条实用规则很重要：

@@ -116,6 +116,8 @@ event = {
 ws.send(json.dumps(event))
 ```
 
+:::
+
 
 当会话更新完成后，服务器将发出 [`session.updated`]( https://developers.openai.com/api/reference/realtime-server-events/session/updated) 事件，包含会话的新状态。
 
@@ -131,6 +133,7 @@ ws.send(json.dumps(event))
 
 **创建包含用户输入的对话项**
 
+::: code-group
 ```javascript
 const event = {
   type: "conversation.item.create",
@@ -167,11 +170,14 @@ event = {
 ws.send(json.dumps(event))
 ```
 
+:::
+
 
 将用户消息添加到对话后，发送 [`response.create`]( https://developers.openai.com/api/reference/realtime-client-events/response/create) 事件以发起模型响应。如果当前会话同时启用了音频和文本，模型将同时以音频和文本内容进行响应。如果你只想生成文本，可以在发送 `response.create` 客户端事件时指定，如下所示。
 
 **生成纯文本响应**
 
+::: code-group
 ```javascript
 const event = {
   type: "response.create",
@@ -195,6 +201,7 @@ ws.send(json.dumps(event))
 ```
 
 :::
+
 
 
 当响应完全完成时，服务器将发出 [`response.done`]( https://developers.openai.com/api/reference/realtime-server-events/response/done) 事件。此事件将包含模型生成的完整文本，如下所示。
@@ -223,6 +230,8 @@ def on_message(ws, message):
     if server_event.type == "response.done":
         print(server_event.response.output[0])
 ```
+
+:::
 
 
 在模型响应生成过程中，服务器会发出多个生命周期事件。你可以监听这些事件，例如 [`response.output_text.delta`]( https://developers.openai.com/api/reference/realtime-server-events/response/output_text/delta)，以便在响应生成时向用户提供实时反馈。服务器发出的完整事件列表见下方**相关服务器事件**。它们按大致发出顺序排列，同时列出了与文本生成相关的客户端事件。
@@ -306,6 +315,7 @@ pc.addTrack(ms.getTracks()[0]);
 
 **将音频输入字节追加到对话中**
 
+::: code-group
 ```javascript
 import fs from 'fs';
 import decodeAudio from 'audio-decode';
@@ -396,6 +406,8 @@ for filename in files:
     ws.send(json.dumps(event))
 ```
 
+:::
+
 
 ### 发送完整音频消息
 
@@ -403,6 +415,7 @@ for filename in files:
 
 **创建完整音频输入对话项**
 
+::: code-group
 ```javascript
 const fullAudio = "<a base64-encoded string of audio bytes>";
 
@@ -447,6 +460,7 @@ ws.send(json.dumps(event))
 :::
 
 
+
 ### 处理 WebSocket 的音频输出
 
 **要在客户端设备（如 Web 浏览器）上播放输出音频，我们建议使用 WebRTC 而非 WebSocket**。在不确定的网络条件下，WebRTC 向客户端设备发送媒体会更加稳健。
@@ -483,6 +497,8 @@ def on_message(ws, message):
         # Access Base64-encoded audio chunks:
         # print(server_event.delta)
 ```
+
+:::
 
 
 ## 图像输入
@@ -544,6 +560,7 @@ dataChannel.send(JSON.stringify(event));
 
 **创建带外模型响应**
 
+::: code-group
 ```javascript
 const prompt = `
 Analyze the conversation so far. If it is related to support, output
@@ -598,6 +615,7 @@ ws.send(json.dumps(event))
 :::
 
 
+
 现在，当你监听 [`response.done`]( https://developers.openai.com/api/reference/realtime-server-events/response/done) 服务器事件时，可以识别带外响应的结果。
 
 **识别带外模型响应**
@@ -638,6 +656,8 @@ def on_message(ws, message):
         print(server_event.response.output[0])
 ```
 
+:::
+
 
 ### 为响应创建自定义上下文
 
@@ -645,6 +665,7 @@ def on_message(ws, message):
 
 **监听带有自定义上下文的带外模型响应**
 
+::: code-group
 ```javascript
 const event = {
   type: "response.create",
@@ -714,6 +735,8 @@ event = {
 ws.send(json.dumps(event))
 ```
 
+:::
+
 
 ### 创建无上下文的响应
 
@@ -721,6 +744,7 @@ ws.send(json.dumps(event))
 
 **将无上下文的模型响应插入默认对话**
 
+::: code-group
 ```javascript
 const prompt = `
 Say exactly the following:
@@ -761,6 +785,7 @@ ws.send(json.dumps(event))
 ```
 
 :::
+
 
 
 ## 函数调用

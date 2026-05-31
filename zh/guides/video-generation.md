@@ -99,6 +99,7 @@ curl -X POST "https://api.openai.com/v1/videos" \
 
 
 
+
 响应是一个包含唯一 id 和初始状态（如 `queued` 或 `in_progress`）的 JSON 对象。这意味着渲染任务已经开始。
 
 ```
@@ -237,7 +238,6 @@ Webhook 负载示例：
     "id": "video_abc123"
   }
 }
-::: code-group
 ```go
 
 ### 获取结果
@@ -299,6 +299,7 @@ require('fs').writeFileSync('video.mp4', buffer);
 console.log('Wrote video.mp4');
 ```
 
+::: code-group
 ```curl
 curl -L "https://api.openai.com/v1/videos/video_abc123/content" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -358,6 +359,7 @@ print("Wrote video.mp4")
 ```
 
 :::
+
 
 
 

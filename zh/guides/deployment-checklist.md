@@ -27,6 +27,7 @@
 
 **根据任务调整推理 effort**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -73,6 +74,8 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
+:::
+
 
 ## Set up `text.verbosity`
 
@@ -82,6 +85,7 @@ print(response.output_text)
 
 **设置较低的 verbosity 以获得紧凑输出**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -123,6 +127,8 @@ response = client.responses.create(
 
 print(response.output_text)
 ```
+
+:::
 
 
 ## Set up the assistant `phase` parameter

@@ -39,6 +39,8 @@ triage_agent = Agent(
 )
 ```
 
+:::
+
 
 保持路由表面清晰易读：
 
@@ -54,6 +56,7 @@ triage_agent = Agent(
 
 **将专家作为工具调用**
 
+::: code-group
 ```typescript
 import { Agent } from "@openai/agents";
 
@@ -93,6 +96,7 @@ main_agent = Agent(
 ```
 
 :::
+
 
 
 以下情况通常更适合使用此模式：

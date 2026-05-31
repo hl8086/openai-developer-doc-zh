@@ -79,6 +79,8 @@ openai audio:speech create \
   --output speech.mp3
 ```
 
+:::
+
 默认情况下，端点输出语音音频的 MP3 格式，但您可以将其配置为输出任何[支持的格式](#supported-output-formats)。
 
 ### 文本转语音模型
@@ -125,6 +127,7 @@ Speech API 支持使用[分块传输编码](https://developer.mozilla.org/en-US/
 
 **将输入文本的语音音频直接流式传输到扬声器**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 import { playAudio } from "openai/helpers/audio";
@@ -178,6 +181,7 @@ curl https://api.openai.com/v1/audio/speech \
 ```
 
 :::
+
 
 
 

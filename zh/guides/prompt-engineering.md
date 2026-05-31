@@ -137,6 +137,7 @@ curl "https://api.openai.com/v1/responses" \
 
 :::
 
+
 模型生成的内容数组位于响应的 `output` 属性中。在这个简单示例中，我们只有一个输出，如下所示：
 
 ```
@@ -154,7 +155,6 @@ curl "https://api.openai.com/v1/responses" \
     ]
   }
 ]
-::: code-group
 ```javascript
 
 **`output` 数组通常包含多个项目！** 它可以包含工具调用、[推理模型](/guides/reasoning)生成的推理 token 相关数据以及其他项目。不能假设模型的文本输出位于 `output[0].content[0].text`。
@@ -216,7 +216,6 @@ curl "https://api.openai.com/v1/chat/completions" \
     }'
 ```
 
-:::
 
 
 模型生成的内容数组位于响应的 `choices` 属性中。在这个简单示例中，我们只有一个输出，如下所示：
@@ -234,7 +233,6 @@ curl "https://api.openai.com/v1/chat/completions" \
     "finish_reason": "stop"
   }
 ]
-::: code-group
 ```javascript
 
 除了纯文本之外，你还可以让模型以 JSON 格式返回结构化数据——这个功能称为[**结构化输出**](/guides/structured-outputs)。
@@ -316,6 +314,7 @@ curl "https://api.openai.com/v1/responses" \
 
 **使用不同角色的消息生成文本**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -380,6 +379,8 @@ curl "https://api.openai.com/v1/responses" \
     }'
 ```
 
+:::
+
 
 
 请注意，`instructions` 参数仅适用于当前的响应生成请求。如果你使用 `previous_response_id` 参数[管理对话状态](/guides/conversation-state)，之前轮次使用的 `instructions` 将不会出现在上下文中。
@@ -388,6 +389,7 @@ curl "https://api.openai.com/v1/responses" \
 
 **使用不同角色的消息生成文本**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -450,6 +452,8 @@ curl "https://api.openai.com/v1/chat/completions" \
     }'
 ```
 
+:::
+
 
 
 [OpenAI 模型规范](https://model-spec.openai.com/2025-02-12.html#chain_of_command)描述了我们的模型如何对不同角色的消息赋予不同的优先级。
@@ -485,6 +489,7 @@ curl "https://api.openai.com/v1/chat/completions" \
 
 **使用提示词模板生成文本**
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -540,12 +545,15 @@ curl https://api.openai.com/v1/responses \
   }'
 ```
 
+:::
+
 
 
 带文件输入的变量
 
 **带文件输入变量的提示词模板**
 
+::: code-group
 ```javascript
 import fs from "fs";
 import OpenAI from "openai";
@@ -623,6 +631,7 @@ curl https://api.openai.com/v1/responses   -H "Authorization: Bearer $OPENAI_API
 
 
 
+
 ## 使用 Markdown 和 XML 进行消息格式化
 
 在编写 `developer` 和 `user` 消息时，你可以使用 [Markdown](https://commonmark.org/help/) 格式和 [XML 标签](https://www.w3.org/TR/xml/)的组合来帮助模型理解提示词和上下文数据的逻辑边界。
@@ -669,7 +678,6 @@ How do I declare a string variable for a first name?
 &lt;assistant_response>
 var first_name = "Anna";
 &lt;/assistant_response>
-::: code-group
 ```javascript
 
 API 请求
@@ -719,7 +727,6 @@ curl https://api.openai.com/v1/responses \
   }'
 ```
 
-:::
 
 
 

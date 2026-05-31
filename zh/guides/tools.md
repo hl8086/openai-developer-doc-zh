@@ -76,10 +76,13 @@ OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
 Console.WriteLine(response.GetOutputText());
 ```
 
+:::
+
 文件搜索
 
 **在响应中搜索你的文件**
 
+::: code-group
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -130,10 +133,13 @@ OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
 Console.WriteLine(response.GetOutputText());
 ```
 
+:::
+
 工具搜索
 
 **在运行时加载延迟工具**
 
+::: code-group
 ```python
 from openai import OpenAI
 
@@ -245,11 +251,14 @@ const response = await client.responses.create({
 console.log(response.output);
 ```
 
+:::
+
 
 函数调用
 
 调用你自己的函数
 
+::: code-group
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -392,6 +401,7 @@ curl -X POST https://api.openai.com/v1/responses \
 
 :::
 
+
 远程 MCP
 
 **调用远程 MCP 服务器**
@@ -459,7 +469,6 @@ resp = client.responses.create(
 print(resp.output_text)
 ```
 
-
 ```csharp
 using OpenAI.Responses;
 
@@ -481,6 +490,8 @@ OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
 
 Console.WriteLine(response.GetOutputText());
 ```
+
+:::
 
 ## 可用工具
 
@@ -524,6 +535,7 @@ Console.WriteLine(response.GetOutputText());
 
 **将本地逻辑封装为函数工具**
 
+::: code-group
 ```typescript
 import { tool } from "@openai/agents";
 import { z } from "zod";
@@ -548,9 +560,12 @@ def get_weather(city: str) -> str:
     return f"The weather in {city} is sunny."
 ```
 
+:::
+
 
 **将专家智能体作为工具暴露**
 
+::: code-group
 ```typescript
 import { Agent } from "@openai/agents";
 
@@ -590,6 +605,7 @@ main_agent = Agent(
 ```
 
 :::
+
 
 
 当你在塑造单个专家智能体时使用[智能体定义](/guides/agents/define-agents)，当工具影响所有权时使用[编排和交接](/guides/agents/orchestration)，当工具影响审批时使用[护栏和人工审核](/guides/agents/guardrails-approvals)，当能力来自 MCP 时使用[集成和可观测性](/guides/agents/integrations-observability#mcp)。

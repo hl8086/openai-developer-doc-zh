@@ -150,7 +150,6 @@ followup = client.responses.create(
   "status": "failed",
   "output": "Could not apply patch to lib/foo.py — file not found on disk"
 }
-::: code-group
 ```javascript
 
 ## Apply patch 操作
@@ -302,7 +301,6 @@ if __name__ == "__main__":
     asyncio.run(main())
 ```
 
-:::
 
 
 你可以在 GitHub 上找到完整的可运行示例。

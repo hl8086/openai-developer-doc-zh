@@ -66,10 +66,13 @@ openai responses:input-tokens count \
   --transform input_tokens
 ```
 
+:::
+
 ## 计算对话中的 token
 
 **多轮对话**
 
+::: code-group
 ```python
 from openai import OpenAI
 
@@ -132,10 +135,13 @@ input:
 YAML
 ```
 
+:::
+
 ## 计算带指令的 token
 
 **带系统指令的输入**
 
+::: code-group
 ```python
 from openai import OpenAI
 
@@ -185,12 +191,15 @@ input: Explain quantum computing in one sentence.
 YAML
 ```
 
+:::
+
 ## 计算带图片的 token
 
 图片根据尺寸和细节级别消耗 token。Token 计数 API 返回精确计数——无需猜测。
 
 **带图片的输入**
 
+::: code-group
 ```python
 from openai import OpenAI
 
@@ -267,6 +276,8 @@ input:
 YAML
 ```
 
+:::
+
 你可以使用 `file_id`（来自 [Files API]( https://developers.openai.com/api/reference/files)）或 `image_url`（URL 或 base64 data URL）。详见[图片与视觉](/guides/images-vision)。
 
 ## 计算带工具的 token
@@ -275,6 +286,7 @@ YAML
 
 **带函数工具的输入**
 
+::: code-group
 ```python
 from openai import OpenAI
 
@@ -365,6 +377,7 @@ YAML
 ```
 
 :::
+
 
 ## 计算带文件的 token
 
