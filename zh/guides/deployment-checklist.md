@@ -77,6 +77,7 @@ print(response.output_text)
 :::
 
 
+
 ## Set up `text.verbosity`
 
 `text.verbosity` 是平衡简洁性与完整性的主要控制项。当产品需要快速、紧凑的回答时使用较低的 verbosity，当响应需要更丰富的解释、更清晰的结构或完整的上下文时使用较高的 verbosity。较低的 verbosity 意味着更少的输出 token，因此模型生成更少的内容并更快返回输出。
@@ -131,6 +132,7 @@ print(response.output_text)
 :::
 
 
+
 ## Set up the assistant `phase` parameter
 
 `phase` 是对话历史中 assistant 消息上的标签。它向模型指示先前的 assistant 消息是中间工作评论还是最终答案。对进度更新、工具调用前的备注和其他中间消息使用 `phase: "commentary"`。对已完成的响应使用 `phase: "final_answer"`。
@@ -157,7 +159,7 @@ Assistant 最终答案消息
   "phase": "final_answer",
   "content": "The deploy failed because the migration referenced a column that does not exist in production."
 }
-```javascript
+```
 
 这在长时间运行或工具密集型的工作流中很有用，因为 assistant 可能在完成之前产生可见的进度更新。当你将该历史记录发送回模型时，请在 assistant 消息上保留 `phase`，以便模型能够区分哪些消息是进度更新，哪些消息是最终结果。
 
@@ -230,7 +232,7 @@ const response = await openai.responses.create({
 });
 
 console.log(response.output_text);
-```python
+```
 
 ```
 from openai import OpenAI
@@ -283,7 +285,7 @@ response = client.responses.create(
 )
 
 print(response.output_text)
-```javascript
+```
 
 
 ## Leverage built-in tools
@@ -349,7 +351,7 @@ const nextResponse = await openai.responses.create({
 });
 
 console.log(nextResponse.output_text);
-```python
+```
 
 ```
 from openai import OpenAI
@@ -382,7 +384,7 @@ next_response = client.responses.create(
 )
 
 print(next_response.output_text)
-```javascript
+```
 
 
 ## Use `prompt_cache_key`
@@ -412,7 +414,7 @@ const response = await openai.responses.create({
 });
 
 console.log(response.output_text);
-```python
+```
 
 ```
 from openai import OpenAI
@@ -433,7 +435,7 @@ response = client.responses.create(
 )
 
 print(response.output_text)
-```javascript
+```
 
 
 ## Use `reasoning.encrypted_content`
@@ -472,7 +474,7 @@ const second = await openai.responses.create({
 });
 
 console.log(second.output_text);
-```python
+```
 
 ```
 from openai import OpenAI
@@ -502,7 +504,7 @@ second = client.responses.create(
 )
 
 print(second.output_text)
-```javascript
+```
 
 
 ## Use `background=True`
@@ -540,7 +542,7 @@ while (["queued", "in_progress"].includes(job.status)) {
 }
 
 console.log(job.output_text);
-```python
+```
 
 ```
 from openai import OpenAI
@@ -569,7 +571,7 @@ while job.status in {"queued", "in_progress"}:
     job = client.responses.retrieve(job.id)
 
 print(job.output_text)
-```javascript
+```
 
 
 你可以将它与 `stream=True` 结合使用以获取进度事件，但第一个事件可能比正常请求花费更长时间。
@@ -635,7 +637,7 @@ ws.on("message", (data) => {
   const firstEvent = JSON.parse(data.toString());
   console.log(firstEvent.type);
 });
-```python
+```
 
 ```
 from openai import OpenAI

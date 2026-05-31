@@ -113,6 +113,7 @@ curl https://api.openai.com/v1/responses   -H "Authorization: Bearer $OPENAI_API
 
 
 
+
 深度研究请求可能需要很长时间，因此我们建议在[后台模式](/guides/background)下运行。您可以配置一个 [webhook](/guides/webhooks)，在后台请求完成时接收通知。后台模式会保留响应数据大约 10 分钟以确保轮询可靠工作，这使其与零数据保留（ZDR）要求不兼容。出于历史原因，我们仍然在 ZDR 凭证上接受 `background=true`，但如果您需要 ZDR，则应将其关闭。修改后的滥用监控（MAM）项目可以安全使用后台模式。
 
 ### 输出结构
@@ -161,7 +162,7 @@ curl https://api.openai.com/v1/responses   -H "Authorization: Bearer $OPENAI_API
     }
   ]
 }
-```python
+```
 
 向最终用户展示网络结果或网络结果中包含的信息时，内联引用应在您的用户界面中清晰可见且可点击。
 
@@ -210,7 +211,7 @@ response = client.responses.create(
 )
 
 print(response.output_text)
-```javascript
+```
 
 ```
 import OpenAI from "openai";
@@ -433,6 +434,7 @@ curl https://api.openai.com/v1/responses \
 
 
 
+
 ## 使用您自己的数据进行研究
 
 深度研究模型旨在访问公共和私有数据源，但私有或内部数据需要特定的设置。默认情况下，这些模型可以通过[网络搜索工具](/guides/tools-web-search)访问公共互联网上的信息。要让模型访问您自己的数据，您有以下几种选择：
@@ -544,6 +546,7 @@ print(resp.output_text)
 ```
 
 :::
+
 
 
 

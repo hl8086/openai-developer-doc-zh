@@ -145,6 +145,7 @@ Console.WriteLine(response.GetOutputText());
 
 :::
 
+
 Chat Completions 不支持文件 URL。请使用 [Responses API](/guides/file-inputs?api-mode=responses#file-urls) 来实现此选项。
 
 ## 上传文件
@@ -268,6 +269,7 @@ Console.WriteLine(response.GetOutputText());
 
 :::
 
+
 **上传文件**
 
 ::: code-group
@@ -373,6 +375,7 @@ print(completion.choices[0].message.content)
 
 
 
+
 ## Base64 编码文件
 
 你也可以以 Base64 编码文件数据的形式发送文件输入。
@@ -470,6 +473,7 @@ print(response.output_text)
 ```
 
 :::
+
 
 
 
@@ -572,6 +576,7 @@ print(completion.choices[0].message.content)
 ```
 
 :::
+
 
 
 

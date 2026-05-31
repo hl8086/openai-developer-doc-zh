@@ -71,7 +71,7 @@ PY
   "iat": 1716235422,
   "exp": 1716239022
 }
-```javascript
+```
 
 使用解码后的有效载荷将收到的令牌与 OpenAI 中配置的颁发者、受众和映射值进行比较。大多数配置问题在交换令牌之前就可以在 `iss`、`aud`、`email` 和 `sub` 声明中看到。
 
@@ -170,7 +170,7 @@ const response = await client.responses.create({
 });
 
 console.log(response.output_text);
-```python
+```
 
 ```
 import os
@@ -218,7 +218,7 @@ response = client.responses.create(
 )
 
 print(response.output_text)
-```go
+```
 
 ```
 package main
@@ -329,7 +329,7 @@ func main() {
 
 	fmt.Println(response.OutputText())
 }
-```java
+```
 
 ```
 import com.fasterxml.jackson.databind.json.JsonMapper;
@@ -440,7 +440,7 @@ public final class GoogleWorkloadIdentityExample {
                 .forEach(outputText -> System.out.println(outputText.text()));
     }
 }
-```ruby
+```
 
 ```
 require "net/http"
@@ -746,6 +746,7 @@ print(response.output_text)
 
 
 
+
 ::: code-group
 ```go
 package main
@@ -958,6 +959,7 @@ puts(response.output_text)
 ```
 
 :::
+
 
 
 ## Google Cloud 最佳实践

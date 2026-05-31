@@ -86,6 +86,7 @@ ws.send(json.dumps(event))
 :::
 
 
+
 当模型调用函数时，监听函数调用项，运行你的应用逻辑，然后将输出发送回去：
 
 **发送函数调用输出**
@@ -128,6 +129,7 @@ ws.send(json.dumps({"type": "response.create"}))
 ```
 
 :::
+
 
 
 有关函数调用的完整逐事件演练，请参阅[管理对话](/guides/realtime-conversations#function-calling)。
@@ -198,6 +200,7 @@ ws.send(json.dumps(event))
 :::
 
 
+
 内置连接器使用相同的 MCP 工具结构，但传递 `connector_id` 而不是 `server_url`。例如，Google Calendar 使用 `connector_googlecalendar`。在 Realtime 中，使用这些内置连接器进行读取操作，如搜索或读取事件或邮件。在 `authorization` 中传递用户的 OAuth 访问令牌，并尽可能使用 `allowed_tools` 缩小工具范围：
 
 **配置 Google Calendar 连接器**
@@ -250,6 +253,7 @@ ws.send(json.dumps(event))
 ```
 
 :::
+
 
 
 远程 MCP 服务器**不会自动接收完整的对话上下文**，但**它们可以看到模型在工具调用中发送的任何数据**。**使用 `allowed_tools` 保持工具范围尽可能小**，并对任何你不会自动运行的操作要求审批。
@@ -422,6 +426,7 @@ def on_message(ws, message):
 
 
 
+
 ## 常见故障
 
 *   [`mcp_list_tools.failed`]( https://developers.openai.com/api/reference/realtime-server-events/mcp_list_tools/failed)：Realtime API 无法从远程服务器或连接器导入工具。检查 `server_url` 或 `connector_id`、身份验证、服务器连接性以及你指定的任何 `allowed_tools` 名称。
@@ -470,6 +475,7 @@ def approve_mcp_request(ws, approval_request_id):
 ```
 
 :::
+
 
 
 如果你拒绝请求，将 `approve` 设置为 `false`，并可选地包含一个 `reason`。
@@ -548,6 +554,7 @@ ws.send(json.dumps(event))
 :::
 
 
+
 当只有一个响应需要外部上下文，或者不同回合应使用不同的 MCP 服务器时，这很有用。
 
 ## 重用先前定义的 server label
@@ -618,6 +625,7 @@ ws.send(json.dumps(event))
 ```
 
 :::
+
 
 
 

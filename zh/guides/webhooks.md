@@ -81,6 +81,7 @@ app.listen(8000, () => {
 :::
 
 
+
 要查看此类 webhook 的实际运行效果，你可以在 OpenAI 仪表板中设置一个订阅了 `response.completed` 的 webhook 端点，然后发起一个 API 请求来[在后台模式下生成响应](/guides/background)。
 
 你也可以从 [webhook 设置页面](https://platform.openai.com/settings/project/webhooks) 使用示例数据触发测试事件。
@@ -127,6 +128,7 @@ print(resp.status)
 ```
 
 :::
+
 
 
 
@@ -187,7 +189,7 @@ webhook-signature: v1,K5oZfzN95Z9UVu1EsfQmfVNQhnkZ2pj9o9NDN/H/pI4=
 
 ```
 export OPENAI_WEBHOOK_SECRET="&lt;your secret here>"
-```python
+```
 
 验证 webhook 签名最简单的方法是使用官方 OpenAI SDK 辅助工具的 `unwrap()` 方法：
 
@@ -199,7 +201,7 @@ webhook_secret = os.environ["OPENAI_WEBHOOK_SECRET"]
 
 # will raise if the signature is invalid
 event = client.webhooks.unwrap(request.data, request.headers, secret=webhook_secret)
-```javascript
+```
 
 ```
 const client = new OpenAI();
@@ -230,6 +232,7 @@ $wh->verify($webhook_payload, $webhook_headers);
 ```
 
 :::
+
 
 
 

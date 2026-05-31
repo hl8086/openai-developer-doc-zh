@@ -62,6 +62,7 @@ if image_data:
 :::
 
 
+
 你可以使用文件 ID 或 base64 数据[提供输入图像](/guides/image-generation?image-generation-model=gpt-image#edit-images)。
 
 要强制触发图像生成工具调用，你可以将参数 `tool_choice` 设置为 `{"type": "image_generation"}`。
@@ -99,7 +100,7 @@ if image_data:
   "revised_prompt": "A gray tabby cat hugging an otter. The otter is wearing an orange scarf. Both animals are cute and friendly, depicted in a warm, heartwarming style.",
   "result": "..."
 }
-```javascript
+```
 
 ### 提示词技巧
 
@@ -159,7 +160,7 @@ if (imageData_fwup.length > 0) {
     Buffer.from(imageBase64, "base64")
   );
 }
-```python
+```
 
 ```
 from openai import OpenAI
@@ -205,7 +206,7 @@ if image_data_fwup:
     image_base64 = image_data_fwup[0]
     with open("cat_and_otter_realistic.png", "wb") as f:
         f.write(base64.b64decode(image_base64))
-```javascript
+```
 
 
 使用图像 ID
@@ -264,7 +265,7 @@ if (imageData_fwup.length > 0) {
     Buffer.from(imageBase64, "base64")
   );
 }
-```python
+```
 
 ```
 import openai
@@ -318,7 +319,7 @@ if image_data_fwup:
     image_base64 = image_data_fwup[0]
     with open("cat_and_otter_realistic.png", "wb") as f:
         f.write(base64.b64decode(image_base64))
-```javascript
+```
 
 
 ## 流式传输
@@ -352,7 +353,7 @@ for await (const event of stream) {
     fs.writeFileSync(`river${idx}.png`, imageBuffer);
   }
 }
-```python
+```
 
 ```
 from openai import OpenAI

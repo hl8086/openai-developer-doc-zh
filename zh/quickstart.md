@@ -49,7 +49,7 @@ JavaScript
 
 ```
 npm install openai
-```javascript
+```
 
 安装 OpenAI SDK 后，创建一个名为 `example.mjs` 的文件，并将示例代码复制到其中：
 
@@ -79,7 +79,7 @@ Python
 
 ```
 pip install openai
-```python
+```
 
 安装 OpenAI SDK 后，创建一个名为 `example.py` 的文件，并将示例代码复制到其中：
 
@@ -107,7 +107,7 @@ OpenAI 与 Microsoft 合作，提供了官方支持的 C# API 客户端。你可
 
 ```
 dotnet add package OpenAI
-```csharp
+```
 
 一个简单的 [Responses API]( https://developers.openai.com/api/reference/responses) 请求示例如下：
 
@@ -366,6 +366,7 @@ Console.WriteLine(response.GetOutputText());
 :::
 
 
+
 File URL
 
 **使用文件 URL 作为输入**
@@ -470,6 +471,7 @@ Console.WriteLine(response.GetOutputText());
 ```
 
 :::
+
 
 Upload file
 
@@ -590,6 +592,7 @@ Console.WriteLine(response.GetOutputText());
 
 :::
 
+
 [图像输入指南 - 了解如何使用图像输入模型并从图像中提取含义。](/guides/images)
 
 [文件输入指南 - 了解如何使用文件输入模型并从文档中提取含义。](/guides/file-inputs)
@@ -675,6 +678,7 @@ Console.WriteLine(response.GetOutputText());
 
 :::
 
+
 File search
 
 **在响应中搜索你的文件**
@@ -731,6 +735,7 @@ Console.WriteLine(response.GetOutputText());
 ```
 
 :::
+
 
 Function calling
 
@@ -880,6 +885,7 @@ curl -X POST https://api.openai.com/v1/responses \
 :::
 
 
+
 Remote MCP
 
 **调用远程 MCP 服务器**
@@ -971,6 +977,7 @@ Console.WriteLine(response.GetOutputText());
 
 :::
 
+
 [使用内置工具 - 了解强大的内置工具，如网络搜索和文件搜索。](/guides/tools)
 
 [函数调用指南 - 了解如何让模型调用你自己的自定义代码。](/guides/function-calling)
@@ -1044,6 +1051,7 @@ await foreach (var response in responses)
 
 :::
 
+
 [使用流式事件 - 使用服务器发送事件将模型响应快速流式传输给用户。](/guides/streaming-responses)
 
 [开始使用 Realtime API - 使用 WebRTC 或 WebSockets 构建超快的语音对语音 AI 应用。](/guides/realtime)
@@ -1110,6 +1118,7 @@ if __name__ == "__main__":
 ```
 
 :::
+
 
 
 

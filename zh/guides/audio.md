@@ -155,6 +155,7 @@ curl "https://api.openai.com/v1/chat/completions" \
 
 
 
+
 模型的音频输入
 
 **使用音频输入来提示模型**
@@ -257,6 +258,7 @@ curl "https://api.openai.com/v1/chat/completions" \
 ```
 
 :::
+
 
 
 

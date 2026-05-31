@@ -43,6 +43,7 @@ await client.vector_stores.files.upload_and_poll({         // Upload file
 
 :::
 
+
 *   **发送搜索查询**以获取相关结果。
     
 
@@ -68,6 +69,7 @@ const results = await client.vectorStores.search({
 ```
 
 :::
+
 
 
 要了解如何将结果与我们的模型配合使用，请查看[生成回答](#synthesizing-responses)部分。
@@ -112,6 +114,7 @@ const results = await client.vectorStores.search({
 ```
 
 :::
+
 
 
 结果
@@ -357,6 +360,7 @@ await client.vector_stores.create({
 :::
 
 
+
 检索
 
 **检索向量存储**
@@ -375,6 +379,7 @@ await client.vector_stores.retrieve({
 ```
 
 :::
+
 
 
 更新
@@ -399,6 +404,7 @@ await client.vector_stores.update({
 :::
 
 
+
 删除
 
 **删除向量存储**
@@ -419,6 +425,7 @@ await client.vector_stores.delete({
 :::
 
 
+
 列表
 
 **列出向量存储**
@@ -433,6 +440,7 @@ await client.vector_stores.list();
 ```
 
 :::
+
 
 
 ### 向量存储文件操作
@@ -465,6 +473,7 @@ await client.vector_stores.files.create_and_poll({
 :::
 
 
+
 上传
 
 **上传向量存储文件**
@@ -487,6 +496,7 @@ await client.vector_stores.files.upload_and_poll({
 :::
 
 
+
 检索
 
 **检索向量存储文件**
@@ -507,6 +517,7 @@ await client.vector_stores.files.retrieve({
 ```
 
 :::
+
 
 
 更新
@@ -533,6 +544,7 @@ await client.vector_stores.files.update({
 :::
 
 
+
 删除
 
 **删除向量存储文件**
@@ -555,6 +567,7 @@ await client.vector_stores.files.delete({
 :::
 
 
+
 列表
 
 **列出向量存储文件**
@@ -573,6 +586,7 @@ await client.vector_stores.files.list({
 ```
 
 :::
+
 
 
 ### 批量操作
@@ -627,6 +641,7 @@ await client.vector_stores.file_batches.create_and_poll({
 :::
 
 
+
 检索
 
 **批量检索操作**
@@ -647,6 +662,7 @@ await client.vector_stores.file_batches.retrieve({
 ```
 
 :::
+
 
 
 取消
@@ -671,6 +687,7 @@ await client.vector_stores.file_batches.cancel({
 :::
 
 
+
 列表
 
 **批量列表操作**
@@ -689,6 +706,7 @@ await client.vector_stores.file_batches.list({
 ```
 
 :::
+
 
 
 创建批量时，你可以提供 `file_ids` 并附带可选的 `attributes` 和/或 `chunking_strategy`，或者使用 `files` 数组传递包含 `file_id` 以及每个文件可选的 `attributes` 和 `chunking_strategy` 的对象。这两个选项是互斥的，这样你可以清晰地控制是所有文件共享相同设置，还是需要按文件单独覆盖。
@@ -728,6 +746,7 @@ await client.vector_stores.files.create(&lt;vector_store_id>, {
 :::
 
 
+
 ### 过期策略
 
 你可以使用 `expires_after` 在 `vector_store` 对象上设置过期策略。一旦向量存储过期，所有关联的 `vector_store.file` 对象将被删除，你将不再为它们付费。
@@ -756,6 +775,7 @@ await client.vector_stores.update({
 ```
 
 :::
+
 
 
 ### 限制
@@ -835,6 +855,7 @@ const results = await client.vectorStores.search({
 :::
 
 
+
 **根据结果生成回答**
 
 ::: code-group
@@ -885,6 +906,7 @@ console.log(completion.choices[0].message.content);
 :::
 
 
+
 ```
 "Our return policy allows returns within 30 days of purchase."
 ```
@@ -920,5 +942,6 @@ function formatResults(results) {
 ```
 
 :::
+
 
 

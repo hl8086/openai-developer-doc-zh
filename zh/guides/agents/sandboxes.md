@@ -172,6 +172,7 @@ agent = SandboxAgent(
 :::
 
 
+
 根据你希望技能如何物化来选择技能来源：
 
 *   对于较大的本地技能目录，当你希望模型先发现索引然后只加载需要的内容时，使用惰性本地目录来源。
@@ -308,6 +309,7 @@ asyncio.run(main())
 :::
 
 
+
 完整的本地示例请参见 TypeScript [沙盒 agent 快速入门](https://github.com/openai/openai-agents-js/blob/main/examples/docs/sandbox-agents/basic.ts) 和 Python [`unix_local_runner.py`](https://github.com/openai/openai-agents-python/blob/main/examples/sandbox/unix_local_runner.py)。
 
 ### 切换提供商
@@ -366,6 +368,7 @@ result = await Runner.run(
 ```
 
 :::
+
 
 
 可运行的示例请参见 TypeScript [沙盒客户端指南](https://openai.github.io/openai-agents-js/guides/sandbox-agents/clients) 和 [基本示例](https://github.com/openai/openai-agents-js/blob/main/examples/docs/sandbox-agents/basic.ts)，以及 Python [`basic.py`](https://github.com/openai/openai-agents-python/blob/main/examples/sandbox/basic.py)（提供商选择）、[`docker_runner.py`](https://github.com/openai/openai-agents-python/blob/main/examples/sandbox/docker/docker_runner.py)（Docker）和 [`main.py`](https://github.com/openai/openai-agents-python/tree/main/examples/sandbox/tutorials/dataroom_qa)（SDK 仓库中的数据室流程）。
@@ -503,6 +506,7 @@ finally:
 :::
 
 
+
 新会话输入如 `manifest` 和 `snapshot` 仅在运行器创建新沙盒会话时适用。如果你注入了实时 `session`，能力处理可以添加兼容的非挂载条目，但不能更改 root、环境变量、用户或组；不能删除现有条目；不能替换条目类型；也不能在已运行的沙盒上添加或更改挂载条目。
 
 这种分离让控制层恢复 agent 循环，而沙盒提供商恢复或重新创建工作空间。这些路径的当前示例代码位于 TypeScript [恢复会话状态示例](https://github.com/openai/openai-agents-js/blob/main/examples/docs/sandbox-agents/resume-session-state.ts) 和 Python [`main.py`](https://github.com/openai/openai-agents-python/tree/main/examples/sandbox/tutorials/sandbox_resume) 以及 [`sandbox_agent_with_remote_snapshot.py`](https://github.com/openai/openai-agents-python/blob/main/examples/sandbox/sandbox_agent_with_remote_snapshot.py)。
@@ -548,6 +552,7 @@ agent = SandboxAgent(
 ```
 
 :::
+
 
 
 

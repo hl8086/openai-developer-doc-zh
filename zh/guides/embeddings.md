@@ -65,6 +65,7 @@ curl https://api.openai.com/v1/embeddings \
 
 
 
+
 响应包含嵌入向量（浮点数列表）以及一些额外的元数据。你可以提取嵌入向量，将其保存在向量数据库中，并用于许多不同的用例。
 
 ```
@@ -86,7 +87,7 @@ curl https://api.openai.com/v1/embeddings \
     "total_tokens": 5
   }
 }
-```python
+```
 
 默认情况下，`text-embedding-3-small` 的嵌入向量长度为 `1536`，`text-embedding-3-large` 为 `3072`。要在不丢失其概念表示属性的情况下减少嵌入的维度，请传入 [dimensions 参数]( https://developers.openai.com/api/reference/embeddings/create#embeddings-create-dimensions)。在[嵌入用例部分](#use-cases)中查找有关嵌入维度的更多详细信息。
 
@@ -138,7 +139,7 @@ import pandas as pd
 
 df = pd.read_csv('output/embedded_1k_reviews.csv')
 df['ada_embedding'] = df.ada_embedding.apply(eval).apply(np.array)
-```python
+```
 
 减少嵌入维度
 

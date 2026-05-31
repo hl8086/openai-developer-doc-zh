@@ -81,6 +81,7 @@ curl https://api.openai.com/v1/responses \
 
 
 
+
 ## 推理力度
 
 `reasoning.effort` 参数指导模型在执行任务时应该思考多少。
@@ -129,7 +130,7 @@ curl https://api.openai.com/v1/responses \
     "total_tokens": 1261
   }
 }
-```javascript
+```
 
 上下文窗口长度可在[模型参考页面](/models)找到，不同模型快照之间会有所不同。
 
@@ -178,7 +179,7 @@ if (
         console.log("Ran out of tokens during reasoning");
     }
 }
-```python
+```
 
 ```
 from openai import OpenAI
@@ -304,6 +305,7 @@ curl https://api.openai.com/v1/responses \
 
 
 
+
 此 API 请求将返回一个输出数组，其中包含助手消息和模型在生成该响应时的推理摘要。
 
 ```
@@ -333,7 +335,7 @@ curl https://api.openai.com/v1/responses \
     "role": "assistant"
   }
 ]
-```javascript
+```
 
 在使用我们最新推理模型的摘要器之前，您可能需要完成[组织验证](https://help.openai.com/en/articles/10910291-api-organization-verification)以确保安全部署。在[平台设置页面](https://platform.openai.com/settings/organization/general)开始验证。
 
@@ -371,7 +373,7 @@ const response = await client.responses.create({
 });
 
 console.log(response.output_text);
-```python
+```
 
 ```
 from openai import OpenAI

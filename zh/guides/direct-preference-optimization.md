@@ -46,7 +46,7 @@
     }
   ]
 }
-```javascript
+```
 
 目前，我们仅对每个示例中的单轮对话进行训练，其中偏好和非偏好消息需要是最后一条助手消息。
 
@@ -82,7 +82,7 @@ const job = await openai.fineTuning.jobs.create({
     },
   },
 });
-```python
+```
 
 ```
 from openai import OpenAI

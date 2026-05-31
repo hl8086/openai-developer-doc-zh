@@ -101,7 +101,7 @@ PY
     }
   }
 }
-```javascript
+```
 
 并非每个 AWS 签发的令牌都包含所有 AWS 特定声明。`https://sts.amazonaws.com/` 下的声明取决于调用主体、会话上下文和请求标签。
 
@@ -205,7 +205,7 @@ const response = await client.responses.create({
 });
 
 console.log(response.output_text);
-```python
+```
 
 ```
 import os
@@ -248,7 +248,7 @@ response = client.responses.create(
 )
 
 print(response.output_text)
-```go
+```
 
 ```
 package main
@@ -337,7 +337,7 @@ func main() {
 
 	fmt.Println(response.OutputText())
 }
-```java
+```
 
 ```
 import com.fasterxml.jackson.databind.json.JsonMapper;
@@ -434,7 +434,7 @@ public final class AwsOutboundWorkloadIdentityExample {
                 .forEach(outputText -> System.out.println(outputText.text()));
     }
 }
-```ruby
+```
 
 ```
 require "aws-sdk-sts"
@@ -507,7 +507,7 @@ puts(response.output_text)
 
 ```
 kubectl create serviceaccount openai-wif --namespace default
-```text
+```
 
 EKS 投射服务账户令牌使用格式为 `system:serviceaccount:`&lt;namespace>`:`&lt;service-account-name>`` 的 `sub` 声明。对于上述服务账户，`sub` 声明为 `system:serviceaccount:default:openai-wif`。
 
@@ -593,7 +593,7 @@ PY
     }
   }
 }
-```javascript
+```
 
 使用解码后的载荷将您收到的令牌与 OpenAI 中配置的颁发者、受众和映射值进行比较。大多数配置问题在交换令牌之前就可以在 `iss`、`aud` 和 `sub` 声明中看到。
 
@@ -677,7 +677,7 @@ const response = await client.responses.create({
 });
 
 console.log(response.output_text);
-```python
+```
 
 ```
 import os
@@ -713,7 +713,7 @@ response = client.responses.create(
 )
 
 print(response.output_text)
-```go
+```
 
 ```
 package main
@@ -785,7 +785,7 @@ func main() {
 
 	fmt.Println(response.OutputText())
 }
-```java
+```
 
 ```
 import com.fasterxml.jackson.databind.json.JsonMapper;
@@ -871,7 +871,7 @@ public final class AwsEksWorkloadIdentityExample {
                 .forEach(outputText -> System.out.println(outputText.text()));
     }
 }
-```ruby
+```
 
 ```
 require "openai"

@@ -119,6 +119,7 @@ ws.send(json.dumps(event))
 :::
 
 
+
 当会话更新完成后，服务器将发出 [`session.updated`]( https://developers.openai.com/api/reference/realtime-server-events/session/updated) 事件，包含会话的新状态。
 
 | 相关客户端事件 | 相关服务器事件 |
@@ -173,6 +174,7 @@ ws.send(json.dumps(event))
 :::
 
 
+
 将用户消息添加到对话后，发送 [`response.create`]( https://developers.openai.com/api/reference/realtime-client-events/response/create) 事件以发起模型响应。如果当前会话同时启用了音频和文本，模型将同时以音频和文本内容进行响应。如果你只想生成文本，可以在发送 `response.create` 客户端事件时指定，如下所示。
 
 **生成纯文本响应**
@@ -204,6 +206,7 @@ ws.send(json.dumps(event))
 
 
 
+
 当响应完全完成时，服务器将发出 [`response.done`]( https://developers.openai.com/api/reference/realtime-server-events/response/done) 事件。此事件将包含模型生成的完整文本，如下所示。
 
 **监听 response.done 以查看最终结果**
@@ -232,6 +235,7 @@ def on_message(ws, message):
 ```
 
 :::
+
 
 
 在模型响应生成过程中，服务器会发出多个生命周期事件。你可以监听这些事件，例如 [`response.output_text.delta`]( https://developers.openai.com/api/reference/realtime-server-events/response/output_text/delta)，以便在响应生成时向用户提供实时反馈。服务器发出的完整事件列表见下方**相关服务器事件**。它们按大致发出顺序排列，同时列出了与文本生成相关的客户端事件。
@@ -409,6 +413,7 @@ for filename in files:
 :::
 
 
+
 ### 发送完整音频消息
 
 也可以创建包含完整音频录音的对话消息。使用 [`conversation.item.create`]( https://developers.openai.com/api/reference/realtime-client-events/conversation/item/create) 客户端事件创建包含 `input_audio` 内容的消息。
@@ -461,6 +466,7 @@ ws.send(json.dumps(event))
 
 
 
+
 ### 处理 WebSocket 的音频输出
 
 **要在客户端设备（如 Web 浏览器）上播放输出音频，我们建议使用 WebRTC 而非 WebSocket**。在不确定的网络条件下，WebRTC 向客户端设备发送媒体会更加稳健。
@@ -499,6 +505,7 @@ def on_message(ws, message):
 ```
 
 :::
+
 
 
 ## 图像输入
@@ -616,6 +623,7 @@ ws.send(json.dumps(event))
 
 
 
+
 现在，当你监听 [`response.done`]( https://developers.openai.com/api/reference/realtime-server-events/response/done) 服务器事件时，可以识别带外响应的结果。
 
 **识别带外模型响应**
@@ -657,6 +665,7 @@ def on_message(ws, message):
 ```
 
 :::
+
 
 
 ### 为响应创建自定义上下文
@@ -738,6 +747,7 @@ ws.send(json.dumps(event))
 :::
 
 
+
 ### 创建无上下文的响应
 
 你还可以将响应插入默认对话中，忽略所有其他指令和上下文。通过将 `input` 设置为空数组来实现。
@@ -785,6 +795,7 @@ ws.send(json.dumps(event))
 ```
 
 :::
+
 
 
 
@@ -947,7 +958,7 @@ Realtime 模型还支持**函数调用**，使你能够执行自定义代码来�
 {
   "type": "response.create"
 }
-```javascript
+```
 
 ## 错误处理
 

@@ -19,7 +19,7 @@ npm install @openai/agents zod
 pip install openai-agents
 
 export OPENAI_API_KEY=sk-...
-```javascript
+```
 
 ## 创建并运行你的第一个 agent
 
@@ -147,6 +147,7 @@ if __name__ == "__main__":
 :::
 
 
+
 当你需要托管工具、tool search 或 agents-as-tools 时，请使用共享的[使用工具](/guides/tools#usage-in-the-agents-sdk)指南。
 
 ## 添加专业 agent
@@ -222,6 +223,7 @@ if __name__ == "__main__":
 ```
 
 :::
+
 
 
 

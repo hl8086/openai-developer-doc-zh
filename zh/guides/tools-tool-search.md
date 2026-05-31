@@ -47,7 +47,7 @@ Tool search 允许模型根据需要动态搜索并将工具加载到模型的�
     }
   ]
 }
-```python
+```
 
 命名空间可以混合包含延迟加载和非延迟加载的工具。没有 `defer_loading: true` 的工具可以立即调用，而同一命名空间中的延迟加载工具则通过 tool search 加载。
 
@@ -121,7 +121,7 @@ response = client.responses.create(
 )
 
 print(response.output)
-```javascript
+```
 
 ```
 import OpenAI from "openai";
@@ -233,7 +233,7 @@ console.log(response.output);
     "arguments": "{\"customer_id\":\"CUST-12345\"}"
   }
 ]
-```python
+```
 
 在托管模式下，`execution` 设置为 `server`，`call_id` 设置为 `null`。
 
@@ -315,7 +315,7 @@ second_response = client.responses.create(
 )
 
 print(second_response.output)
-```javascript
+```
 
 ```
 import OpenAI from "openai";

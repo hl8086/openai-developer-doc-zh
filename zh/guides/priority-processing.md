@@ -51,6 +51,7 @@ print(response)
 
 
 
+
 要在项目级别启用，请导航到设置页面，选择项目下的 General 选项卡，然后将项目服务层级更改为 Priority。在项目上配置后，未指定 `service_tier` 的请求将默认使用优先处理。请注意，该项目的请求将随时间逐步过渡到优先处理。
 
 [Responses](https://platform.openai.com/docs/api-reference/responses/object#responses/object-service_tier) 或 [Completions](https://platform.openai.com/docs/api-reference/chat/object#chat/object-service_tier) 响应对象中的 `service_tier` 字段将包含用于处理该请求的服务层级。

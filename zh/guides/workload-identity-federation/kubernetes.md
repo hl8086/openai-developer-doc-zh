@@ -89,7 +89,7 @@ PY
     }
   }
 }
-```javascript
+```
 
 使用解码后的载荷将你收到的令牌与 OpenAI 中配置的签发者、受众和映射值进行比较。大多数配置问题在交换令牌之前就可以在 `iss`、`aud` 和 `sub` 声明中看到。
 
@@ -175,7 +175,7 @@ const response = await client.responses.create({
 });
 
 console.log(response.output_text);
-```python
+```
 
 ```
 import os
@@ -211,7 +211,7 @@ response = client.responses.create(
 )
 
 print(response.output_text)
-```go
+```
 
 ```
 package main
@@ -283,7 +283,7 @@ func main() {
 
 	fmt.Println(response.OutputText())
 }
-```java
+```
 
 ```
 import com.fasterxml.jackson.databind.json.JsonMapper;
@@ -369,7 +369,7 @@ public final class KubernetesWorkloadIdentityExample {
                 .forEach(outputText -> System.out.println(outputText.text()));
     }
 }
-```ruby
+```
 
 ```
 require "openai"

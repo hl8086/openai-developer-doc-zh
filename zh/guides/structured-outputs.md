@@ -65,6 +65,7 @@ event = completion.choices[0].message.parsed
 :::
 
 
+
 **获取结构化响应**
 
 ::: code-group
@@ -125,6 +126,7 @@ event = response.output_parsed
 ```
 
 :::
+
 
 
 ### 支持的模型
@@ -318,6 +320,7 @@ curl https://api.openai.com/v1/chat/completions \
 
 
 
+
 **用于思维链数学辅导的 Structured Outputs**
 
 ::: code-group
@@ -436,6 +439,7 @@ curl https://api.openai.com/v1/responses \
 
 
 
+
 #### 示例响应
 
 ```
@@ -464,7 +468,7 @@ curl https://api.openai.com/v1/responses \
   ],
   "final_answer": "x = -15 / 4"
 }
-```javascript
+```
 
 结构化数据提取
 
@@ -498,7 +502,7 @@ const completion = await openai.chat.completions.parse({
 });
 
 const research_paper = completion.choices[0].message.parsed;
-```python
+```
 
 ```
 from pydantic import BaseModel
@@ -679,6 +683,7 @@ curl https://api.openai.com/v1/responses \
 
 
 
+
 #### 示例响应
 
 ```
@@ -695,7 +700,7 @@ curl https://api.openai.com/v1/responses \
     "space travel"
   ]
 }
-```javascript
+```
 
 UI 生成
 
@@ -739,7 +744,7 @@ const completion = await openai.chat.completions.parse({
 });
 
 const ui = completion.choices[0].message.parsed;
-```python
+```
 
 ```
 from enum import Enum
@@ -1017,6 +1022,7 @@ curl https://api.openai.com/v1/responses \
 
 
 
+
 #### 示例响应
 
 ```
@@ -1092,7 +1098,7 @@ curl https://api.openai.com/v1/responses \
     }
   ]
 }
-```javascript
+```
 
 内容审核
 
@@ -1125,7 +1131,7 @@ const completion = await openai.chat.completions.parse({
 });
 
 const compliance = completion.choices[0].message.parsed;
-```python
+```
 
 ```
 from enum import Enum
@@ -1328,6 +1334,7 @@ curl https://api.openai.com/v1/responses \
 
 
 
+
 #### 示例响应
 
 ```
@@ -1387,6 +1394,7 @@ final_answer: z.string(),
 :::
 
 
+
 #### 数据结构的建议
 
 为了最大化模型生成的质量，我们建议以下做法：
@@ -1425,6 +1433,7 @@ response_format: zodResponseFormat(MathResponse, "math_response"),
 ```
 
 :::
+
 
 
 步骤 3：处理边缘情况
@@ -1551,6 +1560,7 @@ except Exception as e:
 ```
 
 :::
+
 
 
 
@@ -1839,6 +1849,7 @@ curl https://api.openai.com/v1/responses \
 
 
 
+
 **注意：** 您使用任何 schema 发出的第一个请求将有额外的延迟，因为我们的 API 会处理该 schema，但使用相同 schema 的后续请求不会有额外延迟。
 
 步骤 3：处理边缘情况
@@ -2084,6 +2095,7 @@ except Exception as e:
 
 
 
+
 步骤 4：以类型安全的方式使用生成的结构化数据
 
 通常，在使用 Structured Outputs 时，您会在编程语言的类型系统中有一个类型或类来表示 JSON Schema 对象。
@@ -2136,6 +2148,7 @@ const solution = JSON.parse(response.choices[0].message.content)) as Solution
 ```
 
 :::
+
 
 
 ## 如何使用 text.format 的 Structured Outputs
@@ -2423,6 +2436,7 @@ curl https://api.openai.com/v1/responses \
 
 
 
+
 **注意：** 您使用任何 schema 发出的第一个请求将有额外的延迟，因为我们的 API 会处理该 schema，但使用相同 schema 的后续请求不会有额外延迟。
 
 步骤 3：处理边缘情况
@@ -2668,6 +2682,7 @@ except Exception as e:
 
 
 
+
 步骤 4：以类型安全的方式使用生成的结构化数据
 
 通常，在使用 Structured Outputs 时，您会在编程语言的类型系统中有一个类型或类来表示 JSON Schema 对象。
@@ -2720,6 +2735,7 @@ const solution = JSON.parse(response.choices[0].message.content)) as Solution
 ```
 
 :::
+
 
 
 ### 
@@ -2790,6 +2806,7 @@ console.log(math_reasoning.parsed);
 ```
 
 :::
+
 
 
 拒绝的 API 响应将类似于这样：
@@ -2866,6 +2883,7 @@ console.log(math_reasoning.parsed);
 ```
 
 :::
+
 
 
 ### 
@@ -2982,6 +3000,7 @@ console.log(finalCompletion);
 ```
 
 :::
+
 
 
 您还可以使用 `stream` 辅助工具来解析函数调用参数：
@@ -3136,6 +3155,7 @@ console.log(result);
 ```
 
 :::
+
 
 
 
@@ -3822,6 +3842,7 @@ except Exception as e:
 ```
 
 :::
+
 
 
 

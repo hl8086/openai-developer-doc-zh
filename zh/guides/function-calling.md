@@ -39,7 +39,7 @@
 
 ```
 The weather in Paris today is 25C.
-```python
+```
 
 函数与工具的区别
 
@@ -133,7 +133,7 @@ response = client.chat.completions.create(
 
 # 5. The model should be able to give a response!
 print(response.choices[0].message.content)
-```javascript
+```
 
 ```
 import OpenAI from "openai";
@@ -203,7 +203,7 @@ response = await openai.chat.completions.create({
 
 // 5. The model should be able to give a response!
 console.log(response.choices[0].message.content);
-```python
+```
 
 
 **完整的工具调用示例**
@@ -279,7 +279,7 @@ response = client.responses.create(
 print("Final output:")
 print(response.model_dump_json(indent=2))
 print("\n" + response.output_text)
-```javascript
+```
 
 ```
 import OpenAI from "openai";
@@ -441,7 +441,7 @@ console.log(response.output_text);
     }
   ]
 }
-```python
+```
 
 ## 工具搜索
 
@@ -474,7 +474,7 @@ completion = client.chat.completions.create(
 )
 
 print(completion.choices[0].message.tool_calls)
-```javascript
+```
 
 ```
 import OpenAI from "openai";
@@ -610,6 +610,7 @@ for (const toolCall of completion.choices[0].message.tool_calls) {
 
 
 
+
 响应的 `output` 数组包含 `type` 值为 `function_call` 的条目。每个条目都有一个 `call_id`（稍后用于提交函数结果）、`name` 和 JSON 编码的 `arguments`。
 
 包含多个函数调用的示例响应
@@ -683,6 +684,7 @@ for (const toolCall of response.output) {
 
 
 
+
 在上面的示例中，我们有一个假设的 `call_function` 来路由每个调用。以下是一个可能的实现：
 
 **执行函数调用并追加结果**
@@ -708,6 +710,7 @@ const callFunction = async (name, args) => {
 ```
 
 :::
+
 
 
 ### 格式化结果
@@ -745,6 +748,7 @@ const completion = await openai.chat.completions.create({
 :::
 
 
+
 将结果追加到 `input` 后，你可以将它们发送回模型以获取最终响应。
 
 **将结果发送回模型**
@@ -767,6 +771,7 @@ const response = await openai.responses.create({
 ```
 
 :::
+
 
 
 最终响应
@@ -939,7 +944,7 @@ const response = await openai.responses.create({
         "required": ["location"],
     }
 }
-```python
+```
 
 在 [playground](https://platform.openai.com/playground) 中生成的所有 schema 都启用了严格模式。
 
@@ -995,7 +1000,7 @@ stream = client.chat.completions.create(
 for chunk in stream:
     delta = chunk.choices[0].delta
     print(delta.tool_calls)
-```javascript
+```
 
 ```
 import { OpenAI } from "openai";
@@ -1102,6 +1107,7 @@ for await (const chunk of stream) {
 :::
 
 
+
 累积的 final\_tool\_calls\[0\]
 
 ```
@@ -1113,7 +1119,7 @@ for await (const chunk of stream) {
         "arguments": "{\"location\":\"Paris, France\"}"
     }
 }
-```python
+```
 
 流式传输可用于展示进度，显示正在调用哪个函数以及模型填充参数的过程，甚至实时显示参数。
 
@@ -1154,7 +1160,7 @@ stream = client.responses.create(
 
 for event in stream:
     print(event)
-```javascript
+```
 
 ```
 import { OpenAI } from "openai";
@@ -1262,6 +1268,7 @@ for await (const event of stream) {
 :::
 
 
+
 累积的 final\_tool\_calls\[0\]
 
 ```
@@ -1272,7 +1279,7 @@ for await (const event of stream) {
     "name": "get_weather",
     "arguments": "{\"location\":\"Paris, France\"}"
 }
-```python
+```
 
 当模型完成函数调用时，将发出类型为 `response.function_call_arguments.done` 的事件。此事件包含完整的函数调用，包括以下字段：
 
@@ -1307,7 +1314,7 @@ response = client.responses.create(
     ]
 )
 print(response.output)
-```javascript
+```
 
 ```
 import OpenAI from "openai";
@@ -1348,7 +1355,7 @@ console.log(response.output);
     "name": "code_exec"
   }
 ]
-```python
+```
 
 ### 上下文无关文法
 
@@ -1395,7 +1402,7 @@ response = client.responses.create(
     ]
 )
 print(response.output)
-```javascript
+```
 
 ```
 import OpenAI from "openai";
@@ -1526,7 +1533,7 @@ PLUS: "+"
 MINUS: "-"
 expr: term (("+"|"-") term)*
 term: NUMBER
-```python
+```
 
 **显式处理空白**
 
@@ -1569,7 +1576,7 @@ response = client.responses.create(
     ]
 )
 print(response.output)
-```javascript
+```
 
 ```
 import OpenAI from "openai";

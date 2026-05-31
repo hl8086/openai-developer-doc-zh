@@ -100,6 +100,7 @@ curl -X POST "https://api.openai.com/v1/videos" \
 
 
 
+
 响应是一个包含唯一 id 和初始状态（如 `queued` 或 `in_progress`）的 JSON 对象。这意味着渲染任务已经开始。
 
 ```
@@ -113,7 +114,7 @@ curl -X POST "https://api.openai.com/v1/videos" \
   "seconds": "8",
   "size": "1280x720"
 }
-```javascript
+```
 
 ### 选择尺寸和时长
 
@@ -179,7 +180,7 @@ async function main() {
 }
 
 main();
-```python
+```
 
 ```
 import asyncio
@@ -238,7 +239,7 @@ Webhook 负载示例：
     "id": "video_abc123"
   }
 }
-```go
+```
 
 ### 获取结果
 
@@ -359,6 +360,7 @@ print("Wrote video.mp4")
 ```
 
 :::
+
 
 
 

@@ -138,6 +138,7 @@ curl https://api.openai.com/v1/chat/completions \
 
 
 
+
 除了重构后的代码之外，模型响应还将包含类似如下的数据：
 
 ```
@@ -161,7 +162,7 @@ curl https://api.openai.com/v1/chat/completions \
   },
   system_fingerprint: 'fp_159d8341cc'
 }
-```javascript
+```
 
 请注意 `usage` 对象中的 `accepted_prediction_tokens` 和 `rejected_prediction_tokens`。在此示例中，预测中有 18 个 token 被用于加速响应，而 10 个被拒绝。
 
@@ -217,7 +218,7 @@ const completion = await openai.chat.completions.create({
 for await (const chunk of stream) {
   process.stdout.write(chunk.choices[0]?.delta?.content || "");
 }
-```python
+```
 
 ```
 from openai import OpenAI
@@ -261,7 +262,7 @@ stream = client.chat.completions.create(
 for chunk in stream:
     if chunk.choices[0].delta.content is not None:
         print(chunk.choices[0].delta.content, end="")
-```javascript
+```
 
 
 ## 预测文本在响应中的位置
@@ -303,7 +304,7 @@ Add a get route to this application that responds with
 the text "hello world". Generate the entire application
 file again with this route added, and with no other
 markdown formatting.
-```javascript
+```
 
 对该提示词的响应可能如下所示：
 

@@ -37,7 +37,7 @@ JavaScript
 
 ```
 npm install openai
-```javascript
+```
 
 安装 OpenAI SDK 后，创建一个名为 `example.mjs` 的文件，并将示例代码复制到其中：
 
@@ -67,7 +67,7 @@ Python
 
 ```
 pip install openai
-```python
+```
 
 安装 OpenAI SDK 后，创建一个名为 `example.py` 的文件，并将示例代码复制到其中：
 
@@ -95,7 +95,7 @@ OpenAI 与 Microsoft 合作，提供了官方支持的 C# API 客户端。您可
 
 ```
 dotnet add package OpenAI
-```csharp
+```
 
 向 [Responses API]( https://developers.openai.com/api/reference/responses) 发送简单 API 请求的示例如下：
 

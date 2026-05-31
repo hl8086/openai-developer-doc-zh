@@ -501,6 +501,7 @@ Before finalizing:
 
 
 
+
 对于主动执行操作的智能体，添加简短的执行框架：
 
 ```text
@@ -541,6 +542,7 @@ Before finalizing:
 ```
 
 :::
+
 
 
 
@@ -687,6 +689,7 @@ Exception: If working within an existing website or design system, preserve the 
 ```
 
 :::
+
 
 
 
@@ -1716,7 +1719,7 @@ Before finalizing an answer in legal, financial, compliance, or safety-sensitive
 
 ```
 POST https://api.openai.com/v1/responses/compact
-```python
+```
 
 **功能**
 

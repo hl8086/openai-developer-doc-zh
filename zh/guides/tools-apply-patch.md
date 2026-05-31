@@ -150,7 +150,7 @@ followup = client.responses.create(
   "status": "failed",
   "output": "Could not apply patch to lib/foo.py — file not found on disk"
 }
-```javascript
+```
 
 ## Apply patch 操作
 

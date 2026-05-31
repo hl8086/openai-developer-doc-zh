@@ -90,6 +90,7 @@ console.log(fileId);
 :::
 
 
+
 #### 创建向量存储
 
 **创建向量存储**
@@ -110,6 +111,7 @@ console.log(vectorStore.id);
 ```
 
 :::
+
 
 
 #### 将文件添加到向量存储
@@ -137,6 +139,7 @@ await openai.vectorStores.files.create(
 :::
 
 
+
 #### 检查状态
 
 运行此代码直到文件准备就绪可以使用（即状态为 `completed` 时）。
@@ -159,6 +162,7 @@ console.log(result);
 ```
 
 :::
+
 
 
 一旦您的知识库设置完成，您可以在模型可用的工具列表中包含 `file_search` 工具，以及要搜索的向量存储列表。
@@ -217,6 +221,7 @@ Console.WriteLine(response.GetOutputText());
 ```
 
 :::
+
 
 当模型调用此工具时，您将收到包含多个输出的响应：
 
@@ -318,6 +323,7 @@ console.log(response);
 :::
 
 
+
 ### 在响应中包含搜索结果
 
 虽然您可以在输出文本中看到注释（对文件的引用），但文件搜索调用默认不会返回搜索结果。
@@ -358,6 +364,7 @@ console.log(response);
 ```
 
 :::
+
 
 
 ### 元数据过滤
@@ -409,6 +416,7 @@ console.log(response);
 ```
 
 :::
+
 
 
 ## 支持的文件

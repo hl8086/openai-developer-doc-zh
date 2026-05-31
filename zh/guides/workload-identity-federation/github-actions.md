@@ -154,7 +154,7 @@ jobs:
           OPENAI_IDENTITY_PROVIDER_ID: $\{\{ vars.OPENAI_IDENTITY_PROVIDER_ID \}\}
           OPENAI_SERVICE_ACCOUNT_ID: $\{\{ vars.OPENAI_SERVICE_ACCOUNT_ID \}\}
         run: node ./scripts/call-openai.js
-```javascript
+```
 
 将 `OPENAI_WIF_AUDIENCE`、`OPENAI_IDENTITY_PROVIDER_ID` 和 `OPENAI_SERVICE_ACCOUNT_ID` 存储为 GitHub Actions 变量。它们用于标识提供者和服务账户，但不是持有者凭证。
 
@@ -229,7 +229,7 @@ const response = await client.responses.create({
 });
 
 console.log(response.output_text);
-```python
+```
 
 ```
 import json
@@ -284,7 +284,7 @@ response = client.responses.create(
 )
 
 print(response.output_text)
-```go
+```
 
 ```
 package main
@@ -403,7 +403,7 @@ func main() {
 
 	fmt.Println(response.OutputText())
 }
-```java
+```
 
 ```
 import com.fasterxml.jackson.databind.JsonNode;
@@ -522,7 +522,7 @@ public final class GitHubActionsWorkloadIdentityExample {
                 .forEach(outputText -> System.out.println(outputText.text()));
     }
 }
-```ruby
+```
 
 ```
 require "json"

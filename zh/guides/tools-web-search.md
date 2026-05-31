@@ -93,6 +93,7 @@ Console.WriteLine(response.GetOutputText());
 :::
 
 
+
 ## 输出和引用
 
 使用网页搜索工具的模型响应将包含两部分：
@@ -142,7 +143,7 @@ Console.WriteLine(response.GetOutputText());
     ]
   }
 ]
-```javascript
+```
 
 使用 [Chat Completions API]( https://developers.openai.com/api/reference/chat)，你可以直接访问 [ChatGPT 中的搜索](https://openai.com/index/introducing-chatgpt-search/) 所使用的微调模型和工具。
 
@@ -168,7 +169,7 @@ const completion = await client.chat.completions.create({
 });
 
 console.log(completion.choices[0].message.content);
-```python
+```
 
 ```
 from openai import OpenAI
@@ -238,7 +239,7 @@ curl -X POST "https://api.openai.com/v1/chat/completions" \
     "finish_reason": "stop"
   }
 ]
-```python
+```
 
 ## 从旧版网页搜索迁移
 
@@ -268,7 +269,7 @@ response = client.responses.create(
 )
 
 print(response.output_text)
-```csharp
+```
 
 ```
 using OpenAI.Responses;
@@ -290,7 +291,7 @@ OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
 ], options);
 
 Console.WriteLine(response.GetOutputText());
-```javascript
+```
 
 ```
 import OpenAI from "openai";
@@ -414,6 +415,7 @@ print(response.output_text)
 
 
 
+
 ## 域名过滤
 
 网页搜索中的域名过滤允许你将结果限制在特定的域名集合中。通过 `filters` 参数，你可以配置最多 100 个 `allowed_domains` 或最多 100 个 `blocked_domains`。格式化域名时，省略 HTTP 或 HTTPS 前缀。例如，使用 `openai.com` 而不是 `https://openai.com/`。此方法也会在搜索中包含子域名。请注意，域名过滤仅在 Responses API 中配合 `web_search` 工具可用。
@@ -529,6 +531,7 @@ print(response.output_text)
 
 
 
+
 ## 用户位置
 
 要根据地理位置优化搜索结果，你可以使用国家、城市、地区和/或时区指定大致的用户位置。
@@ -631,6 +634,7 @@ curl "https://api.openai.com/v1/responses" \
 :::
 
 
+
 **自定义用户位置**
 
 ::: code-group
@@ -711,6 +715,7 @@ curl -X POST "https://api.openai.com/v1/chat/completions" \
 
 
 
+
 ## 实时互联网访问
 
 在 Responses API 中控制网页搜索工具是获取实时内容还是仅使用缓存/索引结果。
@@ -763,6 +768,7 @@ print(resp.output_text)
 ```
 
 :::
+
 
 
 

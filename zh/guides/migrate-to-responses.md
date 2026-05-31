@@ -224,6 +224,7 @@ response = client.responses.create(
 
 
 
+
 Chat CompletionsResponses
 
 Chat Completions
@@ -278,6 +279,7 @@ curl https://api.openai.com/v1/chat/completions \
 
 
 
+
 Responses
 
 使用 Responses，你可以在顶层分离 instructions 和 input。API 形状与 Chat Completions 类似，但语义更清晰。
@@ -322,6 +324,7 @@ curl https://api.openai.com/v1/responses \
 ```
 
 :::
+
 
 
 
@@ -381,6 +384,7 @@ curl https://api.openai.com/v1/chat/completions \
 
 
 
+
 Responses
 
 使用 Responses，你可以在顶层分离 instructions 和 input。API 形状与 Chat Completions 类似，但语义更清晰。
@@ -425,6 +429,7 @@ curl https://api.openai.com/v1/responses \
 ```
 
 :::
+
 
 
 
@@ -474,6 +479,7 @@ res2 = client.chat.completions.create(model="gpt-5", messages=messages)
 ```
 
 :::
+
 
 
 
@@ -532,6 +538,7 @@ const res2 = await client.responses.create({
 :::
 
 
+
 作为简化，我们还构建了一种方式，通过传递 id 来简单引用之前响应的输入和输出。你可以使用 `previous_response_id` 来形成相互构建的响应链或在历史记录中创建分支。
 
 **多轮对话**
@@ -568,6 +575,7 @@ res2 = client.responses.create(
 ```
 
 :::
+
 
 
 
@@ -785,6 +793,7 @@ const completion = await openai.chat.completions.create({
 
 
 
+
 Responses
 
 **结构化输出**
@@ -896,6 +905,7 @@ const response = await openai.responses.create({
 
 
 
+
 ### 7\. 升级到原生工具
 
 如果你的应用程序有可以从 OpenAI 原生[工具](/guides/tools)中受益的用例，你可以更新你的工具调用以开箱即用地使用 OpenAI 的工具。
@@ -975,6 +985,7 @@ curl https://api.example.com/search \
 
 
 
+
 Responses
 
 使用 Responses，你只需指定你感兴趣的工具即可。
@@ -1014,6 +1025,7 @@ curl https://api.openai.com/v1/responses \
 ```
 
 :::
+
 
 
 
