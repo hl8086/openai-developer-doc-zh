@@ -84,6 +84,7 @@ curl https://api.openai.com/v1/chat/completions \
 
 :::
 
+
 对于 Realtime API 请求，使用 `OpenAI-Safety-Identifier` 头提供相同的稳定、保护隐私的标识符。当你创建临时 Realtime 客户端密钥时，在创建密钥的服务器端请求中包含该头，以便将标识符绑定到该会话。对于从可信后端发起的直接 WebSocket 或 WebRTC 连接请求，在连接请求中包含该头。
 
 安全标识符不会在 API 或会话之间传递。如果你的应用已经在 Responses API 请求中发送 `safety_identifier`，在创建或连接每个 Realtime 会话时需要单独传递相同的稳定值。

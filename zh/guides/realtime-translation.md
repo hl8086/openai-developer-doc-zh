@@ -29,6 +29,7 @@
 
 创建翻译客户端密钥
 
+::: code-group
 ```javascript
 app.post("/session", async (req, res) => {
   const language = req.body.targetLanguage ?? "es";
@@ -122,7 +123,6 @@ await pc.setRemoteDescription({
 
 **连接到翻译会话**
 
-::: code-group
 ```javascript
 import WebSocket from "ws";
 
@@ -151,13 +151,11 @@ ws.connect(
 )
 ```
 
-:::
 
 在 socket 打开后配置目标语言：
 
 **配置目标语言**
 
-::: code-group
 ```javascript
 ws.on("open", () => {
   ws.send(
@@ -196,6 +194,7 @@ ws.send(
 
 :::
 
+
 然后持续追加音频：
 
 **追加源音频**
@@ -221,13 +220,11 @@ ws.send(
 )
 ```
 
-:::
 
 监听翻译后的音频和转录：
 
 **监听翻译后的音频和转录**
 
-::: code-group
 ```javascript
 ws.on("message", (data) => {
   const event = JSON.parse(data);
@@ -260,7 +257,6 @@ while True:
         update_source_transcript(event["delta"])
 ```
 
-:::
 
 ## 关闭 WebSocket 会话
 
@@ -270,7 +266,6 @@ while True:
 
 **关闭翻译会话**
 
-::: code-group
 ```javascript
 let translationSessionClosing = false;
 
@@ -345,6 +340,7 @@ while True:
 ```
 
 :::
+
 
 ## 构建旁听翻译
 

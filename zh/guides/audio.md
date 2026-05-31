@@ -48,6 +48,7 @@ OpenAI 支持两种主要的音频架构：
 
 **启动实时语音会话**
 
+::: code-group
 ```javascript
 import { RealtimeAgent, RealtimeSession } from "@openai/agents/realtime";
 
@@ -77,7 +78,6 @@ Audio output from modelAudio input to model
 
 **创建类似人类的音频回复**
 
-::: code-group
 ```javascript
 import { writeFileSync } from "node:fs";
 import OpenAI from "openai";
@@ -109,7 +109,6 @@ writeFileSync(
 );
 ```
 
-::: code-group
 ```python
 import base64
 from openai import OpenAI
@@ -152,15 +151,12 @@ curl "https://api.openai.com/v1/chat/completions" \
     }'
 ```
 
-:::
 
-:::
 
 模型的音频输入
 
 **使用音频输入来提示模型**
 
-::: code-group
 ```javascript
 import OpenAI from "openai";
 const openai = new OpenAI();
@@ -190,7 +186,6 @@ const response = await openai.chat.completions.create({
 console.log(response.choices[0]);
 ```
 
-::: code-group
 ```python
 import base64
 import requests
@@ -260,4 +255,4 @@ curl "https://api.openai.com/v1/chat/completions" \
 
 :::
 
-:::
+

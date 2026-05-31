@@ -27,7 +27,6 @@
 
 **根据任务调整推理 effort**
 
-::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -74,7 +73,6 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
-:::
 
 ## Set up `text.verbosity`
 
@@ -84,7 +82,6 @@ print(response.output_text)
 
 **设置较低的 verbosity 以获得紧凑输出**
 
-::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -127,7 +124,6 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
-:::
 
 ## Set up the assistant `phase` parameter
 
@@ -155,7 +151,7 @@ Assistant 最终答案消息
   "phase": "final_answer",
   "content": "The deploy failed because the migration referenced a column that does not exist in production."
 }
-```
+```javascript
 
 这在长时间运行或工具密集型的工作流中很有用，因为 assistant 可能在完成之前产生可见的进度更新。当你将该历史记录发送回模型时，请在 assistant 消息上保留 `phase`，以便模型能够区分哪些消息是进度更新，哪些消息是最终结果。
 
@@ -178,8 +174,7 @@ Assistant 最终答案消息
 
 **使用托管 tool search 与延迟加载工具**
 
-::: code-group
-```javascript
+```
 import OpenAI from "openai";
 
 const openai = new OpenAI();
@@ -229,9 +224,9 @@ const response = await openai.responses.create({
 });
 
 console.log(response.output_text);
-```
-
 ```python
+
+```
 from openai import OpenAI
 
 client = OpenAI()
@@ -282,9 +277,8 @@ response = client.responses.create(
 )
 
 print(response.output_text)
-```
+```javascript
 
-:::
 
 ## Leverage built-in tools
 
@@ -319,8 +313,7 @@ OpenAI 持续添加更多原生工具，因此当内置工具适合你的工作�
 
 **从压缩的响应状态继续**
 
-::: code-group
-```javascript
+```
 import OpenAI from "openai";
 
 const openai = new OpenAI();
@@ -350,9 +343,9 @@ const nextResponse = await openai.responses.create({
 });
 
 console.log(nextResponse.output_text);
-```
-
 ```python
+
+```
 from openai import OpenAI
 
 client = OpenAI()
@@ -383,9 +376,8 @@ next_response = client.responses.create(
 )
 
 print(next_response.output_text)
-```
+```javascript
 
-:::
 
 ## Use `prompt_cache_key`
 
@@ -395,8 +387,7 @@ print(next_response.output_text)
 
 **将相关请求路由到相同的 prompt 缓存**
 
-::: code-group
-```javascript
+```
 import OpenAI from "openai";
 
 const openai = new OpenAI();
@@ -415,9 +406,9 @@ const response = await openai.responses.create({
 });
 
 console.log(response.output_text);
-```
-
 ```python
+
+```
 from openai import OpenAI
 
 client = OpenAI()
@@ -436,9 +427,8 @@ response = client.responses.create(
 )
 
 print(response.output_text)
-```
+```javascript
 
-:::
 
 ## Use `reasoning.encrypted_content`
 
@@ -448,8 +438,7 @@ print(response.output_text)
 
 **在无状态轮次之间传递加密推理**
 
-::: code-group
-```javascript
+```
 import OpenAI from "openai";
 
 const openai = new OpenAI();
@@ -477,9 +466,9 @@ const second = await openai.responses.create({
 });
 
 console.log(second.output_text);
-```
-
 ```python
+
+```
 from openai import OpenAI
 
 client = OpenAI()
@@ -507,9 +496,8 @@ second = client.responses.create(
 )
 
 print(second.output_text)
-```
+```javascript
 
-:::
 
 ## Use `background=True`
 
@@ -519,8 +507,7 @@ print(second.output_text)
 
 **运行并轮询后台响应**
 
-::: code-group
-```javascript
+```
 import OpenAI from "openai";
 
 const openai = new OpenAI();
@@ -547,9 +534,9 @@ while (["queued", "in_progress"].includes(job.status)) {
 }
 
 console.log(job.output_text);
-```
-
 ```python
+
+```
 from openai import OpenAI
 import time
 
@@ -576,9 +563,8 @@ while job.status in {"queued", "in_progress"}:
     job = client.responses.retrieve(job.id)
 
 print(job.output_text)
-```
+```javascript
 
-:::
 
 你可以将它与 `stream=True` 结合使用以获取进度事件，但第一个事件可能比正常请求花费更长时间。
 
@@ -602,8 +588,7 @@ print(job.output_text)
 
 **启动 Responses API WebSocket 会话**
 
-::: code-group
-```javascript
+```
 import OpenAI from "openai";
 import WebSocket from "ws";
 
@@ -644,9 +629,9 @@ ws.on("message", (data) => {
   const firstEvent = JSON.parse(data.toString());
   console.log(firstEvent.type);
 });
-```
-
 ```python
+
+```
 from openai import OpenAI
 from websocket import create_connection
 import json
@@ -690,7 +675,6 @@ first_event = json.loads(ws.recv())
 print(first_event["type"])
 ```
 
-:::
 
 ## Final takeaway
 

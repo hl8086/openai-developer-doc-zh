@@ -71,7 +71,7 @@ PY
   "iat": 1716235422,
   "exp": 1716239022
 }
-```
+```javascript
 
 使用解码后的有效载荷将收到的令牌与 OpenAI 中配置的颁发者、受众和映射值进行比较。大多数配置问题在交换令牌之前就可以在 `iss`、`aud`、`email` 和 `sub` 声明中看到。
 
@@ -111,8 +111,7 @@ PY
 
 **从 Google 元数据服务器身份令牌进行身份验证**
 
-::: code-group
-```typescript
+```
 import OpenAI from "openai";
 import type { SubjectTokenProvider } from "openai/auth";
 
@@ -171,9 +170,9 @@ const response = await client.responses.create({
 });
 
 console.log(response.output_text);
-```
-
 ```python
+
+```
 import os
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
@@ -219,11 +218,9 @@ response = client.responses.create(
 )
 
 print(response.output_text)
-```
-
-:::
-::: code-group
 ```go
+
+```
 package main
 
 import (
@@ -332,9 +329,9 @@ func main() {
 
 	fmt.Println(response.OutputText())
 }
-```
-
 ```java
+
+```
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.openai.auth.SubjectTokenProvider;
 import com.openai.auth.SubjectTokenType;
@@ -443,9 +440,9 @@ public final class GoogleWorkloadIdentityExample {
                 .forEach(outputText -> System.out.println(outputText.text()));
     }
 }
-```
-
 ```ruby
+
+```
 require "net/http"
 require "openai"
 require "uri"
@@ -522,7 +519,6 @@ response = client.responses.create(
 puts(response.output_text)
 ```
 
-:::
 
 ## Google Kubernetes Engine
 
@@ -610,7 +606,6 @@ PY
 
 解码后的 GKE 投射服务账号令牌类似于：
 
-::: code-group
 ```javascript
 {
   "iss": "https://container.googleapis.com/v1/projects/my-project/locations/us-central1/clusters/openai-wif",
@@ -626,8 +621,7 @@ PY
     }
   }
 }
-::: code-group
-```text
+```
 
 使用解码后的有效载荷将收到的令牌与 OpenAI 中配置的颁发者、受众和映射值进行比较。大多数配置问题在交换令牌之前就可以在 `iss`、`aud` 和 `sub` 声明中看到。
 
@@ -669,7 +663,6 @@ PY
 
 **从 GKE 投射服务账号令牌进行身份验证**
 
-::: code-group
 ```typescript
 import { readFile } from "node:fs/promises";
 import OpenAI from "openai";
@@ -748,12 +741,8 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
-:::
 
-:::
 
-:::
-::: code-group
 ```go
 package main
 
@@ -964,7 +953,6 @@ response = client.responses.create(
 puts(response.output_text)
 ```
 
-:::
 
 ## Google Cloud 最佳实践
 

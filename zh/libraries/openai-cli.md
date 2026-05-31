@@ -355,7 +355,7 @@ YAML
 
 命令：
 
-```
+```bash
 openai images generate \
   --model gpt-image-2 \
   --prompt "A simple product-style render of a translucent green cube on a neutral background." \
@@ -380,7 +380,7 @@ wrote hero.png
 
 命令：
 
-```
+```bash
 openai images edit \
   --model gpt-image-2 \
   --image ./hero.png \
@@ -404,7 +404,7 @@ wrote hero-edited.png
 
 命令：
 
-```
+```bash
 openai audio:speech create \
   --model gpt-4o-mini-tts \
   --voice marin \
@@ -426,7 +426,7 @@ afplay speech.mp3
 
 使用 `--instructions` 来塑造表达方式，使用 `--input` 来指定要朗读的文字。指令适用于节奏、活力、温暖度、正式程度、重点或受众等提示：
 
-```
+```bash
 openai audio:speech create \
   --model gpt-4o-mini-tts \
   --voice marin \
@@ -441,7 +441,7 @@ openai audio:speech create \
 
 命令：
 
-```
+```bash
 openai audio:transcriptions create \
   --model gpt-4o-transcribe \
   --file ./speech.mp3 \
@@ -468,7 +468,7 @@ The OpenAI CLI can call the API from ordinary shell scripts.
 
 命令：
 
-```
+```bash
 openai audio:transcriptions create \
   --model whisper-1 \
   --file ./speech.mp3 \
@@ -497,7 +497,7 @@ openai audio:transcriptions create \
 
 命令：
 
-```
+```bash
 openai audio:transcriptions create \
   --model gpt-4o-transcribe-diarize \
   --file ./speech.mp3 \

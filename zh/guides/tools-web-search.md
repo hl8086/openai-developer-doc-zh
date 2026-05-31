@@ -72,9 +72,7 @@ input: What was a positive news story from today?
 YAML
 ```
 
-:::
-
-```
+```csharp
 using OpenAI.Responses;
 
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
@@ -91,6 +89,8 @@ OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
 
 Console.WriteLine(response.GetOutputText());
 ```
+
+:::
 
 ## 输出和引用
 
@@ -141,7 +141,8 @@ Console.WriteLine(response.GetOutputText());
     ]
   }
 ]
-```
+::: code-group
+```javascript
 
 使用 [Chat Completions API]( https://developers.openai.com/api/reference/chat)，你可以直接访问 [ChatGPT 中的搜索](https://openai.com/index/introducing-chatgpt-search/) 所使用的微调模型和工具。
 
@@ -153,8 +154,7 @@ Console.WriteLine(response.GetOutputText());
 
 网页搜索参数示例
 
-::: code-group
-```javascript
+```
 import OpenAI from "openai";
 const client = new OpenAI();
 
@@ -168,9 +168,9 @@ const completion = await client.chat.completions.create({
 });
 
 console.log(completion.choices[0].message.content);
-```
-
 ```python
+
+```
 from openai import OpenAI
 client = OpenAI()
 
@@ -203,6 +203,7 @@ curl -X POST "https://api.openai.com/v1/chat/completions" \
 ```
 
 :::
+
 
 ## 输出和引用
 
@@ -238,7 +239,8 @@ curl -X POST "https://api.openai.com/v1/chat/completions" \
     "finish_reason": "stop"
   }
 ]
-```
+::: code-group
+```python
 
 ## 从旧版网页搜索迁移
 
@@ -254,8 +256,7 @@ curl -X POST "https://api.openai.com/v1/chat/completions" \
 
 **设置搜索上下文大小**
 
-::: code-group
-```python
+```
 from openai import OpenAI
 client = OpenAI()
 
@@ -269,9 +270,9 @@ response = client.responses.create(
 )
 
 print(response.output_text)
-```
-
 ```csharp
+
+```
 using OpenAI.Responses;
 
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
@@ -291,11 +292,9 @@ OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
 ], options);
 
 Console.WriteLine(response.GetOutputText());
-```
-
-:::
-::: code-group
 ```javascript
+
+```
 import OpenAI from "openai";
 const openai = new OpenAI();
 
@@ -326,6 +325,7 @@ curl "https://api.openai.com/v1/responses" \
 
 :::
 
+
 ## 运行更长的网页研究
 
 `return_token_budget` 控制在使用 GPT-5+ 推理模型进行 Responses API 搜索运行时，网页搜索工具可以返回多少网页搜索结果内容。大多数请求保持默认值即可。仅在需要检查许多页面且可能在标准返回 token 上限处停止的高强度研究或评估运行中将其设置为 `unlimited`。
@@ -341,7 +341,6 @@ curl "https://api.openai.com/v1/responses" \
 
 **运行更长的网页搜索**
 
-::: code-group
 ```curl
 curl "https://api.openai.com/v1/responses" \
   -H "Content-Type: application/json" \
@@ -359,7 +358,6 @@ curl "https://api.openai.com/v1/responses" \
   }'
 ```
 
-::: code-group
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -414,9 +412,7 @@ Be analytical, avoid generalities, and ensure that each section supports data-ba
 print(response.output_text)
 ```
 
-:::
 
-:::
 
 ## 域名过滤
 
@@ -461,7 +457,6 @@ curl "https://api.openai.com/v1/responses" \
   }'
 ```
 
-::: code-group
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -530,9 +525,7 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
-:::
 
-:::
 
 ## 用户位置
 
@@ -546,7 +539,6 @@ print(response.output_text)
 
 **自定义用户位置**
 
-::: code-group
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -594,8 +586,6 @@ OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
 Console.WriteLine(response.GetOutputText());
 ```
 
-:::
-::: code-group
 ```javascript
 import OpenAI from "openai";
 const openai = new OpenAI();
@@ -635,11 +625,9 @@ curl "https://api.openai.com/v1/responses" \
     }'
 ```
 
-:::
 
 **自定义用户位置**
 
-::: code-group
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -665,7 +653,6 @@ completion = client.chat.completions.create(
 print(completion.choices[0].message.content)
 ```
 
-::: code-group
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -715,7 +702,7 @@ curl -X POST "https://api.openai.com/v1/chat/completions" \
 
 :::
 
-:::
+
 
 ## 实时互联网访问
 
@@ -727,7 +714,6 @@ curl -X POST "https://api.openai.com/v1/chat/completions" \
 
 **控制实时互联网访问**
 
-::: code-group
 ```curl
 curl "https://api.openai.com/v1/responses" -H "Content-Type: application/json" -H "Authorization: Bearer $OPENAI_API_KEY" -d '{
   "model": "gpt-5.5",
@@ -739,7 +725,6 @@ curl "https://api.openai.com/v1/responses" -H "Content-Type: application/json" -
 }'
 ```
 
-::: code-group
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -769,9 +754,7 @@ input="Find when the Eiffel Tower opened to the public and cite the source.",
 print(resp.output_text)
 ```
 
-:::
 
-:::
 
 ## 限制
 

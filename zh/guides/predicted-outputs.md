@@ -7,6 +7,7 @@ Predicted Outputs 目前可在最新的 `gpt-4o`、`gpt-4o-mini`、`gpt-4.1`、`
 
 Predicted Outputs 在对文本文档和代码文件进行少量修改并重新生成时特别有用。假设你想让 [GPT-4o 模型](/models#gpt-4o) 重构一段 TypeScript 代码，将 `User` 类的 `username` 属性转换为 `email`：
 
+::: code-group
 ```python
 class User {
   firstName: string = "";
@@ -23,7 +24,6 @@ export default User;
 
 **使用 Predicted Output 重构 TypeScript 类**
 
-::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -68,7 +68,6 @@ console.log(completion);
 console.log(completion.choices[0].message.content);
 ```
 
-::: code-group
 ```python
 from openai import OpenAI
 
@@ -136,7 +135,7 @@ curl https://api.openai.com/v1/chat/completions \
 
 :::
 
-:::
+
 
 除了重构后的代码之外，模型响应还将包含类似如下的数据：
 
@@ -161,7 +160,7 @@ curl https://api.openai.com/v1/chat/completions \
   },
   system_fingerprint: 'fp_159d8341cc'
 }
-```
+```javascript
 
 请注意 `usage` 对象中的 `accepted_prediction_tokens` 和 `rejected_prediction_tokens`。在此示例中，预测中有 18 个 token 被用于加速响应，而 10 个被拒绝。
 
@@ -173,8 +172,7 @@ curl https://api.openai.com/v1/chat/completions \
 
 **Predicted Outputs 与流式传输**
 
-::: code-group
-```javascript
+```
 import OpenAI from "openai";
 
 const code = `
@@ -218,9 +216,9 @@ const completion = await openai.chat.completions.create({
 for await (const chunk of stream) {
   process.stdout.write(chunk.choices[0]?.delta?.content || "");
 }
-```
-
 ```python
+
+```
 from openai import OpenAI
 
 code = """
@@ -262,15 +260,14 @@ stream = client.chat.completions.create(
 for chunk in stream:
     if chunk.choices[0].delta.content is not None:
         print(chunk.choices[0].delta.content, end="")
-```
+```javascript
 
-:::
 
 ## 预测文本在响应中的位置
 
 在提供预测文本时，你的预测可以出现在生成响应中的任何位置，仍然能为响应提供延迟降低效果。假设你的预测文本是下面所示的简单 [Hono](https://hono.dev/) 服务器：
 
-```javascript
+```
 import { serveStatic } from "@hono/node-server/serve-static";
 import { serve } from "@hono/node-server";
 import { Hono } from "hono";
@@ -305,11 +302,11 @@ Add a get route to this application that responds with
 the text "hello world". Generate the entire application
 file again with this route added, and with no other
 markdown formatting.
-```
+```javascript
 
 对该提示词的响应可能如下所示：
 
-```javascript
+```
 import { serveStatic } from "@hono/node-server/serve-static";
 import { serve } from "@hono/node-server";
 import { Hono } from "hono";

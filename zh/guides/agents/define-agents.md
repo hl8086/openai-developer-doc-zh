@@ -64,7 +64,6 @@ agent = Agent(
 )
 ```
 
-:::
 
 ## 精心设计指令、交接和输出
 
@@ -76,7 +75,6 @@ agent = Agent(
 
 **返回结构化输出**
 
-::: code-group
 ```typescript
 import { Agent, run } from "@openai/agents";
 import { z } from "zod";
@@ -134,7 +132,6 @@ if __name__ == "__main__":
     asyncio.run(main())
 ```
 
-:::
 
 当你想引用 Responses API 中存储的提示配置而不是在代码中嵌入整个系统提示时，使用 `prompt`。
 
@@ -144,7 +141,6 @@ SDK 允许你将应用状态和依赖项传入运行中，而不将它们发送�
 
 **将本地上下文传递给工具**
 
-::: code-group
 ```typescript
 import { Agent, RunContext, run, tool } from "@openai/agents";
 import { z } from "zod";
@@ -214,6 +210,7 @@ if __name__ == "__main__":
 ```
 
 :::
+
 
 重要的边界是：
 

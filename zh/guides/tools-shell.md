@@ -18,7 +18,6 @@ Shell 通过 [Responses API](/guides/responses-vs-chat-completions) 提供。它
 
 **使用 container\_auto 的 Shell 工具**
 
-::: code-group
 ```curl
 curl -L 'https://api.openai.com/v1/responses' \
   -H "Content-Type: application/json" \
@@ -41,7 +40,6 @@ curl -L 'https://api.openai.com/v1/responses' \
   }'
 ```
 
-::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -94,9 +92,7 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
-:::
 
-:::
 
 ## 托管运行时详情
 
@@ -124,7 +120,6 @@ print(response.output_text)
 
 **创建可复用容器**
 
-::: code-group
 ```curl
 curl -L 'https://api.openai.com/v1/containers' \
   -H "Content-Type: application/json" \
@@ -136,7 +131,6 @@ curl -L 'https://api.openai.com/v1/containers' \
   }'
 ```
 
-::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -165,15 +159,12 @@ container = client.containers.create(
 print(container.id)
 ```
 
-:::
 
-:::
 
 ### 2\. 在 Responses 中引用容器
 
 **使用 container\_reference 的 shell**
 
-::: code-group
 ```curl
 curl -L 'https://api.openai.com/v1/responses' \
   -H "Content-Type: application/json" \
@@ -193,7 +184,6 @@ curl -L 'https://api.openai.com/v1/responses' \
   }'
 ```
 
-::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -238,9 +228,7 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
-:::
 
-:::
 
 ## 附加技能
 
@@ -250,7 +238,6 @@ print(response.output_text)
 
 **创建附加技能的容器**
 
-::: code-group
 ```curl
 curl -L 'https://api.openai.com/v1/containers' \
   -H "Content-Type: application/json" \
@@ -264,7 +251,6 @@ curl -L 'https://api.openai.com/v1/containers' \
   }'
 ```
 
-::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -297,9 +283,7 @@ container = client.containers.create(
 print(container.id)
 ```
 
-:::
 
-:::
 
 ## 网络访问
 
@@ -312,7 +296,6 @@ print(container.id)
 
 **使用网络允许列表的 Shell 工具**
 
-::: code-group
 ```curl
 curl -L 'https://api.openai.com/v1/responses' \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -341,7 +324,6 @@ curl -L 'https://api.openai.com/v1/responses' \
   }'
 ```
 
-::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -405,9 +387,7 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
-:::
 
-:::
 
 允许列表域名会引入安全风险，例如提示注入驱动的数据泄露。仅允许你信任的域名，且攻击者无法用来接收泄露数据的域名。在使用此工具之前，请仔细阅读下方的[风险与安全](#risks-and-safety)部分。
 
@@ -435,7 +415,6 @@ print(response.output_text)
 
 **使用内联文件和内联技能**
 
-::: code-group
 ```curl
 INLINE_ZIP=$(base64 -i ./csv_insights.zip)
 REPORT_CSV=$(base64 -i ./report.csv)
@@ -494,7 +473,6 @@ curl -L 'https://api.openai.com/v1/responses' \
   }'
 ```
 
-::: code-group
 ```javascript
 import fs from "fs";
 import OpenAI from "openai";
@@ -612,9 +590,7 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
-:::
 
-:::
 
 对于后续请求，使用 `container_reference` 传递相同的 `container_id`。挂载的技能和现有容器文件在容器活跃期间保持可用。
 
@@ -624,13 +600,11 @@ print(response.output_text)
 
 **删除容器**
 
-::: code-group
 ```curl
 curl -L -X DELETE 'https://api.openai.com/v1/containers/container_id' \
   -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -649,7 +623,7 @@ client = OpenAI()
 deleted = client.containers.delete("container_id")
 
 print(deleted)
-```text
+```
 
 ## 域名密钥
 
@@ -783,9 +757,7 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
-:::
 
-:::
 
 ## 多轮工作流
 
@@ -793,7 +765,6 @@ print(response.output_text)
 
 **继续 shell 工作流**
 
-::: code-group
 ```curl
 curl -L 'https://api.openai.com/v1/responses' \
   -H "Content-Type: application/json" \
@@ -814,7 +785,6 @@ curl -L 'https://api.openai.com/v1/responses' \
   }'
 ```
 
-::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -861,9 +831,7 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
-:::
 
-:::
 
 ## Responses 中的 Shell 输出
 
@@ -895,7 +863,6 @@ shell\_call 项示例
 
 **本地 shell 请求**
 
-::: code-group
 ```curl
 curl -L 'https://api.openai.com/v1/responses' \
   -H "Content-Type: application/json" \
@@ -908,7 +875,6 @@ curl -L 'https://api.openai.com/v1/responses' \
   }'
 ```
 
-::: code-group
 ```python
 from openai import OpenAI
 
@@ -939,9 +905,7 @@ const response = await client.responses.create({
 console.log(response);
 ```
 
-:::
 
-:::
 
 当你收到 `shell_call` 输出项时：
 
@@ -1012,6 +976,7 @@ class ShellExecutor {
 
 :::
 
+
 shell\_call\_output 载荷示例
 
 ```
@@ -1037,7 +1002,8 @@ shell\_call\_output 载荷示例
     }
   ]
 }
-```
+::: code-group
+```javascript
 
 有关旧版迁移详情，请参阅旧版[本地 shell 指南](/guides/tools-local-shell)。
 
@@ -1047,8 +1013,7 @@ shell\_call\_output 载荷示例
 
 **在 Agents SDK 中使用本地 shell**
 
-::: code-group
-```javascript
+```
 import {
   Agent,
   run,
@@ -1155,6 +1120,7 @@ if __name__ == "__main__":
 ```
 
 :::
+
 
 你可以在 SDK 仓库中找到可运行的示例。
 

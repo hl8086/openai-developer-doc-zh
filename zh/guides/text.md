@@ -38,7 +38,7 @@ openai responses create \
   --transform 'output.#(type=="message").content.0.text'
 ```
 
-```python
+```csharp
 using System;
 using System.Threading.Tasks;
 using OpenAI;
@@ -62,9 +62,7 @@ class Program
 }
 ```
 
-:::
-
-```
+```java
 import com.openai.client.OpenAIClient;
 import com.openai.client.okhttp.OpenAIOkHttpClient;
 import com.openai.models.responses.Response;
@@ -85,7 +83,7 @@ public class Main {
 }
 ```
 
-```
+```go
 package main
 
 import (
@@ -114,7 +112,7 @@ func main() {
 }
 ```
 
-```
+```ruby
 require "openai"
 
 openai = OpenAI::Client.new
@@ -137,6 +135,8 @@ curl "https://api.openai.com/v1/responses" \
     }'
 ```
 
+:::
+
 模型生成的内容数组位于响应的 `output` 属性中。在这个简单示例中，我们只有一个输出，如下所示：
 
 ```
@@ -154,7 +154,8 @@ curl "https://api.openai.com/v1/responses" \
     ]
   }
 ]
-```
+::: code-group
+```javascript
 
 **`output` 数组通常包含不止一个项目！** 它可以包含工具调用、由[推理模型](/guides/reasoning)生成的推理 token 相关数据以及其他项目。不能安全地假设模型的文本输出位于 `output[0].content[0].text`。
 
@@ -189,8 +190,7 @@ OpenAI 有许多不同的[模型](/models)和多个 API 可供选择。[推理�
 
 **使用指令生成文本**
 
-::: code-group
-```javascript
+```
 import OpenAI from "openai";
 const client = new OpenAI();
 
@@ -202,10 +202,9 @@ const response = await client.responses.create({
 });
 
 console.log(response.output_text);
-```
-
-::: code-group
 ```python
+
+```
 from openai import OpenAI
 client = OpenAI()
 
@@ -231,15 +230,12 @@ curl "https://api.openai.com/v1/responses" \
     }'
 ```
 
-:::
 
-:::
 
 上面的示例大致等同于在 `input` 数组中使用以下输入消息：
 
 **使用不同角色的消息生成文本**
 
-::: code-group
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -262,7 +258,6 @@ const response = await client.responses.create({
 console.log(response.output_text);
 ```
 
-::: code-group
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -305,9 +300,7 @@ curl "https://api.openai.com/v1/responses" \
     }'
 ```
 
-:::
 
-:::
 
 请注意，`instructions` 参数仅适用于当前的响应生成请求。如果你使用 `previous_response_id` 参数[管理对话状态](/guides/conversation-state)，之前轮次使用的 `instructions` 将不会出现在上下文中。
 
@@ -342,7 +335,6 @@ curl "https://api.openai.com/v1/responses" \
 
 **使用提示词模板生成文本**
 
-::: code-group
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -362,7 +354,6 @@ const response = await client.responses.create({
 console.log(response.output_text);
 ```
 
-::: code-group
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -399,15 +390,12 @@ curl https://api.openai.com/v1/responses \
   }'
 ```
 
-:::
 
-:::
 
 带文件输入的变量
 
 **带文件输入变量的提示词模板**
 
-::: code-group
 ```javascript
 import fs from "fs";
 import OpenAI from "openai";
@@ -436,7 +424,6 @@ const response = await client.responses.create({
 console.log(response.output_text);
 ```
 
-::: code-group
 ```python
 import openai, pathlib
 
@@ -484,7 +471,7 @@ curl https://api.openai.com/v1/responses   -H "Authorization: Bearer $OPENAI_API
 
 :::
 
-:::
+
 
 ## 后续步骤
 

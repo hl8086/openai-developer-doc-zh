@@ -11,7 +11,6 @@
 
 **使用优先处理创建响应**
 
-::: code-group
 ```curl
 curl https://api.openai.com/v1/responses   -H "Authorization: Bearer $OPENAI_API_KEY"   -H "Content-Type: application/json"   -d '{
     "model": "gpt-5",
@@ -20,7 +19,6 @@ curl https://api.openai.com/v1/responses   -H "Authorization: Bearer $OPENAI_API
   }'
 ```
 
-::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -48,9 +46,7 @@ response = client.responses.create(
 print(response)
 ```
 
-:::
 
-:::
 
 要在项目级别启用，请导航到设置页面，选择项目下的 General 选项卡，然后将项目服务层级更改为 Priority。在项目上配置后，未指定 `service_tier` 的请求将默认使用优先处理。请注意，该项目的请求将随时间逐步过渡到优先处理。
 

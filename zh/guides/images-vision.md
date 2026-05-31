@@ -77,7 +77,6 @@ if image_data:
         f.write(base64.b64decode(image_base64))
 ```
 
-:::
 ```cli
 openai responses create \
   --model gpt-5.5 \
@@ -113,7 +112,6 @@ GPT Image 模型可以利用对世界的视觉理解来生成逼真的图像，�
 
 **分析图像内容**
 
-::: code-group
 ```javascript
 import OpenAI from "openai";
 const openai = new OpenAI();
@@ -137,7 +135,6 @@ const response = await openai.chat.completions.create({
 console.log(response.choices[0].message.content);
 ```
 
-::: code-group
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -188,15 +185,12 @@ curl https://api.openai.com/v1/chat/completions \
   }'
 ```
 
-:::
 
-:::
 
 传递 Base64 编码图像
 
 **分析图像内容**
 
-::: code-group
 ```javascript
 import fs from "fs";
 import OpenAI from "openai";
@@ -225,7 +219,6 @@ const completion = await openai.chat.completions.create({
 console.log(completion.choices[0].message.content);
 ```
 
-::: code-group
 ```python
 import base64
 from openai import OpenAI
@@ -291,9 +284,7 @@ BASE64_IMAGE=$(base64 < path_to_your_image.jpg) && curl https://api.openai.com/v
 EOF
 ```
 
-:::
 
-:::
 
 您可以通过多种方式将图像作为输入提供给生成请求：
 
@@ -309,7 +300,6 @@ EOF
 
 **分析图像内容**
 
-::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -354,8 +344,6 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
-:::
-::: code-group
 ```csharp
 using OpenAI.Responses;
 
@@ -410,13 +398,11 @@ input:
 YAML
 ```
 
-:::
 
 传递 Base64 编码图像
 
 **分析图像内容**
 
-::: code-group
 ```javascript
 import fs from "fs";
 import OpenAI from "openai";
@@ -483,7 +469,6 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
-:::
 ```csharp
 using OpenAI.Responses;
 
@@ -522,7 +507,6 @@ Console.WriteLine($"From byte array: {response2.GetOutputText()}");
 
 **分析图像内容**
 
-::: code-group
 ```javascript
 import OpenAI from "openai";
 import fs from "fs";
@@ -595,7 +579,6 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
-:::
 ```csharp
 using OpenAI.Files;
 using OpenAI.Responses;
@@ -621,7 +604,7 @@ OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
 ]);
 
 Console.WriteLine(response.GetOutputText());
-```text
+```
 
 ### 图像输入要求
 
@@ -634,6 +617,8 @@ Console.WriteLine(response.GetOutputText());
 `detail` 参数告诉模型在处理和理解图像时使用什么级别的细节（`low`、`high`、`original` 或 `auto`）。如果您跳过该参数，模型将使用 `auto`。此行为在 Responses API 和 Chat Completions API 中相同。在 `gpt-5.5` 上，`auto` 和默认省略行为等同于 `original`。
 
 ```
+
+:::
 "image_url": {
     "url": "https://api.nga.gov/iiif/a2e6da57-3cd1-4235-b20e-95dcaefed6c8/full/!800,800/0/default.jpg",
     "detail": "original"

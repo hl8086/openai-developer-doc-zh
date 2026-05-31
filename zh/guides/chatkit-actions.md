@@ -15,11 +15,11 @@ Button(
       payload={"id": 123},
     )
 )
-```
+```javascript
 
 Actions 也可以通过前端的 `sendAction()` 以命令式方式发送。当你需要 ChatKit 响应 ChatKit 之外发生的交互时，这可能最为有用，但它也可以用于在需要同时在客户端和服务器端响应时链接 actions（下面会详细介绍）。
 
-```javascript
+```
 await chatKit.sendAction({
   type: "example",
   payload: { id: 123 },

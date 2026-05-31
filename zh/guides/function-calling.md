@@ -39,7 +39,7 @@
 
 ```
 The weather in Paris today is 25C.
-```
+```python
 
 函数与工具的区别
 
@@ -65,8 +65,7 @@ The weather in Paris today is 25C.
 
 **完整的工具调用示例**
 
-::: code-group
-```python
+```
 from openai import OpenAI
 import json
 
@@ -134,9 +133,9 @@ response = client.chat.completions.create(
 
 # 5. The model should be able to give a response!
 print(response.choices[0].message.content)
-```
-
 ```javascript
+
+```
 import OpenAI from "openai";
 
 const openai = new OpenAI();
@@ -204,14 +203,12 @@ response = await openai.chat.completions.create({
 
 // 5. The model should be able to give a response!
 console.log(response.choices[0].message.content);
-```
+```python
 
-:::
 
 **完整的工具调用示例**
 
-::: code-group
-```python
+```
 from openai import OpenAI
 import json
 
@@ -282,9 +279,9 @@ response = client.responses.create(
 print("Final output:")
 print(response.model_dump_json(indent=2))
 print("\n" + response.output_text)
-```
-
 ```javascript
+
+```
 import OpenAI from "openai";
 
 const openai = new OpenAI();
@@ -361,7 +358,6 @@ console.log("Final output:");
 console.log(response.output_text);
 ```
 
-:::
 
 请注意，对于 GPT-5 或 o4-mini 等推理模型，模型响应中返回的任何推理项（包含工具调用的）也必须与工具调用输出一起传回。
 
@@ -445,7 +441,7 @@ console.log(response.output_text);
     }
   ]
 }
-```
+```python
 
 ## 工具搜索
 
@@ -457,8 +453,7 @@ console.log(response.output_text);
 
 **定义对象来表示函数 schema**
 
-::: code-group
-```python
+```
 from openai import OpenAI, pydantic_function_tool
 from pydantic import BaseModel, Field
 
@@ -479,9 +474,9 @@ completion = client.chat.completions.create(
 )
 
 print(completion.choices[0].message.tool_calls)
-```
-
 ```javascript
+
+```
 import OpenAI from "openai";
 import { z } from "zod";
 import { zodFunction } from "openai/helpers/zod";
@@ -510,7 +505,6 @@ const response = await openai.chat.completions.create({
 console.log(response.choices[0].message.tool_calls);
 ```
 
-:::
 
 ### 定义函数的最佳实践
 
@@ -614,6 +608,7 @@ for (const toolCall of completion.choices[0].message.tool_calls) {
 
 :::
 
+
 响应的 `output` 数组包含 `type` 值为 `function_call` 的条目。每个条目都有一个 `call_id`（稍后用于提交函数结果）、`name` 和 JSON 编码的 `arguments`。
 
 包含多个函数调用的示例响应
@@ -685,11 +680,11 @@ for (const toolCall of response.output) {
 
 :::
 
+
 在上面的示例中，我们有一个假设的 `call_function` 来路由每个调用。以下是一个可能的实现：
 
 **执行函数调用并追加结果**
 
-::: code-group
 ```python
 def call_function(name, args):
     if name == "get_weather":
@@ -709,7 +704,6 @@ const callFunction = async (name, args) => {
 };
 ```
 
-:::
 
 ### 格式化结果
 
@@ -725,7 +719,6 @@ const callFunction = async (name, args) => {
 
 **将结果发送回模型**
 
-::: code-group
 ```python
 completion = client.chat.completions.create(
     model="gpt-4.1",
@@ -743,13 +736,11 @@ const completion = await openai.chat.completions.create({
 });
 ```
 
-:::
 
 将结果追加到 `input` 后，你可以将它们发送回模型以获取最终响应。
 
 **将结果发送回模型**
 
-::: code-group
 ```python
 response = client.responses.create(
     model="gpt-4.1",
@@ -766,7 +757,6 @@ const response = await openai.responses.create({
 });
 ```
 
-:::
 
 最终响应
 
@@ -938,7 +928,7 @@ const response = await openai.responses.create({
         "required": ["location"],
     }
 }
-```
+```python
 
 在 [playground](https://platform.openai.com/playground) 中生成的所有 schema 都启用了严格模式。
 
@@ -959,8 +949,7 @@ const response = await openai.responses.create({
 
 **流式函数调用**
 
-::: code-group
-```python
+```
 from openai import OpenAI
 
 client = OpenAI()
@@ -995,9 +984,9 @@ stream = client.chat.completions.create(
 for chunk in stream:
     delta = chunk.choices[0].delta
     print(delta.tool_calls)
-```
-
 ```javascript
+
+```
 import { OpenAI } from "openai";
 
 const openai = new OpenAI();
@@ -1036,7 +1025,6 @@ for await (const chunk of stream) {
 }
 ```
 
-:::
 
 输出 delta.tool\_calls
 
@@ -1069,7 +1057,6 @@ null
 
 **累积 tool\_call delta**
 
-::: code-group
 ```python
 final_tool_calls = {}
 
@@ -1100,7 +1087,6 @@ for await (const chunk of stream) {
 }
 ```
 
-:::
 
 累积的 final\_tool\_calls\[0\]
 
@@ -1113,7 +1099,7 @@ for await (const chunk of stream) {
         "arguments": "{\"location\":\"Paris, France\"}"
     }
 }
-```
+```python
 
 流式传输可用于展示进度，显示正在调用哪个函数以及模型填充参数的过程，甚至实时显示参数。
 
@@ -1121,8 +1107,7 @@ for await (const chunk of stream) {
 
 **流式函数调用**
 
-::: code-group
-```python
+```
 from openai import OpenAI
 
 client = OpenAI()
@@ -1155,9 +1140,9 @@ stream = client.responses.create(
 
 for event in stream:
     print(event)
-```
-
 ```javascript
+
+```
 import { OpenAI } from "openai";
 
 const openai = new OpenAI();
@@ -1191,7 +1176,6 @@ for await (const event of stream) {
 }
 ```
 
-:::
 
 输出事件
 
@@ -1231,7 +1215,6 @@ for await (const event of stream) {
 
 **累积 tool\_call delta**
 
-::: code-group
 ```python
 final_tool_calls = {}
 
@@ -1261,7 +1244,6 @@ for await (const event of stream) {
 }
 ```
 
-:::
 
 累积的 final\_tool\_calls\[0\]
 
@@ -1273,7 +1255,7 @@ for await (const event of stream) {
     "name": "get_weather",
     "arguments": "{\"location\":\"Paris, France\"}"
 }
-```
+```python
 
 当模型完成函数调用时，将发出类型为 `response.function_call_arguments.done` 的事件。此事件包含完整的函数调用，包括以下字段：
 
@@ -1291,8 +1273,7 @@ for await (const event of stream) {
 
 **自定义工具调用示例**
 
-::: code-group
-```python
+```
 from openai import OpenAI
 
 client = OpenAI()
@@ -1309,9 +1290,9 @@ response = client.responses.create(
     ]
 )
 print(response.output)
-```
-
 ```javascript
+
+```
 import OpenAI from "openai";
 const client = new OpenAI();
 
@@ -1330,7 +1311,6 @@ const response = await client.responses.create({
 console.log(response.output);
 ```
 
-:::
 
 与之前一样，`output` 数组将包含模型生成的工具调用。不同的是，这次工具调用输入以纯文本形式给出。
 
@@ -1351,7 +1331,7 @@ console.log(response.output);
     "name": "code_exec"
   }
 ]
-```
+```python
 
 ### 上下文无关文法
 
@@ -1363,8 +1343,7 @@ console.log(response.output);
 
 **Lark 上下文无关文法示例**
 
-::: code-group
-```python
+```
 from openai import OpenAI
 
 client = OpenAI()
@@ -1399,9 +1378,9 @@ response = client.responses.create(
     ]
 )
 print(response.output)
-```
-
 ```javascript
+
+```
 import OpenAI from "openai";
 const client = new OpenAI();
 
@@ -1438,7 +1417,6 @@ const response = await client.responses.create({
 console.log(response.output);
 ```
 
-:::
 
 工具的输出应符合你定义的 Lark CFG：
 
@@ -1531,7 +1509,7 @@ PLUS: "+"
 MINUS: "-"
 expr: term (("+"|"-") term)*
 term: NUMBER
-```
+```python
 
 **显式处理空白**
 
@@ -1550,8 +1528,7 @@ term: NUMBER
 
 **Regex 上下文无关文法示例**
 
-::: code-group
-```python
+```
 from openai import OpenAI
 
 client = OpenAI()
@@ -1575,9 +1552,9 @@ response = client.responses.create(
     ]
 )
 print(response.output)
-```
-
 ```javascript
+
+```
 import OpenAI from "openai";
 const client = new OpenAI();
 
@@ -1603,7 +1580,6 @@ const response = await client.responses.create({
 console.log(response.output);
 ```
 
-:::
 
 工具的输出应符合你定义的 Regex CFG：
 

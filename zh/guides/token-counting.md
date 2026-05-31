@@ -35,7 +35,6 @@ response = client.responses.input_tokens.count(
 print(response.input_tokens)
 ```
 
-::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -59,9 +58,6 @@ curl https://api.openai.com/v1/responses/input_tokens \
   }'
 ```
 
-:::
-
-:::
 ```cli
 openai responses:input-tokens count \
   --model gpt-5 \
@@ -74,7 +70,6 @@ openai responses:input-tokens count \
 
 **多轮对话**
 
-::: code-group
 ```python
 from openai import OpenAI
 
@@ -91,7 +86,6 @@ response = client.responses.input_tokens.count(
 print(response.input_tokens)
 ```
 
-::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -123,9 +117,6 @@ curl https://api.openai.com/v1/responses/input_tokens \
   }'
 ```
 
-:::
-
-:::
 ```cli
 openai responses:input-tokens count \
   --raw-output \
@@ -145,7 +136,6 @@ YAML
 
 **带系统指令的输入**
 
-::: code-group
 ```python
 from openai import OpenAI
 
@@ -159,7 +149,6 @@ response = client.responses.input_tokens.count(
 print(response.input_tokens)
 ```
 
-::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -186,9 +175,6 @@ curl https://api.openai.com/v1/responses/input_tokens \
   }'
 ```
 
-:::
-
-:::
 ```cli
 openai responses:input-tokens count \
   --raw-output \
@@ -205,7 +191,6 @@ YAML
 
 **带图片的输入**
 
-::: code-group
 ```python
 from openai import OpenAI
 
@@ -227,7 +212,6 @@ response = client.responses.input_tokens.count(
 print(response.input_tokens)
 ```
 
-::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -268,9 +252,6 @@ curl https://api.openai.com/v1/responses/input_tokens \
   }'
 ```
 
-:::
-
-:::
 ```cli
 openai responses:input-tokens count \
   --raw-output \
@@ -294,7 +275,6 @@ YAML
 
 **带函数工具的输入**
 
-::: code-group
 ```python
 from openai import OpenAI
 
@@ -319,7 +299,6 @@ response = client.responses.input_tokens.count(
 print(response.input_tokens)
 ```
 
-::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -365,9 +344,6 @@ curl https://api.openai.com/v1/responses/input_tokens \
   }'
 ```
 
-:::
-
-:::
 ```cli
 openai responses:input-tokens count \
   --raw-output \
@@ -387,6 +363,8 @@ tools:
 input: What is the weather in San Francisco?
 YAML
 ```
+
+:::
 
 ## 计算带文件的 token
 

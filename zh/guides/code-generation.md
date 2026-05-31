@@ -37,7 +37,6 @@ const result = await openai.responses.create({
 console.log(result.output_text);
 ```
 
-::: code-group
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -64,7 +63,7 @@ curl https://api.openai.com/v1/responses \
 
 :::
 
-:::
+
 
 ## 前端开发
 

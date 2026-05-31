@@ -38,7 +38,6 @@ const embedding = await openai.embeddings.create({
 console.log(embedding);
 ```
 
-::: code-group
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -63,7 +62,7 @@ curl https://api.openai.com/v1/embeddings \
 
 :::
 
-:::
+
 
 响应包含嵌入向量（浮点数列表）以及一些额外的元数据。你可以提取嵌入向量，将其保存在向量数据库中，并用于许多不同的用例。
 
@@ -86,7 +85,7 @@ curl https://api.openai.com/v1/embeddings \
     "total_tokens": 5
   }
 }
-```
+```python
 
 默认情况下，`text-embedding-3-small` 的嵌入向量长度为 `1536`，`text-embedding-3-large` 为 `3072`。要在不丢失其概念表示属性的情况下减少嵌入的维度，请传入 [dimensions 参数]( https://developers.openai.com/api/reference/embeddings/create#embeddings-create-dimensions)。在[嵌入用例部分](#use-cases)中查找有关嵌入维度的更多详细信息。
 
@@ -119,7 +118,7 @@ OpenAI 提供两个强大的第三代嵌入模型（模型 ID 中以 `-3` 表示
 
 Get\_embeddings\_from\_dataset.ipynb
 
-```python
+```
 from openai import OpenAI
 client = OpenAI()
 
@@ -138,7 +137,7 @@ import pandas as pd
 
 df = pd.read_csv('output/embedded_1k_reviews.csv')
 df['ada_embedding'] = df.ada_embedding.apply(eval).apply(np.array)
-```
+```python
 
 减少嵌入维度
 
@@ -148,7 +147,7 @@ df['ada_embedding'] = df.ada_embedding.apply(eval).apply(np.array)
 
 通常，在创建嵌入时使用 `dimensions` 参数是建议的方法。在某些情况下，你可能需要在生成嵌入后更改嵌入维度。当你手动更改维度时，需要确保对嵌入的维度进行归一化，如下所示。
 
-```python
+```
 from openai import OpenAI
 import numpy as np
 

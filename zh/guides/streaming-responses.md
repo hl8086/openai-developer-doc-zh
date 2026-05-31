@@ -7,7 +7,6 @@
 
 要开始流式传输响应，请在向 Responses 端点发送请求时设置 `stream=True`：
 
-::: code-group
 ```javascript
 import { OpenAI } from "openai";
 const client = new OpenAI();
@@ -47,7 +46,6 @@ for event in stream:
     print(event)
 ```
 
-:::
 ```csharp
 using OpenAI.Responses;
 
@@ -99,7 +97,7 @@ type StreamingEvent =
 	| ResponseCodeInterpreterCallInterpreting
 	| ResponseCodeInterpreterCallCompleted
 	| Error
-```
+```javascript
 
 流式 Chat Completions 相当简单。但是，我们建议使用 [Responses API 进行流式传输](/guides/streaming-responses?api-mode=responses)，因为我们在设计时就考虑了流式传输。Responses API 使用语义事件进行流式传输，并且是类型安全的。
 
@@ -109,8 +107,7 @@ type StreamingEvent =
 
 响应以事件流的形式分块增量发送。你可以使用 `for` 循环遍历事件流，如下所示：
 
-::: code-group
-```javascript
+```
 import OpenAI from "openai";
 const openai = new OpenAI();
 
@@ -130,9 +127,9 @@ for await (const chunk of stream) {
     console.log(chunk.choices[0].delta);
     console.log("****************");
 }
-```
-
 ```python
+
+```
 from openai import OpenAI
 client = OpenAI()
 
@@ -153,7 +150,6 @@ for chunk in stream:
     print("****************")
 ```
 
-:::
 
 ## 读取响应
 
@@ -201,12 +197,11 @@ for chunk in stream:
 ****************
 {}
 ****************
-```
+```javascript
 
 如果只想流式传输 chat completion 的文本响应，代码如下：
 
-::: code-group
-```javascript
+```
 import OpenAI from "openai";
 const client = new OpenAI();
 
@@ -224,9 +219,9 @@ const stream = await client.chat.completions.create({
 for await (const chunk of stream) {
     process.stdout.write(chunk.choices[0]?.delta?.content || "");
 }
-```
-
 ```python
+
+```
 from openai import OpenAI
 client = OpenAI()
 
@@ -246,7 +241,6 @@ for chunk in stream:
         print(chunk.choices[0].delta.content, end="")
 ```
 
-:::
 
 ## 高级用例
 

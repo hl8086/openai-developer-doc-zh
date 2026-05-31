@@ -52,13 +52,11 @@ agent = Agent(
 )
 ```
 
-:::
 
 当你的应用程序需要直接连接到 MCP 服务器时，使用本地传输。
 
 **连接本地 MCP 服务器**
 
-::: code-group
 ```typescript
 import { Agent, MCPServerStdio, run } from "@openai/agents";
 
@@ -115,7 +113,6 @@ if __name__ == "__main__":
     asyncio.run(main())
 ```
 
-:::
 
 实际的划分方式是：
 
@@ -140,7 +137,6 @@ if __name__ == "__main__":
 
 **将多次运行包裹在一个追踪中**
 
-::: code-group
 ```typescript
 import { Agent, run, withTrace } from "@openai/agents";
 
@@ -184,6 +180,7 @@ if __name__ == "__main__":
 ```
 
 :::
+
 
 追踪用于两个目的：
 

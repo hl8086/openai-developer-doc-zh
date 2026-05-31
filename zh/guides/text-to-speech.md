@@ -41,7 +41,6 @@ const buffer = Buffer.from(await mp3.arrayBuffer());
 await fs.promises.writeFile(speechFile, buffer);
 ```
 
-::: code-group
 ```python
 from pathlib import Path
 from openai import OpenAI
@@ -71,9 +70,6 @@ curl https://api.openai.com/v1/audio/speech \
   --output speech.mp3
 ```
 
-:::
-
-:::
 ```cli
 openai audio:speech create \
   --model gpt-4o-mini-tts \
@@ -129,7 +125,6 @@ Speech API 支持使用[分块传输编码](https://developer.mozilla.org/en-US/
 
 **将输入文本的语音音频直接流式传输到扬声器**
 
-::: code-group
 ```javascript
 import OpenAI from "openai";
 import { playAudio } from "openai/helpers/audio";
@@ -147,7 +142,6 @@ const response = await openai.audio.speech.create({
 await playAudio(response);
 ```
 
-::: code-group
 ```python
 import asyncio
 
@@ -185,7 +179,7 @@ curl https://api.openai.com/v1/audio/speech \
 
 :::
 
-:::
+
 
 为获得最快的响应时间，我们推荐使用 `wav` 或 `pcm` 作为响应格式。
 

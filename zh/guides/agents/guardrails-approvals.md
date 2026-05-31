@@ -123,7 +123,6 @@ if __name__ == "__main__":
     asyncio.run(main())
 ```
 
-:::
 
 当启动主代理的成本或风险过高时，使用阻断式执行。当低延迟比避免推测性工作更重要时，使用并行护栏。
 
@@ -133,7 +132,6 @@ if __name__ == "__main__":
 
 **在执行敏感操作前暂停等待审批**
 
-::: code-group
 ```typescript
 import { Agent, run, tool } from "@openai/agents";
 import { z } from "zod";
@@ -202,6 +200,7 @@ if __name__ == "__main__":
 ```
 
 :::
+
 
 即使需要审批的工具位于工作流更深层（例如在交接之后或嵌套的 `agent.asTool()` 调用内部），同样的中断模式也适用。
 

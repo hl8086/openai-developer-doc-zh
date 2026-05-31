@@ -90,7 +90,8 @@ Batch API 提供了一组简单的端点，允许您将一组请求收集到单�
     ]
   }
 }
-```
+::: code-group
+```javascript
 
 建议使用 `image_url` 引用远程资源（而非 base64 blob），以使您的 `.jsonl` 文件远低于 200 MB 的 Batch 上传限制，尤其是对于多模态 Moderations 请求。
 
@@ -100,8 +101,7 @@ Batch API 提供了一组简单的端点，允许您将一组请求收集到单�
 
 **为 Batch API 上传文件**
 
-::: code-group
-```javascript
+```
 import fs from "fs";
 import OpenAI from "openai";
 const openai = new OpenAI();
@@ -112,10 +112,9 @@ const file = await openai.files.create({
 });
 
 console.log(file);
-```
-
-::: code-group
 ```python
+
+```
 from openai import OpenAI
 client = OpenAI()
 
@@ -134,9 +133,6 @@ curl https://api.openai.com/v1/files \
   -F file="@batchinput.jsonl"
 ```
 
-:::
-
-:::
 ```cli
 openai files create \
   --file batchinput.jsonl \
@@ -149,7 +145,6 @@ openai files create \
 
 **创建批次**
 
-::: code-group
 ```javascript
 import OpenAI from "openai";
 const openai = new OpenAI();
@@ -163,7 +158,6 @@ const batch = await openai.batches.create({
 console.log(batch);
 ```
 
-::: code-group
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -190,15 +184,14 @@ curl https://api.openai.com/v1/batches \
   }'
 ```
 
-:::
-
-:::
 ```cli
 openai batches create \
   --input-file-id file-abc123 \
   --endpoint /v1/chat/completions \
   --completion-window 24h
 ```
+
+:::
 
 此请求将返回一个包含批次元数据的 [Batch 对象]( https://developers.openai.com/api/reference/batch/object)：
 
@@ -226,7 +219,8 @@ openai batches create \
   },
   "metadata": null
 }
-```
+::: code-group
+```javascript
 
 ### 4\. 检查批次状态
 
@@ -234,17 +228,15 @@ openai batches create \
 
 **检查批次状态**
 
-::: code-group
-```javascript
+```
 import OpenAI from "openai";
 const openai = new OpenAI();
 
 const batch = await openai.batches.retrieve("batch_abc123");
 console.log(batch);
-```
-
-::: code-group
 ```python
+
+```
 from openai import OpenAI
 client = OpenAI()
 
@@ -258,9 +250,6 @@ curl https://api.openai.com/v1/batches/batch_abc123 \
   -H "Content-Type: application/json"
 ```
 
-:::
-
-:::
 ```cli
 openai batches retrieve \
   --batch-id batch_abc123
@@ -285,7 +274,6 @@ openai batches retrieve \
 
 **检索批次结果**
 
-::: code-group
 ```javascript
 import OpenAI from "openai";
 const openai = new OpenAI();
@@ -296,7 +284,6 @@ const fileContents = await fileResponse.text();
 console.log(fileContents);
 ```
 
-::: code-group
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -310,14 +297,13 @@ curl https://api.openai.com/v1/files/file-xyz123/content \
   -H "Authorization: Bearer $OPENAI_API_KEY" > batch_output.jsonl
 ```
 
-:::
-
-:::
 ```cli
 openai files content \
   --file-id file-xyz123 \
   --output batch_output.jsonl
 ```
+
+:::
 
 输出的 `.jsonl` 文件将为输入文件中每个成功的请求行包含一个响应行。批次中任何失败的请求都会将其错误信息写入错误文件，该文件可通过批次的 `error_file_id` 找到。
 
@@ -328,7 +314,8 @@ openai files content \
 ```
 {"id": "batch_req_123", "custom_id": "request-2", "response": {"status_code": 200, "request_id": "req_123", "body": {"id": "chatcmpl-123", "object": "chat.completion", "created": 1711652795, "model": "gpt-3.5-turbo-0125", "choices": [{"index": 0, "message": {"role": "assistant", "content": "Hello."}, "logprobs": null, "finish_reason": "stop"}], "usage": {"prompt_tokens": 22, "completion_tokens": 2, "total_tokens": 24}, "system_fingerprint": "fp_123"}}, "error": null}
 {"id": "batch_req_456", "custom_id": "request-1", "response": {"status_code": 200, "request_id": "req_789", "body": {"id": "chatcmpl-abc", "object": "chat.completion", "created": 1711652789, "model": "gpt-3.5-turbo-0125", "choices": [{"index": 0, "message": {"role": "assistant", "content": "Hello! How can I assist you today?"}, "logprobs": null, "finish_reason": "stop"}], "usage": {"prompt_tokens": 20, "completion_tokens": 9, "total_tokens": 29}, "system_fingerprint": "fp_3ba"}}, "error": null}
-```
+::: code-group
+```javascript
 
 输出文件将在批次完成后 30 天自动删除。
 
@@ -338,17 +325,15 @@ openai files content \
 
 **取消批次**
 
-::: code-group
-```javascript
+```
 import OpenAI from "openai";
 const openai = new OpenAI();
 
 const batch = await openai.batches.cancel("batch_abc123");
 console.log(batch);
-```
-
-::: code-group
 ```python
+
+```
 from openai import OpenAI
 client = OpenAI()
 
@@ -362,9 +347,6 @@ curl https://api.openai.com/v1/batches/batch_abc123/cancel \
   -X POST
 ```
 
-:::
-
-:::
 ```cli
 openai batches cancel \
   --batch-id batch_abc123
@@ -376,7 +358,6 @@ openai batches cancel \
 
 **获取所有批次列表**
 
-::: code-group
 ```javascript
 import OpenAI from "openai";
 const openai = new OpenAI();
@@ -388,7 +369,6 @@ for await (const batch of list) {
 }
 ```
 
-::: code-group
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -402,13 +382,12 @@ curl https://api.openai.com/v1/batches?limit=10 \
   -H "Content-Type: application/json"
 ```
 
-:::
-
-:::
 ```cli
 openai batches list \
   --limit 10
 ```
+
+:::
 
 ## 模型可用性
 

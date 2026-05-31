@@ -22,7 +22,6 @@ Using remote MCP servers
 
 **在 Responses API 中使用远程 MCP 服务器**
 
-::: code-group
 ```curl
 curl https://api.openai.com/v1/responses \ 
 -H "Content-Type: application/json" \ 
@@ -42,7 +41,6 @@ curl https://api.openai.com/v1/responses \
   }'
 ```
 
-::: code-group
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -86,9 +84,7 @@ resp = client.responses.create(
 print(resp.output_text)
 ```
 
-:::
 
-:::
 ```csharp
 using OpenAI.Responses;
 
@@ -119,7 +115,6 @@ Using connectors
 
 **在 Responses API 中使用连接器**
 
-::: code-group
 ```curl
 curl https://api.openai.com/v1/responses \
 -H "Content-Type: application/json" \
@@ -139,7 +134,6 @@ curl https://api.openai.com/v1/responses \
   }'
 ```
 
-::: code-group
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -183,9 +177,7 @@ resp = client.responses.create(
 print(resp.output_text)
 ```
 
-:::
 
-:::
 ```csharp
 using OpenAI.Responses;
 
@@ -301,7 +293,6 @@ MCP 工具（适用于远程 MCP 服务器和连接器）在 [Responses API]( ht
 
 **限制允许的工具**
 
-::: code-group
 ```curl
 curl https://api.openai.com/v1/responses \
 -H "Content-Type: application/json" \
@@ -322,7 +313,6 @@ curl https://api.openai.com/v1/responses \
   }'
 ```
 
-::: code-group
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -364,9 +354,7 @@ resp = client.responses.create(
 print(resp.output_text)
 ```
 
-:::
 
-:::
 ```csharp
 using OpenAI.Responses;
 
@@ -429,7 +417,6 @@ Console.WriteLine(response.GetOutputText());
 
 **在 API 请求中批准工具的使用**
 
-::: code-group
 ```curl
 curl https://api.openai.com/v1/responses \
 -H "Content-Type: application/json" \
@@ -454,7 +441,6 @@ curl https://api.openai.com/v1/responses \
   }'
 ```
 
-::: code-group
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -504,9 +490,7 @@ resp = client.responses.create(
 print(resp.output_text)
 ```
 
-:::
 
-:::
 ```csharp
 using OpenAI.Responses;
 
@@ -544,7 +528,6 @@ Console.WriteLine(response2.GetOutputText());
 
 **对某些工具永不要求审批**
 
-::: code-group
 ```curl
 curl https://api.openai.com/v1/responses \
 -H "Content-Type: application/json" \
@@ -567,7 +550,6 @@ curl https://api.openai.com/v1/responses \
   }'
 ```
 
-::: code-group
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -617,9 +599,7 @@ resp = client.responses.create(
 print(resp.output_text)
 ```
 
-:::
 
-:::
 ```csharp
 using OpenAI.Responses;
 
@@ -649,7 +629,6 @@ Console.WriteLine(response.GetOutputText());
 
 **使用 Stripe MCP 工具**
 
-::: code-group
 ```curl
 curl https://api.openai.com/v1/responses \
 -H "Content-Type: application/json" \
@@ -668,7 +647,6 @@ curl https://api.openai.com/v1/responses \
   }'
 ```
 
-::: code-group
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -710,9 +688,7 @@ resp = client.responses.create(
 print(resp.output_text)
 ```
 
-:::
 
-:::
 ```csharp
 using OpenAI.Responses;
 
@@ -775,7 +751,6 @@ https://www.googleapis.com/auth/calendar.events
 
 **使用 Google Calendar 连接器**
 
-::: code-group
 ```curl
 curl https://api.openai.com/v1/responses \
   -H "Content-Type: application/json" \
@@ -795,7 +770,6 @@ curl https://api.openai.com/v1/responses \
   }'
 ```
 
-::: code-group
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -839,9 +813,7 @@ resp = client.responses.create(
 print(resp.output_text)
 ```
 
-:::
 
-:::
 ```csharp
 using OpenAI.Responses;
 

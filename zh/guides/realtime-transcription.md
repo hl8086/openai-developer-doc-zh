@@ -69,7 +69,7 @@ ws.send(
     type: "input_audio_buffer.commit",
   })
 );
-```
+```javascript
 
 对于支持服务器端 VAD 的模型，会话会在检测到轮次边界时自动提交音频。
 
@@ -77,7 +77,7 @@ ws.send(
 
 监听增量转录增量和完成事件：
 
-```javascript
+```
 ws.on("message", (data) => {
   const event = JSON.parse(data);
 

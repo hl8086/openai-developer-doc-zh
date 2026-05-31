@@ -55,7 +55,6 @@ curl -X POST 'https://api.openai.com/v1/skills' \
 
 **在托管 shell 中使用 skills**
 
-::: code-group
 ```curl
 curl -L 'https://api.openai.com/v1/responses' \
   -H "Content-Type: application/json" \
@@ -78,7 +77,6 @@ curl -L 'https://api.openai.com/v1/responses' \
   }'
 ```
 
-::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -127,7 +125,7 @@ response = client.responses.create(
 )
 
 print(response.output_text)
-```text
+```
 
 ### 提示行为
 
@@ -223,7 +221,7 @@ response = client.responses.create(
 )
 
 print(response.output_text)
-```text
+```
 
 ## 用户提示中的 Skills
 
@@ -258,11 +256,9 @@ Skill 指令是用户提示输入（不是系统提示输入），因此它们�
 
 创建新的 skill 版本
 
-```
+```curl
 
-:::
 
-:::
 curl -X POST 'https://api.openai.com/v1/skills/&lt;skill_id>/versions' \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -F 'files=@./geometry.zip;type=application/zip'

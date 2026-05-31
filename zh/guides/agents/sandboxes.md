@@ -169,7 +169,6 @@ agent = SandboxAgent(
 )
 ```
 
-:::
 
 根据你希望技能如何物化来选择技能来源：
 
@@ -197,7 +196,6 @@ agent = SandboxAgent(
 
 **运行 Unix-local 沙盒 agent**
 
-::: code-group
 ```typescript
 import { run } from "@openai/agents";
 import {
@@ -304,7 +302,6 @@ async def main():
 asyncio.run(main())
 ```
 
-:::
 
 完整的本地示例请参见 TypeScript [沙盒 agent 快速入门](https://github.com/openai/openai-agents-js/blob/main/examples/docs/sandbox-agents/basic.ts) 和 Python [`unix_local_runner.py`](https://github.com/openai/openai-agents-python/blob/main/examples/sandbox/unix_local_runner.py)。
 
@@ -316,7 +313,6 @@ asyncio.run(main())
 
 **切换到 Docker**
 
-::: code-group
 ```typescript
 import { run } from "@openai/agents";
 import { SandboxAgent } from "@openai/agents/sandbox";
@@ -363,7 +359,6 @@ result = await Runner.run(
 )
 ```
 
-:::
 
 可运行的示例请参见 TypeScript [沙盒客户端指南](https://openai.github.io/openai-agents-js/guides/sandbox-agents/clients) 和 [基本示例](https://github.com/openai/openai-agents-js/blob/main/examples/docs/sandbox-agents/basic.ts)，以及 Python [`basic.py`](https://github.com/openai/openai-agents-python/blob/main/examples/sandbox/basic.py)（提供商选择）、[`docker_runner.py`](https://github.com/openai/openai-agents-python/blob/main/examples/sandbox/docker/docker_runner.py)（Docker）和 [`main.py`](https://github.com/openai/openai-agents-python/tree/main/examples/sandbox/tutorials/dataroom_qa)（SDK 仓库中的数据室流程）。
 
@@ -402,7 +397,6 @@ result = await Runner.run(
 
 **序列化和恢复沙盒状态**
 
-::: code-group
 ```typescript
 import { run } from "@openai/agents";
 import { Manifest, SandboxAgent } from "@openai/agents/sandbox";
@@ -497,7 +491,6 @@ finally:
     await client.delete(resumed_session)
 ```
 
-:::
 
 新会话输入如 `manifest` 和 `snapshot` 仅在运行器创建新沙盒会话时适用。如果你注入了实时 `session`，能力处理可以添加兼容的非挂载条目，但不能更改 root、环境变量、用户或组；不能删除现有条目；不能替换条目类型；也不能在已运行的沙盒上添加或更改挂载条目。
 
@@ -511,7 +504,6 @@ finally:
 
 **启用沙盒记忆**
 
-::: code-group
 ```typescript
 import {
   Manifest,
@@ -544,6 +536,7 @@ agent = SandboxAgent(
 ```
 
 :::
+
 
 记忆默认启用读取和生成。记忆读取需要 shell 访问，以便 agent 可以搜索和打开记忆文件。默认情况下，实时记忆更新还需要文件系统访问，以便 agent 可以修复过时的记忆或在用户要求时更新记忆。
 

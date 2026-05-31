@@ -53,7 +53,6 @@ OpenAI 正在逐步关闭微调平台。该平台不再对新用户开放，但�
 
 **设置超参数**
 
-::: code-group
 ```javascript
 const fineTune = await openai.fineTuning.jobs.create({
   training_file: "file-abc123",
@@ -83,7 +82,6 @@ client.fine_tuning.jobs.create(
 )
 ```
 
-:::
 
 ## 调整您的数据集
 

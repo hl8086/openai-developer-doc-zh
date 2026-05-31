@@ -37,13 +37,13 @@ JavaScript
 
 ```
 npm install openai
-```
+```javascript
 
 安装 OpenAI SDK 后，创建一个名为 `example.mjs` 的文件，并将示例代码复制到其中：
 
 测试基本 API 请求
 
-```javascript
+```
 import OpenAI from "openai";
 const client = new OpenAI();
 
@@ -67,13 +67,13 @@ Python
 
 ```
 pip install openai
-```
+```python
 
 安装 OpenAI SDK 后，创建一个名为 `example.py` 的文件，并将示例代码复制到其中：
 
 测试基本 API 请求
 
-```python
+```
 from openai import OpenAI
 client = OpenAI()
 
@@ -95,13 +95,13 @@ OpenAI 与 Microsoft 合作，提供了官方支持的 C# API 客户端。您可
 
 ```
 dotnet add package OpenAI
-```
+```csharp
 
 向 [Responses API]( https://developers.openai.com/api/reference/responses) 发送简单 API 请求的示例如下：
 
 测试基本 API 请求
 
-```python
+```
 using System;
 using System.Threading.Tasks;
 using OpenAI;
@@ -141,7 +141,7 @@ OpenAI 为 Java 编程语言提供了 API 辅助库，目前处于 Beta 阶段�
 
 测试基本 API 请求
 
-```
+```java
 import com.openai.client.OpenAIClient;
 import com.openai.client.okhttp.OpenAIOkHttpClient;
 import com.openai.models.responses.Response;
@@ -180,7 +180,7 @@ import (
 
 测试基本 API 请求
 
-```
+```go
 package main
 
 import (
@@ -227,7 +227,7 @@ gem "openai"
 
 测试基本 API 请求
 
-```
+```ruby
 require "openai"
 
 openai = OpenAI::Client.new

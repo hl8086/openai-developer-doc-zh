@@ -53,13 +53,11 @@ curl https://api.openai.com/v1/responses \
 }'
 ```
 
-:::
 
 Chat Completions API
 
 **通过 Chat Completions API 提供安全标识符**
 
-::: code-group
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -87,6 +85,7 @@ curl https://api.openai.com/v1/chat/completions \
 ```
 
 :::
+
 
 Realtime API
 

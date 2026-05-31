@@ -150,7 +150,8 @@ followup = client.responses.create(
   "status": "failed",
   "output": "Could not apply patch to lib/foo.py — file not found on disk"
 }
-```
+::: code-group
+```javascript
 
 ## Apply patch 操作
 
@@ -191,8 +192,7 @@ followup = client.responses.create(
 
 **在 Agents SDK 中使用 apply patch 工具**
 
-::: code-group
-```javascript
+```
 import { applyDiff, Agent, run, applyPatchTool, Editor } from "@openai/agents";
 
 class WorkspaceEditor implements Editor {
@@ -303,6 +303,7 @@ if __name__ == "__main__":
 ```
 
 :::
+
 
 你可以在 GitHub 上找到完整的可运行示例。
 

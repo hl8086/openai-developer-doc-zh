@@ -36,7 +36,6 @@ const response = await openai.responses.create({
 console.log(response.output_text);
 ```
 
-::: code-group
 ```python
 from openai import OpenAI
 
@@ -79,7 +78,7 @@ curl https://api.openai.com/v1/responses \
 
 :::
 
-:::
+
 
 ## 推理力度
 
@@ -129,7 +128,7 @@ curl https://api.openai.com/v1/responses \
     "total_tokens": 1261
   }
 }
-```
+```javascript
 
 上下文窗口长度可在[模型参考页面](/models)找到，不同模型快照之间会有所不同。
 
@@ -145,8 +144,7 @@ curl https://api.openai.com/v1/responses \
 
 **处理不完整的响应**
 
-::: code-group
-```javascript
+```
 import OpenAI from "openai";
 
 const openai = new OpenAI();
@@ -179,9 +177,9 @@ if (
         console.log("Ran out of tokens during reasoning");
     }
 }
-```
-
 ```python
+
+```
 from openai import OpenAI
 
 client = OpenAI()
@@ -211,7 +209,6 @@ if response.status == "incomplete" and response.incomplete_details.reason == "ma
         print("Ran out of tokens during reasoning")
 ```
 
-:::
 
 ### 在上下文中保留推理项
 
@@ -227,6 +224,7 @@ if response.status == "incomplete" and response.incomplete_details.reason == "ma
 
 在无状态模式下使用 Responses API 时（`store` 设置为 `false`，或组织已注册零数据保留），您仍然必须使用上述技术在对话轮次之间保留推理项。但为了获得可以随后续 API 请求发送的推理项，您的每个 API 请求必须在 `include` 参数中包含 `reasoning.encrypted_content`，如下所示：
 
+::: code-group
 ```curl
 curl https://api.openai.com/v1/responses \
   -H "Content-Type: application/json" \
@@ -254,7 +252,6 @@ curl https://api.openai.com/v1/responses \
 
 **在 API 响应中包含推理摘要**
 
-::: code-group
 ```javascript
 import OpenAI from "openai";
 const openai = new OpenAI();
@@ -271,7 +268,6 @@ const response = await openai.responses.create({
 console.log(response.output);
 ```
 
-::: code-group
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -304,7 +300,7 @@ curl https://api.openai.com/v1/responses \
 
 :::
 
-:::
+
 
 此 API 请求将返回一个输出数组，其中包含助手消息和模型在生成该响应时的推理摘要。
 
@@ -335,7 +331,7 @@ curl https://api.openai.com/v1/responses \
     "role": "assistant"
   }
 ]
-```
+```javascript
 
 在使用我们最新推理模型的摘要器之前，您可能需要完成[组织验证](https://help.openai.com/en/articles/10910291-api-organization-verification)以确保安全部署。在[平台设置页面](https://platform.openai.com/settings/organization/general)开始验证。
 
@@ -347,8 +343,7 @@ curl https://api.openai.com/v1/responses \
 
 **往返传递助手 phase 值**
 
-::: code-group
-```javascript
+```
 import OpenAI from "openai";
 const client = new OpenAI();
 
@@ -374,9 +369,9 @@ const response = await client.responses.create({
 });
 
 console.log(response.output_text);
-```
-
 ```python
+
+```
 from openai import OpenAI
 
 client = OpenAI()
@@ -404,7 +399,6 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
-:::
 
 ## 提示建议
 

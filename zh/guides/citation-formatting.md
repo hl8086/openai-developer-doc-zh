@@ -174,7 +174,6 @@ Remember, the quality of a domain/source depends on the context.
 
 **引用解析辅助函数**
 
-::: code-group
 ```python
 import re
 from typing import Iterable, TypedDict
@@ -363,7 +362,6 @@ function stripCitations(text, citations) {
 }
 ```
 
-:::
 
 如果你的源 ID 使用不同的格式，请更新 `SOURCE_ID_RE` 以匹配你的系统。
 

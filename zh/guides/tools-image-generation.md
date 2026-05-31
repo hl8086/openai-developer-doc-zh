@@ -11,7 +11,6 @@
 
 **生成图像**
 
-::: code-group
 ```javascript
 import OpenAI from "openai";
 const openai = new OpenAI();
@@ -59,7 +58,6 @@ if image_data:
         f.write(base64.b64decode(image_base64))
 ```
 
-:::
 
 你可以使用文件 ID 或 base64 数据[提供输入图像](/guides/image-generation?image-generation-model=gpt-image#edit-images)。
 
@@ -98,7 +96,7 @@ if image_data:
   "revised_prompt": "A gray tabby cat hugging an otter. The otter is wearing an orange scarf. Both animals are cute and friendly, depicted in a warm, heartwarming style.",
   "result": "..."
 }
-```
+```javascript
 
 ### 提示词技巧
 
@@ -116,8 +114,7 @@ if image_data:
 
 **多轮图像生成**
 
-::: code-group
-```javascript
+```
 import OpenAI from "openai";
 const openai = new OpenAI();
 
@@ -159,9 +156,9 @@ if (imageData_fwup.length > 0) {
     Buffer.from(imageBase64, "base64")
   );
 }
-```
-
 ```python
+
+```
 from openai import OpenAI
 import base64
 
@@ -205,16 +202,14 @@ if image_data_fwup:
     image_base64 = image_data_fwup[0]
     with open("cat_and_otter_realistic.png", "wb") as f:
         f.write(base64.b64decode(image_base64))
-```
+```javascript
 
-:::
 
 使用图像 ID
 
 **多轮图像生成**
 
-::: code-group
-```javascript
+```
 import OpenAI from "openai";
 const openai = new OpenAI();
 
@@ -266,9 +261,9 @@ if (imageData_fwup.length > 0) {
     Buffer.from(imageBase64, "base64")
   );
 }
-```
-
 ```python
+
+```
 import openai
 import base64
 
@@ -320,9 +315,8 @@ if image_data_fwup:
     image_base64 = image_data_fwup[0]
     with open("cat_and_otter_realistic.png", "wb") as f:
         f.write(base64.b64decode(image_base64))
-```
+```javascript
 
-:::
 
 ## 流式传输
 
@@ -332,8 +326,7 @@ if image_data_fwup:
 
 **流式传输图像**
 
-::: code-group
-```javascript
+```
 import fs from "fs";
 import OpenAI from "openai";
 
@@ -356,9 +349,9 @@ for await (const event of stream) {
     fs.writeFileSync(`river${idx}.png`, imageBuffer);
   }
 }
-```
-
 ```python
+
+```
 from openai import OpenAI
 import base64
 
@@ -380,7 +373,6 @@ for event in stream:
             f.write(image_bytes)
 ```
 
-:::
 
 ## 支持的模型
 

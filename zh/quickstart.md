@@ -49,13 +49,13 @@ JavaScript
 
 ```
 npm install openai
-```
+```javascript
 
 安装 OpenAI SDK 后，创建一个名为 `example.mjs` 的文件，并将示例代码复制到其中：
 
 测试基本 API 请求
 
-```javascript
+```
 import OpenAI from "openai";
 const client = new OpenAI();
 
@@ -79,13 +79,13 @@ Python
 
 ```
 pip install openai
-```
+```python
 
 安装 OpenAI SDK 后，创建一个名为 `example.py` 的文件，并将示例代码复制到其中：
 
 测试基本 API 请求
 
-```python
+```
 from openai import OpenAI
 client = OpenAI()
 
@@ -107,13 +107,13 @@ OpenAI 与 Microsoft 合作，提供了官方支持的 C# API 客户端。你可
 
 ```
 dotnet add package OpenAI
-```
+```csharp
 
 一个简单的 [Responses API]( https://developers.openai.com/api/reference/responses) 请求示例如下：
 
 测试基本 API 请求
 
-```python
+```
 using System;
 using System.Threading.Tasks;
 using OpenAI;
@@ -153,7 +153,7 @@ OpenAI 为 Java 编程语言提供了 API 辅助库，目前处于 beta 阶段�
 
 测试基本 API 请求
 
-```
+```java
 import com.openai.client.OpenAIClient;
 import com.openai.client.okhttp.OpenAIOkHttpClient;
 import com.openai.models.responses.Response;
@@ -192,7 +192,8 @@ import (
 
 测试基本 API 请求
 
-```
+::: code-group
+```go
 package main
 
 import (
@@ -255,7 +256,6 @@ Image URL
 
 分析图像内容
 
-::: code-group
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -347,9 +347,7 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
-:::
-
-```
+```csharp
 using OpenAI.Responses;
 
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
@@ -365,11 +363,12 @@ OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
 Console.WriteLine(response.GetOutputText());
 ```
 
+:::
+
 File URL
 
 **使用文件 URL 作为输入**
 
-::: code-group
 ```curl
 curl "https://api.openai.com/v1/responses" \
     -H "Content-Type: application/json" \
@@ -394,7 +393,6 @@ curl "https://api.openai.com/v1/responses" \
     }'
 ```
 
-::: code-group
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -447,9 +445,7 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
-:::
 
-:::
 ```csharp
 using OpenAI.Files;
 using OpenAI.Responses;
@@ -506,7 +502,6 @@ curl "https://api.openai.com/v1/responses" \
     }'
 ```
 
-::: code-group
 ```javascript
 import fs from "fs";
 import OpenAI from "openai";
@@ -570,9 +565,7 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
-:::
 
-:::
 ```csharp
 using OpenAI.Files;
 using OpenAI.Responses;
@@ -607,7 +600,6 @@ Web search
 
 在响应中使用网络搜索
 
-::: code-group
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -658,9 +650,7 @@ input: What was a positive news story from today?
 YAML
 ```
 
-:::
-
-```
+```csharp
 using OpenAI.Responses;
 
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
@@ -682,7 +672,6 @@ File search
 
 **在响应中搜索你的文件**
 
-::: code-group
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -715,7 +704,6 @@ const response = await openai.responses.create({
 console.log(response);
 ```
 
-:::
 ```csharp
 using OpenAI.Responses;
 
@@ -738,7 +726,6 @@ Function calling
 
 调用你自己的函数
 
-::: code-group
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -810,9 +797,7 @@ response = client.responses.create(
 print(response.output[0].to_json())
 ```
 
-:::
-
-```
+```csharp
 using System.Text.Json;
 using OpenAI.Responses;
 
@@ -881,6 +866,8 @@ curl -X POST https://api.openai.com/v1/responses \
   }'
 ```
 
+:::
+
 Remote MCP
 
 **调用远程 MCP 服务器**
@@ -905,7 +892,6 @@ curl https://api.openai.com/v1/responses \
   }'
 ```
 
-::: code-group
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -949,9 +935,7 @@ resp = client.responses.create(
 print(resp.output_text)
 ```
 
-:::
 
-:::
 ```csharp
 using OpenAI.Responses;
 
@@ -984,7 +968,6 @@ Console.WriteLine(response.GetOutputText());
 
 **从 API 流式传输服务器发送事件**
 
-::: code-group
 ```javascript
 import { OpenAI } from "openai";
 const client = new OpenAI();
@@ -1024,7 +1007,6 @@ for event in stream:
     print(event)
 ```
 
-:::
 ```csharp
 using OpenAI.Responses;
 
@@ -1056,7 +1038,6 @@ await foreach (var response in responses)
 
 构建语言分流智能体
 
-::: code-group
 ```javascript
 import { Agent, run } from '@openai/agents';
 
@@ -1112,5 +1093,6 @@ if __name__ == "__main__":
 ```
 
 :::
+
 
 [构建能够执行操作的智能体 - 了解如何使用 OpenAI 平台构建强大、高效的 AI 智能体。](/guides/agents)

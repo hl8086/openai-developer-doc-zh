@@ -19,7 +19,8 @@ npm install @openai/agents zod
 pip install openai-agents
 
 export OPENAI_API_KEY=sk-...
-```
+::: code-group
+```javascript
 
 ## 创建并运行你的第一个 agent
 
@@ -27,8 +28,7 @@ export OPENAI_API_KEY=sk-...
 
 **创建并运行一个 agent**
 
-::: code-group
-```typescript
+```
 import { Agent, run } from "@openai/agents";
 
 const agent = new Agent({
@@ -63,7 +63,6 @@ if __name__ == "__main__":
     asyncio.run(main())
 ```
 
-:::
 
 你应该会在终端中看到一个简洁的回答。一旦这个循环正常工作，保持相同的结构并逐步添加功能，而不是一开始就设计一个大型多 agent 系统。
 
@@ -86,7 +85,6 @@ if __name__ == "__main__":
 
 **添加函数工具**
 
-::: code-group
 ```typescript
 import { Agent, run, tool } from "@openai/agents";
 import { z } from "zod";
@@ -146,7 +144,6 @@ if __name__ == "__main__":
     asyncio.run(main())
 ```
 
-:::
 
 当你需要托管工具、tool search 或 agents-as-tools 时，请使用共享的[使用工具](/guides/tools#usage-in-the-agents-sdk)指南。
 
@@ -156,7 +153,6 @@ if __name__ == "__main__":
 
 **路由到专业 agent**
 
-::: code-group
 ```typescript
 import { Agent, run } from "@openai/agents";
 
@@ -223,6 +219,7 @@ if __name__ == "__main__":
 ```
 
 :::
+
 
 ## 尽早检查 traces
 

@@ -43,6 +43,7 @@ curl https://api.openai.com/v1/files \
 
 :::
 
+
 然后，创建启用了 `code_interpreter` 工具的 Assistant，并将文件作为资源提供给该工具。
 
 ::: code-group
@@ -93,6 +94,7 @@ curl https://api.openai.com/v1/assistants \
 ```
 
 :::
+
 
 您最多可以将 20 个文件附加到 `code_interpreter`，将 10,000 个文件附加到 `file_search`（使用 `vector_store` [对象]( https://developers.openai.com/api/reference/vector-stores/object)）。对于 2025 年 11 月之后创建的向量存储，`file_search` 的限制为 100,000,000 个文件。
 
@@ -161,6 +163,7 @@ curl https://api.openai.com/v1/threads \
 ```
 
 :::
+
 
 Messages 可以包含文本、图像或文件附件。Message 的 `attachments` 是将文件添加到线程 `tool_resources` 的辅助方法。您也可以选择直接将文件添加到 `thread.tool_resources`。
 
@@ -266,6 +269,7 @@ curl https://api.openai.com/v1/threads \
 
 :::
 
+
 #### 低保真度或高保真度图像理解
 
 通过控制 `detail` 参数（有三个选项：`low`、`high` 或 `auto`），您可以控制模型如何处理图像并生成其文本理解。
@@ -348,6 +352,7 @@ curl https://api.openai.com/v1/threads \
 ```
 
 :::
+
 
 ### 上下文窗口管理
 
@@ -441,6 +446,7 @@ curl https://api.openai.com/v1/threads/THREAD_ID/runs \
 
 :::
 
+
 默认情况下，Run 将使用 Assistant 对象中指定的 `model` 和 `tools` 配置，但您可以在创建 Run 时覆盖其中大部分配置以增加灵活性：
 
 ::: code-group
@@ -480,6 +486,7 @@ curl https://api.openai.com/v1/threads/THREAD_ID/runs \
 ```
 
 :::
+
 
 注意：与 Assistant 关联的 `tool_resources` 不能在 Run 创建期间被覆盖。您必须使用[修改 Assistant]( https://developers.openai.com/api/reference/assistants/modifyAssistant) 端点来执行此操作。
 

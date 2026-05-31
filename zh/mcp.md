@@ -101,7 +101,7 @@ _返回：_
     }
   ]
 }
-```
+```python
 
 ### 服务器示例
 
@@ -113,7 +113,7 @@ _返回：_
 
 完整实现 - FastMCP 服务器
 
-```python
+```
 """
 Sample MCP Server for ChatGPT Integration
 

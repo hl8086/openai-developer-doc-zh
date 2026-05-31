@@ -46,7 +46,7 @@
     }
   ]
 }
-```
+```javascript
 
 目前，我们仅对每个示例中的单轮对话进行训练，其中偏好和非偏好消息需要是最后一条助手消息。
 
@@ -67,8 +67,7 @@
 
 **创建 DPO 微调任务**
 
-::: code-group
-```javascript
+```
 import OpenAI from "openai";
 
 const openai = new OpenAI();
@@ -83,9 +82,9 @@ const job = await openai.fineTuning.jobs.create({
     },
   },
 });
-```
-
 ```python
+
+```
 from openai import OpenAI
 
 client = OpenAI()
@@ -102,7 +101,6 @@ job = client.fine_tuning.jobs.create(
 )
 ```
 
-:::
 
 ## 结合使用 SFT 和 DPO
 

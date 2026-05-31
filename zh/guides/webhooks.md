@@ -7,7 +7,6 @@ OpenAI [webhooks](http://chatgpt.com/?q=eli5+what+is+a+webhook?) 允许你接收
 
 **Webhooks 服务器**
 
-::: code-group
 ```python
 import os
 from openai import OpenAI, InvalidWebhookSignatureError
@@ -78,7 +77,6 @@ app.listen(8000, () => {
 });
 ```
 
-:::
 
 要查看此类 webhook 的实际运行效果，你可以在 OpenAI 仪表板中设置一个订阅了 `response.completed` 的 webhook 端点，然后发起一个 API 请求来[在后台模式下生成响应](/guides/background)。
 
@@ -86,7 +84,6 @@ app.listen(8000, () => {
 
 **生成后台响应**
 
-::: code-group
 ```curl
 curl https://api.openai.com/v1/responses \
 -H "Content-Type: application/json" \
@@ -98,7 +95,6 @@ curl https://api.openai.com/v1/responses \
 }'
 ```
 
-::: code-group
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -126,9 +122,7 @@ resp = client.responses.create(
 print(resp.status)
 ```
 
-:::
 
-:::
 
 在本指南中，你将学习如何在仪表板中创建 webhook 端点、设置服务器端代码来处理它们，以及验证入站请求是否来自 OpenAI。
 
@@ -187,22 +181,21 @@ webhook-signature: v1,K5oZfzN95Z9UVu1EsfQmfVNQhnkZ2pj9o9NDN/H/pI4=
 
 ```
 export OPENAI_WEBHOOK_SECRET="&lt;your secret here>"
-```
+```python
 
 验证 webhook 签名最简单的方法是使用官方 OpenAI SDK 辅助工具的 `unwrap()` 方法：
 
 **使用 OpenAI SDK 进行签名验证**
 
-::: code-group
-```python
+```
 client = OpenAI()
 webhook_secret = os.environ["OPENAI_WEBHOOK_SECRET"]
 
 # will raise if the signature is invalid
 event = client.webhooks.unwrap(request.data, request.headers, secret=webhook_secret)
-```
-
 ```javascript
+
+```
 const client = new OpenAI();
 const webhook_secret = process.env.OPENAI_WEBHOOK_SECRET;
 
@@ -210,7 +203,6 @@ const webhook_secret = process.env.OPENAI_WEBHOOK_SECRET;
 const event = client.webhooks.unwrap(req.body, req.headers, { secret: webhook_secret });
 ```
 
-:::
 
 也可以使用 [Standard Webhooks 库](https://github.com/standard-webhooks/standard-webhooks/tree/main?tab=readme-ov-file#reference-implementations) 来验证签名：
 
@@ -232,6 +224,7 @@ $wh->verify($webhook_payload, $webhook_headers);
 ```
 
 :::
+
 
 或者，如果需要，你可以按照 [Standard Webhooks 规范中的描述](https://github.com/standard-webhooks/standard-webhooks/blob/main/spec/standard-webhooks.md#verifying-webhook-authenticity) 实现自己的签名验证。
 

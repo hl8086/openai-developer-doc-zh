@@ -23,7 +23,6 @@ const response = await client.responses.create({
 });
 ```
 
-::: code-group
 ```python
 from openai import OpenAI
 
@@ -57,15 +56,12 @@ curl https://api.openai.com/v1/responses \
   }'
 ```
 
-:::
 
-:::
 
 ## 之后：在代码中内联提示
 
 **在代码中内联提示**
 
-::: code-group
 ```javascript
 import OpenAI from "openai";
 
@@ -94,7 +90,6 @@ Write a response to the customer.
 console.log(response.output_text);
 ```
 
-::: code-group
 ```python
 from openai import OpenAI
 
@@ -143,7 +138,7 @@ curl https://api.openai.com/v1/responses \
 
 :::
 
-:::
+
 
 ## 使用 Codex 进行迁移
 
@@ -151,7 +146,7 @@ curl https://api.openai.com/v1/responses \
 
 ```
 $openai-docs update this project to store prompts in code instead of using a prompts object
-```
+```javascript
 
 ## 变更内容
 
@@ -167,8 +162,7 @@ $openai-docs update this project to store prompts in code instead of using a pro
 
 **使用辅助函数构建提示**
 
-::: code-group
-```javascript
+```
 import OpenAI from "openai";
 
 const client = new OpenAI();
@@ -202,9 +196,9 @@ const response = await client.responses.create({
     issue: "billing question",
   }),
 });
-```
-
 ```python
+
+```
 from openai import OpenAI
 
 client = OpenAI()
@@ -239,7 +233,6 @@ response = client.responses.create(
 )
 ```
 
-:::
 
 ## 你将获得的好处
 

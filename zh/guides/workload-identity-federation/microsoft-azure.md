@@ -114,7 +114,6 @@ PY
 
 **从 Azure 托管标识令牌进行身份验证**
 
-::: code-group
 ```typescript
 import OpenAI from "openai";
 import type { SubjectTokenProvider } from "openai/auth";
@@ -236,8 +235,6 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
-:::
-::: code-group
 ```go
 package main
 
@@ -547,7 +544,6 @@ response = client.responses.create(
 puts(response.output_text)
 ```
 
-:::
 
 ## Azure Kubernetes Service (AKS)
 
@@ -633,7 +629,6 @@ PY
 
 解码后的 AKS 投射服务账户令牌类似于：
 
-::: code-group
 ```javascript
 {
   "iss": "https://eastus.oic.prod-aks.azure.com/11111111-2222-3333-4444-555555555555/22222222-3333-4444-5555-666666666666/",
@@ -649,8 +644,7 @@ PY
     }
   }
 }
-::: code-group
-```text
+```
 
 验证您计划在 OpenAI 中配置的声明：
 
@@ -699,7 +693,6 @@ PY
 
 **从 AKS 投射服务账户令牌进行身份验证**
 
-::: code-group
 ```typescript
 import { readFile } from "node:fs/promises";
 import OpenAI from "openai";
@@ -778,12 +771,8 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
-:::
 
-:::
 
-:::
-::: code-group
 ```go
 package main
 
@@ -994,7 +983,6 @@ response = client.responses.create(
 puts(response.output_text)
 ```
 
-:::
 
 ## Microsoft Azure 最佳实践
 

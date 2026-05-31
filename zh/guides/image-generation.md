@@ -102,13 +102,11 @@ if image_data:
         f.write(base64.b64decode(image_base64))
 ```
 
-:::
 
 Image API
 
 **生成图像**
 
-::: code-group
 ```javascript
 import OpenAI from "openai";
 import fs from "fs";
@@ -130,7 +128,6 @@ const image_bytes = Buffer.from(image_base64, "base64");
 fs.writeFileSync("otter.png", image_bytes);
 ```
 
-::: code-group
 ```python
 from openai import OpenAI
 import base64
@@ -164,9 +161,6 @@ curl -X POST "https://api.openai.com/v1/images/generations" \
     }' | jq -r '.data[0].b64_json' | base64 --decode > otter.png
 ```
 
-:::
-
-:::
 ```cli
 openai images generate \
   --model gpt-image-2 \
@@ -183,7 +177,6 @@ openai images generate \
 
 **使用 action 强制创建图像**
 
-::: code-group
 ```javascript
 import OpenAI from "openai";
 const openai = new OpenAI();
@@ -231,7 +224,6 @@ if image_data:
         f.write(base64.b64decode(image_base64))
 ```
 
-:::
 
 如果你在上下文中没有提供图像时强制使用 `edit`，调用将返回错误。将 `action` 保持为 `auto` 让模型自行决定何时生成或编辑。
 
@@ -241,7 +233,6 @@ if image_data:
 
 **多轮图像生成**
 
-::: code-group
 ```javascript
 import OpenAI from "openai";
 const openai = new OpenAI();
@@ -332,13 +323,11 @@ if image_data_fwup:
         f.write(base64.b64decode(image_base64))
 ```
 
-:::
 
 使用 image ID
 
 **多轮图像生成**
 
-::: code-group
 ```javascript
 import OpenAI from "openai";
 const openai = new OpenAI();
@@ -393,7 +382,6 @@ if (imageData_fwup.length > 0) {
 }
 ```
 
-::: code-group
 ```python
 import openai
 import base64
@@ -446,7 +434,7 @@ if image_data_fwup:
     image_base64 = image_data_fwup[0]
     with open("cat_and_otter_realistic.png", "wb") as f:
         f.write(base64.b64decode(image_base64))
-```text
+```
 
 #### 结果
 
@@ -512,15 +500,12 @@ for event in stream:
             f.write(image_bytes)
 ```
 
-:::
 
-:::
 
 Image API
 
 **流式传输图像**
 
-::: code-group
 ```javascript
 import fs from "fs";
 import OpenAI from "openai";
@@ -569,6 +554,7 @@ for event in stream:
 ```
 
 :::
+
 
 #### 结果
 
@@ -628,7 +614,6 @@ Responses API
 
 **创建文件**
 
-::: code-group
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -658,7 +643,6 @@ async function createFile(filePath) {
 }
 ```
 
-:::
 
 #### 创建 base64 编码图像
 
@@ -679,11 +663,9 @@ function encodeImage(filePath) {
 }
 ```
 
-:::
 
 **编辑图像**
 
-::: code-group
 ```python
 from openai import OpenAI
 import base64
@@ -802,13 +784,11 @@ if (imageData.length > 0) {
 }
 ```
 
-:::
 
 Image API
 
 **编辑图像**
 
-::: code-group
 ```python
 import base64
 from openai import OpenAI
@@ -839,7 +819,6 @@ with open("gift-basket.png", "wb") as f:
     f.write(image_bytes)
 ```
 
-::: code-group
 ```javascript
 import fs from "fs";
 import OpenAI, { toFile } from "openai";
@@ -892,9 +871,6 @@ curl -s -D >(grep -i x-request-id >&2) \
   -F 'prompt=Generate a photorealistic image of a gift basket on a white background labeled "Relax & Unwind" with a ribbon and handwriting-like font, containing all the items in the reference pictures'
 ```
 
-:::
-
-:::
 ```cli
 openai images edit \
   --model gpt-image-2 \
@@ -923,7 +899,6 @@ Responses API
 
 **使用蒙版编辑图像**
 
-::: code-group
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -1017,13 +992,11 @@ if (imageData.length > 0) {
 }
 ```
 
-:::
 
 Image API
 
 **使用蒙版编辑图像**
 
-::: code-group
 ```python
 from openai import OpenAI
 client = OpenAI()
@@ -1043,7 +1016,6 @@ with open("composition.png", "wb") as f:
     f.write(image_bytes)
 ```
 
-::: code-group
 ```javascript
 import fs from "fs";
 import OpenAI, { toFile } from "openai";
@@ -1078,9 +1050,6 @@ curl -s -D >(grep -i x-request-id >&2) \
   -F 'prompt=A sunlit indoor lounge area with a pool containing a flamingo'
 ```
 
-:::
-
-:::
 ```cli
 openai images edit \
   --model gpt-image-2 \
@@ -1090,6 +1059,8 @@ openai images edit \
   --raw-output \
   --transform 'data.0.b64_json' | base64 --decode > out.png
 ```
+
+:::
 
 | 图像 | 蒙版 | 输出 |
 | --- | --- | --- |
