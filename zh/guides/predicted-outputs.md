@@ -1,5 +1,7 @@
 # Predicted Outputs
 
+> Reduce latency for model responses where much of the response is known ahead of time.
+
 **Predicted Outputs** 使你能够在许多输出 token 可以提前预知的情况下加速 [Chat Completions]( https://developers.openai.com/api/reference/chat/create) 的 API 响应。这在你对文本或代码文件进行少量修改并重新生成时最为常见。你可以通过 [Chat Completions 中的 `prediction` 请求参数]( https://developers.openai.com/api/reference/chat/create#chat-create-prediction) 来提供你的预测。
 
 Predicted Outputs 目前可在最新的 `gpt-4o`、`gpt-4o-mini`、`gpt-4.1`、`gpt-4.1-mini` 和 `gpt-4.1-nano` 模型上使用。继续阅读以了解如何使用 Predicted Outputs 来降低应用程序中的延迟。

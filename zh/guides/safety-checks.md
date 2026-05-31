@@ -1,5 +1,7 @@
 # Safety checks
 
+> Learn how OpenAI assesses for safety and how to pass safety checks.
+
 我们对模型及其使用方式进行多种类型的评估。本指南介绍了我们如何进行安全测试，以及您可以采取哪些措施来避免违规。
 
 ## GPT-5 及后续模型的安全分类器

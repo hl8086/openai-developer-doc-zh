@@ -1,0 +1,534 @@
+{
+  "actions/actions-library": {
+    "title": "GPT Actions library",
+    "subtitle": "Build and integrate GPT Actions for common applications."
+  },
+  "actions/authentication": {
+    "title": "GPT Action authentication",
+    "subtitle": "Learn authentication options for GPT Actions."
+  },
+  "actions/data-retrieval": {
+    "title": "Data retrieval with GPT Actions",
+    "subtitle": "Retrieve data using APIs and databases with GPT Actions."
+  },
+  "actions/getting-started": {
+    "title": "Getting started with GPT Actions",
+    "subtitle": "Set up and test GPT Actions from scratch."
+  },
+  "actions/introduction": {
+    "title": "GPT Actions",
+    "subtitle": "Customize ChatGPT with GPT Actions and API integrations."
+  },
+  "actions/production": {
+    "title": "Production notes on GPT Actions",
+    "subtitle": "Deploy GPT Actions in production with best practices."
+  },
+  "actions/sending-files": {
+    "title": "Sending and returning files with GPT Actions",
+    "subtitle": ""
+  },
+  "assistants/deep-dive": {
+    "title": "Assistants API deep dive",
+    "subtitle": "In-depth guide to creating and managing assistants."
+  },
+  "assistants/migration": {
+    "title": "Assistants migration guide",
+    "subtitle": "Migrate from the Assistants API to the Responses API."
+  },
+  "assistants/tools": {
+    "title": "Assistants API tools",
+    "subtitle": "Explore tools for file search, code, and function calling."
+  },
+  "changelog": {
+    "title": "Changelog",
+    "subtitle": ""
+  },
+  "deprecations": {
+    "title": "Deprecations",
+    "subtitle": "Find deprecated features and recommended replacements."
+  },
+  "guides/admin-apis": {
+    "title": "Admin APIs",
+    "subtitle": "Programmatically manage organization resources and administrative workflows."
+  },
+  "guides/agent-builder": {
+    "title": "Agent Builder",
+    "subtitle": "Visually assemble, debug, and export multi-step agent workflows from the playground."
+  },
+  "guides/agent-builder-safety": {
+    "title": "Safety in building agents",
+    "subtitle": "Minimize prompt injections and other risks when building agents."
+  },
+  "guides/agent-evals": {
+    "title": "Evaluate agent workflows",
+    "subtitle": "Use traces, graders, datasets, and eval runs to improve agent quality."
+  },
+  "guides/agents": {
+    "title": "Agents SDK",
+    "subtitle": "Build agents in code with the OpenAI Agents SDK and grow into more advanced runtime patterns as needed."
+  },
+  "guides/agents/define-agents": {
+    "title": "Agent definitions",
+    "subtitle": "Configure a single agent cleanly before you scale into a larger workflow."
+  },
+  "guides/agents/guardrails-approvals": {
+    "title": "Guardrails and human review",
+    "subtitle": "Add automatic validation and human-in-the-loop approvals to SDK workflows."
+  },
+  "guides/agents/integrations-observability": {
+    "title": "Integrations and observability",
+    "subtitle": "Attach MCP-backed capabilities and inspect runs before you start tuning."
+  },
+  "guides/agents/models": {
+    "title": "Models and providers",
+    "subtitle": "Choose models, defaults, and transport strategy for SDK-based agent runs."
+  },
+  "guides/agents/orchestration": {
+    "title": "Orchestration and handoffs",
+    "subtitle": "Choose whether specialists take over the conversation or stay behind a manager."
+  },
+  "guides/agents/quickstart": {
+    "title": "Quickstart",
+    "subtitle": "Build your first agent with the Agents SDK in TypeScript or Python."
+  },
+  "guides/agents/results": {
+    "title": "Results and state",
+    "subtitle": "Understand final output, history, interruptions, and what to carry forward."
+  },
+  "guides/agents/running-agents": {
+    "title": "Running agents",
+    "subtitle": "Understand the agent loop, continuation strategies, and streaming."
+  },
+  "guides/agents/sandboxes": {
+    "title": "Sandbox Agents",
+    "subtitle": "Run agent work in a container-based environment with files, commands, packages, ports, snapshots, and resumable state."
+  },
+  "guides/audio": {
+    "title": "Audio and speech",
+    "subtitle": "Understand audio modalities, streaming, latency, and speech concepts."
+  },
+  "guides/background": {
+    "title": "Background mode",
+    "subtitle": "Run long running tasks asynchronously in the background."
+  },
+  "guides/batch": {
+    "title": "Batch API",
+    "subtitle": "Process jobs asynchronously with Batch API."
+  },
+  "guides/chatkit": {
+    "title": "ChatKit",
+    "subtitle": "Build and customize an embeddable chat with ChatKit."
+  },
+  "guides/chatkit-actions": {
+    "title": "Actions in ChatKit",
+    "subtitle": "Trigger actions on the backend from user interactions in your chat."
+  },
+  "guides/chatkit-themes": {
+    "title": "Theming and customization in ChatKit",
+    "subtitle": "Configure colors, typography, density, and component variants."
+  },
+  "guides/chatkit-widgets": {
+    "title": "ChatKit widgets",
+    "subtitle": "Learn how to design widgets in your chat experience."
+  },
+  "guides/citation-formatting": {
+    "title": "Citation Formatting",
+    "subtitle": "Allow models to generate reliable citations."
+  },
+  "guides/code-generation": {
+    "title": "Code generation",
+    "subtitle": "Learn how to use GPT-5.4 and Codex to generate code."
+  },
+  "guides/compaction": {
+    "title": "Compaction",
+    "subtitle": "Manage long-running conversations with server-side and standalone compaction."
+  },
+  "guides/conversation-state": {
+    "title": "Conversation state",
+    "subtitle": "Learn how to manage conversation state during a model interaction."
+  },
+  "guides/cost-optimization": {
+    "title": "Cost optimization",
+    "subtitle": "Improve your efficiency and reduce costs."
+  },
+  "guides/custom-chatkit": {
+    "title": "Advanced integrations with ChatKit",
+    "subtitle": "Use your own infrastructure with ChatKit for more customization."
+  },
+  "guides/deep-research": {
+    "title": "Deep research",
+    "subtitle": "Use deep research models for complex analysis and research tasks."
+  },
+  "guides/deployment-checklist": {
+    "title": "API deployment checklist",
+    "subtitle": "Focused guide listing commonly underused, high-value design choices that can make a real difference in deployment quality, speed, cost, and reliability."
+  },
+  "guides/developer-mode": {
+    "title": "ChatGPT Developer mode",
+    "subtitle": "Full MCP client access for apps and tools."
+  },
+  "guides/direct-preference-optimization": {
+    "title": "Direct preference optimization",
+    "subtitle": "Fine-tune models for subjective decision-making by comparing model outputs."
+  },
+  "guides/embeddings": {
+    "title": "Vector embeddings",
+    "subtitle": "Learn how to turn text into numbers, unlocking use cases like search."
+  },
+  "guides/evals": {
+    "title": "Working with evals",
+    "subtitle": "Test and improve model outputs through evaluations."
+  },
+  "guides/evaluation-best-practices": {
+    "title": "Evaluation best practices",
+    "subtitle": "Learn best practices for designing evals to test model performance in production environments."
+  },
+  "guides/evaluation-getting-started": {
+    "title": "Getting started with datasets",
+    "subtitle": "Evaluate prompts rapidly, before writing your own evals."
+  },
+  "guides/external-models": {
+    "title": "Evaluate external models",
+    "subtitle": "Learn how to run evals on non-OpenAI models."
+  },
+  "guides/file-inputs": {
+    "title": "File inputs",
+    "subtitle": "Learn how to use files as file inputs in the OpenAI API."
+  },
+  "guides/fine-tuning-best-practices": {
+    "title": "Fine-tuning best practices",
+    "subtitle": "Improve results with practical tips for fine-tuning."
+  },
+  "guides/flex-processing": {
+    "title": "Flex processing",
+    "subtitle": "Optimize costs with flex processing."
+  },
+  "guides/function-calling": {
+    "title": "Function calling",
+    "subtitle": "Give models access to new functionality and data they can use to follow instructions and respond to prompts."
+  },
+  "guides/graders": {
+    "title": "Graders",
+    "subtitle": "Learn about graders used for evals and fine-tuning."
+  },
+  "guides/image-generation": {
+    "title": "Image generation",
+    "subtitle": "Learn how to generate or edit images."
+  },
+  "guides/images-vision": {
+    "title": "Images and vision",
+    "subtitle": "Learn how to understand or generate images."
+  },
+  "guides/latency-optimization": {
+    "title": "Latency optimization",
+    "subtitle": "Improve latency across a wide variety of LLM-related use cases."
+  },
+  "guides/latest-model": {
+    "title": "Using GPT-5.5",
+    "subtitle": "Learn best practices, features, and migration guidance for GPT-5.5 and the GPT-5 model family."
+  },
+  "guides/migrate-to-responses": {
+    "title": "Migrate to the Responses API",
+    "subtitle": ""
+  },
+  "guides/model-optimization": {
+    "title": "Model optimization",
+    "subtitle": "Ensure quality model outputs with evals and fine-tuning in the OpenAI platform."
+  },
+  "guides/moderation": {
+    "title": "Moderation",
+    "subtitle": "Identify potentially harmful content in text and images."
+  },
+  "guides/node-reference": {
+    "title": "Node reference",
+    "subtitle": "Explore all available nodes for composing workflows in Agent Builder."
+  },
+  "guides/optimizing-llm-accuracy": {
+    "title": "Optimizing LLM Accuracy",
+    "subtitle": "Maximize correctness and consistent behavior when working with LLMs."
+  },
+  "guides/predicted-outputs": {
+    "title": "Predicted Outputs",
+    "subtitle": "Reduce latency for model responses where much of the response is known ahead of time."
+  },
+  "guides/priority-processing": {
+    "title": "Priority processing",
+    "subtitle": "Get faster processing in the API with flexible pricing."
+  },
+  "guides/production-best-practices": {
+    "title": "Production best practices",
+    "subtitle": "Transition AI projects to production with best practices."
+  },
+  "guides/prompt-caching": {
+    "title": "Prompt caching",
+    "subtitle": "Reduce latency and cost with prompt caching."
+  },
+  "guides/prompt-engineering": {
+    "title": "Prompt engineering",
+    "subtitle": "Enhance results with prompt engineering strategies."
+  },
+  "guides/prompt-guidance": {
+    "title": "Prompt guidance",
+    "subtitle": ""
+  },
+  "guides/prompt-optimizer": {
+    "title": "Prompt optimizer",
+    "subtitle": "Use your dataset to automatically improve your prompts."
+  },
+  "guides/prompting": {
+    "title": "Prompting",
+    "subtitle": "Learn how to create prompts."
+  },
+  "guides/prompting/migrate-from-prompt-object": {
+    "title": "Migrate from prompt objects",
+    "subtitle": "Move managed prompt object usage into application code."
+  },
+  "guides/rate-limits": {
+    "title": "Rate limits",
+    "subtitle": "Understand API rate limits and restrictions."
+  },
+  "guides/rbac": {
+    "title": "Manage permissions in the OpenAI platform",
+    "subtitle": "Use role-based access control (RBAC) to manage permissions across your organization and projects."
+  },
+  "guides/realtime": {
+    "title": "Realtime and audio",
+    "subtitle": "Choose the right path for voice agents, translation, transcription, and speech generation."
+  },
+  "guides/realtime-conversations": {
+    "title": "Realtime conversations",
+    "subtitle": "Learn how to manage Realtime speech-to-speech conversations."
+  },
+  "guides/realtime-costs": {
+    "title": "Managing costs",
+    "subtitle": "Understanding and managing token costs with the Realtime API."
+  },
+  "guides/realtime-mcp": {
+    "title": "Realtime with tools",
+    "subtitle": "Let realtime voice agents call function tools, remote MCP servers, and connectors."
+  },
+  "guides/realtime-models-prompting": {
+    "title": "Using realtime models",
+    "subtitle": "Prompt, reason, and tune realtime voice models."
+  },
+  "guides/realtime-server-controls": {
+    "title": "Webhooks and server-side controls",
+    "subtitle": "Use webhooks and server-side controls with the Realtime API."
+  },
+  "guides/realtime-sip": {
+    "title": "Realtime API with SIP",
+    "subtitle": "Connect to the Realtime API using SIP."
+  },
+  "guides/realtime-transcription": {
+    "title": "Realtime transcription",
+    "subtitle": "Stream audio and receive transcription deltas in real time."
+  },
+  "guides/realtime-translation": {
+    "title": "Realtime translation",
+    "subtitle": "Translate live speech with streaming audio and transcript output."
+  },
+  "guides/realtime-vad": {
+    "title": "Voice activity detection (VAD)",
+    "subtitle": "Learn about automatic voice activity detection in the Realtime API."
+  },
+  "guides/realtime-webrtc": {
+    "title": "Realtime API with WebRTC",
+    "subtitle": "Connect to the Realtime API using WebRTC."
+  },
+  "guides/realtime-websocket": {
+    "title": "Realtime API with WebSocket",
+    "subtitle": "Connect to the Realtime API using WebSockets on a server."
+  },
+  "guides/reasoning": {
+    "title": "Reasoning models",
+    "subtitle": "Learn how reasoning models work and how to use them well."
+  },
+  "guides/reasoning-best-practices": {
+    "title": "Reasoning best practices",
+    "subtitle": "Learn when to use reasoning models and how they compare to GPT models."
+  },
+  "guides/red-teaming": {
+    "title": "Red teaming",
+    "subtitle": "Probe AI systems for misuse and security risks before deployment."
+  },
+  "guides/reinforcement-fine-tuning": {
+    "title": "Reinforcement fine-tuning",
+    "subtitle": "Fine-tune models for expert-level performance within a domain."
+  },
+  "guides/retrieval": {
+    "title": "Retrieval",
+    "subtitle": "Search your data using semantic similarity."
+  },
+  "guides/rft-use-cases": {
+    "title": "Reinforcement fine-tuning use cases",
+    "subtitle": "Learn use cases and best practices for reinforcement fine-tuning."
+  },
+  "guides/safety-best-practices": {
+    "title": "Safety best practices",
+    "subtitle": "Implement safety measures like moderation and human oversight."
+  },
+  "guides/safety-checks": {
+    "title": "Safety checks",
+    "subtitle": "Learn how OpenAI assesses for safety and how to pass safety checks."
+  },
+  "guides/safety-checks/cybersecurity": {
+    "title": "Cybersecurity checks",
+    "subtitle": ""
+  },
+  "guides/safety-checks/under-18-api-guidance": {
+    "title": "Under 18 API Guidance",
+    "subtitle": ""
+  },
+  "guides/secure-mcp-tunnels": {
+    "title": "Secure MCP Tunnel",
+    "subtitle": "Connect private MCP servers to supported OpenAI products without exposing them to the public internet."
+  },
+  "guides/speech-to-text": {
+    "title": "Speech to text",
+    "subtitle": "Learn how to turn audio into text."
+  },
+  "guides/streaming-responses": {
+    "title": "Streaming API responses",
+    "subtitle": "Learn how to stream model responses from the OpenAI API using server-sent events."
+  },
+  "guides/structured-outputs": {
+    "title": "Structured model outputs",
+    "subtitle": "Ensure text responses from the model adhere to a JSON schema you define."
+  },
+  "guides/supervised-fine-tuning": {
+    "title": "Supervised fine-tuning",
+    "subtitle": "Fine-tune models with example inputs and known good outputs for better results and efficiency."
+  },
+  "guides/text": {
+    "title": "Text generation",
+    "subtitle": "Learn how to prompt a model to generate text."
+  },
+  "guides/text-to-speech": {
+    "title": "Text to speech",
+    "subtitle": "Learn how to turn text into lifelike spoken audio."
+  },
+  "guides/token-counting": {
+    "title": "Counting tokens",
+    "subtitle": "Get accurate input token counts before sending requests."
+  },
+  "guides/tools": {
+    "title": "Using tools",
+    "subtitle": "Use tools like remote MCP servers or web search to extend the model's capabilities."
+  },
+  "guides/tools-apply-patch": {
+    "title": "Apply Patch",
+    "subtitle": "Allow models to propose structured diffs that your integration applies."
+  },
+  "guides/tools-code-interpreter": {
+    "title": "Code Interpreter",
+    "subtitle": "Allow models to write and run Python to solve problems."
+  },
+  "guides/tools-computer-use": {
+    "title": "Computer use",
+    "subtitle": "Build an agent that can operate software through the user interface."
+  },
+  "guides/tools-connectors-mcp": {
+    "title": "MCP and Connectors",
+    "subtitle": "Use connectors and remote MCP servers to give models new capabilities."
+  },
+  "guides/tools-file-search": {
+    "title": "File search",
+    "subtitle": "Allow models to search your files for relevant information before generating a response."
+  },
+  "guides/tools-image-generation": {
+    "title": "Image generation",
+    "subtitle": "Allow models to generate or edit images."
+  },
+  "guides/tools-local-shell": {
+    "title": "Local shell",
+    "subtitle": "Enable agents to run commands in a local shell."
+  },
+  "guides/tools-shell": {
+    "title": "Shell",
+    "subtitle": "Run shell commands in hosted containers or your own local runtime."
+  },
+  "guides/tools-skills": {
+    "title": "Skills",
+    "subtitle": "Upload, manage, and attach reusable skills to hosted environments."
+  },
+  "guides/tools-tool-search": {
+    "title": "Tool search",
+    "subtitle": "Load deferred tools at runtime so models only import the definitions they need."
+  },
+  "guides/tools-web-search": {
+    "title": "Web search",
+    "subtitle": "Allow models to search the web for the latest information before generating a response."
+  },
+  "guides/video-generation": {
+    "title": "Video generation with Sora",
+    "subtitle": "Create, iterate on, and manage videos with the Videos API."
+  },
+  "guides/vision-fine-tuning": {
+    "title": "Vision fine-tuning",
+    "subtitle": "Fine-tune models for better image understanding."
+  },
+  "guides/voice-agents": {
+    "title": "Voice agents",
+    "subtitle": "Build voice agents with either speech-to-speech sessions or chained voice pipelines."
+  },
+  "guides/webhooks": {
+    "title": "Webhooks",
+    "subtitle": "Use webhooks to receive real-time updates from the OpenAI API."
+  },
+  "guides/websocket-mode": {
+    "title": "WebSocket Mode",
+    "subtitle": "Use persistent WebSocket connections and incremental inputs for lower-latency agentic workflows."
+  },
+  "guides/workload-identity-federation": {
+    "title": "Workload identity federation",
+    "subtitle": "Authenticate workloads without storing long-lived API keys."
+  },
+  "guides/workload-identity-federation/aws": {
+    "title": "Configuring workload identity federation for AWS",
+    "subtitle": ""
+  },
+  "guides/workload-identity-federation/github-actions": {
+    "title": "Configuring workload identity federation for GitHub Actions",
+    "subtitle": ""
+  },
+  "guides/workload-identity-federation/google-cloud": {
+    "title": "Configuring workload identity federation for Google Cloud",
+    "subtitle": ""
+  },
+  "guides/workload-identity-federation/kubernetes": {
+    "title": "Configuring workload identity federation for Kubernetes",
+    "subtitle": ""
+  },
+  "guides/workload-identity-federation/microsoft-azure": {
+    "title": "Configuring workload identity federation for Microsoft Azure",
+    "subtitle": ""
+  },
+  "guides/your-data": {
+    "title": "Data controls in the OpenAI platform",
+    "subtitle": "Understand how OpenAI uses your data, and how you can control it."
+  },
+  "libraries": {
+    "title": "SDKs and CLI",
+    "subtitle": "Choose the right way to build with the OpenAI API: an SDK for applications, the CLI for terminal workflows, or the Agents SDK for orchestration."
+  },
+  "libraries/openai-cli": {
+    "title": "OpenAI CLI",
+    "subtitle": "Use the OpenAI API directly from your terminal."
+  },
+  "mcp": {
+    "title": "Building MCP servers for ChatGPT Apps and API integrations",
+    "subtitle": "Build an MCP server to use with ChatGPT Apps, deep research, or API integrations."
+  },
+  "models": {
+    "title": "Models",
+    "subtitle": ""
+  },
+  "pricing": {
+    "title": "Pricing",
+    "subtitle": ""
+  },
+  "quickstart": {
+    "title": "Developer quickstart",
+    "subtitle": "Take your first steps with the OpenAI API."
+  }
+}

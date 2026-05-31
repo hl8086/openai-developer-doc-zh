@@ -1,5 +1,7 @@
 # Production
 
+> Deploy GPT Actions in production with best practices.
+
 ## 速率限制
 
 考虑对你暴露的 API 端点实施速率限制。ChatGPT 会遵守 429 响应码，并在短时间内收到一定数量的 429 或 500 响应后，动态退避对你的 action 发送请求。

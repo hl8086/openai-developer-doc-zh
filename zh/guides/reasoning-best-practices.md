@@ -1,5 +1,7 @@
 # Reasoning best practices
 
+> Learn when to use reasoning models and how they compare to GPT models.
+
 OpenAI 提供两种类型的模型：[推理模型](/models#o4-mini)（例如 o3 和 o4-mini）和 [GPT 模型](/models#gpt-4.1)（如 GPT-4.1）。这两个模型系列的行为方式不同。
 
 本指南涵盖：

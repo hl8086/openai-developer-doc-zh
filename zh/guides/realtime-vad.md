@@ -1,5 +1,7 @@
 # Voice activity detection
 
+> Learn about automatic voice activity detection in the Realtime API.
+
 语音活动检测（VAD）是 Realtime API 中的一项功能，允许自动检测用户何时开始或停止说话。它在[语音到语音](/guides/realtime-conversations) Realtime 会话中默认启用，但它是可选的，可以关闭。在[转录](/guides/realtime-transcription) Realtime 会话中，轮次检测支持取决于转录模型。支持 VAD 的模型默认使用 `server_vad`，而 `gpt-realtime-whisper` 要求省略轮次检测或将其设置为 `null`。
 
 ## 概述

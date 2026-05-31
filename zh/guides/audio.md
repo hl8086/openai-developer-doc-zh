@@ -1,5 +1,7 @@
 # Audio and speech
 
+> Understand audio modalities, streaming, latency, and speech concepts.
+
 音频模型可以理解语音输入、生成语音输出，或在同一次交互中同时完成两者。本指南解释了 OpenAI 音频文档中使用的术语。当你准备好选择实现路径时，请从[实时音频概览](/guides/realtime)开始。
 
 ## 音频模态

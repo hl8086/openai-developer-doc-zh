@@ -1,5 +1,7 @@
 # Red teaming
 
+> Probe AI systems for misuse and security risks before deployment.
+
 红队测试使用对抗性测试用例来帮助在部署前发现不安全、不可靠或违反策略的行为。它通过关注滥用场景、故障模式和高风险交互来补充评估，这些是普通质量测试可能无法暴露的问题。
 
 **重要提示：** 仅向 OpenAI Red Teaming 提交您拥有或明确授权测试的代码或其他资产。未经 OpenAI 明确书面许可，请勿使用 OpenAI Red Teaming 分析或报告开源或任何第三方代码中的漏洞。

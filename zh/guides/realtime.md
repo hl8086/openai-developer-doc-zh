@@ -1,5 +1,7 @@
 # Overview
 
+> Choose the right path for voice agents, translation, transcription, and speech generation.
+
 从你想要构建的结果开始。实时会话最适合需要低延迟的实时音频。基于请求的音频 API 最适合文件、有界请求或不需要实时会话的生成语音。
 
 ## 常见用例

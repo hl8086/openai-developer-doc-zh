@@ -1,5 +1,7 @@
 # Vision fine-tuning
 
+> Fine-tune models for better image understanding.
+
 视觉微调使用图像输入进行[监督微调](/guides/supervised-fine-tuning)，以提升模型对图像输入的理解能力。本指南将带您了解 SFT 的这一子集，并概述使用图像输入进行微调时的一些重要注意事项。
 
 OpenAI 正在逐步关闭微调平台。新用户已无法访问该平台，但现有微调平台用户在未来几个月内仍可创建训练任务。

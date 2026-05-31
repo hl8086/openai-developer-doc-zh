@@ -1,5 +1,7 @@
 # Your data
 
+> Understand how OpenAI uses your data, and how you can control it.
+
 了解 OpenAI 如何使用您的数据，以及您如何控制它。
 
 您的数据属于您。自 2023 年 3 月 1 日起，发送到 OpenAI API 的数据不会用于训练或改进 OpenAI 模型（除非您明确选择与我们共享数据）。

@@ -1,5 +1,7 @@
 # Developer mode
 
+> Full MCP client access for apps and tools.
+
 [
 
 高风险

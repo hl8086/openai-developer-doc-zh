@@ -1,5 +1,7 @@
 # Prompt optimizer
 
+> Use your dataset to automatically improve your prompts.
+
 [prompt optimizer](https://platform.openai.com/chat/edit?optimize=true) 是仪表板中的一个聊天界面，您可以在其中输入提示词，我们会根据当前最佳实践对其进行优化后返回给您。将 prompt optimizer 与[数据集](/guides/evaluation-getting-started)配合使用，是自动改进提示词的强大方式。
 
 ## 准备数据

@@ -1,5 +1,7 @@
 # Realtime with tools
 
+> Let realtime voice agents call function tools, remote MCP servers, and connectors.
+
 你可以将工具附加到 Realtime 会话中，以便模型在实时对话期间查找数据、执行操作或调用服务。无论你的客户端使用的是 [WebRTC 数据通道](/guides/realtime-webrtc) 还是 [WebSocket](/guides/realtime-websocket)，工具配置都使用相同的事件接口。
 
 当你的应用程序需要执行工具并返回结果时，使用 function 工具。当你希望 Realtime API 代替你连接到远程工具服务器时，使用 MCP 工具或内置连接器。

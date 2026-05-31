@@ -1,5 +1,7 @@
 # Supervised fine-tuning
 
+> Fine-tune models with example inputs and known good outputs for better results and efficiency.
+
 监督微调（SFT）让你可以使用针对特定用例的示例来训练 OpenAI 模型。结果是一个定制化模型，能更可靠地生成你期望的风格和内容。
 
 OpenAI 正在逐步关闭微调平台。该平台不再对新用户开放，但现有微调平台用户在未来几个月内仍可创建训练任务。

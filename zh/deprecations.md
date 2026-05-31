@@ -1,5 +1,7 @@
 # Deprecations
 
+> Find deprecated features and recommended replacements.
+
 ## 概述
 
 随着我们推出更安全、更强大的模型，我们会定期淘汰旧模型。依赖 OpenAI 模型的软件可能需要偶尔更新以保持正常运行。受影响的客户将始终通过电子邮件和我们的文档收到通知，重大变更还会通过[博客文章](https://openai.com/blog)发布。

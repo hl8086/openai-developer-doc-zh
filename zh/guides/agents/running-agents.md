@@ -1,5 +1,7 @@
 # Running agents
 
+> Understand the agent loop, continuation strategies, and streaming.
+
 定义一个 agent 只是设置步骤。运行时的问题是：单次运行做什么、下一轮如何继续、以及工作流在暂停等待审批或工具工作时如何表现。
 
 ## Agent 循环

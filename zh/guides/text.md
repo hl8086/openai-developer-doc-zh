@@ -1,5 +1,7 @@
 # Text generation
 
+> Learn how to prompt a model to generate text.
+
 通过 OpenAI API，你可以使用[大语言模型](/models)从提示词生成文本，就像使用 [ChatGPT](https://chatgpt.com) 一样。模型几乎可以生成任何类型的文本响应——如代码、数学方程式、结构化 JSON 数据或类似人类的散文。
 
 使用 [Responses API]( https://developers.openai.com/api/reference/responses) 进行像这样的文本生成直接模型请求。

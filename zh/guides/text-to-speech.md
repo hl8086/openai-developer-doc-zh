@@ -1,5 +1,7 @@
 # Speech generation
 
+> Learn how to turn text into lifelike spoken audio.
+
 Audio API 提供了一个基于我们 [GPT-4o mini TTS（文本转语音）模型](/models/gpt-4o-mini-tts) 的 [`speech`]( https://developers.openai.com/api/reference/audio/createSpeech) 端点。它内置了 11 种语音，可用于：
 
 *   朗读书面博客文章

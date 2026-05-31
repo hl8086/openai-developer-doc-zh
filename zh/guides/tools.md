@@ -1,5 +1,7 @@
 # Using tools
 
+> Use tools like remote MCP servers or web search to extend the model's capabilities.
+
 在生成模型响应或构建智能体时，你可以使用内置工具、函数调用、工具搜索和远程 MCP 服务器来扩展能力。这些功能使模型能够搜索网络、从你的文件中检索信息、在运行时加载延迟的工具定义、调用你自己的函数或访问第三方服务。只有 `gpt-5.4` 及更高版本的模型支持 `tool_search`。
 
 网络搜索文件搜索工具搜索函数调用远程 MCP

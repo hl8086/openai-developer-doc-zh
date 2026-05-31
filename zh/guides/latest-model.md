@@ -1,5 +1,7 @@
 # Latest: GPT-5.5
 
+> Learn best practices, features, and migration guidance for GPT-5.5 and the GPT-5 model family.
+
 ## 简介
 
 GPT-5.5 提升了复杂生产工作流的基准水平。它非常适合编码用例、工具密集型智能体、基于事实的助手、长上下文检索、产品规格到计划的工作流，以及对执行质量和响应精细度要求较高的面向客户的工作流。

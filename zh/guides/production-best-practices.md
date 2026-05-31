@@ -1,5 +1,7 @@
 # Production best practices
 
+> Transition AI projects to production with best practices.
+
 本指南提供了一套全面的最佳实践，帮助您从原型过渡到生产环境。无论您是经验丰富的机器学习工程师还是新近的爱好者，本指南都应为您提供在生产环境中成功使用该平台所需的工具：从保护对我们 API 的访问到设计能够处理高流量的稳健架构。使用本指南来帮助制定尽可能顺利和有效地部署应用程序的计划。
 
 如果您想进一步探索投入生产的最佳实践，请查看我们的 Developer Day 演讲：

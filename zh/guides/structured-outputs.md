@@ -1,5 +1,7 @@
 # Structured Outputs
 
+> Ensure text responses from the model adhere to a JSON schema you define.
+
 JSON 是世界上应用程序之间交换数据最广泛使用的格式之一。
 
 Structured Outputs 是一项功能，确保模型始终生成符合您提供的 [JSON Schema](https://json-schema.org/overview/what-is-jsonschema) 的响应，因此您无需担心模型遗漏必需的键，或产生无效的枚举值。

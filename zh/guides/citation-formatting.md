@@ -1,5 +1,7 @@
 # Citation formatting
 
+> Allow models to generate reliable citations.
+
 可靠的引用能够建立信任，并帮助读者验证回复的准确性。本指南提供了关于如何准备可引用材料以及指导模型有效格式化引用的实用指导，使用的是 OpenAI 模型熟悉的模式。
 
 ## 概述

@@ -1,5 +1,7 @@
 # File inputs
 
+> Learn how to use files as file inputs in the OpenAI API.
+
 OpenAI 模型可以接受文件作为 `input_file` 项。在 Responses API 中，你可以以 Base64 编码数据、Files API (`/v1/files`) 返回的文件 ID 或外部 URL 的形式发送文件。
 
 ## 工作原理

@@ -1,5 +1,7 @@
 # Results and state
 
+> Understand final output, history, interruptions, and what to carry forward.
+
 当你运行一个 agent 时，结果不仅仅是最终答案。它还是交接边界、下一轮对话的延续接口，以及运行暂停等待审核时的可恢复快照。
 
 ## 选择你需要的结果接口

@@ -1,5 +1,7 @@
 # Node reference
 
+> Explore all available nodes for composing workflows in Agent Builder.
+
 [Agent Builder](https://platform.openai.com/agent-builder) 是一个用于组合智能体工作流的可视化画布。工作流由节点和连接组成，用于控制顺序和流程。插入节点，然后配置和连接它们，以定义你希望智能体遵循的流程。
 
 浏览下方所有可用节点。要了解更多信息，请阅读 [Agent Builder 指南](/guides/agent-builder)。

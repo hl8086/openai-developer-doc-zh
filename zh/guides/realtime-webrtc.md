@@ -1,5 +1,7 @@
 # WebRTC
 
+> Connect to the Realtime API using WebRTC.
+
 [WebRTC](https://webrtc.org/) 是一组用于构建实时应用的强大标准接口。OpenAI Realtime API 支持通过 WebRTC 对等连接来连接实时模型。
 
 对于基于浏览器的语音到语音应用，我们建议从 [Voice agents](/guides/voice-agents) 开始，该文档涵盖了 Agents SDK 用于管理 Realtime 会话的高级辅助工具和 API。WebRTC 接口功能强大且灵活，但比 Agents SDK 更底层。

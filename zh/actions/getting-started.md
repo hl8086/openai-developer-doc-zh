@@ -1,5 +1,7 @@
 # Getting started
 
+> Set up and test GPT Actions from scratch.
+
 ## Weather.gov 示例
 
 NSW（国家气象局）维护着一个[公共 API](https://www.weather.gov/documentation/services-web-api)，用户可以查询该 API 来获取任意经纬度坐标点的天气预报。要获取天气预报，需要两个步骤：

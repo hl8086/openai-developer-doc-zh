@@ -1,5 +1,7 @@
 # Images and vision
 
+> Learn how to understand or generate images.
+
 ## 概述
 
 [创建图像使用 GPT Image 模型生成或编辑图像。](/guides/image-generation)

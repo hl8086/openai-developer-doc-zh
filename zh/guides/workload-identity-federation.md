@@ -1,5 +1,7 @@
 # Overview
 
+> Authenticate workloads without storing long-lived API keys.
+
 工作负载身份联合允许受信任的工作负载将外部签发的身份令牌交换为短期有效的 OpenAI 访问令牌。使用这些指南来配置您的外部身份提供商、创建 OpenAI 服务账户映射，并在无需存储长期有效 API 密钥的情况下对工作负载进行身份验证。
 
 有关令牌交换请求和响应的详细信息、授权行为和当前限制，请参阅[工作负载身份令牌交换参考]( https://developers.openai.com/api/reference/workload-identity-federation)。

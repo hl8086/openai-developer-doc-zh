@@ -1,5 +1,7 @@
 # Agent definitions
 
+> Configure a single agent cleanly before you scale into a larger workflow.
+
 Agent 是基于 SDK 工作流的核心单元。它封装了模型、指令以及可选的运行时行为，如工具、护栏、MCP 服务器、交接和结构化输出。
 
 ## Agent 上应包含什么

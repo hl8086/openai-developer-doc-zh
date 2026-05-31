@@ -1,5 +1,7 @@
 # Safety best practices
 
+> Implement safety measures like moderation and human oversight.
+
 ### 使用我们免费的 Moderation API
 
 OpenAI 的 [Moderation API](/guides/moderation) 可免费使用，能帮助减少补全结果中不安全内容的出现频率。或者，你也可以开发自己的内容过滤系统，以适应你的具体用例。

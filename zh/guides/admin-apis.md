@@ -1,5 +1,7 @@
 # Admin APIs
 
+> Programmatically manage organization resources and administrative workflows.
+
 Admin APIs 允许你自动化组织管理工作流，例如用户邀请、审计日志审查、项目管理、API 密钥管理、支出警报、数据保留和速率限制操作。可将其用于后台自动化、安全工作流以及应在仪表板之外运行的运维工具。
 
 有关端点详情，请参阅 [Administration API 参考]( https://developers.openai.com/api/reference/administration/overview)，包括 [Admin API keys]( https://developers.openai.com/api/reference/resources/admin/subresources/organization/subresources/admin_api_keys)、[Invites]( https://developers.openai.com/api/reference/resources/admin/subresources/organization/subresources/invites)、[Users]( https://developers.openai.com/api/reference/resources/admin/subresources/organization/subresources/users)、[Projects]( https://developers.openai.com/api/reference/resources/admin/subresources/organization/subresources/projects) 和 [Audit logs]( https://developers.openai.com/api/reference/resources/admin/subresources/organization/subresources/audit_logs)。

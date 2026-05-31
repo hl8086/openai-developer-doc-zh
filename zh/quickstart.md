@@ -1,5 +1,7 @@
 # 开发者快速入门
 
+> Take your first steps with the OpenAI API.
+
 OpenAI API 提供了一个简洁的接口，可访问最先进的 AI [模型](/models)，用于文本生成、自然语言处理、计算机视觉等。首先创建一个 API Key 并运行你的第一个 API 调用。了解如何生成文本、分析图像、构建智能体等。
 
 在 Codex 中使用 OpenAI API 进行构建
